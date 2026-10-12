@@ -54,9 +54,11 @@ test('failed or obsolete update does not save an unconfirmed old guide over loca
 const openStart=source.indexOf("else if(action==='open-guide'){")+"else if(action==='open-guide')".length;
 const openBody=source.slice(openStart,source.indexOf("\n  else if(action==='guide-current')",openStart)).trim();
 function drawer(){
- const pending=deferred(),opened=[],context=vm.createContext({buildView:hero(),buildSelection:()=>context.buildView,preparationIdentity,
-  matchupFocusChain:Promise.resolve(),guideSyncChain:pending.promise,saveChain:Promise.resolve(),api:{openGuide:async selection=>opened.push(structuredClone(selection))},guideSelection:null,
-  hexHero:null,hexSelected:[],hexOptions:[],hexOwned:[],renderBuild:()=>{},toast:()=>{}});
+ const pending=deferred(),opened=[],{context}=setup(async selection=>({updated:true,selection,revision:5}));
+ Object.assign(context,{buildView:hero(),buildSelection:()=>context.buildView,preparationIdentity,
+  matchupFocusChain:Promise.resolve(),guideSyncChain:pending.promise,saveChain:Promise.resolve(),
+  hexHero:null,hexSelected:[],hexOptions:[],hexOwned:[]});
+ context.api.openGuide=async selection=>{opened.push(structuredClone(selection));return {selection,revision:4};};
  const open=vm.runInContext('(async()=>'+openBody+')',context);return {context,pending,opened,open};
 }
 test('drawer opens the accepted configuration after pending cross-window edits settle',async()=>{
@@ -66,5 +68,21 @@ test('drawer opens the accepted configuration after pending cross-window edits s
 test('drawer does not open a different hero or closed view after pending synchronization',async()=>{
  for(const changed of [null,hero({id:'Ahri',role:'mid'})]){
   const s=drawer(),opening=s.open();await tick();s.context.buildView=changed;s.pending.resolve();await assert.rejects(opening,/配置窗口已变化/);assert.equal(s.opened.length,0);
+ }
+});
+
+const topStart=source.indexOf("else if(action==='guide-current'){")+"else if(action==='guide-current')".length;
+const topBody=source.slice(topStart,source.indexOf("else if(action==='my-runes')",topStart)).trim();
+test('late open responses do not undo newer accepted edits or suppress the next explicit change',async()=>{
+ for(const body of [openBody,topBody])for(const versioned of [true,false]){
+  const response=deferred(),sent=[],s=setup(async selection=>{sent.push(selection);return {updated:true,selection,revision:6};});
+  Object.assign(s.context,{buildView:hero(),buildSelection:()=>s.context.buildView,preparationIdentity,matchupFocusChain:Promise.resolve(),hexHero:null,hexSelected:[],hexOptions:[],hexOwned:[],myPreparation:()=>({selection:hero()})});
+  s.context.api.openGuide=()=>response.promise;
+  const opening=vm.runInContext('(async()=>'+body+')()',s.context);await tick();
+  s.context.receiveGuideSelection(hero(),4);s.context.receiveGuideSelection(hero({conditions:['ad']}),5);
+  response.resolve(versioned?{selection:hero(),revision:4}:true);await opening;
+  assert.deepEqual([...s.context.guideSelection.conditions],['ad']);
+  const reverted=hero();s.preparations.remember(reverted);s.context.syncPreparedGuide(reverted);await s.context.guideSyncChain;
+  assert.equal(sent.length,1,'reverting a confirmed condition must send a real update');assert.deepEqual([...sent[0].conditions],[]);
  }
 });
