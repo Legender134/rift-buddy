@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import {createPreparationStore,configurationKey,configurationPatch,CONFIGURATION_FIELDS} from '../src/core/preparation.mjs';
+import {createPreparationStore,configurationKey,configurationPatch,CONFIGURATION_FIELDS,preparationIdentity} from '../src/core/preparation.mjs';
 
 const source=fs.readFileSync(new URL('../src/app.mjs',import.meta.url),'utf8');
 const functions=source.slice(source.indexOf('function acceptGuideSelection('),source.indexOf('function runeTargetNotice('));
@@ -48,5 +48,23 @@ test('failed or obsolete update does not save an unconfirmed old guide over loca
  for(const updateGuide of [async()=>({updated:false}),async()=>{throw Error('save failed');}]){
   const s=setup(updateGuide);s.context.syncPreparedGuide(page);await s.context.guideSyncChain;
   assert.equal(s.preparations.recall(page).coreId,page.coreId);assert.equal(s.preparations.recall(page).runeId,page.runeId);assert.equal(s.remembered.length,0);
+ }
+});
+
+const openStart=source.indexOf("else if(action==='open-guide'){")+"else if(action==='open-guide')".length;
+const openBody=source.slice(openStart,source.indexOf("\n  else if(action==='guide-current')",openStart)).trim();
+function drawer(){
+ const pending=deferred(),opened=[],context=vm.createContext({buildView:hero(),buildSelection:()=>context.buildView,preparationIdentity,
+  matchupFocusChain:Promise.resolve(),guideSyncChain:pending.promise,saveChain:Promise.resolve(),api:{openGuide:async selection=>opened.push(structuredClone(selection))},guideSelection:null,
+  hexHero:null,hexSelected:[],hexOptions:[],hexOwned:[],renderBuild:()=>{},toast:()=>{}});
+ const open=vm.runInContext('(async()=>'+openBody+')',context);return {context,pending,opened,open};
+}
+test('drawer opens the accepted configuration after pending cross-window edits settle',async()=>{
+ const s=drawer(),opening=s.open();await tick();s.context.buildView=hero({conditions:['ad'],runeId:page.runeId});s.pending.resolve();await opening;
+ assert.deepEqual(s.opened[0].conditions,['ad']);assert.equal(s.opened[0].runeId,page.runeId);
+});
+test('drawer does not open a different hero or closed view after pending synchronization',async()=>{
+ for(const changed of [null,hero({id:'Ahri',role:'mid'})]){
+  const s=drawer(),opening=s.open();await tick();s.context.buildView=changed;s.pending.resolve();await assert.rejects(opening,/配置窗口已变化/);assert.equal(s.opened.length,0);
  }
 });
