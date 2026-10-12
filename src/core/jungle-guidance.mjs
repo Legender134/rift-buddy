@@ -1,4 +1,5 @@
 import {JUNGLE_PROFILES,junglePlan} from './jungle-plans.mjs';
+import {jungleRoute,validateRouteProgress} from './jungle-route.mjs';
 export const JUNGLE_GUIDANCE_PATCH='16.20';
 export const JUNGLE_SOURCES=Object.fromEntries(Object.entries(JUNGLE_PROFILES).map(([id,p])=>[id,p.sources]));
 const lanes=['top','mid','bottom'],fields=['pushed','follow','control','safe'];
@@ -8,17 +9,31 @@ const freshAt=(at,time)=>Number.isFinite(at)&&Number.isFinite(time)&&time>=at&&t
 export function validateJungleNotes(value){
  if(!value||typeof value!=='object')return undefined;
  const notes={...(value.start==='red'||value.start==='blue'?{start:value.start}:{}),...(['red','blue'].includes(value.side)?{side:value.side}:{}),...(['red','blue'].includes(value.half)?{half:value.half}:{}),...(['opening','rotation'].includes(value.stage)?{stage:value.stage}:{})};
+ const progress=validateRouteProgress(value.routeProgress);if(progress)notes.routeProgress=progress;
  if(situations.includes(value.situation)&&Number.isFinite(value.situationAt)&&value.situationAt>=0&&value.situationAt<1e6){notes.situation=value.situation;notes.situationAt=value.situationAt;}
  if(lanes.includes(value.lane)&&Number.isFinite(value.at)&&value.at>=0&&value.at<1e6){notes.lane=value.lane;notes.at=value.at;for(const key of fields)if(value[key]===true)notes[key]=true;}
  return Object.keys(notes).length?notes:undefined;
 }
-export function changeJungleNotes(current,field,value,gameTime){
+export function changeJungleNotes(current,field,value,gameTime,route){
  let notes=validateJungleNotes(current)||{};
- if(field==='start'){if(!['red','blue'].includes(value))throw Error('起手营地不正确');return {...notes,start:value};}
- if(field==='side'){if(!['red','blue'].includes(value))throw Error('出生方不正确');return {...notes,side:value};}
- if(field==='half'){if(!['red','blue'].includes(value))throw Error('刷野半区不正确');return {...notes,half:value};}
- if(field==='stage'){if(!['opening','rotation'].includes(value))throw Error('路线阶段不正确');return {...notes,stage:value};}
- const plan=Object.fromEntries(['start','side','half','stage'].filter(k=>notes[k]).map(k=>[k,notes[k]]));
+ if(['start','side','half','stage'].includes(field)){
+  const values=field==='stage'?['opening','rotation']:['red','blue'];
+  if(!values.includes(value))throw Error(({start:'起手营地',side:'出生方',half:'刷野半区',stage:'路线阶段'})[field]+'不正确');
+  if(notes[field]===value)return notes;
+  const {routeProgress,...rest}=notes;return {...rest,[field]:value};
+ }
+ const plan=Object.fromEntries(['start','side','half','stage','routeProgress'].filter(k=>notes[k]).map(k=>[k,notes[k]]));
+ if(field==='step'){
+  const match=typeof value==='string'&&value.match(/^([A-Za-z][A-Za-z0-9-]{1,79})\.(\d{1,2}|reset)$/);
+  if(!route?.writable||!match||match[1]!==route.key)throw Error('路线已变化或本局尚未确认，请查看最新路线');
+  if(match[2]==='reset'){const {routeProgress,...rest}=notes;return rest;}
+  const index=Number(match[2]);if(index>route.steps.length)throw Error('路线步骤不正确');
+  return {...notes,stage:route.stage,...(route.stage==='rotation'?{half:route.half}:{}),routeProgress:{key:route.key,index}};
+ }
+ if(field==='adopt'){
+  if(!route?.canAdopt||value!==route.key)throw Error('续刷候选已变化，请重新确认安全半区');
+  return {start:notes.start,side:notes.side,stage:'rotation',half:route.half,routeProgress:{key:route.key,index:0}};
+ }
  if(field==='clear')return Object.keys(plan).length?plan:undefined;
  if(field==='resume')return {...plan};
  if(!Number.isFinite(gameTime)||gameTime<0)throw Error('进入本局后再确认兵线；助手不自动读取兵线位置');
@@ -51,6 +66,7 @@ export function jungleGuidance({champion,role,mode,patch,live,notes,combo}={}){
  const basicSkillsKnown=matched&&['Q','W','E'].every(k=>Number.isInteger(live?.skills?.[k])&&live.skills[k]>0);
  const ready=!!(fresh&&checked.pushed&&checked.follow&&checked.control&&checked.safe&&basicSkillsKnown&&hp!==null&&!low&&!lowResource&&!stale&&validQueue&&!recovery);
  const routeStage=checked.stage||(!matched||!Number.isFinite(live.gameTime)||live.gameTime<210?'opening':'rotation'),openingPhase=routeStage==='opening';
+ const route=jungleRoute({champion,start,half,side,stage:routeStage,recovery,progress:checked.routeProgress,writable:matched&&validQueue&&!stale});
  const farming=openingPhase?plan.checkpoint:profile?.rotation||'连刷同侧安全营地并计划回城；先和邻线约好控制，再比较抓人或资源，不跨图追旧机会。';
  const choices=[{id:'farm',title:'继续刷野 / 补给',text:low?'自身生命不足四成：先考虑补给或安全营地；有续航也要核对法力和敌方动向。':unlearnedR?`大招尚未学会：优先保住经验节奏，已确认的近处好机会再考虑抓。${farming}`:dependsOnR&&r===null?`大招等级未知：先在游戏内确认是否已学会、是否可用，再比较抓人机会；没有确认的近处机会就刷安全营地。${farming}`:farming},
  {id:'gank',title:ready?`${labels[checked.lane]}可比较抓人机会`:'抓人条件待核对',text:ready?`${labels[checked.lane]}：你刚确认敌方压出、队友能跟、有可靠控制和安全进退。${unlearnedR?'当前仍没有R，不按6级连招进场。':''}${r===null?'大招等级未知，不能按有R方案进场。':r>0?profile?.afterR||'和队友约好同一目标，再接控制与伤害。':profile?.beforeR||'先等队友控制，再跟进伤害。'}进场前自己确认技能就绪；目标缩回、队友回城或入口被看见就取消。`:'自己检查敌方是否压出、队友血蓝与兵线、控制和安全进退；自身基础技能未学齐或未知时不推抓人候选。不能仅凭阵容或击杀数指定要抓哪条路。'},
@@ -66,9 +82,10 @@ export function jungleGuidance({champion,role,mode,patch,live,notes,combo}={}){
  if(!matched||hp===null)lead={title:'等待本局自身状态',text:'健康与技能信息不全，暂不指定抓人；路线仅作开局示例。'};
  if(!validQueue&&matched)lead={title:'当前模式尚未核对',text:'专属行动只用于峡谷常规队列；此处仅保留路线参考。'};
  if(stale)lead={title:'本版路线待复核',text:'当前资料版本与机制参考不同，暂不生成抓人候选；以游戏内状态为准。'};
+ route.pause=!matched||hp===null||low||lowResource||!validQueue||stale?lead.title:null;
  const skillState=!basicSkillsKnown?'基础技能未学齐或不可读 · 冷却自行核对':r===null?'R等级未知 · 技能冷却自行核对':profile?.transformR?'R为变形，不以6级解锁 · 形态与冷却自行核对':r>0?'R已学会 ≠ 已就绪 · 冷却自行核对':'R未学会 · 技能冷却自行核对';
  const skillNote=`${profile?.resourceFree?'本体无蓝耗 · ':!resource?'血蓝/能量需核对 · ':''}${skillState}`;
- return {patch:JUNGLE_GUIDANCE_PATCH,stale,notes:checked,fresh,opening,start,side,autoSide,special,mechanics,choices,ready,recovery,recoveryRoute,lead,skillNote,openingPhase,routeStage,rotationRoute:rotation,half,
+ return {patch:JUNGLE_GUIDANCE_PATCH,stale,notes:checked,fresh,opening,start,side,autoSide,special,mechanics,choices,ready,recovery,recoveryRoute,lead,skillNote,openingPhase,routeStage,rotationRoute:rotation,half,route,
   routeTitle:profile?plan.routeTitle:'通用六营示例 · 无专属手法',finish:plan.finish,compactRoute:plan.compactRoute,checkpoint:plan.checkpoint,
   combo:combo?.ownJob||null,sources:JUNGLE_SOURCES[champion]||[],
   caution:'开局顺序是可调整的机制参考，没有16.20最优清野时间证据。兵线条件由你确认，90秒后作废；助手不读取敌方坐标、视野、施法或实际冷却。'};

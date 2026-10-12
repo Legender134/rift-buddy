@@ -59,6 +59,41 @@ async function run(){
   await until(()=>j('document.querySelector("header b").textContent.includes("首轮")'),'Player opening override ignored after 210 seconds');assert.equal(state.jungleNotes.stage,'opening');
   newJungleCases.push({champion,opening:first,recoveryVisible:true,manualStageOverridesTime:true,...size});
  }
- const result={passed:true,source,archiveSha256:release?.archiveSha256||null,metrics,jungleMetrics,newJungleCases,explicitLocalGuideChanges:writes,gameWrites:0,networkBlocked:true};await fs.writeFile(path.join(output,'useful-guide.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));guide.destroy();app.quit();
+ state=core.selectGuide(null,{id:'Nocturne',role:'jungle',mode:'rift'});live={...live,champion:'Nocturne',gameTime:120,teamSide:'blue'};guide.publish();
+ await until(()=>j(`!!document.querySelector('[data-value="step:Nocturne-opening-red.0"]')`),'Optional manual route follow missing');
+ const widgetBounds=jungle.getBounds();await j(`document.querySelector('[data-value="step:Nocturne-opening-red.0"]').click()`);
+ await until(()=>Promise.resolve(state.jungleNotes?.routeProgress?.index===0),'Manual start not persisted');
+ await j(`document.querySelector('[data-value="step:Nocturne-opening-red.1"]').click()`);
+ await until(()=>j('document.querySelector(".next-camp strong").textContent==="石甲虫"'),'Next camp missing');
+ live={...live,gameTime:500};guide.publish();await delay(100);assert.equal(state.jungleNotes.stage,'opening');assert.match(await j('document.querySelector("header b").textContent'),/首轮/);
+ await j(`document.querySelector('[data-action="map"]').click()`);await until(()=>j('!!document.querySelector("svg.jungle-map")'),'Map view missing');
+ assert.deepEqual(jungle.getBounds(),widgetBounds,'Switching to map must not resize the widget');
+ assert.equal(await j('document.querySelector(".jungle-map .current text").textContent'),'2');
+ await painted(jungle);const mapMetrics=await j(`(()=>{const p=document.querySelector('main'),r=document.querySelector('[aria-label="路线半区与中断"]').getBoundingClientRect();return {width:innerWidth,height:innerHeight,scroll:p.scrollHeight-p.clientHeight,controlsBottom:r.bottom,horizontal:document.documentElement.scrollWidth>innerWidth}})()`);
+ assert.equal(mapMetrics.horizontal,false);assert(mapMetrics.controlsBottom<=mapMetrics.height,'Default map controls must remain visible');
+ await fs.writeFile(path.join(output,'jungle-map.png'),(await jungle.webContents.capturePage()).toPNG());
+ await j(`document.querySelector('[data-action="details"]').click()`);await until(()=>js('!!document.querySelector(".jungle-route-panel")'),'Full route panel missing');
+ await js(`document.querySelector('[data-id="step:Nocturne-opening-red.4"]').click()`);
+ await until(()=>j('document.querySelector(".next-camp strong").textContent==="蓝BUFF"'),'Full guide progress did not synchronize to widget');
+ await j(`document.querySelector('[data-value="step:Nocturne-opening-red.3"]').click()`);
+ await until(()=>js('document.querySelector(".camp-steps [aria-current=step] span").textContent==="三狼"'),'Widget backtrack did not synchronize to full guide');
+ await painted(win);await fs.writeFile(path.join(output,'jungle-full-route.png'),(await win.webContents.capturePage()).toPNG());
+ await j(`document.querySelector('[data-value="situation:invaded"]').click()`);
+ await until(()=>j(`!!document.querySelector('[data-value="adopt:Nocturne-rotation-blue"]')`),'Safe recovery adoption missing');
+ await j(`document.querySelector('[data-value="adopt:Nocturne-rotation-blue"]').click()`);
+ await until(()=>Promise.resolve(state.jungleNotes?.half==='blue'&&state.jungleNotes?.stage==='rotation'),'Recovery kept the old half or opening');assert.equal(state.jungleNotes.lane,undefined);
+ await until(()=>j('document.querySelector(".next-camp strong").textContent==="三狼"'),'Adopted next camp missing');
+ const routeCases={manualStagePinned:true,crossWindowSkipAndBacktrack:true,recoveryAdoptedHalf:state.jungleNotes.half,mapMetrics};
+ for(const side of ['blue','red']){
+  state=core.selectGuide(null,{id:'Ivern',role:'jungle',mode:'rift'});live={...live,champion:'Ivern',gameTime:120,teamSide:side};guide.publish();
+  const start=side==='blue'?'red':'blue',key='Ivern-opening-'+start;
+  await until(()=>j(`!!document.querySelector('[data-value="step:${key}.0"]')`),'Ivern route missing');
+  await j(`document.querySelector('[data-action="details"]').click()`);await until(()=>js(`!!document.querySelector('[data-id="step:${key}.5"]')`),'Ivern full route missing');
+  await js(`document.querySelector('[data-id="step:${key}.5"]').click()`);
+  await until(()=>j('document.querySelector("svg").getAttribute("aria-label").includes("成熟后回收")'),'Ivern map did not switch to mature release');
+  await painted(jungle);await fs.writeFile(path.join(output,'ivern-map-'+side+'.png'),(await jungle.webContents.capturePage()).toPNG());
+ }
+ await js(`document.querySelector('[data-action="new-game"]').click()`);await until(()=>Promise.resolve(!state.jungleNotes),'New game kept route progress');routeCases.newGameReset=true;
+ const result={passed:true,source,archiveSha256:release?.archiveSha256||null,metrics,jungleMetrics,newJungleCases,routeCases,explicitLocalGuideChanges:writes,gameWrites:0,networkBlocked:true};await fs.writeFile(path.join(output,'useful-guide.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));guide.destroy();app.quit();
 }
 run().catch(async error=>{console.error(error);await fs.writeFile(path.join(output,'error.txt'),error.stack).catch(()=>{});app.exit(1);});
