@@ -288,6 +288,14 @@ test('adopting either a room proposal or a shared lineup exits comparison and ex
  }
 });
 
+test('the main room view context follows reliable public hovers without persisting them',()=>{
+ const live=client();live.session.myTeam.push({cellId:2,championId:0,championPickIntent:hero('Lux').key,assignedPosition:'MIDDLE'});
+ const {context:c}=setup({current:live}),before=JSON.stringify(c.slots);
+ assert.equal(c.publicDraftContext().find(s=>s.role==='mid').champion,'Lux');
+ c.client.session.myTeam[1].championPickIntent=0;
+ assert.equal(c.publicDraftContext().find(s=>s.role==='mid').champion,null);assert.equal(JSON.stringify(c.slots),before);
+});
+
 test('a click survives an unrelated teammate pick while adopting its fresh public champion',async()=>{
  const now=2000000,current=checkedClient(now),incoming=checkedClient(now+16001);
  incoming.session.myTeam.push({cellId:2,championId:hero('Garen').key,assignedPosition:'TOP'});

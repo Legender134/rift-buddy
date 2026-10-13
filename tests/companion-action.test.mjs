@@ -7,8 +7,22 @@ import {pickEligibilityContext} from '../src/core/pick-eligibility.mjs';
 import {roomSharesView} from '../src/room-view.mjs';
 import {roomLineupIdentity} from '../src/core/room-lineup.mjs';
 import {defaultState,validateState} from '../services/storage.mjs';
+import {recommendationDraft} from '../src/core/draft-intents.mjs';
+import {lineupFit} from '../src/core/room-ballot.mjs';
 const data=JSON.parse(await fs.readFile('data/game.json')),hero=id=>data.champions.find(c=>c.id===id);
 const client={connected:true,phase:'ChampSelect',mode:{id:'rift'},session:{gameId:77,localPlayerCellId:0,myTeam:[{cellId:0,championId:hero('Graves').key,assignedPosition:'JUNGLE'},{cellId:1,championId:hero('Vex').key,assignedPosition:'MIDDLE'}],theirTeam:[],bans:[],actions:[[{type:'pick',actorCellId:0,championId:hero('Graves').key,completed:false}]],allowDuplicatePicks:false}};
+
+test('sidebar candidate and room scores follow the same public hover as the roster, then recover when it clears',()=>{
+ const slots=createSlots(),live=structuredClone(client);live.session.myTeam=[{cellId:0,championId:0,assignedPosition:'BOTTOM'},{cellId:1,championId:0,championPickIntent:hero('Lux').key,assignedPosition:'MIDDLE'}];
+ const proposed=slots.map(s=>({...s,champion:({mid:'Ahri',bottom:'Ashe',support:'Braum'})[s.role]||null}));
+ const [result]=recommend({slots:proposed.map(s=>({...s,locked:!!s.champion})),champions:data.champions,scope:'party'});
+ const room={mode:'host',ballots:true,members:[{nick:'朋友',share:{ballot:{version:1,proposal:{mode:'rift',lineup:proposed},vote:null}}}]};
+ const props={data,client:live,slots,unassigned:[],scope:'party',soloRole:'bottom',style:'fun',tab:'recommend',results:[result],room};
+ const before=structuredClone(slots),fit=lineupFit(proposed,recommendationDraft(slots,live.session,data.champions,{ownRole:'bottom'}),data.champions);
+ let html=companionView(props);assert.match(html,/data-id="Lux"/);assert.match(html,/room-ballot-row conflict/);assert.equal((html.match(new RegExp('契合 '+fit.score+'<','g'))||[]).length,2);
+ live.session.myTeam[1].championPickIntent=0;html=companionView(props);
+ assert.doesNotMatch(html,/room-ballot-row conflict/);assert.equal((html.match(/契合 100</g)||[]).length,2);assert.deepEqual(slots,before);
+});
 
 test('sidebar hero shortcuts distinguish own configuration, public teammate picks, locks and display-only mode',()=>{
  const before=structuredClone(client);assert.equal(companionHeroAction(client,hero('Graves')).prepare,true);assert.equal(companionHeroAction(client,hero('Vex')).prepare,false);assert.match(companionHeroAction(client,hero('Vex')).label,/队友已选/);assert.equal(companionHeroAction(client,hero('Diana')).prepare,true);
