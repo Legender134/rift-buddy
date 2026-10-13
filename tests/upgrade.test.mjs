@@ -29,6 +29,23 @@ test('Swiftplay 480 is distinct from normal Quickplay 490 and cannot prepare a c
  const swift=identifyMode({queueId:480,gameMode:'CLASSIC',mapId:11});assert.equal(swift.id,'swiftplay');assert.equal(swift.supported,false);assert.match(swift.label,/独立出门/);
  for(const queueId of [420,490])assert.deepEqual(identifyMode({queueId,gameMode:'CLASSIC',mapId:11}),{id:'rift',label:'召唤师峡谷',supported:true});
 });
+
+test('custom gameflow reads the public top-level map and nonempty queue fallbacks without inferring unknown modes',()=>{
+ const variants=[
+  {gameData:{gameId:777,isCustomGame:true,queue:{id:0,gameMode:''}},map:{id:11,gameMode:'CLASSIC'}},
+  {gameData:{gameId:777,queue:{id:0,mapId:11,gameMode:'CLASSIC'}}},
+  {gameData:{gameId:777,gameMode:'CLASSIC',queue:{id:0,gameMode:'  '}},map:{id:11}},
+  {gameData:{gameId:777,queue:{id:0,mapId:11,gameMode:'CLASSIC'}},map:{gameMode:''}},
+  {gameData:{gameId:777,mapId:0,queue:{id:0,mapId:11,gameMode:'CLASSIC'}},map:{id:0}},
+  {gameData:{gameId:777,mapId:null,queue:{id:0,gameMode:''}},map:{id:11,gameMode:'CLASSIC'}}
+ ];
+ for(const raw of variants){assert.deepEqual(sanitizeGame(raw),{queueId:0,mapId:11,gameId:'777',gameMode:'CLASSIC'});assert.equal(identifyMode(sanitizeGame(raw)).id,'rift');}
+ for(const [map,queue] of [[{id:11,gameMode:'CLASSIC'},{id:0,gameMode:'URF'}],[{id:12,gameMode:'ARAM'},{id:0}],[{id:11},{id:0}], [{gameMode:'CLASSIC'},{id:0}], [{id:11,gameMode:'CLASSIC'},{id:480}]]){
+  assert.notEqual(identifyMode(sanitizeGame({gameData:{isCustomGame:true,queue},map})).id,'rift');
+ }
+ const safe=sanitizeGame({gameData:{gameId:777,queue:{id:0},password:'discard',spectatorKey:'discard',teamOne:[{puuid:'discard'}]},map:{id:11,gameMode:'CLASSIC',assets:{private:'discard'}}});
+ assert(!JSON.stringify(safe).includes('discard'));assert.equal(Object.keys(safe).length,4);
+});
 test('owned recipe components are allocated once, repeated components count, cycles terminate',()=>{
  const items={a:{name:'小件',gold:{total:300}},b:{name:'中件',gold:{total:900},from:['a','a']},c:{name:'成装',gold:{total:2000},from:['b','a']},d:{gold:{total:2000},from:['d']}};
  const plans=purchasePlan([{id:'c'},{id:'b'},{id:'d'}],items,[{id:'a',count:2}],500);

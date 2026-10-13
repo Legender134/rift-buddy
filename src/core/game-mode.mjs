@@ -9,9 +9,11 @@ export function identifyMode(value={}){
  return {id:null,label:mode==='ARAM'?'大乱斗 · 类型待确认':'模式待确认',supported:false};
 }
 export function sanitizeGame(game){
- const config=game?.gameData?.queue||game?.queue||{},gameData=game?.gameData||game||{};
- const queueId=Number(config.id??gameData.queueId),mapId=Number(gameData.mapId??gameData.mapNumber);
- const gameMode=String(config.gameMode??gameData.gameMode??'').slice(0,40);
+ const config=game?.gameData?.queue||game?.queue||{},gameData=game?.gameData||game||{},map=game?.map||{};
+ const queueId=Number(config.id??gameData.queueId),mapId=[gameData.mapId,gameData.mapNumber,map.id,config.mapId].map(Number).find(n=>Number.isInteger(n)&&n>0);
+ // Gameflow puts the actual map outside gameData. Custom queues can have an
+ // empty mode, so only nonempty metadata may hide the next public fallback.
+ const gameMode=([config.gameMode,gameData.gameMode,map.gameMode].find(v=>typeof v==='string'&&v.trim())||'').trim().slice(0,40);
  const gameId=String(gameData.gameId??'');
  return {...(Number.isInteger(queueId)&&queueId>=0?{queueId}:{}),...(Number.isInteger(mapId)&&mapId>0?{mapId}:{}),...(/^\d{1,20}$/.test(gameId)?{gameId}:{}),gameMode};
 }
