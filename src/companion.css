@@ -97,7 +97,7 @@
 .companion-team-compact .companion-roster-row{padding:2px 0}.companion-team-compact .companion-roster-hero{gap:3px}
 .companion-team-compact .companion-roster-hero b,.companion-team-compact .companion-roster-hero small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.4}
 .companion-shell[data-tab=recommend] .companion-section-head{margin:6px 0 0;min-height:28px}.companion-shell[data-tab=recommend] .companion-section-head h3{margin:0;font-size:calc(13px * var(--text-scale))}
-.companion-candidate{padding:3px 0;border-bottom:1px solid #2c3c37}
+.companion-candidate{padding:2px 0;border-bottom:1px solid #2c3c37}
 .companion-candidate .candidate-row{gap:5px;padding-right:40px;min-height:32px}
 .companion-candidate .candidate-members{gap:4px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0}
 .companion-candidate .candidate-members:has(>.candidate-member:only-child){grid-template-columns:minmax(0,1fr)}
@@ -113,3 +113,4 @@
 .companion-recommend-options{margin-top:6px}.companion-recommend-options>summary{font-size:calc(11px * var(--text-scale))!important}
 .companion-team-compact+.companion-section-head{margin-top:6px}
 .companion-shell[data-tab=recommend] .companion-section-head>.btn{padding:3px 6px;min-height:30px;line-height:1.4}
+.companion-adopted-name{margin:4px 0;color:var(--muted);font-size:calc(11px * var(--text-scale));overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

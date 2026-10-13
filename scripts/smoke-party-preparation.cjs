@@ -60,6 +60,28 @@ async function run(){
  const itemIds=value=>value.itemSet.blocks.flatMap(block=>block.items.map(item=>Number(item.id)));
  const ownPlan=async()=>{await click(side,'[data-action=companion-tab][data-tab=plan]');await until(()=>js(side,'!!document.querySelector("[data-action=client-prepare][data-preparation-view=task]")'),'My plan controls missing');return js(side,'JSON.parse(document.querySelector("[data-client-preparation-fingerprint]").dataset.clientPreparationFingerprint)[0]');};
  const mockedRuneWrites=()=>writes.filter(w=>w.route.startsWith('/lol-perks/v1/pages/')).length;
+ if(process.env.RIFT_BUDDY_STANDALONE_ITEMS==='1'){
+  const prepared=await ownPlan();assert.equal(prepared.champion,'Galio');
+  assert.equal(await js(side,'!!document.querySelector(".companion-plan-summary")'),true,'Adopted own plan must be visible before hovering');
+  intent=hero('Ashe').key;await click(side,'[data-action=sync]');await until(()=>js(side,'!document.querySelector("[data-action=sync]")?.textContent.includes("连接中")'),'Public hover sync pending');await delay(250);
+  assert.equal((await ownPlan()).champion,'Galio','Old client hover replaced the adopted task');
+  assert.equal(await js(side,'document.querySelector("[data-companion-field=loadout]").dataset.plan'),'Galio:mid:rift','Editor and task target split');
+  await click(main,'.slot-config[data-id=Galio][data-role=mid]');await until(()=>js(main,'!!document.querySelector(".drawer [data-action=import-item-set]")'),'Own drawer missing');
+  await click(main,'.drawer [data-action=import-item-set]');
+  for(const win of [main,side]){
+   await until(()=>js(win,'document.querySelector(".preparation-task [data-preparation-step=items]")?.dataset.stepStatus==="done"'),'Independent item receipt missing');
+   assert.equal(await js(win,'document.querySelectorAll(".preparation-task [data-step-status=done]").length'),1,'Item-only write implied other steps completed');
+   assert.match(await js(win,'document.querySelector(".item-set-status")?.textContent||""'),/已写入|已更新/);
+  }
+  assert.equal(attempts.length,0);assert.equal(writes.length,0,'Independent item import wrote to client selection or runes');
+  const previousSide=side;previousSide.destroy();await click(main,'[data-action=close]');await click(main,'[data-action=companion-attach]');
+  await until(()=>{side=windows.find(w=>w!==previousSide&&!w.isDestroyed()&&w.webContents.getURL().includes('surface=companion'));return side;},'Sidebar did not rebuild');diagnosticSide=side;
+  await until(()=>js(side,'!!document.querySelector(".companion-shell")'),'Rebuilt sidebar UI missing');await ownPlan();await until(()=>js(side,'document.querySelector(".preparation-task [data-preparation-step=items]")?.dataset.stepStatus==="done"'),'Item-only receipt was lost on rebuild');
+  assert.equal(await js(side,'document.querySelectorAll(".preparation-task [data-step-status=done]").length'),1);
+  gameId++;intent=0;await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');
+  await until(()=>js(side,'!document.querySelector(".preparation-task [data-step-status=done]")'),'Item receipt leaked into next game');
+  assert.equal(writes.length,0);console.log('PASS independent item import: both windows, adopted plan before hover, old-hover isolation, snapshot replay, new-game reset; all client writes mocked and none issued');app.quit();return;
+ }
  if(unadopted){
   const expected=fixture.candidateValue,assertConfiguration=(value,label)=>{assert.deepEqual(value.page,expected.page,label+' changed the full rune page');assert.deepEqual(value.summoners,expected.summoners,label+' changed D/F');assert.deepEqual(value.itemSet.blocks,expected.itemSet.blocks,label+' changed the full equipment plan');};
   const assertStoredSolo=async()=>{const current=await state();if(!attempts.length)assert.equal(current.draft.creativePlan,undefined);else if(current.draft.creativePlan)assert.ok(current.draft.creativePlan.members.some(m=>m.champion==='Galio'&&m.role==='mid'),'Candidate click adopts the same concrete party plan');assert.deepEqual(current.preparations.find(p=>p.id==='Galio'&&p.role==='mid'&&p.mode==='rift'&&!p.comboId),fixture.oldSolo,'Candidate flow overwrote the saved solo configuration');return current;};
@@ -161,7 +183,7 @@ async function run(){
  // identity must replace the old pending hover configuration through onState.
  const save=handlers.get('save-state'),mainEvent=event(main),beforeRoute=writes.length,routeBase=await state(),alternate=structuredClone(routeBase);alternate.draft.creativePlan=fixture.alternativePlan;
  const routeAccepted=await save(mainEvent,alternate,routeBase);await until(async()=>{const value=await ownPlan();return value.page.selectedPerkIds[0]===fixture.alternativeValue.page.selectedPerkIds[0];},'Alternate route retained previous hover runes');
- const alternateValue=await ownPlan();assert.equal(alternateValue.page.selectedPerkIds[0],8230);assert.deepEqual(alternateValue.page.selectedPerkIds,fixture.alternativeValue.page.selectedPerkIds);assert.deepEqual(alternateValue.summoners,fixture.alternativeValue.summoners);assert.deepEqual(alternateValue.itemSet.blocks,fixture.alternativeValue.itemSet.blocks);assert.equal(writes.length,beforeRoute,'Accepting a route must not reapply a preparation');
+ const alternateValue=await ownPlan();assert.equal(alternateValue.page.selectedPerkIds[0],8230);assert.deepEqual(alternateValue.page.selectedPerkIds,fixture.alternativeValue.page.selectedPerkIds);assert.deepEqual(alternateValue.summoners,swapped,'New route must respect the saved player Flash key');assert.equal((await state()).preferences.flashSlot,swapped[0]==='SummonerFlash'?'d':'f');assert.deepEqual(alternateValue.itemSet.blocks,fixture.alternativeValue.itemSet.blocks);assert.equal(writes.length,beforeRoute,'Accepting a route must not reapply a preparation');
  const restored=structuredClone(routeAccepted.state);restored.draft.creativePlan=originalPlan;await save(mainEvent,restored,routeAccepted.state);await until(async()=>{const value=await ownPlan();return value.page.selectedPerkIds[0]===8439&&JSON.stringify(value.summoners)===JSON.stringify(swapped);},'Returning to the original route lost its personal choices');
  // Only the fixture's simulated player confirms the selection.
  picked=intent;intent=0;completed=true;await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');

@@ -1,4 +1,4 @@
-import {changeSummonerSlot} from './summoner-selection.mjs';
+import {changeSummonerSlot,preferredFlashOrder} from './summoner-selection.mjs';
 import {getBuild} from './builds.mjs';
 import {CLIENT_POSITION_ROLES} from './draft.mjs';
 import {ROLES,profile} from './rules.mjs';
@@ -36,7 +36,7 @@ export function changeCompanionPlan(data,selection,field,value){
   else if(field==='summoner-pair'){
    const option=current.sourceSummonerOptions.find(o=>o.id===value);
    if(!option)throw Error('来源召唤师技能备选已变化，请重新选择');
-   next.summonerIds=[...option.ids];
+   next.summonerIds=preferredFlashOrder(option.ids,data.flashSlot);
   }
   else if(field==='summoner-swap'){
    if(current.summoners.length!==2)throw Error('当前召唤师技能资料不完整');

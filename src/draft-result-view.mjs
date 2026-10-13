@@ -16,8 +16,8 @@ export function candidateSummary(r){
  const invalid=r.catalogState?.stale&&!r.catalogState?.invalid?'':r.catalogState?.reasons?.join('；');
  const warning=invalid||(unusual.length?`${unusual.join('、')}为非常规位置，先约好补刀与经济。`:'')||combo?.risk||plan?.failures?.[0]||r.strategy?.tradeoff||r.analysis?.warnings?.[0]||'';
  const contribution=r.contributions?.find(m=>(r.targets||[]).includes(m.role))||r.contributions?.[0];
- const title=r.scope==='solo'?(contribution?.helps?.slice(0,2).join(' · ')||r.strategy?.label||r.title):r.title;
- const line=r.scope==='solo'?(contribution?.pairings?.[0]||r.strategy?.benefit||r.reason):combo?.plan||plan?.routes?.[0]?.step||plan?.steps?.find(s=>s.startsWith('主线：'))||plan?.steps?.[1]||r.creativePlan?.steps?.[1]||r.strategy?.benefit||r.reason;
+ const title=r.scope==='solo'?(contribution?.helps?.slice(0,2).join(' · ')||r.strategy?.label||r.title):plan?.kind==='shared'&&plan.routes?.[0]?.label?`${r.title} · ${plan.routes[0].label}`:r.title;
+ const line=r.scope==='solo'?(contribution?.pairings?.[0]||r.strategy?.benefit||r.reason):combo?.steps?.[0]||combo?.plan||plan?.routes?.[0]?.step||plan?.steps?.find(s=>s.startsWith('主线：'))||plan?.steps?.[0]||r.creativePlan?.plan||r.strategy?.benefit||r.reason;
  return {title,line,warning,basis:r.catalogState?.stale?'旧版待复核':''};
 }
 

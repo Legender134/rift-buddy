@@ -15,6 +15,13 @@ const data=JSON.parse(await fs.readFile(new URL('../data/game.json',import.meta.
 data.builds=JSON.parse(await fs.readFile(new URL('../data/builds.json',import.meta.url),'utf8')).entries;
 const slots=createSlots();for(const [role,champion]of [['jungle','Diana'],['mid','Yasuo'],['support','Rakan']])slots.find(s=>s.role===role).champion=champion;
 const store=createPreparationStore();
+test('received concrete spell pairs adopt the local Flash key while the sender snapshot stays unchanged',()=>{
+ const config=captureRoomConfigurations(slots,data,store).find(c=>c.champion==='Diana');
+ const before=structuredClone(config),receiver={...data,flashSlot:'f'},plan=roomClientPlan(config,receiver);
+ assert.equal(plan.build.summoners[1],'SummonerFlash');assert.equal(plan.build.summoners[0],'SummonerSmite');
+ assert.deepEqual(new Set(plan.build.summoners),new Set(config.spells));assert.deepEqual(config,before);
+ const noFlash={...config,spells:['SummonerSmite','SummonerHaste']};assert.deepEqual(roomClientPlan(noFlash,receiver).build.summoners,noFlash.spells);
+});
 
 const ownClient=(champion='Yasuo',assignedPosition='mid')=>({connected:true,session:{localPlayerCellId:4,myTeam:[{cellId:4,championId:champion?data.champions.find(c=>c.id===champion).key:0,assignedPosition}]}});
 test('a current local champion overrides a stale saved solo role in room sharing',()=>{

@@ -16,11 +16,11 @@ export function preparationProgress({data,plan,client,statuses=new Map(),pending
  const rawReceipt=applicable?statuses.get(key):null;
  const receipt=rawReceipt?.message&&!rawReceipt.steps&&!rawReceipt.complete?{...rawReceipt,steps:{hover:{status:'failed',message:rawReceipt.message},runes:{status:'skipped'},spells:{status:'skipped'},items:{status:'skipped'}}}:rawReceipt;
  // A failed hover is a result even when the target never reached the client.
- const recorded=matches||receipt?.steps?.hover?.status==='failed'?receipt:null;
+ const recorded=matches||receipt?.steps?.hover?.status==='failed'||receipt?.standalone?receipt:null;
  const status=recorded||(applicable&&runeApplied?{complete:false,message:'符文已单独应用；其余配置尚未核对',steps:{runes:{status:'done'}}}:null),pending=key===pendingKey,changed=!recorded&&!!previous;
  const complete=!!status?.complete&&Object.keys(labels).every(k=>status.steps?.[k]?.status==='done');
  const failed=Object.keys(labels).filter(k=>status?.steps?.[k]?.status==='failed');
- const title=pending?'正在预选并配置…':failed.length?labels[failed[0]]+'未完成':changed?'配置有修改，尚未应用':status?.superseded?'配置已被后续操作替换':complete?locked&&matches?'英雄已锁定，配置已完成':'配置完成，请在客户端锁定':locked&&matches?'英雄已锁定，配置尚未准备':'预选并配置你的英雄';
+ const title=pending?'正在预选并配置…':failed.length?labels[failed[0]]+'未完成':changed?'配置有修改，尚未应用':status?.superseded?'配置已被后续操作替换':complete?locked&&matches?'英雄已锁定，配置已完成':'配置完成，请在客户端锁定':status?.standalone&&status.steps.items?.status==='done'?'装备集已导入，请准备其余配置':locked&&matches?'英雄已锁定，配置尚未准备':'预选并配置你的英雄';
  return {prepared,key,status,pending,changed,complete,failed,title,locked:locked&&matches,previous,applicable};
 }
 export function configurationSource(build){
