@@ -6,7 +6,7 @@ import {CLIENT_POSITION_ROLES,manualPlayerSlot} from './draft.mjs';
 export function comparisonDraft(slots,plan,session,champions){
  const picked=new Set((session?.myTeam||[]).map(p=>champions.find(c=>c.key===Number(p.championId))?.id).filter(Boolean));
  return slots.map(slot=>{
-  const proposed=slot.automaticPosition&&!slot.manualPosition&&!Number.isInteger(slot.clientCellId)&&plan?.members?.some(m=>m.role===slot.role&&m.champion===slot.champion);
+  const proposed=slot.automaticPosition&&!slot.manualPosition&&!Number.isInteger(slot.clientCellId)&&(!plan||plan.members?.some(m=>m.role===slot.role&&m.champion===slot.champion));
   return proposed&&!picked.has(slot.champion)?{...slot,champion:null,locked:false}:{...slot};
  });
 }
@@ -32,7 +32,8 @@ export function recommendationDraft(slots,session,champions,{ownRole='',bans=[],
  for(const intent of intents){
   const {player,role,id}=intent,target=next.find(s=>s.role===role);
   if(!target||blocked.has(id)||intents.filter(p=>p.id===id).length!==1||intents.filter(p=>p.role===role).length!==1)continue;
-  if(target.locked||Number.isInteger(target.clientCellId)&&target.clientCellId!==player.cellId||target.champion&&target.champion!==id&&(target.manualPosition||Number.isInteger(target.clientCellId)))continue;
+  const proposal=target.automaticPosition&&!target.manualPosition&&!Number.isInteger(target.clientCellId);
+  if(target.locked&&!proposal||Number.isInteger(target.clientCellId)&&target.clientCellId!==player.cellId||target.champion&&target.champion!==id&&(target.manualPosition||Number.isInteger(target.clientCellId)))continue;
   if(next.some(s=>s!==target&&s.champion===id)||Array.isArray(eligibleByRole[role])&&!eligibleByRole[role].includes(id))continue;
   target.champion=id;target.locked=false;target.publicIntent=true;
  }

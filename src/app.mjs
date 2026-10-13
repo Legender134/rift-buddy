@@ -166,7 +166,7 @@ let roomRoleChoice=null,clickedRoomPlan=null;
 let roomTransport='relay',roomRelayUrl=initialRelayUrl(),roomRelayRoom='',roomDialogOpen=false;
 let activeCreativePlan=null,creativePlanNotice='';
 function resultCreativePlan(result){const plan=captureCreativePlan(result,data);if(plan)result.creativePlan=plan;return plan;}
-function reconcileCreativePlan(){if(activeCreativePlan&&(!creativePlanCompatible(activeCreativePlan,slots)||scope!=='bot'&&activeCreativePlan.members.some(m=>!slots.some(s=>s.party&&s.role===m.role)))){if(lastTaskSelection?.comboId===activeCreativePlan.id)lastTaskSelection=null;activeCreativePlan=null;creativePlanNotice='开黑成员、英雄或位置已变化，原分工不再适用。请按当前选人重新搭配；收藏中的原组合说明仍保留。';}}
+function reconcileCreativePlan(){if(activeCreativePlan&&(!creativePlanCompatible(activeCreativePlan,recommendationDraft(slots,client.connected?client.session:null,data.champions,{ownRole:taskOwnRole()}))||scope!=='bot'&&activeCreativePlan.members.some(m=>!slots.some(s=>s.party&&s.role===m.role)))){if(lastTaskSelection?.comboId===activeCreativePlan.id)lastTaskSelection=null;activeCreativePlan=null;draftComparing=true;creativePlanNotice='队伍选人已变化，请重新搭配。';return true;}}
 let currentWindowInfo=null;
 let itemSetPending='',clientPreparing=false,lastAdoptedRoomShare='',preparationPendingKey='',candidatePreparing=false,lastTaskSelection=null,draftComparing=false;let preparationRevision=0;const itemSetStatuses=new Map(),clientPreparationStatuses=new Map();
 let activeAppSelect=null,pendingAppRender=false,renderedSelectContext=null,appSelectVersion=0;
@@ -845,7 +845,7 @@ function recommendationInput(){
  const at=Date.parse(client.eligibility?.receivedAt),now=Date.now(),referenceTime=Number.isFinite(at)?Math.min(now,at+15000):now;
  const own=currentPlayerSelection(client.session,data.champions,slots),eligibility=localPickEligibility(client,slots,data.champions,{scope,soloRole,playerPosition:saved.draft?.playerPosition,now:referenceTime});
  const session=client.connected?client.session:null,contextSession=(scope==='solo'||draftComparing)&&session?{...session,myTeam:session.myTeam.map(p=>p.cellId===session.localPlayerCellId?{...p,championPickIntent:0}:p)}:session;
- const base=draftComparing?comparisonDraft(slots,activeCreativePlan,session,data.champions):slots,contextSlots=recommendationDraft(base,contextSession,data.champions,{ownRole:taskOwnRole(),bans:clientBans,disabled:client.eligibility?.disabled||[],eligibleByRole:eligibility.eligibleByRole});
+ const base=draftComparing||scope==='solo'?comparisonDraft(slots,activeCreativePlan,session,data.champions):slots,contextSlots=recommendationDraft(base,contextSession,data.champions,{ownRole:taskOwnRole(),bans:clientBans,disabled:client.eligibility?.disabled||[],eligibleByRole:eligibility.eligibleByRole});
  return {soloRole,soloChampion:scope==='solo'?(own?.id||base.find(s=>s.role===soloRole&&s.locked)?.champion||null):null,slots:contextSlots,champions:data.champions,builds:data.builds,pairStatistics:data.pairStatistics,buildSource:data.buildSource,patch:data.patch,sourceRoles:currentRoleEvidence(),style,scope,pool:saved.preferences.pool,poolMode:saved.preferences.poolMode,play:saved.preferences.play,rolePools:saved.preferences.rolePools,catalog:data.catalog,catalogStatus:data.catalogInfo?.status,excluded:[...saved.excluded],publicBans:clientBans,eligibleByRole:eligibility.eligibleByRole,confirmedPick:eligibility.confirmedPick,publicPicks:[...new Set([...unassigned.map(p=>p.champion),...unassignedPublicPicks(slots,client.session,data.champions).map(p=>p.champion)])],enemy:client.session?.allowDuplicatePicks===false?publicMatchupIds():[],visibleEnemies:publicMatchupIds(),creativePlan:draftComparing?null:activeCreativePlan,version:data.version,catalogVersion:data.catalog.version,limit:6,offset};
 }
 function useCatalogResult(result){cancelRecommendation();data.catalog=configureCatalog(result.catalog);data.catalogInfo=result.info;results=[];offset=0;render();}
@@ -887,7 +887,7 @@ async function performSync(manual=true,fresh=false){
   if(client.session){
    const partyContext=String(client.session.gameId||client.game?.gameId||'current');if(saved.preferences.autoParty!==false&&client.party?.status==='known'&&lastAutoPartyContext!==partyContext){lastAutoPartyContext=partyContext;if(client.party.members.length>1&&scope==='solo'){scope='context';changed=true;}}
    const merged=mergeClientSession(slots,client.session,data.champions,clientSyncOptions());merged.slots=restorePlayerPosition(merged.slots,client.session,data.champions,saved.draft?.playerPosition);merged.unassigned=unassignedPublicPicks(merged.slots,client.session,data.champions);
-   changed=changed||JSON.stringify(slots)!==JSON.stringify(merged.slots)||JSON.stringify(unassigned)!==JSON.stringify(merged.unassigned);slots=merged.slots;reconcileCreativePlan();unassigned=merged.unassigned;if(scope==='solo'){
+   changed=changed||JSON.stringify(slots)!==JSON.stringify(merged.slots)||JSON.stringify(unassigned)!==JSON.stringify(merged.unassigned);slots=merged.slots;changed=reconcileCreativePlan()||changed;unassigned=merged.unassigned;if(scope==='solo'){
     const own=currentPlayerSelection(client.session,data.champions,slots),player=client.session.myTeam.find(p=>p.cellId===client.session.localPlayerCellId);
     // The client declares a lane before the player chooses a champion.
     const role=manualPlayerSlot(slots,client.session.localPlayerCellId)?.role||(saved.draft?.playerPosition?.cellId===client.session.localPlayerCellId?saved.draft.playerPosition.role:null)||(own?.positionKnown?own.role:null)||CLIENT_POSITION_ROLES[String(player?.assignedPosition||'').toUpperCase()];
@@ -1099,8 +1099,9 @@ document.addEventListener('click',async event=>{
   companionPreview={id:el.dataset.id,role:el.dataset.role,mode:'rift',...creativeComboContext(creativeMemberCombo(activeCreativePlan,el.dataset.id,el.dataset.role)),readOnly:!taskOwnRole()||taskOwnRole()!==el.dataset.role};companionTab='plan';closeOverlay();render();if(memberHeroAction(el.dataset.id,el.dataset.role).prepare)await useClientPreparation({dataset:{preparationView:'companion'}},true);return;
  }
  if(action==='companion-roster-plan'){
-  if(!slots.some(s=>s.role===el.dataset.role&&s.champion===el.dataset.id))throw Error('阵容已变化，请重新选择');
-  const combo=currentCombo(slots,el.dataset.id,el.dataset.role,data.catalogInfo?.status,null,activeCreativePlan);
+  const visible=recommendationDraft(slots,client.connected?client.session:null,data.champions,{ownRole:taskOwnRole()});
+  if(!visible.some(s=>s.role===el.dataset.role&&s.champion===el.dataset.id))throw Error('阵容已变化，请重新选择');
+  const combo=currentCombo(visible,el.dataset.id,el.dataset.role,data.catalogInfo?.status,null,activeCreativePlan);
   companionPreview={id:el.dataset.id,role:el.dataset.role,mode:'rift',...creativeComboContext(combo),readOnly:!taskOwnRole()||taskOwnRole()!==el.dataset.role};companionTab='plan';closeOverlay();render();
   if(memberHeroAction(el.dataset.id,el.dataset.role).prepare)await useClientPreparation({dataset:{preparationView:'companion'}},true);return;
  }
@@ -1172,13 +1173,13 @@ document.addEventListener('click',async event=>{
   toast('已采用'+adopted.loadedMembers+'位阵容成员'+(adopted.configurations.length?'及'+adopted.configurations.length+'套发送方配置':'；未收到可用配置，使用本机参考')+'；点击自己的英雄预选并配置。'+(adopted.modeAssumed?'本次按当前峡谷选人采用。':''),!!creativePlanNotice);return;
  }
  if(action==='room-build'){const member=room?.members.find(m=>m.nick===el.dataset.member),config=member?.share?.configurations?.find(s=>s.champion===el.dataset.id&&s.role===el.dataset.role);if(config){closeOverlay();roomConfigurationView={config:structuredClone(config),from:member.nick,strategy:member.share.strategy?structuredClone(member.share.strategy):null,localStrategy:captureRoomStrategy(slots,data,activeCreativePlan,config.mode)};overlay.innerHTML=roomConfigurationDialog(roomConfigurationView.config,data,member.nick,roomConfigurationView.strategy,{localStrategy:roomConfigurationView.localStrategy});}else{closeOverlay();overlay.innerHTML=roomMissingConfigurationDialog({id:el.dataset.id,role:el.dataset.role,mode:el.dataset.mode||null,nick:member?.nick||el.dataset.member||'队友',champ});}return;}
- if(action==='room-local-reference'){const {id,role,mode}=el.dataset;if(!['rift','hex'].includes(mode))throw Error('请先选择本机参考模式');closeOverlay();showBuild(id,role,mode);toast('本机配置参考；不代表队友所选');return;}
+ if(action==='room-local-reference'){const {id,role,mode}=el.dataset;if(!['rift','hex'].includes(mode))throw Error('请先选择本机参考模式');closeOverlay();showBuild(id,role,mode,{readOnly:!taskOwnRole()||taskOwnRole()!==role});toast('本机配置参考；不代表队友所选');return;}
  if(action==='room-copy-configuration'){if(!roomConfigurationView)throw Error('共享配置已变化，请重新打开');await api.copy(roomConfigurationText(roomConfigurationView.config,data,roomConfigurationView.from,roomConfigurationView.strategy));toast('发送方配置已复制');return;}
  if(action==='room-configuration-jump'){
   const section=overlay.querySelector(`[data-room-section="${el.dataset.section}"]`);
   if(section){section.style.scrollMarginTop=((overlay.querySelector('.modal-header')?.getBoundingClientRect().height||84)+16)+'px';section.scrollIntoView({block:'start'});}return;
  }
- if(action==='room-adopt-configuration'){if(!roomConfigurationView)throw Error('共享配置已变化，请重新打开');const localStrategy=captureRoomStrategy(slots,data,activeCreativePlan,roomConfigurationView.config.mode);if((localStrategy?.id||'')!==(roomConfigurationView.localStrategy?.id||''))throw Error('本机组合已变化，请重新打开共享配置再采用');const selection=roomPreparation(roomConfigurationView.config,data,roomConfigurationView.strategy,{localStrategy});showBuild(selection.id,selection.role,selection.mode,selection);roomConfigurationView=null;toast('已采用到本机配置；符文仍需核对英雄后点击替换');return;}
+ if(action==='room-adopt-configuration'){if(!roomConfigurationView)throw Error('共享配置已变化，请重新打开');const localStrategy=captureRoomStrategy(slots,data,activeCreativePlan,roomConfigurationView.config.mode);if((localStrategy?.id||'')!==(roomConfigurationView.localStrategy?.id||''))throw Error('本机组合已变化，请重新打开共享配置再采用');const selection=roomPreparation(roomConfigurationView.config,data,roomConfigurationView.strategy,{localStrategy});showBuild(selection.id,selection.role,selection.mode,{...selection,readOnly:!taskOwnRole()||taskOwnRole()!==selection.role});roomConfigurationView=null;toast('已载入本机配置参考');return;}
  if(action.startsWith('catalog-')&&!boot.desktop)throw Error('组合库管理请在桌面版使用');
  if(action==='navigate'){route=el.dataset.route;closeOverlay();render();window.scrollTo(0,0);}
  else if(action==='catalog-import'||action==='catalog-check'){if(catalogBusy)return;catalogBusy=true;const request=++catalogRequest;try{const preview=action==='catalog-import'?await api.catalogPreview():await api.catalogCheck();if(preview&&request===catalogRequest){closeOverlay();catalogPreview=preview;overlay.innerHTML=catalogPreviewDialog(preview);}}finally{catalogBusy=false;}}

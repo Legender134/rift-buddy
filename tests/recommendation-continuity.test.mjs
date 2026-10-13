@@ -11,7 +11,8 @@ import {currentPlayerSelection} from '../src/core/guide.mjs';
 import {recommendationKey,createPreparationStore,createRuneApplicationState,partyRoutePreparations} from '../src/core/preparation.mjs';
 import {localPickEligibility,pickEligibilityContext} from '../src/core/pick-eligibility.mjs';
 import {companionHeroAction} from '../src/core/companion-action.mjs';
-import {captureCreativePlan,creativeMemberCombo,creativeComboContext} from '../src/core/creative-plan.mjs';
+import {captureCreativePlan,creativeMemberCombo,creativeComboContext,creativePlanCompatible} from '../src/core/creative-plan.mjs';
+import {companionView} from '../src/companion-view.mjs';
 import {matchupTargetKey} from '../src/core/matchup-plans.mjs';
 import {getBuild} from '../src/core/builds.mjs';
 import {runeWriteContext} from '../src/core/rune-context.mjs';
@@ -286,4 +287,49 @@ test('an incoming own configuration replaces the previous task after preselectio
  assert.equal(c.slots.find(s=>s.role==='bottom').champion,'Jinx');
  const task=c.ownTaskPreparation();assert.equal(task.selection.id,'Jinx');
  assert.equal(c.clientPreparationStatuses.get(clientPreparationKey(c.client,clientPreparationPlan(data,task))).complete,true);
+});
+
+test('a solo candidate without a group plan can be adopted and then compared again before confirmation',async()=>{
+ const current=client(),s=setup({slots:createSlots(),current,incoming:structuredClone(current),results:[]}),c=s.context;
+ c.scope='solo';c.saved.preferences.pool=['Ashe','Jinx','Caitlyn','Varus'];c.saved.preferences.poolMode='only';
+ c.results=recommend(c.recommendationInput());c.resultsSignature=recommendationKey(c.recommendationInput());
+ const first=c.results[0].slots.find(slot=>slot.role==='bottom').champion;
+ await c.adoptResult(0);
+ assert.equal(c.activeCreativePlan,null);assert.equal(c.slots.find(slot=>slot.role==='bottom').champion,first);
+ assert.equal(c.recommendationInput().soloChampion,null);
+ const next=recommend(c.recommendationInput());assert.ok(next.some(result=>result.slots.find(slot=>slot.role==='bottom').champion!==first));
+ assert.equal(c.slots.find(slot=>slot.role==='bottom').champion,first,'Comparing does not erase the accepted proposal');
+});
+
+test('a teammate changing a reliable public hover invalidates the old plan and updates candidates and the visible roster',()=>{
+ const current=client();current.session.myTeam.push({cellId:2,championId:0,championPickIntent:hero('Ahri').key,assignedPosition:'MIDDLE'});
+ const picks={mid:'Ahri',bottom:'Ashe',support:'Braum'},slots=createSlots().map(s=>({...s,...(picks[s.role]?{champion:picks[s.role],locked:true,automaticPosition:true}:{})}));
+ const {context:c}=setup({slots,current});c.activeCreativePlan={id:'trio',members:Object.entries(picks).map(([role,champion])=>({role,champion}))};
+ c.lastTaskSelection={id:'Ashe',role:'bottom',mode:'rift',comboId:'trio'};c.creativePlanCompatible=creativePlanCompatible;
+ vm.runInContext(extract('function reconcileCreativePlan(){','let currentWindowInfo='),c);
+ const before=recommendationKey(c.recommendationInput());
+ current.session.myTeam[1].championPickIntent=hero('Veigar').key;c.reconcileCreativePlan();
+ assert.equal(c.activeCreativePlan,null);assert.equal(c.lastTaskSelection,null);assert.equal(c.draftComparing,true);
+ assert.equal(c.recommendationInput().slots.find(slot=>slot.role==='mid').champion,'Veigar');assert.notEqual(recommendationKey(c.recommendationInput()),before);
+ assert.equal(c.slots.find(slot=>slot.role==='mid').champion,'Ahri','A public hover remains temporary, not a persisted client pick');
+ const html=companionView({data,client:current,slots:c.slots,unassigned:[],scope:'party',soloRole:'bottom',tab:'recommend',results:[]});
+ assert.match(html,/data-action="companion-roster-plan" data-role="mid" data-id="Veigar"/);
+});
+
+test('both room reference entry points make other roles and unknown ownership read only',async()=>{
+ for(const action of ['room-local-reference','room-adopt-configuration'])for(const ownRole of ['bottom','','mid']){
+  const {context:c,calls}=setup();c.taskOwnRole=()=>ownRole;
+  c.roomConfigurationView={config:{champion:'Ahri',role:'mid',mode:'rift'},strategy:null,localStrategy:null};
+  c.captureRoomStrategy=()=>null;c.roomPreparation=()=>({id:'Ahri',role:'mid',mode:'rift'});
+  const branch=action==='room-local-reference'?extract("if(action==='room-local-reference')","if(action==='room-copy-configuration')"):extract("if(action==='room-adopt-configuration')","if(action.startsWith('catalog-')");
+  vm.runInContext(`async function roomReference(action,el){${branch}}`,c);
+  await c.roomReference(action,{dataset:{id:'Ahri',role:'mid',mode:'rift'}});
+  assert.equal(calls.readOnly.length,1);assert.equal(calls.readOnly[0].selection.readOnly,ownRole!=='mid',action+': '+ownRole);
+  if(ownRole!=='mid'){
+   c.buildView={id:'Ahri',role:'mid',...calls.readOnly[0].selection};
+   const from=source.indexOf("else if(action==='apply-runes')"),branch=source.slice(from,source.indexOf("else if(",from+8));
+   assert.ok(from>0);vm.runInContext(`async function writeRoomRunes(){const action='apply-runes';if(false){} ${branch}}`,c);
+   await assert.rejects(c.writeRoomRunes(),/只读配置/);assert.equal(calls.prepared.length,0);
+  }
+ }
 });
