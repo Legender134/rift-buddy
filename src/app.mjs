@@ -915,7 +915,7 @@ async function performSync(manual=true,fresh=false){
   if(client.session){
    const nextOwnIntent=client.session.myTeam.find(p=>p.cellId===client.session.localPlayerCellId)?.championPickIntent||0;
    const ownIntentChanged=!candidatePreparing&&!clientPreparing&&previousOwnIntent!==nextOwnIntent;
-   if(ownIntentChanged){lastTaskSelection=null;companionPreview=null;}
+   if(ownIntentChanged)lastTaskSelection=null;
    // Recognizing a party updates its members, not an explicit recommendation scope.
    const merged=mergeClientSession(slots,client.session,data.champions,clientSyncOptions());merged.slots=restorePlayerPosition(merged.slots,client.session,data.champions,saved.draft?.playerPosition);merged.unassigned=unassignedPublicPicks(merged.slots,client.session,data.champions);
    changed=changed||JSON.stringify(slots)!==JSON.stringify(merged.slots)||JSON.stringify(unassigned)!==JSON.stringify(merged.unassigned);slots=merged.slots;changed=reconcileCreativePlan({ownIntentChanged})||changed||ownIntentChanged;unassigned=merged.unassigned;{
