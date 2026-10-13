@@ -24,7 +24,8 @@ export function jungleRoute({champion,start,half,side,stage,recovery,progress,wr
  const routeStage=rotation?'rotation':'opening',key=`${champion}-${routeStage}-${rotation?targetHalf:start}`;
  const checked=validateRouteProgress(progress),manual=!recovery&&checked?.key===key&&checked.index<=steps.length;
  const index=manual?checked.index:0,complete=manual&&index===steps.length;
- return {key,stage:routeStage,half:rotation?targetHalf:half,side,steps,index,manual:!!manual,complete,current:steps[index]||null,
+ const plannedHalf=rotation?targetHalf:manual?steps[Math.min(index,steps.length-1)].half:half;
+ return {key,stage:routeStage,start,half:plannedHalf,side,steps,index,manual:!!manual,complete,current:steps[index]||null,
   writable:!!writable&&!recovery,canAdopt:!!writable&&!!recovery,recovery:recovery||null,
   hint:special?'画圈不等于已成熟；回收前按游戏内状态确认，惩戒可提前释放。':'营地顺序可跳过；只去实际存活且安全的营地。',
   caption:'静态顺序示意；连线不是可穿墙路径，进度由你手动标记。'};

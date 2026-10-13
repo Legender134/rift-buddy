@@ -79,10 +79,10 @@ async function run(){
  await until(()=>js('document.querySelector(".camp-steps [aria-current=step] span").textContent==="三狼"'),'Widget backtrack did not synchronize to full guide');
  await painted(win);await fs.writeFile(path.join(output,'jungle-full-route.png'),(await win.webContents.capturePage()).toPNG());
  await j(`document.querySelector('[data-value="situation:invaded"]').click()`);
- await until(()=>j(`!!document.querySelector('[data-value="adopt:Nocturne-rotation-blue"]')`),'Safe recovery adoption missing');
- await j(`document.querySelector('[data-value="adopt:Nocturne-rotation-blue"]').click()`);
- await until(()=>Promise.resolve(state.jungleNotes?.half==='blue'&&state.jungleNotes?.stage==='rotation'),'Recovery kept the old half or opening');assert.equal(state.jungleNotes.lane,undefined);
- await until(()=>j('document.querySelector(".next-camp strong").textContent==="三狼"'),'Adopted next camp missing');
+ await until(()=>j(`!!document.querySelector('[data-value="adopt:Nocturne-rotation-red"]')`),'Safe recovery must use the half opposite to the current manual camp');
+ await j(`document.querySelector('[data-value="adopt:Nocturne-rotation-red"]').click()`);
+ await until(()=>Promise.resolve(state.jungleNotes?.half==='red'&&state.jungleNotes?.stage==='rotation'),'Recovery kept the old half or opening');assert.equal(state.jungleNotes.lane,undefined);
+ await until(()=>j('document.querySelector(".next-camp strong").textContent==="锋喙鸟"'),'Adopted next camp missing');
  const routeCases={manualStagePinned:true,crossWindowSkipAndBacktrack:true,recoveryAdoptedHalf:state.jungleNotes.half,mapMetrics};
  for(const side of ['blue','red']){
   state=core.selectGuide(null,{id:'Ivern',role:'jungle',mode:'rift'});live={...live,champion:'Ivern',gameTime:120,teamSide:side};guide.publish();

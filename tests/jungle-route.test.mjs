@@ -36,6 +36,18 @@ test('absolute steps are idempotent across windows and stale route keys cannot a
  assert.throws(()=>step(original,7),/步骤/);
  for(const value of ['x.1','Nocturne-opening-red.-1','Nocturne-opening-red.99','<img>.0'])assert.throws(()=>changeJungleNotes({},'step',value,120,original.route));
 });
+test('manual follow preserves the chosen automatic start when public birth-side data temporarily disappears or arrives late',()=>{
+ for(const side of ['blue','red']){
+  const j=make({}, {live:{...live,teamSide:side}}),notes=step(j,2);
+  assert.equal(notes.start,j.start);
+  const missing=make(notes,{live:{...live,teamSide:undefined,gameTime:500}});
+  assert.equal(missing.route.key,j.route.key);assert(missing.route.manual);assert.equal(missing.route.index,2);assert.equal(missing.side,null);
+  assert(missing.route.steps.every(s=>s.point===null));
+  const restored=make(notes,{live:{...live,teamSide:side,gameTime:501}});assert.equal(restored.route.index,2);assert.equal(restored.start,j.start);
+ }
+ const unknown=make({}, {live:{...live,teamSide:undefined}}),notes=step(unknown,1);
+ const known=make(notes);assert(known.route.manual);assert.equal(known.start,unknown.start);assert.equal(known.route.index,1);
+});
 test('recovery adoption switches to the candidate half, clears old gank evidence and does not depend on the old opening',()=>{
  const checked={start:'red',half:'red',stage:'opening',lane:'mid',at:110,pushed:true,follow:true,control:true,safe:true};
  for(const reason of ['invaded','recalled','no-window']){
@@ -49,6 +61,17 @@ test('recovery adoption switches to the candidate half, clears old gank evidence
   const expired=make(notes,{live:{...live,gameTime:211}});assert.throws(()=>changeJungleNotes(notes,'adopt',j.route.key,211,expired.route),/候选已变化/);
  }
 });
+test('opening recovery uses the current manually planned camp half instead of the original start half',()=>{
+ for(const index of [0,2,3,5,6]){
+  const j=make(step(make(),index));
+  const plannedHalf=index<3?'red':'blue';assert.equal(j.half,plannedHalf);
+  for(const reason of ['invaded','recalled']){
+   const interrupted=make(changeJungleNotes(j.notes,'situation',reason,120));
+   assert.equal(interrupted.route.half,reason==='invaded'?(plannedHalf==='red'?'blue':'red'):plannedHalf);
+   assert(interrupted.route.steps.every(s=>s.half===interrupted.route.half));
+  }
+ }
+});
 test('Ivern distinguishes drawing from mature release at repeated camp areas in both starts and recovery',()=>{
  for(const start of ['red','blue']){
   let j=make({start},{champion:'Ivern'});assert.equal(j.route.steps.length,10);assert(j.route.steps.slice(0,5).every(s=>s.action==='mark'));assert(j.route.steps.slice(5).every(s=>s.action==='release'));
@@ -58,6 +81,9 @@ test('Ivern distinguishes drawing from mature release at repeated camp areas in 
   assert.match(j.route.current.label,/成熟后回收/);assert.match(j.route.hint,/惩戒/);
   const interrupted=make(changeJungleNotes(j.notes,'situation','invaded',120),{champion:'Ivern'});
   assert.equal(interrupted.route.steps.length,6);assert(interrupted.route.steps.every(s=>s.half===interrupted.route.half));
+  const camps=[...new Set(interrupted.route.steps.map(s=>s.name))].join(' → ');
+  assert(interrupted.recoveryRoute[0].includes(camps));assert(interrupted.lead.text.includes(camps));
+  assert.doesNotMatch(interrupted.recoveryRoute[0],/转另一半区/);
  }
 });
 test('stored progress is bounded, discarded for other routes, and cleared by match or champion changes',()=>{
