@@ -48,6 +48,20 @@ test('custom status alone never authorizes configuration on unknown maps, URF, A
  }
 });
 
+test('contradictory mode metadata stops custom and ranked preparation before every write',async()=>{
+ const variants=[
+  {gameData:{gameId:777,queue:{id:0,mapId:11,gameMode:'CLASSIC'}},map:{id:11,gameMode:'URF'}},
+  {gameData:{gameId:777,gameMode:'CLASSIC',queue:{id:0}},map:{id:11,gameMode:'ARAM'}},
+  {gameData:{gameId:777,mapId:11,queue:{id:0,gameMode:'CLASSIC'}},map:{id:12,gameMode:'ARAM'}},
+  {gameData:{gameId:777,mapId:11,queue:{id:420,gameMode:'URF'}}}
+ ];
+ for(const gameflow of variants){const f=fixture({gameflow});await assert.rejects(f.run(),/当前模式/);assert(!f.calls.some(c=>c.method!=='GET'));assert.equal(f.items,0);}
+});
+test('a new mode conflict after explicit preview stops runes, summoners and equipment',async()=>{
+ const f=fixture(),request=f.deps.request;f.deps.request=async(...args)=>{const result=await request(...args);if(args[1]==='/lol-perks/v1/pages'&&(args[2]||'GET')==='GET')f.game.map={id:12,gameMode:'ARAM'};return result;};
+ const result=await f.run();assert.equal(result.complete,false);assert.equal(result.steps.hover.status,'done');assert.equal(f.action.completed,false);assert.equal(f.items,0);assert.deepEqual(f.calls.filter(c=>c.method!=='GET').map(c=>c.route),['/lol-champ-select/v1/session/actions/4']);
+});
+
 test('current champ-select ID authorizes the click while gameflow is empty, zero or from the previous game',async()=>{
  for(const gameId of [undefined,0,776]){
   const f=fixture();f.game.gameData.gameId=gameId;
