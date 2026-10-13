@@ -387,6 +387,7 @@ async function boot(){
    // Turning the switch (or client sync) off must not leave a room behind:
    // with sync off no poll will run to notice the new preference.
    closeAutoRoomIfRevoked();
+   if(state.guide&&latestClient.connected&&latestClient.phase==='ChampSelect')await prepareCurrentGuide();
    guide.publish();companion.sync();return {state,revision:stateRevision};
  },true);
  const {createClientSync}=await import('../src/core/async-tasks.mjs');

@@ -6,7 +6,7 @@ import {createSlots,mergeClientSession,recommend,clearClientPicks,currentCombo,c
 import {companionPickIntent} from '../src/core/companion-plan.mjs';
 import {preparationProgressView} from '../src/preparation-progress-view.mjs';
 import {recommendationDraft,comparisonDraft} from '../src/core/draft-intents.mjs';
-import {reconcileClientDraft,restorePlayerPosition,unassignedPublicPicks,publicClientGameId,CLIENT_POSITION_ROLES,manualPlayerSlot} from '../src/core/draft.mjs';
+import {reconcileClientDraft,restorePlayerPosition,unassignedPublicPicks,publicClientGameId,CLIENT_POSITION_ROLES,manualPlayerSlot,clearManualPlayerPosition,moveChampion,assignClientChampion} from '../src/core/draft.mjs';
 import {currentPlayerSelection} from '../src/core/guide.mjs';
 import {recommendationKey,createPreparationStore,createRuneApplicationState,partyRoutePreparations} from '../src/core/preparation.mjs';
 import {localPickEligibility,pickEligibilityContext} from '../src/core/pick-eligibility.mjs';
@@ -242,4 +242,48 @@ test('a new offline profile can render before it has a saved draft or a local cl
  const {context:c}=setup();c.client={connected:false};c.saved.draft=null;c.soloRole='';c.slots=createSlots();
  c.assignedPlayerRole=()=>'';
  assert.equal(c.taskOwnRole(),'');assert.equal(c.ownTaskPreparation(),null);
+});
+
+test('confirming ownership after adopting a lineup preserves its proposed heroes and protects teammates',()=>{
+ const current=client();current.session.myTeam[0].assignedPosition='';
+ const slots=partySlots(),{context:c}=setup({slots,current});
+ Object.assign(c,{soloRole:'',ROLES:slots.map(s=>({id:s.role})),clearManualPlayerPosition,moveChampion,assignClientChampion,invalidate:noop});
+ vm.runInContext(extract('function setCompanionRole(','function preservePlayerPosition('),c);
+ c.setCompanionRole('bottom');
+ assert.equal(c.taskOwnRole(),'bottom');assert.equal(c.slots.find(s=>s.role==='bottom').champion,'Ashe');
+ assert.equal(c.slots.find(s=>s.role==='bottom').clientCellId,undefined,'A proposal is not a public client pick');
+ c.slots=c.slots.map(s=>s.role==='mid'?{...s,champion:'Ahri',clientCellId:2,locked:true}:s);
+ assert.throws(()=>c.setCompanionRole('mid'),/其他玩家/);assert.equal(c.taskOwnRole(),'bottom');
+});
+
+test('a click survives an unrelated teammate pick while adopting its fresh public champion',async()=>{
+ const now=2000000,current=checkedClient(now),incoming=checkedClient(now+16001);
+ incoming.session.myTeam.push({cellId:2,championId:hero('Garen').key,assignedPosition:'TOP'});
+ incoming.eligibility.context=pickEligibilityContext(incoming.session);
+ const s=candidateSetup({current,incoming,now});
+ await s.context.clickBuild(avatar(s.html,'Ashe'));
+ assert.equal(s.calls.prepared.length,1);assert.equal(s.calls.prepared[0].champion,'Ashe');
+ assert.equal(s.context.slots.find(slot=>slot.role==='top').champion,'Garen');
+ assert.equal(s.context.slots.find(slot=>slot.role==='top').clientCellId,2);
+});
+
+test('a new game clears confirmed player positions in every recommendation scope, including after lobby cleanup',()=>{
+ for(const scope of ['solo','party','context','bot'])for(const cleaned of [false,true]){
+  const slots=createSlots().map(s=>s.role==='bottom'&&!cleaned?{...s,clientCellId:1,manualPosition:true}:s);
+  const draft={slots,scope,soloRole:'bottom',clientGameId:'123',...(!cleaned?{playerPosition:{role:'bottom',cellId:1}}:{})};
+  assert.equal(reconcileClientDraft(draft,'123').draft.soloRole,'bottom');
+  const next=reconcileClientDraft(draft,'124');assert.equal(next.draft.soloRole,'');assert.equal(next.draft.playerPosition,undefined);
+ }
+});
+
+test('an incoming own configuration replaces the previous task after preselection and supplies its receipt',async()=>{
+ const {context:c,calls}=setup();
+ c.lastTaskSelection={id:'Ashe',role:'bottom',mode:'rift'};
+ const incoming={selection:{id:'Jinx',role:'bottom',mode:'rift'},build:getBuild(hero('Jinx'),'bottom',data)};
+ c.selectedClientPreparation=view=>view==='incoming-room'?incoming:c.ownTaskPreparation();
+ await c.useClientPreparation({dataset:{preparationView:'incoming-room'}},true);
+ assert.equal(calls.prepared.length,1);assert.equal(calls.prepared[0].champion,'Jinx');
+ assert.equal(c.slots.find(s=>s.role==='bottom').champion,'Jinx');
+ const task=c.ownTaskPreparation();assert.equal(task.selection.id,'Jinx');
+ assert.equal(c.clientPreparationStatuses.get(clientPreparationKey(c.client,clientPreparationPlan(data,task))).complete,true);
 });

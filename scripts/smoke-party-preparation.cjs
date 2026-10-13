@@ -55,7 +55,8 @@ async function run(){
  await click(main,'[data-action=sync]');await until(()=>{side=windows.find(w=>!w.isDestroyed()&&w.webContents.getURL().includes('surface=companion'));return side;},'Independent sidebar missing');diagnosticSide=side;
  await until(()=>js(side,'!!document.querySelector(".companion-shell")'),'Sidebar UI missing');await click(side,'[data-action=sync]');
  if(customGame)assert.equal((await handlers.get('client-status')(event(side),false)).mode.id,'rift','Custom map was not recognized through the actual snapshot');
- await until(()=>js(side,'!!document.querySelector("[data-action=companion-preview][data-id=Galio]")'),'Galio recommendation missing');
+ const heroButton=unadopted?'[data-action=companion-preview][data-id=Galio]':'[data-action=active-hero-prepare][data-id=Galio]';
+ await until(()=>js(side,'!!document.querySelector('+JSON.stringify(heroButton)+')'),'Galio recommendation missing');
  assert.equal((await state()).preferences.clickPrepare,true);assert.equal(attempts.length,0);
  const itemIds=value=>value.itemSet.blocks.flatMap(block=>block.items.map(item=>Number(item.id)));
  const ownPlan=async()=>{await click(side,'[data-action=companion-tab][data-tab=plan]');await until(()=>js(side,'!!document.querySelector("[data-action=client-prepare][data-preparation-view=task]")'),'My plan controls missing');return js(side,'JSON.parse(document.querySelector("[data-client-preparation-fingerprint]").dataset.clientPreparationFingerprint)[0]');};
@@ -135,7 +136,7 @@ async function run(){
  }
  // The actual recommendation click uses the production prepare service and
  // loopback mocks, including its 0 -> intent transition and disk item import.
- await click(side,'[data-action=companion-preview][data-id=Galio]');await until(()=>resumeRune,'Hero click did not reach the mock rune write');
+ await click(side,heroButton);await until(()=>resumeRune,'Hero click did not reach the mock rune write');
  const prepareEditingDisabled=await js(side,'!document.querySelector("[data-action=companion-summoner][data-field=summoner-swap]")||document.querySelector("[data-action=companion-summoner][data-field=summoner-swap]")?.disabled');
  if(!prepareEditingDisabled){await click(side,'[data-action=companion-summoner][data-field=summoner-swap]');await until(async()=>{const s=await state();return s.preparations.some(p=>p.id==='Galio'&&JSON.stringify(p.summonerIds)===JSON.stringify([...attempts[0].summoners].reverse()));},'Explicit preparation-time edit did not save');}
  resumeRune();holdRune=false;await until(()=>results.length===1,'Hero click did not prepare by default');assert.equal(results[0].complete,true);await settled();
