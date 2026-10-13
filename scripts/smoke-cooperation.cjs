@@ -27,7 +27,7 @@ async function run(){
  const state=()=>js('window.buddy.bootstrap().then(b=>b.state)');
  const generate=async()=>{await click('[data-action=recommend]');await until(()=>js('!!document.querySelector(".result-card")&&!document.querySelector("[data-action=recommend],[data-action=reroll]").disabled'),'Worker result missing');};
  const capture=async name=>{await js('[...document.images].forEach(i=>i.loading="eager")');await js('Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))))');await fs.writeFile(path.join(root,name),(await main.webContents.capturePage(undefined,{stayHidden:true,stayAwake:true})).toPNG());};
- await until(()=>js('!!document.querySelector("#solo-role")'),'UI missing');await generate();
+ await until(()=>js('!!document.querySelector("#solo-role")'),'UI missing');if(restart){const restored=await state();assert.deepEqual(restored.draft.creativePlan,restored.favorites.find(f=>f.type==='team').creativePlan,'Restart changed the adopted source plan');}await generate();
  const firstCardText=await js('document.querySelector(".result-card").textContent');
  assert.ok(firstCardText.includes(planLabel),'Expected '+planLabel+' in the completed first result: '+firstCardText.slice(0,600));
  let firstScreenActions=null;
@@ -58,6 +58,9 @@ async function run(){
   assert.deepEqual((await state()).draft.slots,initial.draft.slots,'Preview must not accept the suggested lineup');assert.deepEqual((await state()).draft.creativePlan,initial.draft.creativePlan);
   await click('[data-action=companion-full]');await until(()=>js('!!document.querySelector(".result-card")'),'Main results missing after preview');
  }
+ // Candidate checks above exercise "换一套". Re-enter the adopted task
+ // before checking the original saved conditions and member configurations.
+ if(restart){await click('[data-action=task-return]');await click('[data-action=sync]');await until(()=>js('!!document.querySelector("[data-action=result-detail][data-index=\\"0\\"]")'),'Adopted full play missing after comparison');}
  await click('[data-action=result-detail][data-index="0"]');const detail=await js('document.querySelector(".plan-drawer").textContent');
  for(const text of ['成立条件','失败处理',marker,crossLane||lockedFriends?'开局分工':'对应状态','兵线与资源','未经组合对局验证'])assert.ok(detail.includes(text),'Missing '+text);
  assert.ok(await js('document.querySelector(".cooperation-plan [data-action=link]").dataset.url.startsWith("https://ddragon.leagueoflegends.com/")'));

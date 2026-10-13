@@ -29,7 +29,7 @@ async function revealDraftAction(js,selector){
  const filters='[role=dialog][aria-label="推荐偏好"]';
  if(await js(`(()=>{const dialog=document.querySelector(${JSON.stringify(filters)}),el=document.querySelector(${JSON.stringify(target)});return !!dialog&&!!el&&!dialog.contains(el);})()`))await click(filters+' [data-action=close]');
  // Follow the same disclosure path available to a player before clicking.
- if(await exists(target))await js(`(()=>{const el=document.querySelector(${JSON.stringify(target)});for(let parent=el.parentElement;parent;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;})()`);
+ if(await exists(target))await js(`(()=>{const el=document.querySelector(${JSON.stringify(target)}),closed=[];for(let parent=el.parentElement;parent;parent=parent.parentElement)if(parent.tagName==='DETAILS'&&!parent.open&&parent.querySelector(':scope > summary')!==el)closed.push(parent);for(const parent of closed.reverse())parent.querySelector(':scope > summary')?.click();})()`);
  return target;
 }
 module.exports={revealDraftAction};

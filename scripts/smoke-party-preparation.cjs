@@ -64,8 +64,8 @@ async function run(){
  if(process.env.RIFT_BUDDY_STANDALONE_ITEMS==='1'){
   const prepared=await ownPlan();assert.equal(prepared.champion,'Galio');
   assert.equal(await js(side,'!!document.querySelector(".companion-plan-summary")'),true,'Adopted own plan must be visible before hovering');
-  intent=hero('Ashe').key;await click(side,'[data-action=sync]');await until(()=>js(side,'!document.querySelector("[data-action=sync]")?.textContent.includes("连接中")'),'Public hover sync pending');await delay(250);
-  assert.equal((await ownPlan()).champion,'Galio','Old client hover replaced the adopted task');
+  intent=hero('Galio').key;await click(side,'[data-action=sync]');await until(()=>js(side,'!document.querySelector("[data-action=sync]")?.textContent.includes("连接中")'),'Public hover sync pending');await delay(250);
+  assert.equal((await ownPlan()).champion,'Galio','Matching client hover replaced the adopted task');
   assert.equal(await js(side,'document.querySelector("[data-companion-field=loadout]").dataset.plan'),'Galio:mid:rift','Editor and task target split');
   await click(main,'.slot-config[data-id=Galio][data-role=mid]');await until(()=>js(main,'!!document.querySelector(".drawer [data-action=import-item-set]")'),'Own drawer missing');
   await click(main,'.drawer [data-action=import-item-set]');
@@ -79,9 +79,14 @@ async function run(){
   await until(()=>{side=windows.find(w=>w!==previousSide&&!w.isDestroyed()&&w.webContents.getURL().includes('surface=companion'));return side;},'Sidebar did not rebuild');diagnosticSide=side;
   await until(()=>js(side,'!!document.querySelector(".companion-shell")'),'Rebuilt sidebar UI missing');await ownPlan();await until(()=>js(side,'document.querySelector(":is(.preparation-task,.client-preparation-result) [data-preparation-step=items]")?.dataset.stepStatus==="done"'),'Item-only receipt was lost on rebuild');
   assert.equal(await js(side,'document.querySelectorAll(":is(.preparation-task,.client-preparation-result) [data-step-status=done]").length'),1);
+  // A new manual client hover supersedes the accepted hero, without applying
+  // anything or carrying the previous hero's equipment receipt forward.
+  intent=hero('Ashe').key;await click(side,'[data-action=sync]');
+  await until(async()=>(await ownPlan()).champion==='Ashe','New client hover did not update the current configuration');
+  assert.equal(await js(side,'document.querySelectorAll(":is(.preparation-task,.client-preparation-result) [data-step-status=done]").length'),0,'New hover inherited the previous hero receipt');
   gameId++;intent=0;await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');
   await until(()=>js(side,'!document.querySelector(":is(.preparation-task,.client-preparation-result) [data-step-status=done]")'),'Item receipt leaked into next game');
-  assert.equal(writes.length,0);console.log('PASS independent item import: both windows, adopted plan before hover, old-hover isolation, snapshot replay, new-game reset; all client writes mocked and none issued');app.quit();return;
+  assert.equal(writes.length,0);console.log('PASS independent item import: both windows, matching-hover retention, new-hover configuration, snapshot replay, new-game reset; all client writes mocked and none issued');app.quit();return;
  }
  if(unadopted){
   const expected=fixture.candidateValue,assertConfiguration=(value,label)=>{assert.deepEqual(value.page,expected.page,label+' changed the full rune page');assert.deepEqual(value.summoners,expected.summoners,label+' changed D/F');assert.deepEqual(value.itemSet.blocks,expected.itemSet.blocks,label+' changed the full equipment plan');};
