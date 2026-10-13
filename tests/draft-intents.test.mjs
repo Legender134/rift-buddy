@@ -52,6 +52,20 @@ test('public hovers change real recommendation inputs and preserve both intended
  assert.deepEqual(draftTargets(editable,'party'),['jungle','mid','bottom']);
 });
 
+test('saved fixed members stay fixed when an older adoption overmarked them as automatic suggestions',()=>{
+ const picks={jungle:'Vi',mid:'Ahri',bottom:'Ashe'};
+ const canonical=slots().map(s=>({...s,...(picks[s.role]?{champion:picks[s.role],locked:true,automaticPosition:true}:{})}));
+ const plan={members:Object.entries(picks).map(([role,champion])=>({role,champion})),editableTargets:[]};
+ const restored=JSON.parse(JSON.stringify({slots:canonical,plan}));
+ assert.deepEqual(comparisonDraft(restored.slots,restored.plan,null,data.champions),canonical);
+ restored.plan.editableTargets=['jungle'];
+ const compared=comparisonDraft(restored.slots,restored.plan,null,data.champions);
+ assert.equal(compared.find(s=>s.role==='jungle').champion,null);
+ assert.equal(compared.find(s=>s.role==='mid').champion,'Ahri');
+ assert.equal(compared.find(s=>s.role==='bottom').champion,'Ashe');
+ assert.deepEqual(restored.slots,canonical,'Comparing preserves the saved lineup');
+});
+
 test('unknown lanes stay unknown while manual bindings and explicit own roles locate only the public local hover',()=>{
  const canonical=slots(),unknown={...session(),myTeam:[player(0,'Ashe'),player(1,'Ahri')]};
  assert.deepEqual(recommendationDraft(canonical,unknown,data.champions),canonical);

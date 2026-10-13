@@ -6,7 +6,7 @@ import {CLIENT_POSITION_ROLES,manualPlayerSlot} from './draft.mjs';
 export function comparisonDraft(slots,plan,session,champions){
  const picked=new Set((session?.myTeam||[]).map(p=>champions.find(c=>c.key===Number(p.championId))?.id).filter(Boolean));
  return slots.map(slot=>{
-  const proposed=slot.automaticPosition&&!slot.manualPosition&&!Number.isInteger(slot.clientCellId)&&(!plan||plan.members?.some(m=>m.role===slot.role&&m.champion===slot.champion));
+  const proposed=slot.automaticPosition&&!slot.manualPosition&&!Number.isInteger(slot.clientCellId)&&(!plan||plan.members?.some(m=>m.role===slot.role&&m.champion===slot.champion))&&(!Array.isArray(plan?.editableTargets)||plan.editableTargets.includes(slot.role));
   return proposed&&!picked.has(slot.champion)?{...slot,champion:null,locked:false}:{...slot};
  });
 }

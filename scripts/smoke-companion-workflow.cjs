@@ -66,7 +66,7 @@ async function run(){
  diagnosticMain=main;
  const selectSurface=async side=>{await until(()=>{main=side?windows.find(w=>!w.isDestroyed()&&new URL(w.webContents.getURL()||'about:blank').searchParams.get('surface')==='companion'):fullMain;return main&&!main.isDestroyed();},'Requested surface missing');await until(()=>main.webContents.executeJavaScript('!!document.querySelector('+(side?'".companion-shell"':'"[data-action=navigate]"')+')'),'Requested surface not ready');diagnosticMain=main;};
  const js=async code=>{const result=await main.webContents.executeJavaScript(code,true).catch(error=>{console.error('Failed smoke expression:',code);throw error;});if(code==='window.buddy.companionMode(false)')await selectSurface(false);if(code==='window.buddy.companionMode(true)')await selectSurface(true);return result;};
- const click=async selector=>{await js('document.querySelector('+JSON.stringify(selector)+').click()');if(selector==='[data-action=companion-full]')await selectSurface(false);if(selector==='[data-action=companion-attach]')await selectSurface(true);};
+ const click=async selector=>{if(selector.includes('companion-roster-plan')&&!await js('!!document.querySelector('+JSON.stringify(selector)+')'))await js('document.querySelector("[data-action=companion-tab][data-tab=recommend]").click()');await js('document.querySelector('+JSON.stringify(selector)+').click()');if(selector==='[data-action=companion-full]')await selectSurface(false);if(selector==='[data-action=companion-attach]')await selectSurface(true);};
  const change=async(selector,value)=>{if(selector==='#companion-scope'){await click('[data-action=draft-scope][data-scope='+value+']');return;}if(selector==='#solo-role'&&!await js('!!document.querySelector("#solo-role")'))await click('[data-action=companion-tab][data-tab=recommend]');if(selector.startsWith('[data-companion-field=')&&!await js('!!document.querySelector('+JSON.stringify(selector)+')'))await click('[data-action=companion-tab][data-tab=plan]');return js('(()=>{const el=document.querySelector('+JSON.stringify(selector)+');el.value='+JSON.stringify(String(value))+';el.dispatchEvent(new Event("change",{bubbles:true}));})()');};
  let resumeSidebar=false;
  const sync=async()=>{if(main.isDestroyed()||phase!=='ChampSelect'||offline){if(main.isDestroyed()||main!==fullMain)resumeSidebar=true;await selectSurface(false);}await js('window.buddy.client(true)');await click('[data-action=sync]');await delay(180);if(phase==='ChampSelect'&&!offline&&resumeSidebar){await selectSurface(true);resumeSidebar=false;await click('[data-action=sync]');await delay(180);}};
@@ -89,6 +89,9 @@ async function run(){
   await fs.writeFile(path.join(root,name+'.png'),(await main.webContents.capturePage(undefined,{stayHidden:true,stayAwake:true})).toPNG());
  };
  await capture('recommend');
+ // Default party recommendations are intentional. This section exercises
+ // the explicit personal-recommendation task and its lane changes.
+ await click('[data-action=draft-scope][data-scope=solo]');
  await click('[data-action=companion-tab][data-tab=plan]');
  // A declared lane exists before choosing a champion. Visible lane and
  // candidates follow the formal lane until the player explicitly overrides it.
@@ -113,12 +116,12 @@ async function run(){
  hovered='Volibear';await sync();
  assert.equal(await js('document.querySelector(".companion-tabs .active").dataset.tab'),'recommend','A client hover must preserve the selection and team view');
  await click('[data-action=companion-tab][data-tab=plan]');
- assert.equal(await js('!!document.querySelector("[data-pick-intent]")'),true);assert.equal(await js('document.querySelectorAll("[data-action=my-runes]").length'),0);
+ assert.equal(await js('document.querySelector("[data-companion-field=rune]")?.dataset.plan==="Volibear:top:rift"'),true);assert.equal(await js('document.querySelectorAll("[data-action=my-runes]").length'),0);
  await change('#solo-role','top');
  const previewRune=getBuild(hero('Volibear'),'top',data).runeOptions.at(-1);
  await change('[data-companion-field=rune]',previewRune.id);await change('[data-companion-field=core]',1);await capture('intent-plan');
  assert.equal((await js('window.buddy.bootstrap()')).state.guide,null,'Preselection must not create an in-game selection');assert.equal(writes.length,0);
- hovered='Vayne';await sync();await click('[data-action=companion-tab][data-tab=plan]');assert.ok(await js('document.querySelector("[data-pick-intent]").textContent.includes("薇恩")'));
+ hovered='Vayne';await sync();await click('[data-action=companion-tab][data-tab=plan]');assert.ok(await js('document.querySelector(".companion-complete-summary").textContent.includes("薇恩")'));
  hovered='Volibear';await sync();await click('[data-action=companion-tab][data-tab=plan]');assert.equal(await js('document.querySelector("[data-companion-field=rune]").value'),previewRune.id);assert.equal(await js('document.querySelector("[data-companion-field=core]").value'),'1');
  await click('[data-action=companion-tab][data-tab=recommend]');
  await click('[data-action=companion-preview]');assert.ok(await js('!!document.querySelector(".companion-preview")'));assert.equal(await js('document.querySelectorAll(".drawer").length'),0);assert.equal(writes.length,0);
@@ -126,8 +129,8 @@ async function run(){
  hovered='Volibear';await sync();await click('[data-action=companion-current]');
  picked='Volibear';hovered='';await sync();await until(async()=>((await js('window.buddy.bootstrap()')).state.guide?.selection.runeId===previewRune.id),'Actual pick lost the preview rune choice');
  assert.equal((await js('window.buddy.bootstrap()')).state.guide.selection.coreIndex,1,'Actual pick lost the preview equipment route');
- await until(()=>js('document.querySelector(".preparation-task-heading")?.textContent.includes("沃利贝尔")&&!document.querySelector(".companion-preview")'),'Actual pick did not replace the intent view');
- assert.equal(await js('document.querySelector(".companion-tabs .active").dataset.tab'),'recommend','An actual pick must return to the team and current action view');assert.equal(await js('document.querySelectorAll(".companion-preview").length'),0);
+ await until(()=>js('document.querySelector(".companion-complete-summary")?.textContent.includes("沃利贝尔")&&!document.querySelector(".companion-preview")'),'Actual pick did not replace the intent view');
+ assert.equal(await js('document.querySelector(".companion-tabs .active").dataset.tab'),'plan','An actual pick must open the current configuration');assert.equal(await js('document.querySelectorAll(".companion-preview").length'),0);
  await click('[data-action=companion-tab][data-tab=plan]');
  await change('#solo-role','top');await delay(200);
  assert.equal((await js('window.buddy.bootstrap()')).state.draft.slots.find(s=>s.role==='top').champion,'Volibear');
@@ -174,14 +177,15 @@ async function run(){
  assert.ok(await js('document.querySelector(".companion-items").textContent.includes("生命药水 × 2")'));
  assert.ok(await js('document.querySelector(".companion-items").textContent.includes("100 金")'));
  assert.equal(await js('document.querySelectorAll("[data-action=companion-core]").length'),3,'Core comparison missing');
- assert.equal(await js('document.querySelector("[data-companion-disclosure=core]").open'),false,'Core comparisons dominate the initial plan');
- await click('[data-companion-disclosure=core] > summary');await sync();
- assert.equal(await js('document.querySelector("[data-companion-disclosure=core]").open'),true,'Client sync closed the core comparison');
+ await click('[data-action=companion-jump][data-section=items]');
+ assert.equal(await js('document.querySelector("[data-companion-disclosure=edit-items]").open'),true,'Opening equipment adjustment must show source routes immediately');
+ await sync();
+ assert.equal(await js('document.querySelector("[data-companion-disclosure=edit-items]").open'),true,'Client sync closed the core comparison');
  await click('[data-action=companion-core][data-id="0"]');await until(async()=>(await js('window.buddy.bootstrap()')).state.guide.selection.coreIndex===0,'First core route was not saved');
- assert.equal(await js('document.querySelector("[data-companion-disclosure=core]").open'),true,'Changing a route closed the comparison');
+ assert.equal(await js('document.querySelector("[data-companion-disclosure=edit-items]").open'),true,'Changing a route closed the comparison');
  await click('[data-action=companion-core][data-id="1"]');await until(async()=>(await js('window.buddy.bootstrap()')).state.guide.selection.coreIndex===1,'Second core route was not saved');
  assert.equal(writes.length,0,'Core cards must not apply runes');
- await click('[data-companion-disclosure=core] > summary');
+ await click('[data-companion-disclosure=edit-items] > summary');
  await click('[data-companion-disclosure=source] > summary');await click('[data-action=companion-refresh]');
  await until(()=>sourceFetches===1,'Public source refresh missing');
  await until(()=>js('document.querySelector("[data-action=companion-refresh]").disabled'),'Sidebar refresh button was not disabled');
@@ -222,7 +226,7 @@ async function run(){
  await click('[data-action=companion-tab][data-tab=team]');assert.ok(await js('document.querySelector(".companion-content").textContent.includes("墨菲特")'));assert.ok(await js('document.querySelector(".companion-content").textContent.includes("永恩")'));await capture('team');
  await click('[data-action=companion-tab][data-tab=plan]');assert.ok(Math.abs((await js('document.querySelector(".companion-content").scrollTop'))-position)<=3);await sync();
  assert.equal(await js('document.querySelector("[data-companion-field=rune]").value'),rune.id);assert.ok(Math.abs((await js('document.querySelector(".companion-content").scrollTop'))-position)<=3);
- await click('[data-action=my-runes]');await until(()=>writes.length===1,'Explicit rune replacement missing');await until(()=>js('document.querySelector("[data-preparation-step=runes]")?.dataset.stepStatus==="done"'),'Applied status missing');assert.deepEqual(writes[0].selectedPerkIds,rune.page.selectedPerkIds);
+ await click('[data-action=my-runes]');await until(()=>writes.length===1,'Explicit rune replacement missing');await until(()=>js('document.querySelector("[data-action=my-runes]")?.textContent.includes("重新应用符文")'),'Standalone rune confirmation missing');assert.deepEqual(writes[0].selectedPerkIds,rune.page.selectedPerkIds);
  // A preview has its own choices; the persistent action always names the actual local champion.
  teammatePicked='Ashe';await sync();await click('[data-action=companion-roster-plan][data-id=Ashe]');
  assert.match(await js('document.querySelector("[data-action=my-runes]").textContent'),/符文/);assert.equal(await js('document.querySelector("[data-action=my-runes]").dataset.id'),'Volibear');
@@ -281,7 +285,7 @@ async function run(){
  assert.deepEqual((await js('window.buddy.bootstrap()')).state.guide.selection.laterIds,[Number(later)]);
  assert.equal(writes.length,1,'Late choices must not write runes');await capture('chogath-jungle');
  await click('[data-action=my-runes]');await until(()=>writes.length===2,'Cho source rune application missing');assert.equal(writes.length,2);assert.deepEqual(writes.at(-1).selectedPerkIds,cho.runePage.selectedPerkIds);
- await until(()=>js('document.querySelector(".companion-shell")?.dataset.tab==="recommend"&&document.querySelector("[data-preparation-step=runes]")?.dataset.stepStatus==="done"'),'Successful rune application must finish and return to the team');
+ await until(()=>js('document.querySelector(".companion-shell")?.dataset.tab==="plan"&&document.querySelector("[data-action=my-runes]")?.textContent.includes("重新应用符文")'),'Successful rune application must finish on the current configuration with its confirmation');
  await click('[data-action=companion-tab][data-tab=plan]');
  const restoredDisclosureScope=await js('document.querySelector(".companion-content").dataset.disclosureScope');assert.equal(restoredDisclosureScope,'plan:Chogath:jungle:rift','Resume late choices in the same declared plan');
  await js('document.querySelector("[data-action=companion-later]").closest("details").open=true');
@@ -368,7 +372,7 @@ async function run(){
  // A confirmation belongs to this draft, including after an asynchronous write.
  await click('[data-action=companion-attach]');await sync();
  await until(()=>js('!!document.querySelector(".companion-shell")'),'Lifecycle sidebar missing');
- const applied=()=>js('document.querySelector("[data-preparation-step=runes]")?.dataset.stepStatus==="done"');
+ const applied=()=>js('document.querySelector("[data-action=my-runes]")?.textContent.includes("重新应用符文")===true');
  const apply=async()=>{await click('[data-action=my-runes]');await until(applied,'This draft write not confirmed');};
  const startWrites=writes.length;await apply();await sync();assert.equal(await applied(),true,'Ordinary polling lost this click');assert.equal(writes.length,startWrites+1);
  await capture('runes-this-draft');
@@ -415,7 +419,11 @@ async function run(){
  await click('[data-action=companion-tab][data-tab=plan]');
  await until(()=>js('document.querySelector("[data-companion-field=rune]").dataset.plan==="Chogath:jungle:rift"'),'Actual pick lost the manual role from combination scope');
  await click('[data-action=companion-tab][data-tab=recommend]');await change('#companion-scope','solo');await click('[data-action=companion-tab][data-tab=plan]');
- picked='Ashe';assigned='bottom';await sync();await click('[data-action=companion-tab][data-tab=plan]');await click('[data-action=position-auto]');await sync();await click('[data-companion-disclosure=source] > summary');
+ picked='Ashe';assigned='bottom';await sync();
+ await until(()=>js('window.buddy.bootstrap().then(b=>b.state.draft.slots.some(s=>s.champion==="Ashe"&&s.clientCellId===1))'),'New public Ashe pick did not settle before releasing the manual lane');
+ await click('[data-action=companion-tab][data-tab=plan]');await click('[data-action=position-auto]');
+ await until(()=>js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole==="bottom"&&!b.state.draft.playerPosition&&b.state.draft.slots.some(s=>s.champion==="Ashe"&&s.role==="bottom"&&!s.manualPosition))'),'Releasing the lane did not restore the public bottom assignment');
+ await sync();await click('[data-companion-disclosure=source] > summary');
  const fetchesBeforeFilters=sourceFetches,writesBeforeFilters=writes.length;
  for(const region of ['global','kr'])for(const tier of ['gold_plus','emerald_plus','diamond_plus']){
   await change('[data-build-source-field=region]',region);await change('[data-build-source-field=tier]',tier);
@@ -532,18 +540,18 @@ async function run(){
  await click('[data-action=player-flow-settings]');await click('[data-action=player-flow-toggle][data-field=clickPrepare]');await click('[data-action=close]');
  await click('[data-action=companion-tab][data-tab=recommend]');await until(()=>js('!!document.querySelector("[data-action=companion-preview][data-role=mid]")'),'No mid candidate for default preparation');
  const beforePrepareWrites=writes.length;await click('[data-action=companion-preview][data-role=mid]');
- await until(()=>js('document.querySelector(".companion-shell")?.dataset.tab==="recommend"&&document.querySelector("#toast")?.textContent==="预选与配置已完成，锁定请在客户端确认"'),'Default preparation must finish and return to the team');
+ await until(()=>js('document.querySelectorAll(".preparation-task [data-step-status=done]").length===4&&document.querySelector("#toast")?.textContent==="预选与配置已完成，锁定请在客户端确认"'),'Default click must confirm preselection and all three configuration writes');
  await click('[data-action=companion-tab][data-tab=plan]');
- await until(()=>js('document.querySelectorAll(".preparation-task [data-step-status=done]").length===4'),'Default click did not complete all four steps');
- assert.equal(await js('document.querySelectorAll(".preparation-task [data-step-status=done]").length'),4,'All four preparation results must remain available after returning to the team');
+ await until(()=>js('document.querySelectorAll(".client-preparation [data-step-status=done]").length===4'),'Default click did not complete all four steps');
+ assert.equal(await js('document.querySelectorAll(".client-preparation-result [data-step-status=done]").length'),4,'All four preparation results must remain available in the receipt');
  assert.equal(hoverWrites,1);assert.equal(spellWrites,1);assert.equal(writes.length,beforePrepareWrites+1);assert.equal(preparationAction.completed,false);
- picked=hovered;preparationAction.completed=true;await sync();
- await until(()=>js('document.querySelector(".preparation-task [data-preparation-step=runes]")?.dataset.stepStatus==="done"&&document.querySelector(".preparation-task strong")?.textContent==="英雄已锁定，配置已完成"'),'Completed setup still asks to apply runes');
- assert.match(await js('document.querySelector(".preparation-task [data-action=client-prepare]").textContent'),/重新应用/);
+ await click('[data-action=companion-tab][data-tab=recommend]');picked=hovered;preparationAction.completed=true;await sync();
+ await until(()=>js('document.querySelector(".companion-shell")?.dataset.tab==="plan"&&document.querySelector(".client-preparation [data-preparation-step=runes]")?.dataset.stepStatus==="done"'),'Actual hero confirmation must open the current configuration without losing its rune receipt');
+ assert.match(await js('document.querySelector(".client-preparation [data-action=client-prepare]").textContent'),/应用当前修改/);
  await sync();assert.equal(writes.length,beforePrepareWrites+1,'Confirming or polling the hero reapplied runes');
  await capture('one-click-confirmed-status');gameId='1509';await sync();
- await until(async()=>{const current=await js('window.buddy.bootstrap().then(b=>({gameId:b.client?.game?.gameId,draftGameId:b.state.draft.clientGameId,championId:b.client?.session?.myTeam?.find(p=>p.cellId===b.client.session.localPlayerCellId)?.championId,target:document.querySelector(".preparation-task [data-action=client-prepare]")?.dataset.plan,ready:document.querySelector(".preparation-task [data-preparation-step=runes]")?.dataset.stepStatus}))');return current.gameId==='1509'&&current.draftGameId==='1509'&&current.championId===hero(picked).key&&current.target===picked+':mid:rift'&&current.ready==='idle';},'New game did not clear the same champion rune confirmation after synchronization');
- assert.equal(await js('document.querySelector(".preparation-task [data-preparation-step=runes]").dataset.stepStatus'),'idle','New game retained a previous rune confirmation');assert.equal(writes.length,beforePrepareWrites+1,'Starting a new game reapplied runes');preparationAction=null;
+ await until(async()=>{const current=await js('window.buddy.bootstrap().then(b=>({gameId:b.client?.game?.gameId,draftGameId:b.state.draft.clientGameId,championId:b.client?.session?.myTeam?.find(p=>p.cellId===b.client.session.localPlayerCellId)?.championId,target:document.querySelector(".client-preparation [data-action=client-prepare]")?.dataset.plan,ready:document.querySelector(".client-preparation [data-preparation-step=runes]")?.dataset.stepStatus}))');return current.gameId==='1509'&&current.draftGameId==='1509'&&current.championId===hero(picked).key&&current.target===picked+':mid:rift'&&current.ready===undefined;},'New game did not clear the same champion rune confirmation after synchronization');
+ assert.equal(await js('document.querySelector(".client-preparation [data-preparation-step=runes]")?.dataset.stepStatus'),undefined,'New game retained a previous rune confirmation');assert.equal(writes.length,beforePrepareWrites+1,'Starting a new game reapplied runes');preparationAction=null;
  // Retain the final manual choice in this isolated profile for restart validation.
  picked='Lux';assigned='MIDDLE';await sync();await change('#solo-role','support');await sync();await click('[data-action=guide-current]');
  await until(()=>guideJs('window.guide.bootstrap().then(b=>b.model?.selection?.role==="support")'),'Final support guide missing');

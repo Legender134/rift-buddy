@@ -4,8 +4,11 @@ async function revealDraftAction(js,selector){
  let target=selector,openedComparison=false;
  const exists=sel=>js(`!!document.querySelector(${JSON.stringify(sel)})`);
  const click=sel=>js(`document.querySelector(${JSON.stringify(sel)}).click()`);
- const advanced=/data-action=(role-pools|hero-pool|exclusions|reset-draft|example|refresh-pairs|style)(?:\]|\b)/.test(selector);
+ const advanced=/data-action=(role-pools|hero-pool|combination-library|exclusions|reset-draft|example|refresh-pairs|style)(?:\]|\b)/.test(selector);
  if(advanced||/data-action=(recommend|reroll|combination-library|draft-filters|draft-scope)/.test(selector)){
+  // Favorites and other main pages expose the draft tools through navigation.
+  // Use the same entry a player would use before opening the draft disclosure.
+  if(!await exists('[data-action=recommend],[data-action=reroll],[data-action=task-compare],[data-action=draft-filters]')&&await exists('[data-action=navigate][data-route=draft]'))await click('[data-action=navigate][data-route=draft]');
   if(!await exists('[data-action=recommend],[data-action=reroll]')&&await exists('[data-action=task-compare]')){
    await click('[data-action=task-compare]');
    openedComparison=true;
