@@ -433,7 +433,7 @@ function applyRoomSnapshot(snapshot){
 }
 function rememberPreparation(value){if(restoringSave)return value;const before=preparations.recall(value),next=preparations.remember(value);if(JSON.stringify(before)!==JSON.stringify(next))persist();return next;}
 function rememberIntentPreparation(selection){pendingIntentPreparation=structuredClone(selection);pendingIntentPlanId=activeCreativePlan?.id||'';}
-function currentPickIntent(){return companionPickIntent(client,data.champions,slots,{scope,soloRole,creativePlan:activeCreativePlan,catalogStatus:data.catalogInfo?.status});}
+function currentPickIntent(){return companionPickIntent(client,data.champions,slots,{scope,soloRole,playerPosition:saved.draft?.playerPosition,creativePlan:activeCreativePlan,catalogStatus:data.catalogInfo?.status});}
 function invalidate(){preservePlayerPosition();reconcileCreativePlan();const own=currentPlayerSelection(client.session,data.champions,slots);if(scope==='solo'&&own?.positionKnown)soloRole=own.role;recommendationError='';markResultStale();cancelRecommendation();results=[];offset=0;autoRecommendationKey='';persist();render();queueCompanionRecommendation();}
 function render(){
  const rankingFocus=['ranking-search','patch-search','reference-search'].includes(document.activeElement?.id)?{id:document.activeElement.id,start:document.activeElement.selectionStart,end:document.activeElement.selectionEnd}:null;
@@ -1187,7 +1187,7 @@ document.addEventListener('click',async event=>{
  if(client.connected&&client.phase==='ChampSelect'){await sync(false,{fresh:true});if(!client.connected||client.phase!=='ChampSelect'||!client.session)throw Error('无法确认本局选人，请重新同步');}
  const current=roomBallotBoard(room,slots,data.champions).find(r=>r.key===el.dataset.key);if(!current)throw Error('候选已撤回，请重新选择');preservePlayerPosition();
  const adopted=adoptRoomLineup({kind:'state',v:1,from:current.from,...current.proposal,pick:null,at:Date.now()},data,slots,client,localPickEligibility(client,slots,data.champions,{scope:'party',soloRole,playerPosition:saved.draft?.playerPosition}),clientSyncOptions());
- slots=adopted.slots;unassigned=adopted.unassigned;activeCreativePlan=adopted.creativePlan;lastTaskSelection=null;scope='party';for(const selection of adopted.configurations)preparations.remember(selection);
+ slots=adopted.slots;unassigned=adopted.unassigned;activeCreativePlan=adopted.creativePlan;lastTaskSelection=null;draftComparing=false;scope='party';for(const selection of adopted.configurations)preparations.remember(selection);
  creativePlanNotice=[adopted.conflicts.length?'已保留本局选人或手动位置，未完全采用提议。':'',adopted.configurationErrors.length?'有'+adopted.configurationErrors.length+'套发送方配置与当前资料不符，保留本机参考。':'',!current.proposal.configurations?.length?'未收到具体配置，使用本机参考。':''].filter(Boolean).join(' ');
  cancelRecommendation();results=[];offset=0;companionPreview=null;companionTab='recommend';await persist({throwOnError:true});render();await publishRoomShare({force:true});toast('已采用阵容'+(adopted.configurations.length?'及 '+adopted.configurations.length+' 套发送方配置':'；使用本机配置参考')+'。'+creativePlanNotice,!!creativePlanNotice);return;
  }
@@ -1223,7 +1223,7 @@ document.addEventListener('click',async event=>{
   const current=room?.members.find(m=>m.nick===el.dataset.member);if(!current?.share||roomLineupIdentity(current.share,current.nick)!==identity)throw Error('队友刚更新了阵容，请重新查看再采用');
   preservePlayerPosition();const availability=localPickEligibility(client,slots,data.champions,{scope:'party',soloRole,playerPosition:saved.draft?.playerPosition});
   const adopted=adoptRoomLineup({...current.share,kind:'state',v:1,from:current.nick},data,slots,client,{eligibleByRole:availability.eligibleByRole,confirmedPick:availability.confirmedPick},clientSyncOptions());
-  slots=adopted.slots;unassigned=adopted.unassigned;activeCreativePlan=adopted.creativePlan;lastTaskSelection=null;scope='party';
+  slots=adopted.slots;unassigned=adopted.unassigned;activeCreativePlan=adopted.creativePlan;lastTaskSelection=null;draftComparing=false;scope='party';
   for(const selection of adopted.configurations)preparations.remember(selection);
   const conflicts=adopted.conflicts.filter(c=>c.role).map(c=>roleName(c.role)+'的'+(champ(c.champion)?.name||c.champion));
   creativePlanNotice=[conflicts.length?'未采用'+conflicts.join('、')+'，已保留本局已选或手动安排。':'',adopted.conflicts.some(c=>c.kind==='plan')?'成员不一致，未采用发送方组合职责。':'',adopted.configurationErrors.length?'有'+adopted.configurationErrors.length+'套发送方配置与当前资料不符，保留本机参考。':''].filter(Boolean).join(' ');

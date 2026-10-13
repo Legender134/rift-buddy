@@ -34,6 +34,20 @@ test('a party hero in another proposed lane is a role mismatch, not a missing he
  const fit=lineupFit([{role:'bottom',champion:'Ahri'},{role:'support',champion:'Nami'}],current,champions);
  assert.equal(fit.compatible,true);assert.equal(fit.exact,false);assert.match(fit.reason,/已选英雄 40\/40/);
 });
+
+test('manual fixed heroes affect compatibility and ranking while unconfirmed assistant choices stay replaceable',()=>{
+ const current=a.lineup.map(s=>({...s,party:true,locked:true}));
+ const changed={...a,lineup:a.lineup.map(s=>s.role==='mid'?{...s,champion:'Annie'}:s)};
+ const room={members:[{nick:'甲',share:state(a,null)},{nick:'乙',share:state(changed,proposalKey(changed))}]};
+ const rows=roomBallotBoard(room,current,champions);
+ assert.equal(rows[0].key,proposalKey(a));assert.equal(rows[1].fit.compatible,false);assert.equal(rows[1].fit.exact,false);
+ assert.ok(rows[0].fit.score>rows[1].fit.score);assert.doesNotMatch(rows[1].fit.reason,/尚未选人/);
+ const moved=a.lineup.map(s=>s.role==='mid'?{...s,role:'top'}:s),fit=lineupFit(moved,current,champions);
+ assert.equal(fit.compatible,true);assert.equal(fit.exact,false);assert.match(fit.reason,/已选英雄 40\/40/);
+ const proposals=current.map(s=>({...s,automaticPosition:true}));
+ assert.equal(lineupFit(changed.lineup,proposals,champions).compatible,true);
+ proposals[0].clientCellId=1;assert.equal(lineupFit(changed.lineup,proposals,champions).compatible,false,'Real client picks remain fixed even if they originated in a proposal');
+});
 test('relay preserves bounded proposal and votes without forwarding arbitrary private data',()=>{
  const raw={kind:'state',v:1,from:'甲',at:1,...state(a,proposalKey(a.lineup)),riotId:'private'};
  const read=JSON.parse(sanitizeRelayState(JSON.stringify(raw),'甲'));

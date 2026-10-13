@@ -257,6 +257,37 @@ test('confirming ownership after adopting a lineup preserves its proposed heroes
  assert.throws(()=>c.setCompanionRole('mid'),/其他玩家/);assert.equal(c.taskOwnRole(),'bottom');
 });
 
+test('a chosen lane on an adopted proposal stays editable when the local player hovers despite a different assigned lane',async()=>{
+ const current=client();current.session.myTeam[0].assignedPosition='MIDDLE';
+ const incoming=structuredClone(current),slots=partySlots(),s=setup({slots,current,incoming}),c=s.context;
+ Object.assign(c,{ROLES:slots.map(s=>({id:s.role})),clearManualPlayerPosition,moveChampion,assignClientChampion,invalidate:noop,currentCombo,comboContextKnown,guideSelection:null,companionPickIntent});
+ c.rememberIntentPreparation=noop;
+ vm.runInContext(extract('function setCompanionRole(','function preservePlayerPosition(')+extract('function currentPickIntent(){','function invalidate(){')+extract('function myPreparation(){','function roomRoleContext(){'),c);
+ c.setCompanionRole('bottom');
+ assert.equal(c.slots.find(s=>s.role==='bottom').clientCellId,undefined,'Assigning a proposed hero must not fabricate a public pick');
+ incoming.session.myTeam[0].championPickIntent=hero('Ashe').key;
+ await c.sync(false,{fresh:true});
+ assert.equal(c.currentPickIntent().selection.role,'bottom');
+ const plan=c.companionPreparation();assert.equal(plan.selection.role,'bottom');assert.equal(!!c.readOnlyPreparation('companion',plan),false);
+ await c.useClientPreparation({dataset:{preparationView:'companion'}},true);
+ assert.equal(s.calls.prepared.length,1);assert.equal(s.calls.prepared[0].role,'bottom');
+});
+
+test('adopting either a room proposal or a shared lineup exits comparison and exposes the accepted plan without client writes',async()=>{
+ for(const kind of ['ballot','lineup']){
+  const s=setup(),c=s.context,plan={id:'friend-plan',members:[{role:'bottom',champion:'Ashe'}]},selection={id:'Ashe',role:'bottom',mode:'rift'};
+  const proposal={mode:'rift',lineup:c.slots,configurations:[selection]},share={...proposal,at:Date.now()},row={key:'friend-key',from:'朋友',proposal};
+  Object.assign(c,{draftComparing:true,room:{members:[{nick:'朋友',share}]},roomBallotBoard:()=>[row],roomLineupIdentity:()=> 'friend-share',
+   adoptRoomLineup:()=>({slots:c.slots,unassigned:[],creativePlan:plan,configurations:[selection],conflicts:[],configurationErrors:[],loadedMembers:3}),
+   publishRoomShare:async()=>{},companionScroll:new Map(),lastAdoptedRoomShare:'',roleName:r=>r});
+  const body=kind==='ballot'?extract("if(action==='room-adopt-ballot'){","if(action==='room-publish')"):extract("if(action==='room-adopt-lineup'){","if(action==='room-build')");
+  vm.runInContext(`async function adoptFromRoom(el){const action='room-adopt-${kind}';${body}}`,c);
+  await c.adoptFromRoom({dataset:{key:'friend-key',member:'朋友',share:'friend-share'}});
+  assert.equal(c.draftComparing,false,kind);assert.equal(c.activeCreativePlan.id,'friend-plan');assert.equal(c.companionTab,'recommend');
+  assert.equal(c.results.length,0);assert.equal(c.preparations.recall(selection).id,'Ashe');assert.equal(s.calls.prepared.length,0);
+ }
+});
+
 test('a click survives an unrelated teammate pick while adopting its fresh public champion',async()=>{
  const now=2000000,current=checkedClient(now),incoming=checkedClient(now+16001);
  incoming.session.myTeam.push({cellId:2,championId:hero('Garen').key,assignedPosition:'TOP'});

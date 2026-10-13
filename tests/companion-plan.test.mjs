@@ -24,6 +24,8 @@ test('only the local unselected intent prepares a labeled plan without creating 
  assert.deepEqual({client,slots},before);
  const assigned=structuredClone(client);assigned.session.myTeam[0].assignedPosition='JUNGLE';
  assert.equal(companionPickIntent(assigned,data.champions,slots,{soloRole:'top'}).selection.role,'jungle');
+ assert.equal(companionPickIntent(assigned,data.champions,slots,{soloRole:'top',playerPosition:{role:'top',cellId:1}}).selection.role,'top','Explicit ownership takes priority even when an adopted proposal has no public cell binding');
+ for(const playerPosition of [{role:'top',cellId:2},{role:'unknown',cellId:1}])assert.equal(companionPickIntent(assigned,data.champions,slots,{soloRole:'top',playerPosition}).selection.role,'jungle','Invalid or other-player ownership must not replace the assigned lane');
  slots[2]={...slots[2],champion:'Volibear',manualPosition:true,clientCellId:1};
  assert.equal(companionPickIntent(client,data.champions,slots).selection.role,'mid');
  assert.equal(companionPickIntent(assigned,data.champions,slots).selection.role,'mid','An explicit lane must survive a declared position');

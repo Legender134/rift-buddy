@@ -7,7 +7,7 @@ import {editSkillOrder} from './skill-advice.mjs';
 import {currentCombo} from './recommend.mjs';
 import {creativeComboContext} from './creative-plan.mjs';
 
-export function companionPickIntent(client,champions,slots=[],{scope='solo',soloRole='',creativePlan=null,catalogStatus={}}={}){
+export function companionPickIntent(client,champions,slots=[],{scope='solo',soloRole='',playerPosition=null,creativePlan=null,catalogStatus={}}={}){
  const session=client?.session,mode=client?.mode?.id;
  if(!client?.connected||client.phase!=='ChampSelect'||!['rift','hex'].includes(mode)||!Number.isInteger(session?.localPlayerCellId))return null;
  const player=session.myTeam?.find(p=>p.cellId===session.localPlayerCellId);
@@ -15,10 +15,11 @@ export function companionPickIntent(client,champions,slots=[],{scope='solo',solo
  const champion=champions.find(c=>c.key===player.championPickIntent);if(!champion)return null;
  const assigned=CLIENT_POSITION_ROLES[String(player.assignedPosition||'').toUpperCase()];
  const manual=slots.find(s=>s.manualPosition&&s.clientCellId===session.localPlayerCellId)||slots.find(s=>s.champion===champion.id&&!s.automaticPosition&&!Number.isInteger(s.clientCellId));
+ const chosen=playerPosition?.cellId===session.localPlayerCellId&&ROLES.some(r=>r.id===playerPosition.role)?playerPosition.role:null;
  const preferred=ROLES.some(r=>r.id===soloRole)?soloRole:null;
- const role=manual?.role||assigned||preferred||profile(champion).roles[0];
+ const role=manual?.role||chosen||assigned||preferred||profile(champion).roles[0];
  const combo=mode==='rift'?currentCombo(slots,champion.id,role,catalogStatus,null,creativePlan):null;
- return {selection:{id:champion.id,role,mode,...creativeComboContext(combo)},positionKnown:!!(assigned||manual||preferred)};
+ return {selection:{id:champion.id,role,mode,...creativeComboContext(combo)},positionKnown:!!(assigned||manual||chosen||preferred)};
 }
 
 // Inline controls edit the same preparation as the drawer and in-game guide.

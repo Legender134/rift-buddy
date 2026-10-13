@@ -20,7 +20,7 @@ export function createBallotRoundObserver(){
 // This is an explained rule score, never a win-rate estimate. Fixed picks
 // dominate; the remaining points describe common lanes and complementary jobs.
 export function lineupFit(lineup,current,champions){
- const fixed=current.filter(s=>s.party&&s.champion&&(Number.isInteger(s.clientCellId)||s.manualPosition||s.publicIntent));
+ const fixed=current.filter(s=>s.party&&s.champion&&(Number.isInteger(s.clientCellId)||s.manualPosition||s.publicIntent||s.locked&&!s.automaticPosition));
  const members=lineup.filter(s=>s.champion&&(current.find(c=>c.role===s.role)?.party!==false||fixed.some(c=>c.champion===s.champion)));
  const heroMatches=fixed.filter(s=>lineup.some(m=>m.champion===s.champion)).length;
  const roleMatches=fixed.filter(s=>lineup.some(m=>m.champion===s.champion&&m.role===s.role)).length;
