@@ -6,7 +6,7 @@ import {recallPreparation,preparationIdentity} from './preparation.mjs';
 import {sanitizeRoomConfiguration} from './room.mjs';
 import {validateRunePage} from './rune-page.mjs';
 import {validateCustomSkillOrder} from './skill-advice.mjs';
-import {validateSummonerIds,preferredFlashOrder} from './summoner-selection.mjs';
+import {validateSummonerIds,preferredFlashOrder,configuredFlashSlot} from './summoner-selection.mjs';
 import {currentPlayerSelection} from './guide.mjs';
 import {manualPlayerSlot,CLIENT_POSITION_ROLES} from './draft.mjs';
 
@@ -60,7 +60,7 @@ export function roomPreparation(raw,data,strategy,{localStrategy=null}={}){
  // order. Attribute guidance stays a copied reference, not a QWER edit.
  const order=config.skills||config.first;
  const skills=order?validateCustomSkillOrder({order,patch:config.patch,...(order.length===3&&config.priority?{priority:config.priority}:{})},config.champion):undefined;
- const summonerIds=preferredFlashOrder(validateSummonerIds(config.spells,'rift'),data.flashSlot);
+ const summonerIds=preferredFlashOrder(validateSummonerIds(config.spells,'rift'),configuredFlashSlot(data));
  const incoming=strategy&&strategy.members?.some(m=>m.champion===config.champion&&m.role===config.role)?validateCreativePlan(strategy):null;
  // An explicit adoption can apply the concrete choices to this same local
  // group despite different catalog text identities. Its duties remain local;

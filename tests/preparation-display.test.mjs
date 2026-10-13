@@ -15,7 +15,7 @@ test('complete sidebar equipment shows every ordered item sent to preparation in
  for(const [id,role] of [['Ahri','mid'],['Yasuo','bottom'],['Galio','mid'],['Lulu','support']]){
   const p=plan(id,role),items=preparationEquipment(data,p.build,p.selection),html=companionPlanView(data,p,[],{hideClientControls:true});
   for(const [n,item] of items.entries())assert(html.includes(`<em>${n+1}</em><b>${e(item.name)}</b>`),id+' missing ordered '+item.name);
-  assert.match(html,/当前搭配摘要/);assert.match(html,/查看当前完整符文页/);
+  assert.match(html,/aria-label="当前完整配置"/);assert.match(html,/data-companion-disclosure="edit-runes"/);
   if(p.build.laterOptions.length)assert.match(html,/后期装备备选 · 手动已选/);
  }
 });

@@ -4,10 +4,21 @@ import fs from 'node:fs/promises';
 import {createSlots,recommend,analyzeTeam,explainContributions} from '../src/core/recommend.mjs';
 import {summarizeEnemyTraits,threatNotes,strategySummary} from '../src/core/strategy.mjs';
 import {compareAugments} from '../src/core/hex-compare.mjs';
+import {candidateSummary} from '../src/draft-result-view.mjs';
 const data=JSON.parse(await fs.readFile('data/game.json','utf8'));
 data.builds=JSON.parse(await fs.readFile('data/builds.json','utf8')).entries;
 data.hexBuilds=JSON.parse(await fs.readFile('data/hex-builds.json','utf8')).entries;
 const hero=id=>data.champions.find(c=>c.id===id);
+
+test('the last friend recommendation explains that new hero instead of repeating an already fixed pair',()=>{
+ const slots=createSlots().map(s=>({...s,party:['top','jungle','mid'].includes(s.role),champion:({top:'Malphite',mid:'Yasuo'})[s.role]||null,locked:['top','mid'].includes(s.role)}));
+ const rows=recommend({slots,champions:data.champions,scope:'party',style:'fun',poolMode:'only',pool:['Gragas','Morgana','Ivern'],limit:6});
+ const summaries=new Map(rows.map(row=>[row.slots.find(s=>s.role==='jungle').champion,candidateSummary(row).line]));
+ assert.equal(summaries.size,3);assert.equal(new Set(summaries.values()).size,3);
+ assert.match(summaries.get('Gragas'),/酒桶 E/);assert.match(summaries.get('Ivern'),/艾翁 E/);
+ assert.match(summaries.get('Morgana'),/Q|E|黑盾/);
+ assert.doesNotMatch(summaries.get('Morgana'),/^墨菲特 R 实际击飞后，亚索/);
+});
 
 test('mixed damage is preferred over mono damage when completing a trio',()=>{
  const slots=createSlots();

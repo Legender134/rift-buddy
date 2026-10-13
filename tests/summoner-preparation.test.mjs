@@ -27,7 +27,14 @@ test('player Flash preference follows new heroes and combo identities without ov
  const manual=['SummonerFlash','SummonerTeleport'];assert.deepEqual(build({...base,summonerIds:manual},fixture).summoners,manual);
  const noFlash=['SummonerSmite','SummonerHaste'];assert.deepEqual(build({...base,summonerIds:noFlash},fixture).summoners,noFlash);
  assert.equal(validateState({...defaultState(),preferences:{flashSlot:'f'}}).preferences.flashSlot,'f');
- assert.equal(validateState({...defaultState(),preferences:{flashSlot:'invalid'}}).preferences.flashSlot,'source');
+ for(const flashSlot of [undefined,'invalid','source','current'])assert.equal(validateState({...defaultState(),preferences:{flashSlot}}).preferences.flashSlot,'current');
+});
+test('default preparation keeps the current client Flash slot for sources, saved pairs and shared choices',()=>{
+ for(const clientFlashSlot of ['d','f']){
+  const fixture={...data,flashSlot:'current',clientFlashSlot},index=clientFlashSlot==='d'?0:1;
+  for(const selection of [base,{...base,summonerIds:['SummonerFlash','SummonerBarrier']},{...base,summonerIds:['SummonerBarrier','SummonerFlash']}])assert.equal(build(selection,fixture).summoners[index],'SummonerFlash');
+  const chosen=changeCompanionPlan(fixture,base,'summoner-swap');assert.equal(chosen.summonerIds[1-index],'SummonerFlash','The explicit swap records the intended order');
+ }
 });
 test('D/F edits, duplicate swaps, explicit reset and separate position memory preserve unrelated preparation',()=>{
  const initial={...base,runeId:build(base).selectedRuneId},defaultPair=build(initial).summoners;

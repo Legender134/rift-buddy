@@ -30,7 +30,7 @@ export function configurationSource(build){
 }
 export function preparationProgressView(options){
  const {data,plan,client,view='task',available=false,busy=false,compact=false}=options,progress=preparationProgress(options);
- if(!plan)return `<section class="preparation-task empty-task"><b>先确认你负责的位置</b><p>选好本人位置后，点自己的英雄即可预选并配置。</p>${button('task-members','我是这一位','team','small')}</section>`;
+ if(!plan)return `<section class="preparation-task empty-task"><b>我的位置</b>${button('task-members','选择位置','team','small')}</section>`;
  const hero=data.champions.find(c=>c.id===plan.selection.id),b=plan.build,selection=plan.selection;
  if(!progress)return `<section class="preparation-task"><b>${e(hero.name)} · ${roleName(selection.role)}</b><p>当前模式仅供查看配置；峡谷选人支持一次预选并配置。</p>${button('task-edit','查看配置','','small')}</section>`;
  const {prepared,status,pending,changed,complete,failed,locked,title}=progress;
@@ -45,8 +45,8 @@ export function preparationProgressView(options){
  return `<section class="preparation-task ${compact?'compact':''}" data-client-preparation-fingerprint="${e(prepared.fingerprint)}" aria-label="我的准备结果">
  <div class="preparation-task-heading">${portrait(hero,'sm')}<div><b>${e(hero.name)} · ${roleName(selection.role)} · 你</b><strong role="status">${e(title)}</strong></div>${button('client-prepare',pending?'处理中…':action,'check',`${complete?'quiet':'primary'} small`,attrs)}</div>
  <div class="preparation-step-summary" aria-label="四步配置结果">${Object.entries(labels).map(([k,label])=>{const step=status?.steps?.[k],done=step?.status==='done',state=step?.status||'idle';return `<span data-preparation-step="${k}" data-step-status="${state}" class="${done?'done':state==='failed'?'failed':''}">${done?'✓':state==='failed'?'!':changed?'△':'○'} ${k==='hover'&&locked?'客户端已锁定':label}${!done&&state==='skipped'?' · 未执行':''}</span>`;}).join('')}</div>
- <p class="preparation-identity">${e(spells)}<span>${e(configurationSource(b))}</span></p>
+ <details class="preparation-extra"><summary>配置详情</summary><p class="preparation-identity">${e(spells)}<span>${e(configurationSource(b))}</span></p><p>点击会替换可编辑符文页、设置 D/F 并导入商店装备集；英雄锁定由你确认。</p></details>
  ${error?`<div class="preparation-recovery" role="status"><p>${e(error)}</p><div class="preparation-recovery-actions">${failed.includes('items')?`<span data-itemset-fingerprint="${e(itemSet)}">${button('export-item-set','导出本次装备集','download','small',`data-itemset-view="${view}" data-plan="${e(planKey)}" ${busy?'disabled':''}`)}</span>${button('choose-dir','设置安装目录','folder','quiet small')}`:''}${button('client-prepare','重新执行整套','','small',attrs)}${button('sync','同步客户端','','quiet small')}</div><small>已完成项保留。重新执行会再次应用当前整套配置。</small></div>`:''}
- ${reason?`<p class="preparation-unavailable">${e(reason)}</p>`:!complete&&!pending&&!error?'<p class="preparation-contract">一次点击预选、符文、D/F 与商店装备集；锁定由你完成。</p>':complete?'<p class="preparation-contract">进游戏后在商店装备集选择“开黑搭子”；锁定仍由玩家确认。</p>':''}
+ ${reason?`<p class="preparation-unavailable">${e(reason)}</p>`:!complete&&!pending&&!error?'<p class="preparation-contract">锁定请在客户端确认。</p>':complete?'':''}
  </section>`;
 }

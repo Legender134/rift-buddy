@@ -4,11 +4,13 @@ import {teamWindowsView} from './team-windows-view.mjs';
 import {pairStatisticsView} from './pair-statistics-view.mjs';
 import {opponentFitView} from './opponent-fit-view.mjs';
 import {escape as e,button,portrait,icon} from './ui.mjs';
-import {ROLES} from './core/rules.mjs';
+import {ROLES,conventionalRole} from './core/rules.mjs';
 import {scopeSlots} from './core/draft.mjs';
 import {currentCombo} from './core/recommend.mjs';
 import {findSavedTeam} from './core/team-favorites.mjs';
 import {resultCooperation} from './core/creative-plan.mjs';
+import {HERO_PLAYS} from './core/hero-coach.mjs';
+import {rolePlay} from './core/role-plays.mjs';
 const roleName=id=>ROLES.find(r=>r.id===id)?.name||id;
 export function candidateSummary(r){
  const plan=resultCooperation(r),combo=r.trio||r.duo;
@@ -16,8 +18,15 @@ export function candidateSummary(r){
  const invalid=r.catalogState?.stale&&!r.catalogState?.invalid?'':r.catalogState?.reasons?.join('；');
  const warning=invalid||(unusual.length?`${unusual.join('、')}为非常规位置，先约好补刀与经济。`:'')||combo?.risk||plan?.failures?.[0]||r.strategy?.tradeoff||r.analysis?.warnings?.[0]||'';
  const contribution=r.contributions?.find(m=>(r.targets||[]).includes(m.role))||r.contributions?.[0];
- const title=r.scope==='solo'?(contribution?.helps?.slice(0,2).join(' · ')||r.strategy?.label||r.title):plan?.kind==='shared'&&plan.routes?.[0]?.label?`${r.title} · ${plan.routes[0].label}`:r.title;
- const line=r.scope==='solo'?(contribution?.pairings?.[0]||r.strategy?.benefit||r.reason):combo?.steps?.[0]||combo?.plan||plan?.routes?.[0]?.step||plan?.steps?.find(s=>s.startsWith('主线：'))||plan?.steps?.[0]||r.creativePlan?.plan||r.strategy?.benefit||r.reason;
+ const own=r.scope==='solo'?r.slots?.find(s=>(r.targets||[]).includes(s.role)):null;
+ const additions=r.contributions?.filter(m=>(r.targets||[]).includes(m.role))||[];
+ const distinct=additions.find(m=>m.interactions?.some(link=>link.kept))||additions.find(m=>m.interactions?.length);
+ const interaction=distinct?.interactions?.find(link=>link.kept)||distinct?.interactions?.[0];
+ const single=(r.targets||[]).length===1?r.slots?.find(s=>s.role===r.targets[0]):own;
+ const focusedJob=single&&(r.creativePlan?.ordered||plan?.memberJobs||combo?.members||[]).find(m=>m.champion===single.champion&&m.role===single.role)?.job;
+ const focused=single&&(contribution?.pairings?.[0]||focusedJob||rolePlay(single.champion,single.role,'key')?.action||HERO_PLAYS[single.champion]?.[1]);
+ const title=r.scope==='solo'?(r.strategy?.label||r.title):plan?.kind==='shared'&&plan.routes?.[0]?.label?plan.routes[0].label:r.title;
+ const line=interaction?.step||focused||(r.scope==='solo'?(r.strategy?.benefit||r.reason):plan?.routes?.[0]?.step||plan?.steps?.find(s=>s.startsWith('主线：'))||combo?.plan||combo?.steps?.[0]||plan?.steps?.[0]||r.creativePlan?.plan||r.strategy?.benefit||r.reason);
  return {title,line,warning,basis:r.catalogState?.stale?'旧版待复核':''};
 }
 
@@ -30,7 +39,7 @@ export function renderResultCard(r,i,data,saved,style=saved.draft?.style||saved.
  const members=(r.scope==='solo'?r.slots.filter(s=>targets.includes(s.role)||!targets.length&&s.champion):scopeSlots(r.slots,r.scope==='bot'?'bot':'party')).filter(s=>s.champion);
  if(targets.length===1)members.sort((a,b)=>Number(targets.includes(b.role))-Number(targets.includes(a.role)));
  const fav=!!findSavedTeam(saved.favorites,r,style),summary=candidateSummary(r);
- return `<article class="result-card compact-candidate ${i===0?'featured':''}" data-result-index="${i}"><div class="candidate-row"><span class="candidate-rank">${i+1}</span><div class="candidate-members">${members.map(s=>`<button class="candidate-member ${targets.includes(s.role)?'candidate-new':''}" data-action="build" data-prepare-click="true" data-id="${s.champion}" data-role="${s.role}" data-result-index="${i}" data-combo="${e(currentCombo(scopeSlots(r.slots,r.scope),s.champion,s.role,data.catalogInfo?.status,null,r.creativePlan)?.id||'')}" aria-label="${e(hero(s.champion)?.name)} · ${roleName(s.role)} · 查看或预选配置" title="${e(hero(s.champion)?.name)} · ${roleName(s.role)}${targets.includes(s.role)?' · 推荐补位':' · 已保留'}">${portrait(hero(s.champion),'sm')}<span><b>${e(hero(s.champion)?.name)}</b><small>${roleName(s.role)}${targets.includes(s.role)?' · 补位':''}</small></span></button>`).join('')}</div>${button('use-result','采用','','primary small',`data-index="${i}" aria-label="采用${e(r.title)}"`)}</div><p class="candidate-summary" title="${e(summary.title+' · '+summary.line)}"><b>${e(summary.title)}</b>${summary.basis?' <small class="candidate-source-state">'+e(summary.basis)+'</small>':''}${summary.line?' · '+e(summary.line):''}</p>${summary.warning?`<p class="candidate-warning" title="${e(summary.warning)}">${e(summary.warning)}</p>`:''}<details class="candidate-details"><summary aria-label="查看${e(r.title)}的详情">详情</summary>${candidateDetails(r,i,data)}<button class="favorite-button ${fav?'active':''}" data-action="favorite-result" data-index="${i}" aria-label="${fav?'取消收藏':'收藏'}${e(r.title)}">${icon('star')}${fav?'已收藏':'收藏组合'}</button></details></article>`;
+ return `<article class="result-card compact-candidate ${i===0?'featured':''}" data-result-index="${i}"><div class="candidate-row"><span class="candidate-rank">${i+1}</span><div class="candidate-members">${members.map(s=>`<button class="candidate-member ${targets.includes(s.role)?'candidate-new':''}" data-action="build" data-prepare-click="true" data-id="${s.champion}" data-role="${s.role}" data-result-index="${i}" data-combo="${e(currentCombo(scopeSlots(r.slots,r.scope),s.champion,s.role,data.catalogInfo?.status,null,r.creativePlan)?.id||'')}" aria-label="${e(hero(s.champion)?.name)} · ${roleName(s.role)} · 查看或预选配置" title="${e(hero(s.champion)?.name)} · ${roleName(s.role)}${targets.includes(s.role)?' · 推荐补位':' · 已保留'}">${portrait(hero(s.champion),'sm')}<span><b>${e(hero(s.champion)?.name)}</b><small>${roleName(s.role)}${conventionalRole(hero(s.champion),s.role)?'':' · 非常规'}</small></span></button>`).join('')}</div>${button('use-result','采用','','primary small',`data-index="${i}" aria-label="采用${e(r.title)}"`)}</div><p class="candidate-summary" title="${e(summary.line||summary.title)}">${e(summary.line||summary.title)}</p>${summary.basis?' <small class="candidate-source-state">'+e(summary.basis)+'</small>':''}<details class="candidate-details"><summary aria-label="查看${e(r.title)}的详情">详情</summary>${candidateDetails(r,i,data)}<button class="favorite-button ${fav?'active':''}" data-action="favorite-result" data-index="${i}" aria-label="${fav?'取消收藏':'收藏'}${e(r.title)}">${icon('star')}${fav?'已收藏':'收藏组合'}</button></details></article>`;
 }
 export function coreRouteChoices(build,index,data){
  if(!build.reference)return '';

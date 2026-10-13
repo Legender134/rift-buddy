@@ -17,13 +17,17 @@ test('sidebar hero shortcuts distinguish own configuration, public teammate pick
  assert.equal(companionHeroAction(client,hero('Graves'),false).prepare,false);assert.equal(companionHeroAction({...client,session:{...client.session,bans:[hero('Diana').key]}},hero('Diana')).prepare,false);assert.deepEqual(client,before);
 });
 
-test('chosen sidebar puts local action and all five slots before secondary evidence and recommendation details',()=>{
+test('chosen sidebar keeps five slots, one range status and the local action before collapsed accepted play',()=>{
  const slots=createSlots().map(s=>({...s,champion:s.role==='jungle'?'Graves':s.role==='mid'?'Vex':null,party:['jungle','mid'].includes(s.role),locked:['jungle','mid'].includes(s.role)}));
  const [result]=recommend({slots,champions:data.champions,scope:'party'}),activePlan=captureCreativePlan(result,data),live=structuredClone(client);
  live.eligibility={receivedAt:new Date().toISOString(),context:pickEligibilityContext(live.session),localPlayerCellId:0,pickable:data.champions.map(c=>c.key),disabled:[]};
  const props={data,client:live,slots,unassigned:[],scope:'party',soloRole:'jungle',style:'fun',tab:'recommend',results:[result],activePlan};
- const html=companionView(props);assert(html.indexOf('aria-label="我的下一步"')<html.indexOf('aria-label="全队当前选人"'));assert(html.indexOf('aria-label="全队当前选人"')<html.indexOf('data-companion-disclosure="eligibility"'));assert.match(html,/companion-team-compact/);assert.equal((html.match(/data-drop-role=/g)||[]).length,5);assert.match(html,/data-companion-disclosure="other-recommendations"/);assert.match(html,/队友已选 · 看配置/);assert.doesNotMatch(companionView({...props,preferences:{compactTeam:false}}),/companion-team-now companion-team-compact/);
- const unknown=companionView({...props,client:{...live,eligibility:null}});assert(unknown.indexOf('data-eligibility="unknown"')<unknown.indexOf('aria-label="我的下一步"'),'Unknown eligibility remains visible ahead of the action');
+ const html=companionView(props),roster=html.indexOf('aria-label="全队当前选人"'),status=html.indexOf('data-companion-disclosure="eligibility"'),action=html.indexOf('aria-label="我的下一步"'),play=html.indexOf('data-companion-disclosure="chosen-play"');
+ assert(roster>0&&roster<status&&status<action&&action<play);
+ assert.match(html,/companion-team-compact/);assert.equal((html.match(/data-drop-role=/g)||[]).length,5);
+ assert.doesNotMatch(html,/class="companion-candidate"/);assert.match(html,/data-action="task-compare"/);
+ assert.match(html,/队友已选 · 看配置/);assert.doesNotMatch(companionView({...props,preferences:{compactTeam:false}}),/companion-team-now companion-team-compact/);
+ const unknown=companionView({...props,client:{...live,eligibility:null}});assert(unknown.indexOf('data-companion-disclosure="eligibility"')<unknown.indexOf('aria-label="我的下一步"'),'Unknown eligibility remains available ahead of the action');
  const state=validateState({...defaultState(),preferences:{compactTeam:false}});assert.equal(state.preferences.compactTeam,false);assert.equal(validateState(defaultState()).preferences.compactTeam,true);
 });
 
@@ -34,15 +38,16 @@ test('received sidebar plans expose explicit lineup adoption, route friend click
  const missing={members:[{nick:'队友',share:{...share,mode:undefined}}]};assert.match(roomSharesView(missing,get,{compact:true}),/data-share="[0-9a-f]+" disabled/);assert.doesNotMatch(roomSharesView(missing,get,{compact:true,allowUnknownRift:true}),/data-share="[0-9a-f]+" disabled/);
 });
 
-test('rankings retain the local action and all five slots outside the scrolling table, including incoming plans',()=>{
+test('rankings reuse the persistent local action and five slots outside the scrolling table, including incoming plans',()=>{
  const slots=createSlots().map(s=>({...s,champion:s.role==='jungle'?'Graves':s.role==='mid'?'Vex':null,clientCellId:s.role==='jungle'?0:s.role==='mid'?1:null,manualPosition:s.role==='jungle',party:['jungle','mid'].includes(s.role),locked:['jungle','mid'].includes(s.role)}));
  const [result]=recommend({slots,champions:data.champions,scope:'party'}),activePlan=captureCreativePlan(result,data),live=structuredClone(client);
  live.eligibility={receivedAt:new Date().toISOString(),context:pickEligibilityContext(live.session),localPlayerCellId:0,pickable:data.champions.map(c=>c.key),disabled:[]};
  const props={data,client:live,slots,unassigned:[],scope:'party',soloRole:'jungle',style:'fun',tab:'rankings',results:[],activePlan,rankings:'<section data-test-table>排行内容</section>',room:{members:[{nick:'朋友',share:{kind:'state',v:1,from:'朋友',at:1000,mode:'rift',lineup:slots.map(s=>({role:s.role,champion:s.champion}))}}]}};
- const before=structuredClone({slots,client:live});const html=companionView(props),contextStart=html.indexOf('aria-label="排行中的当前队伍与我的下一步"'),main=html.indexOf('<main class="companion-content"');
+ const before=structuredClone({slots,client:live});const html=companionView(props),contextStart=html.indexOf('<div class="companion-persistent"'),main=html.indexOf('<main class="companion-content"');
  assert(contextStart>0&&contextStart<main);const context=html.slice(contextStart,main);
- assert.equal((context.match(/data-role=/g)||[]).length,6);assert.match(context,/data-action="active-hero-prepare"[^>]+data-id="Graves"/);assert.match(context,/打野 · 你 · 手动/);assert.match(context,/data-tab="recommend"/);
- assert.match(context,/现在先做：/);assert.match(context,/companion-ranking-duty/);
+ assert.deepEqual([...context.matchAll(/data-drop-role="([^"]+)"/g)].map(m=>m[1]),['top','jungle','mid','bottom','support']);
+ assert.match(context,/data-action="active-hero-prepare"[^>]+data-id="Graves"/);assert.match(context,new RegExp(`title="打野 · ${hero('Graves').name} · 你 · 手动 · 已选"`));
+ assert.match(context,/aria-label="我的下一步"/);assert.match(context,/现在先做：/);
  assert.match(html,/data-action="room-adopt-lineup"/);assert(html.indexOf('data-action="room-adopt-lineup"')<html.indexOf('data-test-table'));
  const unknown=companionView({...props,client:{...live,eligibility:null}});assert(unknown.indexOf('data-eligibility="unknown"')<unknown.indexOf('data-test-table'));
  assert.deepEqual({slots,client:live},before);

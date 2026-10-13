@@ -473,11 +473,14 @@ export function explainContributions(fixed,next,targets,champions,context,reuse=
  const before=reuse?.before||analyzeTeam(fixed,champions,context),labels={frontline:'前排承伤',engage:'先手控制',peel:'后排保护',sustain:'持续输出',poke:'远程消耗',aoe:'范围伤害'};
  const damageName={ad:'物理',ap:'法术',mixed:'混合'};
  const after=reuse?.after||analyzeTeam(next,champions,context);
+ const graph=context?.cooperationGraph||createCooperationGraph(champions);
+ const kept=new Set(fixed.filter(s=>s.champion&&!targets.includes(s.role)).map(s=>s.champion));
  return after.members.filter(m=>targets.includes(m.role)).map(m=>({
   hero:m.champion,role:m.role,name:m.c.name,unusual:!conventionalRole(m.c,m.role),
   damage:m.p.damage==='ap'?'法术':m.p.damage==='ad'?'物理':'混合',
   helps:Object.entries(labels).filter(([key])=>m.p[key]).map(([key,label])=>`${before.traits[key]?'增加':'补上'}${label}`),
   pairings:CROSS_SYNERGIES.filter(([a,b])=>[a,b].includes(m.champion)&&fixed.some(s=>s.champion===([a,b].find(id=>id!==m.champion)))).map(([, ,text])=>text),
+  interactions:after.members.filter(other=>other.champion!==m.champion).map(other=>{const edge=graph.edge(m,other);return edge?.current?{with:other.champion,kept:kept.has(other.champion),name:edge.name,step:edge.step,condition:edge.condition,failure:edge.failure}:null;}).filter(Boolean).sort((a,b)=>Number(b.kept)-Number(a.kept)),
  }));
 }
 // Structured, human-readable reasons. Curated texts (why/plan/risk) are reused
@@ -563,14 +566,23 @@ export function mergeClientSession(slots, session, champions, {autoArrange=true,
  const previous=slots.some(s=>s.clientCellId===session?.localPlayerCellId),changed=!!(mine&&!mine.party&&!mine.partyManual&&!mine.manualPosition&&!previous);
  if(changed)mine.party=true;
  if(autoParty&&party){
-  if(party.status==='known')for(const s of next)if(!s.partyManual)s.party=false;
-  const used=new Set();
-  for(const member of [...party.members].sort((a,b)=>Number(b.local)-Number(a.local)||a.cellId-b.cellId)){
+  const members=(party.members||[]).filter((m,i,all)=>allEntries.some(p=>p.cellId===m.cellId)&&all.findIndex(p=>p.cellId===m.cellId)===i&&(party.status==='known'||m.cellId===session?.localPlayerCellId||m.source==='manual-id'));
+  const used=new Set(),resolved=[];
+  for(const member of members.sort((a,b)=>Number(b.cellId===session?.localPlayerCellId)-Number(a.cellId===session?.localPlayerCellId)||a.cellId-b.cellId)){
    const player=allEntries.find(p=>p.cellId===member.cellId),at=next.find(s=>s.clientCellId===member.cellId);
-   const preferred=[CLIENT_POSITION_ROLES[String(player?.assignedPosition||'').toUpperCase()],CLIENT_POSITION_ROLES[member.firstPosition],CLIENT_POSITION_ROLES[member.secondPosition],...ROLES.map(r=>r.id)].filter(Boolean);
-   const target=at||preferred.map(r=>next.find(s=>s.role===r)).find(s=>s&&!Number.isInteger(s.clientCellId)&&!used.has(s.role));
-   if(target){used.add(target.role);if(!target.partyManual)target.party=true;}
+   const declared=CLIENT_POSITION_ROLES[String(player?.assignedPosition||'').toUpperCase()],champion=byKey.get(Number(player?.championId)),p=champion&&profile(champion);
+   const usual=champion?[...(roleOrder[champion.id]||[]),...(p.reviewed?p.roles:[])]:[];
+   const preferred=[declared,...usual].filter(Boolean);
+   const bound=at&&(at.manualPosition||declared===at.role||usual.includes(at.role))?at:null;
+   const declaredSlot=declared&&next.find(s=>s.role===declared&&!s.manualPosition&&!Number.isInteger(s.clientCellId)&&!used.has(s.role));
+   const target=bound||declaredSlot||preferred.map(r=>next.find(s=>s.role===r)).find(s=>s&&!s.champion&&!s.locked&&!s.manualPosition&&!s.partyManual&&!Number.isInteger(s.clientCellId)&&!used.has(s.role));
+   if(target&&!used.has(target.role)){used.add(target.role);resolved.push(target);}
   }
+  // Lobby membership does not establish an unpicked player's lane. Keep the
+  // user's targets until every confirmed member has a reliable public place.
+  if(party.status==='known'&&!party.unmatched&&members.length&&resolved.length===members.length){
+   for(const s of next)if(!s.partyManual)s.party=used.has(s.role);
+  }else for(const s of resolved)if(!s.partyManual)s.party=true;
  }
  return {slots:next,unassigned,displaced,markedLocalRole:localRole||null,markedLocalChanged:changed};
 }

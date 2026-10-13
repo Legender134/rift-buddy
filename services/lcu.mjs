@@ -66,6 +66,7 @@ export function sanitizeSession(session) {
  const team=arr=>(Array.isArray(arr)?arr:[]).map(p=>{
   const cellId=Number(p.cellId),pick=actions.find(a=>a.type==='pick'&&a.actorCellId===cellId);
   return {championId:Number(p.championId)||0,cellId,assignedPosition:String(p.assignedPosition||''),
+   ...(cellId===session.localPlayerCellId&&Number.isSafeInteger(p.spell1Id)&&Number.isSafeInteger(p.spell2Id)?{spell1Id:p.spell1Id,spell2Id:p.spell2Id}:{}),
    ...(Number(p.championPickIntent)>0?{championPickIntent:Number(p.championPickIntent)}:{}),
    ...(pick?{pickState:pick.completed?'locked':'selecting'}:{})};
  });
