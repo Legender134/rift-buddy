@@ -553,7 +553,7 @@ export function mergeClientSession(slots, session, champions, {autoArrange=true,
  for(const p of ordered){
   if(placed.has(p.cellId))continue;
   const champion=byKey.get(Number(p.championId)),declared=CLIENT_POSITION_ROLES[String(p.assignedPosition||'').toUpperCase()],prior=slots.find(s=>s.clientCellId===p.cellId);
-  const preferred=[declared,...(!declared&&prior?[prior.role]:[]),...(roleOrder[champion.id]||[]),...profile(champion).roles,...ROLES.map(r=>r.id)].filter((r,i,a)=>r&&a.indexOf(r)===i);
+  const preferred=[declared,...(!declared&&prior?.champion===champion.id?[prior.role]:[]),...(roleOrder[champion.id]||[]),...profile(champion).roles,...ROLES.map(r=>r.id)].filter((r,i,a)=>r&&a.indexOf(r)===i);
   let target=next.find(s=>s.role===declared&&!Number.isInteger(s.clientCellId)&&(!s.champion||autoArrange&&(s.automaticPosition||!s.locked)));
   if(!target&&autoArrange)target=preferred.map(r=>next.find(s=>s.role===r)).find(s=>s&&!s.champion&&!Number.isInteger(s.clientCellId));
   // Public picks supersede only prospective local suggestions, never a bound pick.

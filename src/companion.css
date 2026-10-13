@@ -174,7 +174,7 @@
 .sidebar-focused .companion-content>.companion-section-head{min-height:34px;margin:0 0 3px}
 .sidebar-focused .companion-content>.companion-section-head h3{margin:0;font-size:calc(14px * var(--text-scale,1))}
 .sidebar-focused .companion-content>.companion-section-head>.btn{min-height:32px;padding:5px 8px;font-size:calc(13px * var(--text-scale,1))}
-.sidebar-focused .companion-candidates .companion-candidate{position:relative;padding:9px 0;border-bottom:1px solid #2c4535}
+.sidebar-focused .companion-candidates .companion-candidate{position:relative;padding:5px 0;border-bottom:1px solid #2c4535}
 .sidebar-focused .companion-candidate .candidate-row{display:flex;gap:6px;padding-right:38px;min-height:42px}
 .sidebar-focused .companion-candidate .candidate-rank{width:12px;min-width:12px;font-size:calc(13px * var(--text-scale,1));color:#91ac9a}
 .sidebar-focused .companion-candidate .candidate-members{flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;min-width:0}
@@ -192,7 +192,7 @@
 .sidebar-focused .candidate-members[data-member-count="4"]>.candidate-member,.sidebar-focused .candidate-members[data-member-count="5"]>.candidate-member{flex-direction:column;text-align:center;gap:3px}
 .sidebar-focused .candidate-members[data-member-count="4"]>.candidate-member>span,.sidebar-focused .candidate-members[data-member-count="5"]>.candidate-member>span{width:100%}
 .sidebar-focused .companion-candidate .candidate-row>.btn{min-height:34px;padding:5px 8px;font-size:calc(13px * var(--text-scale,1));flex:none}
-.sidebar-focused .companion-candidate>.candidate-summary{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;white-space:normal;margin:6px 0 0 18px;font-size:calc(14px * var(--text-scale,1));line-height:1.45;color:#c1d7c8}
+.sidebar-focused .companion-candidate>.candidate-summary{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;white-space:normal;margin:4px 0 0 18px;font-size:calc(14px * var(--text-scale,1));line-height:1.45;color:#c1d7c8}
 .sidebar-focused .candidate-summary .candidate-source-state{display:inline;margin:0;color:#dcc68f;font-size:calc(13px * var(--text-scale,1))}
 .sidebar-focused .companion-content .candidate-details>summary{top:12px;min-width:34px;min-height:34px;padding:5px 1px;font-size:calc(13px * var(--text-scale,1));line-height:1.4}
 .sidebar-focused .companion-candidate .candidate-detail-content{padding:9px 0 0 18px}
@@ -252,7 +252,7 @@
 .sidebar-focused .companion-team-compact .companion-roster-row.in-scope{background:#193e33;border:1px solid #78bba0}
 .sidebar-focused .companion-team-compact .companion-roster-row.out-of-scope{background:#1b2429;border:1px solid #3d4a50}
 .sidebar-focused .companion-roster-row.out-of-scope .companion-roster-hero{color:#a3afb5}
-.sidebar-focused .companion-scope-toggle{position:absolute;right:3px;top:3px;z-index:2;width:22px;height:22px;display:grid;place-items:center;padding:0;border:1px solid #63736e;border-radius:5px;background:#26343a;color:#d1dade;font-size:14px;line-height:1}
+.sidebar-focused .companion-scope-toggle{position:absolute;right:3px;top:3px;z-index:2;width:22px;height:22px;min-height:22px;min-width:22px;display:grid;place-items:center;padding:0;border:1px solid #63736e;border-radius:5px;background:#26343a;color:#d1dade;font-size:14px;line-height:1}
 .sidebar-focused .in-scope .companion-scope-toggle{background:#b5efd3;border-color:#b5efd3;color:#123d30}
 .sidebar-focused .companion-roster-state{left:2px;right:auto;top:2px;font-size:10px;max-width:30px;pointer-events:none}
 .sidebar-focused .companion-summary-title>b{font-size:19px;color:#edf7f3}
@@ -275,3 +275,14 @@
 .ballot-row-actions{margin-top:7px}.ballot-row-actions small{flex:1;font-size:11px}.ballot-row-actions .btn{padding:4px 9px;font-size:12px}.room-ballot-row.conflict{opacity:.72}
 .ballot-support{font-size:12px;color:#9bb5a7;margin:4px 0 8px}
 .sidebar-focused[data-tab="plan"] .companion-persistent:empty{display:none}
+.room-ballot-board>summary,.companion-incoming>summary{font-size:13px;font-weight:650;padding:7px 0;cursor:pointer;color:#bdded0}
+.room-ballot-scroll{max-height:300px;overflow:auto}
+.ballot-heroes>button{background:transparent;color:inherit;padding:2px;display:flex;flex-direction:column;gap:3px;align-items:center}
+.ballot-heroes small{font-size:11px;color:#bbcec5}
+.ballot-plan-summary{font-size:12px;line-height:1.5;margin:5px 0;color:#b5c9bf}
+.task-party-list{padding:0;list-style:none;margin:8px 0 16px}
+.task-party-list>li{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid #30443a}
+.task-party-list small{color:#9db4a7}
+.companion-incoming-wrap{display:flex;flex-wrap:wrap;gap:0 10px}
+.companion-incoming-wrap>details{flex:1;min-width:170px;margin:0 0 6px;padding:0;border:0}
+.companion-incoming-wrap>details[open]{flex-basis:100%}

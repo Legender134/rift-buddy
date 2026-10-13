@@ -5,6 +5,7 @@
 // configuration/strategy snapshots, never credentials or account data.
 
 import {validateCreativePlan} from './creative-plan.mjs';
+import {fingerprint} from './catalog-review.mjs';
 export const ROOM_PROTOCOL=1;
 export const ROLES=['top','jungle','mid','bottom','support'];
 const MODES=['rift','hex','aram'];
@@ -166,7 +167,16 @@ export function validateWelcome(value){
  const members=Array.isArray(value.members)?value.members.map(m=>nick(m?.nick)).filter(Boolean).slice(0,12):[];
  return {kind:'welcome',v:ROOM_PROTOCOL,room,members,...(value.ballots===1?{ballots:1}:{})};
 }
-export const proposalKey=team=>ROLES.map(role=>`${role}:${team.find(s=>s.role===role)?.champion||''}`).join('|');
+// Votes identify the full sanitized proposal, including each member's setup.
+// The same champions with another route must remain a different choice.
+export function proposalKey(value){
+ const proposal=Array.isArray(value)?{lineup:value,mode:'rift'}:value;
+ const clean=sanitizeRoomBallot({version:1,vote:null,proposal})?.proposal;
+ if(!clean)return '';
+ const ordered={...clean,lineup:ROLES.map(role=>({role,champion:clean.lineup.find(s=>s.role===role)?.champion||null})),
+  ...(clean.configurations?{configurations:[...clean.configurations].sort((a,b)=>ROLES.indexOf(a.role)-ROLES.indexOf(b.role))}:{})};
+ return fingerprint(ordered);
+}
 export function sanitizeRoomBallot(value){
  if(!value||value.version!==1)return null;
  const vote=value.vote===null?null:typeof value.vote==='string'&&/^[A-Za-z0-9:|]{1,260}$/.test(value.vote)?value.vote:undefined;

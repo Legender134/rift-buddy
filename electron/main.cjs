@@ -203,6 +203,8 @@ async function boot(){
  const {sanitizeNick}=await import('../src/core/room.mjs');
  const {initialRelayUrl}=await import('../src/core/room-relay.mjs');
  const {deriveAutoRoom,autoRoomNick,autoRoomDecision,decorateAutoRoom,LOBBY_PHASES,AUTO_RETRY_MS}=await import('../src/core/room-auto.mjs');
+ const {createBallotRoundObserver}=await import('../src/core/room-ballot.mjs');
+ const ballotRoundChanged=createBallotRoundObserver();
  let roomNickInUse='';
  // Automatic party room (CHA-71): the lobby identifier the current auto room
  // was derived from, plus the state needed to decide when to stop. Manual
@@ -264,7 +266,7 @@ async function boot(){
   const {sanitizeRoomBallot,proposalKey}=await import('../src/core/room.mjs'),ballot=sanitizeRoomBallot(raw);
   if(service!==roomService||roomService.snapshot().mode==='idle'||roomService.snapshot().room!==snapshot.room)throw Error('房间已变化，请重新选择候选');
   if(!ballot)throw Error('阵容候选已变化，请重新选择');
-  const keys=new Set(snapshot.members.map(m=>m.share?.ballot?.proposal).filter(Boolean).map(p=>proposalKey(p.lineup)));if(ballot.proposal)keys.add(proposalKey(ballot.proposal.lineup));
+  const keys=new Set(snapshot.members.map(m=>m.share?.ballot?.proposal).filter(Boolean).map(p=>proposalKey(p)));if(ballot.proposal)keys.add(proposalKey(ballot.proposal));
   if(ballot.vote&&!keys.has(ballot.vote))throw Error('该候选已撤回，请重新选择');
   const publicShare=roomPublicShare||snapshot.members.find(m=>m.self)?.share||{lineup:[],pick:null,mode:'rift'};
   const result=roomService.publish({...publicShare,ballot});roomBallot=ballot;return decorateRoom(result);
@@ -404,8 +406,9 @@ async function boot(){
  },true);
  const {createClientSync}=await import('../src/core/async-tasks.mjs');
  const status=createClientSync(async(force=false)=>{
-  if(!force&&Date.now()-lastStatus<(latestClient.connected?(latestClient.phase==='ChampSelect'?2000:6000):30000))return latestClient;
+  if(!force&&Date.now()-lastStatus<(latestClient.connected?(latestClient.phase==='ChampSelect'?2000:3000):5000))return latestClient;
   statusTask=(async()=>{const previousPhase=latestClient.phase,previousGame=latestClient.game?.gameId;try{latestClient=await helper.status(state.preferences?.installPath,state.preferences?.partyIds);}catch{latestClient={connected:false,phase:'Offline',message:'连接暂不可用，手动选人可用'};}
+   if(ballotRoundChanged(latestClient)){roomBallot=null;if(roomService&&roomService.snapshot().mode!=='idle'){try{const share=roomPublicShare||roomService.snapshot().members.find(m=>m.self)?.share||{lineup:[],pick:null};const {ballot,...clean}=share;roomService.publish(clean);}catch{}}}
    observePreparation();lastStatus=Date.now();if(latestClient.connected&&(!['InProgress','Reconnect'].includes(latestClient.phase)||previousGame&&latestClient.game?.gameId&&previousGame!==latestClient.game.gameId))latestLive=null;
    const draftContext=reconcileClientDraft(state.draft,publicClientGameId(latestClient),state.guide?.match?.gameId);if(draftContext.changed)await saveCurrentState(current=>({...current,draft:reconcileClientDraft(current.draft,publicClientGameId(latestClient),current.guide?.match?.gameId).draft}));
    currentGame.observe(latestClient,data.champions,state.draft?.slots||[]);
