@@ -10,7 +10,7 @@ test('every room IPC channel exposed by preload has a guarded handler in main',a
  const main=await fs.readFile(new URL('../electron/main.cjs',import.meta.url),'utf8');
  const app=await fs.readFile(new URL('../src/app.mjs',import.meta.url),'utf8');
  const exposed=[...preload.matchAll(/ipcRenderer\.invoke\('([a-z-]+)'/g)].map(m=>m[1]).filter(name=>name.startsWith('room-'));
- assert.deepEqual(exposed.sort(),['room-addresses','room-host','room-join','room-leave','room-publish','room-relay','room-scan','room-status']);
+ assert.deepEqual(exposed.sort(),['room-addresses','room-ballot','room-host','room-join','room-leave','room-publish','room-relay','room-scan','room-status']);
  for(const channel of exposed)assert.match(main,new RegExp(`guard\\('${channel}'`),`${channel} is exposed but not guarded in main`);
  assert.match(main,/publishWindows\('room-update'/,'main must broadcast room updates to both app windows');
  assert.match(preload,/ipcRenderer\.on\('room-update'/,'preload must subscribe to room updates');

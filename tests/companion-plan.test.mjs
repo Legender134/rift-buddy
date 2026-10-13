@@ -34,7 +34,7 @@ test('only the local unselected intent prepares a labeled plan without creating 
  const intent=companionPickIntent(client,data.champions,createSlots());
  const plan={preview:true,intent:true,positionKnown:intent.positionKnown,selection:intent.selection,build:build(intent.selection)};
  const html=companionView({data,client,slots:createSlots(),unassigned:[],scope:'solo',soloRole:'',style:'fun',tab:'plan',results:[],plan});
- assert.match(html,/正在预选/);assert.match(html,/位置未确认/);assert.match(html,/data-companion-field="rune"/);assert.doesNotMatch(html,/data-action="my-runes"|data-action="guide-current"/);
+ assert.match(html,/当前完整配置/);assert.match(html,/预选位置<select/);assert.match(html,/data-companion-field="rune"/);assert.doesNotMatch(html,/data-action="my-runes"|data-action="guide-current"/);
 });
 
 test('inline rune and equipment choices stay independent and survive preparation recall',()=>{
@@ -176,7 +176,7 @@ test('configuration keeps the actual receipt without recommendation controls and
  const statuses=new Map([[key,{complete:true,steps}]]),taskControls=preparationProgressView({data,client,plan:prepared,statuses,available:true,compact:true});
  const props={data,client,slots:createSlots(),unassigned:[],scope:'solo',soloRole:'top',style:'fun',results:[],preparation:prepared,taskPlan:prepared,taskControls};
  const plan=companionView({...props,tab:'plan'}),persistent=plan.slice(plan.indexOf('<div class="companion-persistent"'),plan.indexOf('<main class="companion-content"'));
- assert.equal((persistent.match(/data-preparation-step=/g)||[]).length,4);assert.doesNotMatch(persistent,/data-action="draft-style"|data-action="draft-scope"/);
+ assert.equal((persistent.match(/data-preparation-step=/g)||[]).length,0,'Configuration starts with the actual build, not a duplicate hero/receipt card');assert.doesNotMatch(persistent,/data-action="draft-style"|data-action="draft-scope"/);
  const unknown=companionView({...props,tab:'plan',soloRole:'',preparation:{...prepared,own:{...prepared.own,positionKnown:false}}});assert.match(unknown,/<select id="solo-role"/);assert.doesNotMatch(unknown,/<select id="solo-role"[^>]*disabled/);
  assert.equal((companionView({...props,tab:'recommend',taskComparing:true}).match(/data-preparation-step=/g)||[]).length,0);
  assert.equal((companionView({...props,tab:'recommend',taskComparing:false}).match(/data-preparation-step=/g)||[]).length,4,'Returning to the plan restores the saved receipt');

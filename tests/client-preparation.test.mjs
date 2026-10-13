@@ -31,6 +31,11 @@ test('explicit client preparation previews only own pick and verifies actual run
  const f=fixture(),before=structuredClone(f.value),result=await f.run();assert.equal(result.complete,true);assert(Object.values(result.steps).every(s=>s.status==='done'));assert.equal(f.action.completed,false);assert.equal(f.own.championPickIntent,22);assert.equal(result.steps.runes.pageId,11);assert.equal(f.items,1);assert.deepEqual(f.pages[0],{id:2,current:false,isEditable:false});assert.deepEqual(f.value,before);
  assert.deepEqual(f.calls.filter(c=>c.method==='PATCH').map(c=>c.route),['/lol-champ-select/v1/session/actions/4','/lol-champ-select/v1/session/my-selection']);assert(!f.calls.some(c=>c.body?.completed===true));
 });
+test('explicit lane claim only preselects a representative, leaves runes/spells/items and lock untouched',async()=>{
+ const f=fixture();f.value.preselectOnly=true;const before=structuredClone(f.pages),spells=[f.own.spell1Id,f.own.spell2Id];const result=await f.run();
+ assert.equal(result.preselectOnly,true);assert.equal(result.steps.hover.status,'done');assert.equal(f.action.completed,false);assert.equal(f.items,0);assert.deepEqual(f.pages,before);assert.deepEqual([f.own.spell1Id,f.own.spell2Id],spells);
+ assert.deepEqual(f.calls.filter(c=>c.method!=='GET').map(c=>c.route),['/lol-champ-select/v1/session/actions/4']);
+});
 test('locked same hero applies configuration without selecting or unlocking, locked other hero rejects before writes',async()=>{
  const f=fixture({locked:true});assert.equal((await f.run()).complete,true);assert(!f.calls.some(c=>c.route.includes('/actions/')));assert.equal(f.action.completed,true);
  const other=fixture({locked:true});other.own.championId=1;other.value.context.championId=1;await assert.rejects(other.run(),/锁定其他英雄/);assert(!other.calls.some(c=>c.method!=='GET'));

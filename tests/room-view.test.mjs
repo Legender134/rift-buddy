@@ -218,7 +218,7 @@ test('a dropped relay link says so instead of pretending the room is fine',()=>{
 test('the automatic party room shows its derived code, pin and honest fallbacks',()=>{
  const idle=roomPanel({room:null,transport:'relay',champ});
  assert.match(idle,/id="room-auto"/);assert.doesNotMatch(idle,/id="room-auto" checked/);
- assert.match(idle,/自动连接组队房间/);assert.match(idle,/默认关闭/);
+ assert.match(idle,/自动连接组队房间/);assert.match(idle,/默认开启/);
  assert.match(idle,/data-action="room-relay-join"/);
  const on=roomPanel({room:null,transport:'relay',autoEnabled:true,champ});
  assert.match(on,/id="room-auto" checked/);assert.doesNotMatch(on,/当前关闭/);

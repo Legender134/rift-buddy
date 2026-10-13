@@ -30,7 +30,7 @@ test('lobby auth failure disconnects, while unavailable optional lobby does not 
  const f=fixture();f.set({lobby:Object.assign(Error('mock no access'),{status:401})});assert.equal((await clientSnapshot('',f.mock)).connected,false);
  f.set({lobby:Object.assign(Error('optional missing'),{status:404})});const c=await clientSnapshot('',f.mock);assert.equal(c.connected,true);assert.equal(c.party.status,'unknown');
 });
-test('the lobby key and own public name appear only while the pre-match evidence is fresh',async()=>{
+test('the lobby key requires fresh pre-match evidence; the current own public name survives into selection',async()=>{
  const f=fixture();
  const lobby=await clientSnapshot('',f.mock);
  assert.equal(lobby.party.key,'party-3ee56b17');
@@ -41,7 +41,7 @@ test('the lobby key and own public name appear only while the pre-match evidence
  assert.ok(!JSON.stringify(lobby).includes('11111111-2222'),'a credential that looks like a party id must not surface either');
  f.set({phase:'ChampSelect'});
  assert.equal((await clientSnapshot('',f.mock)).party.key,undefined);
- assert.equal((await clientSnapshot('',f.mock)).own,undefined);
+ assert.deepEqual((await clientSnapshot('',f.mock)).own,{riotId:'Player11#CN1'});
  f.set({phase:'ReadyCheck',lobby:Object.assign(Error('optional unavailable'),{status:404}),at:1000+120001});
  assert.equal((await clientSnapshot('',f.mock)).party.key,undefined,'stale evidence must not derive a room');
 });

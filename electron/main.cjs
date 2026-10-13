@@ -208,7 +208,8 @@ async function boot(){
  // was derived from, plus the state needed to decide when to stop. Manual
  // rooms never set roomAutoKey and are never touched by the poll below.
  let roomAutoKey=null,roomAutoCode=null,roomAutoPin=null,roomAutoBlockedKey=null,roomAutoCancelledKey=null,roomAutoFailedKey=null,roomAutoFailedUntil=0,roomAutoError='',roomAutoGoneSince=null,roomAutoOfflineSince=null,roomAutoTask=Promise.resolve(),roomAutoRunning=false,roomAutoRequested=false;
- const decorateRoom=snapshot=>decorateAutoRoom(snapshot,{auto:!!roomAutoKey&&!!roomAutoPin,pin:roomAutoPin,error:roomAutoError,retryAt:roomAutoFailedUntil||null});
+ let roomBallot=null,roomPublicShare=null,ballotRoom='';
+ const decorateRoom=snapshot=>{const identity=snapshot?.mode==='idle'?'':snapshot?.room||'';if(identity!==ballotRoom){roomBallot=null;roomPublicShare=null;ballotRoom=identity;}return decorateAutoRoom(snapshot,{auto:!!roomAutoKey&&!!roomAutoPin,pin:roomAutoPin,error:roomAutoError,retryAt:roomAutoFailedUntil||null});};
  // The sandboxed renderer never needs the lobby identifier or the identity
  // used as the room nickname: only this process derives the room from them.
  const forRenderer=client=>{if(!client)return client;const {own,party,...rest}=client,{key,...cleanParty}=party||{};return {...rest,...(party?{party:cleanParty}:{})};};
@@ -256,7 +257,18 @@ async function boot(){
   else if(roomService){roomService.leave();roomAutoError='';roomAutoFailedKey=null;roomAutoFailedUntil=0;}
   return roomService?decorateRoom(roomService.snapshot()):null;
  });
- guard('room-publish',share=>{if(!roomService||roomService.snapshot().mode==='idle')throw Error('尚未创建或加入房间');return decorateRoom(roomService.publish(share));});
+ guard('room-publish',share=>{if(!roomService||roomService.snapshot().mode==='idle')throw Error('尚未创建或加入房间');const {ballot,...publicShare}=share||{};const result=roomService.publish({...publicShare,...(roomBallot?{ballot:roomBallot}:{})});roomPublicShare=publicShare;return decorateRoom(result);});
+ guard('room-ballot',async raw=>{
+  const service=roomService,snapshot=service?.snapshot();if(!snapshot||snapshot.mode==='idle')throw Error('请先连接房间');
+  if(!snapshot.ballots)throw Error('当前中继尚未支持投票，更新中继后重新连接即可使用');
+  const {sanitizeRoomBallot,proposalKey}=await import('../src/core/room.mjs'),ballot=sanitizeRoomBallot(raw);
+  if(service!==roomService||roomService.snapshot().mode==='idle'||roomService.snapshot().room!==snapshot.room)throw Error('房间已变化，请重新选择候选');
+  if(!ballot)throw Error('阵容候选已变化，请重新选择');
+  const keys=new Set(snapshot.members.map(m=>m.share?.ballot?.proposal).filter(Boolean).map(p=>proposalKey(p.lineup)));if(ballot.proposal)keys.add(proposalKey(ballot.proposal.lineup));
+  if(ballot.vote&&!keys.has(ballot.vote))throw Error('该候选已撤回，请重新选择');
+  const publicShare=roomPublicShare||snapshot.members.find(m=>m.self)?.share||{lineup:[],pick:null,mode:'rift'};
+  const result=roomService.publish({...publicShare,ballot});roomBallot=ballot;return decorateRoom(result);
+ });
  guard('room-scan',()=>ensureRoom(state.preferences.roomNick).scan());
  guard('room-addresses',()=>{const list=[];for(const [name,items] of Object.entries(os.networkInterfaces()))for(const item of items||[])if(item.family==='IPv4'&&!item.internal)list.push({name,address:item.address});return list;});
  // Runs after each client poll, never inside it: a relay handshake can take
@@ -418,6 +430,17 @@ async function boot(){
  };
  guard('client-status',async force=>forRenderer(await status(force)));
  guard('authorize-client',async()=>{await helper.ensure(state.preferences?.installPath);return forRenderer(await status(true));});
+ let launchingGame=false;
+ guard('launch-game',async()=>{
+  if(launchingGame)throw Error('正在启动，请稍候');launchingGame=true;
+  try{const current=await status(true);if(current.connected)return {connected:true};
+   const {launchGame}=await import('../services/game-launcher.mjs');
+   const result=await launchGame(state.preferences);
+   if(state.preferences.autoSync===false)await saveCurrentState(s=>({...s,preferences:{...s.preferences,autoSync:true}}));
+   return result;
+  }finally{launchingGame=false;}
+ });
+ guard('choose-launch-path',async()=>{const result=await dialog.showOpenDialog(win,{title:'选择 WeGame 英雄联盟或客户端启动程序',properties:['openFile'],filters:[{name:'启动程序',extensions:['exe']}]});return result.canceled?null:result.filePaths[0];});
  guard('refresh-build',async(id,role,source)=>{const selected=source===undefined?normalizeBuildSource(data.buildSource):source,key=buildSourcePendingKey(data.patch,id,role,selected),result=await refreshBuild(id,role,selected);guideRefresh.set(key,{pending:false});guide.publish();return result;});
  guard('refresh-pairs',(members,source)=>refreshPairs(members,source));
  guard('refresh-rankings',source=>refreshRankings(source));

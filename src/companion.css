@@ -246,3 +246,32 @@
 .sidebar-focused .companion-edit-section{margin:5px 0;padding:0;border:0;border-top:1px solid #2d4536;background:transparent;border-radius:0;font-size:calc(13px * var(--text-scale,1));line-height:1.6}
 .sidebar-focused .companion-edit-section>summary{min-height:34px;padding:7px 0;font-size:calc(14px * var(--text-scale,1));line-height:1.5;cursor:pointer;color:#b8ddc5}
 .sidebar-focused .companion-edit-section[open]{padding-bottom:10px}
+
+/* Pregame: lane ownership and configuration hierarchy. */
+.sidebar-focused .companion-roster-row{position:relative}
+.sidebar-focused .companion-team-compact .companion-roster-row.in-scope{background:#193e33;border:1px solid #78bba0}
+.sidebar-focused .companion-team-compact .companion-roster-row.out-of-scope{background:#1b2429;border:1px solid #3d4a50}
+.sidebar-focused .companion-roster-row.out-of-scope .companion-roster-hero{color:#a3afb5}
+.sidebar-focused .companion-scope-toggle{position:absolute;right:3px;top:3px;z-index:2;width:22px;height:22px;display:grid;place-items:center;padding:0;border:1px solid #63736e;border-radius:5px;background:#26343a;color:#d1dade;font-size:14px;line-height:1}
+.sidebar-focused .in-scope .companion-scope-toggle{background:#b5efd3;border-color:#b5efd3;color:#123d30}
+.sidebar-focused .companion-roster-state{left:2px;right:auto;top:2px;font-size:10px;max-width:30px;pointer-events:none}
+.sidebar-focused .companion-summary-title>b{font-size:19px;color:#edf7f3}
+.sidebar-focused .companion-summary-section{font-size:14px;font-weight:650;color:#bfced0}
+.sidebar-focused .companion-summary-section .adjust-button{padding:4px 12px;border:1px solid #91c5b1;border-radius:6px;background:#264a40;color:#d1f3e6;font-size:13px;font-weight:700}
+.sidebar-focused .companion-edit-section>summary{font-weight:700;color:#e5f3ef;font-size:16px}
+.sidebar-focused .companion-core-options>.companion-comparisons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px 0}
+.sidebar-focused .companion-core-options .companion-option{min-width:0;padding:8px 6px;display:flex;flex-direction:column;gap:5px;font-size:12px}
+.sidebar-focused .companion-core-options .companion-option-items{display:flex;gap:3px}
+.sidebar-focused .companion-core-options .companion-option-items img{width:25px;height:25px}
+.sidebar-focused .companion-core-options .companion-option small{font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+.sidebar-focused .companion-core-options h4{margin-top:9px;font-size:14px}
+.sidebar-focused .candidate-fit{display:flex;align-items:center;justify-content:flex-end;gap:10px;font-size:12px;color:#b2c9bc;margin:2px 0}
+.sidebar-focused .candidate-fit .btn{padding:1px 8px;min-height:25px}
+.room-ballot-board{border-bottom:1px solid #3b5049;margin-bottom:12px;padding-bottom:10px}
+.room-ballot-board>header,.ballot-row-top,.ballot-row-actions{display:flex;align-items:center;gap:8px;justify-content:space-between}
+.room-ballot-board>p,.ballot-support p{font-size:13px;line-height:1.5;margin:8px 0;color:#adbeb5}
+.room-ballot-row{padding:9px 0;border-bottom:1px solid #293f35}
+.ballot-row-top{font-size:12px}.ballot-heroes{display:flex;gap:4px;flex:1}.ballot-heroes img{width:30px;height:30px}
+.ballot-row-actions{margin-top:7px}.ballot-row-actions small{flex:1;font-size:11px}.ballot-row-actions .btn{padding:4px 9px;font-size:12px}.room-ballot-row.conflict{opacity:.72}
+.ballot-support{font-size:12px;color:#9bb5a7;margin:4px 0 8px}
+.sidebar-focused[data-tab="plan"] .companion-persistent:empty{display:none}

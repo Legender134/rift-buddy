@@ -333,3 +333,16 @@ test('both room reference entry points make other roles and unknown ownership re
   }
  }
 });
+
+test('an explicit different candidate replaces the previous own hover without invalidating its newly adopted plan',async()=>{
+ const current=client();current.session.myTeam[0].championPickIntent=hero('Ashe').key;
+ const {context:c,calls}=setup({slots:createSlots(),current,incoming:structuredClone(current),results:[]});
+ c.creativePlanCompatible=creativePlanCompatible;c.currentCombo=currentCombo;c.comboContextKnown=comboContextKnown;c.draftComparing=true;
+ c.saved.preferences.pool=['Ahri','Jinx','Braum'];c.saved.preferences.poolMode='only';
+ vm.runInContext(extract('function reconcileCreativePlan(){','let currentWindowInfo='),c);
+ c.results=recommend(c.recommendationInput());c.resultsSignature=recommendationKey(c.recommendationInput());
+ assert.ok(c.results.length);assert.equal(c.results[0].slots.find(s=>s.role==='bottom').champion,'Jinx');
+ const el={dataset:{id:'Jinx',role:'bottom',resultIndex:'0'},hasAttribute:name=>name==='data-result-index'};
+ await c.prepareCandidate(el);
+ assert.equal(calls.prepared.length,1);assert.equal(calls.prepared[0].champion,'Jinx');assert.ok(c.activeCreativePlan);
+});

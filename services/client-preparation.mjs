@@ -21,7 +21,7 @@ export function validateClientPreparation(value,data){
  if(itemSet.associatedChampions[0]!==champion.key||itemSet.associatedMaps[0]!==11||itemSet.uid!==`rift-buddy-${champion.key}-${value.role}-rift`)throw Error('装备集与当前英雄、位置不一致');
  return {champion:champion.id,championId:champion.key,role:value.role,mode:'rift',context,sessionGameId,
   page:{name:champion.name,primaryStyleId:value.page.primaryStyleId,subStyleId:value.page.subStyleId,selectedPerkIds:[...value.page.selectedPerkIds]},
-  summoners:[...summoners],preserveFlashSlot:value.preserveFlashSlot!==false,itemSet};
+  summoners:[...summoners],preserveFlashSlot:value.preserveFlashSlot!==false,preselectOnly:value.preselectOnly===true,itemSet};
 }
 export async function prepareClientSelection({value,data,installPath='',ownedPageId},{discover=discoverClient,request=lcuRequest,writeRunes=writeRunePage,writeItems=importItemSet}={}){
  const selected=validateClientPreparation(value,data),auth=await discover(installPath);
@@ -85,6 +85,7 @@ export async function prepareClientSelection({value,data,installPath='',ownedPag
   const after=await read();
   if(after.context.cellId!==initial.context.cellId||after.context.assignedPosition!==initial.context.assignedPosition||after.action.id!==initial.action.id||!targetMatches(after))throw Error('客户端未确认目标英雄，已停止配置；请在客户端核对预选');
   expected=after.context;confirmedTarget=true;result.steps.hover={status:'done',locked:after.action.completed===true};
+  if(selected.preselectOnly){for(const key of ['runes','spells','items'])result.steps[key]={status:'skipped'};return {...result,preselectOnly:true,complete:true};}
   step='runes';await ensure();
   const rune=await writeRunes({page:selected.page,context:expected,ownedPageId,installPath,trees:data.runes},{discover:async()=>auth,request:runeRequest});
   result.steps.runes={status:'done',pageId:rune.pageId,name:rune.name};

@@ -45,7 +45,7 @@ async function run(){
  require(path.join(base,'electron/main.cjs'));
  let main,side;await until(()=>{main=windows.find(w=>!w.isDestroyed()&&w.webContents.getURL().endsWith('/src/index.html'));return main;},'Main window missing');diagnosticMain=main;
  const js=(window,code)=>window.webContents.executeJavaScript(code,true).catch(error=>{throw Error('Failed expression '+code,{cause:error});});
- const click=(window,selector)=>js(window,'(()=>{const el=document.querySelector('+JSON.stringify(selector)+');if(!el||el.disabled)throw Error('+JSON.stringify('Missing or disabled control '+selector)+');el.click();})()');
+ const click=(window,selector)=>until(()=>js(window,'(()=>{const el=document.querySelector('+JSON.stringify(selector)+');if(!el||el.disabled)return false;el.click();return true;})()'),'Enabled control '+selector);
  const settled=()=>until(()=>js(side,'!document.querySelector(".companion-shell")?.textContent.includes("正在预选并配置")'),'Preparation renderer did not settle');
  const event=window=>({sender:window.webContents,senderFrame:window.webContents.mainFrame});
  const state=async()=>structuredClone((await handlers.get('bootstrap')(event(main))).state);
@@ -59,7 +59,7 @@ async function run(){
  await until(()=>js(side,'!!document.querySelector('+JSON.stringify(heroButton)+')'),'Galio recommendation missing');
  assert.equal((await state()).preferences.clickPrepare,true);assert.equal(attempts.length,0);
  const itemIds=value=>value.itemSet.blocks.flatMap(block=>block.items.map(item=>Number(item.id)));
- const ownPlan=async()=>{await click(side,'[data-action=companion-tab][data-tab=plan]');await until(()=>js(side,'!!document.querySelector("[data-action=client-prepare][data-preparation-view=task]")'),'My plan controls missing');return js(side,'JSON.parse(document.querySelector("[data-client-preparation-fingerprint]").dataset.clientPreparationFingerprint)[0]');};
+ const ownPlan=async()=>{await click(side,'[data-action=companion-tab][data-tab=plan]');await until(()=>js(side,'!!document.querySelector("[data-action=client-prepare][data-preparation-view=companion]")'),'My plan controls missing');return js(side,'JSON.parse(document.querySelector("[data-client-preparation-fingerprint]").dataset.clientPreparationFingerprint)[0]');};
  const mockedRuneWrites=()=>writes.filter(w=>w.route.startsWith('/lol-perks/v1/pages/')).length;
  if(process.env.RIFT_BUDDY_STANDALONE_ITEMS==='1'){
   const prepared=await ownPlan();assert.equal(prepared.champion,'Galio');
@@ -70,17 +70,17 @@ async function run(){
   await click(main,'.slot-config[data-id=Galio][data-role=mid]');await until(()=>js(main,'!!document.querySelector(".drawer [data-action=import-item-set]")'),'Own drawer missing');
   await click(main,'.drawer [data-action=import-item-set]');
   for(const win of [main,side]){
-   await until(()=>js(win,'document.querySelector(".preparation-task [data-preparation-step=items]")?.dataset.stepStatus==="done"'),'Independent item receipt missing');
-   assert.equal(await js(win,'document.querySelectorAll(".preparation-task [data-step-status=done]").length'),1,'Item-only write implied other steps completed');
+   await until(()=>js(win,'document.querySelector(":is(.preparation-task,.client-preparation-result) [data-preparation-step=items]")?.dataset.stepStatus==="done"'),'Independent item receipt missing');
+   assert.equal(await js(win,'document.querySelectorAll(":is(.preparation-task,.client-preparation-result) [data-step-status=done]").length'),1,'Item-only write implied other steps completed');
    assert.match(await js(win,'document.querySelector(".item-set-status")?.textContent||""'),/已写入|已更新/);
   }
   assert.equal(attempts.length,0);assert.equal(writes.length,0,'Independent item import wrote to client selection or runes');
   const previousSide=side;previousSide.destroy();await click(main,'[data-action=close]');await click(main,'[data-action=companion-attach]');
   await until(()=>{side=windows.find(w=>w!==previousSide&&!w.isDestroyed()&&w.webContents.getURL().includes('surface=companion'));return side;},'Sidebar did not rebuild');diagnosticSide=side;
-  await until(()=>js(side,'!!document.querySelector(".companion-shell")'),'Rebuilt sidebar UI missing');await ownPlan();await until(()=>js(side,'document.querySelector(".preparation-task [data-preparation-step=items]")?.dataset.stepStatus==="done"'),'Item-only receipt was lost on rebuild');
-  assert.equal(await js(side,'document.querySelectorAll(".preparation-task [data-step-status=done]").length'),1);
+  await until(()=>js(side,'!!document.querySelector(".companion-shell")'),'Rebuilt sidebar UI missing');await ownPlan();await until(()=>js(side,'document.querySelector(":is(.preparation-task,.client-preparation-result) [data-preparation-step=items]")?.dataset.stepStatus==="done"'),'Item-only receipt was lost on rebuild');
+  assert.equal(await js(side,'document.querySelectorAll(":is(.preparation-task,.client-preparation-result) [data-step-status=done]").length'),1);
   gameId++;intent=0;await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');
-  await until(()=>js(side,'!document.querySelector(".preparation-task [data-step-status=done]")'),'Item receipt leaked into next game');
+  await until(()=>js(side,'!document.querySelector(":is(.preparation-task,.client-preparation-result) [data-step-status=done]")'),'Item receipt leaked into next game');
   assert.equal(writes.length,0);console.log('PASS independent item import: both windows, adopted plan before hover, old-hover isolation, snapshot replay, new-game reset; all client writes mocked and none issued');app.quit();return;
  }
  if(unadopted){
@@ -121,14 +121,14 @@ async function run(){
   // Only the simulated player confirms Galio. Both real renderers must
   // display the same full preparation even with every teammate pick unknown.
   picked=intent;intent=0;completed=true;await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');
-  await until(()=>js(main,'document.querySelector(".preparation-task [data-preparation-step=runes]")?.dataset.stepStatus==="done"'),'Confirming the unadopted hero lost the rune confirmation');
+  await until(()=>js(main,'document.querySelector(":is(.preparation-task,.client-preparation-result) [data-preparation-step=runes]")?.dataset.stepStatus==="done"'),'Confirming the unadopted hero lost the rune confirmation');
   assertConfiguration(await ownPlan(),'Sidebar after player confirmation');await click(main,'[data-action=task-edit]');
   const confirmed=await js(main,'JSON.parse(document.querySelector("[data-client-preparation-fingerprint]").dataset.clientPreparationFingerprint)[0]');assertConfiguration(confirmed,'Main drawer after player confirmation');await click(main,'[data-action=close]');
   const confirmedState=await assertStoredSolo();assert.ok(confirmedState.draft.slots.filter(s=>s.role!=='mid').every(s=>!Number.isInteger(s.clientCellId)),'Proposed teammate heroes must not become confirmed public picks');assert.ok(rawSession().myTeam.filter(p=>p.cellId!==2).every(p=>p.championId===0));assert.equal(writes.length,afterClick,'Player confirmation performed an application write');
   await click(main,'[data-action=navigate][data-route=favorites]');await click(main,'[data-action=navigate][data-route=draft]');await click(side,'[data-action=companion-tab][data-tab=recommend]');assertConfiguration(await ownPlan(),'Navigation after confirmation');assert.equal(writes.length,afterClick,'Navigation reapplied the unadopted configuration');await assertStoredSolo();
   const stale=structuredClone(attempts[0]);gameId++;picked=0;intent=0;completed=false;
   await assert.rejects(handlers.get('prepare-selection')(event(side),stale),/选人会话已变化/);assert.equal(writes.length,afterClick,'Previous-game unadopted click performed a write');
-  await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');await until(async()=>String((await state()).draft.clientGameId)===String(gameId),'New selection did not replace unadopted draft context');await until(()=>js(main,'!(document.querySelector(".preparation-task [data-preparation-step=runes]")?.dataset.stepStatus==="done")'),'Previous unadopted rune confirmation survived a new session');await assertStoredSolo();
+  await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');await until(async()=>String((await state()).draft.clientGameId)===String(gameId),'New selection did not replace unadopted draft context');await until(()=>js(main,'!(document.querySelector(":is(.preparation-task,.client-preparation-result) [data-preparation-step=runes]")?.dataset.stepStatus==="done")'),'Previous unadopted rune confirmation survived a new session');await assertStoredSolo();
   const imported=JSON.parse(await fs.readFile(path.join(root,'client-fixture','Game','Config','Global','Recommended','rift-buddy-3-mid-rift.json')));assert.deepEqual(imported.blocks,expected.itemSet.blocks);
   assert.equal(attempts.length,1);assert.equal(results.length,1);assert.equal(mockedRuneWrites(),1);assert.ok(writes.filter(w=>w.route.includes('/session/actions/')).every(w=>w.body.completed===false));assert.ok(windows.every(w=>w.isDestroyed()||!w.isVisible()));
   const report={passed:true,source,archiveSha256:release?.archiveSha256||null,variant:'unadopted',acceptedPlanId:null,candidatePlanId:clickedConfiguration.comboId,candidateMembers:candidate.members,oldSoloConfiguration:fixture.oldSoloValue,defaultHeroClickPrepares:true,candidateClickDoesNotAdopt:true,teammateChampionsRemainUnknown:true,hoverRemainsUnlocked:true,sessionIdOverridesZeroAndPreviousGameflow:true,sameFullConfigurationAfterHover:true,sameConfigurationAfterPlayerConfirm:true,oldSoloConfigurationPreserved:true,playerConfirmationDoesNotWrite:true,navigationDoesNotWrite:true,previousSessionRejectedBeforeWrites:true,realGame:'UNPROVEN',realRuneWrites:0,mockedRuneWrites:mockedRuneWrites(),allNetworkMocked:true,requests,attempts,results,writes};
@@ -150,7 +150,7 @@ async function run(){
  // Gameflow is still the previous game. It cannot clear the accepted lineup
  // or the current click's configuration when the session ID is authoritative.
  gameflowId=470000;await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');assert.equal((await state()).draft.creativePlan.id,originalPlan.id);
- await ownPlan();await click(side,'[data-action=client-prepare][data-preparation-view=task]');await until(()=>results.length===2,'Second preparation missing');assert.equal(results[1].complete,true);await settled();
+ await ownPlan();await click(side,'[data-action=client-prepare][data-preparation-view=companion]');await until(()=>results.length===2,'Second preparation missing');assert.equal(results[1].complete,true);await settled();
  assert.deepEqual(attempts[1].page.selectedPerkIds,perks);assert.deepEqual(attempts[1].itemSet.blocks,attempts[0].itemSet.blocks);assert.deepEqual(attempts[1].summoners,attempts[0].summoners);
  // Edit D/F in one renderer; the other renderer must retain the same combo
  // and its equipment while observing the explicit personal choice.
@@ -165,7 +165,7 @@ async function run(){
  await click(main,'[data-action=build-summoner][data-field=summoner-swap]');await until(async()=>{const s=await state(),p=s.preparations.find(p=>p.id==='Galio'&&p.comboId===originalPlan.id);return p?.runeId===remoteRune&&JSON.stringify(p.summonerIds)===JSON.stringify(attempts[0].summoners);},'Main local D/F save rolled back the remote rune choice');
  await until(async()=>{const value=await ownPlan();return value.page.selectedPerkIds[0]===8230&&JSON.stringify(value.summoners)===JSON.stringify(attempts[0].summoners);},'Pending sidebar hover did not accept another window personal edit');await click(main,'[data-action=close]');
  await js(side,'(()=>{const el=document.querySelector("[data-companion-field=rune]");el.value="curated-aftershock";el.dispatchEvent(new Event("change",{bubbles:true}));})()');await click(side,'[data-action=companion-summoner][data-field=summoner-swap]');await until(async()=>{const value=await ownPlan();return value.page.selectedPerkIds[0]===8439&&JSON.stringify(value.summoners)===JSON.stringify(swapped);},'Could not restore the curated configuration with personal D/F');
- await ownPlan();await click(side,'[data-action=client-prepare][data-preparation-view=task]');await until(()=>results.length===3,'Swapped preparation missing');assert.equal(results[2].complete,true);await settled();assert.deepEqual(attempts[2].summoners,swapped);assert.deepEqual(attempts[2].page.selectedPerkIds,perks);assert.deepEqual(attempts[2].itemSet.blocks,attempts[0].itemSet.blocks);
+ await ownPlan();await click(side,'[data-action=client-prepare][data-preparation-view=companion]');await until(()=>results.length===3,'Swapped preparation missing');assert.equal(results[2].complete,true);await settled();assert.deepEqual(attempts[2].summoners,swapped);assert.deepEqual(attempts[2].page.selectedPerkIds,perks);assert.deepEqual(attempts[2].itemSet.blocks,attempts[0].itemSet.blocks);
  // The main draft avatar is an explicit hero click too. Configuration buttons
  // remain read-only, while this click must prepare the shared personal plan.
  await click(main,'.champ-pick[data-id=Galio][data-role=mid][data-prepare-click=true]');await until(()=>results.length===4,'Main avatar click did not prepare by default');assert.equal(results[3].complete,true);await until(()=>js(main,'!!document.querySelector("[data-client-preparation-fingerprint]")&&!document.querySelector("[data-action=client-prepare][data-preparation-view=build]")?.disabled'),'Main avatar preparation did not become idle');
@@ -178,7 +178,7 @@ async function run(){
  await click(main,'[data-action=close]');assert.equal(writes.length,beforeReadonly);
  const previousSide=side;previousSide.destroy();await click(main,'[data-action=companion-attach]');
  await until(()=>{side=windows.find(w=>w!==previousSide&&!w.isDestroyed()&&w.webContents.getURL().includes('surface=companion'));return side;},'Native sidebar did not rebuild');diagnosticSide=side;
- await until(()=>js(side,'document.querySelectorAll(".preparation-task [data-step-status=done]").length===4'),'Rebuilt sidebar lost current four-step receipts');
+ await until(()=>js(side,'document.querySelectorAll(":is(.preparation-task,.client-preparation-result) [data-step-status=done]").length===4'),'Rebuilt sidebar lost current four-step receipts');
  assert.equal(writes.length,beforeReadonly,'Rebuilding a sidebar reapplied the configuration');
  // Simulate an alternate route accepted in the other window. Its different
  // identity must replace the old pending hover configuration through onState.
@@ -188,12 +188,12 @@ async function run(){
  const restored=structuredClone(routeAccepted.state);restored.draft.creativePlan=originalPlan;await save(mainEvent,restored,routeAccepted.state);await until(async()=>{const value=await ownPlan();return value.page.selectedPerkIds[0]===8439&&JSON.stringify(value.summoners)===JSON.stringify(swapped);},'Returning to the original route lost its personal choices');
  // Only the fixture's simulated player confirms the selection.
  picked=intent;intent=0;completed=true;await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');
- await until(()=>js(main,'document.querySelector(".preparation-task [data-preparation-step=runes]")?.dataset.stepStatus==="done"'),'Confirming the same hero lost the rune confirmation');
+ await until(()=>js(main,'document.querySelector(":is(.preparation-task,.client-preparation-result) [data-preparation-step=runes]")?.dataset.stepStatus==="done"'),'Confirming the same hero lost the rune confirmation');
  await click(main,'[data-action=task-edit]');const confirmedPlan=await js(main,'JSON.parse(document.querySelector("[data-client-preparation-fingerprint]").dataset.clientPreparationFingerprint)[0]');assert.deepEqual(confirmedPlan.summoners,swapped);assert.deepEqual(confirmedPlan.page.selectedPerkIds,perks);assert.deepEqual(confirmedPlan.itemSet.blocks,attempts[0].itemSet.blocks);await click(main,'[data-action=close]');
  const beforeNavigation=writes.length;await click(main,'[data-action=navigate][data-route=favorites]');await click(main,'[data-action=navigate][data-route=draft]');await ownPlan();assert.equal(writes.length,beforeNavigation,'Navigation must not reapply a preparation');
  const stale=structuredClone(attempts[2]),beforeNewGame=writes.length;gameId++;picked=0;intent=0;completed=false;
  await assert.rejects(handlers.get('prepare-selection')({sender:side.webContents,senderFrame:side.webContents.mainFrame},stale),/选人会话已变化/);assert.equal(writes.length,beforeNewGame,'Stale previous-game click performed a write');
- await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');await until(async()=>String((await state()).draft.clientGameId)===String(gameId),'New selection did not replace draft game context');await until(()=>js(main,'!(document.querySelector(".preparation-task [data-preparation-step=runes]")?.dataset.stepStatus==="done")'),'Previous-game rune confirmation survived a new session');
+ await click(main,'[data-action=sync]');await click(side,'[data-action=sync]');await until(async()=>String((await state()).draft.clientGameId)===String(gameId),'New selection did not replace draft game context');await until(()=>js(main,'!(document.querySelector(":is(.preparation-task,.client-preparation-result) [data-preparation-step=runes]")?.dataset.stepStatus==="done")'),'Previous-game rune confirmation survived a new session');
  const imported=JSON.parse(await fs.readFile(path.join(root,'client-fixture','Game','Config','Global','Recommended','rift-buddy-3-mid-rift.json')));assert.deepEqual(imported.blocks,attempts[0].itemSet.blocks);
  assert.equal(mockedRuneWrites(),4);assert.ok(writes.filter(w=>w.route.includes('/session/actions/')).every(w=>w.body.completed===false));assert.ok(windows.every(w=>w.isDestroyed()||!w.isVisible()));
  const report={passed:true,source,archiveSha256:release?.archiveSha256||null,variant:'accepted',acceptedPlanId:originalPlan.id,defaultHeroClickPrepares:true,mainAvatarClickPrepares:true,configurationButtonsDoNotWrite:true,teammatePreviewReadOnly:true,nativeSidebarReplaysReceiptsWithoutWrites:true,prepareEditingDisabled,prepareTimeEditPreserved:!prepareEditingDisabled,hoverRemainsUnlocked:true,sessionIdOverridesZeroAndPreviousGameflow:true,sameFullConfigurationAfterHover:true,personalSummonerSwapAcrossWindows:true,openDrawerPreservesRemoteRuneAndLocalSummoners:true,pendingHoverAcceptsOtherWindowEdits:true,alternateRouteDoesNotReusePendingHover:true,returningRouteKeepsPersonalChoices:true,sameConfigurationAfterPlayerConfirm:true,navigationDoesNotWrite:true,previousSessionRejectedBeforeWrites:true,realGame:'UNPROVEN',realRuneWrites:0,mockedRuneWrites:mockedRuneWrites(),allNetworkMocked:true,requests,attempts,results,writes};

@@ -164,7 +164,22 @@ export function validateWelcome(value){
  const room=String(value.room||'');
  if(!validRoomCode(room))return null;
  const members=Array.isArray(value.members)?value.members.map(m=>nick(m?.nick)).filter(Boolean).slice(0,12):[];
- return {kind:'welcome',v:ROOM_PROTOCOL,room,members};
+ return {kind:'welcome',v:ROOM_PROTOCOL,room,members,...(value.ballots===1?{ballots:1}:{})};
+}
+export const proposalKey=team=>ROLES.map(role=>`${role}:${team.find(s=>s.role===role)?.champion||''}`).join('|');
+export function sanitizeRoomBallot(value){
+ if(!value||value.version!==1)return null;
+ const vote=value.vote===null?null:typeof value.vote==='string'&&/^[A-Za-z0-9:|]{1,260}$/.test(value.vote)?value.vote:undefined;
+ if(vote===undefined)return null;
+ let proposal=null;
+ if(value.proposal!=null){
+  const team=lineup(value.proposal.lineup);
+  if(!team?.some(s=>s.champion)||new Set(team.filter(s=>s.champion).map(s=>s.champion)).size!==team.filter(s=>s.champion).length)return null;
+  const builds=configurations(value.proposal.configurations,team);if(builds===null)return null;
+  let strategy;if(value.proposal.strategy){try{strategy=validateCreativePlan(value.proposal.strategy);if(!strategy.members.every(m=>team.some(s=>s.champion===m.champion&&s.role===m.role)))return null;}catch{return null;}}
+  proposal={lineup:team,mode:'rift',...(builds?{configurations:builds}:{}),...(strategy?{strategy}:{})};
+ }
+ return {version:1,vote,proposal};
 }
 // Shared state is sanitized by rebuild: unknown fields (riotId, scores,
 // clientCellId, ...) are stripped, and a bad core shape returns null whole.
@@ -177,7 +192,8 @@ export function sanitizeShare(value){
  const builds=configurations(value.configurations,team);if(builds===null)return null;
  let strategy;
  if(value.strategy!==undefined){try{strategy=validateCreativePlan(value.strategy);if(!strategy.members.every(m=>team.some(s=>s.role===m.role&&s.champion===m.champion)))return null;}catch{return null;}}
- return {kind:'state',v:ROOM_PROTOCOL,from,lineup:team,pick:selected,at,...(value.mode!==undefined?{mode:value.mode}:{}),...(builds!==undefined?{configurations:builds}:{}),...(strategy?{strategy}:{})};
+ const ballot=value.ballot===undefined?undefined:sanitizeRoomBallot(value.ballot);if(ballot===null)return null;
+ return {kind:'state',v:ROOM_PROTOCOL,from,lineup:team,pick:selected,at,...(value.mode!==undefined?{mode:value.mode}:{}),...(builds!==undefined?{configurations:builds}:{}),...(strategy?{strategy}:{}),...(ballot?{ballot}:{})};
 }
 export function validateLeave(value){
  if(value?.kind!=='leave'||value.v!==ROOM_PROTOCOL)return null;

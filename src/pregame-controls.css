@@ -33,3 +33,11 @@
 .pregame-controls-compact .pregame-styles>.btn{padding-inline:8px}
 @media(max-width:700px){.pregame-controls{display:grid;gap:7px}.pregame-secondary{margin-left:0}.pregame-controls-compact .pregame-primary{flex-wrap:wrap}.pregame-controls-compact .pregame-secondary{gap:4px}}
 @media(prefers-reduced-motion:no-preference){.pregame-controls .btn,.pregame-more>summary{transition:background-color .12s ease,border-color .12s ease,color .12s ease}}
+
+.pregame-controls .pregame-role{padding:5px 7px;border:1px solid #77bca3;border-radius:7px;background:#24463c;color:#d4f6e7;font-weight:700}
+.pregame-controls .pregame-role .select{width:100px;background:#172e27;border-color:#649881;color:#f0fff8;min-height:34px;font-weight:700}
+.pregame-controls-compact .pregame-primary{flex-wrap:wrap}
+.pregame-controls-compact .pregame-members{font-size:11px}
+.launch-actions{display:grid;gap:8px;margin:14px 0}
+.launch-actions .btn{width:100%;min-height:42px}
+.launch-actions .connect-client{background:#23463a;border-color:#8fceb4;color:#cdf6e2}
