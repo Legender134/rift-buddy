@@ -2,7 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import vm from 'node:vm';
-import {createSlots,mergeClientSession,recommend,clearClientPicks} from '../src/core/recommend.mjs';
+import {createSlots,mergeClientSession,recommend,clearClientPicks,currentCombo,comboContextKnown} from '../src/core/recommend.mjs';
+import {companionPickIntent} from '../src/core/companion-plan.mjs';
+import {preparationProgressView} from '../src/preparation-progress-view.mjs';
 import {recommendationDraft,comparisonDraft} from '../src/core/draft-intents.mjs';
 import {reconcileClientDraft,restorePlayerPosition,unassignedPublicPicks,publicClientGameId,CLIENT_POSITION_ROLES,manualPlayerSlot} from '../src/core/draft.mjs';
 import {currentPlayerSelection} from '../src/core/guide.mjs';
@@ -207,4 +209,37 @@ test('solo comparison can replace an unconfirmed assistant choice but preserves 
   assert.ok(results.length,kind);assert.ok(results.every(result=>result.slots.find(slot=>slot.role==='bottom').champion===(kind==='proposal'?'Jinx':'Ashe')),kind);
   assert.deepEqual(s.context.slots,before,kind);
  }
+});
+
+test('unknown custom-game positions stay read only until the player confirms a role, for hovers and public picks',async()=>{
+ for(const picked of [false,true]){
+  const current=client();Object.assign(current.session.myTeam[0],{assignedPosition:'',championId:picked?hero('Graves').key:0,championPickIntent:hero('Graves').key});
+  const slots=mergeClientSession(createSlots(),current.session,data.champions,{autoArrange:true}).slots;
+  const s=setup({slots,current,incoming:structuredClone(current),results:[]}),c=s.context;c.soloRole='';
+  Object.assign(c,{currentCombo,comboContextKnown,guideSelection:null});
+  c.currentPickIntent=()=>companionPickIntent(c.client,data.champions,c.slots,{scope:c.scope,soloRole:c.soloRole});
+  c.rememberIntentPreparation=noop;
+  vm.runInContext(extract('function myPreparation(){','function roomRoleContext(){'),c);
+  assert.equal(c.taskOwnRole(),'');const preview=c.ownTaskPreparation();assert.equal(preview.positionKnown,false);
+  assert.equal(c.readOnlyPreparation('task',preview),true);
+  assert.match(preparationProgressView({data,plan:preview,client:current,available:true}),/data-action="client-prepare"[^>]*disabled/);
+  await assert.rejects(c.useClientPreparation({dataset:{preparationView:'task'}},true),/确认本人位置/);
+  assert.equal(s.calls.prepared.length,0);assert.deepEqual(c.slots,slots,'Unknown public picks must remain in the roster');
+  c.soloRole='bottom';c.saved.draft.playerPosition={role:'bottom',cellId:1};
+  const confirmed=c.ownTaskPreparation();assert.equal(confirmed.positionKnown,true);assert.equal(confirmed.selection.role,'bottom');
+  await c.useClientPreparation({dataset:{preparationView:'task'}},true);
+  assert.equal(s.calls.prepared.length,1);assert.equal(s.calls.prepared[0].role,'bottom');assert.equal(s.calls.prepared[0].summoners.includes('SummonerSmite'),false);
+ }
+});
+
+test('an unknown solo position still automatically offers role candidates without preparing anything',()=>{
+ const s=setup({results:[]});s.context.scope='solo';s.context.soloRole='';s.context.autoRecommendationKey='';
+ s.context.queueCompanionRecommendation();s.runTimer();
+ assert.equal(s.calls.generated.length,1);assert.equal(s.calls.prepared.length,0);
+});
+
+test('a new offline profile can render before it has a saved draft or a local client cell',()=>{
+ const {context:c}=setup();c.client={connected:false};c.saved.draft=null;c.soloRole='';c.slots=createSlots();
+ c.assignedPlayerRole=()=>'';
+ assert.equal(c.taskOwnRole(),'');assert.equal(c.ownTaskPreparation(),null);
 });

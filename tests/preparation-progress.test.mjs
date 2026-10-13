@@ -23,6 +23,10 @@ test('only the identical configuration in the known current game can display a c
 });
 test('unknown role has a direct read-only entry and busy operation belongs to one payload',()=>{
  assert.match(preparationProgressView({data,plan:null,client}),/data-action="task-members"/);
+ const guessed={...plan,positionKnown:false};
+ assert.match(preparationProgressView({data,plan:guessed,client,available:true}),/data-action="client-prepare"[^>]*disabled/);
+ assert.match(preparationProgressView({data,plan:guessed,client,available:true}),/位置待确认/);
+ assert.equal(preparationProgress({data,plan:guessed,client}).applicable,false);
  const pendingKey=clientPreparationKey(client,clientPreparationPlan(data,plan));assert.equal(preparationProgress({data,plan,client,pendingKey}).pending,true);
  const other=make({...selection,summonerIds:[...plan.build.summoners].reverse()});assert.equal(preparationProgress({data,plan:other,client,pendingKey}).pending,false);
 });

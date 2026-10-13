@@ -32,10 +32,11 @@ test('a manually moved local champion keeps its chosen position in room sharing'
  const moved=slots.map(s=>({...s,champion:s.role==='top'?'Yasuo':s.role==='mid'?null:s.champion,...(s.role==='top'?{manualPosition:true,clientCellId:4}:{})}));
  assert.equal(roomPlayerRole(moved,data.champions,ownClient(),'bottom'),'top');
 });
-test('room role uses the bound inferred slot and never borrows a stale saved solo role',()=>{
+test('room role does not treat an inferred slot or another saved role as confirmed',()=>{
  assert.equal(roomPlayerRole(slots,data.champions,ownClient('Ashe','bottom'),'support'),'');
  const unknownPosition=slots.map(s=>({...s,...(s.champion==='Yasuo'?{clientCellId:4}:{})}));
- assert.equal(roomPlayerRole(unknownPosition,data.champions,ownClient('Yasuo',''),'support'),'mid');
+ assert.equal(roomPlayerRole(unknownPosition,data.champions,ownClient('Yasuo',''),'support'),'');
+ assert.equal(roomPlayerRole(unknownPosition,data.champions,ownClient('Yasuo',''),'mid'),'mid');
 });
 test('before the local pick, room sharing uses the current assigned or manual slot and never another cell',()=>{
  assert.equal(roomPlayerRole(slots,data.champions,ownClient(null),'support'),'mid');

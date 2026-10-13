@@ -120,6 +120,19 @@ test('the sidebar exposes all lane candidates and full configuration without ano
  assert.doesNotMatch(team,/\[object Object\]/);
 });
 
+test('candidate and adopted member actions visibly distinguish my configuration from teammates',()=>{
+ const slots=createSlots().map(s=>({...s,party:['mid','bottom','support'].includes(s.role),champion:({mid:'Ahri',bottom:'Ashe',support:'Braum'})[s.role]||null,locked:true}));
+ const results=recommend({slots,champions:data.champions,scope:'party',limit:1});
+ const client={connected:true,phase:'ChampSelect',mode:{id:'rift'},session:{gameId:123,localPlayerCellId:0,myTeam:[{cellId:0,championId:0,assignedPosition:'BOTTOM'}]}};
+ const props={data,client,slots,unassigned:[],scope:'party',soloRole:'bottom',style:'fun',tab:'recommend',results};
+ const candidates=companionView(props);
+ assert.match(candidates,/data-id="Ashe"[^>]*>[\s\S]*?candidate-action-own[^>]*>你 · 配置<\/em>/);
+ for(const id of ['Ahri','Braum'])assert.match(candidates,new RegExp('data-id="'+id+'"[^>]*>[\\s\\S]*?candidate-action [^>]*>查看<\\/em>'));
+ const activePlan=captureCreativePlan(results[0],data),adopted=companionView({...props,activePlan});
+ assert.match(adopted,/data-action="active-hero-prepare" data-id="Ashe"[^>]*>[\s\S]*?下路 · 预选并配置/);
+ for(const id of ['Ahri','Braum'])assert.match(adopted,new RegExp('data-action="active-hero-prepare" data-id="'+id+'"[^>]*>[\\s\\S]*?队友配置 · 只读'));
+});
+
 test('accepted sidebar plans show one preparation receipt and reveal distinct alternatives only when comparing',()=>{
  const results=recommend({slots:createSlots(),champions:data.champions,scope:'party',limit:6});
  const activePlan=captureCreativePlan(results[0],data);results[0].creativePlan=activePlan;

@@ -17,7 +17,7 @@ export function roomPlayerRole(slots,champions,client,soloRole=''){
  const session=client?.connected?client.session:null;
  if(!session)return soloRole;
  const own=currentPlayerSelection(session,champions,slots);
- if(own)return slots.some(s=>s.role===own.role&&s.champion===own.id)?own.role:'';
+ if(own){const role=own.positionKnown?own.role:soloRole;return slots.some(s=>s.role===role&&s.champion===own.id)?role:'';}
  const cell=session.localPlayerCellId;
  if(!Number.isInteger(cell))return '';
  const player=session.myTeam?.find(p=>p.cellId===cell);

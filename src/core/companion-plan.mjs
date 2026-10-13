@@ -14,7 +14,7 @@ export function companionPickIntent(client,champions,slots=[],{scope='solo',solo
  if(!player||player.championId||!Number.isInteger(player.championPickIntent))return null;
  const champion=champions.find(c=>c.key===player.championPickIntent);if(!champion)return null;
  const assigned=CLIENT_POSITION_ROLES[String(player.assignedPosition||'').toUpperCase()];
- const manual=slots.find(s=>s.manualPosition&&s.clientCellId===session.localPlayerCellId)||slots.find(s=>s.champion===champion.id&&!Number.isInteger(s.clientCellId));
+ const manual=slots.find(s=>s.manualPosition&&s.clientCellId===session.localPlayerCellId)||slots.find(s=>s.champion===champion.id&&!s.automaticPosition&&!Number.isInteger(s.clientCellId));
  const preferred=ROLES.some(r=>r.id===soloRole)?soloRole:null;
  const role=manual?.role||assigned||preferred||profile(champion).roles[0];
  const combo=mode==='rift'?currentCombo(slots,champion.id,role,catalogStatus,null,creativePlan):null;

@@ -30,13 +30,13 @@ async function run(){
  const {getBuild}=await import(pathToFileURL(path.join(base,'src/core/builds.mjs')).href),hero=id=>data.champions.find(c=>c.id===id);
  let sourceFetches=0,resumeSource;const sourceWait=new Promise(resolve=>resumeSource=resolve);
  global.fetch=async url=>{assert.ok(['lol-api-champion.op.gg','op.gg'].includes(new URL(url).hostname));sourceFetches++;if(sourceFetches===1)await sourceWait;return new Response('{}',{status:503});};
- let picked='',hovered='',assigned='',enemyPicked='Malphite',observer,phase='ChampSelect',gameId='1501',offline=false,holdRuneWrite=false,resumeRuneWrite=null,writes=[];
+ let picked='',hovered='',teammatePicked='',assigned='',enemyPicked='Malphite',observer,phase='ChampSelect',gameId='1501',offline=false,holdRuneWrite=false,resumeRuneWrite=null,writes=[];
  let page={...getBuild(hero('Ashe'),'bottom',data).runePage,id:44,isEditable:true},preparationAction=null,spells={spell1Id:4,spell2Id:7},hoverWrites=0,spellWrites=0;
  const output=options=>{
   assert.equal(options.hostname,'127.0.0.1');assert.equal(options.port,23456);
   if(options.path==='/lol-gameflow/v1/gameflow-phase')return phase;
   if(options.path==='/lol-gameflow/v1/session')return {gameData:{gameId,mapId:11,queue:{id:430,gameMode:'CLASSIC'}}};
-  if(options.path==='/lol-champ-select/v1/session')return {localPlayerCellId:1,myTeam:[{cellId:1,championId:picked?hero(picked).key:0,championPickIntent:hovered?hero(hovered).key:0,assignedPosition:assigned}],theirTeam:[{cellId:6,championId:hero(enemyPicked).key}],actions:preparationAction?[[preparationAction]]:[],bans:{myTeamBans:[hero('Yone').key],theirTeamBans:[]},timer:{phase:'PLANNING',adjustedTimeLeftInPhase:65000}};
+  if(options.path==='/lol-champ-select/v1/session')return {localPlayerCellId:1,myTeam:[{cellId:1,championId:picked?hero(picked).key:0,championPickIntent:hovered?hero(hovered).key:0,assignedPosition:assigned},...(teammatePicked?[{cellId:2,championId:hero(teammatePicked).key,assignedPosition:"BOTTOM"}]:[])],theirTeam:[{cellId:6,championId:hero(enemyPicked).key}],actions:preparationAction?[[preparationAction]]:[],bans:{myTeamBans:[hero('Yone').key],theirTeamBans:[]},timer:{phase:'PLANNING',adjustedTimeLeftInPhase:65000}};
   if(preparationAction){
    if(options.path.endsWith('/pickable-champion-ids'))return data.champions.map(c=>c.key);
    if(options.path.endsWith('/disabled-champion-ids'))return [];
@@ -67,7 +67,7 @@ async function run(){
  const selectSurface=async side=>{await until(()=>{main=side?windows.find(w=>!w.isDestroyed()&&new URL(w.webContents.getURL()||'about:blank').searchParams.get('surface')==='companion'):fullMain;return main&&!main.isDestroyed();},'Requested surface missing');await until(()=>main.webContents.executeJavaScript('!!document.querySelector('+(side?'".companion-shell"':'"[data-action=navigate]"')+')'),'Requested surface not ready');diagnosticMain=main;};
  const js=async code=>{const result=await main.webContents.executeJavaScript(code,true).catch(error=>{console.error('Failed smoke expression:',code);throw error;});if(code==='window.buddy.companionMode(false)')await selectSurface(false);if(code==='window.buddy.companionMode(true)')await selectSurface(true);return result;};
  const click=async selector=>{await js('document.querySelector('+JSON.stringify(selector)+').click()');if(selector==='[data-action=companion-full]')await selectSurface(false);if(selector==='[data-action=companion-attach]')await selectSurface(true);};
- const change=async(selector,value)=>{if(selector==='#solo-role'&&!await js('!!document.querySelector("#solo-role")'))await click('[data-action=companion-tab][data-tab=plan]');return js('(()=>{const el=document.querySelector('+JSON.stringify(selector)+');el.value='+JSON.stringify(String(value))+';el.dispatchEvent(new Event("change",{bubbles:true}));})()');};
+ const change=async(selector,value)=>{if(selector==='#companion-scope'){await click('[data-action=draft-scope][data-scope='+value+']');return;}if(selector==='#solo-role'&&!await js('!!document.querySelector("#solo-role")'))await click('[data-action=companion-tab][data-tab=recommend]');return js('(()=>{const el=document.querySelector('+JSON.stringify(selector)+');el.value='+JSON.stringify(String(value))+';el.dispatchEvent(new Event("change",{bubbles:true}));})()');};
  let resumeSidebar=false;
  const sync=async()=>{if(main.isDestroyed()||phase!=='ChampSelect'||offline){if(main.isDestroyed()||main!==fullMain)resumeSidebar=true;await selectSurface(false);}await js('window.buddy.client(true)');await click('[data-action=sync]');await delay(180);if(phase==='ChampSelect'&&!offline&&resumeSidebar){await selectSurface(true);resumeSidebar=false;await click('[data-action=sync]');await delay(180);}};
  const toggleAutoSync=()=>js('(()=>{const b=document.createElement("button");b.dataset.action="auto-sync";document.body.append(b);b.click();b.remove();})()');
@@ -77,7 +77,7 @@ async function run(){
  observer.stdout.emit('data',JSON.stringify({client:{...screen.dipToScreenRect(null,anchor),foreground:false,minimized:false},game:null})+'\n');await sync();
  await selectSurface(true);
  await until(()=>js('document.body.classList.contains("companion-mode")'),'Sidebar missing');
- await until(()=>js('document.querySelectorAll(".companion-candidate").length===6'),'Six automatic candidates missing');
+ await until(()=>js('document.querySelectorAll(".companion-candidate").length===3'),'Three primary automatic candidates missing');
  assert.ok(main.getBounds().width>=438&&main.getBounds().width<=441,'Default sidebar must use 440 logical pixels when space is available');assert.ok(!fullMain.isDestroyed(),'Main and sidebar must coexist');assert.deepEqual(anchor,anchorBefore);assert.equal(main.isVisible(),false);assert.equal(writes.length,0);
  const capture=async name=>{
   await js('[...document.images].forEach(i=>i.loading="eager")');
@@ -93,21 +93,22 @@ async function run(){
  // A declared lane exists before choosing a champion. Visible lane and
  // candidates follow the formal lane until the player explicitly overrides it.
  await change('#solo-role','top');assigned='JUNGLE';await sync();
- assert.equal(await js('document.querySelector("#solo-role").value'),'top','Declared lane overwrote the explicit before-pick lane');
+ assert.equal(await js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole)'),'top','Declared lane overwrote the explicit before-pick lane');
  await click('[data-action=position-auto]');await sync();
- assert.equal(await js('document.querySelector("#solo-role").value'),'jungle');
- assert.equal(await js('document.querySelector("#solo-role").disabled'),false);
+ assert.equal(await js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole)'),'jungle');
+ assert.equal(await js('!!document.querySelector("#solo-role")?.disabled'),false);
  await click('[data-action=companion-tab][data-tab=recommend]');
- await until(()=>js('document.querySelectorAll(".companion-candidate").length===6&&[...document.querySelectorAll(".companion-candidate [data-action=companion-preview]")].every(b=>b.dataset.role==="jungle")'),'Before-pick candidates ignored the declared jungle lane');
+ await until(()=>js('document.querySelectorAll(".companion-candidate").length===3&&[...document.querySelectorAll(".companion-candidate [data-action=companion-preview]")].every(b=>b.dataset.role==="jungle")'),'Before-pick candidates ignored the declared jungle lane');
  assert.equal((await js('window.buddy.bootstrap()')).state.draft.soloRole,'jungle');
  assert.equal(writes.length,0);await capture('assigned-before-pick');
- assigned='';await sync();await change('#solo-role','jungle');
+ assigned='';await sync();await click('[data-action=companion-tab][data-tab=recommend]');await change('#solo-role','jungle');
  await js('window.beforeAssignmentRole=document.querySelector("#solo-role");beforeAssignmentRole.dispatchEvent(new PointerEvent("pointerdown",{bubbles:true}));void 0');
  assigned='JUNGLE';await sync();
- assert.equal(await js('document.querySelector("#solo-role").disabled'),false,'The player must be able to explicitly change the tactical lane');
+ assert.equal(await js('!!document.querySelector("#solo-role")?.disabled'),false,'The player must be able to explicitly change the tactical lane');
  assert.equal(await js('beforeAssignmentRole.isConnected'),false,'A newly declared lane did not replace the stale editable control');
  assigned='';await sync();await change('#solo-role','');
  await click('[data-action=companion-tab][data-tab=recommend]');
+ await until(()=>js('!!document.querySelector("[data-action=more-candidates]")'),'More candidates missing');await click('[data-action=more-candidates]');
  await until(()=>js('new Set([...document.querySelectorAll(".companion-candidate [data-action=companion-preview]")].map(b=>b.dataset.role)).size===5'),'Unknown lane did not restore separate lane candidates');
  hovered='Volibear';await sync();
  assert.equal(await js('document.querySelector(".companion-tabs .active").dataset.tab'),'recommend','A client hover must preserve the selection and team view');
@@ -125,7 +126,7 @@ async function run(){
  hovered='Volibear';await sync();await click('[data-action=companion-current]');
  picked='Volibear';hovered='';await sync();await until(async()=>((await js('window.buddy.bootstrap()')).state.guide?.selection.runeId===previewRune.id),'Actual pick lost the preview rune choice');
  assert.equal((await js('window.buddy.bootstrap()')).state.guide.selection.coreIndex,1,'Actual pick lost the preview equipment route');
- await until(()=>js('document.querySelector(".companion-current-hero")?.textContent.includes("沃利贝尔")&&!document.querySelector(".companion-preview")'),'Actual pick did not replace the intent view');
+ await until(()=>js('document.querySelector(".preparation-task-heading")?.textContent.includes("沃利贝尔")&&!document.querySelector(".companion-preview")'),'Actual pick did not replace the intent view');
  assert.equal(await js('document.querySelector(".companion-tabs .active").dataset.tab'),'recommend','An actual pick must return to the team and current action view');assert.equal(await js('document.querySelectorAll(".companion-preview").length'),0);
  await click('[data-action=companion-tab][data-tab=plan]');
  await change('#solo-role','top');await delay(200);
@@ -133,12 +134,12 @@ async function run(){
  // Both presentations edit the same manually chosen position in blind pick.
  await js('window.buddy.companionMode(false)');await until(()=>js('!document.body.classList.contains("companion-mode")'),'Full UI did not open for lane choice');
  await change('#solo-role','jungle');await sync();
- assert.equal(await js('document.querySelector("#solo-role").value'),'jungle','A poll undid the full-window manual lane choice');
+ assert.equal(await js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole)'),'jungle','A poll undid the full-window manual lane choice');
  assert.equal((await js('window.buddy.bootstrap()')).state.draft.slots.find(s=>s.role==='jungle').champion,'Volibear','Full-window lane choice did not move the local pick');
  await until(async()=>((await js('window.buddy.bootstrap()')).state.guide.selection.role==='jungle'),'Changed manual lane did not reach the actual preparation');
  await change('#solo-role','top');await sync();
  await js('window.buddy.companionMode(true)');await until(()=>js('document.body.classList.contains("companion-mode")'),'Sidebar did not return after lane choice');
- await until(()=>js('!!document.querySelector("[data-companion-field=core]")'),'Inline core selector missing');
+ await click('[data-action=companion-tab][data-tab=plan]');await until(()=>js('!!document.querySelector("[data-companion-field=core]")'),'Inline core selector missing');
  const b=getBuild(hero('Volibear'),'top',data),rune=b.runeOptions.find(o=>o.page.selectedPerkIds[0]!==b.runePage.selectedPerkIds[0]),skill=b.skillChoices.at(-1);
  await change('[data-companion-field=rune]',rune.id);await change('[data-companion-field=core]',1);await change('[data-companion-field=skill]',skill.id);
  await until(async()=>{const selected=(await js('window.buddy.bootstrap()')).state.guide?.selection;return selected?.id==='Volibear'&&selected.role==='top'&&selected.runeId===rune.id&&selected.skillId===skill.id&&selected.coreIndex===1;},'Inline configuration edits were not saved');
@@ -221,11 +222,11 @@ async function run(){
  await click('[data-action=companion-tab][data-tab=team]');assert.ok(await js('document.querySelector(".companion-content").textContent.includes("墨菲特")'));assert.ok(await js('document.querySelector(".companion-content").textContent.includes("永恩")'));await capture('team');
  await click('[data-action=companion-tab][data-tab=plan]');assert.ok(Math.abs((await js('document.querySelector(".companion-content").scrollTop'))-position)<=3);await sync();
  assert.equal(await js('document.querySelector("[data-companion-field=rune]").value'),rune.id);assert.ok(Math.abs((await js('document.querySelector(".companion-content").scrollTop'))-position)<=3);
- await click('[data-action=my-runes]');await until(()=>writes.length===1,'Explicit rune replacement missing');await until(()=>js('document.querySelector(".companion-ready").textContent.includes("已应用")'),'Applied status missing');assert.deepEqual(writes[0].selectedPerkIds,rune.page.selectedPerkIds);
+ await click('[data-action=my-runes]');await until(()=>writes.length===1,'Explicit rune replacement missing');await until(()=>js('document.querySelector("[data-preparation-step=runes]")?.dataset.stepStatus==="done"'),'Applied status missing');assert.deepEqual(writes[0].selectedPerkIds,rune.page.selectedPerkIds);
  // A preview has its own choices; the persistent action always names the actual local champion.
- await js('(()=>{const b=document.createElement("button");b.dataset.action="companion-preview";b.dataset.id="Ashe";b.dataset.role="bottom";document.body.append(b);b.click();b.remove();})()');
+ teammatePicked='Ashe';await sync();await click('[data-action=companion-roster-plan][data-id=Ashe]');
  assert.match(await js('document.querySelector("[data-action=my-runes]").textContent'),/符文/);assert.equal(await js('document.querySelector("[data-action=my-runes]").dataset.id'),'Volibear');
- await click('[data-action=companion-current]');assert.equal(await js('document.querySelector("[data-companion-field=rune]").value'),rune.id);
+ await click('[data-action=companion-current]');assert.equal(await js('document.querySelector("[data-companion-field=rune]").value'),rune.id);teammatePicked='';await sync();
  await js('window.staleSelect=document.querySelector("[data-companion-field=rune]").cloneNode(true);void 0');
  await toggleAutoSync();
  await js('window.previousHeroSelect=document.querySelector("[data-companion-field=rune]");previousHeroSelect.dispatchEvent(new PointerEvent("pointerdown",{bubbles:true}));void 0');
@@ -234,9 +235,9 @@ async function run(){
  assert.equal(await js('previousHeroSelect.isConnected'),false,'Changing the local champion retained an invalid open menu');
  await toggleAutoSync();
  await click('[data-action=companion-tab][data-tab=plan]');
- assert.equal(await js('document.querySelector("#solo-role").value'),'top','Champion swap lost the manual position');
+ assert.equal(await js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole)'),'top','Champion swap lost the manual position');
  await click('[data-action=position-auto]');await sync();
- assert.equal(await js('document.querySelector("[data-action=my-runes]").dataset.id'),'Ashe');assert.equal(await js('document.querySelector("#solo-role").disabled'),false);
+ assert.equal(await js('document.querySelector("[data-action=my-runes]").dataset.id'),'Ashe');assert.equal(await js('!!document.querySelector("#solo-role")?.disabled'),false);
  assert.notEqual(await js('document.activeElement.dataset.action'),'my-runes','Changing champion carried keyboard focus onto another rune target');
  assert.equal(await js('document.querySelector("[data-companion-disclosure=later]").open'),false,'Another hero inherited the open options');
  assert.equal(await js('document.querySelectorAll(".companion-refresh-state").length'),0,'Another hero inherited a source error');
@@ -289,8 +290,8 @@ async function run(){
  assert.equal(await js('document.querySelector(".companion-content").dataset.disclosureScope'),restoredDisclosureScope);assert.equal(await js('document.querySelector("[data-companion-disclosure=later]").open'),true,'Late choices must remain open before full UI');
 
  await js('window.buddy.companionMode(false)');await until(()=>js('!document.body.classList.contains("companion-mode")'),'Full UI not restored');
- assert.equal(await js('document.querySelector("#solo-role").value'),'jungle');
- assert.equal(await js('document.querySelector("#solo-role").disabled'),false,'Full UI must allow an explicit tactical position');
+ assert.equal(await js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole)'),'jungle');
+ assert.equal(await js('!!document.querySelector("#solo-role")?.disabled'),false,'Full UI must allow an explicit tactical position');
  assert.equal(await js('[...document.querySelectorAll("[data-action=solo-role]")].every(b=>!b.disabled)'),true,'Full UI position buttons must allow an explicit tactical override');
  await js('window.buddy.companionMode(true)');await until(()=>js('document.body.classList.contains("companion-mode")'),'Sidebar not restored');
  assert.equal(await js('document.querySelector(".companion-shell").dataset.tab'),'plan');assert.equal(await js('document.querySelector(".companion-content").dataset.disclosureScope'),restoredDisclosureScope,'Full UI must restore the same plan disclosure scope');
@@ -366,17 +367,17 @@ async function run(){
  }
  // A confirmation belongs to this draft, including after an asynchronous write.
  await click('[data-action=companion-attach]');await sync();
- await until(()=>js('!!document.querySelector(".companion-ready")'),'Lifecycle sidebar missing');
- const applied=()=>js('document.querySelector(".companion-ready")?.firstChild?.textContent==="符文已应用"');
+ await until(()=>js('!!document.querySelector(".companion-shell")'),'Lifecycle sidebar missing');
+ const applied=()=>js('document.querySelector("[data-preparation-step=runes]")?.dataset.stepStatus==="done"');
  const apply=async()=>{await click('[data-action=my-runes]');await until(applied,'This draft write not confirmed');};
  const startWrites=writes.length;await apply();await sync();assert.equal(await applied(),true,'Ordinary polling lost this click');assert.equal(writes.length,startWrites+1);
  await capture('runes-this-draft');
  for(const nextPhase of ['InProgress','EndOfGame','Lobby']){phase=nextPhase;await sync();}
  page={...getBuild(hero('Volibear'),'jungle',data).runePage,id:44,isEditable:true,current:true};gameId='1502';phase='ChampSelect';await sync();
- await until(()=>js('!!document.querySelector(".companion-ready")'),'Next draft sidebar missing');
+ await until(()=>js('!!document.querySelector(".companion-shell")'),'Next draft sidebar missing');
  assert.equal(await applied(),false,'Same hero next draft retained previous success');assert.equal(writes.length,startWrites+1,'Lifecycle wrote runes without a click');await capture('runes-new-draft');
  await apply();offline=true;await sync();offline=false;await sync();
- await until(()=>js('!!document.querySelector(".companion-ready")'),'Reconnected sidebar missing');assert.equal(await applied(),false,'Reconnect retained a previous write confirmation');assert.equal(writes.length,startWrites+2);
+ await until(()=>js('!!document.querySelector(".companion-shell")'),'Reconnected sidebar missing');assert.equal(await applied(),false,'Reconnect retained a previous write confirmation');assert.equal(writes.length,startWrites+2);
  holdRuneWrite=true;resumeRuneWrite=null;await click('[data-action=my-runes]');await until(()=>typeof resumeRuneWrite==='function','Pending mock write missing');
  assert.equal(await js('document.querySelector("[data-action=my-runes]").disabled'),true,'Pending write left its action enabled');
  const duringWrites=writes.length;await click('[data-action=my-runes]');assert.equal(writes.length,duringWrites,'Repeated pending click wrote another page');
@@ -485,7 +486,7 @@ async function run(){
  await click('[data-action=navigate][data-route=draft]');
  await click('[data-action=move-slot][data-role=mid]');await click('[data-action=move-confirm][data-role=support]');
  await sync();await sync();
- assert.equal(await js('document.querySelector("#solo-role").value'),'support');
+ assert.equal(await js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole)'),'support');
  assert.match(await js('document.querySelector(".preparation-task").textContent'),/拉克丝.*辅助/);
  await click('[data-action=task-edit]');
  assert.equal(await js('document.querySelector("#build-role").value'),'support');
@@ -494,8 +495,8 @@ async function run(){
  await click('[data-action=close]');await click('[data-action=companion-attach]');await sync();
  await click('[data-action=companion-tab][data-tab=plan]');
  assert.equal(await js('document.querySelector("[data-companion-field=rune]").dataset.plan'),'Lux:support:rift');
- assert.equal(await js('document.querySelector("#solo-role").value'),'support');
- assert.ok(await js('document.querySelector(".position-note").textContent.includes("中路")'));
+ assert.equal(await js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole)'),'support');
+ assert.ok(await js('document.querySelector(".companion-position-note").textContent.includes("中路")'));
  await click('[data-action=guide-current]');
  await until(()=>guideJs('window.guide.bootstrap().then(b=>b.model?.selection?.role==="support")'),'Guide lost the tactical support position');
  const supportGuide=await guideJs('window.guide.bootstrap()');
@@ -508,7 +509,7 @@ async function run(){
  assert.equal(await js('document.querySelector("[data-companion-field=rune]").dataset.plan'),'Nami:support:rift');
  const swapGuide=await guideJs('window.guide.bootstrap()');assert.equal(swapGuide.current.role,'support');assert.equal(swapGuide.current.formalRole,'bottom');
  await click('[data-action=position-auto]');await sync();
- assert.equal(await js('document.querySelector("#solo-role").value'),'bottom');
+ assert.equal(await js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole)'),'bottom');
  assert.equal((await js('window.buddy.bootstrap()')).state.draft.slots.find(s=>s.champion==='Nami').manualPosition,undefined);
  assert.equal(writes.length,writesBeforeFilters,'Releasing a tactical override wrote runes');
  // A new public game ID can arrive without any observable lobby transition.
@@ -516,7 +517,7 @@ async function run(){
  const oldGameState=await js('window.buddy.bootstrap().then(b=>b.state)');assert.equal(oldGameState.draft.clientGameId,'1506');
  gameId='1507';await sync();await sync();
  await click('[data-action=companion-tab][data-tab=plan]');
- assert.equal(await js('document.querySelector("#solo-role").value'),'mid','New game inherited the previous tactical lane');
+ assert.equal(await js('window.buddy.bootstrap().then(b=>b.state.draft.soloRole)'),'mid','New game inherited the previous tactical lane');
  assert.equal(await js('document.querySelector("[data-companion-field=rune]").dataset.plan'),'Lux:mid:rift');
  await click('[data-action=guide-current]');await until(()=>guideJs('window.guide.bootstrap().then(b=>b.model?.selection?.role==="mid")'),'New game guide inherited the previous tactical lane');
  assert.equal((await js('window.buddy.bootstrap()')).state.draft.clientGameId,'1507');
@@ -545,7 +546,7 @@ async function run(){
  // Retain the final manual choice in this isolated profile for restart validation.
  picked='Lux';assigned='MIDDLE';await sync();await change('#solo-role','support');await sync();await click('[data-action=guide-current]');
  await until(()=>guideJs('window.guide.bootstrap().then(b=>b.model?.selection?.role==="support")'),'Final support guide missing');
- const report={passed:true,archiveSha256:release.archiveSha256,baseDataVersion:data.version,sourcePatch:cho.reference.patch,choJungleHail:true,sourceVersionLabelCorrect:true,oldSourceVisible:cho.referenceStale,lateChoicesSync:true,sixCandidates:true,automaticPlanOnPick:true,inlineCoreRuneSkill:true,comparisonCards:true,favoriteSelection:true,presentationPersisted:true,stalePreferenceWriteProtected:true,crossWindowPresentation:true,minimumFullWindowReadable:true,guideSelectionMatches:true,explicitRuneClickOnly:true,runeConfirmationLifecycle:true,lateRuneWriteRejected:true,pendingRuneClickBlocked:true,previewSeparated:true,staleHeroActionRejected:true,tabAndSyncScrollPreserved:true,publicEnemiesAndBans:true,wideAndNarrowLayouts:true,clientGeometryUnchanged:true,testWindowsHidden:true,loopbackSocketsMocked:true,actualRuneWrites:false};
+ const report={passed:true,archiveSha256:release.archiveSha256,baseDataVersion:data.version,sourcePatch:cho.reference.patch,choJungleHail:true,sourceVersionLabelCorrect:true,oldSourceVisible:cho.referenceStale,lateChoicesSync:true,threePrimaryCandidates:true,allLanesInMoreCandidates:true,automaticPlanOnPick:true,inlineCoreRuneSkill:true,comparisonCards:true,favoriteSelection:true,presentationPersisted:true,stalePreferenceWriteProtected:true,crossWindowPresentation:true,minimumFullWindowReadable:true,guideSelectionMatches:true,explicitRuneClickOnly:true,runeConfirmationLifecycle:true,lateRuneWriteRejected:true,pendingRuneClickBlocked:true,previewSeparated:true,staleHeroActionRejected:true,tabAndSyncScrollPreserved:true,publicEnemiesAndBans:true,wideAndNarrowLayouts:true,clientGeometryUnchanged:true,testWindowsHidden:true,loopbackSocketsMocked:true,actualRuneWrites:false};
  report.defaultClickPreparationStatus=true;report.sameHeroConfirmationNoRepeatWrite=true;report.newGameClearsPreparedRuneStatus=true;
  report.manualFormalLanePreparation=true;report.manualChampionSwap=true;report.manualLaneRelease=true;report.manualLaneRuneWrites=0;
  report.manualNewGameReleased=true;report.staleGameSaveRejected=true;report.finalGameId=gameId;
@@ -554,5 +555,5 @@ async function run(){
  report.favoriteWriteConfirmation=true;report.favoriteFailureRollback=true;report.favoriteConcurrentPreferencePreserved=true;
  await fs.writeFile(path.join(root,'companion-workflow.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));app.quit();
 }
-run().catch(async error=>{console.error(error);await fs.writeFile(path.join(root,'companion-workflow-error.txt'),error.stack).catch(()=>{});if(diagnosticMain&&!diagnosticMain.isDestroyed()){const state=await diagnosticMain.webContents.executeJavaScript('window.buddy.bootstrap().then(b=>({client:b.client,draft:b.state.draft,guide:b.state.guide,ui:{current:document.querySelector(".companion-current")?.textContent,preview:document.querySelector(".companion-preview")?.textContent,tab:document.querySelector(".companion-tabs .active")?.dataset.tab,plan:document.querySelector("[data-companion-field=rune]")?.dataset.plan,toast:document.querySelector("#toast")?.textContent}}))').catch(()=>null);await fs.writeFile(path.join(root,'companion-failure-state.json'),JSON.stringify(state,null,2)).catch(()=>{});}app.exit(1);});
+run().catch(async error=>{console.error(error);await fs.writeFile(path.join(root,'companion-workflow-error.txt'),error.stack).catch(()=>{});if(diagnosticMain&&!diagnosticMain.isDestroyed()){const state=await diagnosticMain.webContents.executeJavaScript('window.buddy.bootstrap().then(b=>({client:b.client,draft:b.state.draft,guide:b.state.guide,ui:{text:document.body.innerText,candidates:document.querySelectorAll(".companion-candidate").length,current:document.querySelector(".companion-current")?.textContent,preview:document.querySelector(".companion-preview")?.textContent,tab:document.querySelector(".companion-tabs .active")?.dataset.tab,plan:document.querySelector("[data-companion-field=rune]")?.dataset.plan,toast:document.querySelector("#toast")?.textContent}}))').catch(()=>null);await fs.writeFile(path.join(root,'companion-failure-state.json'),JSON.stringify(state,null,2)).catch(()=>{});}app.exit(1);});
 

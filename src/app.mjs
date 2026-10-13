@@ -197,7 +197,7 @@ window.addEventListener('blur',()=>finishAppSelect());
 window.addEventListener('blur',()=>finishOverlaySelect());
 function queueCompanionRecommendation(){
  clearTimeout(autoRecommendTimer);
- if((!windowLayout.docked&&route!=='draft')||generating||syncing||['InProgress','GameStart','Reconnect','WaitingForStats','PreEndOfGame','EndOfGame'].includes(client.phase)||client.mode?.id==='hex'||scope==='solo'&&!soloRole)return;
+ if((!windowLayout.docked&&route!=='draft')||generating||syncing||['InProgress','GameStart','Reconnect','WaitingForStats','PreEndOfGame','EndOfGame'].includes(client.phase)||client.mode?.id==='hex')return;
  const key=recommendationKey(recommendationInput());if(key===autoRecommendationKey||key===resultsSignature&&results.length)return;
  autoRecommendTimer=setTimeout(()=>{if((!windowLayout.docked&&route!=='draft')||generating||syncing)return;autoRecommendationKey=key;generate();},250);
 }
@@ -463,9 +463,9 @@ function myPreparation(){
  const own=currentPlayerSelection(client.session,data.champions,slots),mode=client.mode?.id;
  if(!own||!['rift','hex'].includes(mode))return null;
  const prepared=guideSelection?.id===own.id&&guideSelection.mode===mode?guideSelection:null;
- const role=own.positionKnown||slots.some(s=>s.champion===own.id&&s.clientCellId===client.session?.localPlayerCellId)?own.role:soloRole||prepared?.role||own.role,combo=mode==='rift'?currentCombo(slots,own.id,role,data.catalogInfo?.status,null,activeCreativePlan):null,context={id:own.id,role,mode,...creativeComboContext(combo)};
+ const knownRole=taskOwnRole(),role=knownRole||prepared?.role||own.role,combo=mode==='rift'?currentCombo(slots,own.id,role,data.catalogInfo?.status,null,activeCreativePlan):null,context={id:own.id,role,mode,...creativeComboContext(combo)};
  const selection={...rememberedPreparation(context,{allowSavedCombo:!combo&&!comboContextKnown(slots,own.id,role,prepared?.comboId,prepared?.creativePlan)}),...context};
- return {own,selection,build:getBuild(champ(own.id),role,data,selection)};
+ return {own,positionKnown:!!knownRole,selection,build:getBuild(champ(own.id),role,data,selection)};
 }
 function companionPreparation({currentOnly=false}={}){
  const preview=currentOnly?null:companionPreview,intent=!preview&&currentPickIntent();
@@ -499,7 +499,7 @@ function roomOwnPreparation(){
 }
 function taskOwnRole(){
  const own=currentPlayerSelection(client.session,data.champions,slots);
- return manualPlayerSlot(slots,client.session?.localPlayerCellId)?.role||saved.draft?.playerPosition?.role||assignedPlayerRole()||soloRole||(own?.positionKnown?own.role:'');
+ return manualPlayerSlot(slots,client.session?.localPlayerCellId)?.role||(saved.draft?.playerPosition?.cellId===client.session?.localPlayerCellId?saved.draft?.playerPosition?.role:'')||assignedPlayerRole()||soloRole||(own?.positionKnown?own.role:'');
 }
 function ownTaskPreparation(){
  const own=myPreparation(),intent=companionPreparation({currentOnly:true}),role=taskOwnRole();
@@ -549,8 +549,8 @@ async function prepareCandidate(el){
   return;
 }
 
-function readOnlyPreparation(view,plan){return !!plan&&(view==='build'&&buildView?.readOnly||view==='companion'&&companionPreview?.readOnly||view==='incoming-room'&&(!taskOwnRole()||plan.selection.role!==taskOwnRole()));}
-function clientControls(plan,view){if(readOnlyPreparation(view,plan))return '<p class="callout">'+(taskOwnRole()?'队友配置仅供查看。':'先确认本人位置，才能预选并配置。')+'</p>';return clientPreparationControls({data,plan,client,view,available:!!api.prepareSelection,pending:clientPreparing||runeApplying||!!itemSetPending,statuses:clientPreparationStatuses});}
+function readOnlyPreparation(view,plan){const role=view==='room'?roomOwnRole():taskOwnRole();return !!plan&&(!role||plan.positionKnown===false||plan.selection.role!==role||view==='build'&&buildView?.readOnly||view==='companion'&&companionPreview?.readOnly);}
+function clientControls(plan,view){if(readOnlyPreparation(view,plan))return taskOwnRole()?'<p class="callout">队友配置仅供查看。</p>':button('task-members','确认本人位置','','small');return clientPreparationControls({data,plan,client,view,available:!!api.prepareSelection,pending:clientPreparing||runeApplying||!!itemSetPending,statuses:clientPreparationStatuses});}
 function renderRoom(){
  const share=roomSharePayload(),plan=roomOwnPreparation(),connection=api.roomStatus?roomPanel({room,transport:roomTransport,relayUrl:roomRelayUrl,relayRoom:roomRelayRoom,nick:saved.preferences.roomNick||'队友',busy:roomBusy,scanning:roomScanning,scanResults:roomScanResults,error:roomError,invite:roomInvite,pin:roomPin,addresses:roomAddresses,champ,hasPreparationFile:!!roomPreparationFile,preparationFileBusy,autoEnabled:saved.preferences.roomAuto===true,autoSync:saved.preferences.autoSync!==false,autoError:room?.autoError||'',autoQuiet:roomAutoQuiet&&(room?.members?.length??0)<=1}):'<p class="callout">连接队友房间请使用桌面版。</p>';
  return roomWorkspace({data,share,ownPlan:plan,connected:!!room&&room.mode!=='idle',connectionLabel:room&&room.mode!=='idle'?'房间 '+room.room+' · '+room.members.length+' 人':'',role:roomOwnRole(),configurations:share?.configurations||[],clientControls:clientControls(plan,'room'),connection,notice:creativePlanNotice,clientMessage:client.message});
@@ -564,7 +564,7 @@ async function useClientPreparation(el,directClick=false,expected=null){
  if(!api.prepareSelection)throw Error('客户端配置请在桌面版使用');
  if(clientPreparing||runeApplying||itemSetPending)throw Error('当前配置正在处理，请等待完成');
  const view=el.dataset.preparationView,plan=selectedClientPreparation(view),prepared=clientPreparationPlan(data,plan);
- if(readOnlyPreparation(view,plan))throw Error('当前是只读配置，请回到本人的准备操作');
+ if(readOnlyPreparation(view,plan))throw Error(taskOwnRole()?'当前是只读配置，请回到本人的准备操作':'请先确认本人位置，再预选并配置');
  if(expected&&(!plan||taskOwnRole()!==expected.role||['id','role','mode'].some(k=>plan.selection[k]!==expected[k])||expected.planId!==(activeCreativePlan?.id||'')||prepared?.fingerprint!==expected.fingerprint))throw Error('本人位置或点击的方案已变化，尚未操作；请重新选择');
  if(!prepared||!directClick&&(el.dataset.plan!==[plan.selection.id,plan.selection.role,plan.selection.mode].join(':')||el.closest('[data-client-preparation-fingerprint]')?.dataset.clientPreparationFingerprint!==prepared.fingerprint))throw Error('页面方案已变化，请核对后重新点击');
  const clickedContext=runeWriteContext(client),gameId=preparationGameId(client),key=clientPreparationKey(client,prepared),selection=structuredClone(plan.selection),clickedPlanId=activeCreativePlan?.id||'';
@@ -1206,8 +1206,9 @@ document.addEventListener('click',async event=>{
   else if(action==='guide-current'){await matchupFocusChain;await guideSyncChain;await saveChain;const prepared=myPreparation();await openPreparedGuide(prepared?.selection);}
  else if(action==='my-runes'){
   const selected=myPreparation();if(!selected?.build.runePage||selected.own.id!==el.dataset.id)throw Error('选人已变化，请核对当前英雄');
+  if(selected.positionKnown===false)throw Error('请先确认本人位置，再应用符文');
   if(runeApplying||clientPreparing)throw Error('正在应用配置，请等待本次操作完成');runeApplying=true;const ticket=runeAppliedKeys.begin(runeApplicationKey(selected.own.id,selected.build.role,selected.build.runePage));reflectRunePending();
-  try{await sync(false,{fresh:true});const current=myPreparation();if(!runeAppliedKeys.isCurrent(ticket)||!client.connected||current?.own.id!==selected.own.id)throw Error('选人会话已变化，请核对当前英雄后重新应用');if(runeApplicationKey(current.own.id,current.build.role,current.build.runePage)!==runeApplicationKey(selected.own.id,selected.build.role,selected.build.runePage))throw Error('推荐方案已变化，请核对后重新应用');const page=structuredClone(current.build.runePage);if(await applyPreparedRunes(page,ticket))returnToTeamAfterPreparation(current.selection);}catch(error){runeAppliedKeys.clear();throw error;}finally{runeApplying=false;render();if(buildView)renderBuild();}
+  try{await sync(false,{fresh:true});const current=myPreparation();if(!runeAppliedKeys.isCurrent(ticket)||!client.connected||current?.positionKnown===false||current?.own.id!==selected.own.id)throw Error('选人会话已变化，请核对当前英雄后重新应用');if(runeApplicationKey(current.own.id,current.build.role,current.build.runePage)!==runeApplicationKey(selected.own.id,selected.build.role,selected.build.runePage))throw Error('推荐方案已变化，请核对后重新应用');const page=structuredClone(current.build.runePage);if(await applyPreparedRunes(page,ticket))returnToTeamAfterPreparation(current.selection);}catch(error){runeAppliedKeys.clear();throw error;}finally{runeApplying=false;render();if(buildView)renderBuild();}
  }
  else if(action==='my-build'){const own=currentPlayerSelection(client.session,data.champions,slots);if(own){if(client.mode?.id==='aram')throw Error('普通大乱斗暂未提供专用配置，请手动查询参考');if(!['rift','hex'].includes(client.mode?.id))throw Error('客户端模式尚未确认，请在配置库手动选择模式');const prepared=myPreparation();showBuild(own.id,prepared.selection.role,client.mode.id,prepared.selection);}else throw Error('当前没有你已选择的英雄');}
  else if(action==='build'){
