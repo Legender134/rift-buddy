@@ -236,6 +236,7 @@ async function run(){
  await js('window.previousHeroSelect=document.querySelector("[data-companion-field=rune]");previousHeroSelect.dispatchEvent(new PointerEvent("pointerdown",{bubbles:true}));void 0');
  await js('document.querySelector("[data-action=my-runes]").focus();void 0');
  picked='Ashe';assigned='bottom';await backgroundSync();
+ await until(()=>js('!previousHeroSelect.isConnected'),'Changing the local champion retained an invalid open menu');
  assert.equal(await js('previousHeroSelect.isConnected'),false,'Changing the local champion retained an invalid open menu');
  await toggleAutoSync();
  await click('[data-action=companion-tab][data-tab=plan]');
