@@ -345,7 +345,7 @@ test('a teammate changing a reliable public hover invalidates the old plan and u
  const picks={mid:'Ahri',bottom:'Ashe',support:'Braum'},slots=createSlots().map(s=>({...s,...(picks[s.role]?{champion:picks[s.role],locked:true,automaticPosition:true}:{})}));
  const {context:c}=setup({slots,current});c.activeCreativePlan={id:'trio',members:Object.entries(picks).map(([role,champion])=>({role,champion}))};
  c.lastTaskSelection={id:'Ashe',role:'bottom',mode:'rift',comboId:'trio'};c.creativePlanCompatible=creativePlanCompatible;
- vm.runInContext(extract('function reconcileCreativePlan(){','let currentWindowInfo='),c);
+ vm.runInContext(extract('function reconcileCreativePlan(','let currentWindowInfo='),c);
  const before=recommendationKey(c.recommendationInput());
  current.session.myTeam[1].championPickIntent=hero('Veigar').key;c.reconcileCreativePlan();
  assert.equal(c.activeCreativePlan,null);assert.equal(c.lastTaskSelection,null);assert.equal(c.draftComparing,true);
@@ -378,10 +378,26 @@ test('an explicit different candidate replaces the previous own hover without in
  const {context:c,calls}=setup({slots:createSlots(),current,incoming:structuredClone(current),results:[]});
  c.creativePlanCompatible=creativePlanCompatible;c.currentCombo=currentCombo;c.comboContextKnown=comboContextKnown;c.draftComparing=true;
  c.saved.preferences.pool=['Ahri','Jinx','Braum'];c.saved.preferences.poolMode='only';
- vm.runInContext(extract('function reconcileCreativePlan(){','let currentWindowInfo='),c);
+ vm.runInContext(extract('function reconcileCreativePlan(','let currentWindowInfo='),c);
  c.results=recommend(c.recommendationInput());c.resultsSignature=recommendationKey(c.recommendationInput());
  assert.ok(c.results.length);assert.equal(c.results[0].slots.find(s=>s.role==='bottom').champion,'Jinx');
  const el={dataset:{id:'Jinx',role:'bottom',resultIndex:'0'},hasAttribute:name=>name==='data-result-index'};
  await c.prepareCandidate(el);
  assert.equal(calls.prepared.length,1);assert.equal(calls.prepared[0].champion,'Jinx');assert.ok(c.activeCreativePlan);
+});
+
+test('changing the own public hover in the client leaves the previous accepted plan and follows the new configuration without writes',async()=>{
+ const current=client();current.session.myTeam[0].championPickIntent=hero('Ashe').key;
+ const incoming=structuredClone(current),picks={mid:'Ahri',bottom:'Ashe',support:'Braum'};
+ const slots=createSlots().map(s=>({...s,...(picks[s.role]?{champion:picks[s.role],locked:true,automaticPosition:true}:{})}));
+ const {context:c,calls}=setup({slots,current,incoming});
+ Object.assign(c,{creativePlanCompatible,currentCombo,comboContextKnown,companionPickIntent,guideSelection:null});
+ c.activeCreativePlan={id:'trio',members:Object.entries(picks).map(([role,champion])=>({role,champion}))};
+ c.lastTaskSelection={id:'Ashe',role:'bottom',mode:'rift',comboId:'trio'};
+ vm.runInContext(extract('function reconcileCreativePlan(','let currentWindowInfo=')+extract('function currentPickIntent(){','function invalidate(){')+extract('function myPreparation(){','function roomRoleContext(){'),c);
+ incoming.session.myTeam[0].championPickIntent=hero('Jinx').key;
+ await c.sync(false,{fresh:true});
+ assert.equal(c.activeCreativePlan,null);assert.equal(c.lastTaskSelection,null);assert.equal(c.draftComparing,true);
+ assert.equal(c.ownTaskPreparation().selection.id,'Jinx');assert.equal(c.companionPreparation().selection.id,'Jinx');assert.equal(calls.prepared.length,0);
+ assert.equal(c.slots.find(s=>s.role==='bottom').champion,'Ashe','Public hover must not become a persisted selected hero');
 });

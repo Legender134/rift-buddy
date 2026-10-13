@@ -170,10 +170,10 @@ let roomRoleChoice=null,clickedRoomPlan=null;
 let roomTransport='relay',roomRelayUrl=initialRelayUrl(),roomRelayRoom='',roomDialogOpen=false;
 let activeCreativePlan=null,creativePlanNotice='';
 function resultCreativePlan(result){const plan=captureCreativePlan(result,data);if(plan)result.creativePlan=plan;return plan;}
-function reconcileCreativePlan(){
+function reconcileCreativePlan({ownIntentChanged=false}={}){
  // The accepted candidate may intentionally differ from our previous hover.
- // Only a public selection, or a friend's changed intent, invalidates it.
- const session=client.connected&&client.session?{...client.session,myTeam:client.session.myTeam.map(p=>p.cellId===client.session.localPlayerCellId?{...p,championPickIntent:0}:p)}:null;
+ // A new client-side hover still takes precedence once that click is complete.
+ const session=client.connected&&client.session?{...client.session,myTeam:client.session.myTeam.map(p=>!ownIntentChanged&&p.cellId===client.session.localPlayerCellId?{...p,championPickIntent:0}:p)}:null;
  const context=recommendationDraft(slots,session,data.champions,{ownRole:taskOwnRole()});
  if(activeCreativePlan&&(!creativePlanCompatible(activeCreativePlan,context)||scope!=='bot'&&activeCreativePlan.members.some(m=>!slots.some(s=>s.party&&s.role===m.role)))){
   if(lastTaskSelection?.comboId===activeCreativePlan.id)lastTaskSelection=null;
@@ -900,6 +900,7 @@ async function generate(next=false){
 const sync=createClientSync(performSync);
 let sharedClient=null;
 async function performSync(manual=true,fresh=false){
+ const previousOwnIntent=client.session?.myTeam?.find(p=>p.cellId===client.session.localPlayerCellId)?.championPickIntent||0;
  lastSyncStarted=Date.now();syncing=true;const before=lastRenderedClient||clientRenderIdentity(client),previousMatchups=matchupContext(),previousPhase=client.phase,previousRecommendation=recommendationKey(recommendationInput());let changed=false,newGame=false;if(manual)render();
  try{
   await saveChain;const incoming=sharedClient;sharedClient=null;client=!manual&&!fresh&&incoming?incoming:await api.client(manual||fresh);drainExternalState();
@@ -912,9 +913,12 @@ async function performSync(manual=true,fresh=false){
   const draftContext=reconcileClientDraft({...saved.draft,slots,style,scope,soloRole},publicClientGameId(client),saved.guide?.match?.gameId);
   if(draftContext.changed){saved.draft=draftContext.draft;slots=saved.draft.slots;soloRole=saved.draft.soloRole;changed=true;if(draftContext.newGame){newGame=true;lastTaskSelection=null;if(activeCreativePlan&&!saved.draft.creativePlan)creativePlanNotice='新局已开始，原组合不会自动沿用；可以从收藏重新选择。';activeCreativePlan=saved.draft.creativePlan||null;pendingIntentPreparation=null;companionPreview=null;matchupTargets.clear();unassigned=[];}persist({derived:!manual});}
   if(client.session){
+   const nextOwnIntent=client.session.myTeam.find(p=>p.cellId===client.session.localPlayerCellId)?.championPickIntent||0;
+   const ownIntentChanged=!candidatePreparing&&!clientPreparing&&previousOwnIntent!==nextOwnIntent;
+   if(ownIntentChanged){lastTaskSelection=null;companionPreview=null;}
    // Recognizing a party updates its members, not an explicit recommendation scope.
    const merged=mergeClientSession(slots,client.session,data.champions,clientSyncOptions());merged.slots=restorePlayerPosition(merged.slots,client.session,data.champions,saved.draft?.playerPosition);merged.unassigned=unassignedPublicPicks(merged.slots,client.session,data.champions);
-   changed=changed||JSON.stringify(slots)!==JSON.stringify(merged.slots)||JSON.stringify(unassigned)!==JSON.stringify(merged.unassigned);slots=merged.slots;changed=reconcileCreativePlan()||changed;unassigned=merged.unassigned;{
+   changed=changed||JSON.stringify(slots)!==JSON.stringify(merged.slots)||JSON.stringify(unassigned)!==JSON.stringify(merged.unassigned);slots=merged.slots;changed=reconcileCreativePlan({ownIntentChanged})||changed||ownIntentChanged;unassigned=merged.unassigned;{
     const own=currentPlayerSelection(client.session,data.champions,slots),player=client.session.myTeam.find(p=>p.cellId===client.session.localPlayerCellId);
     // The client declares a lane before the player chooses a champion.
     const role=manualPlayerSlot(slots,client.session.localPlayerCellId)?.role||(saved.draft?.playerPosition?.cellId===client.session.localPlayerCellId?saved.draft.playerPosition.role:null)||(own?.positionKnown?own.role:null)||CLIENT_POSITION_ROLES[String(player?.assignedPosition||'').toUpperCase()];
