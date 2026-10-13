@@ -1,7 +1,7 @@
 import {escape as e} from './ui.mjs';
 
 export function routeStepButton(route,index,label,action='jungle',extra=''){
- const value=`step:${route.key}.${index}`;
+ const value=`step:${route.actionKey}.${index}`;
  return `<button data-action="${action}" ${action==='jungle'?'data-id':'data-value'}="${e(value)}" ${route.writable?'':'disabled'} ${extra}>${label}</button>`;
 }
 export function jungleRouteMap(route){

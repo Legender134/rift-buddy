@@ -6,7 +6,7 @@ import {validateRouteProgress} from '../src/core/jungle-route.mjs';
 import {selectGuide,validateGuideState,reconcileGuide} from '../src/core/guide.mjs';
 const live={matched:true,mapId:11,queueId:420,gameTime:120,teamSide:'blue',skills:{Q:1,W:1,E:1,R:0},stats:{hp:700,maxHp:1000,resource:{type:'MANA',value:400,max:500}}};
 const make=(notes={},extra={})=>jungleGuidance({champion:'Nocturne',role:'jungle',mode:'rift',patch:'16.20',live,notes,...extra});
-const step=(j,index)=>changeJungleNotes(j.notes,'step',`${j.route.key}.${index}`,live.gameTime,j.route);
+const step=(j,index)=>changeJungleNotes(j.notes,'step',`${j.route.actionKey}.${index}`,live.gameTime,j.route);
 
 test('a route exposes actual ordered camps and mirrors only the own-side diagram, without observed positions',()=>{
  const blue=make(),red=make({}, {live:{...live,teamSide:'red'}});
@@ -24,11 +24,11 @@ test('explicit progress pins its stage, supports skipping/backtracking, and ends
  j=make(step(j,2));assert.equal(j.route.current.name,'锋喙鸟');
  j=make(step(j,6));assert(j.route.complete);assert.equal(j.route.current,null);
  assert.match(jungleRouteView(j.route),/不自动循环假装营地刷新/);
- const reset=changeJungleNotes(j.notes,'step',`${j.route.key}.reset`,120,j.route);assert.equal(reset.routeProgress,undefined);
+ const reset=changeJungleNotes(j.notes,'step',`${j.route.actionKey}.reset`,120,j.route);assert.equal(reset.routeProgress,undefined);
  assert.equal(make(reset).route.manual,false);assert.equal(make(reset).route.index,0);
 });
 test('absolute steps are idempotent across windows and stale route keys cannot alter a different route',()=>{
- const original=make(),value=`${original.route.key}.1`;
+ const original=make(),value=`${original.route.actionKey}.1`;
  const first=changeJungleNotes({},'step',value,120,original.route),second=changeJungleNotes(first,'step',value,120,make(first).route);
  assert.deepEqual(first,second);assert.equal(make(second).route.index,1);
  const switched=make(changeJungleNotes(first,'start','blue',120));assert.equal(switched.route.manual,false);
@@ -54,11 +54,11 @@ test('recovery adoption switches to the candidate half, clears old gank evidence
   const notes=changeJungleNotes(checked,'situation',reason,120),j=make(notes);
   assert.equal(j.route.stage,'rotation');assert.equal(j.route.half,reason==='invaded'?'blue':'red');assert.equal(j.route.writable,false);assert(j.route.canAdopt);
   assert.throws(()=>step(j,1),/路线已变化/);
-  const adopted=changeJungleNotes(notes,'adopt',j.route.key,120,j.route),next=make(adopted);
+  const adopted=changeJungleNotes(notes,'adopt',j.route.actionKey,120,j.route),next=make(adopted);
   assert.equal(next.half,j.route.half);assert.equal(next.route.key,j.route.key);assert(next.route.manual);assert.equal(next.route.index,0);
   assert.equal(next.recovery,null);assert.equal(next.notes.lane,undefined);assert.equal(next.ready,false);assert.equal(next.route.stage,'rotation');
   assert.equal(next.route.steps.length,3);assert.equal(next.route.current.name,reason==='invaded'?'三狼':'锋喙鸟');
-  const expired=make(notes,{live:{...live,gameTime:211}});assert.throws(()=>changeJungleNotes(notes,'adopt',j.route.key,211,expired.route),/候选已变化/);
+  const expired=make(notes,{live:{...live,gameTime:211}});assert.throws(()=>changeJungleNotes(notes,'adopt',j.route.actionKey,211,expired.route),/候选已变化/);
  }
 });
 test('opening recovery uses the current manually planned camp half instead of the original start half',()=>{
@@ -85,6 +85,25 @@ test('Ivern distinguishes drawing from mature release at repeated camp areas in 
   assert(interrupted.recoveryRoute[0].includes(camps));assert(interrupted.lead.text.includes(camps));
   assert.doesNotMatch(interrupted.recoveryRoute[0],/转另一半区/);
  }
+});
+test('Ivern normal rotation text names only the chosen half shown by the manual camp sequence',()=>{
+ for(const half of ['red','blue']){
+  const j=make({stage:'rotation',half},{champion:'Ivern'});
+  for(const camp of new Set(j.route.steps.map(s=>s.name)))assert(j.rotationRoute[0].includes(camp));
+  assert.doesNotMatch(j.rotationRoute.join(' '),/另一半区/);assert.match(j.rotationRoute[1],/同半区成熟营地/);
+ }
+});
+test('click intents reject another known match and a new interruption without losing stored progress when an ID arrives',()=>{
+ const old=make({}, {matchId:'100'}),newMatch=make({}, {matchId:'101'});
+ assert.throws(()=>changeJungleNotes({},'step',`${old.route.actionKey}.3`,120,newMatch.route),/路线已变化/);
+ const unknown=make(),notes=step(unknown,2),known=make(notes,{matchId:'100'});
+ assert(known.route.manual);assert.equal(known.route.index,2);assert.notEqual(unknown.route.actionKey,known.route.actionKey);
+ assert.throws(()=>changeJungleNotes(notes,'step',`${unknown.route.actionKey}.3`,120,known.route),/路线已变化/);
+ const firstNotes=changeJungleNotes({},'situation','invaded',120),first=make(firstNotes,{matchId:'100'});
+ const laterNotes=changeJungleNotes({},'situation','invaded',220),later=make(laterNotes,{matchId:'100',live:{...live,gameTime:220}});
+ assert.equal(first.route.key,later.route.key);assert.notEqual(first.route.actionKey,later.route.actionKey);
+ assert.throws(()=>changeJungleNotes(laterNotes,'adopt',first.route.actionKey,220,later.route),/候选已变化/);
+ const adopted=changeJungleNotes(laterNotes,'adopt',later.route.actionKey,220,later.route);assert.equal(adopted.routeProgress.key,later.route.key);
 });
 test('stored progress is bounded, discarded for other routes, and cleared by match or champion changes',()=>{
  for(const value of [{key:'<script>',index:1},{key:'Nocturne-opening-red',index:13},{key:'Nocturne-opening-red',index:-1},{key:'Nocturne-opening-red',index:1.1},{index:1},null])assert.equal(validateRouteProgress(value),undefined);

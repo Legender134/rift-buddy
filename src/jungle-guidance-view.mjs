@@ -4,7 +4,7 @@ import {jungleRouteView} from './jungle-route-view.mjs';
 export function jungleGuidanceView(j){
  if(!j)return '';
  const buttons=(pairs,field,selected)=>pairs.map(([id,label])=>`<button data-action="jungle" data-id="${field}:${id}" class="${selected===id?'active':''}">${label}</button>`).join('');
- const interruption=j.recovery?`<button data-action="jungle" data-id="adopt:${e(j.route.key)}" ${j.route.canAdopt?'':'disabled'}>确认安全，采用续刷</button><button data-action="jungle" data-id="resume">取消中断</button>`:buttons([['invaded','被入侵'],['recalled','刚回城'],['no-window','没机会']],'situation');
+ const interruption=j.recovery?`<button data-action="jungle" data-id="adopt:${e(j.route.actionKey)}" ${j.route.canAdopt?'':'disabled'}>确认安全，采用续刷</button><button data-action="jungle" data-id="resume">取消中断</button>`:buttons([['invaded','被入侵'],['recalled','刚回城'],['no-window','没机会']],'situation');
  const action=`<article class="jungle-next"><h3>现在先看 · ${e(j.lead.title)}</h3><p>${e(j.lead.text)}</p><div class="jungle-checks">${interruption}</div><p class="note">中断原因由你确认，90秒后失效；会清除旧抓人条件，采用或取消后须重新核对兵线。</p></article>`;
  const priority=!!(j.recovery||j.route?.pause);
  return `<section class="jungle-guide"><h2>刷野路线与机会</h2>

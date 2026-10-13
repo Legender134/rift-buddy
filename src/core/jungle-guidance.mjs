@@ -25,13 +25,13 @@ export function changeJungleNotes(current,field,value,gameTime,route){
  const plan=Object.fromEntries(['start','side','half','stage','routeProgress'].filter(k=>notes[k]).map(k=>[k,notes[k]]));
  if(field==='step'){
   const match=typeof value==='string'&&value.match(/^([A-Za-z][A-Za-z0-9-]{1,79})\.(\d{1,2}|reset)$/);
-  if(!route?.writable||!match||match[1]!==route.key)throw Error('路线已变化或本局尚未确认，请查看最新路线');
+  if(!route?.writable||!match||match[1]!==route.actionKey)throw Error('路线已变化或本局尚未确认，请查看最新路线');
   if(match[2]==='reset'){const {routeProgress,...rest}=notes;return rest;}
   const index=Number(match[2]);if(index>route.steps.length)throw Error('路线步骤不正确');
   return {...notes,stage:route.stage,...(route.stage==='rotation'?{half:route.half}:{start:route.start}),routeProgress:{key:route.key,index}};
  }
  if(field==='adopt'){
-  if(!route?.canAdopt||value!==route.key)throw Error('续刷候选已变化，请重新确认安全半区');
+  if(!route?.canAdopt||value!==route.actionKey)throw Error('续刷候选已变化，请重新确认安全半区');
   return {start:notes.start,side:notes.side,stage:'rotation',half:route.half,routeProgress:{key:route.key,index:0}};
  }
  if(field==='clear')return Object.keys(plan).length?plan:undefined;
@@ -43,7 +43,7 @@ export function changeJungleNotes(current,field,value,gameTime,route){
  if(!fields.includes(field)||!notes.lane)throw Error('先选一条要自己观察的路线');
  return {...notes,at:notes.at??gameTime,[field]:!notes[field]};
 }
-export function jungleGuidance({champion,role,mode,patch,live,notes,combo}={}){
+export function jungleGuidance({champion,role,mode,patch,live,notes,combo,matchId}={}){
  if(role!=='jungle'||mode!=='rift')return null;
  const checked=validateJungleNotes(notes)||{},matched=live?.matched===true;
  const autoSide=matched&&['blue','red'].includes(live.teamSide)?live.teamSide:null,side=autoSide||checked.side||null;
@@ -62,6 +62,9 @@ export function jungleGuidance({champion,role,mode,patch,live,notes,combo}={}){
  const recovery=matched&&freshAt(checked.situationAt,live.gameTime)?checked.situation:null;
  const recoveryHalf=recovery==='invaded'?(half==='red'?'blue':'red'):half;
  const route=recovery?jungleRoute({champion,start,half,side,stage:routeStage,recovery,progress:checked.routeProgress,writable:matched&&validQueue&&!stale}):baseRoute;
+ // Keep stored progress independent of an ID arriving late, while click intents
+ // belong to one known match and (for adoption) one confirmed interruption.
+ route.actionKey=`${route.key}-g${/^\d{1,20}$/.test(String(matchId||''))?matchId:'0'}${recovery?'-t'+Math.round(checked.situationAt*1000):''}`;
  const recoveryRotation=special?`${[...new Set(route.steps.map(step=>step.name))].join(' → ')}（未画圈先画圈，成熟后回收）`:junglePlan(champion,recoveryHalf,side).rotationRoute[0];
  const recoveryRoute=recovery?[
   `${recovery==='invaded'?'另一半区候选：':'安全续刷候选：'}${recoveryRotation}`,
