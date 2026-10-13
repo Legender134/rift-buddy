@@ -1,4 +1,5 @@
 import {CLIENT_POSITION_ROLES,manualPlayerSlot} from './draft.mjs';
+import {profile,ROLES} from './rules.mjs';
 
 // Comparing another proposal must not erase the adopted lineup. Release only
 // the assistant's prospective members in this temporary search input; explicit
@@ -29,12 +30,23 @@ export function recommendationDraft(slots,session,champions,{ownRole='',bans=[],
   const role=manual?.role||(local&&next.some(s=>s.role===ownRole)?ownRole:'')||CLIENT_POSITION_ROLES[String(player.assignedPosition||'').toUpperCase()];
   return {player,role,id:byKey.get(player.championPickIntent)};
  });
- for(const intent of intents){
-  const {player,role,id}=intent,target=next.find(s=>s.role===role);
-  if(!target||blocked.has(id)||intents.filter(p=>p.id===id).length!==1||intents.filter(p=>p.role===role).length!==1)continue;
-  const proposal=target.automaticPosition&&!target.manualPosition&&!Number.isInteger(target.clientCellId);
-  if(target.locked&&!proposal||Number.isInteger(target.clientCellId)&&target.clientCellId!==player.cellId||target.champion&&target.champion!==id&&(target.manualPosition||Number.isInteger(target.clientCellId)))continue;
-  if(next.some(s=>s!==target&&s.champion===id)||Array.isArray(eligibleByRole[role])&&!eligibleByRole[role].includes(id))continue;
+ const reservedRoles=new Set(team.map(player=>manualPlayerSlot(next,player.cellId)?.role||(player.cellId===session.localPlayerCellId&&ownRole)||CLIENT_POSITION_ROLES[String(player.assignedPosition||'').toUpperCase()]).filter(Boolean));
+ // Blind pick does not declare lanes. Keep public hovers visible in a temporary
+ // usual lane, after reserving explicit lanes; never persist that inference.
+ for(const intent of [...intents].sort((a,b)=>Number(!!b.role)-Number(!!a.role)||a.player.cellId-b.player.cellId)){
+  const {player,role,id}=intent;
+  if(blocked.has(id)||intents.filter(p=>p.id===id).length!==1||role&&intents.filter(p=>p.role===role).length!==1)continue;
+  const available=slot=>{
+   if(!slot||slot.publicIntent)return false;
+   const proposal=slot.automaticPosition&&!slot.manualPosition&&!Number.isInteger(slot.clientCellId);
+   return !(slot.locked&&!proposal||Number.isInteger(slot.clientCellId)&&slot.clientCellId!==player.cellId||slot.champion&&slot.champion!==id&&(slot.manualPosition||Number.isInteger(slot.clientCellId)))&&(!Array.isArray(eligibleByRole[slot.role])||eligibleByRole[slot.role].includes(id));
+  };
+  const preferred=role?[role]:[...profile(champions.find(c=>c.id===id)).roles,...ROLES.map(r=>r.id)].filter((r,i,a)=>a.indexOf(r)===i&&!reservedRoles.has(r));
+  const target=preferred.map(r=>next.find(s=>s.role===r)).find(available);
+  if(!target)continue;
+  const previous=next.filter(s=>s!==target&&s.champion===id);
+  if(previous.some(s=>!s.automaticPosition||s.manualPosition||Number.isInteger(s.clientCellId)))continue;
+  for(const slot of previous){slot.champion=null;slot.locked=false;}
   target.champion=id;target.locked=false;target.publicIntent=true;
  }
  return next;

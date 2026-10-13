@@ -66,17 +66,34 @@ test('saved fixed members stay fixed when an older adoption overmarked them as a
  assert.deepEqual(restored.slots,canonical,'Comparing preserves the saved lineup');
 });
 
-test('unknown lanes stay unknown while manual bindings and explicit own roles locate only the public local hover',()=>{
+test('blind-pick public hovers use temporary usual lanes while manual bindings and explicit own roles take priority',()=>{
  const canonical=slots(),unknown={...session(),myTeam:[player(0,'Ashe'),player(1,'Ahri')]};
- assert.deepEqual(recommendationDraft(canonical,unknown,data.champions),canonical);
+ const inferred=recommendationDraft(canonical,unknown,data.champions);
+ assert.equal(inferred.find(s=>s.role==='bottom').champion,'Ashe');assert.equal(inferred.find(s=>s.role==='mid').champion,'Ahri');
+ assert.ok(inferred.filter(s=>s.champion).every(s=>s.publicIntent&&!s.locked&&!Number.isInteger(s.clientCellId)));
+ assert.ok(canonical.every(s=>!s.champion),'Inferring a hover must not assign the persisted draft or claim a lane');
  const own=recommendationDraft(canonical,unknown,data.champions,{ownRole:'bottom'});
- assert.equal(own.find(s=>s.role==='bottom').champion,'Ashe');assert.equal(own.find(s=>s.role==='mid').champion,null);
+ assert.equal(own.find(s=>s.role==='bottom').champion,'Ashe');assert.equal(own.find(s=>s.role==='mid').champion,'Ahri');
  const manual=canonical.map(s=>s.role==='support'?{...s,manualPosition:true,clientCellId:0}:s);
  const bound=recommendationDraft(manual,session(),data.champions,{ownRole:'bottom'});
  assert.equal(bound.find(s=>s.role==='support').champion,'Ashe');assert.equal(bound.find(s=>s.role==='support').manualPosition,true);
  assert.equal(bound.find(s=>s.role==='bottom').champion,null);assert.equal(bound.find(s=>s.role==='mid').champion,'Ahri');
  const explicit=recommendationDraft(canonical,session(),data.champions,{ownRole:'support'});
  assert.equal(explicit.find(s=>s.role==='support').champion,'Ashe');assert.equal(explicit.find(s=>s.role==='bottom').champion,null);
+});
+
+test('blind-pick hovers reserve declared and manual lanes, use another available lane on conflict, and constrain recommendations',()=>{
+ const current={...session(),myTeam:[player(2,'Lux'),player(1,'Ahri'),player(0,'Ashe','BOTTOM')]};
+ const context=recommendationDraft(slots(),current,data.champions),reverse=recommendationDraft(slots(),{...current,myTeam:[...current.myTeam].reverse()},data.champions);
+ assert.deepEqual(context,reverse);assert.equal(context.find(s=>s.role==='mid').champion,'Ahri');assert.equal(context.find(s=>s.role==='support').champion,'Lux');
+ const candidates=recommend({...input(context),pool:[],poolMode:'prefer'});
+ assert.ok(candidates.length);assert.ok(candidates.every(r=>r.slots.some(s=>s.champion==='Ahri'&&s.role==='mid')));
+ const manual=slots().map(s=>s.role==='mid'?{...s,manualPosition:true,clientCellId:9}:s);
+ assert.deepEqual(recommendationDraft(manual,current,data.champions).find(s=>s.role==='mid'),manual.find(s=>s.role==='mid'));
+ const unpicked={...current,myTeam:[{cellId:0,championId:0,championPickIntent:0,assignedPosition:'MIDDLE'},player(1,'Ahri')]};
+ assert.equal(recommendationDraft(slots(),unpicked,data.champions).find(s=>s.role==='mid').champion,null,'An inferred peer hover cannot take an unpicked player’s declared lane');
+ assert.ok(recommendationDraft(slots(),unpicked,data.champions).some(s=>s.champion==='Ahri'));
+ assert.deepEqual(recommendationDraft(context,{...current,myTeam:[]},data.champions),slots());
 });
 
 test('confirmed picks and manual locks survive different hovers without duplicates or ownership changes',()=>{
@@ -90,6 +107,16 @@ test('confirmed picks and manual locks survive different hovers without duplicat
  assert.equal(kept.find(s=>s.role==='bottom').publicIntent,undefined);
  const occupied=slots().map(s=>s.role==='bottom'?{...s,clientCellId:3,manualPosition:true}:s);
  assert.equal(recommendationDraft(occupied,session(),data.champions).find(s=>s.role==='bottom').champion,null);
+});
+
+test('a public hover can move an unconfirmed proposal hero to its declared lane without duplicating or changing the stored proposal',()=>{
+ const canonical=slots().map(s=>s.role==='mid'?{...s,champion:'Lux',locked:true,automaticPosition:true}:s),before=structuredClone(canonical);
+ const current={...session(),myTeam:[player(1,'Lux','UTILITY')]};
+ const temporary=recommendationDraft(canonical,current,data.champions);
+ assert.equal(temporary.find(s=>s.role==='mid').champion,null);assert.equal(temporary.find(s=>s.role==='support').champion,'Lux');
+ assert.equal(temporary.filter(s=>s.champion==='Lux').length,1);assert.deepEqual(canonical,before);
+ const manual=canonical.map(s=>s.role==='mid'?{...s,manualPosition:true}:s);
+ assert.equal(recommendationDraft(manual,current,data.champions).find(s=>s.role==='support').champion,null);
 });
 
 test('duplicate, banned, unavailable and opposing public intents cannot enter the recommendation draft',()=>{
@@ -115,7 +142,7 @@ test('duplicate, banned, unavailable and opposing public intents cannot enter th
 
 test('cleared, changed or newly invalid hovers expire without mutating canonical slots or becoming locks',()=>{
  const canonical=slots(),temporary=recommendationDraft(canonical,session(),data.champions),signature=recommendationKey(input(temporary));
- for(const current of [null,{...session(),myTeam:session().myTeam.map(p=>({...p,championPickIntent:0}))},{...session(),myTeam:session().myTeam.map(p=>({...p,assignedPosition:''}))}]){
+ for(const current of [null,{...session(),myTeam:session().myTeam.map(p=>({...p,championPickIntent:0}))}]){
   const cleared=recommendationDraft(temporary,current,data.champions);
   assert.deepEqual(cleared,canonical);assert.notEqual(recommendationKey(input(cleared)),signature);
  }
