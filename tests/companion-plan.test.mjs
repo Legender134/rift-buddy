@@ -1,12 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {changeCompanionPlan,companionPickIntent} from '../src/core/companion-plan.mjs';
+import {changeCompanionPlan,companionPickIntent,localConfigurationPreview,configurationReadOnly} from '../src/core/companion-plan.mjs';
 import {getBuild,SHARDS} from '../src/core/builds.mjs';
 import {preparationEquipment} from '../src/core/complete-gear.mjs';
 import {createPreparationStore,recallPreparation} from '../src/core/preparation.mjs';
 import {createSlots,recommend} from '../src/core/recommend.mjs';
-import {companionView,companionPlanView} from '../src/companion-view.mjs';
+import {companionView,companionPlanView,readOnlyConfigurationAction} from '../src/companion-view.mjs';
 import {clientPreparationPlan,clientPreparationKey} from '../src/client-preparation-view.mjs';
 import {preparationProgressView} from '../src/preparation-progress-view.mjs';
 import {captureCreativePlan,creativeMemberCombo,creativeComboContext} from '../src/core/creative-plan.mjs';
@@ -14,6 +14,32 @@ const data=JSON.parse(await fs.readFile('data/game.json'));
 data.builds=JSON.parse(await fs.readFile('data/builds.json')).entries;
 const hero=id=>data.champions.find(c=>c.id===id),base={id:'Volibear',role:'top',mode:'rift',conditions:[],coreIndex:0};
 const build=s=>getBuild(hero(s.id),s.role,data,s);
+
+test('live teammate previews reject configuration edits while offline lineup references remain editable',()=>{
+ const client={connected:true,phase:'ChampSelect'},selection={...base};
+ const teammate=localConfigurationPreview(selection,client,'mid');
+ assert.equal(teammate.readOnly,true);
+ for(const [field,value] of [['summoner-swap'],['rune','default'],['rune-custom:keystone',8439],['skill-custom:1','Q'],['core',0],['source-opponent-reset']])assert.throws(()=>changeCompanionPlan(data,teammate,field,value),/队友配置仅供查看/);
+ const own=localConfigurationPreview(selection,client,'top');
+ assert.equal(own.readOnly,false);assert.equal(changeCompanionPlan(data,own,'summoner-swap').summonerIds.length,2);
+ const local=localConfigurationPreview(selection,{connected:false,phase:'Offline'},'mid');
+ assert.equal(local.localReference,true);assert.equal(local.readOnly,false);
+ assert.equal(changeCompanionPlan(data,local,'summoner-swap').summonerIds.length,2);
+ assert.equal(configurationReadOnly(local,client,'mid'),true,'An offline preview must become read-only if a teammate owns its lane after connection');
+ assert.equal(configurationReadOnly(local,client,'top'),false);
+ assert.equal(configurationReadOnly({...local,readOnly:true},{connected:false},'top'),true,'An explicitly shared read-only snapshot must remain read-only offline');
+});
+
+test('read-only configuration renders full references and navigation but disables every editor control',()=>{
+ const selection={...base,readOnly:true},html=companionPlanView(data,{preview:true,selection,build:build(selection)});
+ assert.match(html,/队友配置 · 只读/);assert.match(html,/当前完整配置/);
+ const tags=[...html.matchAll(/<(button|select|input|textarea)\b[^>]*>/g)].map(match=>({type:match[1],tag:match[0]}));
+ assert.ok(tags.some(({tag})=>/data-action="companion-summoner"/.test(tag)));
+ for(const {type,tag} of tags){const action=tag.match(/data-action="([^"]+)"/)?.[1];if(type==='button'&&readOnlyConfigurationAction(action))continue;assert.match(tag,/\sdisabled(?:\s|=|>)/,tag);}
+ assert.match(html,/<button[^>]*data-action="companion-current"(?![^>]*disabled)[^>]*>/);
+ const local=localConfigurationPreview(base,{connected:false},'mid'),editable=companionPlanView(data,{preview:true,selection:local,build:build(local)});
+ assert.match(editable,/本机配置参考 · 可编辑/);assert.match(editable,/<button[^>]*data-action="companion-summoner"(?![^>]*disabled)[^>]*>/);
+});
 
 test('only the local unselected intent prepares a labeled plan without creating a client pick',()=>{
  const slots=createSlots(),client={connected:true,phase:'ChampSelect',mode:{id:'rift'},session:{localPlayerCellId:1,myTeam:[{cellId:1,championId:0,championPickIntent:hero('Volibear').key},{cellId:2,championId:0,championPickIntent:hero('Ashe').key}]}};

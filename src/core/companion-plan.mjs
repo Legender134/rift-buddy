@@ -7,6 +7,19 @@ import {editSkillOrder} from './skill-advice.mjs';
 import {currentCombo} from './recommend.mjs';
 import {creativeComboContext} from './creative-plan.mjs';
 
+// Offline lineup design edits this machine's reference, never a teammate's
+// live configuration. Shared snapshots keep their explicit read-only flag.
+export function localConfigurationPreview(selection,client,ownRole=''){
+ const live=client?.connected&&client.phase==='ChampSelect';
+ return {...selection,readOnly:!!live&&(!ownRole||selection.role!==ownRole),localReference:!live};
+}
+export function configurationReadOnly(selection,client,ownRole=''){
+ return !!selection?.readOnly||!!(selection?.localReference&&client?.connected&&client.phase==='ChampSelect'&&(!ownRole||selection.role!==ownRole));
+}
+export function assertConfigurationEditable(selection){
+ if(selection?.readOnly)throw Error('队友配置仅供查看，请回到本人的配置');
+}
+
 export function companionPickIntent(client,champions,slots=[],{scope='solo',soloRole='',playerPosition=null,creativePlan=null,catalogStatus={}}={}){
  const session=client?.session,mode=client?.mode?.id;
  if(!client?.connected||client.phase!=='ChampSelect'||!['rift','hex'].includes(mode)||!Number.isInteger(session?.localPlayerCellId))return null;
@@ -24,6 +37,7 @@ export function companionPickIntent(client,champions,slots=[],{scope='solo',solo
 
 // Inline controls edit the same preparation as the drawer and in-game guide.
 export function changeCompanionPlan(data,selection,field,value){
+ assertConfigurationEditable(selection);
  const champion=data.champions.find(c=>c.id===selection.id);
  if(!champion)throw Error('英雄资料已变化，请重新选择');
  const current=getBuild(champion,selection.role,data,selection),next={...selection};

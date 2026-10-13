@@ -49,6 +49,18 @@ async function run(){
  const settled=()=>until(()=>js(side,'!document.querySelector(".companion-shell")?.textContent.includes("正在预选并配置")'),'Preparation renderer did not settle');
  const event=window=>({sender:window.webContents,senderFrame:window.webContents.mainFrame});
  const state=async()=>structuredClone((await handlers.get('bootstrap')(event(main))).state);
+ const configurationState=value=>({preparations:value.preparations,flashSlot:value.preferences.flashSlot,guide:value.guide});
+ const readonlyProbe=async(window,scope,before)=>{
+  const controls=await js(window,'[...document.querySelectorAll('+JSON.stringify(scope+' button,'+scope+' select,'+scope+' input')+')].filter(el=>el.matches("select,input")||/^(?:companion-(?:summoner|rune|core|condition|skill|later)|build-(?:summoner|rune|core|condition|skill|later)|matchup-(?:rune|core|skill)|source-opponent-reset)/.test(el.dataset.action||"")).map(el=>({action:el.dataset.action,disabled:el.disabled}))');
+  assert.ok(controls.length>5,'Readonly fixture needs complete configuration controls');assert.ok(controls.every(control=>control.disabled),'Readonly configuration exposes an enabled editor');
+  const prefix=scope.includes('drawer')?'build':'companion';
+  for(const selector of ['[data-action='+prefix+'-summoner][data-field=summoner-swap]','[data-rune-field]','[data-skill-index]','[data-action=matchup-rune]']){
+   await js(window,'(()=>{document.querySelector("#toast").textContent="";const host=document.querySelector('+JSON.stringify(scope)+');let el=host.querySelector('+JSON.stringify(selector)+');if(!el){el=document.createElement("button");el.dataset.action="matchup-rune";host.append(el);}el.disabled=false;if(el.tagName==="SELECT"){el.value=[...el.options].find(o=>o.value!==el.value)?.value||el.value;el.dispatchEvent(new Event("change",{bubbles:true}));}else el.click();})()');
+   await until(()=>js(window,'document.querySelector("#toast").textContent.includes("队友配置仅供查看")'),'Synthetic readonly editor event was not rejected');
+   assert.deepEqual(configurationState(await state()),configurationState(before),'Readonly event changed saved configuration, Flash preference or guide');
+  }
+  await fs.writeFile(path.join(root,prefix+'-readonly.png'),(await window.webContents.capturePage()).toPNG());
+ };
  await until(()=>js(main,'!!document.querySelector("[data-action=sync]")'),'Main UI missing');await until(()=>observer,'Native observer mock missing');
  const area=screen.getPrimaryDisplay().workArea,anchor={x:area.x+20,y:area.y+20,width:Math.max(600,area.width-500),height:Math.min(800,area.height-40)};
  observer.stdout.emit('data',JSON.stringify({client:{...screen.dipToScreenRect(null,anchor),foreground:false,minimized:false},game:null})+'\n');
@@ -89,6 +101,11 @@ async function run(){
   assert.equal(writes.length,0);console.log('PASS independent item import: both windows, matching-hover retention, new-hover configuration, snapshot replay, new-game reset; all client writes mocked and none issued');app.quit();return;
  }
  if(unadopted){
+  const beforeReadonly=await state(),beforeReadonlyWrites=writes.length;
+  await click(side,'[data-action=companion-preview][data-id=Camille]');
+  await until(()=>js(side,'document.querySelector(".companion-preview")?.textContent.includes("队友配置 · 只读")'),'Teammate preview is not labeled readonly');
+  await readonlyProbe(side,'.companion-content',beforeReadonly);assert.equal(writes.length,beforeReadonlyWrites,'Readonly preview wrote to the client');
+  await click(side,'[data-action=companion-tab][data-tab=recommend]');
   const expected=fixture.candidateValue,assertConfiguration=(value,label)=>{assert.deepEqual(value.page,expected.page,label+' changed the full rune page');assert.deepEqual(value.summoners,expected.summoners,label+' changed D/F');assert.deepEqual(value.itemSet.blocks,expected.itemSet.blocks,label+' changed the full equipment plan');};
   const assertStoredSolo=async()=>{const current=await state();if(!attempts.length)assert.equal(current.draft.creativePlan,undefined);else if(current.draft.creativePlan)assert.ok(current.draft.creativePlan.members.some(m=>m.champion==='Galio'&&m.role==='mid'),'Candidate click adopts the same concrete party plan');assert.deepEqual(current.preparations.find(p=>p.id==='Galio'&&p.role==='mid'&&p.mode==='rift'&&!p.comboId),fixture.oldSolo,'Candidate flow overwrote the saved solo configuration');return current;};
   assert.equal(originalPlan,undefined);assert.deepEqual(initial.preparations,[fixture.oldSolo]);assert.ok(initial.draft.slots.every(s=>s.champion===null));
@@ -177,9 +194,10 @@ async function run(){
  assert.deepEqual(attempts[3].summoners,swapped);assert.deepEqual(attempts[3].page.selectedPerkIds,perks);assert.deepEqual(attempts[3].itemSet.blocks,attempts[0].itemSet.blocks);assert.equal(picked,0);assert.equal(intent,hero('Galio').key);assert.equal(completed,false);assert.equal(await js(main,'!!document.querySelector(".drawer")'),false,'Hero preparation keeps the current task instead of opening a long drawer');
  await until(async()=>{const value=await ownPlan();return value.page.selectedPerkIds[0]===8439&&JSON.stringify(value.summoners)===JSON.stringify(swapped);},'Main avatar click changed the shared sidebar configuration');
  // Teammate detail remains read-only; rebuilding a native sidebar replays receipts.
- const beforeReadonly=writes.length;await click(main,'.slot-config[data-id=Vi][data-role=jungle]');
+ const beforeReadonly=writes.length,beforeReadonlyState=await state();await click(main,'.slot-config[data-id=Vi][data-role=jungle]');
  await until(()=>js(main,'!!document.querySelector(".drawer")'),'Teammate drawer missing');
  assert.equal(await js(main,'[...document.querySelectorAll(".drawer [data-action=client-prepare],.drawer [data-action=apply-runes],.drawer [data-action=import-item-set]")].some(el=>!el.disabled)'),false,'Teammate preview offers a client write');
+ await readonlyProbe(main,'.drawer',beforeReadonlyState);
  await click(main,'[data-action=close]');assert.equal(writes.length,beforeReadonly);
  const previousSide=side;previousSide.destroy();await click(main,'[data-action=companion-attach]');
  await until(()=>{side=windows.find(w=>w!==previousSide&&!w.isDestroyed()&&w.webContents.getURL().includes('surface=companion'));return side;},'Native sidebar did not rebuild');diagnosticSide=side;

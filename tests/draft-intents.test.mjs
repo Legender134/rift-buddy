@@ -96,6 +96,25 @@ test('blind-pick hovers reserve declared and manual lanes, use another available
  assert.deepEqual(recommendationDraft(context,{...current,myTeam:[]},data.champions),slots());
 });
 
+test('known party hovers define the recommendation range without becoming selected heroes or overriding manual scope',()=>{
+ const canonical=createSlots(),current={...session(),localPlayerCellId:2,myTeam:[player(0,'Garen'),player(1,'LeeSin'),player(2,'Ahri'),player(3,'Nami')]};
+ const party={status:'known',unmatched:0,members:[{cellId:0},{cellId:1},{cellId:2,local:true}]},options={autoParty:true,party,ownRole:'mid'};
+ const merged=mergeClientSession(canonical,current,data.champions,options).slots;
+ assert.deepEqual(merged.filter(s=>s.party).map(s=>s.role),['top','jungle','mid']);
+ assert.ok(merged.every(s=>!s.champion&&!s.locked&&!s.publicIntent),'A hover must not be persisted as a selected hero');
+ const temporary=recommendationDraft(merged,current,data.champions,{ownRole:'mid'});
+ assert.deepEqual(temporary.filter(s=>s.party).map(s=>s.champion),['Garen','LeeSin','Ahri']);
+ assert.equal(temporary.find(s=>s.champion==='Nami').party,false,'A stranger hover must not join our party');
+ const results=recommend({...input(temporary),pool:[],poolMode:'prefer'});
+ assert.ok(results.length);for(const result of results)assert.deepEqual(result.slots.filter(s=>s.party).map(s=>s.champion),['Garen','LeeSin','Ahri']);
+ const manual=canonical.map(s=>s.role==='jungle'?{...s,party:false,partyManual:true}:s);
+ assert.equal(mergeClientSession(manual,current,data.champions,options).slots.find(s=>s.role==='jungle').party,false);
+ const conflict={...current,myTeam:[player(0,'Lux'),player(1,'Ahri'),player(2,'Ashe')]},conflictOptions={...options,ownRole:'bottom'};
+ const conflicted=mergeClientSession(canonical,conflict,data.champions,conflictOptions).slots,visible=recommendationDraft(conflicted,conflict,data.champions,{ownRole:'bottom'});
+ assert.deepEqual(visible.filter(s=>s.party).map(s=>s.champion).sort(),['Ahri','Ashe','Lux']);
+ assert.deepEqual(canonical,createSlots(),'Public party inference must preserve the source draft');
+});
+
 test('confirmed picks and manual locks survive different hovers without duplicates or ownership changes',()=>{
  const canonical=slots().map(s=>s.role==='bottom'?{...s,champion:'Jinx',locked:true,manualPosition:true,clientCellId:0}:s);
  const before=structuredClone(canonical),result=recommendationDraft(canonical,session(),data.champions);

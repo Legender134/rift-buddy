@@ -1,5 +1,6 @@
 import { ROLES, DUOS, TRIOS, CROSS_SYNERGIES, profile,conventionalRole } from './rules.mjs';
 import {draftTargets,scopeSlots,CLIENT_POSITION_ROLES} from './draft.mjs';
+import {recommendationDraft} from './draft-intents.mjs';
 export {clearClientPicks} from './draft.mjs';
 import {comboLoadout,loadoutOptions} from './loadouts.mjs';
 import {generateCreativeTrios} from './creative-trios.mjs';
@@ -522,7 +523,7 @@ export function buildReasonPoints(entry,scope){
  return points.filter(Boolean).slice(0,5);
 }
 
-export function mergeClientSession(slots, session, champions, {autoArrange=true,autoParty=false,party=null,roleOrder={}}={}) {
+export function mergeClientSession(slots, session, champions, {autoArrange=true,autoParty=false,party=null,roleOrder={},ownRole=''}={}) {
  const byKey=new Map(champions.map(c=>[c.key,c])),next=structuredClone(slots),unassigned=[],displaced=[];
  const allEntries=(session?.myTeam||[]).filter((p,i,a)=>Number.isInteger(p.cellId)&&p.cellId>=0&&p.cellId<30&&a.findIndex(q=>q.cellId===p.cellId)===i).slice(0,5);
  const entries=allEntries.filter(p=>byKey.has(Number(p.championId))),placed=new Set();
@@ -567,6 +568,7 @@ export function mergeClientSession(slots, session, champions, {autoArrange=true,
  if(changed)mine.party=true;
  if(autoParty&&party){
   const members=(party.members||[]).filter((m,i,all)=>allEntries.some(p=>p.cellId===m.cellId)&&all.findIndex(p=>p.cellId===m.cellId)===i&&(party.status==='known'||m.cellId===session?.localPlayerCellId||m.source==='manual-id'));
+  const hoverContext=recommendationDraft(next,session,champions,{ownRole});
   const used=new Set(),resolved=[];
   for(const member of members.sort((a,b)=>Number(b.cellId===session?.localPlayerCellId)-Number(a.cellId===session?.localPlayerCellId)||a.cellId-b.cellId)){
    const player=allEntries.find(p=>p.cellId===member.cellId),at=next.find(s=>s.clientCellId===member.cellId);
@@ -575,11 +577,12 @@ export function mergeClientSession(slots, session, champions, {autoArrange=true,
    const preferred=[declared,...usual].filter(Boolean);
    const bound=at&&(at.manualPosition||declared===at.role||usual.includes(at.role))?at:null;
    const declaredSlot=declared&&next.find(s=>s.role===declared&&!s.manualPosition&&!Number.isInteger(s.clientCellId)&&!used.has(s.role));
-   const target=bound||declaredSlot||preferred.map(r=>next.find(s=>s.role===r)).find(s=>s&&!s.champion&&!s.locked&&!s.manualPosition&&!s.partyManual&&!Number.isInteger(s.clientCellId)&&!used.has(s.role));
+   const hover=byKey.get(Number(player?.championPickIntent)),preview=hoverContext.find(s=>s.publicIntent&&s.champion===hover?.id);
+   const target=bound||declaredSlot||(preview&&next.find(s=>s.role===preview.role))||preferred.map(r=>next.find(s=>s.role===r)).find(s=>s&&!s.champion&&!s.locked&&!s.manualPosition&&!s.partyManual&&!Number.isInteger(s.clientCellId)&&!used.has(s.role));
    if(target&&!used.has(target.role)){used.add(target.role);resolved.push(target);}
   }
-  // Lobby membership does not establish an unpicked player's lane. Keep the
-  // user's targets until every confirmed member has a reliable public place.
+  // Membership alone does not establish a lane. A public hover may provisionally
+  // locate a member using the same placement as the visible recommendation.
   if(party.status==='known'&&!party.unmatched&&members.length&&resolved.length===members.length){
    for(const s of next)if(!s.partyManual)s.party=used.has(s.role);
   }else for(const s of resolved)if(!s.partyManual)s.party=true;

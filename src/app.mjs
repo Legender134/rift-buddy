@@ -45,7 +45,7 @@ import {appUpdatePanel} from './app-update-view.mjs';
 import {resultPlayCard} from './play-card-view.mjs';
 import {applyPresentation,updatePresentationDialog} from './presentation-view.mjs';
 import {changePresentation} from './core/presentation.mjs';
-import {companionView} from './companion-view.mjs';
+import {companionView,readOnlyConfigurationMarkup,readOnlyConfigurationAction} from './companion-view.mjs';
 import {favoriteBuildSummary,favoriteTeamSummary} from './favorites-view.mjs';
 import {windowInfoDialog,windowInfoText} from './window-info-view.mjs';
 import {roomPanel,roomSharesView,roomConfigurationDialog,roomConfigurationText,roomMissingConfigurationDialog,roomPreparationFileDialog} from './room-view.mjs';
@@ -56,7 +56,7 @@ import {shareFromSlots,decodeRoomInvitation,sanitizeNick,validPin,validRoomCode}
 import {captureRoomStrategy,captureRoomConfigurations,roomPreparation,roomPlayerRole,roomClientPlan} from './core/room-configuration.mjs';
 import {normalizeRelayUrl,initialRelayUrl} from './core/room-relay.mjs';
 import {AUTO_QUIET_MS} from './core/room-auto.mjs';
-import {changeCompanionPlan,companionPickIntent} from './core/companion-plan.mjs';
+import {changeCompanionPlan,companionPickIntent,localConfigurationPreview,configurationReadOnly,assertConfigurationEditable} from './core/companion-plan.mjs';
 import {opponentBuildKey} from './core/opponent-build-source.mjs';
 import {matchupPreparation,selectMatchupPreparation} from './core/matchup-preparation.mjs';
 import {matchupPreparationView} from './matchup-preparation-view.mjs';
@@ -84,7 +84,7 @@ import {championReferenceView,referenceHeroTiles} from './champion-reference-vie
 
 let draftAdvanced=false,lastClientRead=null,lastRenderedClient='';
 let rankedRolesCache=null;const currentRankedRoles=()=>{if(rankedRolesCache?.builds!==data.builds||rankedRolesCache?.patch!==data.patch)rankedRolesCache={builds:data.builds,patch:data.patch,value:rankedClientRoles(data)};return rankedRolesCache.value;};
-const clientSyncOptions=()=>({autoArrange:saved.preferences.autoArrange!==false,autoParty:saved.preferences.autoParty!==false,party:client.party,roleOrder:currentRankedRoles()});
+const clientSyncOptions=()=>({autoArrange:saved.preferences.autoArrange!==false,autoParty:saved.preferences.autoParty!==false,party:client.party,roleOrder:currentRankedRoles(),ownRole:taskOwnRole()});
 const selectedInClient=s=>!!s&&Number.isInteger(s.clientCellId)&&client.session?.myTeam?.some(p=>p.cellId===s.clientCellId&&Number(p.championId)>0);
 function guardClientSlot(s){if(selectedInClient(s))throw Error('这位英雄已在客户端选定，可以换位；更换或取消请在客户端操作。');}
 function refreshClientClock(){const remaining=clientDraftStatus(client,slots,data.champions).remaining;for(const el of document.querySelectorAll('[data-client-countdown]'))el.textContent=remaining===null?'':` · 约剩 ${remaining} 秒`;}
@@ -272,6 +272,7 @@ function currentMatchupSelect(el){
 }
 function changeMatchupTarget(el){
  const selection=el.closest('#overlay-root')?buildView:companionPreparation()?.selection,key=matchupTargetKey(selection);
+ assertConfigurationEditable(selection&&{...selection,readOnly:configurationReadOnly(selection,client,taskOwnRole())});
  if(!selection||selection.mode!=='rift'||el.dataset.plan!==key)throw Error('英雄或位置已变化，请重新选择对手');
  if(el.value&&!publicMatchupOpponent(data,publicMatchupIds(),el.value))throw Error('对手已不在公开选人中，请重新确认');
  matchupTargets.set(key,el.value);syncMatchupFocus(selection,el.value);
@@ -487,7 +488,7 @@ function companionPreparation({currentOnly=false}={}){
  const preview=currentOnly?null:companionPreview,intent=!preview&&currentPickIntent();
  if(!currentOnly&&!preview){const task=ownTaskPreparation();if(task)return task;}
  if(!preview&&!intent)return myPreparation();
- const context=preview||intent.selection,pending=intent&&pendingIntentPreparation&&pendingIntentPlanId===(activeCreativePlan?.id||'')&&['id','role','mode'].every(field=>pendingIntentPreparation[field]===context[field]);
+ const context=preview?{...preview,readOnly:configurationReadOnly(preview,client,taskOwnRole())}:intent.selection,pending=intent&&pendingIntentPreparation&&pendingIntentPlanId===(activeCreativePlan?.id||'')&&['id','role','mode'].every(field=>pendingIntentPreparation[field]===context[field]);
  const selection=pending?structuredClone(pendingIntentPreparation):{...rememberedPreparation(context),...context};
  return {preview:true,...(intent?{intent:true,positionKnown:intent.positionKnown}:{}),selection,build:getBuild(champ(context.id),context.role,data,selection)};
 }
@@ -581,11 +582,11 @@ async function prepareCandidate(el){
    const expected={...context,planId:plan?.id||'',fingerprint:clientPreparationPlan(data,{selection,build:getBuild(champ(context.id),context.role,data,selection)})?.fingerprint};
    candidatePreparing=true;try{await adoptResult(index,true);lastTaskSelection=context;await useClientPreparation({dataset:{preparationView:'task'}},true,expected);}finally{candidatePreparing=false;drainExternalState();render();}
   }
-  else{companionPreview={id:el.dataset.id,role:el.dataset.role,mode:'rift',...creativeComboContext(combo),readOnly:!taskOwnRole()||taskOwnRole()!==el.dataset.role};if(windowLayout.docked){companionTab='plan';closeOverlay();render();}else showBuild(el.dataset.id,el.dataset.role,'rift',companionPreview);}
+  else{companionPreview=localConfigurationPreview({id:el.dataset.id,role:el.dataset.role,mode:'rift',...creativeComboContext(combo)},client,taskOwnRole());if(windowLayout.docked){companionTab='plan';closeOverlay();render();}else showBuild(el.dataset.id,el.dataset.role,'rift',companionPreview);}
   return;
 }
 
-function readOnlyPreparation(view,plan){const role=view==='room'?roomOwnRole():taskOwnRole();return !!plan&&(!role||plan.positionKnown===false||plan.selection.role!==role||view==='build'&&buildView?.readOnly||view==='companion'&&companionPreview?.readOnly);}
+function readOnlyPreparation(view,plan){const role=view==='room'?roomOwnRole():taskOwnRole();return !!plan&&(!role||plan.positionKnown===false||plan.selection.role!==role||configurationReadOnly(plan.selection,client,role)||view==='build'&&buildView?.readOnly||view==='companion'&&companionPreview?.readOnly);}
 function clientControls(plan,view){if(readOnlyPreparation(view,plan))return taskOwnRole()?'<p class="callout">队友配置仅供查看。</p>':button('task-members','确认本人位置','','small');return clientPreparationControls({data,plan,client,view,available:!!api.prepareSelection,pending:clientPreparing||runeApplying||!!itemSetPending,statuses:clientPreparationStatuses});}
 function renderRoom(){
  const share=roomSharePayload(),plan=roomOwnPreparation(),connection=api.roomStatus?roomPanel({room,transport:roomTransport,relayUrl:roomRelayUrl,relayRoom:roomRelayRoom,nick:saved.preferences.roomNick||'队友',busy:roomBusy,scanning:roomScanning,scanResults:roomScanResults,error:roomError,invite:roomInvite,pin:roomPin,addresses:roomAddresses,champ,hasPreparationFile:!!roomPreparationFile,preparationFileBusy,autoEnabled:saved.preferences.roomAuto===true,autoSync:saved.preferences.autoSync!==false,autoError:room?.autoError||'',autoQuiet:roomAutoQuiet&&(room?.members?.length??0)<=1}):'<p class="callout">连接队友房间请使用桌面版。</p>';
@@ -684,6 +685,7 @@ function editCompanionPlan(el,field,value){
 function chooseMatchupConfiguration(el,kind){
  const drawer=overlay.contains(el),plan=drawer?{selection:buildSelection()}:companionPreparation();
  if(!plan||el.dataset.plan!==[plan.selection.id,plan.selection.role,plan.selection.mode].join(':'))throw Error('英雄或位置已变化，请重新比较配置');
+ assertConfigurationEditable(plan.selection);
  const selection=selectMatchupPreparation({data,selection:plan.selection,enemyIds:publicMatchupIds(),targetId:chosenMatchupOpponent(plan.selection)?.id,publicContext:matchupPreparationContext(),context:el.dataset.context,kind,id:el.dataset.id});
  if(drawer){for(const field of CONFIGURATION_FIELDS)delete buildView[field];Object.assign(buildView,selection);renderBuild();}
  else{rememberPreparation(selection);if(plan.intent)rememberIntentPreparation(selection);if(!plan.preview)syncPreparedGuide(selection);render();}
@@ -765,7 +767,7 @@ function editBuildSummoners(el,field,value){
  rememberFlashPreference({...next,readOnly:buildView.readOnly},field);
  if(next.summonerIds)buildView.summonerIds=[...next.summonerIds];renderBuild();
 }
-function buildSelection(){return {id:buildView.id,role:buildView.role,mode:buildView.mode,coreIndex:buildView.coreIndex,conditions:[...buildView.conditions],...selectedBuildFields(buildView,{preserveUnavailable:true}),...(buildView.mode==='hex'?{augmentIds:buildView.augmentIds||[],compareIds:buildView.compareIds||[],ownedAugmentIds:buildView.ownedAugmentIds||[]}:{})};}
+function buildSelection(){return {readOnly:configurationReadOnly(buildView,client,taskOwnRole()),id:buildView.id,role:buildView.role,mode:buildView.mode,coreIndex:buildView.coreIndex,conditions:[...buildView.conditions],...selectedBuildFields(buildView,{preserveUnavailable:true}),...(buildView.mode==='hex'?{augmentIds:buildView.augmentIds||[],compareIds:buildView.compareIds||[],ownedAugmentIds:buildView.ownedAugmentIds||[]}:{})};}
 function buildSelectionContext(build){const own=currentPlayerSelection(client.session,data.champions,slots);return JSON.stringify([buildChoiceKey(buildSelection()),buildView.augmentIds||[],buildView.compareIds||[],buildView.ownedAugmentIds||[],data.patch,data.buildSource,build?.reference?.fetchedAt,client.connected,client.phase,client.game?.gameId,client.mode?.id,own?.id,own?.formalRole,own?.role,runeAppliedKeys.has(runeApplicationKey(build?.champion,build?.role,build?.runePage))]);}
 function acceptGuideSelection(selection){if(!selection)return;rememberPreparation(selection);guideSyncBase=selection;lastGuideSyncKey=buildChoiceKey(selection);if(buildView&&selection.id===buildView.id&&selection.role===buildView.role&&selection.mode===buildView.mode){for(const field of [...CONFIGURATION_FIELDS,'compareIds','ownedAugmentIds'])delete buildView[field];Object.assign(buildView,selection);renderBuild();}if(windowLayout.docked)render();}
 function receiveGuideSelection(selection,revision=0){
@@ -839,11 +841,12 @@ const savedBuild=v=>findSavedBuild(saved.favorites,v);
 const hexFavoriteId=()=>`hex:${hexHero||'any'}:${[...hexSelected].sort().join('-')}`;
 function renderBuild(){
  if(!buildView)return;
+ buildView.readOnly=configurationReadOnly(buildView,client,taskOwnRole());
  const c=champ(buildView.id),b=getBuild(c,buildView.role,data,buildView);
  if(activeOverlaySelect?.isConnected&&overlay.contains(activeOverlaySelect)&&renderedBuildContext===buildSelectionContext(b)&&currentMatchupSelect(activeOverlaySelect)){pendingBuildRender=true;return;}
  activeOverlaySelect=null;pendingBuildRender=false;
  const restoreOverlay=preserveOverlay(overlay),refreshing=refreshingBuilds.has(buildKey(buildView.id,buildView.role,buildView.mode));
- buildView.build=b;if(!buildView.coreId||buildView.coreId===b.selectedCoreId){buildView.coreIndex=b.selectedCoreIndex;buildView.coreId=b.selectedCoreId||undefined;}renderedBuildContext=buildSelectionContext(b);rememberPreparation(buildSelection());if(!buildView.readOnly)syncPreparedGuide(buildSelection());const buildSaved=savedBuild(buildView);const runeMap=new Map(data.runes.flatMap(t=>t.slots.flatMap(s=>s.runes.map(r=>[r.id,r]))));const primary=data.runes.find(t=>t.id===b.runePage?.primaryStyleId),secondary=data.runes.find(t=>t.id===b.runePage?.subStyleId);
+ buildView.build=b;if(!buildView.coreId||buildView.coreId===b.selectedCoreId){buildView.coreIndex=b.selectedCoreIndex;buildView.coreId=b.selectedCoreId||undefined;}renderedBuildContext=buildSelectionContext(b);if(!buildView.readOnly){rememberPreparation(buildSelection());syncPreparedGuide(buildSelection());}const buildSaved=savedBuild(buildView);const runeMap=new Map(data.runes.flatMap(t=>t.slots.flatMap(s=>s.runes.map(r=>[r.id,r]))));const primary=data.runes.find(t=>t.id===b.runePage?.primaryStyleId),secondary=data.runes.find(t=>t.id===b.runePage?.subStyleId);
  const itemsHTML=items=>`<div class="items-row">${items.map(i=>`<div class="item" title="${e(gameDescription(i.description))}">${asset('item',i.id,i.name)}<span>${e(i.name)}</span><small>${i.gold.total} 金</small>${i.purchaseBase?`<small class="text-green">购买${e(i.purchaseBase.name)}后升级</small>`:''}</div>`).join('')}</div>`;
  overlay.innerHTML=`<div class="modal-backdrop drawer-backdrop" data-backdrop="true"><section class="modal drawer" role="dialog" aria-modal="true" aria-label="英雄配置"><header class="modal-header"><div><h3>符文与出装</h3></div><div class="build-header-actions">${buildReturn?button('back-result','返回这套方案','arrow','quiet small'):''}${button('close','','close','quiet icon-only','aria-label="关闭"')}</div></header><div class="drawer-content"><div class="champ-summary">${portrait(c,'lg')}<div><h2>${e(c.name)}</h2><p>${e(c.title)} · ${b.title}</p><span class="badge green" style="margin-top:7px">${b.mode==='hex'?'海克斯大乱斗':roleName(b.role)}</span> <span class="badge">${data.version}</span></div>${button('reference-hero','技能与改动','book','quiet small',`data-id="${c.id}"`)}</div><div class="toolbar"><select class="select" id="build-role" aria-label="配置位置" ${b.mode==='hex'?'disabled':''}>${ROLES.map(r=>`<option value="${r.id}" ${b.role===r.id?'selected':''}>${r.name}</option>`).join('')}</select><div class="segmented"><button class="segment ${b.mode==='rift'?'active':''}" data-action="build-mode" data-mode="rift">召唤师峡谷</button><button class="segment ${b.mode==='hex'?'active':''}" data-action="build-mode" data-mode="hex">海克斯大乱斗</button></div></div>${b.mode==='rift'?buildSourceControls(data,{reference:b.reference,champion:b.champion,role:b.role,refreshing}):''}<nav class="build-nav" aria-label="配置内容">${button("build-jump","玩法","","quiet small",'data-section="loadout"')}${button("build-jump","出装","","quiet small",'data-section="items"')}${button("build-jump",b.mode==="rift"?`符文 · ${b.runeOptions.length} 套`:"强化说明","","quiet small",'data-section="runes"')}${button("build-jump","加点","","quiet small",'data-section="skills"')}${b.mode==='rift'?button('build-jump','对手应对','','quiet small','data-section="opponent"'):''}</nav>${sourceOpponentNotice(b,data,{requested:buildView.sourceOpponent,plan:[buildView.id,buildView.role,buildView.mode].join(':')})}${loadoutSelector(b,data)}${clientControls({selection:buildSelection(),build:b},'build')}${preparationSummary(data,b,c,{own:currentPlayerSelection(client.session,data.champions,slots),appliedKey:runeAppliedKeys.has(runeApplicationKey(c.id,b.role,b.runePage))?runeApplicationKey(c.id,b.role,b.runePage):'',refreshing,error:buildErrors.get(buildKey(b.champion,b.role,b.mode)),selection:buildSelection()})}<div class="guide-launch"><div><b>${guideSelection?.id===b.champion&&guideSelection?.role===b.role&&guideSelection?.mode===b.mode?"已带入指引 · 修改自动同步":"把配置带到本局指引"}</b><p>紧凑小窗 · 鼠标穿透 · ${boot.guideHotkeyAvailable===false?'从托盘呼出':'Ctrl + Shift + G 呼出'}</p></div>${button('open-guide','本局指引','book','primary small',buildView.readOnly?'disabled title="只读配置不替换本人指引"':'')}</div><p class="section-copy">${e(b.tips)}</p>${b.stale?'<div class="callout warning">当前资料版本已更新，这套机制方案尚未完成新版本复核。</div>':''}
  <section class="detail-section" data-build-section="items"><h3>出门购买</h3>${itemsHTML(b.start)}${gearSelector(b,'start')}${b.granted.length?`<p class="bottom-note">位置任务自动给予：${b.granted.map(i=>e(i.name)).join("、")}，不是需要购买的出门装备。</p>`:""}${b.early.length?`<p class="bottom-note">尽早补出：${b.early.map(i=>e(i.name)).join('、')}；按用途和对线安排购买。</p>`:''}${b.support?'<p class="bottom-note">辅助位的云游图鉴由客户端按位置规则提供；没有自动获得时检查游戏模式与位置。完成任务后会升级，后续为它保留一个位置。</p>':''}</section>
@@ -854,7 +857,7 @@ function renderBuild(){
  ${b.combo?.play?`<section class="detail-section" data-build-section="combo"><h3>${e(b.combo.title)} · 分阶段配合</h3>${duoPlayView(b.combo.play)}</section>`:''}
  ${buildView.mode==='rift'?`<section class="detail-section" data-build-section="opponent">${matchupTargetView(data,buildView,publicMatchupIds(),chosenMatchupOpponent(buildView)?.id,{status:matchupFocusStatus(buildView)})}${matchupPreparationView(matchupPreparation({data,selection:buildSelection(),enemyIds:publicMatchupIds(),targetId:chosenMatchupOpponent(buildView)?.id,publicContext:matchupPreparationContext(),build:b}),data,{plan:[buildView.id,buildView.role,buildView.mode].join(':'),refresh:opponentRefreshStatus(buildSelection())})}${heroCoachView(heroCoach({data,champion:buildView.id,role:buildView.role,priority:b.priority,enemyId:chosenMatchupOpponent(buildView)?.id,combo:b.combo,stage:b.combo?'key':'opening'}))}</section>`:''}
  ${buildView.mode==='rift'?`<section class="detail-section build-matchups"><h3>位置对阵参考</h3>${matchupView(data,b.reference,{publicEnemies:(client.session?.theirTeam||[]).map(p=>data.champions.find(c=>c.key===p.championId)?.id).filter(Boolean)})}</section>`:''}
- <section class="detail-section build-source"><h3>配置来源</h3><p class="bottom-note">${e(b.sourceNote)}</p>${comboSourceLinks(b.combo?.sources)}${b.reference?`<p class="bottom-note">获取于 ${dateLabel(b.reference.fetchedAt)}。${b.reference.core[b.selectedCoreIndex].samples>0&&b.reference.core[b.selectedCoreIndex].samples<200?'样本较少，尤其适合作为娱乐玩法参考，请结合对线调整。':''}</p>${button('link','查看原始数据','arrow','small',`data-url="${e(b.reference.sourceUrl)}"`)}`:''}${b.mode==='hex'?button('refresh-build',refreshing?'刷新中…':'刷新海克斯配置','refresh','small',refreshing?'disabled':''):''}</section><div class="detail-actions">${button('copy-build','复制配置','copy')}${button('favorite-build',buildSaved?'已收藏 · 点击取消':'收藏配置','star',buildSaved?'saved':'')}</div><p class="bottom-note">玩法提示整理于 ${b.rulesDate}；版本出装与机制提示分别维护。</p></div></section></div>`;foldConfigurationSections(overlay);restoreOverlay();reflectRunePending();
+ <section class="detail-section build-source"><h3>配置来源</h3><p class="bottom-note">${e(b.sourceNote)}</p>${comboSourceLinks(b.combo?.sources)}${b.reference?`<p class="bottom-note">获取于 ${dateLabel(b.reference.fetchedAt)}。${b.reference.core[b.selectedCoreIndex].samples>0&&b.reference.core[b.selectedCoreIndex].samples<200?'样本较少，尤其适合作为娱乐玩法参考，请结合对线调整。':''}</p>${button('link','查看原始数据','arrow','small',`data-url="${e(b.reference.sourceUrl)}"`)}`:''}${b.mode==='hex'?button('refresh-build',refreshing?'刷新中…':'刷新海克斯配置','refresh','small',refreshing?'disabled':''):''}</section><div class="detail-actions">${button('copy-build','复制配置','copy')}${button('favorite-build',buildSaved?'已收藏 · 点击取消':'收藏配置','star',buildSaved?'saved':'')}</div><p class="bottom-note">玩法提示整理于 ${b.rulesDate}；版本出装与机制提示分别维护。</p></div></section></div>`;if(buildView.readOnly)overlay.innerHTML=readOnlyConfigurationMarkup(overlay.innerHTML);else if(buildView.localReference)overlay.querySelector('.drawer-content')?.insertAdjacentHTML('afterbegin','<p class="callout">本机配置参考 · 可编辑，不代表队友当前配置</p>');foldConfigurationSections(overlay);restoreOverlay();reflectRunePending();
 }
 function showResult(index){if(resultsSignature!==recommendationKey(recommendationInput()))throw Error('推荐条件已变化，请重新推荐');detailResult=results[index];if(!detailResult)throw Error('方案已变化，请重新推荐');resultDraftSignature=resultsSignature;picker=null;buildView=null;buildReturn=null;overlay.innerHTML=resultPlayCard(detailResult,index,data,{favorites:saved.favorites,style});}
 function markResultStale(){if(detailResult){const notice=document.getElementById('result-stale');if(notice)notice.hidden=false;overlay.querySelectorAll('[data-action="use-result"],[data-action="replace-member"],[data-action="favorite-result"],[data-action="copy-result"]').forEach(b=>b.disabled=true);}}
@@ -1055,10 +1058,25 @@ document.addEventListener('drop',event=>{
 });
 document.addEventListener('dragend',()=>{draggedAt=Date.now();finishDrag();});
 
+function configurationEventSelection(el){
+ if(buildView&&overlay.contains(el))return buildSelection();
+ if(companionTab==='plan'&&el.closest('.companion-content'))return companionPreparation()?.selection;
+ return null;
+}
+// Native disabled controls are presentation only. Recheck the current view
+// before any bubbled or synthetic editor event can change persisted choices.
+document.addEventListener('change',event=>{
+ const selection=configurationEventSelection(event.target);
+ if(!selection?.readOnly)return;
+ event.preventDefault();event.stopImmediatePropagation();toast('队友配置仅供查看，请回到本人的配置',true);render();if(buildView)renderBuild();
+},true);
+
 document.addEventListener('click',async event=>{
  const el=event.target.closest('[data-action]');if(!el){if(event.target.dataset.backdrop)closeOverlay();return;}
  if(Date.now()-draggedAt<250)return;
  const action=el.dataset.action;try{
+ const configuration=configurationEventSelection(el);
+ if(configuration?.readOnly&&!readOnlyConfigurationAction(action))assertConfigurationEditable(configuration);
  if(action==='window-info'||action==='window-info-refresh'){await showWindowInfo(action==='window-info-refresh');return;}
  if(action==='window-info-copy'){if(!currentWindowInfo)throw Error('请先读取窗口资料');await api.copy(windowInfoText(currentWindowInfo));toast('窗口资料已复制');return;}
  if(action==='presentation-open'){updatePresentationDialog(overlay,saved.preferences.presentation);return;}
@@ -1089,12 +1107,12 @@ document.addEventListener('click',async event=>{
  if(action==='ranking-hero'){
   const id=el.dataset.id,role=el.dataset.role,ref=rankingReference(data,rankingSource||data.buildSource);
   if(!ref?.boards[role]?.some(row=>row.champion===id)||!champ(id))throw Error('榜单已变化，请重新选择');
-  const action=memberHeroAction(id,role),readOnly=!taskOwnRole()||taskOwnRole()!==role;
+  const action=memberHeroAction(id,role),preview=localConfigurationPreview({id,role,mode:'rift'},client,taskOwnRole());
   if(windowLayout.docked){
    const combo=currentCombo(slots,id,role,data.catalogInfo?.status,null,activeCreativePlan);
-   companionPreview={id,role,mode:'rift',...creativeComboContext(combo),readOnly};companionTab='plan';closeOverlay();render();
+   companionPreview={...preview,...creativeComboContext(combo)};companionTab='plan';closeOverlay();render();
    if(action.prepare)await useClientPreparation({dataset:{preparationView:'companion'}},true);
-  }else{showBuild(id,role,'rift',{readOnly});if(action.prepare)await useClientPreparation({dataset:{preparationView:'build'}},true);}
+  }else{showBuild(id,role,'rift',preview);if(action.prepare)await useClientPreparation({dataset:{preparationView:'build'}},true);}
   return;
  }
  if(action==='task-compare'){if(clientPreparing||runeApplying||candidatePreparing)throw Error('当前配置进行中，请等待完成后换方案');draftComparing=true;companionTab='recommend';cancelRecommendation();results=[];offset=0;await generate();return;}
@@ -1127,13 +1145,13 @@ document.addEventListener('click',async event=>{
  if(action==='room-to-draft'){route='draft';companionTab='recommend';closeOverlay();render();queueCompanionRecommendation();return;}
  if(action==='active-hero-prepare'){
   if(!activeCreativePlan?.members.some(m=>m.champion===el.dataset.id&&m.role===el.dataset.role))throw Error('组合已变化，请重新选择');
-  companionPreview={id:el.dataset.id,role:el.dataset.role,mode:'rift',...creativeComboContext(creativeMemberCombo(activeCreativePlan,el.dataset.id,el.dataset.role)),readOnly:!taskOwnRole()||taskOwnRole()!==el.dataset.role};companionTab='plan';closeOverlay();render();if(memberHeroAction(el.dataset.id,el.dataset.role).prepare)await useClientPreparation({dataset:{preparationView:'companion'}},true);return;
+  companionPreview=localConfigurationPreview({id:el.dataset.id,role:el.dataset.role,mode:'rift',...creativeComboContext(creativeMemberCombo(activeCreativePlan,el.dataset.id,el.dataset.role))},client,taskOwnRole());companionTab='plan';closeOverlay();render();if(memberHeroAction(el.dataset.id,el.dataset.role).prepare)await useClientPreparation({dataset:{preparationView:'companion'}},true);return;
  }
  if(action==='companion-roster-plan'){
   const visible=recommendationDraft(slots,client.connected?client.session:null,data.champions,{ownRole:taskOwnRole()});
   if(!visible.some(s=>s.role===el.dataset.role&&s.champion===el.dataset.id))throw Error('阵容已变化，请重新选择');
   const combo=currentCombo(visible,el.dataset.id,el.dataset.role,data.catalogInfo?.status,null,activeCreativePlan);
-  companionPreview={id:el.dataset.id,role:el.dataset.role,mode:'rift',...creativeComboContext(combo),readOnly:!taskOwnRole()||taskOwnRole()!==el.dataset.role};companionTab='plan';closeOverlay();render();
+  companionPreview=localConfigurationPreview({id:el.dataset.id,role:el.dataset.role,mode:'rift',...creativeComboContext(combo)},client,taskOwnRole());companionTab='plan';closeOverlay();render();
   if(memberHeroAction(el.dataset.id,el.dataset.role).prepare)await useClientPreparation({dataset:{preparationView:'companion'}},true);return;
  }
  if(action==='player-flow-settings'){closeOverlay();overlay.innerHTML=playerFlowSettings(saved.preferences,windowLayout);return;}
@@ -1311,10 +1329,10 @@ document.addEventListener('click',async event=>{
   let selection=el.dataset.combo?{comboId:el.dataset.combo}:{};
   if(el.hasAttribute('data-result-index')){const result=results[Number(el.dataset.resultIndex)];if(!result||resultsSignature!==recommendationKey(recommendationInput()))throw Error('推荐条件已变化，请重新推荐');const plan=resultCreativePlan(result);if(plan)selection=creativeComboContext(creativeMemberCombo(plan,el.dataset.id,el.dataset.role));}
   if(el.dataset.prepareClick==='true'&&memberHeroAction(el.dataset.id,el.dataset.role).prepare){const task=ownTaskPreparation()?.selection;lastTaskSelection=task?.id===el.dataset.id&&task.role===el.dataset.role?task:{id:el.dataset.id,role:el.dataset.role,mode:'rift',...selection};draftComparing=false;closeOverlay();render();await useClientPreparation({dataset:{preparationView:'task'}},true);}
-  else showBuild(el.dataset.id,el.dataset.role,el.dataset.mode||'rift',{...selection,readOnly:el.hasAttribute('data-result-index')||!!taskOwnRole()&&taskOwnRole()!==el.dataset.role});
+  else showBuild(el.dataset.id,el.dataset.role,el.dataset.mode||'rift',localConfigurationPreview({id:el.dataset.id,role:el.dataset.role,mode:el.dataset.mode||'rift',...selection},client,taskOwnRole()));
  }
- else if(action==='build-partner'&&el.dataset.id){const plan=buildView?.build?.combo?.creativePlan;showBuild(el.dataset.id,el.dataset.role,'rift',{...(plan?.id===el.dataset.combo?creativeComboContext(creativeMemberCombo(plan,el.dataset.id,el.dataset.role)):{comboId:el.dataset.combo}),readOnly:!taskOwnRole()||taskOwnRole()!==el.dataset.role});}
- else if(action==='build-partner'){const d=DUOS.find(d=>d.id===el.dataset.combo);if(d){const partner=comboMembers(d).find(m=>m.champion!==buildView.id);if(partner)showBuild(partner.champion,partner.role,'rift',{comboId:d.id,readOnly:!taskOwnRole()||taskOwnRole()!==partner.role});}}
+ else if(action==='build-partner'&&el.dataset.id){const plan=buildView?.build?.combo?.creativePlan;showBuild(el.dataset.id,el.dataset.role,'rift',{...(plan?.id===el.dataset.combo?creativeComboContext(creativeMemberCombo(plan,el.dataset.id,el.dataset.role)):{comboId:el.dataset.combo}),...localConfigurationPreview({role:el.dataset.role},client,taskOwnRole())});}
+ else if(action==='build-partner'){const d=DUOS.find(d=>d.id===el.dataset.combo);if(d){const partner=comboMembers(d).find(m=>m.champion!==buildView.id);if(partner)showBuild(partner.champion,partner.role,'rift',{comboId:d.id,...localConfigurationPreview({role:partner.role},client,taskOwnRole())});}}
  else if(action==='build-shared-reset'){delete buildView.sharedEquipment;renderBuild();}
  else if(action==='build-loadout'){buildView.loadoutId=el.dataset.id;buildView.coreIndex=0;delete buildView.sharedEquipment;delete buildView.runeId;delete buildView.customRunePage;delete buildView.skillId;delete buildView.customSkillOrder;delete buildView.coreId;delete buildView.laterIds;renderBuild();}
  else if(action==='build-quest-plan'){const next=changeCompanionPlan(data,buildSelection(),'quest-plan');delete buildView.sharedEquipment;buildView.bottomQuestPlan=next.bottomQuestPlan;buildView.laterIds=next.laterIds;renderBuild();}
