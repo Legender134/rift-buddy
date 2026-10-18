@@ -83,7 +83,7 @@ async function mainFixture(service){
  const source=await fs.readFile(new URL('../electron/main.cjs',import.meta.url),'utf8'),handlers=new Map(),snapshots=[];
  const context={Promise,AbortController,AbortSignal,Error,release,quitting:false,state:{preferences:{}},app:{getVersion:()=> '0.57.2',quit:()=>{}},guard:(name,fn)=>handlers.set(name,fn),compareAppVersion:()=>1,releasePageUrl:()=>'',updater:()=>service,publishWindows:(_c,value)=>snapshots.push(value)};
  vm.createContext(context);vm.runInContext(source.slice(source.indexOf(' let appUpdateStatus='),source.indexOf(' const {changePresentation}'))+source.slice(source.indexOf(" guard('app-update-check'"),source.indexOf(" guard('apply-runes'"))+'appUpdateStatus={phase:"available",release};',context);
- return {handlers,snapshots};
+ return {handlers,snapshots,context,source};
 }
 test('main pause and cancel wait for IO settlement and never replace their result with a download error',async t=>{
  const f=await fixture(t),{handlers,snapshots}=await mainFixture(f.service),started=Promise.withResolvers();
@@ -96,6 +96,13 @@ test('main pause and cancel wait for IO settlement and never replace their resul
 test('checking after a restart restores the paused download without a network request',async t=>{
  const f=await fixture(t);await pause(f.service);const before=f.hits.length,{handlers}=await mainFixture(createAppUpdateService(f.options));
  assert.equal((await handlers.get('app-update-check')()).phase,'paused');assert.equal(f.hits.length,before);
+});
+test('cold-start bootstrap restores the local checkpoint with automatic network checks disabled',async t=>{
+ const f=await fixture(t),paused=await pause(f.service),before=f.hits.length,{context,handlers,source}=await mainFixture(createAppUpdateService(f.options));
+ Object.assign(context,{data:{},state:{preferences:{appUpdateCheck:false}},stateRevision:0,dataRevision:0,preparationLedger:{snapshot:()=>null},latestClient:{connected:false},forRenderer:v=>v,companion:{layout:()=>({})},storeRoot:f.dir,hotkeyAvailable:false,guideHotkeyAvailable:false});
+ vm.runInContext(source.slice(source.indexOf(" guard('bootstrap'"),source.indexOf(' const {windowInfo}'))+'appUpdateStatus={phase:"idle"};',context);
+ const boot=await handlers.get('bootstrap')({surface:'main'});
+ assert.equal(boot.appUpdate.phase,'paused');assert.equal(boot.appUpdate.received,paused.received);assert.equal(f.hits.length,before);
 });
 test('cleanup failure leaves paused cancel retryable instead of a permanently disabled cancelling state',async t=>{
  const f=await fixture(t);await pause(f.service);const {handlers,snapshots}=await mainFixture(f.service);await handlers.get('app-update-check')();
