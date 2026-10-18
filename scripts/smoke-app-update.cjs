@@ -110,12 +110,13 @@ async function run(){
  const witness=await until(async()=>fs.readFile(path.join(root,'app-update.json.dry-run.json'),'utf8').then(JSON.parse).catch(()=>null),'Dry-run witness missing');
  assert.equal(witness.sha256,BIN_SHA);assert.equal(witness.file,record.file);
  assert.ok(await js('document.body.textContent.length>0'),'App quit during dry run');
- // 阶段 4：重启后续装——renderer 重启后离线重查，pending 快捷方式不断网恢复 ready
+ // 阶段 4：窗口重载直接恢复 ready；离线复查仍能使用已校验的 pending。
  mode='offline';
  await reload();
  await until(()=>js('!!document.querySelector("#solo-role")'),'Restart missing');
  await click('[data-action=navigate][data-route=settings]');
- await click('[data-action=app-update-check]');
+ assert.ok(await js('!!document.querySelector("[data-action=app-update-install]")'),'Bootstrap did not restore ready status');
+ await js('window.buddy.checkAppUpdate(false)');
  await until(()=>js('!!document.querySelector("[data-action=app-update-install]")'),'Pending shortcut not restored');
  assert.ok(await js('!!document.querySelector("[data-action=app-update-install]")'));
  const notesLink=await js('[...document.querySelectorAll("[data-action=link]")].find(el=>el.textContent.includes("查看发布说明"))?.dataset.url');
