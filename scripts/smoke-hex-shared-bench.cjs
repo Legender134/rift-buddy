@@ -17,9 +17,9 @@ async function run(){
  Object.assign(state.preferences,{installPath:install,autoSync:false,autoCheck:false,appUpdateCheck:false,roomAuto:false,guideAutoShow:false,autoLive:false,chatNotice:false,clickPrepare:true});
  await fs.writeFile(path.join(root,'settings.json'),JSON.stringify(state));
  const data=JSON.parse(await fs.readFile(path.join(base,'data/game.json'))),key=id=>data.champions.find(c=>c.id===id).key;
- let holdSwap=false,releaseSwap,swapStarted;
+ let mockPhase='ChampSelect',holdSwap=false,releaseSwap,swapStarted;
  let ownHero='Lux',bench=['Malphite','Xerath','Teemo','Karma','Trundle','Brand','Morgana','Garen','Nami','Lulu','Kennen','Braum'];
- const raw=()=>({gameId:777,localPlayerCellId:0,myTeam:[ownHero,'Ashe','Veigar','Sona','Jinx'].map((id,cellId)=>({cellId,championId:key(id),assignedPosition:'',spell1Id:4,spell2Id:32})),theirTeam:[],benchEnabled:true,benchChampions:bench.map(id=>({championId:key(id)})),actions:[],bans:{myTeamBans:[],theirTeamBans:[]},timer:{phase:'FINALIZATION',adjustedTimeLeftInPhase:28000}});
+ const raw=()=>({gameId:777,localPlayerCellId:0,myTeam:[ownHero,'Ashe','Veigar','Sona','Jinx'].map((id,cellId)=>({cellId,summonerId:cellId+1,championId:key(id),assignedPosition:'',spell1Id:4,spell2Id:32})),theirTeam:[],benchEnabled:true,benchChampions:bench.map(id=>({championId:key(id)})),actions:[],bans:{myTeamBans:[],theirTeamBans:[]},timer:{phase:'FINALIZATION',adjustedTimeLeftInPhase:28000}});
  https.request=(options,callback)=>{
   const request=new EventEmitter();request.write=()=>{throw Error('Unexpected client payload');};request.destroy=error=>{if(error)request.emit('error',error);};
   request.end=()=>queueMicrotask(async()=>{try{
@@ -30,7 +30,7 @@ async function run(){
     assert(index>=0,'Only a current shared-bench swap is allowed');if(holdSwap){holdSwap=false;swapStarted();await new Promise(resolve=>releaseSwap=resolve);}writes.push(options.path);[ownHero,bench[index]]=[bench[index],ownHero];value=null;
    }else{
     assert.equal(options.method||'GET','GET');
-    const values={'/lol-gameflow/v1/gameflow-phase':'ChampSelect','/lol-gameflow/v1/session':{gameData:{gameId:777,mapId:12,queue:{id:2400,gameMode:'KIWI'}}},'/lol-champ-select/v1/session':raw(),'/lol-champ-select/v1/pickable-champion-ids':data.champions.map(c=>c.key),'/lol-champ-select/v1/disabled-champion-ids':[],'/lol-summoner/v1/current-summoner':{summonerId:1,displayName:'隔离测试'},'/lol-lobby/v2/lobby':{members:[{summonerId:1}],localMember:{summonerId:1}},'/lol-perks/v1/pages':[],'/lol-chat/v1/conversations':[]};
+    const values={'/lol-gameflow/v1/gameflow-phase':mockPhase,'/lol-gameflow/v1/session':{gameData:{gameId:777,mapId:12,queue:{id:2400,gameMode:'KIWI'}}},'/lol-champ-select/v1/session':raw(),'/lol-champ-select/v1/pickable-champion-ids':data.champions.map(c=>c.key),'/lol-champ-select/v1/disabled-champion-ids':[],'/lol-summoner/v1/current-summoner':{summonerId:1,displayName:'隔离测试'},'/lol-lobby/v2/lobby':{members:[1,2,3,4,5].map(summonerId=>({summonerId})),localMember:{summonerId:1}},'/lol-perks/v1/pages':[],'/lol-chat/v1/conversations':[]};
     assert(Object.hasOwn(values,options.path),'Unexpected mock route '+options.path);value=values[options.path];
    }
    const response=new EventEmitter();response.statusCode=200;callback(response);response.emit('data',Buffer.from(JSON.stringify(value)));response.emit('end');request.emit('close');
@@ -83,15 +83,20 @@ async function run(){
  const count=writes.length;await click('.hex-ranking [data-action=hex-reference-preview]');await until(()=>js('!!document.querySelector("#overlay-root>*")'),'Read-only reference missing');assert.equal(writes.length,count);await click('[data-action=close]');
  bench=[];await js('window.buddy.client(true)');await until(async()=>(await ids()).length===0,'Emptied bench retained stale heroes');
  assert.equal(await js('document.querySelector(".hex-companion").dataset.tab'),'recommend');
+ const emptyStateHeight=await js('document.querySelector(".hex-shared-bench").getBoundingClientRect().height');assert(emptyStateHeight<100,'Empty bench must stay compact');
+ // Establish the five-person party through actual public lobby resolution,
+ // not a DOM projection that an unrelated background render can overwrite.
+ mockPhase='Lobby';const lobby=await js('window.buddy.client(true)');assert.equal(lobby.party.lobbyCount,5);
+ mockPhase='ChampSelect';const selected=await js('window.buddy.client(true)');assert.equal(selected.party.members.length,5);
+ await until(()=>js('document.querySelector(".hex-party-lineup")?.querySelectorAll(".hex-party-member").length===5'),'Five-member lobby did not reach the sidebar');
  const partyLayouts=[];
  for(const width of [360,440])for(const zoom of [1,1.25]){
   main.setContentSize(width,820);main.webContents.setZoomFactor(zoom);
-  await js(`(async()=>{const boot=await window.buddy.bootstrap(),{hexDraftView}=await import('./hex-draft-view.mjs');boot.client.party={members:boot.client.session.myTeam.map(p=>({cellId:p.cellId}))};boot.client.session.bench={championIds:[]};boot.client.eligibility=null;document.querySelector('.hex-draft').outerHTML=hexDraftView({data:boot.data,client:boot.client});})()`);
   await delay(100);
   const bounds=await js(`(()=>{const rows=[...document.querySelectorAll('.hex-party-lineup')];const previews=[...document.querySelectorAll('.hex-party-preview')];return {previewBounds:previews.map(e=>{const r=e.getBoundingClientRect();return {width:r.width,height:r.height};}),maxRowHeight:Math.max(...rows.map(e=>e.getBoundingClientRect().height)),rows:rows.length,members:rows[0]?.querySelectorAll('.hex-party-member').length,overflow:document.documentElement.scrollWidth>innerWidth,contained:rows.every(row=>{const r=row.getBoundingClientRect();return [...row.querySelectorAll('.hex-party-member,.hex-party-preview')].every(e=>{const b=e.getBoundingClientRect();return b.left>=r.left-1&&b.right<=r.right+1;});})}})()`);
   await screenshot(`party-five-${width}-${zoom}.png`);assert.equal(bounds.members,5);assert(bounds.rows>0);assert.equal(bounds.overflow,false);assert(bounds.contained,'Five-member avatar actions overflow');assert(bounds.maxRowHeight<72,'Avatar actions became tall text buttons');assert(bounds.previewBounds.every(r=>r.width<=16&&r.height<=16),'Preview corner must stay small');partyLayouts.push({width,zoom,...bounds});
  }
- const proof={passed:true,source,archiveSha256:release?.archiveSha256||null,initialSharedHeroes:12,teammateUpdates:true,swapRefresh:true,staysOnLineup:true,rankingReadOnly:true,emptyPoolCleared:true,mockedBenchSwaps:writes.length,latestClickWins:true,emptyPickActions:true,realClientWrites:0,layouts,partyLayouts};
+ const proof={passed:true,source,archiveSha256:release?.archiveSha256||null,initialSharedHeroes:12,teammateUpdates:true,swapRefresh:true,staysOnLineup:true,rankingReadOnly:true,emptyPoolCleared:true,mockedBenchSwaps:writes.length,latestClickWins:true,emptyPickActions:true,realClientWrites:0,emptyStateHeight,partyFromMockLobby:true,layouts,partyLayouts};
  await fs.writeFile(path.join(root,'proof.json'),JSON.stringify(proof,null,2));console.log(JSON.stringify({...proof,root}));app.quit();
 }
 run().catch(async error=>{console.error(error);await fs.mkdir(root,{recursive:true});await fs.writeFile(path.join(root,'error.txt'),error.stack);app.exit(1);});

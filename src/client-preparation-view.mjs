@@ -14,7 +14,7 @@ export function clientPreparationPlan(data,plan){
 export const preparationGameId=client=>champSelectGameId(client.session,client.game);
 export const clientPreparationKey=(client,prepared)=>JSON.stringify([preparationGameId(client),prepared.fingerprint]);
 export function clientPreparationControls({data,plan,client,view='build',available=false,pending=false,statuses=new Map()}){
- const prepared=clientPreparationPlan(data,plan);if(!prepared)return '';
+ const prepared=clientPreparationPlan(data,plan);if(!prepared||prepared.hexHover)return '';
  const gameId=preparationGameId(client),own=client.session?.myTeam?.find(p=>p.cellId===client.session.localPlayerCellId);
  const champion=data.champions.find(c=>c.id===plan.selection.id),locked=(client.session?.actions||[]).flat().some(a=>a.type==='pick'&&a.actorCellId===own?.cellId&&a.completed===true);
  const reason=!available?'客户端配置请在桌面版使用':!client.connected?'连接客户端后，在选人阶段使用':client.phase!=='ChampSelect'?'进入选人阶段后可预选并配置':client.mode?.id!=='rift'?'当前模式暂不支持一键配置':!gameId?'同步客户端以确认本局':locked&&own.championId!==champion.key?'已锁定其他英雄，请查看自己的方案':'';

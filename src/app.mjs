@@ -1054,7 +1054,7 @@ async function useHexQuickSelection(plan){
  if(revision!==hexQuickSelectionRevision||preparationGameId(client)!==gameId||client.session?.localPlayerCellId!==context.cellId||client.mode?.id!=='hex'||client.phase!=='ChampSelect')return result;
  const own=client.session?.myTeam?.find(p=>p.cellId===context.cellId),target=champ(plan.selection.id)?.key;
  const complete=result.complete===true&&own?.championId===target;
- toast(complete?'已切换英雄':result.steps?.hover?.message||'客户端未确认切换，请重试',!complete);render();
+ if(!complete)toast(result.steps?.hover?.message||'客户端未确认切换，请重试',true);render();
  return result;
 }
 async function claimPosition(role){
