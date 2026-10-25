@@ -7,7 +7,11 @@ export function isYouTubeCommunitySourceURL(url){
 const textURL=/^https:\/\/www\.reddit\.com\/r\/[A-Za-z0-9_]+\/comments\/[a-z0-9]+\/(?:comment\/[a-z0-9]+|[a-z0-9_]+(?:\/[a-z0-9]+)?)\/$/;
 const kitchenURL=/^https:\/\/deeparam\.com\/embed\/fun\/cook-builds\/#chefs-special-(\d{4}-\d{2}-\d{2})$/;
 const editorialURL=/^https:\/\/expcarry\.com\/lol-aram-mayhem-builds$/;
-export const isDouyinCommunitySourceURL=url=>typeof url==='string'&&/^https:\/\/www\.douyin\.com\/note\/[1-9]\d{18}$/.test(url);
+export function isDouyinCommunitySourceURL(url){
+ if(typeof url!=='string')return false;
+ const match=/^https:\/\/www\.douyin\.com\/note\/([1-9]\d{18})$/.exec(url);
+ return !!match&&url==='https://www.douyin.com/note/'+match[1];
+}
 const text=(v,max)=>typeof v==='string'&&v.trim()&&v.length<=max;
 export function validCommunitySkillPriority(route){
  const priority=route.skillPriority;
