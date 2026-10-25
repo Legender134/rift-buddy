@@ -3682,7 +3682,7 @@
       ],
       "requiresUltimate": false,
       "title": "虹吸暴击收割",
-      "summary": "普攻与不同技能叠评级，等到S级再找安全的大招窗口。",
+      "summary": "技能与普攻交替命中，保留安全的持续攻击窗口。",
       "coreBrief": "获得25%暴击几率；实际暴击伤害的12%治疗自身。",
       "coreItems": [
         3031
