@@ -7,6 +7,7 @@ export function isYouTubeCommunitySourceURL(url){
 const textURL=/^https:\/\/www\.reddit\.com\/r\/[A-Za-z0-9_]+\/comments\/[a-z0-9]+\/(?:comment\/[a-z0-9]+|[a-z0-9_]+(?:\/[a-z0-9]+)?)\/$/;
 const kitchenURL=/^https:\/\/deeparam\.com\/embed\/fun\/cook-builds\/#chefs-special-(\d{4}-\d{2}-\d{2})$/;
 const editorialURL=/^https:\/\/expcarry\.com\/lol-aram-mayhem-builds$/;
+export const isDouyinCommunitySourceURL=url=>typeof url==='string'&&/^https:\/\/www\.douyin\.com\/note\/[1-9]\d{18}$/.test(url);
 const text=(v,max)=>typeof v==='string'&&v.trim()&&v.length<=max;
 export function validCommunitySkillPriority(route){
  const priority=route.skillPriority;
@@ -14,7 +15,7 @@ export function validCommunitySkillPriority(route){
 }
 export function communitySourceMedium(source){
  if((source?.medium===undefined||source.medium==='video')&&(videoURL.test(source?.url||'')||isYouTubeCommunitySourceURL(source?.url)))return 'video';
- return source?.medium==='text'&&(textURL.test(source.url||'')||kitchenURL.test(source.url||'')||editorialURL.test(source.url||''))?'text':null;
+ return source?.medium==='text'&&(textURL.test(source.url||'')||kitchenURL.test(source.url||'')||editorialURL.test(source.url||'')||isDouyinCommunitySourceURL(source.url))?'text':null;
 }
 export function validCommunitySource(source,reviewedAt){
  const medium=communitySourceMedium(source);
