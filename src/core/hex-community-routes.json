@@ -3946,6 +3946,222 @@
           }
         }
       }
+    },
+    {
+      "hero": "Aurora",
+      "patch": "16.21",
+      "augment": 1004,
+      "optional": [
+        1030,
+        2132,
+        1333
+      ],
+      "requiresUltimate": false,
+      "title": "基础技能跳跃拉扯",
+      "summary": "接受失去R，以Q回收、W隐身跳跃与E后撤拉扯。",
+      "coreBrief": "禁用R；获得35%技能伤害、治疗效果、护盾和70技能急速。",
+      "coreItems": [
+        6655
+      ],
+      "play": [
+        "Q先命中再回收，调整位置让回程命中；E伤害减速后向后位移，W保留进退与落地隐身。",
+        "技能与普攻实际命中利用被动恢复；隐身不是免伤，W刷新仍需参与英雄击杀，不为追击丢掉退路。"
+      ],
+      "basicPlay": [
+        "R已封印，以Q命中与回收、E后撤和W隐身跳跃拉扯；不能再用大招封路、边界跳转或爆发。",
+        "只有实际命中与触发条件满足才获得恢复或刷新；无法安全续战时撤退。"
+      ],
+      "caution": "这条路线明确放弃R；可选强化是作者备选，不保证同局或轮次可得。原帖没有加点、符文、出门组件与首回城，不以通用配置补成作者原配。",
+      "gear": [
+        [
+          "作者1—6购买顺序",
+          [
+            6655,
+            4645,
+            3089,
+            3020,
+            3135,
+            4646
+          ],
+          "按原图编号购买；先保证Q去回实际命中，再利用法强与急速收益。"
+        ],
+        [
+          "敌方回血多",
+          [
+            3165
+          ],
+          "将第六格换为莫雷洛；魔法伤害命中英雄才施加重伤，不是购买后影响全队治疗。"
+        ],
+        [
+          "敌方突进压力",
+          [
+            3157
+          ],
+          "将第六格换为中娅；凝滞期间不能继续施法。"
+        ],
+        [
+          "需要挡关键技能",
+          [
+            3102
+          ],
+          "将第六格换为女妖；只格挡下一次满足条件的敌方技能，不提供永久免控。"
+        ],
+        [
+          "需要韧性",
+          [
+            3111
+          ],
+          "将第四格鞋子换为水银之靴，按威胁择一，不额外占第七格。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海克斯乱斗大发明家",
+        "url": "https://www.douyin.com/note/7700220231301598499",
+        "publishedAt": "2026-10-24T21:07:23+08:00",
+        "sourcePatch": "26.21",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图与规范正文：棱彩回归基本功",
+          "原图：按①—⑥购买的完整主线",
+          "原图与正文：第六格替换、第四格鞋子替换",
+          "原图与正文：尤里卡、术士果汁盒、逃跑计划备选"
+        ],
+        "adaptation": "原帖明确26.21，实际读正文日期与完整原图；按编号整理六件和四项替换。1004禁R，Q/W/E打法由项目对照当前英雄源整理，不借用大招收益；Q回收不保证命中，E是后退，隐身不是免伤。卢登核心标记为项目骨架，不是作者额外分级。可选强化为独立备选，不代表同局已选或四轮资格。作者加点、符文、召唤师、出门首回未知，不补造；无统计采样方法的图示胜率不采。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3020": "8f10962e9a05ce28",
+          "3089": "27fe94d33bb7a1af",
+          "3102": "2a329cbcbcd641bf",
+          "3111": "b015262b2d75ee9e",
+          "3135": "40317bddc5d92b12",
+          "3157": "742632d905f9bd60",
+          "3165": "9b3138b0e27b6c44",
+          "4645": "4389cef3a456f687",
+          "4646": "96e96d64e74507fd",
+          "6655": "9fccc6565c56da03"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1004": {
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false
+          },
+          "1030": {
+            "fingerprint": "ff52cb7b98a1ff87",
+            "requiresUltimate": false
+          },
+          "1333": {
+            "fingerprint": "0d4f5bbd6cf88d34",
+            "requiresUltimate": false
+          },
+          "2132": {
+            "fingerprint": "371bb52cc0e862c8",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Teemo",
+      "patch": "16.21",
+      "augment": 2087,
+      "optional": [
+        1030,
+        1068
+      ],
+      "requiresUltimate": true,
+      "title": "蘑菇布点与随机返还",
+      "summary": "保留R的实际装填与布点，按已获得的随机返还调整技能空档。",
+      "coreBrief": "施法返还另一个随机技能的花费；不保证指定W/R返还、固定装填或无限蘑菇。",
+      "coreItems": [
+        3118
+      ],
+      "play": [
+        "R需要实际可用充能，先看装填再布点；敌人踩中并受到R伤害时，才满足配套残疫的英雄伤害条件。",
+        "Q处理能安全触及的目标，W用于走位；不要为等指定返还连续空放耗蓝，也不把E毒跳当成新的施法。"
+      ],
+      "basicPlay": [
+        "本条依赖可用R；失去R后不采用这套蘑菇配置，不能以基础技能或蜂巢冒充终极技能伤害。"
+      ],
+      "caution": "大法师原文指另一个随机技能，不保证只返W/R；施放间隔与蘑菇装填不同。作者270/180急速阈值、无限循环与录像build未核实，不承诺固定伤害或回蓝。",
+      "gear": [
+        [
+          "作者固定三件：无购买先后",
+          [
+            3118,
+            6653,
+            2503
+          ],
+          "140—148秒作者出装卡固定三件，其余三格按强化取舍；不是完整六件或实际购买顺序。残疫需R伤害英雄，灼烧与蜂巢不自动算作再次施放R。"
+        ]
+      ],
+      "communitySource": {
+        "author": "海斗小杨",
+        "url": "https://www.bilibili.com/video/BV1NcHP6yEfm/",
+        "publishedAt": "2026-10-24T09:45:24.000Z",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗4.0提莫教学，录像build与服务器未确认，按当前16.21独立复核",
+        "evidenceSeconds": [
+          10,
+          15,
+          20,
+          25,
+          55,
+          60,
+          75,
+          80,
+          90,
+          110,
+          120,
+          140,
+          145,
+          146,
+          148
+        ],
+        "adaptation": "实际抽帧读字幕与作者出装图；20秒大法师为随机返还另一技能花费，不据作者模型保证返W/R、R充能处理、270/180急速阈值、无限蘑菇或无限蓝。140—148秒固定三件残疫、兰德里、黯炎火炬是建议集合，不是购序、已持六件；本条只保留这组三件和作者两项已核急速备选。本条因蘑菇与残疫需要R，不代表大法师本身只能用于终极技能。纯粹分支一图未知、纳什与虚幻武器电刀分支分别保留研究记录，未拼进此套；另一组合虚幻/蜂巢/缩小射线不是本条必需。无完整加点、符文、召唤师及出门首回。item3118是残疫，非同ID奥术公理强化；采用当前海克斯覆写，不用基础模式系数。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2503": "0c136199a9e6fbf3",
+          "3118": "9a274cdd335790d0",
+          "6653": "9fb9534b546d1626"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1030": {
+            "fingerprint": "ff52cb7b98a1ff87",
+            "requiresUltimate": false
+          },
+          "1068": {
+            "fingerprint": "358ac971737afa8f",
+            "requiresUltimate": false
+          },
+          "2087": {
+            "fingerprint": "381627cb9ca46313",
+            "requiresUltimate": true
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -3998,7 +4214,8 @@
       "Sett": "76c5b480536d4f6c",
       "Rengar": "37409a7c0d60e8e8",
       "Samira": "fb97a340c89c0ba1",
-      "Rumble": "8a349d0b8197b1d4"
+      "Rumble": "8a349d0b8197b1d4",
+      "Aurora": "c92013de35c40185"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -5126,6 +5343,30 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "b24e1536e120ad82"
+          }
+        }
+      },
+      "Aurora": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "c92013de35c40185",
+        "observedAt": "2026-10-23T02:03:51.452Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Aurora",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/aurora/aurora.bin.json",
+            "sha256": "795eccab2dfff3eb7104c81f79d051569d84efe19b41a9ab658ed6f4a08286b8"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "88d81f500bbc1c61"
           }
         }
       }
