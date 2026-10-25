@@ -57,7 +57,9 @@ async function run(){
  await click('[data-action=sync]');await until(()=>js('document.querySelector("[data-action=sync]")?.disabled===false'),'Initial sync missing');
  await js('window.buddy.companionMode(true)');await until(()=>js('!!document.querySelector(".hex-companion .hex-shared-bench")'),'Shared bench missing');
  const ids=()=>js('[...document.querySelectorAll(".hex-shared-bench [data-action=hex-quick-pick]")].map(e=>e.dataset.id)');
+ const rankingIds=()=>js('[...document.querySelectorAll(".hex-ranking [data-action=hex-reference-preview]")].map(e=>e.dataset.id)');
  assert.deepEqual((await ids()).sort(),[...bench].sort());assert.equal(writes.length,0);
+ assert.deepEqual((await rankingIds()).sort(),[...bench].sort(),'Win-rate board must contain only the real shared bench');
  const screenshot=async name=>{await js('Promise.all([...document.querySelectorAll(".hex-shared-bench img")].map(i=>i.decode().catch(()=>{})))');await fs.writeFile(path.join(root,name),(await main.webContents.capturePage(undefined,{stayHidden:true,stayAwake:true})).toPNG());};
  const layouts=[];
  for(const width of [360,440])for(const zoom of [1,1.25]){
@@ -69,8 +71,10 @@ async function run(){
  bench.push('Hecarim');bench=bench.filter(id=>id!=='Xerath');
  await js('window.buddy.client(true)');await until(async()=>(await ids()).includes('Hecarim')&&!(await ids()).includes('Xerath'),'Teammate bench update missing');
  assert.deepEqual((await ids()).sort(),[...bench].sort());
+ assert.deepEqual((await rankingIds()).sort(),[...bench].sort(),'Win-rate board must follow teammate bench updates');
  await click('.hex-shared-bench [data-id=Hecarim]');await until(()=>ownHero==='Hecarim','Shared hero click never reached bench swap');
  await until(async()=>{const pool=await ids();return pool.includes('Lux')&&!pool.includes('Hecarim');},'Swap did not refresh the shared pool');
+ assert.deepEqual((await rankingIds()).sort(),[...bench].sort(),'Selected heroes must leave the win-rate board');
  await until(()=>js('!document.body.textContent.includes("正在预选并配置")'),'Preparation did not settle');
  assert.equal(await js('document.querySelector(".hex-companion").dataset.tab'),'recommend','Hex swap navigated to configuration');assert.equal(writes.length,1);
  await screenshot('bench-after-swap.png');
@@ -82,6 +86,7 @@ async function run(){
 
  const count=writes.length;await click('.hex-ranking [data-action=hex-reference-preview]');await until(()=>js('!!document.querySelector("#overlay-root>*")'),'Read-only reference missing');assert.equal(writes.length,count);await click('[data-action=close]');
  bench=[];await js('window.buddy.client(true)');await until(async()=>(await ids()).length===0,'Emptied bench retained stale heroes');
+ assert.deepEqual(await rankingIds(),[],'Empty bench must not show every champion');
  assert.equal(await js('document.querySelector(".hex-companion").dataset.tab'),'recommend');
  const emptyStateHeight=await js('document.querySelector(".hex-shared-bench").getBoundingClientRect().height');assert(emptyStateHeight<100,'Empty bench must stay compact');
  // Establish the five-person party through actual public lobby resolution,

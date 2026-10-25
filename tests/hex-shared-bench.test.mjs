@@ -27,6 +27,7 @@ test('the sidebar shows every shared bench hero even when only three recommended
  assert.deepEqual(f.client,before);
  const ranking=html.slice(html.indexOf('<div class="hex-ranking"'));
  assert.doesNotMatch(ranking,/data-action="hex-quick-pick"/);
+ assert.deepEqual([...ranking.matchAll(/data-action="hex-reference-preview"[^>]*data-id="([^"]+)"/g)].map(m=>m[1]).sort(),[...pool].sort());
 });
 test('ordinary teammates can add and remove shared bench heroes without changing the local pick or party membership',()=>{
  const f=fixture(),before=clientRenderIdentity(f.client);
@@ -36,8 +37,10 @@ test('ordinary teammates can add and remove shared bench heroes without changing
  f.client.session=sanitizeSession(f.raw);
  assert.notEqual(clientRenderIdentity(f.client),before,'A bench-only update must repaint the sidebar');
  assert.deepEqual(visiblePool(f.render()).sort(),[...pool.filter(id=>id!=='Xerath'),'Hecarim'].sort());
+ const ranking=f.render().slice(f.render().indexOf('<div class="hex-ranking"'));assert.deepEqual([...ranking.matchAll(/data-action="hex-reference-preview"[^>]*data-id="([^"]+)"/g)].map(m=>m[1]).sort(),[...pool.filter(id=>id!=='Xerath'),'Hecarim'].sort());
  f.raw.benchChampions=[];f.client.session=sanitizeSession(f.raw);
  assert.deepEqual(visiblePool(f.render()),[],'Removed heroes must not survive in a cached pool');
+ assert.doesNotMatch(f.render(),/class="hex-ranking-hero /,'An empty bench must not restore the all-hero board');
 });
 test('shared bench clicks exclude occupied, disabled and locally unpickable heroes without inventing entries',()=>{
  const f=fixture();
