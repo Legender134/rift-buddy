@@ -3671,6 +3671,281 @@
           }
         }
       }
+    },
+    {
+      "hero": "Samira",
+      "patch": "16.21",
+      "augment": 1077,
+      "optional": [
+        3131,
+        1333
+      ],
+      "requiresUltimate": false,
+      "title": "虹吸暴击收割",
+      "summary": "技能与普攻交替命中，保留安全的持续攻击窗口。",
+      "coreBrief": "获得25%暴击几率；实际暴击伤害的12%治疗自身。",
+      "coreItems": [
+        3031
+      ],
+      "play": [
+        "普攻与不同技能实际命中叠评级，R仍需S级；W用于处理飞行道具，不能挡住所有伤害。",
+        "保留E的进退目标，确认参与英雄击杀后的实际刷新再追击；虹吸需要适用的暴击伤害，不保证全部技能和每一发大招都暴击回血。"
+      ],
+      "basicPlay": [
+        "失去R后，只以Q/W/E和实际普攻组织进退；叠出S也不能使用大招。",
+        "W处理飞行道具，E看目标与实际刷新；没有安全攻击窗口时回撤，不为吸血主动压低血量。"
+      ],
+      "caution": "屹立不倒不提供免死；逃跑计划有冷却且护盾衰减。可选强化是作者备选，不保证同局或轮次可得；原帖未提供加点、符文与首回城。",
+      "gear": [
+        [
+          "作者虹吸分支：1—6",
+          [
+            6676,
+            3031,
+            3033,
+            3008,
+            3072,
+            6333
+          ],
+          "作者在拿到灵魂虹吸时建议第三件凡性的提醒；这是作者分支，不是虹吸必须先出重伤。鞋子与饮血未解析数值不补写。"
+        ],
+        [
+          "作者主线：1—6",
+          [
+            6676,
+            3031,
+            3036,
+            3008,
+            3072,
+            6333
+          ],
+          "原图主线第三件为领主，与其他轻语系装备择一，不叠买两件轻语系。"
+        ],
+        [
+          "作者吸血分支：1—6",
+          [
+            6676,
+            3031,
+            3072,
+            3111,
+            3036,
+            6333
+          ],
+          "需要提前吸血时，作者将饮血提前第三、鞋子换为水银；保留独立顺序，不混入主线。"
+        ],
+        [
+          "敌方魔法爆发",
+          [
+            3156
+          ],
+          "三条路径均将第六格换为玛莫提乌斯之噬；不是额外第七件，不把魔法护盾当作全伤害免疫。"
+        ],
+        [
+          "需要韧性",
+          [
+            3111
+          ],
+          "主线或虹吸分支将第四格鞋子换为水银之靴，按威胁与其他鞋子择一。"
+        ],
+        [
+          "敌方普攻压力",
+          [
+            3047
+          ],
+          "三条路径均可将第四格鞋子换为铁板靴，按威胁与其他鞋子择一。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海克斯乱斗大发明家",
+        "url": "https://www.douyin.com/note/7700442778509036835",
+        "publishedAt": "2026-10-25T11:30:55+08:00",
+        "sourcePatch": "26.21",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图与正文：金色灵魂虹吸及屹立不倒、银色逃跑计划备选",
+          "原图：按①—⑥购买的主线与两项分叉",
+          "原图与正文：魔法爆发、韧性及普攻压力替换"
+        ],
+        "adaptation": "按26.21原帖三条编号购买路线整理，虹吸分支第三件凡性的提醒仅为作者建议，不作为强化触发前提。当前Q/R文本支持暴击相关机制，不据此承诺每段必暴、完整生命偷取效能或固定治疗量；不让W/E自动变为暴击吸血。无尽核心边框为项目暴击骨架标记；其他稀有度选项不拼成同局已选。无作者加点、符文、召唤师、出门组件和首回城，不补造；禁R为项目条件适配。图文胜率无采样方法，不采纳。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3008": "5bba5a80f75fe980",
+          "3031": "00b9b8a238976a3f",
+          "3033": "d17e8fe8776ae561",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3072": "6d238c0dfb1d9746",
+          "3111": "b015262b2d75ee9e",
+          "3156": "e82d90af81fa5a8d",
+          "6333": "95058514bbf67ac0",
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1077": {
+            "fingerprint": "244429bb7a085640",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1333": {
+            "fingerprint": "0d4f5bbd6cf88d34",
+            "requiresUltimate": false
+          },
+          "3131": {
+            "fingerprint": "dadac98521193a85",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Rumble",
+      "patch": "16.21",
+      "augment": 3086,
+      "optional": [
+        1030,
+        2132,
+        1305
+      ],
+      "requiresUltimate": false,
+      "title": "蜂巢控温消耗",
+      "summary": "蜂巢就绪再以Q/E命中，控热量并留出退路。",
+      "coreBrief": "技能命中英雄投蜂巢：冷却15—10秒随等级，2秒20%减速；附带40%效能攻击特效。",
+      "coreItems": [
+        6653
+      ],
+      "play": [
+        "蜂巢就绪时，用Q或E实际命中敌方英雄；Q每跳、装备灼烧和W自身护盾不视作额外蜂巢。",
+        "用W调整位置，留意过热时暂时不能施法；R可用时封走位，强化与法强急速都不取消热量规则。"
+      ],
+      "basicPlay": [
+        "失去R后，以Q/E命中启动已就绪蜂巢，W保留进退；不等待大招封路。",
+        "仍需管理热量与过热停法窗口，不因获得急速就连续无代价施法。"
+      ],
+      "caution": "蜂巢触发仍有间隔，不保证固定多段攻击特效或自触发循环。可选强化为作者独立备选，不保证同局与轮次；原帖没有加点、符文或首回城。",
+      "gear": [
+        [
+          "作者主线：1—6",
+          [
+            6653,
+            4645,
+            3089,
+            3020,
+            3135,
+            3157
+          ],
+          "按原图编号购买；兰德里需伤害技能命中，持续交战才叠增伤；不把装备灼烧当成再次施法。"
+        ],
+        [
+          "作者突进压力分支：1—6",
+          [
+            6653,
+            4645,
+            3157,
+            3020,
+            3089,
+            3116
+          ],
+          "中娅提前第三；冰杖用于伤害技能减速。凝滞期间不能继续施法，不承诺减速简单相加。"
+        ],
+        [
+          "敌方回血多",
+          [
+            3165
+          ],
+          "两条路径均将第六格换为莫雷洛；魔法伤害命中英雄才施加重伤。"
+        ],
+        [
+          "敌方魔抗高",
+          [
+            3135
+          ],
+          "仅突进分支第六格换为虚空之杖；主线已经第五件虚空，不重复购买。"
+        ],
+        [
+          "需要挡关键技能",
+          [
+            3102
+          ],
+          "两条路径均将第六格换为女妖；法术护盾只处理下一次满足条件的敌方技能，不是永久免控。"
+        ],
+        [
+          "需要韧性",
+          [
+            3111
+          ],
+          "两条路径均将第四格法师之靴换为水银之靴。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海克斯乱斗大发明家",
+        "url": "https://www.douyin.com/note/7700442606316080399",
+        "publishedAt": "2026-10-25T11:30:14+08:00",
+        "sourcePatch": "26.21",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图与正文：金色小蜜蜂及尤里卡、术士果汁盒、练腿日备选",
+          "原图：主线六格、突进压力中娅提前第三",
+          "规范原帖正文：突进分支末件明确瑞莱的冰晶节杖",
+          "原图与正文：第六格和第四格鞋子条件替换"
+        ],
+        "adaptation": "主线按原图编号；突进分支末格的小图标未确认，单独回读规范正文明确为瑞莱的冰晶节杖，按文字来源收录，不声称图标匹配。小蜜蜂以当前15—10秒间隔和实际技能命中整理，不能从Q/R持续伤害推出每跳发蜂、固定多次攻击特效或永久循环；W自身护盾不算命中敌方英雄。兰德里核心标记为项目骨架整理，可选强化不作为同局组合或四轮资格证据；禁R打法为项目条件适配。未补作者加点、符文、召唤师或出门首回，原图无采样来源的胜率不采。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3020": "8f10962e9a05ce28",
+          "3089": "27fe94d33bb7a1af",
+          "3102": "2a329cbcbcd641bf",
+          "3111": "b015262b2d75ee9e",
+          "3116": "04c63460140d7887",
+          "3135": "40317bddc5d92b12",
+          "3157": "742632d905f9bd60",
+          "3165": "9b3138b0e27b6c44",
+          "4645": "4389cef3a456f687",
+          "6653": "9fb9534b546d1626"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1030": {
+            "fingerprint": "ff52cb7b98a1ff87",
+            "requiresUltimate": false
+          },
+          "1305": {
+            "fingerprint": "e0ad4d642c4760e5",
+            "requiresUltimate": false
+          },
+          "2132": {
+            "fingerprint": "371bb52cc0e862c8",
+            "requiresUltimate": false
+          },
+          "3086": {
+            "fingerprint": "ce2a943200b8677c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -3721,7 +3996,9 @@
       "Renekton": "5a98c4b4b1f08e37",
       "Yone": "9f3493c27921664f",
       "Sett": "76c5b480536d4f6c",
-      "Rengar": "37409a7c0d60e8e8"
+      "Rengar": "37409a7c0d60e8e8",
+      "Samira": "fb97a340c89c0ba1",
+      "Rumble": "8a349d0b8197b1d4"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -4801,6 +5078,54 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "a340ab4d1d71dccd"
+          }
+        }
+      },
+      "Samira": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "fb97a340c89c0ba1",
+        "observedAt": "2026-10-23T02:03:51.551Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Samira",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/samira/samira.bin.json",
+            "sha256": "66207c6c2fbf270bfa686b40c2e39d6197c632bd26e959c7c75ed3843d6a24bb"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "12851dd9ef379ec4"
+          }
+        }
+      },
+      "Rumble": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "8a349d0b8197b1d4",
+        "observedAt": "2026-10-23T02:03:51.551Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Rumble",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/rumble/rumble.bin.json",
+            "sha256": "b0691be6a2b5d9fc1d3ea31b5eabb7335458f4738e5be775ac9074ccc5d93646"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "b24e1536e120ad82"
           }
         }
       }
