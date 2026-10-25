@@ -4162,6 +4162,123 @@
           }
         }
       }
+    },
+    {
+      "hero": "Senna",
+      "patch": "16.21",
+      "augment": 1204,
+      "optional": [
+        1037,
+        1095,
+        1076
+      ],
+      "requiresUltimate": false,
+      "title": "叠魂暴击路线",
+      "summary": "收集黑雾积累成长，以普攻和Q续战。",
+      "coreBrief": "获得技能永久层数时额外获得100%；仍须满足原本的叠层条件。",
+      "coreItems": [
+        3031
+      ],
+      "play": [
+        "安全时收集实际出现的灵魂；普攻与Q寻找命中，不为叠层走进集火。",
+        "Q光束治疗友方英雄并伤害敌人；W命中后延迟禁锢。R可用时照顾队友护盾与中央英雄伤害。"
+      ],
+      "basicPlay": [
+        "R不能使用时，仍靠普攻、Q治疗与W延迟禁锢组织进退。",
+        "E伪装不能免伤，附近敌人和主动攻击仍会限制隐蔽；收魂前先留退路。"
+      ],
+      "caution": "不承诺每次拾魂固定翻倍、灵魂掉落或金币翻倍。作者只给出装与强化备选，没有加点、符文、召唤师、出门组件或首回城；不补成作者原配。",
+      "gear": [
+        [
+          "作者叠角龙1—6顺序",
+          [
+            6676,
+            3031,
+            3036,
+            3006,
+            3153,
+            3094
+          ],
+          "按原图分叉①编号购买；领主第三是作者路线，不是叠角龙的触发条件。火炮仍须盈能攻击，不提供永久额外射程。"
+        ],
+        [
+          "魔法爆发高",
+          [
+            3156
+          ],
+          "将第六格换为玛莫提乌斯之噬；护盾需受到相应的低血量魔法伤害触发，不填未解析数值。"
+        ],
+        [
+          "需要韧性",
+          [
+            3111
+          ],
+          "将第四格鞋子换为水银之靴；按威胁择一，不额外占第七格。"
+        ],
+        [
+          "普攻压力多",
+          [
+            3047
+          ],
+          "将第四格鞋子换为铁板靴；按威胁择一，不与其他鞋叠买。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海克斯乱斗大发明家",
+        "url": "https://www.douyin.com/note/7700442959598161187",
+        "publishedAt": "2026-10-25T11:31:37+08:00",
+        "sourcePatch": "26.21",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "规范正文与原图：银色叠角龙与独立备选",
+          "原图：拿到叠角龙分叉①的六件顺序",
+          "原图与正文：全路线第六格魔法防御、第四格择鞋"
+        ],
+        "adaptation": "实际读规范正文、日期和完整原图；只将叠角龙分叉①编入这条路线，未将通用主线的第五格重伤替换移植到分叉第三格。按当前永久技能层数说明与英雄源整理，不承诺每次拾魂计数或掉魂率翻倍。三个可选强化为原帖独立备选，不保证同局已选或四轮资格；未将迷人蝴蝶未解析公式纳入。普攻/Q/W/E与禁R打法为项目基础整理，未给作者加点等配置。无统计采样方法的图示胜率不采；无尽核心标记为项目骨架，不是作者分级。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3006": "0456daa0af0073e0",
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3094": "d1774a6a3ab85e3a",
+          "3111": "b015262b2d75ee9e",
+          "3153": "b957df6b74b79bb7",
+          "3156": "e82d90af81fa5a8d",
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1076": {
+            "fingerprint": "9951fc3917e382bd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1095": {
+            "fingerprint": "a843597eceafe45b",
+            "requiresUltimate": false
+          },
+          "1204": {
+            "fingerprint": "3738744b7d2a4990",
+            "requiresUltimate": false
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -4215,7 +4332,8 @@
       "Rengar": "37409a7c0d60e8e8",
       "Samira": "fb97a340c89c0ba1",
       "Rumble": "8a349d0b8197b1d4",
-      "Aurora": "c92013de35c40185"
+      "Aurora": "c92013de35c40185",
+      "Senna": "5e547c9cf10f2a05"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -5367,6 +5485,30 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "88d81f500bbc1c61"
+          }
+        }
+      },
+      "Senna": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "5e547c9cf10f2a05",
+        "observedAt": "2026-10-23T02:03:51.552Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Senna",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/senna/senna.bin.json",
+            "sha256": "1bc811e1ca9551f77ec55081571f502bac7d95d19297f3e8d12c56138b485c8a"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "58582c22f3d6346b"
           }
         }
       }
