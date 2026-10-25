@@ -1,18 +1,20 @@
 // Real-client experiments require this explicit CLI. No app startup hook exists.
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import os from 'node:os';
 import {fileURLToPath} from 'node:url';
 import {createMatchHistoryService} from '../../services/match-history.mjs';
 import {createHelperManager} from '../../services/client-helper.mjs';
 import {collectLocalExperiment} from './local-collect.mjs';
 import {evaluateLocalExperiment} from './local-evaluate.mjs';
+export const createExperimentTempDirectory=()=>fs.mkdtemp(path.join(os.tmpdir(),'rift-buddy-winprob-'));
 export async function runLocalExperiment({helperMode=false,options={},output='.local/win-probability/local-experiment-results.json'}={}){
  let manager=null,temporary=null;const direct=createMatchHistoryService({operationDeadlineMs:20000});
  try{
   let execute=(operation,payload)=>direct.execute(operation,payload);
   if(helperMode){
    const release=JSON.parse(await fs.readFile('release/latest.json','utf8')),bundleRoot=path.join(release.directory,'resources/connection');
-   temporary=await fs.mkdtemp(path.join(process.env.LOCALAPPDATA,'Temp/opencode/winprob-experiment-'));
+   temporary=await createExperimentTempDirectory();
    manager=createHelperManager({userData:temporary,bundleRoot,executable:path.join(bundleRoot,'node.exe'),isPackaged:true,helperExecutable:path.join(bundleRoot,'node.exe'),helperEntry:path.join(bundleRoot,'electron/client-helper-entry.mjs'),helperBundleRoot:bundleRoot,launcherExecutable:path.join(bundleRoot,'connection-launcher.exe'),onProgress:message=>console.log(message)});
    await manager.ensure('');execute=(operation,payload)=>manager.request('matchHistory',{operation,payload});
   }

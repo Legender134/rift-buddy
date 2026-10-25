@@ -3,6 +3,11 @@ import assert from 'node:assert/strict';
 import {historyFeatures,historyFeatureNames,chronologicalSplit,timelineSamples,localTarget} from '../scripts/win-probability/local-features.mjs';
 import {evaluateLocalExperiment} from '../scripts/win-probability/local-evaluate.mjs';
 import {collectLocalExperiment} from '../scripts/win-probability/local-collect.mjs';
+import {createExperimentTempDirectory} from '../scripts/win-probability/local-run.mjs';
+import {createMatchHistoryService} from '../services/match-history.mjs';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
 
 const target=(id=1,created=1_000_000)=>({id,created,duration:600,queue:420,map:11,version:'16.21.1',completeTeams:true,pve:false,participants:Array.from({length:10},(_,i)=>({id:i+1,teamId:i<5?100:200,champion:i+1,puuid:`synthetic-player-${i}`,result:i<5?'win':'loss'}))});
 const history=(id,created,result='win',extra={})=>({id,created,duration:60,queue:420,self:{champion:1,result,kills:2,deaths:1,assists:3,cs:60,damage:600,gold:300,vision:2,heal:60,...extra}});
@@ -136,4 +141,34 @@ test('collector refuses a returned history belonging to a different player',asyn
  const result=await collectLocalExperiment({execute,vocabulary:Array.from({length:10},(_,i)=>i+1),options:{targets:30,seedPlayers:1,historyPlayers:2,historyRows:20,timelines:0,maxRequests:3,queue:420,deadlineMs:10000}});
  assert.equal(result.report.historyPlayers,1);
  assert(result.report.playerIdentityMismatches>0);
+});
+
+for(const total of [300,239])test(`timeline sampling spans all pregame partitions for ${total} targets and a 120-timeline budget`,async()=>{
+ const games=Array.from({length:total},(_,i)=>{const g=target(i+1,1_000_000+i*1_000_000);if(i%3===1)for(const p of g.participants)p.result=p.result==='win'?'loss':'win';return g;}),own='synthetic-own-player',lists=new Map([[own,games.slice(0,100)],['synthetic-player-0',games.slice(100,200)],['synthetic-player-1',games.slice(200)]]),selected=[];
+ const execute=async(operation,payload)=>{if(operation==='page'){assert(payload.count<=20);const puuid=payload.puuid||payload.handle||own,list=lists.get(puuid)||[],start=payload.start||0;return {handle:puuid,session:'same',localServer:'TENCENT_TEST',source:'lcu',player:{puuid},games:list.slice(start,start+payload.count),hasMore:start+payload.count<list.length};}assert.equal(operation,'timeline');selected.push(payload.id);const g=games[payload.id-1],players=g.participants.map(p=>({id:p.id,level:6,cs:30}));return {timeline:{frames:[{timestamp:0,players,eventsKnown:true},{timestamp:300000,players,eventsKnown:true}],events:[]}};};
+ const result=await collectLocalExperiment({execute,vocabulary:Array.from({length:10},(_,i)=>i+1),options:{targets:total,seedPlayers:2,historyPlayers:0,historyRows:100,timelines:120,maxRequests:420,deadlineMs:10000}});
+ assert.equal(result.dataset.pregame.length,total);assert.equal(selected.length,120);assert.equal(new Set(selected).size,120);assert.equal(Math.min(...selected),1);assert.equal(Math.max(...selected),total);assert(result.report.requests<=420);
+ const split=chronologicalSplit(result.dataset.pregame);for(const key of ['train','calibration','test']){const ids=new Set(split[key].map(g=>g.game));assert(result.dataset.live.some(r=>ids.has(r.game)),key+' timelines missing');}assert.equal(evaluateLocalExperiment(result.dataset).live.status,'evaluated');
+});
+
+test('real history-service handle eviction after more than 48 player reads cannot invalidate the refreshed timeline handle',async()=>{
+ const own={puuid:'synthetic-own-player-000',summonerId:1,gameName:'mock',tagLine:'TEST'},games=Array.from({length:20},(_,i)=>({gameId:i+1,gameCreation:1_000_000+i*1_000_000,gameDuration:600,gameVersion:'16.21.1',gameType:'MATCHED_GAME',queueId:420,mapId:11,participantIdentities:Array.from({length:10},(_,j)=>({participantId:j+1,player:{puuid:j?'synthetic-player-'+i+'-'+j:own.puuid}})),participants:Array.from({length:10},(_,j)=>({participantId:j+1,championId:j+1,teamId:j<5?100:200,stats:{win:j<5,kills:1,deaths:1,assists:1,totalMinionsKilled:30}}))}));
+ let pages=0,timelines=0;const service=createMatchHistoryService({discover:async()=>({port:23456,password:'mock-only',region:'TENCENT',rsoPlatformId:'HN10'}),request:async(_auth,route,method='GET')=>{assert.equal(method,'GET');if(route.includes('current-summoner'))return own;if(route.includes('/matches?')){pages++;const u=new URL('https://loopback.invalid'+route),start=Number(u.searchParams.get('begIndex'));return {games:{games:games.slice(start,start+20)}};}if(route.includes('/game-timelines/')){timelines++;return {frames:[0,300000].map(timestamp=>({timestamp,events:[],participantFrames:Object.fromEntries(Array.from({length:10},(_,j)=>[j+1,{participantId:j+1,level:6,minionsKilled:30,jungleMinionsKilled:0}]))}))};}if(route.includes('entitlements')||route.includes('league-session-token'))throw Error('mock backend offline');return {};},sgp:async()=>{throw Error('mock backend offline');}});
+ try{const result=await collectLocalExperiment({execute:(op,p)=>service.execute(op,p),vocabulary:Array.from({length:10},(_,i)=>i+1),options:{targets:20,seedPlayers:0,historyPlayers:60,historyRows:20,timelines:6,maxRequests:100,deadlineMs:30000}});assert(result.report.historyPlayers>48);assert(pages>48);assert.equal(timelines,6);assert.equal(result.report.timelinesAccepted,6);assert.equal(result.report.sourceErrors.session,undefined);assert(result.report.requests<=100);}finally{service.clear();}
+});
+
+test('refreshing a timeline page still stops immediately on a genuine client-session change',async()=>{
+ const games=Array.from({length:20},(_,i)=>target(i+1,1_000_000+i*1_000_000));let pages=0;
+ const execute=async operation=>{assert.equal(operation,'page');return {handle:'h',session:++pages===1?'first-session':'changed-session',localServer:'TENCENT_TEST',source:'lcu',games,hasMore:false};};
+ await assert.rejects(collectLocalExperiment({execute,vocabulary:Array.from({length:10},(_,i)=>i+1),options:{targets:20,seedPlayers:0,historyPlayers:0,historyRows:20,timelines:4,maxRequests:20,deadlineMs:10000}}),/Client session changed/);assert.equal(pages,2);
+});
+
+test('helper temporary state is created directly below the system temp root without an opencode parent',async()=>{
+ const temporary=await createExperimentTempDirectory();try{assert.equal(path.dirname(temporary),path.resolve(os.tmpdir()));assert.match(path.basename(temporary),/^rift-buddy-winprob-/);assert((await fs.stat(temporary)).isDirectory());}finally{await fs.rm(temporary,{recursive:true,force:true});}
+});
+
+test('a refreshed page that crosses the deadline preserves the collected dataset and starts no timeline request',async()=>{
+ const games=Array.from({length:20},(_,i)=>target(i+1,1_000_000+i*1_000_000));let at=0,pages=0,timelines=0;
+ const execute=async operation=>{if(operation==='timeline'){timelines++;throw Error('Past-deadline request');}if(++pages>1)at=10001;return {handle:'h',session:'same',localServer:'TENCENT_TEST',source:'lcu',games,hasMore:false};};
+ const result=await collectLocalExperiment({execute,vocabulary:Array.from({length:10},(_,i)=>i+1),clock:()=>at,options:{targets:20,seedPlayers:0,historyPlayers:0,historyRows:20,timelines:4,maxRequests:20,deadlineMs:10000}});assert.equal(pages,2);assert.equal(timelines,0);assert.equal(result.report.stoppedBy,'time-budget');assert.equal(result.dataset.pregame.length,20);assert.equal(result.report.requests,2);
 });
