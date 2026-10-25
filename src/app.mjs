@@ -1536,7 +1536,7 @@ async function performSync(manual=true,fresh=false){
    for(const [key,target] of matchupTargets)if(target&&!enemy.includes(target)){matchupTargets.delete(key);lastMatchupSync='';}
    const ownPlan=myPreparation();if(ownPlan&&matchupTargets.has(matchupTargetKey(ownPlan.selection)))syncMatchupFocus(ownPlan.selection,matchupTargets.get(matchupTargetKey(ownPlan.selection)));
    if(pendingIntentPreparation){const prepared=myPreparation();if(prepared){const intended=pendingIntentPreparation;pendingIntentPreparation=null;if(pendingIntentPlanId===(activeCreativePlan?.id||'')&&['id','role','mode'].every(field=>intended[field]===prepared.selection[field])){rememberPreparation(intended);syncPreparedGuide(intended);}}}
-   if(manual)toast((unassigned.length?'读取成功，部分英雄需要你确认位置':'选人信息已同步')+(merged.markedLocalChanged?' · 已按客户端标出你的分路':''));
+   if(manual&&client.mode?.id!=='hex')toast((unassigned.length?'读取成功，部分英雄需要你确认位置':'选人信息已同步')+(merged.markedLocalChanged?' · 已按客户端标出你的分路':''));
   }else{
    if(client.connected&&['None','Lobby','Matchmaking','ReadyCheck'].includes(client.phase)){
     if(saved.draft?.playerPosition){delete saved.draft.playerPosition;changed=true;persist({derived:!manual});}

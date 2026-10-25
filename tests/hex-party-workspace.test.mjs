@@ -36,7 +36,7 @@ test('current Mayhem statistics sort only the public bench without inventing sam
  assert(m.board.every((r,i)=>!i||r.statistics.winRate<=m.board[i-1].statistics.winRate));
  for(const change of [r=>r.mode='aram',r=>r.patch='16.20',r=>r.rows[0].winRate=1.01,r=>r.rows[0].samples=315,r=>r.sourceUrl='https://example.com',r=>r.rows.push({...r.rows[0]})]){const copy=structuredClone(ref);change(copy);assert.equal(hexChampionStatistics({...data,hexChampionStats:copy}),null);}
  assert.equal(hexChampionStatistics({...data,patch:'16.22',version:'16.22.1'}),null);
- const html=hexDraftView({data,client:c});assert.equal((html.match(/class="hex-ranking-hero /g)||[]).length,6);assert.match(html,/样本量未提供/);assert.doesNotMatch(html,/阵容胜率\s*\d/);
+ const html=hexDraftView({data,client:c});assert.equal((html.match(/class="hex-bench-rate"/g)||[]).length,8);assert.match(html,/样本量未提供/);assert.doesNotMatch(html,/阵容胜率\s*\d|class="hex-ranking/);
 });
 test('source parser rejects ARAM, previous patches and claimed samples instead of converting them silently',()=>{
  const row={championId:String(key('Lux')),version:data.patch,date:'2026-10-22',winRate:.51,numGames:null,numWinGames:null,source:'tencent',region:'CN'},options={champions:data.champions,patch:data.patch,fetchedAt:'2026-10-23T05:00:00Z'};

@@ -11,6 +11,7 @@ import {createDataFeedActivationGate} from '../services/data-feed.mjs';
 import {preserveGameContext} from '../services/data-generation-cache.mjs';
 import {pureGameSnapshot,validateGenerationGame} from '../services/data-generation.mjs';
 import {createGameDataPreparer} from '../services/game-data-prepare.mjs';
+import {createHexStatisticsCache} from '../services/hex-augment-statistics-cache.mjs';
 import * as imageCache from '../services/image-cache.mjs';
 import {BUNDLED_CATALOG} from '../src/core/catalog.mjs';
 import * as itemSetCore from '../src/core/item-sets.mjs';
@@ -40,6 +41,7 @@ async function fixture(t,{write=dataService.atomicJSON,promote=renameSync}={}){
   dataRevision:0,publishData:()=>{context.dataRevision++;published.push(digest(context.data));},guide:{publish(){}},refreshPreparedBuild(){}});
  Object.assign(context.imageCache,{imageEntries:imageCache.imageEntries,loadImageOverrides:async()=>({})});
  context.prepareBaseData=await createGameDataPreparer({bundleRoot:bundle,localRoot:cache,catalogSummary:()=>({catalog:BUNDLED_CATALOG,info:{}}),images:context.imageCache});
+ context.hexStatistics=await createHexStatisticsCache({root:cache,getData:()=>context.data,download:async()=>{throw Error('isolated offline');}});
  vm.runInContext(handler+'\n'+importHandler,context);
  const hero=old.champions.find(row=>row.id==='Ashe'),itemSet=itemSetCore.createItemSet(hero,getBuild(hero,'bottom',old),old);
  return {root,cache,bundle,old,next,context,images,imageEntered,published,manualTokens,itemEntered,itemRelease,itemData:()=>itemData,importItems:()=>handlers.get('import-item-set')(itemSet),update:handlers.get('update-data'),restart:()=>dataService.loadSnapshot(cache,bundle)};

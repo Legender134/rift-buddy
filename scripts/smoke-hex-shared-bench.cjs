@@ -2,7 +2,8 @@
 // in this fixture. No real client discovery, credentials or writes are used.
 const {app,ipcMain,globalShortcut,session:electronSession}=require('electron');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict'),https=require('node:https'),http=require('node:http'),cp=require('node:child_process'),{EventEmitter}=require('node:events'),{promisify}=require('node:util');
-const root=path.resolve(process.env.RIFT_BUDDY_USER_DATA),windows=[],writes=[];
+const root=path.resolve(process.env.RIFT_BUDDY_USER_DATA),windows=[],writes=[],sourceLinks=[];
+require('electron').shell.openExternal=async url=>{assert(['https://aramgg.com/data/champions-stats.json','https://aramkit.com/en-US/augments'].includes(url));sourceLinks.push(url);};
 app.setPath('userData',root);globalShortcut.register=()=>false;
 global.fetch=async()=>{throw Error('External network disabled for shared-bench smoke');};
 global.WebSocket=class{constructor(){throw Error('Room network disabled for shared-bench smoke');}};
@@ -57,10 +58,18 @@ async function run(){
  await click('[data-action=sync]');await until(()=>js('document.querySelector("[data-action=sync]")?.disabled===false'),'Initial sync missing');
  await js('window.buddy.companionMode(true)');await until(()=>js('!!document.querySelector(".hex-companion .hex-shared-bench")'),'Shared bench missing');
  const ids=()=>js('[...document.querySelectorAll(".hex-shared-bench [data-action=hex-quick-pick]")].map(e=>e.dataset.id)');
- const rankingIds=()=>js('[...document.querySelectorAll(".hex-ranking [data-action=hex-reference-preview]")].map(e=>e.dataset.id)');
+ const poolIds=()=>js('[...document.querySelectorAll(".hex-shared-bench .hex-bench-hero")].map(e=>e.dataset.id)'),expectedPool=()=>[...new Set([...bench,ownHero,'Ashe','Veigar','Sona','Jinx'])].sort();
  assert.deepEqual((await ids()).sort(),[...bench].sort());assert.equal(writes.length,0);
- assert.deepEqual((await rankingIds()).sort(),[...bench].sort(),'Win-rate board must contain only the real shared bench');
- const screenshot=async name=>{await js('Promise.all([...document.querySelectorAll(".hex-shared-bench img")].map(i=>i.decode().catch(()=>{})))');await fs.writeFile(path.join(root,name),(await main.webContents.capturePage(undefined,{stayHidden:true,stayAwake:true})).toPNG());};
+ assert.deepEqual((await poolIds()).sort(),expectedPool(),'A single pool must contain exactly the real bench and selected heroes');assert.equal(await js('!!document.querySelector(".hex-ranking,.hex-ranking-head")'),false,'Do not duplicate the win-rate board');
+ const screenshot=async(name,{freshPaint=true}={})=>{await js('Promise.all([...document.querySelectorAll(".hex-shared-bench img,.hex-augment-ranking img")].map(i=>i.decode().catch(()=>{})))');if(freshPaint){const size=main.getSize();main.setSize(size[0]+1,size[1],false);await delay(100);main.setSize(size[0],size[1],false);}await js("new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))");await delay(100);await fs.writeFile(path.join(root,name),(await main.webContents.capturePage(undefined,{stayHidden:true,stayAwake:true})).toPNG());};
+ assert.equal(await js('document.querySelector(".hex-augment-ranking>.hex-augment-rank-grid").children.length'),24);
+ await js('document.querySelector(".hex-augment-ranking details").open=true');await until(()=>js('document.querySelector(".hex-augment-ranking details").open'),'Global ranking did not expand');await js('document.querySelector(".hex-augment-ranking details").open=false');
+ for(const selector of ['.hex-shared-bench header [data-action=link]','.hex-augment-ranking header [data-action=link]'])await click(selector);assert.equal(sourceLinks.length,2);
+ // Force the hidden window to paint before opening the card: resizing while
+ // a tooltip is open deliberately dismisses it in the product.
+ await screenshot('augment-statistics-board.png');await js('document.querySelector(".hex-augment-rank-icon").scrollIntoView({block:"center"})');await delay(100);
+ const hoverPoint=await js('(()=>{const r=document.querySelector(".hex-augment-rank-icon").getBoundingClientRect();return {x:Math.round(r.x+r.width/2),y:Math.round(r.y+r.height/2)}})()');main.webContents.sendInputEvent({type:'mouseMove',...hoverPoint});
+ await until(()=>js('document.querySelector("#game-tooltip")?.matches(":popover-open")'),'Global augment mouse hover missing');const hover=await js('(()=>{const e=document.querySelector("#game-tooltip"),r=e.getBoundingClientRect();return {text:e.textContent,width:r.width,height:r.height}})()');assert(hover.text.includes('选取率')&&hover.text.includes('样本'));assert(hover.width<=340&&hover.height<=600);await screenshot('augment-statistics-hover.png',{freshPaint:false});assert.equal(await js('!!document.querySelector(".hex-companion .hex-augment-ranking")&&document.querySelector("#game-tooltip").matches(":popover-open")'),true,'Captured hover must remain in the same Hex DOM context');main.webContents.sendInputEvent({type:'mouseMove',x:1,y:1});await js('document.querySelector("#main").scrollTop=0');
  const layouts=[];
  for(const width of [360,440])for(const zoom of [1,1.25]){
   main.setContentSize(width,820);main.webContents.setZoomFactor(zoom);await delay(100);
@@ -71,10 +80,10 @@ async function run(){
  bench.push('Hecarim');bench=bench.filter(id=>id!=='Xerath');
  await js('window.buddy.client(true)');await until(async()=>(await ids()).includes('Hecarim')&&!(await ids()).includes('Xerath'),'Teammate bench update missing');
  assert.deepEqual((await ids()).sort(),[...bench].sort());
- assert.deepEqual((await rankingIds()).sort(),[...bench].sort(),'Win-rate board must follow teammate bench updates');
+ assert.deepEqual((await poolIds()).sort(),expectedPool(),'Pool and rates must follow teammate bench updates');
  await click('.hex-shared-bench [data-id=Hecarim]');await until(()=>ownHero==='Hecarim','Shared hero click never reached bench swap');
  await until(async()=>{const pool=await ids();return pool.includes('Lux')&&!pool.includes('Hecarim');},'Swap did not refresh the shared pool');
- assert.deepEqual((await rankingIds()).sort(),[...bench].sort(),'Selected heroes must leave the win-rate board');
+ assert.deepEqual((await poolIds()).sort(),expectedPool(),'Swapping must move the selected badge without duplicating heroes');
  await until(()=>js('!document.body.textContent.includes("正在预选并配置")'),'Preparation did not settle');
  assert.equal(await js('document.querySelector(".hex-companion").dataset.tab'),'recommend','Hex swap navigated to configuration');assert.equal(writes.length,1);
  await screenshot('bench-after-swap.png');
@@ -84,9 +93,9 @@ async function run(){
  await until(()=>ownHero==='Karma','Latest avatar click did not win');
  await until(async()=>!(await ids()).includes('Karma'),'Latest bench did not render');assert.equal(writes.length,3);
 
- const count=writes.length;await click('.hex-ranking [data-action=hex-reference-preview]');await until(()=>js('!!document.querySelector("#overlay-root>*")'),'Read-only reference missing');assert.equal(writes.length,count);await click('[data-action=close]');
+ const count=writes.length;await click('.hex-shared-bench .self[data-action=hex-reference-preview]');await until(()=>js('!!document.querySelector("#overlay-root>*")'),'Read-only reference missing');assert.equal(writes.length,count);await click('[data-action=close]');
  bench=[];await js('window.buddy.client(true)');await until(async()=>(await ids()).length===0,'Emptied bench retained stale heroes');
- assert.deepEqual(await rankingIds(),[],'Empty bench must not show every champion');
+ assert.deepEqual((await poolIds()).sort(),expectedPool(),'Empty bench must not show heroes beyond current selections');
  assert.equal(await js('document.querySelector(".hex-companion").dataset.tab'),'recommend');
  const emptyStateHeight=await js('document.querySelector(".hex-shared-bench").getBoundingClientRect().height');assert(emptyStateHeight<100,'Empty bench must stay compact');
  // Establish the five-person party through actual public lobby resolution,
@@ -101,7 +110,7 @@ async function run(){
   const bounds=await js(`(()=>{const rows=[...document.querySelectorAll('.hex-party-lineup')];const previews=[...document.querySelectorAll('.hex-party-preview')];return {previewBounds:previews.map(e=>{const r=e.getBoundingClientRect();return {width:r.width,height:r.height};}),maxRowHeight:Math.max(...rows.map(e=>e.getBoundingClientRect().height)),rows:rows.length,members:rows[0]?.querySelectorAll('.hex-party-member').length,overflow:document.documentElement.scrollWidth>innerWidth,contained:rows.every(row=>{const r=row.getBoundingClientRect();return [...row.querySelectorAll('.hex-party-member,.hex-party-preview')].every(e=>{const b=e.getBoundingClientRect();return b.left>=r.left-1&&b.right<=r.right+1;});})}})()`);
   await screenshot(`party-five-${width}-${zoom}.png`);assert.equal(bounds.members,5);assert(bounds.rows>0);assert.equal(bounds.overflow,false);assert(bounds.contained,'Five-member avatar actions overflow');assert(bounds.maxRowHeight<72,'Avatar actions became tall text buttons');assert(bounds.previewBounds.every(r=>r.width<=16&&r.height<=16),'Preview corner must stay small');partyLayouts.push({width,zoom,...bounds});
  }
- const proof={passed:true,source,archiveSha256:release?.archiveSha256||null,initialSharedHeroes:12,teammateUpdates:true,swapRefresh:true,staysOnLineup:true,rankingReadOnly:true,emptyPoolCleared:true,mockedBenchSwaps:writes.length,latestClickWins:true,emptyPickActions:true,realClientWrites:0,emptyStateHeight,partyFromMockLobby:true,layouts,partyLayouts};
+ const proof={passed:true,source,archiveSha256:release?.archiveSha256||null,initialSharedHeroes:12,teammateUpdates:true,swapRefresh:true,staysOnLineup:true,selectedHeroPreviewReadOnly:true,globalAugmentRanking:{initialIcons:24,expandCollapse:true,mouseHover: hover,sourceLinks,sourceLinksMocked:true},emptyPoolCleared:true,mockedBenchSwaps:writes.length,latestClickWins:true,emptyPickActions:true,realClientWrites:0,emptyStateHeight,partyFromMockLobby:true,layouts,partyLayouts};
  await fs.writeFile(path.join(root,'proof.json'),JSON.stringify(proof,null,2));console.log(JSON.stringify({...proof,root}));app.quit();
 }
 run().catch(async error=>{console.error(error);await fs.mkdir(root,{recursive:true});await fs.writeFile(path.join(root,'error.txt'),error.stack);app.exit(1);});
