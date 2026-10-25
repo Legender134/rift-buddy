@@ -11,7 +11,7 @@ test('current public-bench comparison restores reviewed base functions without r
 
 test('uncertain base functions never imply missing capacity or influence add/loss ordering',()=>{
  const c=client(['Karma','Hwei','Annie','Sona','Jhin'],['Hecarim','Trundle']),m=hexDraft({data,client:c}),capacity=m.coverage.find(t=>t.label==='承伤手段');assert.equal(capacity.count,0);assert(capacity.uncertain>0);assert(m.candidates.every(r=>r.comparable&&!r.added.includes('补承伤手段')));
- const html=hexDraftView({data,client:c});assert.match(html,/待核/);assert.doesNotMatch(html,/承伤手段 缺/);assert.match(html,/<details class="hex-party-traits">/);assert.doesNotMatch(html,/<details class="hex-party-traits" open/);
+ const html=hexDraftView({data,client:c});assert.match(html,/待核/);assert.doesNotMatch(html,/承伤手段 缺/);assert.match(html,/class="hex-party-fit"[^>]*title="基础机制覆盖，非胜率/);assert.doesNotMatch(html,/<details class="hex-party-traits"/);
 });
 
 test('changed current kit input withdraws only affected claims and keeps the actual public alternatives',()=>{
@@ -36,9 +36,9 @@ test('current availability still limits public bench and same priority retains c
  const c=client(),keys=c.session.bench.championIds;c.eligibility={context:pickEligibilityContext(c.session),localPlayerCellId:0,receivedAt:new Date().toISOString(),pickable:keys,disabled:[keys[0]]};assert.deepEqual(hexDraft({data,client:c}).candidates.map(r=>r.hero.id),['Teemo','Ashe']);c.eligibility.receivedAt=new Date(Date.now()-60000).toISOString();assert.equal(hexDraft({data,client:c}).candidates[0].hero.id,'Hecarim');
 });
 
-test('unselected bench heroes expose their own conditions in a separate collapsed disclosure',()=>{
+test('unselected bench heroes expose their own short condition on hover without a redundant disclosure',()=>{
  const c=client(undefined,['Naafiri','Hecarim']),m=hexDraft({data,client:c}),row=m.candidates.find(r=>r.hero.id==='Naafiri');assert(row.added.includes('补承伤手段'));assert.match(row.evidence.frontline,/参与击杀.*重施.*第二次施放才获盾/);assert(!m.evidence.some(p=>p.hero.id==='Naafiri'));
- const html=hexDraftView({data,client:c}),article=[...html.matchAll(/<article class="hex-party-lineup"[\s\S]*?<\/article>/g)].map(r=>r[0]).find(r=>r.includes('data-id="Naafiri"'));assert(article);assert.match(article,/参与击杀.*第二次施放才获盾/);assert.match(article,/<details class="hex-party-traits">/);assert.doesNotMatch(article,/<details[^>]*\sopen(?:\s|>)/);assert.match(article,/data-action="hex-quick-pick"[^>]+data-id="Naafiri"/);
+ const html=hexDraftView({data,client:c}),article=[...html.matchAll(/<article class="hex-party-lineup"[\s\S]*?<\/article>/g)].map(r=>r[0]).find(r=>r.includes('data-id="Naafiri"'));assert(article);assert.match(article,/title="[^"]*参与击杀[^"]*第二次施放才获盾/);assert.doesNotMatch(article,/<details class="hex-party-traits"/);assert.match(article,/data-action="hex-quick-pick"[^>]+data-id="Naafiri"/);
 });
 
 test('draft snapshot contains independently scoped source bindings and five-feature three-state evidence for every reviewed hero',()=>{

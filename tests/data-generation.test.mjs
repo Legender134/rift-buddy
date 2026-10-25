@@ -141,10 +141,10 @@ test('failed rollback retains original manifest bytes and every old asset for re
 
 test('production collection entry publishes both protocols by default, with an explicit legacy-only escape hatch',async()=>{
  const source=await fs.readFile('scripts/collect-server-data.mjs','utf8'),unit=await fs.readFile('deploy/data/rift-buddy-data.service','utf8');assert.match(unit,/ExecStart=.*scripts\/collect-server-data\.mjs/);
- const body=source.replace(/^import .*;\r?\n/gm,''),run=new (Object.getPrototypeOf(async function(){}).constructor)('path','parseArgs','collectServerData','publishServerData','process','console',body);
+ const body=source.replace(/^import .*;\r?\n/gm,''),run=new (Object.getPrototypeOf(async function(){}).constructor)('path','parseArgs','collectServerData','publishServerData','process','console','loadServerData','publishHexStatistics',body);
  for(const legacyOnly of [false,true]){
-  const calls=[],processState={argv:['node','scripts/collect-server-data.mjs','--root',path.resolve('candidate'),'--seed',path.resolve('seed'),'--public-root',path.resolve('public'),'--key',path.resolve('private.pem'),...(legacyOnly?['--legacy-only']:[])]};
-  await run(path,options=>parseArgs({...options,args:processState.argv.slice(2)}),async()=>({state:'ok',datasets:{},network:{requests:0,bytes:0}}),async options=>{calls.push(options);return {changed:true,manifest:{release:'test',patch:seed.game.patch},generation:{changed:true,manifest:{version:seed.game.version,release:'test'}}};},processState,{log:()=>{}});
-  assert.equal(processState.exitCode,0);assert.equal(calls.length,1);assert.equal(calls[0].generations,!legacyOnly);
+  const calls=[],statistics=[],processState={argv:['node','scripts/collect-server-data.mjs','--root',path.resolve('candidate'),'--seed',path.resolve('seed'),'--public-root',path.resolve('public'),'--key',path.resolve('private.pem'),...(legacyOnly?['--legacy-only']:[])]};
+  await run(path,options=>parseArgs({...options,args:processState.argv.slice(2)}),async()=>({state:'ok',datasets:{},network:{requests:0,bytes:0}}),async options=>{calls.push(options);return {changed:true,manifest:{release:'test',patch:seed.game.patch},generation:{changed:true,manifest:{version:seed.game.version,release:'test'}}};},processState,{log:()=>{},error:message=>assert.fail(message)},async()=>({bundle:seed}),async options=>{statistics.push(options);return {changed:true};});
+  assert.equal(processState.exitCode,0);assert.equal(calls.length,1);assert.equal(calls[0].generations,!legacyOnly);assert.equal(statistics.length,1);assert.equal(statistics[0].data,seed.game);assert.equal(statistics[0].publicRoot,path.resolve('public'));
  }
 });

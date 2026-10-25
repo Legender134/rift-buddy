@@ -6,6 +6,7 @@ const origins=new Map([
  ['https://op.gg',4_000_000],
  ['https://mlol.qt.qq.com',4_000_000],
  ['https://mayhemmeta.com',4_000_000],
+ ['https://data.aramkit.com',1_000_000],
 ]);
 const sourceFor=url=>url.hostname==='op.gg'||url.hostname.endsWith('.op.gg')?'OP.GG':url.origin;
 const failure=(message,code)=>Object.assign(Error(message),{code});
@@ -21,6 +22,7 @@ export function createServerDataFetch({transport=fetch,intervalMs=1500,maxBytes=
   const url=new URL(input),source=sourceFor(url);
   if(!origins.has(url.origin)||url.protocol!=='https:'||url.username||url.password)throw failure('不受支持的资料来源','SOURCE_NOT_ALLOWED');
   if(url.origin==='https://mayhemmeta.com'&&!(url.pathname==='/'&&!url.search||/^\/champions\/[a-z0-9-]{1,50}$/.test(url.pathname)&&/^\?patch=\d{2}\.\d{1,2}$/.test(url.search)))throw failure('不受支持的英雄记录路径','SOURCE_NOT_ALLOWED');
+  if(url.origin==='https://data.aramkit.com'&&(url.search||url.hash||!(/^\/data\/versions\.json$/.test(url.pathname)||/^\/data\/\d{1,3}\.\d{1,3}-\d{8}-[a-f0-9]{12}\/stats\/all\/augment-rankings\.json$/.test(url.pathname))))throw failure('不受支持的强化统计路径','SOURCE_NOT_ALLOWED');
   if(blocked.has(source))throw failure('资料来源本轮已暂停：'+blocked.get(source),'SOURCE_PAUSED');
   if(now()>=deadline||bytes>=maxBytes||requests>=maxRequests)throw failure('本轮采集达到时间、流量或请求上限','ROUND_LIMIT');
   return {url,source};

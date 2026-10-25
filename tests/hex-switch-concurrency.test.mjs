@@ -15,7 +15,7 @@ test('real Hex renderer handler ignores old replies in both orders without resto
   const click=id=>{plan={selection:{id,role:'bottom',mode:'hex'},build:{}};return context.useClientPreparation({dataset:{preparationView:'clicked'}},true,null,true);};
   const first=click('Ashe'),last=click('Caitlyn');context.client.session.myTeam[0].championId=51;
   for(const i of order){pending[i].resolve({complete:true,steps:{hover:{status:'done'}}});await new Promise(resolve=>setImmediate(resolve));}
-  await Promise.all([first,last]);assert.equal(messages.length,1);assert.equal(messages[0][0],'已切换英雄');
+  await Promise.all([first,last]);assert.equal(messages.length,0,'Successful swaps update the hero without a covering toast');
   assert.equal(context.clientPreparing,true);assert.equal(context.preparationPendingKey,'old-key');assert.equal(context.preparationTarget.id,'old');
  }
 });

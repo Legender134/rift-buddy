@@ -1,3 +1,4 @@
+import {isHexStatisticsSourceURL} from '../src/core/hex-augment-statistics.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';import os from 'node:os';import path from 'node:path';import vm from 'node:vm';import {generateKeyPairSync} from 'node:crypto';
 import {communitySourceMedium,validCommunitySource,isYouTubeCommunitySourceURL} from '../src/core/community-source.mjs';
 import {hexPlayerRoutes,hexCommunitySourceURLs} from '../src/core/hex-routes.mjs';import {hexMicroHint} from '../src/core/hex-micro-hint.mjs';
@@ -30,7 +31,7 @@ test('YouTube source syntax permits only one exact watch URL and keeps Bili and 
 
 test('actual main external-link handler opens only effective reviewed creator videos',async()=>{
  const source=await fs.readFile(new URL('../electron/main.cjs',import.meta.url),'utf8'),handlers=new Map(),opened=[],current={...data(),catalog};
- vm.runInNewContext(source.slice(source.indexOf(" guard('open-link'"),source.indexOf(" guard('export-preparation'")),{URL,Error,data:current,catalogCore:{safeSourceURL},hexCommunitySourceURLs,isReleaseNotesUrl:()=>false,guard:(name,handler)=>handlers.set(name,handler),shell:{openExternal:async u=>opened.push(u)}});
+ vm.runInNewContext(source.slice(source.indexOf(" guard('open-link'"),source.indexOf(" guard('export-preparation'")),{URL,Error,data:current,catalogCore:{safeSourceURL},hexCommunitySourceURLs,isHexStatisticsSourceURL,isReleaseNotesUrl:()=>false,guard:(name,handler)=>handlers.set(name,handler),shell:{openExternal:async u=>opened.push(u)}});
  await handlers.get('open-link')(url);assert.deepEqual(opened,[url]);for(const bad of [url+'&x=1','https://www.youtube.com/watch?v=ABCDEFGHIJK'])await assert.rejects(handlers.get('open-link')(bad),/不支持的链接/);
  current.augments.find(a=>a.id===3086).effectSourceHash='0'.repeat(64);assert(!hexCommunitySourceURLs(current).includes(url));await assert.rejects(handlers.get('open-link')(url),/不支持的链接/);
 });

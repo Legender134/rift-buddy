@@ -4,6 +4,7 @@ import {collectServerData} from '../services/server-data-collector.mjs';
 import {publishServerData} from '../services/server-data-publish.mjs';
 import {loadServerData} from '../services/server-data-store.mjs';
 import {publishNationalFeed} from '../services/national-feed-publish.mjs';
+import {publishHexStatistics} from '../services/server-data-hex-statistics-publish.mjs';
 
 const {values}=parseArgs({options:{root:{type:'string'},seed:{type:'string'},'max-champions':{type:'string'},'public-root':{type:'string'},key:{type:'string'},'legacy-only':{type:'boolean'},'national-rankings':{type:'boolean'}}});
 if(!values.root||!values.seed)throw Error('用法：node scripts/collect-server-data.mjs --root <候选保存目录> --seed <基线资料目录>');
@@ -26,4 +27,8 @@ if(status.state==='ok'&&values['public-root']){
 if(values['national-rankings']&&values['public-root']&&maxChampions===null){
  try{const current=await loadServerData(root);if(!current)throw Error('缺少已验证基础资料');const national=await publishNationalFeed({data:current.bundle.game,publicRoot:values['public-root'],keyFile:values.key});console.log(JSON.stringify({nationalRankings:national}));}
  catch(error){console.error(JSON.stringify({nationalRankingsError:String(error.message||'国服资料发布失败').slice(0,240),retainedPrevious:true}));if(!process.exitCode)process.exitCode=2;}
+}
+if(values['public-root']&&maxChampions===null){
+ try{const current=await loadServerData(root);if(!current)throw Error('缺少已验证基础资料');const hexStatistics=await publishHexStatistics({data:current.bundle.game,publicRoot:values['public-root'],keyFile:values.key});console.log(JSON.stringify({hexStatistics}));}
+ catch(error){console.error(JSON.stringify({hexStatisticsError:String(error.message||'强化统计发布失败').slice(0,240),retainedPrevious:true}));if(!process.exitCode)process.exitCode=2;}
 }

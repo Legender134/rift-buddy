@@ -19,7 +19,7 @@ test('party lineups use current cells and shared bench, excluding ordinary teamm
  const c=client(),before=structuredClone(c),m=hexPartyDraft({data,client:c});
  assert.deepEqual(hexPartyCells(c),[0,2]);assert(m.lineups.length>0);
  for(const row of m.lineups){assert.deepEqual(row.members.map(p=>p.cellId),[0,2]);assert.equal(new Set(row.members.map(p=>p.hero.id)).size,2);assert(!row.members.some(p=>['Ashe','Sona','Jinx'].includes(p.hero.id)));}
- assert.equal(m.board.find(r=>r.hero.id==='Lux').selected,'self');assert.equal(m.board.find(r=>r.hero.id==='Veigar').selected,'party');assert.equal(m.board.find(r=>r.hero.id==='Ashe').selected,'teammate');
+ assert.equal(m.board.find(r=>r.hero.id==='Lux').selected,'self');assert(!m.board.some(r=>r.hero.id==='Veigar'));assert.equal(m.board.find(r=>r.hero.id==='Ashe').selected,'teammate');
  assert.deepEqual(c,before);assert.deepEqual(hexPartyCells(c,[{clientCellId:2,partyManual:true,party:false},{clientCellId:0,partyManual:true,party:false}]),[0]);
  const solo=hexPartyDraft({data,client:{...c,party:{members:[]}}});assert(solo.lineups.every(r=>r.members.length===1));
 });
@@ -30,13 +30,13 @@ test('partial fresh eligibility excludes disabled heroes but never lends our own
  c.eligibility.receivedAt=new Date(Date.now()-60000).toISOString();assert(hexPartyDraft({data,client:c}).lineups.some(r=>r.members.some(p=>p.hero.id==='Malphite')));
  for(const next of [{...c,connected:false},{...c,phase:'InProgress'},{...c,mode:{id:'rift'}}]){const m=hexPartyDraft({data,client:next});assert.equal(m.lineups.length,0);assert(!m.board.some(r=>r.available||r.selected));}
 });
-test('current Mayhem statistics sort every hero by actual win rate without inventing sample counts or team probability',()=>{
+test('current Mayhem statistics sort only the public bench without inventing sample counts or team probability',()=>{
  const ref=hexChampionStatistics(data);assert.equal(ref.rows.length,data.champions.length);assert(ref.rows.every(r=>r.samples===null));
- const m=hexPartyDraft({data,client:client()});assert.equal(m.board[0].hero.id,'Hecarim');assert.equal(m.board[0].statistics.winRate,.6092);
+ const c=client();c.session.bench.championIds.push(key('Hecarim'));const m=hexPartyDraft({data,client:c});assert.equal(m.board[0].hero.id,'Hecarim');assert.equal(m.board[0].statistics.winRate,.6092);assert.deepEqual(new Set(m.board.map(r=>r.hero.key)),new Set(c.session.bench.championIds));
  assert(m.board.every((r,i)=>!i||r.statistics.winRate<=m.board[i-1].statistics.winRate));
  for(const change of [r=>r.mode='aram',r=>r.patch='16.20',r=>r.rows[0].winRate=1.01,r=>r.rows[0].samples=315,r=>r.sourceUrl='https://example.com',r=>r.rows.push({...r.rows[0]})]){const copy=structuredClone(ref);change(copy);assert.equal(hexChampionStatistics({...data,hexChampionStats:copy}),null);}
  assert.equal(hexChampionStatistics({...data,patch:'16.22',version:'16.22.1'}),null);
- const html=hexDraftView({data,client:client()});assert.equal((html.match(/class="hex-ranking-hero /g)||[]).length,173);assert.match(html,/样本量未提供/);assert.doesNotMatch(html,/阵容胜率\s*\d/);
+ const html=hexDraftView({data,client:c});assert.equal((html.match(/class="hex-bench-rate"/g)||[]).length,8);assert.match(html,/样本量未提供/);assert.doesNotMatch(html,/阵容胜率\s*\d|class="hex-ranking/);
 });
 test('source parser rejects ARAM, previous patches and claimed samples instead of converting them silently',()=>{
  const row={championId:String(key('Lux')),version:data.patch,date:'2026-10-22',winRate:.51,numGames:null,numWinGames:null,source:'tencent',region:'CN'},options={champions:data.champions,patch:data.patch,fetchedAt:'2026-10-23T05:00:00Z'};

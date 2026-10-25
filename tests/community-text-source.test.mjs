@@ -1,3 +1,4 @@
+import {isHexStatisticsSourceURL} from '../src/core/hex-augment-statistics.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';import os from 'node:os';import path from 'node:path';import {generateKeyPairSync} from 'node:crypto';
 import {communitySourceMedium,communitySourceLabel,validCommunitySource} from '../src/core/community-source.mjs';
 import {hexPlayerRoutes,hexCommunitySourceURLs} from '../src/core/hex-routes.mjs';import {hexMechanismMicroRoutes} from '../src/core/hex-micro-routes.mjs';import {hexRouteCard} from '../src/core/hex-route-card.mjs';
@@ -56,7 +57,7 @@ test('signed text snapshots require a compatible client while legacy video-only 
 
 test('actual external-link handler opens current creator videos without authorizing arbitrary Bilibili URLs',async()=>{
  const source=await fs.readFile(new URL('../electron/main.cjs',import.meta.url),'utf8'),handlers=new Map(),opened=[],data={...game,catalog};
- vm.runInNewContext(source.slice(source.indexOf(" guard('open-link'"),source.indexOf(" guard('export-preparation'")),{URL,Error,data,catalogCore:{safeSourceURL},hexCommunitySourceURLs,isReleaseNotesUrl:()=>false,guard:(name,handler)=>handlers.set(name,handler),shell:{openExternal:async value=>opened.push(value)}});
+ vm.runInNewContext(source.slice(source.indexOf(" guard('open-link'"),source.indexOf(" guard('export-preparation'")),{URL,Error,data,catalogCore:{safeSourceURL},hexCommunitySourceURLs,isHexStatisticsSourceURL,isReleaseNotesUrl:()=>false,guard:(name,handler)=>handlers.set(name,handler),shell:{openExternal:async value=>opened.push(value)}});
  const link='https://www.bilibili.com/video/BV1FGHP6TEzC/';assert(hexCommunitySourceURLs(data).includes(link));await handlers.get('open-link')(link);assert.deepEqual(opened,[link]);
  for(const bad of [link.replace('www.bilibili.com','www.bilibili.com.evil.invalid'),'https://www.bilibili.com/video/BV1UnknownSource/',link+'?redirect=elsewhere'])await assert.rejects(handlers.get('open-link')(bad),/不支持的链接/);
  data.patch='16.22';await assert.rejects(handlers.get('open-link')(link),/不支持的链接/);assert.equal(opened.length,1);

@@ -169,11 +169,11 @@ async function boot(){
  // Automatic statistics must wait for confirmed idle after restart. Explicit
  // base-data refresh retains its existing initial-offline phase policy.
  const observeFeedPhase=createDataFeedActivationGate(),observeSignedFeedPhase=createDataFeedActivationGate({requireIdleConfirmation:true});let feedIdle=false;
- let publishedBase=data,afterBaseChange=()=>{},communityFeed=null,communityChanged=false;
+ let publishedBase=data,afterBaseChange=()=>{},communityFeed=null,communityChanged=false,hexStatistics=null;
  const generation=await createDataGenerationCache({root:path.join(storeRoot,'data'),getData:()=>data,getContext:()=>catalogStore.revision(),manualBase:await readManualBase(path.join(storeRoot,'data')),
   prepare:async(bundle,manifest,context)=>(await prepareBaseData(bundle.game,{...context,bundle,manifest})).data,
   replace:next=>{data=next;},canActivate:()=>feedIdle&&!updating&&!applyingRunes&&!importingItemSet&&!catalogStore.isMutating(),
-  onChange:info=>{data.dataFeed=info;if(data!==publishedBase){communityFeed?.reconcile({notify:false});if(communityFeed)data.communityFeed=communityFeed.summary();communityChanged=false;catalogCore.configureCatalog(data.catalog);publishedBase=data;publishData(Object.keys(data),true);guide?.publish();afterBaseChange();}else publishData(['dataFeed']);}});
+  onChange:info=>{data.dataFeed=info;if(data!==publishedBase){communityFeed?.reconcile({notify:false});hexStatistics?.reconcile({notify:false});if(communityFeed)data.communityFeed=communityFeed.summary();communityChanged=false;catalogCore.configureCatalog(data.catalog);publishedBase=data;publishData(Object.keys(data),true);guide?.publish();afterBaseChange();}else publishData(['dataFeed']);}});
  publishedBase=data;catalogCore.configureCatalog(data.catalog);
  // Do not discard a new hero's saved guide using the old bundled hero table.
  if(state.guide&&!data.champions.some(c=>c.id===state.guide.selection?.id)){state.guide=null;if(state.recovery?.backedUp!==false)await saveCurrentState();}
@@ -186,10 +186,12 @@ async function boot(){
   canActivate:()=>feedIdle&&!updating&&!applyingRunes&&!importingItemSet&&!catalogStore.isMutating(),
   prepare:(value,current)=>{const staged=catalogStore.prepareCommunity(value?.catalog||null,value?.patch,current);return ()=>{staged.commit();current.catalog=staged.catalog;current.catalogInfo=staged.info;current.communityHexRoutes=value?.hexRoutes||null;communityChanged=true;};},onChange:publishCommunity});
  publishCommunity(communityFeed.summary());
+ const {createHexStatisticsCache}=await import('../services/hex-augment-statistics-cache.mjs');
+ hexStatistics=await createHexStatisticsCache({root:path.join(storeRoot,'data'),getData:()=>data,canActivate:()=>feedIdle&&!updating&&!applyingRunes&&!importingItemSet&&!catalogStore.isMutating(),onChange:()=>publishData(['hexAugmentStats'])});
  const checkStructuredStatistics=async options=>{const info=await generation.check(options);return !generation.hasAccepted()&&info.phase==='offline'&&legacyFeed?legacyFeed.check(options):info;};
  const dataFeed={summary:()=>!generation.hasAccepted()&&['idle','offline'].includes(generation.summary().phase)?legacyFeed?.summary()||generation.summary():generation.summary(),
-  check:async options=>{const [info]=await Promise.all([checkStructuredStatistics(options),communityFeed.check(options)]);return info;},
-  activate:async()=>{await generation.activate();if(!generation.hasAccepted()&&generation.summary().phase!=='pending')legacyFeed?.activate();communityFeed.activate();}};
+  check:async options=>{const [info]=await Promise.all([checkStructuredStatistics(options),communityFeed.check(options)]);await hexStatistics.check(options);return info;},
+  activate:async()=>{await generation.activate();if(!generation.hasAccepted()&&generation.summary().phase!=='pending')legacyFeed?.activate();communityFeed.activate();hexStatistics.activate();}};
  data.dataFeed=dataFeed.summary();
  for(const [key,value] of Object.entries(data))sharedDataFields.set(key,value);
  const buildCache=createBuildCache({root:path.join(storeRoot,'data'),getData:()=>data});
@@ -834,7 +836,7 @@ async function boot(){
    // The owner's final idle/context checks above authorize this synchronous
    // base replacement. Revalidate only the accepted overlay while updating is
    // still set; a newer pending snapshot keeps its normal activation gate.
-   data=prepared.data;generation.noteManual(data,token,{notify:false});data.dataFeed=dataFeed.summary();communityFeed.reconcile({restore:true,notify:false});data.communityFeed=communityFeed.summary();communityChanged=false;catalogCore.configureCatalog(data.catalog);publishedBase=data;
+   data=prepared.data;generation.noteManual(data,token,{notify:false});data.dataFeed=dataFeed.summary();communityFeed.reconcile({restore:true,notify:false});hexStatistics.reconcile({restore:true,notify:false});data.communityFeed=communityFeed.summary();communityChanged=false;catalogCore.configureCatalog(data.catalog);publishedBase=data;
    publishData(Object.keys(data),true);guide.publish();refreshPreparedBuild();return {data,imageCache:prepared.imageCache,dataRevision};
   }finally{await fs.unlink(pendingSnapshot).catch(()=>{});updating=false;}
  });
@@ -1015,11 +1017,12 @@ async function boot(){
  guard('toggle-pin',({window})=>{window.setAlwaysOnTop(!window.isAlwaysOnTop());return window.isAlwaysOnTop();},true);
  guard('choose-directory',async()=>{const result=await dialog.showOpenDialog(win,{title:'选择英雄联盟安装目录',properties:['openDirectory']});return result.canceled?null:result.filePaths[0];});
  const {hexCommunitySourceURLs}=await import('../src/core/hex-routes.mjs');
+ const {isHexStatisticsSourceURL}=await import('../src/core/hex-augment-statistics.mjs');
  guard('open-link',async url=>{
   const parsed=new URL(url);const allowed=['developer.riotgames.com','www.leagueoflegends.com','lol.qq.com','101.qq.com','www.communitydragon.org','raw.communitydragon.org','ddragon.leagueoflegends.com','game.gtimg.cn','op.gg','www.reddit.com','reddit.com','www.mobafire.com','mobafire.com','botdiff.lol','github.com','gitee.com'];
   const catalogSources=[...data.catalog.duos,...data.catalog.trios].flatMap(c=>c.sources||[]).map(s=>s.url);
   const communitySource=['www.youtube.com','www.bilibili.com','deeparam.com','expcarry.com'].includes(parsed.hostname)&&hexCommunitySourceURLs(data).includes(url);
-  if(!catalogCore.safeSourceURL(url)||!allowed.includes(parsed.hostname)&&!catalogSources.includes(url)&&!communitySource)throw new Error('不支持的链接');
+  if(!catalogCore.safeSourceURL(url)||!allowed.includes(parsed.hostname)&&!catalogSources.includes(url)&&!communitySource&&!isHexStatisticsSourceURL(url))throw new Error('不支持的链接');
   if(['github.com','gitee.com'].includes(parsed.hostname)&&!isReleaseNotesUrl(url)&&!catalogSources.includes(url))throw new Error('不支持的链接');await shell.openExternal(parsed.href);return true;
  });
  guard('export-preparation',async value=>{

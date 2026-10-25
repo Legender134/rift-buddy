@@ -39,3 +39,8 @@ test('room workspace exposes actual defaults for every member and separates loca
  assert.match(html,/完整|符文/);assert.match(html,/前三点/);assert.match(html,/D \/ F/);assert.match(html,/停止条件/);assert.match(html,/本机拟定 · 请与队友确认/);assert.match(html,/队友的实际分享/);assert.match(html,/data-peer-received/);assert.match(html,/data-action="room-own-edit"/);
  assert.match(roomWorkspace({data,role:'',configurations:[],share:null,ownPlan:null}),/先确认自己/);
 });
+
+test('Hex configuration does not show the unrelated Rift rune-and-equipment apply controls',()=>{
+ const selection={id:'Ashe',role:'bottom',mode:'hex'},plan={selection,build:getBuild(data.champions.find(c=>c.id==='Ashe'),'bottom',data,selection)};
+ assert.equal(clientPreparationControls({data,plan,client:{...client,mode:{id:'hex'}},available:true}),'');
+});

@@ -1,3 +1,4 @@
+import {isHexStatisticsSourceURL} from '../src/core/hex-augment-statistics.mjs';
 import test from'node:test';import assert from'node:assert/strict';import fs from'node:fs/promises';import vm from'node:vm';import path from'node:path';import os from'node:os';import{generateKeyPairSync}from'node:crypto';
 import{communitySourceMedium,validCommunitySource}from'../src/core/community-source.mjs';import{hexPlayerRoutes,hexCommunitySourceURLs}from'../src/core/hex-routes.mjs';import{hexMechanismMicroRoutes}from'../src/core/hex-micro-routes.mjs';import{hexChampionReview}from'../src/core/hex-review.mjs';import{safeSourceURL}from'../src/core/catalog.mjs';import{validateCommunityData}from'../services/community-data.mjs';import{publishCommunityData}from'../services/community-data-publish.mjs';
 const read=async p=>JSON.parse(await fs.readFile(new URL(p,import.meta.url))),game=await read('../data/game.json'),routes=await read('../src/core/hex-community-routes.json'),catalog=await read('../src/core/catalog-data.json'),cases=[['Zoe',1116,[1187,1348,1347]],[ 'Quinn',1019,[1375]]];
@@ -29,7 +30,7 @@ test('Quinn core instructions never inherit the optional Navori purchase effect'
 });
 test('actual external-link handler authorizes only the active dated editorial recipes',async()=>{
  const source=await fs.readFile(new URL('../electron/main.cjs',import.meta.url),'utf8'),handlers=new Map(),opened=[],data={...game,catalog};
- vm.runInNewContext(source.slice(source.indexOf(" guard('open-link'"),source.indexOf(" guard('export-preparation'")),{URL,Error,data,catalogCore:{safeSourceURL},hexCommunitySourceURLs,isReleaseNotesUrl:()=>false,guard:(name,handler)=>handlers.set(name,handler),shell:{openExternal:async v=>opened.push(v)}});
+ vm.runInNewContext(source.slice(source.indexOf(" guard('open-link'"),source.indexOf(" guard('export-preparation'")),{URL,Error,data,catalogCore:{safeSourceURL},hexCommunitySourceURLs,isHexStatisticsSourceURL,isReleaseNotesUrl:()=>false,guard:(name,handler)=>handlers.set(name,handler),shell:{openExternal:async v=>opened.push(v)}});
  for(const [hero]of cases){const url=routes.routes.find(r=>r.hero===hero).communitySource.url;assert(hexCommunitySourceURLs(data).includes(url));await handlers.get('open-link')(url);}
  assert.equal(opened.length,2);for(const url of ['https://deeparam.com/kitchen','https://deeparam.com/embed/fun/cook-builds/#chefs-special-2026-10-19','https://deeparam.com/embed/fun/cook-builds/#chefs-special-2026-10-23?redirect=x'])await assert.rejects(handlers.get('open-link')(url),/不支持的链接/);
  data.patch='16.22';await assert.rejects(handlers.get('open-link')(opened[0]),/不支持的链接/);
