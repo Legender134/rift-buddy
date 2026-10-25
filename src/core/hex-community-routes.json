@@ -3370,6 +3370,90 @@
           "6665": "d68c9621bce20749"
         }
       }
+    },
+    {
+      "hero": "Yone",
+      "patch": "16.21",
+      "augment": 1058,
+      "optional": [
+        3049
+      ],
+      "requiresUltimate": false,
+      "title": "秘术普攻续战",
+      "summary": "技能之间穿插实际普攻，按攻击节奏与承伤压力比较装备。",
+      "play": [
+        "实际攻击特效是秘术减冷却的前提；技能之间保留安全普攻窗口，不把每次技能伤害或E回返伤害都当成额外攻击特效。",
+        "Q命中积累旋风，W命中利用护盾；E出手前看本体位置与回返时间，被拉开或控制时先保住退路。"
+      ],
+      "basicPlay": [
+        "不使用R；以Q/W/E和实际普攻组织进退，Q命中积累旋风，W命中利用护盾。",
+        "E出手前看本体位置与回返时间；失去普攻窗口时先回撤，不为减冷却追进集火。"
+      ],
+      "caution": "Q/W有自身攻速相关节奏，不能由通用减冷却说明推成固定刷新；作者没有给完整六件或加点，不承诺零冷却、无限Q或每次Q触发多次。",
+      "gear": [
+        [
+          "需要攻速且能持续普攻",
+          [
+            3302
+          ],
+          "作者点名的条件选择；需要实际对抗英雄的攻击才能叠起战斗双抗，不是购买后立即获得全部双抗，也不提供免控。"
+        ],
+        [
+          "物理交战压力",
+          [
+            6333
+          ],
+          "作者商店中考虑的防具；面对物理爆发且有参与击杀机会时比较，延后承伤不是免伤，不能代替魔抗。"
+        ]
+      ],
+      "communitySource": {
+        "author": "许小年Aink",
+        "url": "https://www.bilibili.com/video/BV1Sgnb6DEQr/",
+        "publishedAt": "2026-10-23T10:00:00.000Z",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗本人永恩录像，录制build/server未确认",
+        "evidenceSeconds": [
+          5,
+          8,
+          10,
+          12,
+          36,
+          40,
+          52,
+          55,
+          58,
+          60,
+          64,
+          70
+        ],
+        "adaptation": "作者8/12秒自述放倒、装甲、大师、秘术四强化，但未逐张读取自己的选后卡；本条按当前机制整理秘术的实际普攻与可选装甲衔接，不把其余两卡或标题无内置CD当作已核验承诺。40秒展开死亡之舞是考虑/商店悬停，不证明当时已购；60/64/70秒点名界弓，解释攻速与战斗双抗条件。未给开局组件、固定购买顺序、完整六件、符文、召唤师或加点，均不补作者配置。Q/W原始数据有攻速参数且标记不受通用急速影响；不由通用秘术文本保证它们逐次固定减冷却或零冷却。E回返不按额外攻击特效；禁R分支为项目条件改编。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3302": "76cb189ce321232f",
+          "6333": "95058514bbf67ac0"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1058": {
+            "fingerprint": "5921c7b1e541526c",
+            "requiresUltimate": false
+          },
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -3417,7 +3501,8 @@
       "Gnar": "52048713e2c4916d",
       "Volibear": "bf39a7d23077a7fc",
       "Viego": "61185e81ee691f67",
-      "Renekton": "5a98c4b4b1f08e37"
+      "Renekton": "5a98c4b4b1f08e37",
+      "Yone": "9f3493c27921664f"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -4425,6 +4510,30 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "1b5d01b58ae2dfac"
+          }
+        }
+      },
+      "Yone": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "9f3493c27921664f",
+        "observedAt": "2026-10-23T02:03:51.641Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Yone",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/yone/yone.bin.json",
+            "sha256": "686924ad8cd0bf22941513230c18e6acdc5f9ac2d02755e8d369a51155d70112"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "165686224e19c3fc"
           }
         }
       }
