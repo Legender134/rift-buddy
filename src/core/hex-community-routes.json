@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "patch": "16.21",
-  "reviewedAt": "2026-10-25",
+  "reviewedAt": "2026-10-26",
   "routes": [
     {
       "hero": "Lillia",
@@ -2964,6 +2964,230 @@
         1206
       ],
       "coreBrief": "技能命中敌方英雄投蜂巢：2秒20%减速、40%效能攻击特效；持续魔伤75–200＋150%额外AD＋70%AP；冷却15–10秒和基础伤害随等级。"
+    },
+    {
+      "patch": "16.21",
+      "augment": 3086,
+      "optional": [],
+      "requiresUltimate": false,
+      "skillPriority": [
+        "Q",
+        "E",
+        "W"
+      ],
+      "skillPriorityOrigin": "project",
+      "coreBrief": "技能命中敌方英雄投蜂巢：2秒20%减速、40%效能攻击特效；持续魔伤75–200＋150%额外AD＋70%AP；冷却15–10秒和基础伤害随等级。",
+      "hero": "TahmKench",
+      "title": "蜂巢生命转法强",
+      "summary": "先心之钢、狂徒，再用峡谷转化额外生命值。",
+      "coreItems": [
+        3084,
+        3083,
+        4633
+      ],
+      "play": [
+        "Q命中英雄启动蜂巢，用减速维持距离；先心之钢、狂徒，再考虑峡谷的额外生命值转法强。",
+        "用E储存承伤、按压力开盾；W用于进退，蜂巢尚未就绪时不要强行贴近。"
+      ],
+      "basicPlay": [
+        "已失去R，用Q启动蜂巢，E留作承伤护盾，W调整进退；不能再吞噬队友或敌人。"
+      ],
+      "caution": "蜂巢40%效能攻击特效不保证每跳完整触发被动。狂徒需2000额外生命值且8秒未受伤；心之钢体型增幅有上限，不能无限延长Q。",
+      "gear": [
+        [
+          "作者前两件",
+          [
+            3084,
+            3083
+          ],
+          "作者先心之钢、狂徒。心之钢需近身蓄力后的实际普攻；狂徒回复需2000额外生命值且8秒未受伤。"
+        ],
+        [
+          "作者后续转法强",
+          [
+            4633
+          ],
+          "已有生命值后比较峡谷：2%额外生命值转法强；对英雄持续交战才叠增伤，满层才获得全能吸血。"
+        ],
+        [
+          "作者后续坦装",
+          [
+            2502
+          ],
+          "无终恨意在与英雄交战时每4秒伤害周围敌方英雄，按实际伤害的250%回复；远距离消耗不能持续兑现。"
+        ],
+        [
+          "项目补全：魔法压力",
+          [
+            3065
+          ],
+          "需要魔抗时比较振奋，自身受到的治疗与护盾提升25%；不是作者视频的固定后续。"
+        ],
+        [
+          "项目补全：普攻与回复压力",
+          [
+            3075
+          ],
+          "需要护甲时比较荆棘；受普攻触发反伤并对攻击者施加40%重伤，不能给未攻击自己的所有敌人重伤。"
+        ]
+      ],
+      "communitySource": {
+        "author": "驻韩研究员",
+        "url": "https://www.bilibili.com/video/BV1kQHP6zEvx/",
+        "publishedAt": "2026-10-24T07:11:52Z",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗4.0小蜜蜂教学；录像未显示可核实补丁号，按正式16.21技能、强化与装备另行复核",
+        "evidenceSeconds": [
+          108,
+          110,
+          116,
+          118,
+          120,
+          123,
+          125,
+          130,
+          140
+        ],
+        "adaptation": "116/118秒明确先心之钢、狂徒，120秒随后峡谷，123/125秒后续无终恨意；重复出现的狂徒不作为第二件狂徒。130/140秒黄昏与黎明是联动讨论，不列固定第四件。振奋、荆棘及Q>E>W由项目按当前机制补全，不是作者原配；符文、召唤师、出门装、鞋子和逐级加点未核实。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2502": "f70d011ead077bb3",
+          "3065": "522ddd38f23d9014",
+          "3075": "77e99cfe1e808733",
+          "3083": "1f9ef0d0fe8bf89d",
+          "3084": "1d15c5181f27ae02",
+          "4633": "bc6d42df1c8c7570"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3086": {
+            "coverage": "dynamic-counters",
+            "fingerprint": "ce2a943200b8677c",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "patch": "16.21",
+      "augment": 3086,
+      "optional": [],
+      "requiresUltimate": false,
+      "skillPriority": [
+        "Q",
+        "E",
+        "W"
+      ],
+      "skillPriorityOrigin": "project",
+      "coreBrief": "技能命中敌方英雄投蜂巢：2秒20%减速、40%效能攻击特效；持续魔伤75–200＋150%额外AD＋70%AP；冷却15–10秒和基础伤害随等级。",
+      "hero": "Viego",
+      "title": "蜂巢收集者",
+      "summary": "作者首件收集者；后续按普攻窗口与承伤选择。",
+      "coreItems": [
+        6676
+      ],
+      "play": [
+        "用Q或蓄力W命中英雄启动蜂巢，利用E调整接近路线；有安全窗口再穿插普攻和Q的双击。",
+        "作者首件收集者；后续攻击力、暴击与防御装按实际普攻机会选择，不把蜂巢魔伤当成物理暴击。"
+      ],
+      "basicPlay": [
+        "已失去R，用Q或W启动蜂巢、E调整位置；不要依赖R收尾或脱离占据。"
+      ],
+      "caution": "收集者仅在伤害使英雄低于5%生命值时处决；不采用作者20%斩杀线估算。Q当前生命值伤害逐次重算，不承诺每次蜂伤四次触发或固定9.6%血量。",
+      "gear": [
+        [
+          "作者首件",
+          [
+            6676
+          ],
+          "作者明确首件收集者；50攻击力、10穿甲、25%暴击，处决阈值为低于5%生命值，不是20%。"
+        ],
+        [
+          "项目补全：能持续普攻",
+          [
+            3031
+          ],
+          "有安全攻击窗口且继续暴击路线时比较无尽；暴击伤害提升不把蜂巢魔法伤害变为暴击。"
+        ],
+        [
+          "项目补全：敌方护甲",
+          [
+            3036
+          ],
+          "物理伤害受护甲限制时比较多米尼克；护甲穿透不提升蜂巢本身的魔法伤害。"
+        ],
+        [
+          "项目补全：物理承伤",
+          [
+            6333
+          ],
+          "面对物理压力时比较死舞；延后承伤不是免伤，参与击杀后的清除和回复仍有触发条件。"
+        ],
+        [
+          "项目补全：魔法爆发",
+          [
+            3156
+          ],
+          "魔法爆发威胁时比较饮魔刀；魔法伤害将使生命值低于30%时触发魔法护盾，不能抵挡物理伤害。"
+        ]
+      ],
+      "communitySource": {
+        "author": "驻韩研究员",
+        "url": "https://www.bilibili.com/video/BV1kQHP6zEvx/",
+        "publishedAt": "2026-10-24T07:11:52Z",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗4.0小蜜蜂教学；录像未显示可核实补丁号，按正式16.21技能、强化与装备另行复核",
+        "evidenceSeconds": [
+          150,
+          155,
+          160,
+          165,
+          170,
+          180,
+          190,
+          195,
+          200,
+          205,
+          210
+        ],
+        "adaptation": "200秒明确首件收集者。作者20%斩杀线与2.4%×4是讲解估算，不作为固定伤害；Q百分比按当前生命值逐次结算，蜂巢攻击特效效能为40%。无尽、多米尼克、死舞、饮魔刀及Q>E>W是项目条件补全，非作者完整出装；符文、召唤师、出门装、鞋子和逐级加点未核实。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "3156": "e82d90af81fa5a8d",
+          "6333": "95058514bbf67ac0",
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3086": {
+            "coverage": "dynamic-counters",
+            "fingerprint": "ce2a943200b8677c",
+            "requiresUltimate": false
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -3009,7 +3233,8 @@
       "MissFortune": "10b496d2ce7c344d",
       "Kalista": "1793244f0dc8a65c",
       "Gnar": "52048713e2c4916d",
-      "Volibear": "bf39a7d23077a7fc"
+      "Volibear": "bf39a7d23077a7fc",
+      "Viego": "61185e81ee691f67"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -3969,6 +4194,30 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "340dacf5c50799b2"
+          }
+        }
+      },
+      "Viego": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "61185e81ee691f67",
+        "observedAt": "2026-10-23T02:03:51.638Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Viego",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/viego/viego.bin.json",
+            "sha256": "0b49991c3a4dd8aed0e97f623dfcd277e5c693a5f9a7eff07cf2bdf7179b2863"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "d5b6622648148ffc"
           }
         }
       }

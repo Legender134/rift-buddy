@@ -17,7 +17,7 @@ import {preserveGameContext} from '../services/data-generation-cache.mjs';
 // Keep synthetic signed snapshots ahead of the bundled floor as curated data advances.
 const bundledParts=BUNDLED_CATALOG.version.split('.'),acceptedVersion=[...bundledParts.slice(0,-1),Number(bundledParts.at(-1))+1].join('.'),pendingVersion=[...bundledParts.slice(0,-1),Number(bundledParts.at(-1))+2].join('.');
 const original=JSON.parse(readFileSync(new URL('../data/game.json',import.meta.url))),routes=JSON.parse(readFileSync(new URL('../src/core/hex-community-routes.json',import.meta.url)));
-const pair=generateKeyPairSync('ed25519'),keys={isolated:pair.publicKey.export({type:'spki',format:'pem'})},now=Date.parse('2026-10-25T00:00:00Z');
+const pair=generateKeyPairSync('ed25519'),keys={isolated:pair.publicKey.export({type:'spki',format:'pem'})},now=Date.parse(routes.reviewedAt+'T00:00:00Z');
 function signed({version=acceptedVersion,sequence=now-1000,minimumApp='0.59.28',patch=original.patch,publishedAt=new Date(now-1000).toISOString(),title='在线导管路线',editCatalog=()=>{}}={}){
  const catalog=structuredClone(BUNDLED_CATALOG);catalog.version=version;editCatalog(catalog);
  const hexRoutes=structuredClone(routes);hexRoutes.routes[0].title=title;
@@ -67,7 +67,7 @@ test('entering draft during cache staging writes only pending content',async t=>
 
 test('custom installed catalog and personal entries survive automatic updates without disk changes',async t=>{
  const f=await fixture(t),personal={...structuredClone(BUNDLED_CATALOG.duos.find(d=>d.id==='xayah-kayle-guard')),id:'local-protection',name:'我的保护组合'};await f.store.savePersonal(personal);
- const custom=structuredClone(BUNDLED_CATALOG);custom.name='用户手动组合库';custom.version='2026.10.24.99';await f.store.apply(f.store.preview(custom).token);const filename=path.join(f.root,'combinations.json'),before=await fs.readFile(filename);
+ const custom=structuredClone(BUNDLED_CATALOG);custom.name='用户手动组合库';custom.version=pendingVersion;await f.store.apply(f.store.preview(custom).token);const filename=path.join(f.root,'combinations.json'),before=await fs.readFile(filename);
  f.phase('Lobby');await f.cache.check();assert.equal(f.data().catalog.name,custom.name);assert.ok(f.data().catalog.duos.some(d=>d.id===personal.id));assert.ok((await fs.readFile(filename)).equals(before));assert.equal(hexPlayerRoutes({data:f.data(),hero:'Lillia'})[0].title,'在线导管路线');
 });
 

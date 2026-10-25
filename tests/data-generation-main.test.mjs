@@ -45,8 +45,8 @@ assert.ok(bootSource.includes('const generation=await createDataGenerationCache'
 const adoptionSource=source.match(/^ guard\('adopt-data-generation',[^\n]+/m)?.[0],catalogSource=source.match(/^ guard\('catalog-personal',[^\n]+/m)?.[0];assert.ok(adoptionSource&&catalogSource);
 const automaticSource=source.match(/^ const checkStatistics=\(\)=>[^\n]+/m)?.[0];assert.ok(automaticSource);
 const manualSource=source.slice(source.indexOf(" guard('update-data'"),source.indexOf(" guard('check-data-feed'"));
-const communityNow=Date.parse('2026-10-25T00:00:00Z');
 const communityText=await fs.readFile('src/core/hex-community-routes.json','utf8');
+const communityNow=Date.parse(JSON.parse(communityText).reviewedAt+'T00:00:00Z');
 function communityBundle(edit=()=>{}){const catalog=structuredClone(catalogCore.BUNDLED_CATALOG),hexRoutes=JSON.parse(communityText);catalog.version=acceptedVersion;edit(catalog);hexRoutes.routes[0].title='自动接收的社区路线';const value={schema:1,kind:'community-snapshot',patch:seed.game.patch,version:catalog.version,reviewedAt:hexRoutes.reviewedAt,catalog,hexRoutes},raw=Buffer.from(JSON.stringify(value)),packed=gzipSync(raw),manifest={schema:1,kind:value.kind,patch:value.patch,version:value.version,reviewedAt:value.reviewedAt,minimumApp:'0.59.28',sequence:communityNow-1000,publishedAt:new Date(communityNow-1000).toISOString(),file:feedHash(packed)+'.json.gz',sha256:feedHash(packed),bytes:packed.length,rawSha256:feedHash(raw),rawBytes:raw.length};return {envelope:envelope(manifest),packed,manifest};}
 
 async function mainFixture(t,{old=seed.game,accepted=null,guide=null,manual=null,communityAccepted=null,autoCheck=true}={}){

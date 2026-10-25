@@ -1,16 +1,17 @@
-import {communitySourceMedium} from './community-source.mjs';
+import {communitySourceMedium,validCommunitySkillPriority} from './community-source.mjs';
 // The route's provenance and the hero's skill reference are separate evidence.
 // A generic skill order must never be attributed to a community creator.
 export function hexRouteCard(route,build={}){
  const community=[route.source,...(route.sources||[]).map(s=>s.url)].find(url=>typeof url==='string'&&/^https:\/\/arammayhem\.com\//.test(url));
  const creator=communitySourceMedium(route.communitySource)?route.communitySource:null;
  const source=route.kind==='reference'?'当前配置':creator?creator.author+' · 改编':community?'ARAM Mayhem · 改编':'机制整理';
- const authored=creator&&Array.isArray(route.skillPriority)&&route.skillPriority.length>=1&&route.skillPriority.length<=3&&new Set(route.skillPriority).size===route.skillPriority.length&&route.skillPriority.every(key=>['Q','W','E'].includes(key));
+ const authored=creator&&validCommunitySkillPriority(route)&&Array.isArray(route.skillPriority);
+ const project=authored&&route.skillPriorityOrigin==='project';
  const order=authored?route.skillPriority:creator?[]:typeof build.priority==='string'?[...new Set(build.priority.toUpperCase().replace(/[^QWE]/g,''))]:[];
  const priority=order.length>=2?`主${order[0]}副${order[1]}`:authored?`主${order[0]}`:'';
  return {title:route.title,source,sourceUrl:creator?.url||community||route.source||null,priority,
-  skillSource:priority?(authored?creator.author:build.selectedSkill?.source||build.source||'英雄默认加点'):'',
-  skillNote:authored?(order.length===1?'作者仅提供主技能，副技能与逐级加点未核实。':'作者提供的技能优先级；不是完整逐级加点。'):priority?'英雄加点参考；未单独提供此路线的专属加点。':'此路线尚无已核实加点'};
+  skillSource:priority?(project?'开黑搭子 · 机制改编':authored?creator.author:build.selectedSkill?.source||build.source||'英雄默认加点'):'',
+  skillNote:project?'项目按当前技能机制补全优先级；不是作者原配或完整逐级加点。':authored?(order.length===1?'作者仅提供主技能，副技能与逐级加点未核实。':'作者提供的技能优先级；不是完整逐级加点。'):priority?'英雄加点参考；未单独提供此路线的专属加点。':'此路线尚无已核实加点'};
 }
 
 export function orderHexCards(routes,pinned=[]){

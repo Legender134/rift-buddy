@@ -8,7 +8,7 @@ import {reviewedHexMechanic,hexUltimateRequirement} from './hex-mechanics.mjs';
 import {hexCatalogDisabled} from './hex-catalog.mjs';
 import communityRoutes from './hex-community-routes.json' with {type:'json'};
 import {mechanicReview} from './mechanic-review.mjs';
-import {communitySourceLabel,communitySourceMedium} from './community-source.mjs';
+import {communitySourceLabel,communitySourceMedium,validCommunitySkillPriority} from './community-source.mjs';
 
 const augmentComplements={1118:'提供25%暴击几率；治疗护盾实际暴击时多40%效果。',1141:'用于友军的治疗和护盾增强。',
  1047:'获得50%暴击几率；按当前暴击率重新比较装备。',1077:'暴击伤害的12%治疗自身，获得25%暴击几率。',1080:'以暴击几率进行会心防御，触发几率最多50%；获得25%暴击几率。',
@@ -81,6 +81,7 @@ export function hexPlayerRoutes({data,hero,owned=[],options=[]}){
  return authored.filter(route=>route.hero===hero&&(!route.patch||route.patch===data.patch)).flatMap(route=>{
   if(itemReview.communityPolicy==='current-source-only'&&route.community&&!route.communitySource)return [];
   if(route.requiresUltimate&&noUltimate)return [];
+  if(!validCommunitySkillPriority(route))return [];
   const scopedItems=community.routes.includes(route)&&route.itemReview!==undefined;
   if(scopedItems&&!validCommunityItemReview(route.itemReview,route,data.patch,community.reviewedAt))return [];
   const scopedEffects=community.routes.includes(route)&&route.augmentReview!==undefined;
@@ -114,7 +115,7 @@ export function hexPlayerRoutes({data,hero,owned=[],options=[]}){
   });
   if(route.coreItems?.some(id=>!gear.some(group=>group.items.some(item=>item.id===id))))return [];
   return [{id:hero+'-'+augment.id,hero,family:route.family,optionalAugments,title:route.title,summary:route.summary,play:noUltimate&&route.basicPlay?route.basicPlay:route.play,caution:(noUltimate?'已选回归基本功，终极技能不可使用。':'')+route.caution,gear,pendingItems,ultimateUnavailable:!!noUltimate,catalogDisabled:hexCatalogDisabled(data,augment),augment:{id:augment.id,name:augment.name},state:owned.includes(augment.id)?'owned':options.includes(augment.id)?'offered':'preview',patch:data.patch,
-   ...(scopedEffects?{brief:(noUltimate?'终极技能不可使用。':'')+(route.coreBrief||augment.tooltip.description)}:{}),...(route.communitySource?{communitySource:route.communitySource}:{}),...(route.skillPriority?{skillPriority:route.skillPriority}:{}),
+   ...(scopedEffects?{brief:(noUltimate?'终极技能不可使用。':'')+(route.coreBrief||augment.tooltip.description)}:{}),...(route.communitySource?{communitySource:route.communitySource}:{}),...(route.skillPriority?{skillPriority:route.skillPriority}:{}),...(route.skillPriorityOrigin?{skillPriorityOrigin:route.skillPriorityOrigin}:{}),
    sources:[{name:'英雄技能',url:`https://ddragon.leagueoflegends.com/cdn/${data.version}/data/zh_CN/champion/${hero}.json`},{name:'海克斯强化',url:`https://raw.communitydragon.org/${data.patch}/game/maps/modespecificdata/kiwi.bin.json`},{name:'装备效果',url:`https://ddragon.leagueoflegends.com/cdn/${data.version}/data/zh_CN/item.json`},...(['Jhin','Camille'].includes(hero)?[{name:'技能完整资料',url:champion.mechanicSource.character.url}]:[]),...(route.communitySource?[{name:communitySourceLabel(route.communitySource),url:route.communitySource.url}]:[]),...(route.community?[{name:'社区思路（未标注版本日期）',url:route.community}]:[])],basis:route.communitySource?route.communitySource.adaptation:route.community?'社区思路，经项目按16.21机制改编；原组合未标注版本和日期，不是胜率或固定购买顺序。':'按当前技能、强化与装备效果推导，不是胜率或固定购买顺序。'}];
  }).sort((a,b)=>Number(b.state==='owned')-Number(a.state==='owned')||Number(b.state==='offered')-Number(a.state==='offered')).filter((route,index,all)=>!route.family||!all.slice(0,index).some(other=>other.family===route.family));
 }

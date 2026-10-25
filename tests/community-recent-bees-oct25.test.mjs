@@ -36,10 +36,10 @@ test('actual main external-link handler opens only effective reviewed creator vi
 });
 
 test('YouTube publishing requires client38 before touching keys or public directories',async t=>{
- const root=await fs.mkdtemp(path.join(os.tmpdir(),'community-youtube-'));t.after(()=>fs.rm(root,{recursive:true,force:true}));const opts={publicRoot:path.join(root,'public'),keyFile:path.join(root,'missing.pem'),game:base,catalog,hexRoutes:routes};
+ const root=await fs.mkdtemp(path.join(os.tmpdir(),'community-youtube-'));t.after(()=>fs.rm(root,{recursive:true,force:true}));const hexRoutes=structuredClone(routes);hexRoutes.routes=hexRoutes.routes.filter(r=>r.skillPriorityOrigin===undefined);const opts={publicRoot:path.join(root,'public'),keyFile:path.join(root,'missing.pem'),game:base,catalog,hexRoutes};
  for(const minimumApp of ['0.59.28','0.59.33','0.59.37'])await assert.rejects(publishCommunityData({...opts,minimumApp}),/需要支持/);await assert.rejects(fs.access(opts.publicRoot));
  const pair=generateKeyPairSync('ed25519');await fs.writeFile(opts.keyFile,pair.privateKey.export({type:'pkcs8',format:'pem'}));const manifest=await publishCommunityData({...opts,keyId:'isolated',keys:{isolated:pair.publicKey.export({type:'spki',format:'pem'})}});assert.equal(manifest.minimumApp,'0.59.38');
- const noYouTube=structuredClone(routes);noYouTube.routes=noYouTube.routes.filter(r=>r.communitySource.url!==url);noYouTube.routes.find(r=>r.hero==='MissFortune').coreBrief='当前已复核的核心简述';const compactRoot=path.join(root,'compact-only');await assert.rejects(publishCommunityData({...opts,hexRoutes:noYouTube,minimumApp:'0.59.37',publicRoot:compactRoot,keyFile:path.join(root,'missing-key.pem')}),/需要支持/);await assert.rejects(fs.access(compactRoot));
+ const noYouTube=structuredClone(hexRoutes);noYouTube.routes=noYouTube.routes.filter(r=>r.communitySource.url!==url);noYouTube.routes.find(r=>r.hero==='MissFortune').coreBrief='当前已复核的核心简述';const compactRoot=path.join(root,'compact-only');await assert.rejects(publishCommunityData({...opts,hexRoutes:noYouTube,minimumApp:'0.59.37',publicRoot:compactRoot,keyFile:path.join(root,'missing-key.pem')}),/需要支持/);await assert.rejects(fs.access(compactRoot));assert.equal((await publishCommunityData({...opts,hexRoutes:noYouTube,publicRoot:compactRoot,keyId:'isolated',keys:{isolated:pair.publicKey.export({type:'spki',format:'pem'})}})).minimumApp,'0.59.38');
 });
 
 test('scoped concise core text retains critical values inside native selected/no-R budget and rejects invalid or unreviewed replacements',()=>{
