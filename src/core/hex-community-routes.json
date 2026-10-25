@@ -3454,6 +3454,223 @@
           }
         }
       }
+    },
+    {
+      "hero": "Sett",
+      "patch": "16.21",
+      "augment": 1152,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "钢心血量续战",
+      "summary": "心之钢先叠至300层，完成任务后围绕W蓄意轰拳交战。",
+      "coreBrief": "持有心之钢且达到300层才完成任务；奖励将心之钢层数乘以3。",
+      "play": [
+        "靠近敌人满足心之钢蓄力后实际普攻叠层；Q强化下两次普攻，W留意豪意与中心命中位置。",
+        "E两侧都抓到敌人才眩晕；R可用时结合被抱目标的额外生命与落点距离寻找进场，不按自己的最大生命计算落地伤害。"
+      ],
+      "basicPlay": [
+        "不能使用R时，靠Q的两次强化普攻、E拉拽与W中心命中组织进退。",
+        "留意豪意与护盾衰减；不要为凑心之钢层数追入集火。"
+      ],
+      "caution": "买到心之钢不等于完成300层任务，奖励不将全部最大生命乘三。W仅中心为真实伤害，单侧E不会眩晕；无原作者加点或符文。",
+      "coreItems": [
+        3084
+      ],
+      "gear": [
+        [
+          "作者1—6购买顺序",
+          [
+            3084,
+            2501,
+            3083,
+            3111,
+            3053,
+            3748
+          ],
+          "按原图编号购买；六格是完整主线，以下只替换第六格，不追加装备。狂徒回复仍需满足实际触发条件。"
+        ],
+        [
+          "敌方普攻回血多",
+          [
+            3075
+          ],
+          "按作者建议将第六件巨型九头蛇换为荆棘之甲；重伤需要其实际触发，不是随时压低全部治疗。"
+        ],
+        [
+          "魔法消耗多",
+          [
+            4401
+          ],
+          "第六件换为自然之力，承受英雄魔法伤害后叠层；不把满层魔抗与移速当作买到后常驻。"
+        ],
+        [
+          "需要增强自身恢复",
+          [
+            3065
+          ],
+          "第六件换为振奋，保留实际治疗或护盾来源；不把收益当作免伤。"
+        ],
+        [
+          "敌方暴击压力",
+          [
+            3143
+          ],
+          "第六件换为兰顿；按敌方真实暴击与攻击压力取舍。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海克斯乱斗大发明家",
+        "url": "https://www.douyin.com/note/7700443142587288859",
+        "publishedAt": "2026-10-25T11:32:18+08:00",
+        "sourcePatch": "26.21",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图：海克斯推荐—金色钢化你心",
+          "原图：出装路线—按①—⑥顺序购买",
+          "原图与正文：按局势替换第六格"
+        ],
+        "adaptation": "原帖26.21图文有完整六件及四项第六格替换；按当前效果整理钢化你心条件，不把其他稀有度选项当作同局组合、四轮可选池或统计最优。未提供出门组件、首回城、符文、召唤师及技能节点，不补作者配置；禁R打法为项目条件改编。原图胜率无采样方法，不采纳。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2501": "3268d650a8c61050",
+          "3053": "f296e046052ead10",
+          "3065": "522ddd38f23d9014",
+          "3075": "77e99cfe1e808733",
+          "3083": "1f9ef0d0fe8bf89d",
+          "3084": "1d15c5181f27ae02",
+          "3111": "b015262b2d75ee9e",
+          "3143": "398abf4b21f13cf0",
+          "3748": "84dadeff216830d5",
+          "4401": "9db4164eddf26a1c"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1152": {
+            "fingerprint": "e008ddc449c0cbc2",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Rengar",
+      "patch": "16.21",
+      "augment": 1077,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "暴击虹吸续战",
+      "summary": "靠实际暴击伤害恢复，草丛与残暴技能留好进退。",
+      "coreBrief": "获得25%暴击几率；实际暴击伤害的12%治疗自身。",
+      "play": [
+        "从草丛寻找安全攻击目标，以Q衔接实际普攻；暴击伤害才能兑现虹吸，不把每次W/E都计作暴击吸血。",
+        "满残暴值强化下一次基础技能：强化W可解控，强化E禁锢首个目标；按承伤与追击需要取舍，不把三招同时当作强化。"
+      ],
+      "basicPlay": [
+        "不能使用R时，仍须利用草丛与合法攻击目标跳跃，靠Q和实际普攻输出。",
+        "受伤后评估W回复，满残暴时再选择强化W解控或强化E禁锢；保留撤退距离。"
+      ],
+      "caution": "普通W不解控，普通E不是禁锢；虹吸不是全技能全能吸血。作者没有加点或符文；狂妄持续时长未解析，不套用峡谷或竞技场时长。",
+      "coreItems": [
+        3031
+      ],
+      "gear": [
+        [
+          "作者1—6购买顺序",
+          [
+            126697,
+            6676,
+            6699,
+            3111,
+            3031,
+            3036
+          ],
+          "按原图编号购买；使用海克斯狂妄，不是峡谷或竞技场同名版本。以下按条件换第六件或鞋子，不叠买轻语系装备。"
+        ],
+        [
+          "敌方回血多",
+          [
+            3033
+          ],
+          "第六件领主换为凡性的提醒；作者注明与赛瑞尔达二选一。"
+        ],
+        [
+          "魔法爆发高",
+          [
+            3156
+          ],
+          "第六件领主换为玛莫提乌斯之噬；其护盾针对魔法伤害，不填未解析的护盾数值。"
+        ],
+        [
+          "普攻压力多",
+          [
+            3047
+          ],
+          "仅将第四格水银之靴换为铁板靴，其他替换仍占第六格。"
+        ],
+        [
+          "敌方护甲高",
+          [
+            6694
+          ],
+          "第六件领主换为赛瑞尔达，与凡性的提醒二选一；失去领主的暴击率贡献，不能认为所有分支暴击率相同。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海克斯乱斗大发明家",
+        "url": "https://www.douyin.com/note/7700442244934864164",
+        "publishedAt": "2026-10-25T11:28:49+08:00",
+        "sourcePatch": "26.21",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图：海克斯推荐—金色灵魂虹吸",
+          "原图：出装路线—按①—⑥顺序购买",
+          "原图与正文：第六格及第四格鞋子条件替换"
+        ],
+        "adaptation": "原帖26.21图文给六件顺序与四项替换；按当前机制整理灵魂虹吸，不把稀有度选项视为同局已选。无尽的核心标记为本条暴击骨架整理，不是作者额外分级。当前详情仅累计治疗计数为动态值，不补未证的Q逐段暴击公式或所有技能吸血。未给出门组件、首回城、符文、召唤师或加点，均不补作者配置；禁R为项目条件改编。原图胜率缺采样方法，不采纳。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3031": "00b9b8a238976a3f",
+          "3033": "d17e8fe8776ae561",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3111": "b015262b2d75ee9e",
+          "3156": "e82d90af81fa5a8d",
+          "6676": "20a9c2a3ea1c7555",
+          "6694": "76babbf775c1d8d2",
+          "6699": "bd3bde89570950ef",
+          "126697": "942097b9d9de1e23"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1077": {
+            "fingerprint": "244429bb7a085640",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -3502,7 +3719,9 @@
       "Volibear": "bf39a7d23077a7fc",
       "Viego": "61185e81ee691f67",
       "Renekton": "5a98c4b4b1f08e37",
-      "Yone": "9f3493c27921664f"
+      "Yone": "9f3493c27921664f",
+      "Sett": "76c5b480536d4f6c",
+      "Rengar": "37409a7c0d60e8e8"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -4534,6 +4753,54 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "165686224e19c3fc"
+          }
+        }
+      },
+      "Sett": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "76c5b480536d4f6c",
+        "observedAt": "2026-10-23T02:03:51.552Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Sett",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/sett/sett.bin.json",
+            "sha256": "432de9e0a6a3d5fe63d551f27a3f491e42e775cd1b25747664228f53343ea9f4"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "d105f0a4b5c99060"
+          }
+        }
+      },
+      "Rengar": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "37409a7c0d60e8e8",
+        "observedAt": "2026-10-23T02:03:51.550Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Rengar",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/rengar/rengar.bin.json",
+            "sha256": "e2e97e8e3cb202d4aaa9481df841c8040e1b8c7356d870a84760fabd5ede9f6b"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "a340ab4d1d71dccd"
           }
         }
       }
