@@ -25,7 +25,7 @@ test('equipment review never bypasses the hero, augment, mode or loss of ultimat
  const d=live(),r=hexPlayerRoutes({data:d,hero:'Lillia',owned:[1004]}).find(r=>r.augment.id===1045);assert(r.ultimateUnavailable);assert.match(r.play[0],/不能施放R/);
 });
 test('route item review schema is exact, bounded and cannot approve unlisted items or mismatched dates',()=>{
- const mutations=[r=>r.itemReview.schema=2,r=>r.itemReview.algorithm='global',r=>r.itemReview.patch='16.20',r=>r.itemReview.reviewedAt='2026-10-26',r=>r.itemReview.reviewedAt='2026-02-30',r=>r.itemReview.extra=true,r=>r.itemReview.items=[],r=>delete r.itemReview.items[3742],r=>r.itemReview.items[2510]='a'.repeat(16),r=>r.itemReview.items[3742]='a'.repeat(64),r=>r.itemReview.items['03742']='a'.repeat(16)];
+ const mutations=[r=>r.itemReview.schema=2,r=>r.itemReview.algorithm='global',r=>r.itemReview.patch='16.20',r=>r.itemReview.reviewedAt=new Date(Date.parse(routes.reviewedAt)+86400000).toISOString().slice(0,10),r=>r.itemReview.reviewedAt='2026-02-30',r=>r.itemReview.extra=true,r=>r.itemReview.items=[],r=>delete r.itemReview.items[3742],r=>r.itemReview.items[2510]='a'.repeat(16),r=>r.itemReview.items[3742]='a'.repeat(64),r=>r.itemReview.items['03742']='a'.repeat(16)];
  for(const mutate of mutations){const v=value(),r=v.hexRoutes.routes.find(r=>r.hero==='Lillia');mutate(r);assert.throws(()=>validateCommunityData(v,game),/装备复核/);const d=live();d.communityHexRoutes=v.hexRoutes;assert.equal(find(d),undefined);}
 });
 test('later same-patch maintenance retains the original individual equipment review day',()=>{

@@ -8,6 +8,10 @@ const textURL=/^https:\/\/www\.reddit\.com\/r\/[A-Za-z0-9_]+\/comments\/[a-z0-9]
 const kitchenURL=/^https:\/\/deeparam\.com\/embed\/fun\/cook-builds\/#chefs-special-(\d{4}-\d{2}-\d{2})$/;
 const editorialURL=/^https:\/\/expcarry\.com\/lol-aram-mayhem-builds$/;
 const text=(v,max)=>typeof v==='string'&&v.trim()&&v.length<=max;
+export function validCommunitySkillPriority(route){
+ const priority=route.skillPriority;
+ return (priority===undefined||Array.isArray(priority)&&priority.length>=1&&priority.length<=3&&new Set(priority).size===priority.length&&priority.every(key=>['Q','W','E'].includes(key)))&&(route.skillPriorityOrigin===undefined||route.skillPriorityOrigin==='project'&&priority!==undefined);
+}
 export function communitySourceMedium(source){
  if((source?.medium===undefined||source.medium==='video')&&(videoURL.test(source?.url||'')||isYouTubeCommunitySourceURL(source?.url)))return 'video';
  return source?.medium==='text'&&(textURL.test(source.url||'')||kitchenURL.test(source.url||'')||editorialURL.test(source.url||''))?'text':null;
