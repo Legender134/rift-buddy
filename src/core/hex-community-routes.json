@@ -4528,6 +4528,385 @@
           }
         }
       }
+    },
+    {
+      "hero": "Swain",
+      "patch": "16.21",
+      "augment": 1001,
+      "optional": [
+        1152,
+        1041,
+        1353
+      ],
+      "requiresUltimate": false,
+      "title": "战神附体续战",
+      "summary": "持续交战叠层，越高层衰减越快。",
+      "coreBrief": "对英雄造成或承受伤害叠6秒战神附体；每10层获得适应之力、双抗、体型和韧性。",
+      "coreItems": [
+        3084,
+        6665
+      ],
+      "play": [
+        "有敌方英雄可持续汲取时开R，穿插Q与实际普攻；没有目标时不把层数当作永久抗性。",
+        "层数越高衰减越快，先保证能继续交战；撤离时保留血量，不为追叠层越过队伍。"
+      ],
+      "basicPlay": [
+        "R不可用时，以Q、命中W和E后的实际普攻参与交战；不能保留原本的大招汲取节奏。"
+      ],
+      "caution": "六件为作者装备骨架，不是购买顺序。通用加点与未指定替换格的额外时光之杖未并入此分支。",
+      "gear": [
+        [
+          "作者六件骨架",
+          [
+            3084,
+            2502,
+            6665,
+            6664,
+            3065,
+            4633
+          ],
+          "保留原图04编号六件；编号仅列表，首回城、鞋子与购买顺序未给出。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海斗小助手",
+        "url": "https://www.douyin.com/note/7699502446426475830",
+        "publishedAt": "2026-10-22T22:42:00+08:00",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗4.0原作者图文，未明确26.21补丁号",
+        "evidenceSections": [
+          "原图04：泰坦的坚决与三个备选",
+          "原图04：六件编号骨架与未编号时光之杖",
+          "原图10：加点在通用常规玩法页"
+        ],
+        "adaptation": "按当前16.21英雄与强化、装备源独立改编。保留图04六件与作者列出的钢化你心、歌利亚巨人、坦克引擎备选；不把持续R每段伤害等同多次施法，不承诺固定叠层速度或永久抗性。心之钢与贾修标为项目骨架重点，不是作者额外优先级。图10的Q>W>E和含R的逐级顺序属于通用页，未冒充本分支专属或封R加点；基础技能打法为项目改编。作者额外时光没有替换格，未拼为七件。等级S与无统计范围的百分比不采，未保证四轮强化资格。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2502": "f70d011ead077bb3",
+          "3065": "522ddd38f23d9014",
+          "3084": "1d15c5181f27ae02",
+          "4633": "bc6d42df1c8c7570",
+          "6664": "565cc78eb17c6b01",
+          "6665": "d68c9621bce20749"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1001": {
+            "fingerprint": "eb828692b5ccbc35",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1041": {
+            "fingerprint": "710b3255eb3082ec",
+            "requiresUltimate": false
+          },
+          "1152": {
+            "fingerprint": "e008ddc449c0cbc2",
+            "requiresUltimate": false
+          },
+          "1353": {
+            "fingerprint": "2b080778f066e20c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      }
+    },
+    {
+      "hero": "Swain",
+      "patch": "16.21",
+      "augment": 1015,
+      "optional": [
+        1037,
+        1028
+      ],
+      "requiresUltimate": false,
+      "title": "治疗转化近身伤害",
+      "summary": "靠自身治疗与回复，让最近的敌方英雄承受死亡之环伤害。",
+      "coreBrief": "治疗与生命回复会对最近的敌方英雄造成70%该数额的魔法伤害。",
+      "coreItems": [
+        3065,
+        4633
+      ],
+      "play": [
+        "W命中英雄、E命中后拉拽取得魂屑；有R时保持可汲取目标，在安全距离维持自身恢复。",
+        "死亡之环指向最近的敌方英雄，不按整队范围伤害或每次E固定两段回血计算。"
+      ],
+      "basicPlay": [
+        "R不可用时主要利用W命中、E拉拽取得的魂屑与装备恢复，不能照搬大招持续汲取的频率。"
+      ],
+      "caution": "不采固定触发频率、溢出治疗处理或作者E十段回血主张。专属加点、鞋子与额外冰杖替换格未知。",
+      "gear": [
+        [
+          "作者六件骨架",
+          [
+            6657,
+            6653,
+            8010,
+            3065,
+            4633,
+            6665
+          ],
+          "保留原图05编号六件；额外冰杖没有指定替换格，不追加为第七件。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海斗小助手",
+        "url": "https://www.douyin.com/note/7699502446426475830",
+        "publishedAt": "2026-10-22T22:42:00+08:00",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗4.0原作者图文，未明确26.21补丁号",
+        "evidenceSections": [
+          "原图05：死亡之环、急救用具与侵蚀",
+          "原图05：六件编号骨架",
+          "原图10—11：通用加点与作者额外触发主张"
+        ],
+        "adaptation": "只按当前16.21治疗及生命回复对最近敌方英雄的70%转化定义改编；不把它当任意法术吸血、整队范围伤害或固定每段R必触发。保留作者六件骨架与可核备选急救用具、侵蚀；不采用无限循环往复尚未核实的当前急速字段，也不把作者疑似删除标签当官方禁用。振奋和裂隙标为项目骨架重点，不是作者额外评级。E定身后可再施放拉拽并取得魂屑，但贪欲束缚适用技能与作者两段回血/五人十段未确认，不挪入此路线。未编号冰杖、通用Q>W>E与R节点没有冒充此分支专属配置。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3065": "522ddd38f23d9014",
+          "4633": "bc6d42df1c8c7570",
+          "6653": "9fb9534b546d1626",
+          "6657": "2f68b1fc2810ec85",
+          "6665": "d68c9621bce20749",
+          "8010": "4aee4da932c8bff5"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1015": {
+            "fingerprint": "5c989d6bdfd162d2",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1028": {
+            "fingerprint": "28f0540ac2a65b1b",
+            "requiresUltimate": false
+          },
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Swain",
+      "patch": "16.21",
+      "augment": 1194,
+      "optional": [
+        1205,
+        1344,
+        1028
+      ],
+      "requiresUltimate": true,
+      "title": "大招变形控场",
+      "summary": "用大招伤害触发变形，在冷却窗口内选择进场时机。",
+      "coreBrief": "终极技能伤害造成2秒变形，15秒冷却；持续伤害不取消冷却。",
+      "coreItems": [
+        3118
+      ],
+      "play": [
+        "有可持续接触的敌方英雄时开R，以终极技能伤害触发变形；15秒冷却内不承诺连续控场。",
+        "变形窗口用于撤离或衔接E定身；R可再次施放时再选择恶魔耀光，不把持续伤害当新的施法。"
+      ],
+      "basicPlay": [
+        "该分支依赖R伤害，不适用于R被禁用的对局。"
+      ],
+      "caution": "变形有15秒冷却。公理圆弧与死亡之舞只列作者条件备选，替换格未给出。",
+      "gear": [
+        [
+          "作者六件骨架",
+          [
+            3118,
+            6657,
+            6653,
+            4633,
+            3065,
+            6665
+          ],
+          "保留原图06六件，编号不是已证实购买顺序。"
+        ],
+        [
+          "有物理转魔法：公理圆弧",
+          [
+            6696
+          ],
+          "作者条件备选，未指定替换格；不追加为第七件，也不承诺无限R。",
+          [
+            1205
+          ]
+        ],
+        [
+          "有物理转魔法：死亡之舞",
+          [
+            6333
+          ],
+          "作者条件备选，未指定替换格；不把延后承伤当魔法伤害输出。",
+          [
+            1205
+          ]
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海斗小助手",
+        "url": "https://www.douyin.com/note/7699502446426475830",
+        "publishedAt": "2026-10-22T22:42:00+08:00",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗4.0原作者图文，未明确26.21补丁号",
+        "evidenceSections": [
+          "原图06：精怪魔法与物理转魔法、最终形态、侵蚀",
+          "原图06：六件骨架和有物转法才出的两件备选",
+          "原图11：作者持续R变形与公理圆弧主张"
+        ],
+        "adaptation": "当前16.21精怪魔法要求终极技能伤害，造成2秒变形且有15秒冷却；R持续伤害不绕过冷却，路线在R被禁用时整体撤回。原图列出的最终形态只作为独立备选，不写入固定打法。保留作者六件与三个备选列项；公理圆弧、死亡之舞只按作者图示绑定物理转魔法条件，替换格未知，不挪作常驻第七八件，不推导伤害类型或被动互动。未采用作者有精怪必出公理或无限大招说法。残疫重点为项目骨架标记，通用加点与无条件鞋子未补造。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3065": "522ddd38f23d9014",
+          "3118": "9a274cdd335790d0",
+          "4633": "bc6d42df1c8c7570",
+          "6333": "95058514bbf67ac0",
+          "6653": "9fb9534b546d1626",
+          "6657": "2f68b1fc2810ec85",
+          "6665": "d68c9621bce20749",
+          "6696": "7604f9811d98418e"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1028": {
+            "fingerprint": "28f0540ac2a65b1b",
+            "requiresUltimate": false
+          },
+          "1194": {
+            "fingerprint": "5a104874c1af4534",
+            "requiresUltimate": true
+          },
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1344": {
+            "fingerprint": "354943b613d494f4",
+            "requiresUltimate": true
+          }
+        }
+      }
+    },
+    {
+      "hero": "Swain",
+      "patch": "16.21",
+      "augment": 1323,
+      "optional": [
+        1113
+      ],
+      "requiresUltimate": false,
+      "title": "定身彗星血量路线",
+      "summary": "先命中E定身，利用控制后的彗星伤害。",
+      "coreBrief": "定身或缚地敌方英雄后1秒落下彗星；每次施法、每个目标均有6秒冷却。",
+      "coreItems": [
+        6657,
+        3116
+      ],
+      "play": [
+        "E回程命中定身后等待彗星落地；同一次E的禁锢与拉回不承诺瞬间两次残忍。",
+        "W和冰杖的减速不等于定身；R用于近身汲取，不能把每段R都当作新的控制触发。"
+      ],
+      "basicPlay": [
+        "R不可用时仍须以E定身满足残忍条件；不能用W减速替代，也不能依赖大招持续恢复。"
+      ],
+      "caution": "不采作者单E双彗星与无限EW说法。狙神飞星说明未完整解析，未纳入；额外兰顿没有指定替换格。",
+      "gear": [
+        [
+          "作者六件骨架",
+          [
+            6657,
+            6653,
+            3116,
+            3065,
+            4633,
+            6665
+          ],
+          "原图07六件；额外兰顿未指定替换格，不拼作固定第七件。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海斗小助手",
+        "url": "https://www.douyin.com/note/7699502446426475830",
+        "publishedAt": "2026-10-22T22:42:00+08:00",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗4.0原作者图文，未明确26.21补丁号",
+        "evidenceSections": [
+          "原图07：残忍与老练狙神",
+          "原图07：六件编号骨架与未编号兰顿",
+          "原图11：作者E双控制、无限EW主张"
+        ],
+        "adaptation": "按当前16.21残忍的定身/缚地、1秒着陆与每次施法/每个目标6秒冷却改编，不采用作者E瞬间双触发或老练狙神无限EW主张。只保留可核备选老练狙神，狙神飞星与无限循环往复未解析项不准入。斯维因E可禁锢后再施放拉拽取得魂屑，但这不证明同次技能绕过强化冷却。保留作者六件，通用Q>W>E未冒充本分支专属加点；时光与冰杖标为项目骨架重点，不是作者额外评级。无统计方法的S级/胜率、轮次资格与兰顿替换格均不补造。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3065": "522ddd38f23d9014",
+          "3116": "04c63460140d7887",
+          "4633": "bc6d42df1c8c7570",
+          "6653": "9fb9534b546d1626",
+          "6657": "2f68b1fc2810ec85",
+          "6665": "d68c9621bce20749"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1113": {
+            "fingerprint": "0c41c3385bab1997",
+            "requiresUltimate": false
+          },
+          "1323": {
+            "fingerprint": "52176813d78f68b5",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      }
     }
   ],
   "championReview": {
