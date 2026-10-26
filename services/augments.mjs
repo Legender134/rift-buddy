@@ -50,9 +50,15 @@ export function buildAugmentDescriptions(catalog,bin,entries){
    function renderCalculation(scale){
     const factor=scale*(percent?100:1),numeric=calc.mFormulaParts.map(scalar);if(!Number.isFinite(factor))return null;
     if(numeric.every(n=>n!==null)){const value=formatResult(numeric.reduce((sum,n)=>sum+n,0)*factor);return value===null?null:value+(percentUnit?'%':'');}
-    // Existing numeric melee/ranged wrappers remain supported. New live-stat
-    // expressions require the reviewed GameCalculation structure.
-    if(calc.__type&&calc.__type!=='GameCalculation')return null;
+    // Kiwi also uses this existing melee/ranged wrapper for additive level
+    // and stat terms. Accept only its exact affine shape; counters, unknown
+    // modifiers and nested expressions must remain unresolved.
+    const fields=(row,keys)=>row&&typeof row==='object'&&!Array.isArray(row)&&Object.keys(row).every(key=>keys.includes(key));
+    const rangedAffine=spell.DataValuesModeOverride===undefined&&calc.__type==='{e9a3c91d}'&&fields(calc,['__type','mFormulaParts','mRangedMultiplier'])&&fields(calc.mRangedMultiplier,['__type','mNumber'])&&calc.mRangedMultiplier.__type==='NumberCalculationPart'&&Number.isFinite(calc.mRangedMultiplier.mNumber)&&calc.mRangedMultiplier.mNumber>=0&&calc.mRangedMultiplier.mNumber<=1&&calc.mFormulaParts.every(part=>{
+     const keys={ByCharLevelInterpolationCalculationPart:['__type','mStartValue','mEndValue'],NumberCalculationPart:['__type','mNumber'],NamedDataValueCalculationPart:['__type','mDataValue'],StatByCoefficientCalculationPart:['__type','mStat','mStatFormula','mCoefficient'],StatByNamedDataValueCalculationPart:['__type','mStat','mStatFormula','mDataValue']}[part?.__type];
+     return !!keys&&fields(part,keys);
+    });
+    if(calc.__type&&calc.__type!=='GameCalculation'&&!rangedAffine)return null;
     let hasStat=false;
     const parts=calc.mFormulaParts.map(part=>{
      if(part.__type==='ByCharLevelInterpolationCalculationPart'){if(!Number.isFinite(part.mStartValue)||!Number.isFinite(part.mEndValue))return null;const start=formatNumber(part.mStartValue*factor),end=formatNumber(part.mEndValue*factor);return start===null||end===null?null:`${start}–${end}（随等级）`;}

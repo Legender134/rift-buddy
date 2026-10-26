@@ -14468,6 +14468,266 @@
         ],
         "adaptation": "从作者蝴蝶主题原图中明确列出的蛋白粉与花剑组合，裁剪为当前16.21可独立成立的攻击治疗分支。未解析的蝴蝶伤害公式及身份未知强化不纳入，不冒充作者完整蝴蝶链。只使用当前仍通过复核的装备组，原图未编号，不编购买顺序、替换槽位、鞋子、加点或符文。评级不是胜率或抽取资格；原帖标海斗4.0，确切补丁未知，项目按当前机制改编。"
       }
+    },
+    {
+      "hero": "Jhin",
+      "patch": "16.21",
+      "augment": 3078,
+      "optional": [],
+      "title": "低音施法普攻走位",
+      "summary": "技能后打一发实际普攻，再利用移速调整装填与射击位置。",
+      "coreBrief": "施法后6秒内普攻：近战魔伤50–200＋50%额外AD＋30%AP，远程减半；2秒衰减移速，基础伤害随等级。",
+      "play": [
+        "Q手雷或E放陷阱后，在实际普攻射程内打一发；W只有命中已受自身/队友伤害或踩陷阱的英雄等条件时才禁锢，可用来建立后续攻击窗口。",
+        "低语固定射击频率且只有四发，空仓须装填；不把临时攻速说成连续扫射。第四发暴击与自带暴击移速仍需实际射出，远处W/R伤害不是普通攻击。"
+      ],
+      "basicPlay": [
+        "Q手雷或E放陷阱后，在实际普攻射程内打一发；W只有命中已受自身/队友伤害或踩陷阱的英雄等条件时才禁锢，可用来建立后续攻击窗口。",
+        "低语固定射击频率且只有四发，空仓须装填；不把临时攻速说成连续扫射。第四发暴击与自带暴击移速仍需实际射出，远处W/R伤害不是普通攻击。",
+        "禁R保留Q/W/E与低语四发、装填、第四发机制；失去远距离四次大招射击，不能把R射击作为花式普攻触发入口。"
+      ],
+      "caution": "强化只影响施法后的下一次攻击状态；近远程系数分别判断，不保证多段技能、双击或暴击把强化伤害重复结算。",
+      "requiresUltimate": false,
+      "gear": [
+        [
+          "作者暴击骨架：收尾",
+          [
+            6676
+          ],
+          "伤害使英雄生命值低于5%才满足处决条件；按实际血量寻找收尾。"
+        ],
+        [
+          "作者暴击骨架：护甲压力",
+          [
+            3036
+          ],
+          "需要护甲穿透时比较，仍需保证实际命中与安全距离。"
+        ],
+        [
+          "作者暴击骨架：暴击伤害",
+          [
+            3031
+          ],
+          "能持续完成普攻且已有暴击方向时比较；各英雄自己的暴击修正仍存在。"
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1tNno6ZECL/",
+        "author": "驻韩研究员",
+        "publishedAt": "2026-10-26T17:30:00+08:00",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "海克斯大乱斗4.0音乐地图",
+        "evidenceSeconds": [
+          120,
+          125,
+          130,
+          135,
+          140,
+          145,
+          150,
+          155,
+          160,
+          165,
+          170
+        ],
+        "adaptation": "按作者实际字幕与配置卡的三件装备骨架，独立核对当前16.21技能、强化与装备；不是完整六件或逐件购买顺序。强化近远程系数与等级基础伤害来自当前原始公式，动态次数和累计伤害不编成静态值。只使用仍通过复核的装备组，不借原片面板承诺固定攻击力、连锁触发、胜率、鞋子或加点；录制补丁号未知。"
+      }
+    },
+    {
+      "hero": "Fiora",
+      "patch": "16.21",
+      "augment": 3078,
+      "optional": [],
+      "title": "低音施法普攻破绽",
+      "summary": "招架或突进后接真实普攻，借移动调整破绽方向。",
+      "coreBrief": "施法后6秒内普攻：近战魔伤50–200＋50%额外AD＋30%AP，远程减半；2秒衰减移速，基础伤害随等级。",
+      "play": [
+        "Q利用位移与攻击特效寻找破绽，W招架或E施放后穿插真实普攻；不把一次施法与同次攻击按两个完整低音触发计算。",
+        "W招架结束后接实际普攻，E提供两次强化攻击：第一击减速、第二击必暴击；破绽须从正确方向命中，治疗和移速不因靠近目标自动获得。"
+      ],
+      "basicPlay": [
+        "Q利用位移与攻击特效寻找破绽，W招架或E施放后穿插真实普攻；不把一次施法与同次攻击按两个完整低音触发计算。",
+        "W招架结束后接实际普攻，E提供两次强化攻击：第一击减速、第二击必暴击；破绽须从正确方向命中，治疗和移速不因靠近目标自动获得。",
+        "禁R保留Q/W/E及普通破绽恢复，失去R四处破绽标记、目标附近R移速和完成后的范围治疗。"
+      ],
+      "caution": "强化只影响施法后的下一次攻击状态；近远程系数分别判断，不保证多段技能、双击或暴击把强化伤害重复结算。",
+      "requiresUltimate": false,
+      "gear": [
+        [
+          "作者战士骨架：近身恢复",
+          [
+            3074
+          ],
+          "有持续攻击机会时比较恢复与范围伤害；不保证普攻或主动每次命中都能抵消承伤。"
+        ],
+        [
+          "作者战士骨架：咒刃",
+          [
+            3078
+          ],
+          "技能间接实际攻击，咒刃有自身冷却；不把每次低音伤害都当成额外一次咒刃。"
+        ],
+        [
+          "作者战士骨架：物理承伤",
+          [
+            6333
+          ],
+          "伤害延后为流血，不是免伤；近期伤害过的英雄阵亡才清除剩余流血并恢复。"
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3074": "bf92704193b4e6d7",
+          "3078": "9b97f8ba78b6fba5",
+          "6333": "95058514bbf67ac0"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1tNno6ZECL/",
+        "author": "驻韩研究员",
+        "publishedAt": "2026-10-26T17:30:00+08:00",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "海克斯大乱斗4.0音乐地图",
+        "evidenceSeconds": [
+          175,
+          180,
+          185,
+          190,
+          195,
+          200
+        ],
+        "adaptation": "按作者实际字幕与配置卡的三件装备骨架，独立核对当前16.21技能、强化与装备；不是完整六件或逐件购买顺序。强化近远程系数与等级基础伤害来自当前原始公式，动态次数和累计伤害不编成静态值。只使用仍通过复核的装备组，不借原片面板承诺固定攻击力、连锁触发、胜率、鞋子或加点；录制补丁号未知。"
+      }
+    },
+    {
+      "hero": "Viego",
+      "patch": "16.21",
+      "augment": 3078,
+      "optional": [],
+      "title": "低音施法普攻暴击",
+      "summary": "技能命中后普攻打出本体爆发，附身另行判断。",
+      "coreBrief": "施法后6秒内普攻：近战魔伤50–200＋50%额外AD＋30%AP，远程减半；2秒衰减移速，基础伤害随等级。",
+      "play": [
+        "Q命中或W蓄力命中晕眩后接实际普攻；E黑雾提供伪装、移速和攻速时再选择接近，不把所有地形附近都视为安全区。",
+        "技能标记后的双击不保证各产生一次完整低音；附身会改变技能与装备，不把本体面板固定沿用到附身体。"
+      ],
+      "basicPlay": [
+        "Q命中或W蓄力命中晕眩后接实际普攻；E黑雾提供伪装、移速和攻速时再选择接近，不把所有地形附近都视为安全区。",
+        "技能标记后的双击不保证各产生一次完整低音；附身会改变技能与装备，不把本体面板固定沿用到附身体。",
+        "禁R保留本体Q/W/E和技能标记攻击；失去本体R突进、已损生命伤害与击退，附身给予的免费R/退出形态与禁R交互未确认，此路线不依赖附身连续接管。"
+      ],
+      "caution": "强化只影响施法后的下一次攻击状态；近远程系数分别判断，不保证多段技能、双击或暴击把强化伤害重复结算。",
+      "requiresUltimate": false,
+      "gear": [
+        [
+          "作者暴击骨架：收尾",
+          [
+            6676
+          ],
+          "伤害使英雄生命值低于5%才满足处决条件；按实际血量寻找收尾。"
+        ],
+        [
+          "作者暴击骨架：护甲压力",
+          [
+            3036
+          ],
+          "需要护甲穿透时比较，仍需保证实际命中与安全距离。"
+        ],
+        [
+          "作者暴击骨架：暴击伤害",
+          [
+            3031
+          ],
+          "能持续完成普攻且已有暴击方向时比较；各英雄自己的暴击修正仍存在。"
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1tNno6ZECL/",
+        "author": "驻韩研究员",
+        "publishedAt": "2026-10-26T17:30:00+08:00",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "海克斯大乱斗4.0音乐地图",
+        "evidenceSeconds": [
+          250,
+          255,
+          260,
+          265,
+          270,
+          275,
+          280,
+          285,
+          290
+        ],
+        "adaptation": "按作者实际字幕与配置卡的三件装备骨架，独立核对当前16.21技能、强化与装备；不是完整六件或逐件购买顺序。强化近远程系数与等级基础伤害来自当前原始公式，动态次数和累计伤害不编成静态值。只使用仍通过复核的装备组，不借原片面板承诺固定攻击力、连锁触发、胜率、鞋子或加点；录制补丁号未知。"
+      }
     }
   ],
   "championReview": {
@@ -14580,7 +14840,8 @@
       "Ambessa": "3ca2d90676f07976",
       "RekSai": "d32c8960fd032e39",
       "Kayn": "b84a81ee9773b8f5",
-      "Zed": "ca93141fef21a473"
+      "Zed": "ca93141fef21a473",
+      "Jhin": "226e6c11b8a992f5"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -17148,6 +17409,30 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "c6ae82cc77eb60d7"
+          }
+        }
+      },
+      "Jhin": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "226e6c11b8a992f5",
+        "observedAt": "2026-10-23T02:03:51.531Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Jhin",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+            "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "3aaa1bcaed04d760"
           }
         }
       }

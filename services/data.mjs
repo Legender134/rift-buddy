@@ -13,6 +13,9 @@ export const DD = 'https://ddragon.leagueoflegends.com';
 export const CN = 'https://game.gtimg.cn/images/lol/act/img/js';
 const hasAugmentDetails=a=>a.tooltip?.revision===1&&!!a.tooltip.description&&Number.isSafeInteger(a.tooltipParserRevision)&&a.tooltipParserRevision>=AUGMENT_TOOLTIP_PARSER_REVISION&&(a.tooltipParserRevision>AUGMENT_TOOLTIP_PARSER_REVISION||/^[a-f0-9]{64}$/.test(a.effectSourceHash||''));
 const hasCounterCompletion=a=>Number.isSafeInteger(a.tooltipParserRevision)&&a.tooltipParserRevision>AUGMENT_TOOLTIP_PARSER_REVISION||Number.isSafeInteger(a.tooltipCounterBasis?.revision)&&a.tooltipCounterBasis.revision>AUGMENT_COUNTER_BASIS_REVISION||validAugmentCounterBasis(a);
+// Repair the existing parser-5 cache hole without downgrading future parser or
+// counter metadata, or repeatedly fetching unrelated unsupported formulas.
+const needsBassFormula=a=>a.id===3078&&a.key==='TheBoomAndTheBass'&&a.tooltipParserRevision===AUGMENT_TOOLTIP_PARSER_REVISION&&validAugmentCounterBasis(a)&&a.tooltip?.unresolved?.includes('Calc_Damage');
 export async function getJSON(url, timeout = 20000) {
   let last;
   for(let attempt=0;attempt<3;attempt++) {
@@ -77,12 +80,12 @@ export async function collectSnapshot(progress = () => {}, previous = null, {rea
         progress('已核对同版本装备基础字段与公开海克斯参数');
       }catch{progress('装备基础字段或海克斯参数暂未补齐，保留原资料并等待重试');}
     }
-    const needsAugmentRepair=a=>!hasAugmentDetails(a)||!hasCounterCompletion(a);
+    const needsAugmentRepair=a=>!hasAugmentDetails(a)||!hasCounterCompletion(a)||needsBassFormula(a);
     if(previous.augments.some(needsAugmentRepair)){
       try{
         const cd=`https://raw.communitydragon.org/${previous.patch}`,[bin,strings]=await Promise.all([readJSON(`${cd}/game/maps/modespecificdata/kiwi.bin.json`,35000),readJSON(`${cd}/game/zh_cn/data/menu/en_us/lol.stringtable.json`,35000)]);
         const pending=previous.augments.filter(needsAugmentRepair),parsed=buildAugmentDescriptions(pending,bin,strings?.entries||{});
-        if(parsed.some(a=>!a.description||a.descriptionStatus==='missing'||!hasAugmentDetails(a)||!hasCounterCompletion(a)))throw Error('强化完整说明或计数来源未覆盖已有清单');
+        if(parsed.some(a=>!a.description||a.descriptionStatus==='missing'||!hasAugmentDetails(a)||!hasCounterCompletion(a)||needsBassFormula(a)))throw Error('强化完整说明或计数来源未覆盖已有清单');
         for(let i=0;i<pending.length;i++){
           const old=pending[i],next=parsed[i];if(!hasAugmentDetails(old))continue;
           if(old.descriptionStatus==='complete'&&next.descriptionStatus!=='complete'||old.tooltip.status==='complete'&&next.tooltip.status!=='complete'||(next.unresolved||[]).some(key=>!(old.unresolved||[]).includes(key))||(next.tooltip.unresolved||[]).some(key=>!(old.tooltip.unresolved||[]).includes(key)))throw Error('强化计数来源不能降低已完整解析的说明');
