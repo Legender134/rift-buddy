@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "patch": "16.21",
-  "reviewedAt": "2026-10-26",
+  "reviewedAt": "2026-10-27",
   "routes": [
     {
       "hero": "Lillia",
@@ -543,61 +543,98 @@
       "patch": "16.21",
       "augment": 3078,
       "optional": [
-        3004,
-        3116
+        1058,
+        1004
       ],
       "title": "低音疾驰穿插",
-      "summary": "技能后接普攻，利用短暂移速调整进退。",
+      "summary": "技能后接实际普攻，利用短暂移速调整进退。",
+      "coreBrief": "施法后下一次普攻加速并附魔伤，随后获得衰减移速；仍需实际攻击。",
+      "skillPriority": [
+        "Q",
+        "W"
+      ],
       "play": [
-        "Q命中维持层数，技能后穿插实际普攻，利用强化攻击后的衰减移速进退；只按技能不会获得这次攻击后的移速。",
-        "W在能贴身交战时开启，E保留追击或撤离；额外移速可通过被动提供攻击力，但不能把录像的瞬时面板当作常驻属性。"
+        "Q命中维持层数，技能后穿插实际普攻；只施法不会获得强化攻击后的移速。",
+        "W在能贴身交战时开启，E保留追击或撤离；额外移速可通过被动提供攻击力，但不是常驻属性。"
       ],
       "basicPlay": [
-        "已失去R，以Q命中维持层数、技能后实际普攻，E留作进退；不照搬大招突进与恐惧。"
+        "无R保留Q/W/E及被动，以Q命中维持层数、技能后实际普攻，E留作进退；失去R突进与恐惧。",
+        "W治疗依范围内对应伤害，不能与装备全能吸血混为一项；法力和安全攻击窗口限制续战。"
       ],
-      "caution": "强化移速持续衰减，不是常驻疾跑或技能冷却重置；不把录像中的瞬时移速、攻击力当作落地后仍会保留的属性。",
+      "caution": "强化移速持续衰减，不是技能重置；魔宗需要实际叠层，饥渴急速以实际面板为准，法力与治疗限制续战。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3161,
+        3004,
+        2517,
+        3111,
+        6333,
+        3065
+      ],
       "gear": [
         [
-          "作者六件推荐·按局势购买",
+          "原图六件",
           [
-            126697,
-            6333,
-            3004
-          ],
-          "狂妄靠参与击杀叠攻击力；死舞延后承伤，魔宗需叠泪。按局势购买。"
-        ],
-        [
-          "作者六件推荐·后续比较",
-          [
-            6694,
+            3161,
+            3004,
             2517,
-            3142
+            3111,
+            6333,
+            3065
           ],
-          "按敌方护甲、续战和进退空间选择；饥渴的急速与幽梦移速各有条件。"
+          "魔宗需叠泪；饥渴用于续战，振奋放大实际回复。原图六件排列。",
+          [
+            3078
+          ]
         ]
       ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "2517": "0c0a477cb6b266bb",
+          "3004": "60497f48c1223593",
+          "3065": "522ddd38f23d9014",
+          "3111": "b015262b2d75ee9e",
+          "3161": "52ca0d03459fc1b0",
+          "6333": "95058514bbf67ac0"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "1004": {
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false
+          },
+          "1058": {
+            "fingerprint": "5921c7b1e541526c",
+            "requiresUltimate": false
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
       "communitySource": {
-        "author": "可乐乱斗",
-        "url": "https://www.bilibili.com/video/BV16fHK6kEPi/",
-        "publishedAt": "2026-10-24T10:43:46.000Z",
-        "sourcePatch": null,
-        "observedMode": "作者当日海克斯大乱斗4.0教学，实际卡面为本版罪恶快感、鼓声暴起低音轰鸣、将他们放倒倒倒",
-        "evidenceSeconds": [
-          0,
-          10,
-          15,
-          20,
-          30,
-          35,
-          40,
-          45,
-          50,
-          60,
-          65,
-          70,
-          75
+        "url": "https://www.douyin.com/note/7700971206568135970",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T21:41:30+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗；原图标注16.21，数据日期2026-10-23",
+        "evidenceSections": [
+          "原图01：特殊玩法核心、可选强化与编号六件",
+          "原图01页眉：英雄加点优先级；常规分支与特殊配置分开"
         ],
-        "adaptation": "作者当日三强化同局展示与40秒六件推荐；项目按16.21核对触发边界并选用海克斯装备ID。未取得完整作者符文、逐级加点、鞋子时机及固定购买顺序；不声称三件强化必然出现或为热门胜率排行。"
+        "adaptation": "作者原图明确本英雄、核心强化、六件编号及技能优先级。编号仅保留图中排列，不是逐次购买、回城、首回城或替换槽位证明；特殊分支起手未知。作者页眉只支持主副技能优先，不补逐级加点；自报胜率、样本和梯度不作项目统计。原图数据日期2026-10-23与帖子实际发布时间2026-10-26分开。按当前16.21机制裁剪，仅保留合法完整强化说明的秘术冲拳、回归基本功；将他们放倒倒倒仍有真实公式未解析，未作为可选收录。"
       }
     },
     {
@@ -17444,6 +17481,424 @@
         ],
         "adaptation": "原作海斗阿伟：https://www.douyin.com/video/7700604986670479763，2026-10-25T22:00:00+08:00发布；本链接为无敌带勺次日转载。录像补丁和服务器未知，项目按16.21英雄、强化及装备独立复核。68秒明确展示娜美、索拉卡、迦娜与月石，采用此单件首件方向。完整六件、符文、加点与购买顺序未提供；未采用视频的固定叠层收益或强化轮次结论。"
       }
+    },
+    {
+      "hero": "Samira",
+      "patch": "16.21",
+      "augment": 1134,
+      "optional": [
+        3078,
+        2107
+      ],
+      "title": "亮剑贴身连招",
+      "summary": "原作亮剑方向，贴近实际目标交替攻击与技能，保留退路。",
+      "coreBrief": "取得亮剑后转为近战；属性已含射程损失调整，生命偷取不等于所有技能治疗。",
+      "play": [
+        "取得亮剑后失去远程攻击判定；用不同于上一次的攻击或技能伤害英雄提升评级，不能只重复同一动作。",
+        "Q按目标距离射击或剑斩；W处理飞行道具，E越过敌人调整位置，伤害英雄后3秒内该英雄阵亡才重置E。",
+        "R需要S评级并消耗评级；只有实际命中才能兑现Q与R的生命偷取，不承诺站桩满额治疗。"
+      ],
+      "basicPlay": [
+        "无R仍以Q、W、E与实际普攻交战，失去S评级后的R范围输出，不再等待开R。",
+        "Q按目标距离射击或剑斩；W处理飞行道具，E按击杀参与条件争取重置，不能把亮剑当作技能全能吸血。"
+      ],
+      "caution": "转近战需要承担贴身风险；不能把当前强化面板百分比再额外相乘，评级与生命偷取都受实际命中限制。",
+      "requiresUltimate": false,
+      "coreItems": [
+        126697,
+        6676,
+        3031,
+        3008,
+        3036,
+        6333
+      ],
+      "gear": [
+        [
+          "原图六件",
+          [
+            126697,
+            6676,
+            3031,
+            3008,
+            3036,
+            6333
+          ],
+          "狂妄依赖伤害过的英雄阵亡；暴食参与击杀叠加吸血，死舞延后承伤。原图六件排列。",
+          [
+            1134
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3008": "5bba5a80f75fe980",
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "6333": "95058514bbf67ac0",
+          "6676": "20a9c2a3ea1c7555",
+          "126697": "942097b9d9de1e23"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "1134": {
+            "fingerprint": "42666abfeeeb4b7d",
+            "requiresUltimate": false,
+            "coverage": "complete"
+          },
+          "2107": {
+            "fingerprint": "a4d6a5a8c3e67069",
+            "requiresUltimate": false,
+            "coverage": "complete"
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700971206568135970",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T21:41:30+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗；原图标注16.21，数据日期2026-10-23",
+        "adaptation": "原图特殊配置1—6按原序保留；页眉英雄加点优先级Q>E>W，不声称仅供特殊玩法或逐级表。发布于2026年10月26日21:41:30+08:00。六件合为同一受当前装备审查约束的组，不冒充回城购买顺序或特殊出门。当前16.21技能、核心和完整可选强化独立复核；未纳入未解可选项，不采用原图胜率、选取率和强度统计。",
+        "evidenceSections": [
+          "原图05：特殊玩法核心、可选强化与编号六件",
+          "原图05页眉：英雄加点优先级；常规分支与特殊配置分开"
+        ]
+      },
+      "skillPriority": [
+        "Q",
+        "E"
+      ]
+    },
+    {
+      "hero": "Graves",
+      "patch": "16.21",
+      "augment": 1134,
+      "optional": [
+        1004,
+        2107
+      ],
+      "title": "亮剑贴身装弹",
+      "summary": "原作亮剑方向，围绕实际弹丸命中与E补弹交战。",
+      "coreBrief": "取得亮剑后转为近战；属性已含射程损失调整，仍须处理装弹和弹丸阻挡。",
+      "play": [
+        "取得亮剑后失去远程攻击判定；靠近时仍须找不被前排单位挡住的射击角度，两发打完仍要装填。",
+        "Q可借地形提早爆炸，W限制视野；E位移并补一发子弹，弹丸实际命中才缩短E冷却。",
+        "R提供爆发与后撤位移，按实际角度收尾；攻速没有消除装弹，亮剑也不保证全部弹丸命中。"
+      ],
+      "basicPlay": [
+        "无R失去终极爆弹的爆发和后撤位移，保留Q/W/E与两发装弹循环。",
+        "以W和走位争取角度，Q借地形爆炸，E补一发并调整位置；仍需实际弹丸命中，不能把近战判定当作穿透单位。"
+      ],
+      "caution": "贴近不保证弹丸全部命中；生命偷取不是技能全能吸血，失去远程判定也没有取消枪械被动。",
+      "requiresUltimate": false,
+      "coreItems": [
+        126697,
+        6676,
+        3036,
+        3008,
+        3031,
+        6333
+      ],
+      "gear": [
+        [
+          "原图六件",
+          [
+            126697,
+            6676,
+            3036,
+            3008,
+            3031,
+            6333
+          ],
+          "狂妄依赖伤害过的英雄阵亡；暴食参与击杀叠加吸血，死舞延后承伤。原图六件排列。",
+          [
+            1134
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3008": "5bba5a80f75fe980",
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "6333": "95058514bbf67ac0",
+          "6676": "20a9c2a3ea1c7555",
+          "126697": "942097b9d9de1e23"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "1004": {
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false,
+            "coverage": "complete"
+          },
+          "1134": {
+            "fingerprint": "42666abfeeeb4b7d",
+            "requiresUltimate": false,
+            "coverage": "complete"
+          },
+          "2107": {
+            "fingerprint": "a4d6a5a8c3e67069",
+            "requiresUltimate": false,
+            "coverage": "complete"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700971206568135970",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T21:41:30+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗；原图标注16.21，数据日期2026-10-23",
+        "adaptation": "原图特殊配置1—6按原序保留；页眉英雄加点优先级Q>E>W，不声称仅供特殊玩法或逐级表。发布于2026年10月26日21:41:30+08:00。六件合为同一受当前装备审查约束的组，不冒充回城购买顺序或特殊出门。当前16.21技能、核心和完整可选强化独立复核；未纳入未解可选项，不采用原图胜率、选取率和强度统计。",
+        "evidenceSections": [
+          "原图07：特殊玩法核心、可选强化与编号六件",
+          "原图07页眉：英雄加点优先级；常规分支与特殊配置分开"
+        ]
+      },
+      "skillPriority": [
+        "Q",
+        "E"
+      ]
+    },
+    {
+      "hero": "Zaahen",
+      "patch": "16.21",
+      "augment": 3078,
+      "optional": [
+        1053,
+        1333,
+        3049
+      ],
+      "title": "鼓声技能后穿插",
+      "summary": "原作鼓声方向，技能后穿插实际普攻，以W/E调整贴身位置。",
+      "coreBrief": "施法后6秒内下一次普攻强化并提速；命中后获得2秒衰减移速，不把每段伤害都当新触发。",
+      "play": [
+        "Q强化下一次攻击并回复生命，再次施放的强化攻击可击飞；施法后穿插实际普攻承接鼓声，不按双斩段数承诺重复强化。",
+        "W戳刺后拉拽，E冲刺并以切击边缘命中；用位置调整争取下一次普攻，不为追击交空全部手段。",
+        "攻击或技能命中英雄积累果决；复活须叠满并且冷却就绪，R有施放期间减伤与命中英雄后的回复，不能当随时免死。"
+      ],
+      "basicPlay": [
+        "无R保留Q/W/E和果决机制，失去R施放期间减伤及主动伤害回复；仍需施法后实际普攻触发鼓声。",
+        "Q命中争取回复，W拉拽、E边缘命中调整位置；果决复活仍要满层且冷却就绪，不能预支复活强行追击。"
+      ],
+      "caution": "Q治疗和鼓声都要实际兑现；重施或多段伤害不自动等于多次强化普攻，复活也有满层和冷却条件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        126697,
+        6333,
+        2517,
+        3111,
+        3161,
+        3036
+      ],
+      "gear": [
+        [
+          "原图六件",
+          [
+            126697,
+            6333,
+            2517,
+            3111,
+            3161,
+            3036
+          ],
+          "狂妄与饥渴依赖伤害过的英雄阵亡；死舞延后承伤，水银应对控制。原图六件排列。",
+          [
+            3078
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "2517": "0c0a477cb6b266bb",
+          "3036": "2758e8ff995f599d",
+          "3111": "b015262b2d75ee9e",
+          "3161": "52ca0d03459fc1b0",
+          "6333": "95058514bbf67ac0",
+          "126697": "942097b9d9de1e23"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "1053": {
+            "fingerprint": "ff25ceb0210b1335",
+            "requiresUltimate": false,
+            "coverage": "complete"
+          },
+          "1333": {
+            "fingerprint": "0d4f5bbd6cf88d34",
+            "requiresUltimate": false,
+            "coverage": "complete"
+          },
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false,
+            "coverage": "complete"
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700971206568135970",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T21:41:30+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗；原图标注16.21，数据日期2026-10-23",
+        "adaptation": "原图特殊配置1—6按原序保留；页眉英雄加点优先级Q>E>W，不声称仅供特殊玩法或逐级表。发布于2026年10月26日21:41:30+08:00。六件合为同一受当前装备审查约束的组，不冒充回城购买顺序或特殊出门。当前16.21技能、核心和完整可选强化独立复核；未纳入未解可选项，不采用原图胜率、选取率和强度统计。",
+        "evidenceSections": [
+          "原图06：特殊玩法核心、可选强化与编号六件",
+          "原图06页眉：英雄加点优先级；常规分支与特殊配置分开"
+        ]
+      },
+      "skillPriority": [
+        "Q",
+        "E"
+      ]
+    },
+    {
+      "hero": "Kayle",
+      "patch": "16.21",
+      "augment": 1029,
+      "optional": [
+        2127,
+        1054
+      ],
+      "excludedAugments": [
+        1004
+      ],
+      "title": "虚幻武器普攻穿插",
+      "summary": "以实际普攻与Q、E命中穿插，保留每目标攻击特效冷却边界。",
+      "coreBrief": "技能可施加攻击特效，每个目标有1秒冷却；不等于所有波纹无限复制。",
+      "skillPriority": [
+        "E",
+        "W"
+      ],
+      "play": [
+        "Q命中减双抗后穿插普攻，E衔接收尾；虚幻武器对每个目标有1秒冷却，不重复计算E本身已有的攻击特效。",
+        "按当前进阶状态保持安全距离，W回复并加速，R保护被集火的目标。"
+      ],
+      "basicPlay": [
+        "已选回归基本功时撤回本候选；被动进阶与R技能点的互动尚无足够证据，不沿用有R的成长、射程或焰浪描述。"
+      ],
+      "caution": "回归基本功暂不纳入此配置：进阶与封印R的互动待核；这是项目保守取舍，并非官方禁搭。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3115,
+        2510,
+        3089,
+        3006,
+        4645,
+        3135
+      ],
+      "gear": [
+        [
+          "原图六件",
+          [
+            3115,
+            2510,
+            3089,
+            3006,
+            4645,
+            3135
+          ],
+          "纳什与黄昏配合实际攻击；法穿应对魔抗。虚幻武器不保证咒刃或攻击特效递归触发。原图六件排列。",
+          [
+            1029
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "2510": "d2ea8ef47163bb55",
+          "3006": "0456daa0af0073e0",
+          "3089": "27fe94d33bb7a1af",
+          "3115": "156165de57c6fce7",
+          "3135": "40317bddc5d92b12",
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "1004": {
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false
+          },
+          "1029": {
+            "fingerprint": "4048d5ba93d594be",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1054": {
+            "fingerprint": "bfecefcc585d3a08",
+            "requiresUltimate": false
+          },
+          "2127": {
+            "fingerprint": "109fba3fe4d68196",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700971206568135970",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T21:41:30+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗；原图标注16.21，数据日期2026-10-23",
+        "evidenceSections": [
+          "原图10：特殊玩法核心、可选强化与编号六件",
+          "原图10页眉：英雄加点优先级；常规分支与特殊配置分开"
+        ],
+        "adaptation": "作者原图明确本英雄、核心强化、六件编号及技能优先级。编号仅保留图中排列，不是逐次购买、回城、首回城或替换槽位证明；特殊分支起手未知。作者页眉只支持主副技能优先，不补逐级加点；自报胜率、样本和梯度不作项目统计。原图数据日期2026-10-23与帖子实际发布时间2026-10-26分开。按当前16.21机制裁剪，只采用普攻/QE附伤骨架；踢踏舞转化公式未完整，不纳可选。回归基本功为项目保守排除，不是作者或官方禁搭；普通有R主线不因该未知被直接否定。"
+      }
     }
   ],
   "championReview": {
@@ -17570,7 +18025,9 @@
       "Ornn": "aec2b0070700de64",
       "Sion": "0852586a5d53c2bc",
       "Nunu": "8f44e57080d4e3bf",
-      "Hwei": "357b22785623158b"
+      "Hwei": "357b22785623158b",
+      "Zaahen": "747e69d1f5137702",
+      "Kayle": "24bd683389a6d92b"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -20474,6 +20931,54 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "5220abe71b75d212"
+          }
+        }
+      },
+      "Zaahen": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "747e69d1f5137702",
+        "observedAt": "2026-10-23T02:03:51.642Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Zaahen",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/zaahen/zaahen.bin.json",
+            "sha256": "3137314e1a6fb2be4de32e485c2bcba1a98188bd49795be4944ebf3e6b90eb83"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "643bc39abd471010"
+          }
+        }
+      },
+      "Kayle": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "24bd683389a6d92b",
+        "observedAt": "2026-10-23T02:03:51.533Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Kayle",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/kayle/kayle.bin.json",
+            "sha256": "c1e9422851c8d29227427f204b92d005a842e9c1685ee491a9193c64bc82eef3"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "3fa2585bed59105f"
           }
         }
       }
