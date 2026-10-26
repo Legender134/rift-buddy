@@ -18,6 +18,14 @@ export function hexEconomyView(equipment,image){
  return `<div class="hex-micro-economy">${rows('ally')}${rows('enemy')}</div>`;
 }
 
+export function hexMicroLineView(value,image){
+ if(value.kind==='economy')return `<div class="hex-micro-line hex-economy-line">${['ally','enemy'].map(side=>`<div class="${side}">${hexEconomyCells(value.equipment,side).map(p=>p?`<span data-micro-hint="${e(p.name+' · 公开装备价值')}">${image('champion',p.id,p.name)}<small>${p.value??'—'}</small></span>`:'<span class="hex-micro-empty"></span>').join('')}</div>`).join('')}</div>`;
+ const route=value.routes?.[0];
+ if(!route)return `<div class="hex-micro-line hex-micro-pending" data-micro-pending="true">${image('champion',value.hero?.id,value.hero?.name)}<span>—</span></div>`;
+ const icons=(rows,kind)=>rows.slice(0,3).map(entry=>`<button type="button" class="hex-micro-icon${entry.core?' is-core':''}" data-micro-kind="${kind}" data-micro-id="${e(entry.id)}" aria-label="${e(entry.name)}">${image(kind,entry.id,entry.name)}</button>`).join('');
+ return `<div class="hex-micro-line" data-micro-route="${e(route.id)}"><div class="hex-micro-augments">${icons(route.augments,'augment')}</div><div class="hex-micro-items">${icons(route.items,'item')}</div></div>`;
+}
+
 // Display only: each route must be independently sourced and validated by the
 // provider. Separate item/augment lists are not evidence of a paired build.
 export function hexMicroRoutesView(routes,image,{expanded=false}={}){

@@ -6,5 +6,6 @@ contextBridge.exposeInMainWorld('hexMicro',Object.freeze({
  regions:value=>ipcRenderer.invoke('hex-micro-regions',kind,value),
  hover:value=>ipcRenderer.invoke('hex-micro-hover',kind,value),
  onUpdate:handler=>{const listener=(_,value)=>handler(value);ipcRenderer.on('hex-micro-update',listener);return()=>ipcRenderer.removeListener('hex-micro-update',listener);},
+ onMeasure:handler=>{const listener=()=>handler();ipcRenderer.on('hex-micro-measure',listener);return()=>ipcRenderer.removeListener('hex-micro-measure',listener);},
  onPointer:handler=>{const listener=(_,value)=>handler(value);ipcRenderer.on('hex-micro-pointer',listener);return()=>ipcRenderer.removeListener('hex-micro-pointer',listener);},
 }));
