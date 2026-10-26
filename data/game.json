@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "contentRevision": 19,
+  "contentRevision": 20,
   "mechanicSourceRevision": 1,
   "itemTooltipRevision": 1,
   "version": "16.21.1",
@@ -223462,10 +223462,9 @@
       "sourceKey": "Kiwi_Augment_EnchantingButterflies_Description",
       "tooltip": {
         "revision": 1,
-        "description": "为友方英雄提供治疗或护盾时，会在你周围聚集蝴蝶。\n收集7只蝴蝶后，对一个敌方英雄造成伤害时将它们全部发射出去，以造成〔动态数值〕魔法伤害，后续命中造成75%伤害。\n\n已造成的伤害：〔动态数值〕",
+        "description": "为友方英雄提供治疗或护盾时，会在你周围聚集蝴蝶。\n收集7只蝴蝶后，对一个敌方英雄造成伤害时将它们全部发射出去，以造成50–100（随等级） + 1%额外生命值 + 3×治疗和护盾强度百分点 + 10%法术强度魔法伤害，后续命中造成75%伤害。\n\n已造成的伤害：〔动态数值〕",
         "status": "partial",
         "unresolved": [
-          "SingleFireDamage",
           "f1"
         ],
         "sourceKey": "Kiwi_Augment_EnchantingButterflies_Tooltip"
@@ -225843,12 +225842,9 @@
       "sourceKey": "Kiwi_Augment_TakeemDownDownDown_Description",
       "tooltip": {
         "revision": 1,
-        "description": "普攻和技能会对敌方英雄施加一层持续5秒的效果，并造成〔动态数值〕魔法伤害+〔动态数值〕x层数的魔法伤害。\n\n对一个拥有5层效果的敌人造成伤害时，会消耗这些层数，造成〔动态数值〕已损失生命值的魔法伤害，并且你回复近战 67% / 远程 33.5%造成伤害的生命值。\n\n触发次数：〔动态数值〕\n已造成的伤害：〔动态数值〕\n治疗效果：〔动态数值〕",
+        "description": "普攻和技能会对敌方英雄施加一层持续5秒的效果，并造成（近战 5–30（随等级） + 35%额外攻击力 + 15%法术强度 / 远程 2.5–15（随等级） + 17.5%额外攻击力 + 7.5%法术强度）魔法伤害+（近战 1–6（随等级） + 7%额外攻击力 + 3%法术强度 / 远程 0.5–3（随等级） + 3.5%额外攻击力 + 1.5%法术强度）x层数的魔法伤害。\n\n对一个拥有5层效果的敌人造成伤害时，会消耗这些层数，造成近战 （15 + 5×额外攻速比例（100%记1） + 0.15×技能急速）% / 远程 （7.5 + 2.5×额外攻速比例（100%记1） + 0.075×技能急速）%已损失生命值的魔法伤害，并且你回复近战 67% / 远程 33.5%造成伤害的生命值。\n\n触发次数：〔动态数值〕\n已造成的伤害：〔动态数值〕\n治疗效果：〔动态数值〕",
         "status": "partial",
         "unresolved": [
-          "Calc_Damage_Hit",
-          "Calc_Damage_Per_Previous_Stack",
-          "Calc_Damage_Consume",
           "f1",
           "f2",
           "f3"

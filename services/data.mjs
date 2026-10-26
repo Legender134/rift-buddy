@@ -19,7 +19,18 @@ const needsBassFormula=a=>a.id===3078&&a.key==='TheBoomAndTheBass'&&a.tooltipPar
 // Revision 19 prevents same-parser revision-18 caches from replacing the
 // completed static bass formula bundled with a newer installation.
 const hasBassFormula=a=>a.id!==3078||a.key!=='TheBoomAndTheBass'||!a.tooltip?.unresolved?.includes('Calc_Damage');
-const augmentContentRevision=augments=>augments.every(hasCounterCompletion)?augments.every(hasBassFormula)?19:18:17;
+const scopedFormulaTargets=[
+ {id:3116,key:'TakeemDownDownDown',sourceKey:'Kiwi_Augment_TakeemDownDownDown_Description',tooltipKey:'Kiwi_Augment_TakeemDownDownDown_Tooltip',counters:['f1','f2','f3'],labels:['额外攻击力','法术强度','额外攻速比例','技能急速','近战','远程']},
+ {id:3163,key:'EnchantingButterflies',sourceKey:'Kiwi_Augment_EnchantingButterflies_Description',tooltipKey:'Kiwi_Augment_EnchantingButterflies_Tooltip',counters:['f1'],labels:['额外生命值','治疗和护盾强度百分点','法术强度']},
+];
+const hasScopedFormula=(a,target)=>{
+ const detail=a?.tooltip;
+ return !!a&&a.id===target.id&&a.key===target.key&&hasAugmentDetails(a)&&hasCounterCompletion(a)&&/^[a-f0-9]{64}$/.test(a.effectSourceHash||'')&&a.sourceKey===target.sourceKey&&a.descriptionStatus==='complete'&&Array.isArray(a.unresolved)&&!a.unresolved.length&&typeof a.description==='string'&&!!a.description&&!a.description.includes('〔动态数值〕')&&typeof detail.description==='string'&&detail.sourceKey===target.tooltipKey&&['complete','partial'].includes(detail.status)&&Array.isArray(detail.unresolved)&&new Set(detail.unresolved).size===detail.unresolved.length&&detail.unresolved.every(k=>target.counters.includes(k))&&(detail.status==='complete'?!detail.unresolved.length&&!detail.description.includes('〔动态数值〕'):detail.unresolved.length>0&&detail.description.includes('〔动态数值〕'))&&!/〔数值未解析〕|@|\{\{|\}\}/.test(a.description+detail.description)&&target.labels.every(label=>detail.description.includes(label));
+};
+const hasScopedFormulas=augments=>scopedFormulaTargets.every(t=>{const rows=augments.filter(a=>a.id===t.id||a.key===t.key);return rows.length===1&&hasScopedFormula(rows[0],t);});
+// Do not reinterpret or replace metadata written by a newer parser/counter.
+const needsScopedFormula=a=>a.tooltipParserRevision===AUGMENT_TOOLTIP_PARSER_REVISION&&!(Number.isSafeInteger(a.tooltipCounterBasis?.revision)&&a.tooltipCounterBasis.revision>AUGMENT_COUNTER_BASIS_REVISION)&&scopedFormulaTargets.some(t=>a.id===t.id&&a.key===t.key&&!hasScopedFormula(a,t));
+const augmentContentRevision=augments=>augments.every(hasCounterCompletion)?augments.every(hasBassFormula)?hasScopedFormulas(augments)?20:19:18:17;
 export async function getJSON(url, timeout = 20000) {
   let last;
   for(let attempt=0;attempt<3;attempt++) {
@@ -84,12 +95,12 @@ export async function collectSnapshot(progress = () => {}, previous = null, {rea
         progress('已核对同版本装备基础字段与公开海克斯参数');
       }catch{progress('装备基础字段或海克斯参数暂未补齐，保留原资料并等待重试');}
     }
-    const needsAugmentRepair=a=>!hasAugmentDetails(a)||!hasCounterCompletion(a)||needsBassFormula(a);
+    const needsAugmentRepair=a=>!hasAugmentDetails(a)||!hasCounterCompletion(a)||needsBassFormula(a)||needsScopedFormula(a);
     if(previous.augments.some(needsAugmentRepair)){
       try{
         const cd=`https://raw.communitydragon.org/${previous.patch}`,[bin,strings]=await Promise.all([readJSON(`${cd}/game/maps/modespecificdata/kiwi.bin.json`,35000),readJSON(`${cd}/game/zh_cn/data/menu/en_us/lol.stringtable.json`,35000)]);
         const pending=previous.augments.filter(needsAugmentRepair),parsed=buildAugmentDescriptions(pending,bin,strings?.entries||{});
-        if(parsed.some(a=>!a.description||a.descriptionStatus==='missing'||!hasAugmentDetails(a)||!hasCounterCompletion(a)||needsBassFormula(a)))throw Error('强化完整说明或计数来源未覆盖已有清单');
+        if(parsed.some(a=>!a.description||a.descriptionStatus==='missing'||!hasAugmentDetails(a)||!hasCounterCompletion(a)||needsBassFormula(a)||needsScopedFormula(a)))throw Error('强化完整说明或计数来源未覆盖已有清单');
         for(let i=0;i<pending.length;i++){
           const old=pending[i],next=parsed[i];if(!hasAugmentDetails(old))continue;
           if(old.descriptionStatus==='complete'&&next.descriptionStatus!=='complete'||old.tooltip.status==='complete'&&next.tooltip.status!=='complete'||(next.unresolved||[]).some(key=>!(old.unresolved||[]).includes(key))||(next.tooltip.unresolved||[]).some(key=>!(old.tooltip.unresolved||[]).includes(key)))throw Error('强化计数来源不能降低已完整解析的说明');
@@ -104,7 +115,7 @@ export async function collectSnapshot(progress = () => {}, previous = null, {rea
     // Parser completion lives on each augment, so it cannot skip an unfinished
     // revision-8 item migration or force the detail sources to be read again.
     if(previous.contentRevision>=9&&previous.augments.every(hasAugmentDetails))previous={...previous,contentRevision:Math.max(completeItemModes(previous.items,previous.patch)?completeItemDescriptions(previous.items,previous.patch)?augmentContentRevision(previous.augments):16:15,previous.contentRevision)};
-    progress(previous.augments.every(a=>hasAugmentDetails(a)&&hasCounterCompletion(a)&&hasBassFormula(a))?'当前已是最新资料版本':'部分强化资料待补齐，保留既有可用内容');
+    progress(previous.augments.every(a=>hasAugmentDetails(a)&&hasCounterCompletion(a)&&hasBassFormula(a))&&hasScopedFormulas(previous.augments)?'当前已是最新资料版本':'部分强化资料待补齐，保留既有可用内容');
     return {...previous,checkedAt:new Date(clock()).toISOString()};
   }
   const base = `${DD}/cdn/${version}/data/zh_CN`;
