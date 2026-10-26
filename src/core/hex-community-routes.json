@@ -4279,6 +4279,255 @@
           }
         }
       }
+    },
+    {
+      "hero": "Kaisa",
+      "patch": "16.21",
+      "augment": 1054,
+      "optional": [
+        2009,
+        1129
+      ],
+      "requiresUltimate": false,
+      "title": "物法皆修短战",
+      "summary": "实际攻击与技能伤害交替续层，保留E的退路。",
+      "coreBrief": "攻击叠6—18法强；技能伤敌叠3—9攻击力（随等级），增益5秒可刷新。",
+      "coreItems": [
+        3087
+      ],
+      "play": [
+        "实际攻击叠法强，Q/W伤害敌人叠攻击力；在安全距离维持5秒续层窗口，不把层数当作脱战永久属性。",
+        "Q会向附近敌人分配飞弹，孤立目标与兵堆效果不同；E用于调整输出位置，只有进化E才有隐身。"
+      ],
+      "basicPlay": [
+        "R不可用时，用实际普攻与Q/W伤害续层，保留E调整位置；不能靠大招位移或护盾进退。"
+      ],
+      "caution": "临时叠层与条件攻速不保证达成进化。作者未给本分支专用加点、符文、鞋子时机或替换格；没有照搬通用页加点。",
+      "gear": [
+        [
+          "作者六件骨架",
+          [
+            3087,
+            3085,
+            3302,
+            4645,
+            3089,
+            3146
+          ],
+          "保留原图六件；编号不是已证实购买顺序。未指定替换格的额外备选没有追加进六格。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海斗小助手",
+        "url": "https://www.douyin.com/note/7700624820412747062",
+        "publishedAt": "2026-10-25T23:17:26+08:00",
+        "sourcePatch": null,
+        "observedMode": "原帖标注海克斯大乱斗4.0；按当前16.21机制改编",
+        "evidenceSections": [
+          "原图05：物法双修核心与三个备选",
+          "原图05：六件编号骨架与未编号额外备选",
+          "原图09：加点位于通用常规玩法页"
+        ],
+        "adaptation": "原帖没有明确补丁号，按当前16.21英雄、装备和强化源独立改编。只采用图05物法皆修骨架及狂热者、神射法师两个可核备选；未把作者疑似删除标签当官方禁用，也未纳入活力焕发未解析机制。物法层数有5秒续层窗口，不是永久法强。编号仅列表，不补购买顺序、鞋子与替换格；通用W>Q>E未作为此分支专属加点。未推临时属性一定完成进化、技能变普攻、四轮资格或图示胜率。电刃核心标记为项目骨架，不是作者额外分级。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3085": "33323dc6a3e8462a",
+          "3087": "cb7b578ba1f607b4",
+          "3089": "27fe94d33bb7a1af",
+          "3146": "646d5d7859215e01",
+          "3302": "76cb189ce321232f",
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1054": {
+            "fingerprint": "bfecefcc585d3a08",
+            "requiresUltimate": false
+          },
+          "1129": {
+            "fingerprint": "868af2846edf98a5",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2009": {
+            "fingerprint": "a8c4a2a764b25b07",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Kaisa",
+      "patch": "16.21",
+      "augment": 1058,
+      "optional": [
+        1004,
+        1048
+      ],
+      "requiresUltimate": false,
+      "title": "攻击特效减冷却",
+      "summary": "贴住可攻击目标，按实际攻击特效缩短技能冷却。",
+      "coreBrief": "适用的攻击特效使各技能冷却缩短1.25秒；不保证单次攻击固定总返还。",
+      "coreItems": [
+        3085,
+        2510
+      ],
+      "play": [
+        "先确认能安全攻击目标，再用实际攻击特效缩短Q/W/E冷却；飓风分裂箭需要附近额外目标，不按孤立目标固定三次计算。",
+        "黄昏与黎明仍需施法后打出下一次咒刃攻击；层数、间隔和命中条件未满足时不承诺额外返还或无限Q。"
+      ],
+      "basicPlay": [
+        "回归基本功封R后，只用Q/W/E与普攻维持输出；不能依靠R位移与护盾。",
+        "仍需实际命中目标和满足装备条件；不能隔空攻击刷新技能。"
+      ],
+      "caution": "不采作者固定3.75/5秒返还、无限Q或单W引爆电浆的说法。通用加点含R节点，未复制到封R分支；专属加点与购买顺序未知。",
+      "gear": [
+        [
+          "作者六件骨架",
+          [
+            3085,
+            2510,
+            3124,
+            3004,
+            3302,
+            3115
+          ],
+          "原图编号仅装备列表，不代表购买顺序。鬼索需叠满攻速层后才有每第三次攻击的额外攻击特效，不默认所有装备倍率相乘。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "text",
+        "author": "海斗小助手",
+        "url": "https://www.douyin.com/note/7700624820412747062",
+        "publishedAt": "2026-10-25T23:17:26+08:00",
+        "sourcePatch": null,
+        "observedMode": "原帖标注海克斯大乱斗4.0；按当前16.21机制改编",
+        "evidenceSections": [
+          "原图06：秘术冲拳与飓风、黄昏与黎明骨架",
+          "原图06：回归基本功、珠光护手备选",
+          "原图09—10：通用加点与作者固定返还主张"
+        ],
+        "adaptation": "原帖只标4.0，当前16.21独立复核仅支持适用攻击特效减冷却1.25秒及装备各自条件。保留图06六件骨架，不采用标题无限Q、一次攻击固定减5秒、单W引爆电浆或Q七层的跨机制推断；没有脚本包数证明。编号不当购买顺序，缺组件、首回城与鞋子时机不补。回归基本功封R，通用页含R节点的18级顺序不作为这条分支加点；基础打法为项目改编。强化备选不保证同局或轮次资格，无统计方法的百分比不采。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2510": "d2ea8ef47163bb55",
+          "3004": "60497f48c1223593",
+          "3085": "33323dc6a3e8462a",
+          "3115": "156165de57c6fce7",
+          "3124": "fd05601d4463ba03",
+          "3302": "76cb189ce321232f"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1004": {
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false
+          },
+          "1048": {
+            "fingerprint": "6ce3b8f9d6a38828",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1058": {
+            "fingerprint": "5921c7b1e541526c",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Belveth",
+      "patch": "16.21",
+      "augment": 3049,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "前期六甲施法普攻",
+      "summary": "技能接近后穿插普攻，以前期护甲组件换取装甲冲击收益。",
+      "coreBrief": "施法后下次普攻触发范围物理伤害：250%额外护甲＋50—125（随等级）。",
+      "coreItems": [
+        1031
+      ],
+      "play": [
+        "利用可用方向的Q接近后穿插普攻；W命中英雄仅刷新对应方向Q，不是所有方向都能再用。",
+        "E的一次引导内多次攻击不等于多次施法，不逐段承诺装甲触发；R只在有可消耗虚空珊瑚时考虑。"
+      ],
+      "basicPlay": [
+        "R不可用时，仍用Q方向位移、W命中与E引导配合普攻；不能靠主动消耗珊瑚变身。"
+      ],
+      "caution": "六锁子甲只是作者前期方案，不是最终成装；魔法伤害压力大需重新取舍。后期出装、加点、可选强化未知，不承诺每次E攻击触发或固定伤害。",
+      "gear": [
+        [
+          "作者前期六锁子甲",
+          [
+            1031,
+            1031,
+            1031,
+            1031,
+            1031,
+            1031
+          ],
+          "26秒字幕明确建议六锁子甲；库存第六格图标未能独立确认，不作为本人已持有六件的证明。这里只保留作者前期组件方案，成装、买序与出售时机未知。"
+        ]
+      ],
+      "communitySource": {
+        "medium": "video",
+        "author": "晚风乱斗",
+        "url": "https://www.bilibili.com/video/BV1VQnh6hEF4/",
+        "publishedAt": "2026-10-24T03:00:00.000Z",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗强化HUD与卑尔维斯素材，录像补丁与服务器未标注",
+        "evidenceSeconds": [
+          2,
+          14,
+          20,
+          26,
+          36,
+          44
+        ],
+        "adaptation": "作者用卑尔维斯素材讲装甲冲击，26秒明确建议六锁子甲；第六格库存小图未能独立确认，不声称本人已持有六件，也未展示选卡过程或完整成装。按当前16.21英雄与强化、装备源独立改编，只保留这一前期组件方案和施法接普攻条件，不把作者无脑拿推广成所有战刺通用。未推E逐段触发、无限循环、600固定落地伤害或R无珊瑚可施放。后段剪辑等级与库存变化不拼作购买路径；无作者专用加点、备选强化或魔法威胁分支则不补造。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "1031": "7385d46db45cb33a"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -4333,7 +4582,8 @@
       "Samira": "fb97a340c89c0ba1",
       "Rumble": "8a349d0b8197b1d4",
       "Aurora": "c92013de35c40185",
-      "Senna": "5e547c9cf10f2a05"
+      "Senna": "5e547c9cf10f2a05",
+      "Belveth": "0a1b79cfb9f31b5e"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -5509,6 +5759,30 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "58582c22f3d6346b"
+          }
+        }
+      },
+      "Belveth": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "0a1b79cfb9f31b5e",
+        "observedAt": "2026-10-23T02:03:51.453Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Belveth",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/belveth/belveth.bin.json",
+            "sha256": "a9dd6c8d6e94e2b0ff1f97576fba4c833792d70c9d19ecc36a6e0a6b9b1108be"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "0e180db7dbc7f653"
           }
         }
       }
