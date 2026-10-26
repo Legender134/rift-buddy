@@ -8,7 +8,10 @@ import {COMMUNITY_MAX_PACKED,verifyCommunityEnvelope,decodeCommunitySnapshot,val
 import {BUNDLED_CATALOG} from '../src/core/catalog.mjs';
 import {compareVersions} from '../src/core/app-update.mjs';
 
-const MAX_CACHE=1_500_000,MAX_MANIFEST=16_384;
+const MAX_MANIFEST=16_384;
+// Disk records contain the compressed asset encoded as base64, its bounded
+// envelope, and a small amount of cache metadata.
+const MAX_CACHE=Math.ceil(COMMUNITY_MAX_PACKED/3)*4+MAX_MANIFEST+4096;
 const compare=(a,b)=>{const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<4;i++)if(x[i]!==y[i])return Math.sign(x[i]-y[i]);return 0;};
 const follows=(next,prior)=>!prior||next.sequence>=prior.sequence&&compare(next.version,prior.version)>=0&&Date.parse(next.publishedAt)>=Date.parse(prior.publishedAt)&&(next.sequence!==prior.sequence||JSON.stringify(next)===JSON.stringify(prior));
 

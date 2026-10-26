@@ -65,9 +65,14 @@ const routes=[
 
 export function hexCommunitySourceURLs(data){
  const community=data.communityHexRoutes||communityRoutes;
- return [...new Set([...new Set(community.routes.map(r=>r.hero))].flatMap(hero=>hexPlayerRoutes({data,hero}).flatMap(r=>communitySourceMedium(r.communitySource)?[r.communitySource.url]:[])))];
+ // Group once for this snapshot instead of rescanning the full library for
+ // every champion. Keep no cross-snapshot cache that could retain old reviews.
+ const byHero=new Map();
+ for(const route of community.routes){if(!byHero.has(route.hero))byHero.set(route.hero,[]);byHero.get(route.hero).push(route);}
+ return [...new Set([...byHero].flatMap(([hero,candidates])=>playerRoutes({data,hero},candidates).flatMap(r=>communitySourceMedium(r.communitySource)?[r.communitySource.url]:[])))];
 }
-export function hexPlayerRoutes({data,hero,owned=[],options=[]}){
+export function hexPlayerRoutes(params){return playerRoutes(params);}
+function playerRoutes({data,hero,owned=[],options=[]},communityCandidates){
  if(!isCurrentHexData(data))return [];
  const champion=data.champions.find(c=>c.id===hero);
  const itemReview=currentHexReview(data.patch);
@@ -77,14 +82,14 @@ export function hexPlayerRoutes({data,hero,owned=[],options=[]}){
  const communityReviewed=community.patch===data.patch&&mechanicReview(champion,data.patch,community.championReview)==='current';
  if(!baseReviewed&&!communityReviewed)return [];
  const noUltimate=owned.includes(1004)&&reviewedHexMechanic(data.augments.find(a=>a.id===1004),data.patch);
- const authored=(baseReviewed?routes:[]).concat(communityReviewed?community.routes:[]);
- return authored.filter(route=>route.hero===hero&&(!route.patch||route.patch===data.patch)).flatMap(route=>{
+ const authored=[...(baseReviewed?routes.filter(r=>r.hero===hero).map(route=>({route,fromCommunity:false})):[]),...(communityReviewed?(communityCandidates||community.routes.filter(r=>r.hero===hero)).map(route=>({route,fromCommunity:true})):[])];
+ return authored.filter(({route})=>!route.patch||route.patch===data.patch).flatMap(({route,fromCommunity})=>{
   if(itemReview.communityPolicy==='current-source-only'&&route.community&&!route.communitySource)return [];
   if(route.requiresUltimate&&noUltimate)return [];
   if(!validCommunitySkillPriority(route))return [];
-  const scopedItems=community.routes.includes(route)&&route.itemReview!==undefined;
+  const scopedItems=fromCommunity&&route.itemReview!==undefined;
   if(scopedItems&&!validCommunityItemReview(route.itemReview,route,data.patch,community.reviewedAt))return [];
-  const scopedEffects=community.routes.includes(route)&&route.augmentReview!==undefined;
+  const scopedEffects=fromCommunity&&route.augmentReview!==undefined;
   if(!validCommunityExclusions(route)||route.excludedAugments!==undefined&&!scopedEffects)return [];
   if(route.coreBrief!==undefined&&(!scopedEffects||!validCommunityCoreBrief(route)))return [];
   if(scopedEffects&&!validCommunityAugmentReview(route.augmentReview,route,data.patch,community.reviewedAt))return [];
