@@ -57,7 +57,9 @@ module.exports=function createHexMicroWindows({root,getState,setState,getPayload
   if(['line','fold'].includes(action)){
    if(!e.win?.isVisible()||!p?.active||input?.context!==p.context||input?.view!==p.view)return false;
    hideTooltip();if(action==='fold'){e.peek.fold();return true;}
-   if(e.timer)await remember(kind);e.layout=e.layout==='line'?'full':'line';publish();return true;
+   const window=e.win,epoch=placementEpoch;if(e.timer)await remember(kind);
+   if(e.win!==window||window.isDestroyed()||epoch!==placementEpoch||resetting||suspended||!active()||!enabled(kind)||!e.requested||!window.isVisible()||e.payload?.active!==true||input.context!==e.payload.context||input.view!==e.payload.view)return false;
+   e.layout=e.layout==='line'?'full':'line';publish();return true;
   }
   if(['expand','pin'].includes(action)){
    if(kind!=='routes'||e.layout!=='full'||!e.win.isVisible()||!p?.active||input?.context!==p.context||input?.view!==p.view)return false;
