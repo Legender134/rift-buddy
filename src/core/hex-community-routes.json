@@ -6084,6 +6084,978 @@
           }
         }
       }
+    },
+    {
+      "hero": "Renata",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "用E命中友方英雄提供护盾，以实际额外双抗提高奶盾强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "调整E飞弹路径，覆盖需要保护的友方英雄。",
+        "W保命效果须满足自身条件，Q用来处理接近威胁。"
+      ],
+      "basicPlay": [
+        "调整E飞弹路径，覆盖需要保护的友方英雄。",
+        "W保命效果须满足自身条件，Q用来处理接近威胁。"
+      ],
+      "caution": "W延缓死亡不等于无条件救活。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Ivern",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "以E保护友方英雄，按实际额外双抗提高护盾强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "E优先交给正在承伤的友方英雄。",
+        "用Q限制威胁；E是否刷新护盾按爆炸命中条件判断。"
+      ],
+      "basicPlay": [
+        "E优先交给正在承伤的友方英雄。",
+        "用Q限制威胁；E是否刷新护盾按爆炸命中条件判断。"
+      ],
+      "caution": "给小菊的盾不等于给友方英雄的盾，不能保证每次E都刷新。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Senna",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "利用Q光束治疗友方英雄，以额外双抗提高治疗强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "调整Q路径，兼顾需要治疗的友方英雄和安全距离。",
+        "有安全攻击窗口时再普攻缩短Q冷却，用W限制接近威胁。"
+      ],
+      "basicPlay": [
+        "调整Q路径，兼顾需要治疗的友方英雄和安全距离。",
+        "有安全攻击窗口时再普攻缩短Q冷却，用W限制接近威胁。"
+      ],
+      "caution": "保留治疗蓝量和安全攻击距离，不按无限Q循环计算。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Janna",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "以E保护友方英雄，按实际额外双抗提高护盾强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "E交给即将承伤的友方英雄，在护盾存在时保护输出窗口。",
+        "用Q或W限制接近威胁，保持保护距离。"
+      ],
+      "basicPlay": [
+        "E交给即将承伤的友方英雄，在护盾存在时保护输出窗口。",
+        "用Q或W限制接近威胁，保持保护距离。"
+      ],
+      "caution": "护盾有持续时间，不为叠双抗增益主动吃集火。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Nami",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "用W实际治疗友方英雄，以额外双抗提高治疗强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "W根据友方英雄血量和可弹跳目标选择起点。",
+        "Q处理接近威胁，E按队友输出窗口施放。"
+      ],
+      "basicPlay": [
+        "W根据友方英雄血量和可弹跳目标选择起点。",
+        "Q处理接近威胁，E按队友输出窗口施放。"
+      ],
+      "caution": "W弹跳需要合适的友敌目标，不能把E增伤当治疗。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Sona",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "用W治疗与光环护盾保护队友，以额外双抗提高奶盾强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "W治疗受伤的友方英雄，保持光环能覆盖需要保护的人。",
+        "按实际冷却与蓝量切换基础技能，别为光环走入危险。"
+      ],
+      "basicPlay": [
+        "W治疗受伤的友方英雄，保持光环能覆盖需要保护的人。",
+        "按实际冷却与蓝量切换基础技能，别为光环走入危险。"
+      ],
+      "caution": "Q与E光环不替代W治疗护盾，不能承诺无间隔施法。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Yuumi",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "附身时用E保护友方英雄，按实际额外双抗提高护盾强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "在合适的友方英雄身上附身后，用E应对承伤窗口。",
+        "Q按安全角度限制威胁，保留E蓝量并判断附身目标。"
+      ],
+      "basicPlay": [
+        "在合适的友方英雄身上附身后，用E应对承伤窗口。",
+        "Q按安全角度限制威胁，保留E蓝量并判断附身目标。"
+      ],
+      "caution": "未附身时E护盾作用于自己，不能继续算作附身队友的护盾。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Milio",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "以W治疗、E护盾保护队友，按实际额外双抗提高奶盾强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "让W炉火跟随需要保护的友方英雄，并覆盖其站位。",
+        "E按实际充能保护承伤目标，用Q处理接近威胁。"
+      ],
+      "basicPlay": [
+        "让W炉火跟随需要保护的友方英雄，并覆盖其站位。",
+        "E按实际充能保护承伤目标，用Q处理接近威胁。"
+      ],
+      "caution": "W必须实际覆盖目标，E充能有限，不承诺每次伤害都有盾。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Karma",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "以基础E保护友方英雄，按实际额外双抗提高护盾强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "E交给即将承伤的友方英雄，利用移速调整站位。",
+        "用Q减速或W限制威胁，保持灵链和保护距离。"
+      ],
+      "basicPlay": [
+        "E交给即将承伤的友方英雄，利用移速调整站位。",
+        "用Q减速或W限制威胁，保持灵链和保护距离。"
+      ],
+      "caution": "这里以基础E为主，不把梵咒强化盾当常驻效果。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Seraphine",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "用W保护附近友方英雄，按实际额外双抗提高奶盾强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "W在能覆盖需要保护的友方英雄时施放。",
+        "已有护盾时才按W条件计算延迟治疗，Q与E按安全距离使用。"
+      ],
+      "basicPlay": [
+        "W在能覆盖需要保护的友方英雄时施放。",
+        "已有护盾时才按W条件计算延迟治疗，Q与E按安全距离使用。"
+      ],
+      "caution": "不是每次W都有治疗，回响与已有护盾条件需实际满足。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Soraka",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "以W治疗友方英雄，按实际额外双抗提高治疗强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "Q实际命中敌方英雄后利用活力焕发，再按自身血量用W保护队友。",
+        "E处理接近威胁，保留治疗位置、血量和蓝量。"
+      ],
+      "basicPlay": [
+        "Q实际命中敌方英雄后利用活力焕发，再按自身血量用W保护队友。",
+        "E处理接近威胁，保留治疗位置、血量和蓝量。"
+      ],
+      "caution": "W需要考虑自身生命代价，Q命中条件不能默认已满足。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Lulu",
+      "augment": 1324,
+      "optional": [
+        1037
+      ],
+      "title": "双抗奶盾",
+      "summary": "以友方E提供护盾，按实际额外双抗提高护盾强度。",
+      "coreBrief": "获得（25＋0.35×额外护甲＋0.35×额外魔抗）%治疗和护盾强度。",
+      "play": [
+        "E交给需要保护的友方英雄。",
+        "W按队友输出或敌方接近情况选择目标，用Q限制威胁。"
+      ],
+      "basicPlay": [
+        "E交给需要保护的友方英雄。",
+        "W按队友输出或敌方接近情况选择目标，用Q限制威胁。"
+      ],
+      "caution": "对敌E是伤害，R增加最大生命值，不能都直接当作友方治疗护盾。",
+      "gear": [
+        [
+          "作者奶盾装备组·未给买序",
+          [
+            6617,
+            2526,
+            6665,
+            3143,
+            4401,
+            8020
+          ],
+          "原图为六件装备集合，未给购买先后或替换槽位。按实际承伤取舍；贾修的额外双抗须与英雄交战达到5秒，耳语头环按当前形态生效。"
+        ]
+      ],
+      "coreItems": [
+        6665
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700239227514064179",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-24T22:21:07+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图5：蛋白粉与急救用具说明",
+          "原图8：蛋白粉奶盾流及12位明确推荐英雄、六件装备集合"
+        ],
+        "adaptation": "从作者蝴蝶攻略的“蛋白粉奶盾流”裁剪为项目奶盾方向：保留原图明确英雄、蛋白粉、急救用具及装备集合，未采用蝴蝶伤害链或未核实的循环。作者未声称本裁剪是独立完整套路。原图装备无编号，不编造购买顺序、替换槽位、加点、符文或首回城；作者S/SS评级不当作胜率。原帖只标海斗4.0、确切补丁未知，按16.21当前英雄、强化及装备独立复核。贾修核心边框为项目机制依赖标记，不是作者额外评级。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c",
+          "6617": "0b7525238b308bc5",
+          "6665": "d68c9621bce20749",
+          "8020": "0c00b956a1d25336"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1324": {
+            "fingerprint": "fc791576077dc008",
+            "requiresUltimate": false
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -6143,7 +7115,16 @@
       "Qiyana": "ae1343f33f784408",
       "Lulu": "5f5091380ca45272",
       "Maokai": "e196429fdd9138f9",
-      "Nasus": "874ad429f86eeb0b"
+      "Nasus": "874ad429f86eeb0b",
+      "Renata": "040340652360d067",
+      "Ivern": "f4b498c5991475d6",
+      "Janna": "174e8cfdc4e26ceb",
+      "Nami": "b10366f1187813b9",
+      "Sona": "2313d851c59e6f93",
+      "Yuumi": "74372983c2c1dbfe",
+      "Milio": "9176ff8b22c1f1c9",
+      "Karma": "36385f1555005577",
+      "Soraka": "46ec394f508ebcc0"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -7439,6 +8420,222 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "670b62c30716c8ed"
+          }
+        }
+      },
+      "Renata": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "040340652360d067",
+        "observedAt": "2026-10-23T02:03:51.549Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Renata",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/renata/renata.bin.json",
+            "sha256": "1cfca78f0a6354bb269b3a483441264e7489a484e8a4da0684db24d3955fd51c"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "849f2ea81ec5e47e"
+          }
+        }
+      },
+      "Ivern": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "f4b498c5991475d6",
+        "observedAt": "2026-10-23T02:03:51.529Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Ivern",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/ivern/ivern.bin.json",
+            "sha256": "0a12c85032011c969b5c63fa88c7cb478af2cebfe54fe5ac707c20488e3fc74a"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "a8c07de58a4e8f6d"
+          }
+        }
+      },
+      "Janna": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "174e8cfdc4e26ceb",
+        "observedAt": "2026-10-23T02:03:51.529Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Janna",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/janna/janna.bin.json",
+            "sha256": "4cec640827c538d66a8dba07f2330b0d11a6749bdbf85691628f6a2fd08320cf"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "59f8d2d99e76564e"
+          }
+        }
+      },
+      "Nami": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "b10366f1187813b9",
+        "observedAt": "2026-10-23T02:03:51.543Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Nami",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/nami/nami.bin.json",
+            "sha256": "aba90cdddcd8bfe1cf6688273adc153f996acc12cf73890f4f10f8cf80acf104"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "d41e55e60af3c37e"
+          }
+        }
+      },
+      "Sona": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "2313d851c59e6f93",
+        "observedAt": "2026-10-23T02:03:51.631Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Sona",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/sona/sona.bin.json",
+            "sha256": "8ad8fdcf17aff949bc7a9f8b6e0c7235f396346f7cba27f7bff26528975560a1"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "8146f69f6cdef897"
+          }
+        }
+      },
+      "Yuumi": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "74372983c2c1dbfe",
+        "observedAt": "2026-10-23T02:03:51.642Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Yuumi",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/yuumi/yuumi.bin.json",
+            "sha256": "b65fd4e92df3a120fe88ee2ebd588f55a7f1a642f249c22d0668eae860f9c3aa"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "2bfcd21ddb05bd3f"
+          }
+        }
+      },
+      "Milio": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "9176ff8b22c1f1c9",
+        "observedAt": "2026-10-23T02:03:51.541Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Milio",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/milio/milio.bin.json",
+            "sha256": "0b3afeb21eccfeb7d42d41cf6ea2abfd0d940e2ee0c501645a0b78d70a4843fa"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "32194f4e3319e474"
+          }
+        }
+      },
+      "Karma": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "36385f1555005577",
+        "observedAt": "2026-10-23T02:03:51.532Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Karma",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/karma/karma.bin.json",
+            "sha256": "7b6328b43d94f80ea6eec0998d8f81d9e54f3f8c6bb7a37a12ebbd04d569bcf5"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "1f2620463bdb38d1"
+          }
+        }
+      },
+      "Soraka": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "46ec394f508ebcc0",
+        "observedAt": "2026-10-23T02:03:51.632Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Soraka",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/soraka/soraka.bin.json",
+            "sha256": "efdf1cfccf0fbb6bb3de9f8e2e7e5641eb0e628955c602dbe93be699b2ce8e83"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "43b0fc1302f2816c"
           }
         }
       }
