@@ -16,6 +16,10 @@ const hasCounterCompletion=a=>Number.isSafeInteger(a.tooltipParserRevision)&&a.t
 // Repair the existing parser-5 cache hole without downgrading future parser or
 // counter metadata, or repeatedly fetching unrelated unsupported formulas.
 const needsBassFormula=a=>a.id===3078&&a.key==='TheBoomAndTheBass'&&a.tooltipParserRevision===AUGMENT_TOOLTIP_PARSER_REVISION&&validAugmentCounterBasis(a)&&a.tooltip?.unresolved?.includes('Calc_Damage');
+// Revision 19 prevents same-parser revision-18 caches from replacing the
+// completed static bass formula bundled with a newer installation.
+const hasBassFormula=a=>a.id!==3078||a.key!=='TheBoomAndTheBass'||!a.tooltip?.unresolved?.includes('Calc_Damage');
+const augmentContentRevision=augments=>augments.every(hasCounterCompletion)?augments.every(hasBassFormula)?19:18:17;
 export async function getJSON(url, timeout = 20000) {
   let last;
   for(let attempt=0;attempt<3;attempt++) {
@@ -99,8 +103,8 @@ export async function collectSnapshot(progress = () => {}, previous = null, {rea
     }
     // Parser completion lives on each augment, so it cannot skip an unfinished
     // revision-8 item migration or force the detail sources to be read again.
-    if(previous.contentRevision>=9&&previous.augments.every(hasAugmentDetails))previous={...previous,contentRevision:Math.max(completeItemModes(previous.items,previous.patch)?completeItemDescriptions(previous.items,previous.patch)?previous.augments.every(hasCounterCompletion)?18:17:16:15,previous.contentRevision)};
-    progress(previous.augments.every(a=>hasAugmentDetails(a)&&hasCounterCompletion(a))?'当前已是最新资料版本':'部分强化资料待补齐，保留既有可用内容');
+    if(previous.contentRevision>=9&&previous.augments.every(hasAugmentDetails))previous={...previous,contentRevision:Math.max(completeItemModes(previous.items,previous.patch)?completeItemDescriptions(previous.items,previous.patch)?augmentContentRevision(previous.augments):16:15,previous.contentRevision)};
+    progress(previous.augments.every(a=>hasAugmentDetails(a)&&hasCounterCompletion(a)&&hasBassFormula(a))?'当前已是最新资料版本':'部分强化资料待补齐，保留既有可用内容');
     return {...previous,checkedAt:new Date(clock()).toISOString()};
   }
   const base = `${DD}/cdn/${version}/data/zh_CN`;
@@ -141,7 +145,7 @@ export async function collectSnapshot(progress = () => {}, previous = null, {rea
     augmentSource = `${cd}/plugins/rcp-be-lol-game-data/global/zh_cn/v1/augment-lists.json`;
   } catch (e) { augmentError = e.message; }
   return {
-    schema: 1, contentRevision:itemDescriptions&&augments.length&&augments.every(hasAugmentDetails)?completeItemModes(itemDescriptions,patch)?completeItemDescriptions(itemDescriptions,patch)?augments.every(hasCounterCompletion)?18:17:16:15:11, mechanicSourceRevision:1,itemTooltipRevision:itemDescriptions?1:0,version, patch, fetchedAt: new Date(clock()).toISOString(),checkedAt:new Date(clock()).toISOString(),contentCheckedAt:new Date(clock()).toISOString(),
+    schema: 1, contentRevision:itemDescriptions&&augments.length&&augments.every(hasAugmentDetails)?completeItemModes(itemDescriptions,patch)?completeItemDescriptions(itemDescriptions,patch)?augmentContentRevision(augments):16:15:11, mechanicSourceRevision:1,itemTooltipRevision:itemDescriptions?1:0,version, patch, fetchedAt: new Date(clock()).toISOString(),checkedAt:new Date(clock()).toISOString(),contentCheckedAt:new Date(clock()).toISOString(),
     sources: { champions:`${base}/championFull.json`, items:`${base}/item.json`, runes:`${base}/runesReforged.json`,
       names:`${CN}/heroList/hero_list.js`, augments:augmentSource,
       augmentDescriptions:augmentSource?`${cd}/game/maps/modespecificdata/kiwi.bin.json`:null,
