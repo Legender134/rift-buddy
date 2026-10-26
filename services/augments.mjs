@@ -7,6 +7,44 @@ export {fieldHash} from '../src/core/augment-counter-basis.mjs';
 // Render game-authored tooltip text without executing expressions from downloaded data.
 export function formatNumber(n){if(!Number.isFinite(n))return null;const scaled=n*1000;return String(Number.isFinite(scaled)?Math.round(scaled)/1000:n);}
 export const AUGMENT_TOOLTIP_PARSER_REVISION=5;
+// Reviewed Kiwi shapes only. These stat meanings are deliberately not added
+// to the general renderer; unknown fields and conflicting aliases stay unknown.
+function reviewedKiwiCalculation(record,source,root,name){
+ const take=record.id===3116||record.key==='TakeemDownDownDown',butterfly=record.id===3163||record.key==='EnchantingButterflies';
+ const names=take?['Calc_Damage_Hit','Calc_Damage_Per_Previous_Stack','Calc_Damage_Consume','Calc_Healing']:butterfly?['SingleFireDamage']:[];
+ if(!names.includes(name))return undefined;
+ const key=take?'TakeemDownDownDown':'EnchantingButterflies',rootKey=take?'{8679f7dd}':'{4261cfd1}',script=`Augment_${key}`,spell=root?.mSpell;
+ if(record.id!==(take?3116:3163)||record.key!==key||source.AugmentPlatformId!==record.id||source.AugmentNameId!==key||source.RootSpell!==rootKey||root?.mScriptName!==script||!spell||spell.DataValuesModeOverride!==undefined)return null;
+ const fields=(row,keys)=>row&&typeof row==='object'&&!Array.isArray(row)&&Object.keys(row).every(k=>keys.includes(k));
+ const finite=n=>Number.isFinite(n)&&Math.abs(n)<=1e9;
+ const find=target=>{const rows=Object.entries(spell.mSpellCalculations||{}).filter(([k])=>k.toLowerCase()===target.toLowerCase()||k.toLowerCase()===fieldHash(target));return rows.length&&rows.every(([,v])=>canonicalJSON(v)===canonicalJSON(rows[0][1]))?rows[0][1]:null;};
+ const number=p=>fields(p,['__type','mNumber'])&&p.__type==='NumberCalculationPart'&&finite(p.mNumber)?p.mNumber:null;
+ const stat=(p,id,formula)=>fields(p,['__type','mStat','mStatFormula','mCoefficient'])&&p.__type==='StatByCoefficientCalculationPart'&&(p.mStat===undefined?0:p.mStat)===id&&(p.mStatFormula===undefined?0:p.mStatFormula)===formula&&finite(p.mCoefficient);
+ const level=p=>fields(p,['__type','mStartValue','mEndValue'])&&p.__type==='ByCharLevelInterpolationCalculationPart'&&finite(p.mStartValue)&&finite(p.mEndValue);
+ const calc=find(name),parts=calc?.mFormulaParts;
+ const ranged=c=>fields(c,['__type','mFormulaParts','mRangedMultiplier',...(name==='Calc_Damage_Consume'?['mDisplayAsPercent']:name==='Calc_Healing'?['mDisplayAsPercent','mSimpleTooltipCalculationDisplay','mExpandedTooltipCalculationDisplay']:[])])&&c.__type==='{e9a3c91d}'&&number(c.mRangedMultiplier)!==null&&number(c.mRangedMultiplier)>=0&&number(c.mRangedMultiplier)<=1;
+ const renderHit=(hit,scale=1)=>{
+  const p=hit?.mFormulaParts;if(!fields(hit,['__type','mFormulaParts','mRangedMultiplier'])||hit.__type!=='{e9a3c91d}'||number(hit.mRangedMultiplier)===null||number(hit.mRangedMultiplier)<0||number(hit.mRangedMultiplier)>1||!Array.isArray(p)||p.length!==3||!level(p[0])||!stat(p[1],2,2)||!stat(p[2],0,0)||!finite(scale))return null;
+  const text=f=>`${formatNumber(p[0].mStartValue*f)}–${formatNumber(p[0].mEndValue*f)}（随等级） + ${formatNumber(p[1].mCoefficient*f*100)}%额外攻击力 + ${formatNumber(p[2].mCoefficient*f*100)}%法术强度`;
+  return `（近战 ${text(scale)} / 远程 ${text(scale*number(hit.mRangedMultiplier))}）`;
+ };
+ if(name==='Calc_Damage_Hit')return renderHit(calc);
+ if(name==='Calc_Damage_Per_Previous_Stack'){
+  if(!fields(calc,['__type','mMultiplier','mModifiedGameCalculation'])||calc.__type!=='GameCalculationModified'||![fieldHash('Calc_Damage_Hit'),'Calc_Damage_Hit'].includes(calc.mModifiedGameCalculation)||number(calc.mMultiplier)===null)return null;
+  return renderHit(find('Calc_Damage_Hit'),number(calc.mMultiplier));
+ }
+ if(name==='Calc_Damage_Consume'){
+  if(!ranged(calc)||calc.mDisplayAsPercent!==true||!Array.isArray(parts)||parts.length!==3||number(parts[0])===null||!stat(parts[1],4,2)||!stat(parts[2],11,0))return null;
+  const text=f=>`（${formatNumber(number(parts[0])*100*f)} + ${formatNumber(parts[1].mCoefficient*100*f)}×额外攻速比例（100%记1） + ${formatNumber(parts[2].mCoefficient*100*f)}×技能急速）%`;
+  return `近战 ${text(1)} / 远程 ${text(number(calc.mRangedMultiplier))}`;
+ }
+ if(name==='Calc_Healing'){
+  if(!ranged(calc)||calc.mDisplayAsPercent!==true||calc.mSimpleTooltipCalculationDisplay!==5||calc.mExpandedTooltipCalculationDisplay!==5||!Array.isArray(parts)||parts.length!==1||number(parts[0])===null)return null;
+  return `近战 ${formatNumber(number(parts[0])*100)}% / 远程 ${formatNumber(number(parts[0])*100*number(calc.mRangedMultiplier))}%`;
+ }
+ if(!fields(calc,['__type','mFormulaParts'])||calc.__type!=='GameCalculation'||!Array.isArray(parts)||parts.length!==4||!level(parts[0])||!stat(parts[1],12,2)||!stat(parts[2],34,0)||!stat(parts[3],0,0))return null;
+ return `${formatNumber(parts[0].mStartValue)}–${formatNumber(parts[0].mEndValue)}（随等级） + ${formatNumber(parts[1].mCoefficient*100)}%额外生命值 + ${formatNumber(parts[2].mCoefficient/100)}×治疗和护盾强度百分点 + ${formatNumber(parts[3].mCoefficient*100)}%法术强度`;
+}
 export function buildAugmentDescriptions(catalog,bin,entries){
  const lookup=stringTableLookup(entries);
  const objects=Object.values(bin).filter(v=>v?.__type==='AugmentData');
@@ -34,6 +72,7 @@ export function buildAugmentDescriptions(catalog,bin,entries){
    return unique.length===1?unique[0]:`${unique[0]}–${unique.at(-1)}（随等级）`;
   }
   function calculation(name,externalPercent=false){
+   const reviewed=reviewedKiwiCalculation(record,source,bin[source.RootSpell],name);if(reviewed!==undefined)return reviewed;
    const calc=calculations.get(name.toLowerCase())||calculations.get(fieldHash(name));
    if(!Array.isArray(calc?.mFormulaParts)||!calc.mFormulaParts.length||calc.mFormulaParts.length>16)return null;
    if(calc.__type&&!['GameCalculation','{e9a3c91d}'].includes(calc.__type))return null;
