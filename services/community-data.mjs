@@ -9,12 +9,15 @@ import {validCommunityAugmentReview,validCommunityExclusions,validCommunityCoreB
 
 // A separately signed, manually reviewed snapshot. Daily statistical collection
 // must never rewrite its provenance or promote unreviewed creator material.
-export const COMMUNITY_MAX_RAW=3_000_000,COMMUNITY_MAX_PACKED=1_000_000;
+export const COMMUNITY_MAX_ROUTES=10_000,COMMUNITY_MAX_RAW=64*1024*1024,COMMUNITY_MAX_PACKED=16*1024*1024;
+// Existing clients must keep their smaller, valid offline snapshot until an
+// app supporting the expanded feed is installed.
+export const COMMUNITY_LEGACY_LIMITS={routes:100,raw:3_000_000,packed:1_000_000};
 const text=(v,max=1000)=>typeof v==='string'&&v.trim()&&v.length<=max;
 export function validateCommunityData(value,data){
- if(!value||value.schema!==1||value.kind!=='community-snapshot'||value.patch!==data.patch||!/^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(value.version||'')||!/^\d{4}-\d{2}-\d{2}$/.test(value.reviewedAt||'')||JSON.stringify(value).length>COMMUNITY_MAX_RAW)throw Error('社区资料版本或大小无效');
+ if(!value||value.schema!==1||value.kind!=='community-snapshot'||value.patch!==data.patch||!/^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(value.version||'')||!/^\d{4}-\d{2}-\d{2}$/.test(value.reviewedAt||'')||Buffer.byteLength(JSON.stringify(value),'utf8')>COMMUNITY_MAX_RAW)throw Error('社区资料版本或大小无效');
  const catalog=validateCatalog(value.catalog,data),issues=catalogIssues(catalog,data),routes=value.hexRoutes;
- if(catalog.version!==value.version||!routes||routes.schema!==1||routes.patch!==value.patch||routes.reviewedAt!==value.reviewedAt||!Array.isArray(routes.routes)||routes.routes.length>100)throw Error('社区资料内容身份不一致');
+ if(catalog.version!==value.version||!routes||routes.schema!==1||routes.patch!==value.patch||routes.reviewedAt!==value.reviewedAt||!Array.isArray(routes.routes)||routes.routes.length>COMMUNITY_MAX_ROUTES)throw Error('社区资料内容身份不一致');
  for(const entry of [...catalog.duos,...catalog.trios])if(entry.reviewedAt===value.reviewedAt&&(issues.status[entry.id]?.invalid||issues.status[entry.id]?.stale))throw Error('本轮组合尚未通过当前资料核验');
  const ids=new Set();
  for(const r of routes.routes){
