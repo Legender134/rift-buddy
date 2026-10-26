@@ -15638,6 +15638,611 @@
         1205,
         2018
       ]
+    },
+    {
+      "hero": "Skarner",
+      "augment": 3049,
+      "optional": [
+        3134
+      ],
+      "title": "举石与撞墙后的近身普攻",
+      "summary": "原图明确列名；用Q强化攻击接装甲冲击，保留接近条件。",
+      "coreBrief": "施法后下一次普攻对附近敌人造成250%额外护甲＋50–125（随等级）物理伤害。",
+      "play": [
+        "Q举石后以实际普攻输出；W提供护盾窗口后仍要补普攻，投石本身不能代替这次攻击。",
+        "E撞墙后结束冲锋再接普攻；R压制期间不假定能自由攻击，Q三次强化攻击也不等于三次装甲触发。"
+      ],
+      "basicPlay": [
+        "失去R压制与拖行后，依靠Q强化攻击、W护盾和E接近，再补实际普攻；不保留R起手连招。",
+        "技能仍消耗法力，Q投石或三层战栗伤害不能替代所需的普攻。"
+      ],
+      "caution": "W、R及战栗的魔法伤害不因护甲穿透提高；无法近身或敌方法伤压力大时调整，不把护甲路线作为统一默认。",
+      "gear": [
+        [
+          "作者前期组件示例：六锁子甲",
+          [
+            1031,
+            1031,
+            1031,
+            1031,
+            1031,
+            1031
+          ],
+          "原作的前期护甲示例，不是六件毕业装或必买要求；图中600仅是额外护甲系数项，实际伤害还受等级、状态和减伤影响。"
+        ],
+        [
+          "普攻压力下比较的组件",
+          [
+            3082
+          ],
+          "原图替代示例含两件守望者铠甲；这里只列组件，不强制叠购，也不按两份同名减伤计算收益。"
+        ],
+        [
+          "作者后续图示：持续交战",
+          [
+            6665
+          ],
+          "与英雄交战达到5秒后，额外护甲和魔抗提升30%，持续到战斗结束。"
+        ],
+        [
+          "作者后续图示：受击与回复压力",
+          [
+            3075
+          ],
+          "被攻击命中后反击，并对英雄施加持续3秒的40%重伤。"
+        ],
+        [
+          "作者后续图示：附近攻击频率",
+          [
+            3110
+          ],
+          "使附近敌方英雄攻击速度降低20%；需能保持作用距离，按实际普攻压力比较。"
+        ],
+        [
+          "作者后续图示：暴击压力",
+          [
+            3143
+          ],
+          "所受暴击伤害降低30%；主动对附近敌人减速70%持续2秒，冷却60秒。"
+        ],
+        [
+          "后期仍缺物理伤害时比较",
+          [
+            6694
+          ],
+          "原作后期缺伤害时提出；35%护甲穿透服务强化的物理伤害，未给替换槽位，按实际承伤余量取舍。"
+        ]
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7699871320120560930",
+        "author": "海斗小助手",
+        "publishedAt": "2026-10-23T22:33:22+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图3–4：强化与组件说明",
+          "原图6：纯坦克护甲模板，明确列出上古领主（斯卡纳）"
+        ],
+        "adaptation": "作者原图6明确列出上古领主（斯卡纳），本轮补回漏录成员。项目按当前16.21独立核对Q/W/E/R及真实攻击条件，沿用原作护甲组件和条件后续图示，不把图中评级当胜率、项目评分或抽取资格。未给出的鞋子、逐级加点、符文、出门及首回城保持未知；前期组件示例并非毕业六件套，具体选择以仍通过复核的装备组为准。原帖仅标海斗4.0，录制补丁未知。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "1031": "7385d46db45cb33a",
+          "3075": "77e99cfe1e808733",
+          "3082": "f6e8eb4da3a405cf",
+          "3110": "ba477c242a2f4b18",
+          "3143": "398abf4b21f13cf0",
+          "6665": "d68c9621bce20749",
+          "6694": "76babbf775c1d8d2"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          },
+          "3134": {
+            "fingerprint": "c2ba3f235d06e9f4",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Amumu",
+      "augment": 3049,
+      "optional": [
+        3134
+      ],
+      "title": "绷带接近后施法接普攻",
+      "summary": "项目机制适配；在物理压力下利用Q接近与E后的攻击窗口。",
+      "coreBrief": "施法后下一次普攻对附近敌人造成250%额外护甲＋50–125（随等级）物理伤害。",
+      "play": [
+        "Q实际命中拉近后接普攻，或E主动施法后接普攻；被小兵或前排挡住时重新判断落点。",
+        "W持续伤害不等于连续施法或每跳自动触发装甲冲击；W持续消耗法力，Q充能也不能无限使用。"
+      ],
+      "basicPlay": [
+        "没有R范围控制，以Q实际命中接近、E后普攻为主；保留W法力与撤离空间。",
+        "W持续跳伤害和被动诅咒均不能替代装甲冲击所需的普攻。"
+      ],
+      "caution": "本体技能主要魔法伤害，诅咒对魔伤的增益不能算到装甲冲击物伤上；敌方法伤压力大或无法接近时调整。",
+      "gear": [
+        [
+          "作者前期组件示例：六锁子甲",
+          [
+            1031,
+            1031,
+            1031,
+            1031,
+            1031,
+            1031
+          ],
+          "原作的前期护甲示例，不是六件毕业装或必买要求；图中600仅是额外护甲系数项，实际伤害还受等级、状态和减伤影响。"
+        ],
+        [
+          "普攻压力下比较的组件",
+          [
+            3082
+          ],
+          "原图替代示例含两件守望者铠甲；这里只列组件，不强制叠购，也不按两份同名减伤计算收益。"
+        ],
+        [
+          "作者后续图示：持续交战",
+          [
+            6665
+          ],
+          "与英雄交战达到5秒后，额外护甲和魔抗提升30%，持续到战斗结束。"
+        ],
+        [
+          "作者后续图示：受击与回复压力",
+          [
+            3075
+          ],
+          "被攻击命中后反击，并对英雄施加持续3秒的40%重伤。"
+        ],
+        [
+          "作者后续图示：附近攻击频率",
+          [
+            3110
+          ],
+          "使附近敌方英雄攻击速度降低20%；需能保持作用距离，按实际普攻压力比较。"
+        ],
+        [
+          "作者后续图示：暴击压力",
+          [
+            3143
+          ],
+          "所受暴击伤害降低30%；主动对附近敌人减速70%持续2秒，冷却60秒。"
+        ],
+        [
+          "后期仍缺物理伤害时比较",
+          [
+            6694
+          ],
+          "原作后期缺伤害时提出；35%护甲穿透服务强化的物理伤害，未给替换槽位，按实际承伤余量取舍。"
+        ]
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7699871320120560930",
+        "author": "海斗小助手（项目机制适配）",
+        "publishedAt": "2026-10-23T22:33:22+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图3–4：强化与组件说明",
+          "原图6：纯坦克护甲模板；本英雄未列名，由项目独立适配"
+        ],
+        "adaptation": "作者给出纯坦克护甲骨架，原图未列出本英雄。本成员为项目按当前16.21技能、法力、伤害类型及禁R条件的机制适配，不是作者逐英雄实测或强度评级。沿用仍通过复核的护甲组件和条件后续，只有能完成施法后真实普攻才比较；不假设持续伤害、引导、重施或死亡形态会额外触发。原帖只标海斗4.0、确切补丁未知；未提供的鞋子、加点、符文、出门及首回城保持未知。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "1031": "7385d46db45cb33a",
+          "3075": "77e99cfe1e808733",
+          "3082": "f6e8eb4da3a405cf",
+          "3110": "ba477c242a2f4b18",
+          "3143": "398abf4b21f13cf0",
+          "6665": "d68c9621bce20749",
+          "6694": "76babbf775c1d8d2"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          },
+          "3134": {
+            "fingerprint": "c2ba3f235d06e9f4",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Ornn",
+      "augment": 3049,
+      "optional": [
+        3134
+      ],
+      "title": "地形接近与易碎后普攻",
+      "summary": "项目机制适配；区分W喷火、E撞地形和实际普攻。",
+      "coreBrief": "施法后下一次普攻对附近敌人造成250%额外护甲＋50–125（随等级）物理伤害。",
+      "play": [
+        "Q造柱或E撞地形接近后补实际普攻；W末段施加易碎后，也可用普攻消耗标记并完成强化所需攻击。",
+        "W喷火期间不是持续普攻，E未撞地形不提供对应击飞；被动打造装备不当作施法触发。"
+      ],
+      "basicPlay": [
+        "没有R远距离开团，用Q地形配合E、W结束后的近身普攻；不要预支羊来的接近距离。",
+        "E本体可受额外双抗影响，但W、易碎和R的魔法伤害不因护甲穿透提高。"
+      ],
+      "caution": "按承伤压力和能否接近选择护甲，不把易碎、杰作装备或命运之武器混为装甲冲击的独立触发。",
+      "gear": [
+        [
+          "作者前期组件示例：六锁子甲",
+          [
+            1031,
+            1031,
+            1031,
+            1031,
+            1031,
+            1031
+          ],
+          "原作的前期护甲示例，不是六件毕业装或必买要求；图中600仅是额外护甲系数项，实际伤害还受等级、状态和减伤影响。"
+        ],
+        [
+          "普攻压力下比较的组件",
+          [
+            3082
+          ],
+          "原图替代示例含两件守望者铠甲；这里只列组件，不强制叠购，也不按两份同名减伤计算收益。"
+        ],
+        [
+          "作者后续图示：持续交战",
+          [
+            6665
+          ],
+          "与英雄交战达到5秒后，额外护甲和魔抗提升30%，持续到战斗结束。"
+        ],
+        [
+          "作者后续图示：受击与回复压力",
+          [
+            3075
+          ],
+          "被攻击命中后反击，并对英雄施加持续3秒的40%重伤。"
+        ],
+        [
+          "作者后续图示：附近攻击频率",
+          [
+            3110
+          ],
+          "使附近敌方英雄攻击速度降低20%；需能保持作用距离，按实际普攻压力比较。"
+        ],
+        [
+          "作者后续图示：暴击压力",
+          [
+            3143
+          ],
+          "所受暴击伤害降低30%；主动对附近敌人减速70%持续2秒，冷却60秒。"
+        ],
+        [
+          "后期仍缺物理伤害时比较",
+          [
+            6694
+          ],
+          "原作后期缺伤害时提出；35%护甲穿透服务强化的物理伤害，未给替换槽位，按实际承伤余量取舍。"
+        ]
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7699871320120560930",
+        "author": "海斗小助手（项目机制适配）",
+        "publishedAt": "2026-10-23T22:33:22+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图3–4：强化与组件说明",
+          "原图6：纯坦克护甲模板；本英雄未列名，由项目独立适配"
+        ],
+        "adaptation": "作者给出纯坦克护甲骨架，原图未列出本英雄。本成员为项目按当前16.21技能、法力、伤害类型及禁R条件的机制适配，不是作者逐英雄实测或强度评级。沿用仍通过复核的护甲组件和条件后续，只有能完成施法后真实普攻才比较；不假设持续伤害、引导、重施或死亡形态会额外触发。原帖只标海斗4.0、确切补丁未知；未提供的鞋子、加点、符文、出门及首回城保持未知。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "1031": "7385d46db45cb33a",
+          "3075": "77e99cfe1e808733",
+          "3082": "f6e8eb4da3a405cf",
+          "3110": "ba477c242a2f4b18",
+          "3143": "398abf4b21f13cf0",
+          "6665": "d68c9621bce20749",
+          "6694": "76babbf775c1d8d2"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          },
+          "3134": {
+            "fingerprint": "c2ba3f235d06e9f4",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Sion",
+      "augment": 3049,
+      "optional": [
+        3134
+      ],
+      "title": "生前控制结束接近身普攻",
+      "summary": "项目机制适配；只描述生前Q/W/E与实际攻击，不外推死亡形态。",
+      "coreBrief": "施法后下一次普攻对附近敌人造成250%额外护甲＋50–125（随等级）物理伤害。",
+      "play": [
+        "E减速接近后，或Q释放结束后补实际普攻；W护盾提供承伤窗口，但引爆重施不当作已确认的额外触发。",
+        "Q蓄力期间无法自由普攻；W被动增加生命，不会直接变成装甲冲击所用的额外护甲。"
+      ],
+      "basicPlay": [
+        "失去R长距离冲锋，依靠E减速、Q控制和走位接近后普攻；禁R不取消W被动。",
+        "仅采用生前Q/W/E循环；死亡后技能被替换，不保证亡者形态能重复触发这套施法攻击。"
+      ],
+      "caution": "Q蓄力易受走位和控制影响；死亡形态的强化行为未核实。本体W/E魔伤与强化物伤分开判断，不承诺固定伤害。",
+      "gear": [
+        [
+          "作者前期组件示例：六锁子甲",
+          [
+            1031,
+            1031,
+            1031,
+            1031,
+            1031,
+            1031
+          ],
+          "原作的前期护甲示例，不是六件毕业装或必买要求；图中600仅是额外护甲系数项，实际伤害还受等级、状态和减伤影响。"
+        ],
+        [
+          "普攻压力下比较的组件",
+          [
+            3082
+          ],
+          "原图替代示例含两件守望者铠甲；这里只列组件，不强制叠购，也不按两份同名减伤计算收益。"
+        ],
+        [
+          "作者后续图示：持续交战",
+          [
+            6665
+          ],
+          "与英雄交战达到5秒后，额外护甲和魔抗提升30%，持续到战斗结束。"
+        ],
+        [
+          "作者后续图示：受击与回复压力",
+          [
+            3075
+          ],
+          "被攻击命中后反击，并对英雄施加持续3秒的40%重伤。"
+        ],
+        [
+          "作者后续图示：附近攻击频率",
+          [
+            3110
+          ],
+          "使附近敌方英雄攻击速度降低20%；需能保持作用距离，按实际普攻压力比较。"
+        ],
+        [
+          "作者后续图示：暴击压力",
+          [
+            3143
+          ],
+          "所受暴击伤害降低30%；主动对附近敌人减速70%持续2秒，冷却60秒。"
+        ],
+        [
+          "后期仍缺物理伤害时比较",
+          [
+            6694
+          ],
+          "原作后期缺伤害时提出；35%护甲穿透服务强化的物理伤害，未给替换槽位，按实际承伤余量取舍。"
+        ]
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7699871320120560930",
+        "author": "海斗小助手（项目机制适配）",
+        "publishedAt": "2026-10-23T22:33:22+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图3–4：强化与组件说明",
+          "原图6：纯坦克护甲模板；本英雄未列名，由项目独立适配"
+        ],
+        "adaptation": "作者给出纯坦克护甲骨架，原图未列出本英雄。本成员为项目按当前16.21技能、法力、伤害类型及禁R条件的机制适配，不是作者逐英雄实测或强度评级。沿用仍通过复核的护甲组件和条件后续，只有能完成施法后真实普攻才比较；不假设持续伤害、引导、重施或死亡形态会额外触发。原帖只标海斗4.0、确切补丁未知；未提供的鞋子、加点、符文、出门及首回城保持未知。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "1031": "7385d46db45cb33a",
+          "3075": "77e99cfe1e808733",
+          "3082": "f6e8eb4da3a405cf",
+          "3110": "ba477c242a2f4b18",
+          "3143": "398abf4b21f13cf0",
+          "6665": "d68c9621bce20749",
+          "6694": "76babbf775c1d8d2"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          },
+          "3134": {
+            "fingerprint": "c2ba3f235d06e9f4",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Nunu",
+      "augment": 3049,
+      "optional": [
+        3134
+      ],
+      "title": "雪球结束后寻找普攻窗口",
+      "summary": "项目条件适配；有近身攻击空间时比较护甲骨架，不把滚动当普攻。",
+      "coreBrief": "施法后下一次普攻对附近敌人造成250%额外护甲＋50–125（随等级）物理伤害。",
+      "play": [
+        "W雪球结束后或E近身控制后补实际普攻；Q吞噬本身不是普攻，施放后仍需另接攻击。",
+        "滚雪球或引导R期间不假定可自由普攻；E的多段和重施不写成已证实的连发装甲伤害。"
+      ],
+      "basicPlay": [
+        "没有R护盾、范围减速和爆发，依靠W或E接近、Q回复后再找普攻；降低留在人群中的预期。",
+        "Q对英雄与非英雄的伤害和回复分支不同，不能据吞噬回复宣称无限续航或每次普攻都触发强化。"
+      ],
+      "caution": "本体没有依靠额外护甲成长的核心伤害；本条仅在已取得装甲冲击且能安全补普攻时比较，法伤压力大时调整。",
+      "gear": [
+        [
+          "作者前期组件示例：六锁子甲",
+          [
+            1031,
+            1031,
+            1031,
+            1031,
+            1031,
+            1031
+          ],
+          "原作的前期护甲示例，不是六件毕业装或必买要求；图中600仅是额外护甲系数项，实际伤害还受等级、状态和减伤影响。"
+        ],
+        [
+          "普攻压力下比较的组件",
+          [
+            3082
+          ],
+          "原图替代示例含两件守望者铠甲；这里只列组件，不强制叠购，也不按两份同名减伤计算收益。"
+        ],
+        [
+          "作者后续图示：持续交战",
+          [
+            6665
+          ],
+          "与英雄交战达到5秒后，额外护甲和魔抗提升30%，持续到战斗结束。"
+        ],
+        [
+          "作者后续图示：受击与回复压力",
+          [
+            3075
+          ],
+          "被攻击命中后反击，并对英雄施加持续3秒的40%重伤。"
+        ],
+        [
+          "作者后续图示：附近攻击频率",
+          [
+            3110
+          ],
+          "使附近敌方英雄攻击速度降低20%；需能保持作用距离，按实际普攻压力比较。"
+        ],
+        [
+          "作者后续图示：暴击压力",
+          [
+            3143
+          ],
+          "所受暴击伤害降低30%；主动对附近敌人减速70%持续2秒，冷却60秒。"
+        ],
+        [
+          "后期仍缺物理伤害时比较",
+          [
+            6694
+          ],
+          "原作后期缺伤害时提出；35%护甲穿透服务强化的物理伤害，未给替换槽位，按实际承伤余量取舍。"
+        ]
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7699871320120560930",
+        "author": "海斗小助手（项目机制适配）",
+        "publishedAt": "2026-10-23T22:33:22+08:00",
+        "sourcePatch": null,
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0图文",
+        "evidenceSections": [
+          "原图3–4：强化与组件说明",
+          "原图6：纯坦克护甲模板；本英雄未列名，由项目独立适配"
+        ],
+        "adaptation": "作者给出纯坦克护甲骨架，原图未列出本英雄。本成员为项目按当前16.21技能、法力、伤害类型及禁R条件的机制适配，不是作者逐英雄实测或强度评级。沿用仍通过复核的护甲组件和条件后续，只有能完成施法后真实普攻才比较；不假设持续伤害、引导、重施或死亡形态会额外触发。原帖只标海斗4.0、确切补丁未知；未提供的鞋子、加点、符文、出门及首回城保持未知。"
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "1031": "7385d46db45cb33a",
+          "3075": "77e99cfe1e808733",
+          "3082": "f6e8eb4da3a405cf",
+          "3110": "ba477c242a2f4b18",
+          "3143": "398abf4b21f13cf0",
+          "6665": "d68c9621bce20749",
+          "6694": "76babbf775c1d8d2"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          },
+          "3134": {
+            "fingerprint": "c2ba3f235d06e9f4",
+            "requiresUltimate": false
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -15758,7 +16363,12 @@
       "Lucian": "cd773946a58860de",
       "Sivir": "6c42062d13c38ce6",
       "Xayah": "6218a12d2240d28e",
-      "Tristana": "931894a6ac7e80f4"
+      "Tristana": "931894a6ac7e80f4",
+      "Skarner": "a7d61444d5300266",
+      "Amumu": "958a576cfa8191dd",
+      "Ornn": "aec2b0070700de64",
+      "Sion": "0852586a5d53c2bc",
+      "Nunu": "8f44e57080d4e3bf"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -18518,6 +19128,126 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "dedfd8b3d11580bb"
+          }
+        }
+      },
+      "Skarner": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "a7d61444d5300266",
+        "observedAt": "2026-10-23T02:03:51.631Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Skarner",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/skarner/skarner.bin.json",
+            "sha256": "56019778abb2ee41e81b85e42ec04d97abc7c85b390025ac0ce1f27b42519aa4"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "13f4a3c2709e12c8"
+          }
+        }
+      },
+      "Amumu": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "958a576cfa8191dd",
+        "observedAt": "2026-10-23T02:03:51.450Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Amumu",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/amumu/amumu.bin.json",
+            "sha256": "32ae8f1ffe870b3a94dd62e285bf7b2dedca0cc730abeabccf197d56f5174de3"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "8166548fe1af8c89"
+          }
+        }
+      },
+      "Ornn": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "aec2b0070700de64",
+        "observedAt": "2026-10-23T02:03:51.546Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Ornn",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/ornn/ornn.bin.json",
+            "sha256": "933e1f225d9230fe272c8978a8b3f586e07780a0909181d18b13ebd288306060"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "3b1b1c0431079787"
+          }
+        }
+      },
+      "Sion": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "0852586a5d53c2bc",
+        "observedAt": "2026-10-23T02:03:51.554Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Sion",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/sion/sion.bin.json",
+            "sha256": "d78a9dc86390b3f25099939467de83f4cce5d5e4dc5fd171237ae84ded0d869d"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "e93d37d5494eda42"
+          }
+        }
+      },
+      "Nunu": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "8f44e57080d4e3bf",
+        "observedAt": "2026-10-23T02:03:51.545Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Nunu",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/nunu/nunu.bin.json",
+            "sha256": "67dd9b93b8f4a6a81ef708291d4223d06323b67979755f1391599b92473fe472"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "bc9ade1baeb3270d"
           }
         }
       }
