@@ -20594,6 +20594,2574 @@
           "原图08：迷人蝴蝶主核心、蛋白粉配套及可选强化"
         ]
       }
+    },
+    {
+      "hero": "Ekko",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运影焰首件",
+      "summary": "Q去回与E强化攻击实际伤害英雄，W按延迟位置争取晕眩与护盾。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q去回与E强化攻击实际伤害英雄，W按延迟位置争取晕眩与护盾；伤害参与不是命中次数即升级。",
+        "有R时根据4秒前的位置回返，不能为追击提前预支R治疗。"
+      ],
+      "basicPlay": [
+        "无R失去回返位移、伤害与自疗；Q/E接近要保留离场路线，用W范围保护位置。",
+        "Q去回与E强化攻击实际伤害英雄，W按延迟位置争取晕眩与护盾；伤害参与不是命中次数即升级。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4645
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4645
+          ],
+          "法强与法穿；对低血目标的魔法、真实伤害满足余烬条件。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业01刺客：艾克—影焰",
+          "原图b6b97658a045d02b.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Fizz",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运影焰首件",
+      "summary": "Q穿过敌人并施加攻击特效，W普攻与流血争取本人伤害参与。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q穿过敌人并施加攻击特效，W普攻与流血争取本人伤害参与；E按落点和再施放取舍减速。",
+        "R命中后需等待鲨鱼，不把远距离大招命中等同安全贴近。"
+      ],
+      "basicPlay": [
+        "无R失去鲨鱼的远距离控制与爆发；围绕Q/W实际攻击和E退出空间，不沿用R先手。",
+        "Q穿过敌人并施加攻击特效，W普攻与流血争取本人伤害参与；E按落点和再施放取舍减速。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4645
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4645
+          ],
+          "法强与法穿；对低血目标的魔法、真实伤害满足余烬条件。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业01刺客：菲兹—影焰",
+          "原图b6b97658a045d02b.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Kayle",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运纳什之牙首件",
+      "summary": "以实际普攻兑现纳什攻击特效，Q减双抗后争取攻击机会，W处理自身与队友状态。。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "以实际普攻兑现纳什攻击特效，Q减双抗后争取攻击机会，W处理自身与队友状态。",
+        "有R时按友军威胁提供无敌；不把技能溅射或每道焰浪都按独立全额纳什特效计算。"
+      ],
+      "basicPlay": [
+        "无R失去无敌与大招伤害；按当前实际形态和攻击距离使用Q/W/E与普攻，不假定始终远程或必然保留全部进阶。",
+        "以实际普攻兑现纳什攻击特效，Q减双抗后争取攻击机会，W处理自身与队友状态。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3115
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            3115
+          ],
+          "法强、攻速与攻击特效；需要实际攻击命中。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3115": "156165de57c6fce7"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业02射手：凯尔—纳什之牙",
+          "原图892090b5a608d574.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Vayne",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运破败王者之刃首件",
+      "summary": "Q翻滚后实际攻击，保持同一目标争取W第三次连续命中，E借地形击退或晕眩。。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q翻滚后实际攻击，保持同一目标争取W第三次连续命中，E借地形击退或晕眩。",
+        "R期间才有翻滚隐形与冷却强化；破败当前生命伤害不等同W最大生命真伤。"
+      ],
+      "basicPlay": [
+        "无R失去额外攻击力、翻滚隐形及大招期间强化；保留基础Q走位、W连续命中和E自保。",
+        "Q翻滚后实际攻击，保持同一目标争取W第三次连续命中，E借地形击退或晕眩。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3153
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            3153
+          ],
+          "实际攻击附加当前生命值的物理伤害，连续攻击减速另有冷却。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3153": "b957df6b74b79bb7"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业02射手：薇恩—破败王者之刃",
+          "原图892090b5a608d574.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "TwistedFate",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运影焰首件",
+      "summary": "W选牌后实际攻击，金牌提供控制、蓝牌回复法力，Q用于实际伤害参与。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "W选牌后实际攻击，金牌提供控制、蓝牌回复法力，Q用于实际伤害参与；三张Q不对同一人三倍命中。",
+        "R提供视野与传送支援，传送可被限制效果打断；现身前评估落点。"
+      ],
+      "basicPlay": [
+        "无R失去全图视野与传送，围绕W选牌和Q在本地范围支援，不承诺跨图参与。",
+        "W选牌后实际攻击，金牌提供控制、蓝牌回复法力，Q用于实际伤害参与；三张Q不对同一人三倍命中。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4645
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4645
+          ],
+          "法强与法穿；对低血目标的魔法、真实伤害满足余烬条件。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业03法师：崔斯特—影焰",
+          "原图e4bed150bf304582.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Aurora",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运虚空之杖首件",
+      "summary": "Q命中后重施回收，E伤害后退，W调整隐形位置。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q命中后重施回收，E伤害后退，W调整隐形位置；本人实际技能或攻击伤害争取命运参与。",
+        "R领域提供位移边缘和减速窗口，不能把虚空百分比法穿当无视全部抗性。"
+      ],
+      "basicPlay": [
+        "无R失去领域与边缘传送，保留Q回收、W隐形与E后退，不沿用领域内追击路线。",
+        "Q命中后重施回收，E伤害后退，W调整隐形位置；本人实际技能或攻击伤害争取命运参与。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            3135
+          ],
+          "提供法强与百分比法穿，不直接增强治疗护盾。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业03法师：阿萝拉—虚空之杖",
+          "原图e4bed150bf304582.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Viego",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运收集者首件",
+      "summary": "Q技能后实际攻击争取双击与回复，W按蓄力命中控制，E黑雾辅助位置。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q技能后实际攻击争取双击与回复，W按蓄力命中控制，E黑雾辅助位置；本人伤害后目标阵亡才成长。",
+        "收集者只有目标低于处决阈值才兑现，不保证占据期间仍按原装备与形态结算。"
+      ],
+      "basicPlay": [
+        "无R不依赖痛贯天灵的位移收尾或占据后的免费R；以原形Q/W/E与实际普攻交战。",
+        "Q技能后实际攻击争取双击与回复，W按蓄力命中控制，E黑雾辅助位置；本人伤害后目标阵亡才成长。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6676
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6676
+          ],
+          "伤害使目标跌破处决阈值才触发，额外金币要求击杀。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业04战士：佛耶戈—收集者",
+          "原图df97c70e51eae705.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "MasterYi",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运收集者首件",
+      "summary": "Q按目标位置使用并衔接实际普攻，E强化攻击时机，W用于减伤和回复。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q按目标位置使用并衔接实际普攻，E强化攻击时机，W用于减伤和回复；收集者不保证直接击杀。",
+        "有R才沿用高原血统的追击窗口，不能把参与击杀后的回转当永远无敌。"
+      ],
+      "basicPlay": [
+        "无R失去大招主动追击增益；使用基础Q/W/E和实际普攻，不承诺R被动返还仍可用。",
+        "Q按目标位置使用并衔接实际普攻，E强化攻击时机，W用于减伤和回复；收集者不保证直接击杀。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6676
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6676
+          ],
+          "伤害使目标跌破处决阈值才触发，额外金币要求击杀。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业04战士：易—收集者",
+          "原图df97c70e51eae705.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Galio",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运影焰首件",
+      "summary": "Q风场和E冲撞实际命中英雄争取伤害参与。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q风场和E冲撞实际命中英雄争取伤害参与；W按蓄力时机处理敌人，不把护盾或纯保护算本人伤害。",
+        "R需要友方落点与着陆时间，不能把支援动作本身当作命运层数。"
+      ],
+      "basicPlay": [
+        "无R失去远距离英雄登场和范围支援，保留Q风场、W嘲讽和E近身控制。",
+        "Q风场和E冲撞实际命中英雄争取伤害参与；W按蓄力时机处理敌人，不把护盾或纯保护算本人伤害。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4645
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4645
+          ],
+          "法强与法穿；对低血目标的魔法、真实伤害满足余烬条件。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业05坦克：加里奥—影焰",
+          "原图446e650f90612f50.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Shen",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运心之钢首件",
+      "summary": "心之钢需要敌人在附近停留后实际攻击。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "心之钢需要敌人在附近停留后实际攻击；Q拉魂刃后穿插普攻，E嘲讽帮助接近。",
+        "W剑阵格挡攻击，R保护远处友方；心之钢独立等待和每目标冷却未被命运取消。"
+      ],
+      "basicPlay": [
+        "无R失去跨图护盾和传送，保留Q实际普攻、W剑阵与E嘲讽；不等待R加入战斗。",
+        "心之钢需要敌人在附近停留后实际攻击；Q拉魂刃后穿插普攻，E嘲讽帮助接近。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3084
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            3084
+          ],
+          "目标在附近蓄力后实际攻击；仍有每目标冷却。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3084": "1d15c5181f27ae02"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业05坦克：慎—心之钢",
+          "原图446e650f90612f50.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Nunu",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运风暴狂涌首件",
+      "summary": "W雪球按实际路程和碰撞命中，E处理近身减速禁锢，Q回复自身状态。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "W雪球按实际路程和碰撞命中，E处理近身减速禁锢，Q回复自身状态；风暴狂涌要满足短时伤害门槛。",
+        "R引导才有护盾和蓄力爆发，不能保证每次雪球立即触发风啸或每跳都算升级。"
+      ],
+      "basicPlay": [
+        "无R失去暴风雪护盾与爆发；围绕W/E命中、Q回复管理交战，不按R完整连招计算门槛。",
+        "W雪球按实际路程和碰撞命中，E处理近身减速禁锢，Q回复自身状态；风暴狂涌要满足短时伤害门槛。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4646
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4646
+          ],
+          "短时间达到对英雄伤害门槛后延迟触发风啸，有自身冷却。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4646": "96e96d64e74507fd"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业05坦克：努努和威朗普—风暴狂涌",
+          "原图446e650f90612f50.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "KSante",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运千变者贾修首件",
+      "summary": "Q/W伤害和E保护位置争取交战，贾修须英雄战斗持续达到条件后才提升额外双抗。。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q/W伤害和E保护位置争取交战，贾修须英雄战斗持续达到条件后才提升额外双抗。",
+        "R进入全盛会牺牲最大生命和额外双抗，不能把防御配置原数值直接搬到全盛姿态。"
+      ],
+      "basicPlay": [
+        "无R不进入全盛，也不沿用全盛技能冷却和W强化；以基础Q/W/E与实际普攻交战。",
+        "Q/W伤害和E保护位置争取交战，贾修须英雄战斗持续达到条件后才提升额外双抗。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6665
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6665
+          ],
+          "与英雄持续交战达到条件后提升额外双抗，不预支尚未触发的增益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6665": "d68c9621bce20749"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业05坦克：奎桑提—千变者贾修",
+          "原图446e650f90612f50.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Morgana",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运影焰首件",
+      "summary": "Q实际命中禁锢，W区域伤害争取本人伤害参与。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q实际命中禁锢，W区域伤害争取本人伤害参与；E魔法盾不直接满足命运伤害条件。",
+        "R需要链住敌人并维持到后段才晕眩，自疗不是免伤，影焰也不使所有物理伤害提升。"
+      ],
+      "basicPlay": [
+        "无R失去锁链范围伤害和晕眩，保留Q/W实际伤害与E魔法盾，不强行近身等后段。",
+        "Q实际命中禁锢，W区域伤害争取本人伤害参与；E魔法盾不直接满足命运伤害条件。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4645
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4645
+          ],
+          "法强与法穿；对低血目标的魔法、真实伤害满足余烬条件。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业06辅助：莫甘娜—影焰",
+          "原图4750c4146ed3dd71.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Yuumi",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运月石再生器首件",
+      "summary": "附身时E给友方英雄盾，被动按命中与附身条件给友方治疗。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "附身时E给友方英雄盾，被动按命中与附身条件给友方治疗；月石需要另一名有效友军目标连锁。",
+        "Q由本人实际伤害英雄才争取命运成长，仅宿主攻击或治疗助攻不自动满足；R治疗仍需命中友军。"
+      ],
+      "basicPlay": [
+        "无R失去群体波纹伤害治疗，保留附身E与被动条件治疗，并以本人Q伤害参与，不假设宿主代打可叠层。",
+        "附身时E给友方英雄盾，被动按命中与附身条件给友方治疗；月石需要另一名有效友军目标连锁。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6617
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6617
+          ],
+          "实际治疗或护盾连锁至另一名友方英雄，需要有效第二目标。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6617": "0b7525238b308bc5"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业06辅助：悠米—月石再生器",
+          "原图4750c4146ed3dd71.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Milio",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运虚空之杖首件",
+      "summary": "Q本人实际伤害英雄争取命运成长，W治疗与E护盾保护队友。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q本人实际伤害英雄争取命运成长，W治疗与E护盾保护队友；队友热情洋溢伤害归属不预记。",
+        "虚空法穿作用于魔法伤害，不直接提高治疗盾；R按范围治疗和净化，也不自动算本人伤害参与。"
+      ],
+      "basicPlay": [
+        "无R失去群体治疗与净化；保留W/E保护友方和Q本人伤害，不靠纯治疗助攻承诺命运成长。",
+        "Q本人实际伤害英雄争取命运成长，W治疗与E护盾保护队友；队友热情洋溢伤害归属不预记。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            3135
+          ],
+          "提供法强与百分比法穿，不直接增强治疗护盾。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业06辅助：米利欧—虚空之杖",
+          "原图4750c4146ed3dd71.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Talon",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运巨蛇之牙首件",
+      "summary": "Q按近远距离命中，W去回后穿插普攻触发满层被动。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q按近远距离命中，W去回后穿插普攻触发满层被动；E翻墙保留路线，不把每次流血跳数当独立命运升级。"
+      ],
+      "basicPlay": [
+        "无R失去隐形、加速和刀刃折返；用Q/W实际伤害和E地形退路交战，不沿用R绕后。",
+        "Q按近远距离命中，W去回后穿插普攻触发满层被动；E翻墙保留路线，不把每次流血跳数当独立命运升级。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6695
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6695
+          ],
+          "提供攻击力与穿甲，伤害敌方英雄后削减其护盾收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6695": "91d858d6d0c5fd80"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业01刺客：泰隆—巨蛇之牙",
+          "原图b6b97658a045d02b.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Rengar",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运巨蛇之牙首件",
+      "summary": "从实际草丛跃击，Q强化攻击、E套索留人。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "从实际草丛跃击，Q强化攻击、E套索留人；W按近期承伤回复，不把每个狗牙层数等同命运层数。"
+      ],
+      "basicPlay": [
+        "无R失去伪装主动与远处追踪跃击窗口；依靠实际草丛、Q/W/E与残暴值，不假设仍可在空地隐身跃击。",
+        "从实际草丛跃击，Q强化攻击、E套索留人；W按近期承伤回复，不把每个狗牙层数等同命运层数。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6695
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6695
+          ],
+          "提供攻击力与穿甲，伤害敌方英雄后削减其护盾收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6695": "91d858d6d0c5fd80"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业01刺客：雷恩加尔—巨蛇之牙",
+          "原图b6b97658a045d02b.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Zed",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运巨蛇之牙首件",
+      "summary": "Q与影分身E按实际位置命中，W换位保留撤离。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q与影分身E按实际位置命中，W换位保留撤离；多个E斩击不能对同目标凭空复制伤害。"
+      ],
+      "basicPlay": [
+        "无R失去印记爆发、突进和大招影子换位；围绕Q/W/E和能量管理，不按R结算安排收尾。",
+        "Q与影分身E按实际位置命中，W换位保留撤离；多个E斩击不能对同目标凭空复制伤害。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6695
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6695
+          ],
+          "提供攻击力与穿甲，伤害敌方英雄后削减其护盾收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6695": "91d858d6d0c5fd80"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业01刺客：劫—巨蛇之牙",
+          "原图b6b97658a045d02b.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Khazix",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运巨蛇之牙首件",
+      "summary": "Q选择真实孤立目标，W命中后需在爆裂区域才能回复，E跳跃保留撤离。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q选择真实孤立目标，W命中后需在爆裂区域才能回复，E跳跃保留撤离；不假设任何目标都孤立。"
+      ],
+      "basicPlay": [
+        "无R失去主动隐形与加速；仅按当前实际进化状态用Q/W/E，不承诺新的R进化点或进化E重置必然存在。",
+        "Q选择真实孤立目标，W命中后需在爆裂区域才能回复，E跳跃保留撤离；不假设任何目标都孤立。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6695
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6695
+          ],
+          "提供攻击力与穿甲，伤害敌方英雄后削减其护盾收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6695": "91d858d6d0c5fd80"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业01刺客：卡兹克—巨蛇之牙",
+          "原图b6b97658a045d02b.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Evelynn",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运风暴狂涌首件",
+      "summary": "W等待标记条件后用Q/E本人伤害触发，Q首击与重施按实际命中。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "W等待标记条件后用Q/E本人伤害触发，Q首击与重施按实际命中；风暴狂涌另需短时伤害门槛。"
+      ],
+      "basicPlay": [
+        "无R失去后撤传送、不可选取与低血强化爆发；依靠W控制、Q/E命中和现有被动伪装退路，不预支大招逃生。",
+        "W等待标记条件后用Q/E本人伤害触发，Q首击与重施按实际命中；风暴狂涌另需短时伤害门槛。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4646
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4646
+          ],
+          "短时间达到对英雄伤害门槛后延迟触发风啸，有自身冷却。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4646": "96e96d64e74507fd"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业01刺客：伊芙琳—风暴狂涌",
+          "原图b6b97658a045d02b.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Naafiri",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运巨蛇之牙首件",
+      "summary": "Q两段命中争取流血与对已流血目标的后续收益，W保护窗口、E调整位置。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q两段命中争取流血与对已流血目标的后续收益，W保护窗口、E调整位置；不预记每只狗群攻击都能独立增加命运层数。"
+      ],
+      "basicPlay": [
+        "无R失去定向冲刺与后续再次施放；用Q/W/E本人实际伤害参与，不沿用R入场和第二次护盾。",
+        "Q两段命中争取流血与对已流血目标的后续收益，W保护窗口、E调整位置；不预记每只狗群攻击都能独立增加命运层数。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6695
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6695
+          ],
+          "提供攻击力与穿甲，伤害敌方英雄后削减其护盾收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6695": "91d858d6d0c5fd80"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业01刺客：纳亚菲利—巨蛇之牙",
+          "原图b6b97658a045d02b.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Twitch",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运多米尼克领主的致意首件",
+      "summary": "Q伪装选位置，W施毒后实际普攻并按现有毒层用E。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q伪装选位置，W施毒后实际普攻并按现有毒层用E；本人毒伤需真实持续到目标阵亡前窗口，不把层数当命运升级次数。"
+      ],
+      "basicPlay": [
+        "无R失去射程、攻击力和穿刺弩箭；在基础射程内用Q/W/E与普攻，不能继续站大招距离输出。",
+        "Q伪装选位置，W施毒后实际普攻并按现有毒层用E；本人毒伤需真实持续到目标阵亡前窗口，不把层数当命运升级次数。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            3036
+          ],
+          "提供物理输出与护甲穿透；需要实际攻击或物理伤害兑现。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业02射手：图奇—多米尼克领主的致意",
+          "原图892090b5a608d574.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Aphelios",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运多米尼克领主的致意首件",
+      "summary": "按当前主副手、弹药和各自Q效果交战，W切换武器。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "按当前主副手、弹药和各自Q效果交战，W切换武器；命运绑定的是装备首传说，不是主副手武器。"
+      ],
+      "basicPlay": [
+        "无R失去清辉夜凝及对应武器附加效果；保留实际主副手普攻与Q、W切换，不编不存在的E施法。",
+        "按当前主副手、弹药和各自Q效果交战，W切换武器；命运绑定的是装备首传说，不是主副手武器。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            3036
+          ],
+          "提供物理输出与护甲穿透；需要实际攻击或物理伤害兑现。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业02射手：厄斐琉斯—多米尼克领主的致意",
+          "原图892090b5a608d574.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Vex",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运影焰首件",
+      "summary": "E范围施加暮气，Q/W实际命中，按终焉状态争取恐惧。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "E范围施加暮气，Q/W实际命中，按终焉状态争取恐惧；W护盾本身不直接满足伤害参与。"
+      ],
+      "basicPlay": [
+        "无R失去远距离标记突进与大招追击重施；围绕Q/W/E与终焉控制，在基础范围内处理敌人。",
+        "E范围施加暮气，Q/W实际命中，按终焉状态争取恐惧；W护盾本身不直接满足伤害参与。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4645
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4645
+          ],
+          "法强与法穿；对低血目标的魔法、真实伤害满足余烬条件。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业03法师：薇古丝—影焰",
+          "原图e4bed150bf304582.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Ahri",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运影焰首件",
+      "summary": "E魅惑后以Q去回和W狐火实际伤害，Q回程是真实伤害。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "E魅惑后以Q去回和W狐火实际伤害，Q回程是真实伤害；不把多颗狐火当每颗独立升级。"
+      ],
+      "basicPlay": [
+        "无R失去灵魄突袭位移与重施追击；留在Q/W/E命中范围，依靠E控制与W移速退出。",
+        "E魅惑后以Q去回和W狐火实际伤害，Q回程是真实伤害；不把多颗狐火当每颗独立升级。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4645
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4645
+          ],
+          "法强与法穿；对低血目标的魔法、真实伤害满足余烬条件。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业03法师：阿狸—影焰",
+          "原图e4bed150bf304582.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Viktor",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运影焰首件",
+      "summary": "E射线与Q后的强化攻击实际伤害，W区域争取晕眩。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "E射线与Q后的强化攻击实际伤害，W区域争取晕眩；技能升级按已取得的海克斯碎片，不由命运层数代替。"
+      ],
+      "basicPlay": [
+        "无R失去奥术风暴与其引导打断；以Q/W/E交战，仅使用当前实际已有的基础技能升级，不预记风暴扩大或续时。",
+        "E射线与Q后的强化攻击实际伤害，W区域争取晕眩；技能升级按已取得的海克斯碎片，不由命运层数代替。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4645
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4645
+          ],
+          "法强与法穿；对低血目标的魔法、真实伤害满足余烬条件。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业03法师：维克托—影焰",
+          "原图e4bed150bf304582.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Syndra",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运影焰首件",
+      "summary": "Q布球、W投物和E推球按实际位置命中，碎晶强化与命运成长是两套不同条件。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q布球、W投物和E推球按实际位置命中，碎晶强化与命运成长是两套不同条件；同次E不对同目标重复伤害。"
+      ],
+      "basicPlay": [
+        "无R失去多球爆发与相应处决渠道；保留Q/W/E及当前已获碎晶强化，不承诺R被动急速仍可用。",
+        "Q布球、W投物和E推球按实际位置命中，碎晶强化与命运成长是两套不同条件；同次E不对同目标重复伤害。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        4645
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            4645
+          ],
+          "法强与法穿；对低血目标的魔法、真实伤害满足余烬条件。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "4645": "4389cef3a456f687"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业03法师：辛德拉—影焰",
+          "原图e4bed150bf304582.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Taliyah",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运黯炎火炬首件",
+      "summary": "Q按掘石场状态投石，E铺碎石后W改变敌人位置。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q按掘石场状态投石，E铺碎石后W改变敌人位置；Q对同目标后续命中减伤，黯炎火炬也不是每石独立满额伤害。"
+      ],
+      "basicPlay": [
+        "无R失去土墙封路与骑墙；围绕Q/W/E和掘石场在本地交战，不按R长距离支援计算参与机会。",
+        "Q按掘石场状态投石，E铺碎石后W改变敌人位置；Q对同目标后续命中减伤，黯炎火炬也不是每石独立满额伤害。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        2503
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            2503
+          ],
+          "伤害技能命中挂邪焰；按实际影响目标兑现法强收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "2503": "0c136199a9e6fbf3"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业03法师：塔莉垭—黯炎火炬",
+          "原图e4bed150bf304582.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Ryze",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运时光之杖首件",
+      "summary": "E施加涌动，W按涌动条件禁锢，Q实际命中。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "E施加涌动，W按涌动条件禁锢，Q实际命中；额外法力与时光分钟成长不等同命运层数。"
+      ],
+      "basicPlay": [
+        "无R失去传送支援，不预支R被动对涌动Q的伤害加成；以E/W刷新Q及基础连招实际命中交战。",
+        "E施加涌动，W按涌动条件禁锢，Q实际命中；额外法力与时光分钟成长不等同命运层数。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6657
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6657
+          ],
+          "装备自身的计时成长与命运成长分开，法力消耗仍要管理。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6657": "2f68b1fc2810ec85"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业03法师：瑞兹—时光之杖",
+          "原图e4bed150bf304582.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Ambessa",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运巨蛇之牙首件",
+      "summary": "技能后穿插实际普攻消耗充能并回复能量，Q按边缘命中、W格挡、E调整身位，不连续空放技能。。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "技能后穿插实际普攻消耗充能并回复能量，Q按边缘命中、W格挡、E调整身位，不连续空放技能。"
+      ],
+      "basicPlay": [
+        "无R失去定向突入控制；不预支R被动穿甲或技能治疗，依靠Q/W/E、能量与护盾管理交战。",
+        "技能后穿插实际普攻消耗充能并回复能量，Q按边缘命中、W格挡、E调整身位，不连续空放技能。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6695
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6695
+          ],
+          "提供攻击力与穿甲，伤害敌方英雄后削减其护盾收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6695": "91d858d6d0c5fd80"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业04战士：安蓓萨—巨蛇之牙",
+          "原图df97c70e51eae705.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Kayn",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运巨蛇之牙首件",
+      "summary": "Q/W本人实际伤害参与，E进出地形留退路。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q/W本人实际伤害参与，E进出地形留退路；按当前真实形态使用影流或暗裔效果，不把职业图默认成某一种形态。"
+      ],
+      "basicPlay": [
+        "无R失去侵入目标的不可选取与破体伤害，不沿用暗裔R治疗或影流R刷新；保留当前形态Q/W/E。",
+        "Q/W本人实际伤害参与，E进出地形留退路；按当前真实形态使用影流或暗裔效果，不把职业图默认成某一种形态。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6695
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6695
+          ],
+          "提供攻击力与穿甲，伤害敌方英雄后削减其护盾收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6695": "91d858d6d0c5fd80"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业04战士：凯隐—巨蛇之牙",
+          "原图df97c70e51eae705.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Riven",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运巨蛇之牙首件",
+      "summary": "Q三段与W控制之间穿插实际普攻消耗被动，E护盾调整距离。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q三段与W控制之间穿插实际普攻消耗被动，E护盾调整距离；E不能穿地形，只有Q最后一段可翻越。"
+      ],
+      "basicPlay": [
+        "无R失去攻击力、距离强化与疾风斩收尾；以基础Q/W/E和普攻交战，不按大招射程追击。",
+        "Q三段与W控制之间穿插实际普攻消耗被动，E护盾调整距离；E不能穿地形，只有Q最后一段可翻越。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6695
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6695
+          ],
+          "提供攻击力与穿甲，伤害敌方英雄后削减其护盾收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6695": "91d858d6d0c5fd80"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业04战士：锐雯—巨蛇之牙",
+          "原图df97c70e51eae705.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Zaahen",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运狂妄首件",
+      "summary": "Q强化攻击回复、重施击飞，W拉拽与E边缘命中争取本人伤害。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q强化攻击回复、重施击飞，W拉拽与E边缘命中争取本人伤害；果决复活要满层且冷却就绪。"
+      ],
+      "basicPlay": [
+        "无R失去升空减伤和主动伤害回复，不预支R被动穿甲；以Q/W/E与实际攻击继续争取成长。",
+        "Q强化攻击回复、重施击飞，W拉拽与E边缘命中争取本人伤害；果决复活要满层且冷却就绪。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        126697
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            126697
+          ],
+          "近期被本人伤害过的英雄阵亡后获得临时攻击力，按实际触发状态交战。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "126697": "942097b9d9de1e23"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业04战士：亚恒—狂妄",
+          "原图df97c70e51eae705.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Singed",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运兰德里的折磨首件",
+      "summary": "Q毒迹需敌人实际经过，W缚地后E过肩摔按位置留人。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q毒迹需敌人实际经过，W缚地后E过肩摔按位置留人；毒伤参与要符合本人伤害时间窗口，不是无限远自动成长。"
+      ],
+      "basicPlay": [
+        "无R失去药剂提供的属性回复与强化毒迹重伤；按基础Q/W/E和法力管理交战，不沿用大招后的抗性或移速。",
+        "Q毒迹需敌人实际经过，W缚地后E过肩摔按位置留人；毒伤参与要符合本人伤害时间窗口，不是无限远自动成长。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6653
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6653
+          ],
+          "伤害技能命中挂灼烧，持续交战增伤按实际触发状态。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6653": "9fb9534b546d1626"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业05坦克：辛吉德—兰德里的折磨",
+          "原图446e650f90612f50.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Rammus",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运荆棘之甲首件",
+      "summary": "Q碰撞接近，E嘲讽配合W防御。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q碰撞接近，E嘲讽配合W防御；用本人Q或实际普攻伤害确认参与，不假定每次敌人攻击都必然形成命运层数。"
+      ],
+      "basicPlay": [
+        "无R失去跃击、区域伤害与余震控制；保留Q/W/E和本人实际普攻，不沿用QR越位入场。",
+        "Q碰撞接近，E嘲讽配合W防御；用本人Q或实际普攻伤害确认参与，不假定每次敌人攻击都必然形成命运层数。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3075
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            3075
+          ],
+          "受攻击时反击并压制敌方回复；仅仅承伤不等于本人伤害参与。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3075": "77e99cfe1e808733"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业05坦克：拉莫斯—荆棘之甲",
+          "原图446e650f90612f50.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Sona",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运耳语头环首件",
+      "summary": "W治疗盾和E加速保护队友，但必须用本人Q或实际普攻伤害目标才争取命运成长。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "W治疗盾和E加速保护队友，但必须用本人Q或实际普攻伤害目标才争取命运成长；耳语充能与命运是两套进度。"
+      ],
+      "basicPlay": [
+        "无R失去大招伤害晕眩；仍W保护友军、E调整位置，以本人Q或实际普攻伤害参与，不能纯治疗助攻叠命运。",
+        "W治疗盾和E加速保护队友，但必须用本人Q或实际普攻伤害目标才争取命运成长；耳语充能与命运是两套进度。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        2526
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            2526
+          ],
+          "技能命中充能，达到360后进化；按当前装备形态生效。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "2526": "b8e7732621e76307"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业06辅助：娑娜—耳语头环",
+          "原图4750c4146ed3dd71.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
+    },
+    {
+      "hero": "Pyke",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运巨蛇之牙首件",
+      "summary": "Q蓄力钩取或秒放，E回返魅影争取晕眩，W伪装调整位置。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未做其他传说装备时再决定首件；已经绑定其他物件就不能换绑。",
+        "Q蓄力钩取或秒放，E回返魅影争取晕眩，W伪装调整位置；本人实际伤害后目标阵亡才成长。"
+      ],
+      "basicPlay": [
+        "无R失去处决、重施收尾和大招金币机制；围绕Q/W/E控制与本人伤害，不把纯助攻当命运成长。",
+        "Q蓄力钩取或秒放，E回返魅影争取晕眩，W伪装调整位置；本人实际伤害后目标阵亡才成长。"
+      ],
+      "caution": "已完成其他传说装备时，先确认实际绑定的是哪一件。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6695
+      ],
+      "gear": [
+        [
+          "首传说",
+          [
+            6695
+          ],
+          "提供攻击力与穿甲，伤害敌方英雄后削减其护盾收益。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "6695": "91d858d6d0c5fd80"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700994042754125083",
+        "author": "海斗一图流",
+        "publishedAt": "2026-10-26T23:10:12+08:00",
+        "sourcePatch": "16.21",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗4.0；原图页脚16.21、数据日期2026-10-25",
+        "evidenceSections": [
+          "职业06辅助：派克—巨蛇之牙",
+          "原图4750c4146ed3dd71.webp：逐英雄首件配对；01至08是榜单序号"
+        ],
+        "adaptation": "原作者明确的单件首传说配对，按当前16.21技能、强化与装备独立改编。职业通用公式不覆盖逐英雄例外；不将榜单序号解释为买序，不编完整六件、出门、加点或后续路径。作者统计不作项目胜率或最优证明；未采用仅3/7级出现、无上限及每杀固定属性等未核实宣称。"
+      }
     }
   ],
   "championReview": {
@@ -20722,7 +23290,19 @@
       "Nunu": "8f44e57080d4e3bf",
       "Hwei": "357b22785623158b",
       "Zaahen": "747e69d1f5137702",
-      "Kayle": "24bd683389a6d92b"
+      "Kayle": "24bd683389a6d92b",
+      "Khazix": "38a8021ce6d0bb36",
+      "Evelynn": "12dfa2ca186e0f5a",
+      "Naafiri": "490e0d502915c350",
+      "Twitch": "ab3e76d629cf2787",
+      "Aphelios": "a16a2bc3afe40b1c",
+      "Vex": "9302ca0521a22970",
+      "Ahri": "bde1d83c334a89af",
+      "Viktor": "0bd74fc675981fd6",
+      "Syndra": "6fd0f8bd70c981dd",
+      "Taliyah": "164392e23c74360e",
+      "Singed": "65d32cdacd60176e",
+      "Pyke": "750b7cf6d1187481"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -23674,6 +26254,294 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "3fa2585bed59105f"
+          }
+        }
+      },
+      "Khazix": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "38a8021ce6d0bb36",
+        "observedAt": "2026-10-21T19:28:20.433Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Khazix",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/khazix/khazix.bin.json",
+            "sha256": "a879eab089e0f2a823065a04c4d8766b97acce378447ddae1cefec4621f17c7d"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "489aef7095c0a316"
+          }
+        }
+      },
+      "Evelynn": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "12dfa2ca186e0f5a",
+        "observedAt": "2026-10-21T19:28:20.351Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Evelynn",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/evelynn/evelynn.bin.json",
+            "sha256": "9971035ec98da0adfcce81a28c328b10ee3d01c762ad12a581671eac7723edca"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "64e1ac3ea9bf1e8e"
+          }
+        }
+      },
+      "Naafiri": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "490e0d502915c350",
+        "observedAt": "2026-10-21T19:28:20.442Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Naafiri",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/naafiri/naafiri.bin.json",
+            "sha256": "35ec8da57bf654ce0a8a7b3d3a68b78888fa1c0d1e330cd098c15ffa2cfeb97d"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "48cae89495cd6a6b"
+          }
+        }
+      },
+      "Twitch": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "ab3e76d629cf2787",
+        "observedAt": "2026-10-21T19:28:20.531Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Twitch",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/twitch/twitch.bin.json",
+            "sha256": "53894a05d1e512a9fdbfd4d2898f70d6ee38c2339efe94316ffed1a165a58e2d"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "461e810ef4e30853"
+          }
+        }
+      },
+      "Aphelios": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "a16a2bc3afe40b1c",
+        "observedAt": "2026-10-21T19:28:20.331Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Aphelios",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/aphelios/aphelios.bin.json",
+            "sha256": "74327859d80e03b1654258c4ba2a2bc609dfcfece0b3fc9d7cb0b35d4140e8df"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "ac55a790c915bb91"
+          }
+        }
+      },
+      "Vex": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "9302ca0521a22970",
+        "observedAt": "2026-10-21T19:28:20.533Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Vex",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/vex/vex.bin.json",
+            "sha256": "5b17001fbb9729d6e42f65f71542cfe0e5e34bcee648f1cc5413c6725ca8d0b6"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "933650e1024cdaa0"
+          }
+        }
+      },
+      "Ahri": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "bde1d83c334a89af",
+        "observedAt": "2026-10-21T19:28:20.239Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Ahri",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/ahri/ahri.bin.json",
+            "sha256": "7c53539d053f4bc18d564247c1bf33cd969637e151b5409fd23476a5a5c3598c"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "e4656df5a2cc81d8"
+          }
+        }
+      },
+      "Viktor": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "0bd74fc675981fd6",
+        "observedAt": "2026-10-21T19:28:20.534Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Viktor",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/viktor/viktor.bin.json",
+            "sha256": "adff371fb352f4765fe4360f7451fe77a0f8312275ccdc41d0b325c6fb0c7e09"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "ef737928ffc1b9ac"
+          }
+        }
+      },
+      "Syndra": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "6fd0f8bd70c981dd",
+        "observedAt": "2026-10-21T19:28:20.528Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Syndra",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/syndra/syndra.bin.json",
+            "sha256": "e42adeaf766c60a65630d3a83c9520d4f5eeae4690aa9c523e9119635286d938"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "5426d3509eaceba8"
+          }
+        }
+      },
+      "Taliyah": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "164392e23c74360e",
+        "observedAt": "2026-10-21T19:28:20.528Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Taliyah",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/taliyah/taliyah.bin.json",
+            "sha256": "9bef888ff2c5445a27f2a7673a9ac194ee0305de7aa8a797fdc38f4ae50e9409"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "b2732603887d7e5f"
+          }
+        }
+      },
+      "Singed": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "65d32cdacd60176e",
+        "observedAt": "2026-10-21T19:28:20.452Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Singed",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/singed/singed.bin.json",
+            "sha256": "1c22b7efd0ffea9631ee518e7f5ebbee0dd5618b6603bb49bbd5531024d5a848"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "56d7c605cce7a1a7"
+          }
+        }
+      },
+      "Pyke": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "750b7cf6d1187481",
+        "observedAt": "2026-10-21T19:28:20.446Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Pyke",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/pyke/pyke.bin.json",
+            "sha256": "86f12c6d02089846d871822760da759289bc2a1a4907782ba8e53372afb5c041"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "2fc94ca452c59007"
           }
         }
       }
