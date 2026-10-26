@@ -14728,6 +14728,916 @@
         ],
         "adaptation": "按作者实际字幕与配置卡的三件装备骨架，独立核对当前16.21技能、强化与装备；不是完整六件或逐件购买顺序。强化近远程系数与等级基础伤害来自当前原始公式，动态次数和累计伤害不编成静态值。只使用仍通过复核的装备组，不借原片面板承诺固定攻击力、连锁触发、胜率、鞋子或加点；录制补丁号未知。"
       }
+    },
+    {
+      "hero": "Ashe",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运多米尼克首件",
+      "summary": "作者寒冰示例的物理穿透首件，按护甲压力取舍。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "W或普攻命中英雄后保持距离攻击，Q需要先积攒专注；E侦查不造成伤害。",
+        "寒冰暴击不按普通暴击造成额外伤害，不把多米尼克的暴击率解释为普通暴击爆发。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E与攻击减速，失去水晶箭的远距离伤害与晕眩。",
+        "W或普攻命中英雄后保持距离攻击，Q需要先积攒专注；E侦查不造成伤害。",
+        "寒冰暴击不按普通暴击造成额外伤害，不把多米尼克的暴击率解释为普通暴击爆发。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者实际展示寒冰命定多米尼克并建议百分比穿透，画面属性为叠层后示例，不作起步值或胜率。仅收录这件核心；当前16.21英雄、强化和装备由项目独立核对，录制补丁与服务器未知，不冒称正式服当版实测。未补造六件、买序、符文或加点。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
+    },
+    {
+      "hero": "Caitlyn",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运物理穿透·机制适配",
+      "summary": "同一物理穿透骨架的项目机制适配，不是作者逐英雄实测。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "Q与普攻、爆头造成物理伤害；陷阱和绳网提供后续爆头窗口，不要求贴身交战。",
+        "爆头仍受实际暴击几率和当前技能规则约束；绳网的魔法伤害不享受护甲穿透。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E与爆头，失去远距离锁定收尾；不要依赖大招补齐伤害参与。",
+        "Q与普攻、爆头造成物理伤害；陷阱和绳网提供后续爆头窗口，不要求贴身交战。",
+        "爆头仍受实际暴击几率和当前技能规则约束；绳网的魔法伤害不享受护甲穿透。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady（项目机制适配）",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者原片明确展示的英雄是寒冰，物理百分比穿透为其共用配装思路；本成员由项目依据当前16.21物理普攻、暴击和技能机制适配，并非作者该英雄专属配置或逐英雄实测。保留成员技能、伤害类别及禁R差异，只采用同一件首件核心，不补造六件、符文、加点、买序或胜率；录制补丁与服务器未知。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
+    },
+    {
+      "hero": "Draven",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运物理穿透·机制适配",
+      "summary": "同一物理穿透骨架的项目机制适配，不是作者逐英雄实测。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "用Q飞斧普攻与E实际造成伤害，W帮助调整接斧位置；不为接斧走入无法输出的区域。",
+        "武器的伤害参与条件与德莱文赏金不同：武器可由符合伤害窗口的助攻成长，崇拜赏金仍要求击杀。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E及接斧循环，失去远距离往返双斧收尾。",
+        "用Q飞斧普攻与E实际造成伤害，W帮助调整接斧位置；不为接斧走入无法输出的区域。",
+        "武器的伤害参与条件与德莱文赏金不同：武器可由符合伤害窗口的助攻成长，崇拜赏金仍要求击杀。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady（项目机制适配）",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者原片明确展示的英雄是寒冰，物理百分比穿透为其共用配装思路；本成员由项目依据当前16.21物理普攻、暴击和技能机制适配，并非作者该英雄专属配置或逐英雄实测。保留成员技能、伤害类别及禁R差异，只采用同一件首件核心，不补造六件、符文、加点、买序或胜率；录制补丁与服务器未知。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
+    },
+    {
+      "hero": "Jinx",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运物理穿透·机制适配",
+      "summary": "同一物理穿透骨架的项目机制适配，不是作者逐英雄实测。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "按距离与法力切换Q轻机枪或火箭，W实际命中也能参与伤害；先保证持续攻击空间。",
+        "推塔可触发金克丝的个人快感，但建筑或小兵阵亡不满足命运之武器的英雄阵亡条件。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E与快感，失去远距离飞弹收尾；不要预支大招带来的额外参与窗口。",
+        "按距离与法力切换Q轻机枪或火箭，W实际命中也能参与伤害；先保证持续攻击空间。",
+        "推塔可触发金克丝的个人快感，但建筑或小兵阵亡不满足命运之武器的英雄阵亡条件。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady（项目机制适配）",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者原片明确展示的英雄是寒冰，物理百分比穿透为其共用配装思路；本成员由项目依据当前16.21物理普攻、暴击和技能机制适配，并非作者该英雄专属配置或逐英雄实测。保留成员技能、伤害类别及禁R差异，只采用同一件首件核心，不补造六件、符文、加点、买序或胜率；录制补丁与服务器未知。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
+    },
+    {
+      "hero": "Lucian",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运物理穿透·机制适配",
+      "summary": "同一物理穿透骨架的项目机制适配，不是作者逐英雄实测。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "Q或实际普攻接技能后的双枪输出，E调整距离；W命中可参与伤害，但不要把E位移算伤害。",
+        "双枪每次命中不会直接各叠一次武器；额外魔法伤害不因护甲穿透变成物理收益。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E与技能后双枪，失去圣枪洗礼的远距离持续输出。",
+        "Q或实际普攻接技能后的双枪输出，E调整距离；W命中可参与伤害，但不要把E位移算伤害。",
+        "双枪每次命中不会直接各叠一次武器；额外魔法伤害不因护甲穿透变成物理收益。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady（项目机制适配）",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者原片明确展示的英雄是寒冰，物理百分比穿透为其共用配装思路；本成员由项目依据当前16.21物理普攻、暴击和技能机制适配，并非作者该英雄专属配置或逐英雄实测。保留成员技能、伤害类别及禁R差异，只采用同一件首件核心，不补造六件、符文、加点、买序或胜率；录制补丁与服务器未知。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
+    },
+    {
+      "hero": "Sivir",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运物理穿透·机制适配",
+      "summary": "同一物理穿透骨架的项目机制适配，不是作者逐英雄实测。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "Q往返和W弹射实际命中英雄，利用攻击移速保持距离；E格挡本身不造成伤害。",
+        "弹射触及多个目标仍需各目标在本人伤害后3秒内阵亡；击中次数不是武器升级次数。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E与攻击移速，失去狩猎的团队加速，不预支其持续进攻窗口。",
+        "Q往返和W弹射实际命中英雄，利用攻击移速保持距离；E格挡本身不造成伤害。",
+        "弹射触及多个目标仍需各目标在本人伤害后3秒内阵亡；击中次数不是武器升级次数。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady（项目机制适配）",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者原片明确展示的英雄是寒冰，物理百分比穿透为其共用配装思路；本成员由项目依据当前16.21物理普攻、暴击和技能机制适配，并非作者该英雄专属配置或逐英雄实测。保留成员技能、伤害类别及禁R差异，只采用同一件首件核心，不补造六件、符文、加点、买序或胜率；录制补丁与服务器未知。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
+    },
+    {
+      "hero": "Xayah",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运物理穿透·机制适配",
+      "summary": "同一物理穿透骨架的项目机制适配，不是作者逐英雄实测。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "Q和技能后的普攻布置羽毛，E在合适角度拉回；持续普攻仍需要安全位置。",
+        "多根羽毛和多段命中不直接逐根升级武器；护甲穿透服务伤害，不延长禁锢。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E与技能后羽毛，失去大招不可被选取的躲避与额外布羽。",
+        "Q和技能后的普攻布置羽毛，E在合适角度拉回；持续普攻仍需要安全位置。",
+        "多根羽毛和多段命中不直接逐根升级武器；护甲穿透服务伤害，不延长禁锢。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady（项目机制适配）",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者原片明确展示的英雄是寒冰，物理百分比穿透为其共用配装思路；本成员由项目依据当前16.21物理普攻、暴击和技能机制适配，并非作者该英雄专属配置或逐英雄实测。保留成员技能、伤害类别及禁R差异，只采用同一件首件核心，不补造六件、符文、加点、买序或胜率；录制补丁与服务器未知。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
+    },
+    {
+      "hero": "Tristana",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运物理穿透·机制适配",
+      "summary": "同一物理穿透骨架的项目机制适配，不是作者逐英雄实测。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "Q帮助完成普攻与E炸弹叠层，先判断能否安全输出；W位移用于调整而非必须跳脸。",
+        "护甲穿透服务普攻和E物理伤害，不增强W/R的魔法伤害；武器成长也不随炸弹层数直接累加。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E及等级射程成长，失去大招击退保命，不为触发武器强行突进。",
+        "Q帮助完成普攻与E炸弹叠层，先判断能否安全输出；W位移用于调整而非必须跳脸。",
+        "护甲穿透服务普攻和E物理伤害，不增强W/R的魔法伤害；武器成长也不随炸弹层数直接累加。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady（项目机制适配）",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者原片明确展示的英雄是寒冰，物理百分比穿透为其共用配装思路；本成员由项目依据当前16.21物理普攻、暴击和技能机制适配，并非作者该英雄专属配置或逐英雄实测。保留成员技能、伤害类别及禁R差异，只采用同一件首件核心，不补造六件、符文、加点、买序或胜率；录制补丁与服务器未知。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
+    },
+    {
+      "hero": "MissFortune",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运物理穿透·机制适配",
+      "summary": "同一物理穿透骨架的项目机制适配，不是作者逐英雄实测。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "Q与普攻实际命中参与伤害，W提供攻击窗口；R为可用时的额外输出方式，不是核心前提。",
+        "护甲穿透不增强E的魔法伤害；R多波和被动换目标的额外伤害也不等于每次直接升级武器。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E及切换攻击目标的被动伤害，失去弹幕时间；这仍是普攻物理方向。",
+        "Q与普攻实际命中参与伤害，W提供攻击窗口；保留E用于减速配合，仍需保持攻击空间。",
+        "护甲穿透不增强E的魔法伤害；R多波和被动换目标的额外伤害也不等于每次直接升级武器。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady（项目机制适配）",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者原片明确展示的英雄是寒冰，物理百分比穿透为其共用配装思路；本成员由项目依据当前16.21物理普攻、暴击和技能机制适配，并非作者该英雄专属配置或逐英雄实测。保留成员技能、伤害类别及禁R差异，只采用同一件首件核心，不补造六件、符文、加点、买序或胜率；录制补丁与服务器未知。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
+    },
+    {
+      "hero": "Quinn",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命运物理穿透·机制适配",
+      "summary": "同一物理穿透骨架的项目机制适配，不是作者逐英雄实测。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内目标阵亡才成长，绑定后无法售出。",
+      "play": [
+        "尚未完成其他传说装备时，以多米尼克作为本方向的首件；已经绑定别件时不承诺换绑。",
+        "攻击侵扰标记目标，Q或E后在安全距离接普攻；W主动侦查不直接造成伤害。",
+        "护甲穿透服务实际物理伤害，不能替代射程、进场判断或安全退路；标记本身不升级武器。"
+      ],
+      "basicPlay": [
+        "禁R保留Q/W/E与侵扰，失去深入敌后的高速转场，不依赖大招进场维持伤害窗口。",
+        "攻击侵扰标记目标，Q或E后在安全距离接普攻；W主动侦查不直接造成伤害。",
+        "护甲穿透服务实际物理伤害，不能替代射程、进场判断或安全退路；标记本身不升级武器。"
+      ],
+      "caution": "已有物理转魔法或纯粹主义者术师时撤回这条物理普攻方向。基础装备没有攻速或回复，不能自行解决进场与续航；敌方缺少护甲时不作统一默认。不承诺固定成长、百穿或画面中的叠层后面板。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3036
+      ],
+      "gear": [
+        [
+          "共用命定首件·物理与护甲压力",
+          [
+            3036
+          ],
+          "基础为35攻击力、35%护穿、25%暴击。巨人杀手随敌方额外生命值提高，1500额外生命值达15%增伤上限；命定后的属性不固定。先确认首件绑定，不能把后续装备也当作同步升级。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3036": "2758e8ff995f599d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1w1nD6TEnx/",
+        "author": "The-cat-lady（项目机制适配）",
+        "publishedAt": "2026-10-25T19:54:06.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "端游海克斯大乱斗；确切录制补丁与服务器未显示",
+        "evidenceSeconds": [
+          88,
+          92,
+          94,
+          108,
+          110,
+          112,
+          114,
+          148
+        ],
+        "adaptation": "作者原片明确展示的英雄是寒冰，物理百分比穿透为其共用配装思路；本成员由项目依据当前16.21物理普攻、暴击和技能机制适配，并非作者该英雄专属配置或逐英雄实测。保留成员技能、伤害类别及禁R差异，只采用同一件首件核心，不补造六件、符文、加点、买序或胜率；录制补丁与服务器未知。 两项冲突为项目对本普攻骨架的取舍，不是官方强化禁搭或作者原话。"
+      },
+      "excludedAugments": [
+        1205,
+        2018
+      ]
     }
   ],
   "championReview": {
@@ -14841,7 +15751,14 @@
       "RekSai": "d32c8960fd032e39",
       "Kayn": "b84a81ee9773b8f5",
       "Zed": "ca93141fef21a473",
-      "Jhin": "226e6c11b8a992f5"
+      "Jhin": "226e6c11b8a992f5",
+      "Ashe": "f363e1846cfe0370",
+      "Draven": "6e70cb90d9331e71",
+      "Jinx": "98d589f2c16be412",
+      "Lucian": "cd773946a58860de",
+      "Sivir": "6c42062d13c38ce6",
+      "Xayah": "6218a12d2240d28e",
+      "Tristana": "931894a6ac7e80f4"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -17433,6 +18350,174 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "3aaa1bcaed04d760"
+          }
+        }
+      },
+      "Ashe": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "f363e1846cfe0370",
+        "observedAt": "2026-10-23T02:03:51.451Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Ashe",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/ashe/ashe.bin.json",
+            "sha256": "ada00af1ea15a42094a914a05794e0d3cedcb66c150ed52e8d3762b8d12dc6b5"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "1ab1be4161ebeecc"
+          }
+        }
+      },
+      "Draven": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "6e70cb90d9331e71",
+        "observedAt": "2026-10-23T02:03:51.458Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Draven",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/draven/draven.bin.json",
+            "sha256": "530f1eee4e7bfe9fbe6dc5ba9711aad33f15e3dd9dc81378e217a090fc319747"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "b7e878515739012b"
+          }
+        }
+      },
+      "Jinx": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "98d589f2c16be412",
+        "observedAt": "2026-10-23T02:03:51.531Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Jinx",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/jinx/jinx.bin.json",
+            "sha256": "5ca25fc97c2da4874b88de6faec7dcfd5ea991b8edd1773d9a2cb9ecd5b2091f"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "18a489971bd9889a"
+          }
+        }
+      },
+      "Lucian": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "cd773946a58860de",
+        "observedAt": "2026-10-23T02:03:51.537Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Lucian",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/lucian/lucian.bin.json",
+            "sha256": "51e857476efee2f2d23e408d47540fb6c4cb9778572b2e9341d1273833876871"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "ddbca92e2885ac11"
+          }
+        }
+      },
+      "Sivir": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "6c42062d13c38ce6",
+        "observedAt": "2026-10-23T02:03:51.628Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Sivir",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/sivir/sivir.bin.json",
+            "sha256": "12c68a433a466cff6396e4e8642834ae342650bb54d7b4251a10152b501703b4"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "6b46b8e16bb65277"
+          }
+        }
+      },
+      "Xayah": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "6218a12d2240d28e",
+        "observedAt": "2026-10-23T02:03:51.640Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Xayah",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/xayah/xayah.bin.json",
+            "sha256": "94e7c4f849daefb1f7967fda0b4abd1848747fceb9ff04b2530e00471f848de5"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "ef84e7c599b03475"
+          }
+        }
+      },
+      "Tristana": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "931894a6ac7e80f4",
+        "observedAt": "2026-10-23T02:03:51.635Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Tristana",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/tristana/tristana.bin.json",
+            "sha256": "62d0dcaec7b4f7498a55af4d7ca3a30ac433fa08913fa095194a5c920dfb7891"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "dedfd8b3d11580bb"
           }
         }
       }
