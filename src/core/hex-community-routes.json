@@ -5417,6 +5417,673 @@
           }
         }
       }
+    },
+    {
+      "hero": "Lulu",
+      "augment": 1095,
+      "optional": [
+        1068,
+        1037
+      ],
+      "title": "治疗护盾补短时双抗",
+      "summary": "在安全站位对友方英雄使用护盾，利用实际治疗或护盾触发短时双抗。",
+      "coreBrief": "治疗或护盾使目标获得随等级30–60护甲和魔抗，持续3秒。",
+      "play": [
+        "优先在友方英雄需要保护时施放 E，留好下一轮施法的蓝量与位置。",
+        "W 根据队友输出窗口或敌方接近情况选择目标；Q 用于限制走位。"
+      ],
+      "basicPlay": [
+        "以 E 保护需要承伤的友方英雄，维持安全站位和蓝量。",
+        "W、Q 处理输出窗口与接近威胁，不依赖大招。"
+      ],
+      "caution": "以友方E的实际护盾兑现强化；对敌E的伤害不当作友方护盾，双抗加成只持续3秒。",
+      "gear": [
+        [
+          "作者主线·①—⑥",
+          [
+            6617,
+            2526,
+            3504,
+            3158,
+            3107,
+            6621
+          ],
+          "作者第二格列歌之权冠终态；先购买耳语头环，满足其进化条件后才成为成品，不预算成品效果。"
+        ],
+        [
+          "取得循环往复·①—⑥",
+          [
+            6617,
+            2526,
+            6616,
+            3158,
+            6621,
+            3504
+          ],
+          "作者在循环往复分支将流水放第三、黎明第五、香炉第六；第二格仍按耳语组件的实际进化状态。",
+          [
+            1068
+          ]
+        ],
+        [
+          "敌方回血多·换⑥",
+          [
+            3165
+          ],
+          "作者指定替换第六格；本人须满足装备伤害条件才施加重伤。"
+        ],
+        [
+          "需要韧性·换④",
+          [
+            3111
+          ],
+          "作者指定替换第四格；按控制压力比较。"
+        ],
+        [
+          "团队需护盾·换⑥",
+          [
+            3190
+          ],
+          "作者指定替换第六格；主动护盾要在需要保护时使用。"
+        ],
+        [
+          "保护主输出·换⑥",
+          [
+            3109
+          ],
+          "作者指定替换第六格；先绑定保护目标并满足距离条件。"
+        ]
+      ],
+      "coreItems": [
+        6617
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700440034695974178",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-25T11:20:14+08:00",
+        "sourcePatch": "26.21",
+        "adaptation": "原作者明确26.21，保留编号购买顺序及第4/6格替换；循环往复的流水第三分支独立列出，不混入主线。原图第二格是进化终态，购买组仅列当前可买组件，进化细节只在对应受审装备组说明。月石边框为项目保护配装骨架标记，不是作者额外评级。原图未给加点、符文、出门组件或首回城，不补造；百分比没有统计范围，不采纳。友方E护盾与友方W增益、对敌技能分别处理，禁R打法为项目条件适配。",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图与正文：强化推荐及明确标注的适配分支",
+          "原图：完整编号购买顺序及条件替换槽位",
+          "原帖发布时间与26.21版本标记均已实际读取"
+        ]
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3107": "bec59ac59ee32768",
+          "3109": "b59c9762ce40be90",
+          "3111": "b015262b2d75ee9e",
+          "3158": "819a53a1e50becff",
+          "3165": "9b3138b0e27b6c44",
+          "3190": "d375ca03bd667942",
+          "3504": "4fc3c90546ba52b8",
+          "6616": "a625e9ea1ff9970e",
+          "6617": "0b7525238b308bc5",
+          "6621": "68c7c706ebe3ed0b"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1068": {
+            "fingerprint": "358ac971737afa8f",
+            "requiresUltimate": false
+          },
+          "1095": {
+            "fingerprint": "a843597eceafe45b",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Lulu",
+      "augment": 1068,
+      "optional": [
+        1095,
+        1037
+      ],
+      "title": "急速辅助轮转",
+      "summary": "利用60技能急速缩短基础技能空档，仍按实际冷却和蓝量施法。",
+      "coreBrief": "获得60技能急速。",
+      "play": [
+        "E 优先保护当前受威胁的友方英雄，W 按实际目标选择功能。",
+        "保持安全距离，等实际技能转好再继续施放，不把急速当作无限蓝量。"
+      ],
+      "basicPlay": [
+        "E、W、Q 按实际冷却保护队友与限制接近。",
+        "保留蓝量和安全距离，不依赖大招。"
+      ],
+      "caution": "技能急速不免除法力消耗，也不保证所有技能无缝。",
+      "gear": [
+        [
+          "作者循环往复分支·①—⑥",
+          [
+            6617,
+            2526,
+            6616,
+            3158,
+            6621,
+            3504
+          ],
+          "作者第二格列歌之权冠终态；先购买耳语头环，满足其进化条件后才成为成品，不预算成品效果。流水第三、黎明第五、香炉第六，保留整条编号顺序。"
+        ],
+        [
+          "敌方回血多·换⑥",
+          [
+            3165
+          ],
+          "作者指定替换第六格；本人须满足装备伤害条件才施加重伤。"
+        ],
+        [
+          "需要韧性·换④",
+          [
+            3111
+          ],
+          "作者指定替换第四格；按控制压力比较。"
+        ],
+        [
+          "团队需护盾·换⑥",
+          [
+            3190
+          ],
+          "作者指定替换第六格；主动护盾要在需要保护时使用。"
+        ],
+        [
+          "保护主输出·换⑥",
+          [
+            3109
+          ],
+          "作者指定替换第六格；先绑定保护目标并满足距离条件。"
+        ]
+      ],
+      "coreItems": [
+        6617
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700440034695974178",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-25T11:20:14+08:00",
+        "sourcePatch": "26.21",
+        "adaptation": "原作者明确26.21，保留编号购买顺序及第4/6格替换；循环往复的流水第三分支独立列出，不混入主线。原图第二格是进化终态，购买组仅列当前可买组件，进化细节只在对应受审装备组说明。月石边框为项目保护配装骨架标记，不是作者额外评级。原图未给加点、符文、出门组件或首回城，不补造；百分比没有统计范围，不采纳。友方E护盾与友方W增益、对敌技能分别处理，禁R打法为项目条件适配。",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图与正文：强化推荐及明确标注的适配分支",
+          "原图：完整编号购买顺序及条件替换槽位",
+          "原帖发布时间与26.21版本标记均已实际读取"
+        ]
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2526": "b8e7732621e76307",
+          "3109": "b59c9762ce40be90",
+          "3111": "b015262b2d75ee9e",
+          "3158": "819a53a1e50becff",
+          "3165": "9b3138b0e27b6c44",
+          "3190": "d375ca03bd667942",
+          "3504": "4fc3c90546ba52b8",
+          "6616": "a625e9ea1ff9970e",
+          "6617": "0b7525238b308bc5",
+          "6621": "68c7c706ebe3ed0b"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1037": {
+            "fingerprint": "d696f68cdd71506c",
+            "requiresUltimate": false
+          },
+          "1068": {
+            "fingerprint": "358ac971737afa8f",
+            "requiresUltimate": false
+          },
+          "1095": {
+            "fingerprint": "a843597eceafe45b",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Maokai",
+      "augment": 1018,
+      "optional": [
+        3049,
+        1333
+      ],
+      "title": "定身后护盾承伤",
+      "summary": "定身敌方英雄后获得护盾，在护盾窗口承伤并寻找下一次安全普攻。",
+      "play": [
+        "W选择敌方英雄，落地禁锢后保留Q处理接近自己的敌人。",
+        "被动治疗需要实际攻击和冷却就绪，不能把定身直接当成被动治疗。"
+      ],
+      "basicPlay": [
+        "W实际禁锢敌方英雄后利用护盾窗口，Q处理近身威胁。",
+        "被动就绪再安全普攻，不依赖大招。"
+      ],
+      "caution": "树苗减速不等于定身，不能把每段伤害都当一次护盾触发。",
+      "gear": [
+        [
+          "作者B①–⑥",
+          [
+            3084,
+            2502,
+            3065,
+            3111,
+            3083,
+            3075
+          ],
+          "严格保留作者B治疗增幅分支编号顺序，不套用A或C。"
+        ],
+        [
+          "敌方暴击多：替换⑥",
+          [
+            3143
+          ],
+          "按作者该分支建议替换第六格，应对实际暴击压力。"
+        ]
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700440394516925739",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-25T11:21:38+08:00",
+        "sourcePatch": "26.21",
+        "adaptation": "1018原图明确标B，保留作者B编号装备与B允许替换；按当前定身条件改编。巨像的勇气按实际敌方英雄定身或缚地核对，累计护盾计数保持动态。可选强化只是作者备选列项，未保证同局或各轮可得；原图百分比无统计范围不采，未给加点或出门购买细节不补造。核心装备边框是项目保留整套来源路径的依赖标记。",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图与正文：强化推荐及明确标注的适配分支",
+          "原图：完整编号购买顺序及条件替换槽位",
+          "原帖发布时间与26.21版本标记均已实际读取"
+        ]
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "coreItems": [
+        3084
+      ],
+      "coreBrief": "定身或缚地敌方英雄后获得150–450（随等级）＋4%最大生命值护盾。",
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2502": "f70d011ead077bb3",
+          "3065": "522ddd38f23d9014",
+          "3075": "77e99cfe1e808733",
+          "3083": "1f9ef0d0fe8bf89d",
+          "3084": "1d15c5181f27ae02",
+          "3111": "b015262b2d75ee9e",
+          "3143": "398abf4b21f13cf0"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1018": {
+            "fingerprint": "308e57df3312247a",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1333": {
+            "fingerprint": "0d4f5bbd6cf88d34",
+            "requiresUltimate": false
+          },
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Maokai",
+      "augment": 3049,
+      "optional": [
+        1053,
+        1333
+      ],
+      "title": "施法接护甲普攻",
+      "summary": "在有护甲承伤需求且能安全攻击时，施法后普攻兑现装甲冲击。",
+      "play": [
+        "W 或 Q 后在安全距离内补实际普通攻击，再决定继续承伤或撤退。",
+        "E 负责区域威胁，被动就绪时再攻击恢复；不因强化强追后排。"
+      ],
+      "basicPlay": [
+        "以 Q、W、E 的实际施法衔接安全普通攻击。",
+        "保留承伤位置与被动攻击机会，不依赖大招。"
+      ],
+      "caution": "装甲冲击看额外护甲，施法后仍须实际普攻；树苗每段伤害不算反复施法。",
+      "gear": [
+        [
+          "项目选择作者A①–⑥",
+          [
+            3084,
+            3083,
+            2502,
+            3111,
+            6665,
+            6664
+          ],
+          "作者A承伤顺序；3049在原图无角标，按护甲压力选A属于项目改编而非作者专属绑定。"
+        ],
+        [
+          "普攻回血多：替换⑥",
+          [
+            3075
+          ],
+          "作者仅A允许的第六格替换。"
+        ],
+        [
+          "增强治疗：替换⑥",
+          [
+            3065
+          ],
+          "作者仅A允许的第六格替换。"
+        ],
+        [
+          "敌方暴击多：替换⑥",
+          [
+            3143
+          ],
+          "按作者该分支建议替换第六格，应对实际暴击压力。"
+        ]
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700440394516925739",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-25T11:21:38+08:00",
+        "sourcePatch": "26.21",
+        "adaptation": "3049无角标，作者写无标按局势选；项目按护甲承伤需求选用作者A装备，不宣称作者指定A绑定。装甲冲击按当前施法后实际普攻及额外护甲核对，不承诺连续按技能就自动触发。可选强化只是作者备选列项，未保证同局或各轮可得；原图百分比无统计范围不采，未给加点或出门购买细节不补造。核心装备边框是项目保留整套来源路径的依赖标记。",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图与正文：强化推荐及明确标注的适配分支",
+          "原图：完整编号购买顺序及条件替换槽位",
+          "原帖发布时间与26.21版本标记均已实际读取"
+        ]
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "coreItems": [
+        6665
+      ],
+      "coreBrief": "施法后下一次普攻对附近敌人造成250%额外护甲＋50–125（随等级）物理伤害。",
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "2502": "f70d011ead077bb3",
+          "3065": "522ddd38f23d9014",
+          "3075": "77e99cfe1e808733",
+          "3083": "1f9ef0d0fe8bf89d",
+          "3084": "1d15c5181f27ae02",
+          "3111": "b015262b2d75ee9e",
+          "3143": "398abf4b21f13cf0",
+          "6664": "565cc78eb17c6b01",
+          "6665": "d68c9621bce20749"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1053": {
+            "fingerprint": "ff25ceb0210b1335",
+            "requiresUltimate": false
+          },
+          "1333": {
+            "fingerprint": "0d4f5bbd6cf88d34",
+            "requiresUltimate": false
+          },
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Nasus",
+      "augment": 3049,
+      "optional": [
+        1333,
+        1305
+      ],
+      "title": "护甲承伤衔接普攻",
+      "summary": "在护甲需求下利用实际施法接攻击，Q 叠层仍取决于击杀条件。",
+      "play": [
+        "W 限制目标后寻找安全攻击，Q 用于合适的攻击和叠层机会。",
+        "E 根据落点施放；不要为了触发强化离开可承受的范围。"
+      ],
+      "basicPlay": [
+        "W、E 或 Q 的实际施法后补安全攻击，不依赖大招。",
+        "Q 只在满足击杀条件时成长，保留生命和攻击机会。"
+      ],
+      "caution": "额外护甲不是总护甲；Q 叠层不是自由赠予，无法攻击时装甲冲击不会自动兑现。",
+      "gear": [
+        [
+          "项目选择作者B①–⑥",
+          [
+            3078,
+            3110,
+            3065,
+            3111,
+            3075,
+            4401
+          ],
+          "3049无角标，按护甲压力选作者B是项目改编；三相仍需施法后实际攻击触发。"
+        ],
+        [
+          "敌方暴击多：替换⑥",
+          [
+            3143
+          ],
+          "按作者该分支建议替换第六格，应对实际暴击压力。"
+        ],
+        [
+          "普攻压力：替换④",
+          [
+            3047
+          ],
+          "按作者建议调整鞋位；根据实际普通攻击压力选择。"
+        ]
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700441136464137499",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-25T11:24:31+08:00",
+        "sourcePatch": "26.21",
+        "adaptation": "3049未标默认A或B；项目按护甲压力采用作者B顺序，保留作者B适用的替换，不当作者专属强化绑定。按当前Q的下次攻击与击杀成长、W限制目标、E区域和R独立条件核对，不把Q成长次数或R提供的双抗当常驻免费收益。可选强化只保作者备选事实，未保证逐轮资格；不采未给统计范围的百分比，不补造作者加点、符文或出门购买细节。冰霜之心边框为项目保留作者B整套路径的依赖标记。",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图与正文：强化推荐及明确标注的适配分支",
+          "原图：完整编号购买顺序及条件替换槽位",
+          "原帖发布时间与26.21版本标记均已实际读取"
+        ]
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "coreItems": [
+        3110
+      ],
+      "coreBrief": "施法后下一次普攻对附近敌人造成250%额外护甲＋50–125（随等级）物理伤害。",
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3047": "0b6eb528fea45bfb",
+          "3065": "522ddd38f23d9014",
+          "3075": "77e99cfe1e808733",
+          "3078": "9b97f8ba78b6fba5",
+          "3110": "ba477c242a2f4b18",
+          "3111": "b015262b2d75ee9e",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1305": {
+            "fingerprint": "e0ad4d642c4760e5",
+            "requiresUltimate": false
+          },
+          "1333": {
+            "fingerprint": "0d4f5bbd6cf88d34",
+            "requiresUltimate": false
+          },
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          }
+        }
+      }
+    },
+    {
+      "hero": "Nasus",
+      "augment": 1333,
+      "optional": [
+        3049,
+        1305
+      ],
+      "title": "低血护盾寻找撤退窗口",
+      "summary": "在低生命触发条件满足时利用保护窗口调整位置，继续按实际冷却作战。",
+      "play": [
+        "用 W 限制威胁接近，Q 与 E 仅在安全窗口内施放。",
+        "触发保护后优先决定撤退或继续承伤，不为低血收益主动送入爆发。"
+      ],
+      "basicPlay": [
+        "以 W、Q、E 处理追击和近身威胁，保留撤退路线。",
+        "保护触发不等于免疫控制或伤害，不依赖大招。"
+      ],
+      "caution": "保护有实际低血条件与冷却限制；不是常驻护盾，也不保证低血反杀。",
+      "gear": [
+        [
+          "作者B①–⑥",
+          [
+            3078,
+            3110,
+            3065,
+            3111,
+            3075,
+            4401
+          ],
+          "1333原图明确标B，保留编号顺序。"
+        ],
+        [
+          "敌方暴击多：替换⑥",
+          [
+            3143
+          ],
+          "按作者该分支建议替换第六格，应对实际暴击压力。"
+        ],
+        [
+          "普攻压力：替换④",
+          [
+            3047
+          ],
+          "按作者建议调整鞋位；根据实际普通攻击压力选择。"
+        ]
+      ],
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700441136464137499",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-25T11:24:31+08:00",
+        "sourcePatch": "26.21",
+        "adaptation": "1333原图明确B，保留作者B编号装备与B允许替换，按当前低血触发条件整理。按当前Q的下次攻击与击杀成长、W限制目标、E区域和R独立条件核对，不把Q成长次数或R提供的双抗当常驻免费收益。可选强化只保作者备选事实，未保证逐轮资格；不采未给统计范围的百分比，不补造作者加点、符文或出门购买细节。冰霜之心边框为项目保留作者B整套路径的依赖标记。",
+        "medium": "text",
+        "observedMode": "海克斯大乱斗26.21原作者图文",
+        "evidenceSections": [
+          "原图与正文：强化推荐及明确标注的适配分支",
+          "原图：完整编号购买顺序及条件替换槽位",
+          "原帖发布时间与26.21版本标记均已实际读取"
+        ]
+      },
+      "patch": "16.21",
+      "requiresUltimate": false,
+      "coreItems": [
+        3110
+      ],
+      "coreBrief": "降至35%生命值时获得65%最大生命值衰减护盾及衰减移速、缩小效果，75秒冷却。",
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "items": {
+          "3047": "0b6eb528fea45bfb",
+          "3065": "522ddd38f23d9014",
+          "3075": "77e99cfe1e808733",
+          "3078": "9b97f8ba78b6fba5",
+          "3110": "ba477c242a2f4b18",
+          "3111": "b015262b2d75ee9e",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-26",
+        "effects": {
+          "1305": {
+            "fingerprint": "e0ad4d642c4760e5",
+            "requiresUltimate": false
+          },
+          "1333": {
+            "fingerprint": "0d4f5bbd6cf88d34",
+            "requiresUltimate": false
+          },
+          "3049": {
+            "fingerprint": "96c15aed0a2b8dc2",
+            "requiresUltimate": false
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -5473,7 +6140,10 @@
       "Aurora": "c92013de35c40185",
       "Senna": "5e547c9cf10f2a05",
       "Belveth": "0a1b79cfb9f31b5e",
-      "Qiyana": "ae1343f33f784408"
+      "Qiyana": "ae1343f33f784408",
+      "Lulu": "5f5091380ca45272",
+      "Maokai": "e196429fdd9138f9",
+      "Nasus": "874ad429f86eeb0b"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -6697,6 +7367,78 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "a532de390949b6d9"
+          }
+        }
+      },
+      "Lulu": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "5f5091380ca45272",
+        "observedAt": "2026-10-23T02:03:51.539Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Lulu",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/lulu/lulu.bin.json",
+            "sha256": "b1ff4ed6af79bc618d6376cd83f370396fb9dbe74353e8b29964e6a2a73e1bcd"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "33e697bcb063b28b"
+          }
+        }
+      },
+      "Maokai": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "e196429fdd9138f9",
+        "observedAt": "2026-10-23T02:03:51.541Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Maokai",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/maokai/maokai.bin.json",
+            "sha256": "f98e3805d9418eb9f2e04d3f7e0a3901c615289d7ce6a53b34720c3474541248"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "afdcc912b22e75cf"
+          }
+        }
+      },
+      "Nasus": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "874ad429f86eeb0b",
+        "observedAt": "2026-10-23T02:03:51.544Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Nasus",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/nasus/nasus.bin.json",
+            "sha256": "84684dd72fdc582cf32a3575ba554812c760fe4ab1a9607475f459890980375c"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "670b62c30716c8ed"
           }
         }
       }
