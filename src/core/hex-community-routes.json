@@ -38904,6 +38904,606 @@
         ],
         "adaptation": "作者列该强化无分支角标，项目采用作者主线；第二槽以可购买耳语头环展示，充能后进化为作者写的歌之权冠。各强化独立选择；条件替换绑定对应线完整序列。未给符文、加点、出门及首回城，不采用作者统计率，不假设强化轮次或资格；无R操作为项目适配。"
       }
+    },
+    {
+      "hero": "Annie",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命定虚空条件首件",
+      "summary": "敌方魔抗形成压力且能持续命中时比较，仅提供条件首件。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内敌方英雄阵亡才成长，绑定后无法售出。",
+      "play": [
+        "若尚无其他传说装备绑定，按魔抗压力比较虚空首件；已绑定别件时不承诺换绑。",
+        "Q指定目标或W锥形实际伤害英雄可建立近期伤害窗口；被动已叠满时伤害技能可晕眩，但晕眩本身不等于伤害。"
+      ],
+      "basicPlay": [
+        "无R时用Q/W实际命中，留意E护盾和移速保护进退；不预给提伯斯。"
+      ],
+      "caution": "Q/W需要进入施法距离；Q仅在目标死于Q时返还法力，不能据此保证续航。无急速无防御的首件可能牺牲进场和持续施法。 百分比法穿只增益魔法伤害；不预支成长、不按伤害跳数叠武器。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "项目条件首件·魔抗压力",
+          [
+            3135
+          ],
+          "95法强、40%法穿；虚空须是被绑定的第一件传说。它不提供法力、急速或防御，缺蓝、缺生存或对手魔抗低时不强选；不是整套购买顺序。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV18nnv6MEHR/",
+        "author": "路小非L（项目机制适配）",
+        "publishedAt": "2026-10-21T02:39:07.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "画面为端游海克斯大乱斗命运之武器；确切录制补丁和服务器未显示",
+        "evidenceSeconds": [
+          25,
+          30,
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95
+        ],
+        "adaptation": "实际查看5秒间隔抽样画面及画面内字幕；未连续播放或听完完整音轨。作者讨论法师首件方向，本英雄由项目依据当前16.21技能、命定3秒本人伤害规则及虚空当前装备文本适配，不是作者逐英雄推荐或逐英雄实测。不采用画面叠层后的法强、法穿或每层数值；完整六件、出门、首回城、符文、加点、具体买序及强化轮次未提供，不补造。仅比较尚无其他传说绑定时的条件首件。"
+      }
+    },
+    {
+      "hero": "Anivia",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命定虚空条件首件",
+      "summary": "敌方魔抗形成压力且能持续命中时比较，仅提供条件首件。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内敌方英雄阵亡才成长，绑定后无法售出。",
+      "play": [
+        "若尚无其他传说装备绑定，按魔抗压力比较虚空首件；已绑定别件时不承诺换绑。",
+        "Q冰晶命中和E伤害可在敌方英雄上建立窗口；Q近期命中后E有条件增伤。"
+      ],
+      "basicPlay": [
+        "无R时以Q命中后接E，W冰墙用于阻挡移动，不把墙本身视为英雄伤害。"
+      ],
+      "caution": "不依赖R风暴；Q/E有法力成本，首件无法解决法力与急速，资源紧张时不宜强选。 百分比法穿只增益魔法伤害；不预支成长、不按伤害跳数叠武器。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "项目条件首件·魔抗压力",
+          [
+            3135
+          ],
+          "95法强、40%法穿；虚空须是被绑定的第一件传说。它不提供法力、急速或防御，缺蓝、缺生存或对手魔抗低时不强选；不是整套购买顺序。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV18nnv6MEHR/",
+        "author": "路小非L（项目机制适配）",
+        "publishedAt": "2026-10-21T02:39:07.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "画面为端游海克斯大乱斗命运之武器；确切录制补丁和服务器未显示",
+        "evidenceSeconds": [
+          25,
+          30,
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95
+        ],
+        "adaptation": "实际查看5秒间隔抽样画面及画面内字幕；未连续播放或听完完整音轨。作者讨论法师首件方向，本英雄由项目依据当前16.21技能、命定3秒本人伤害规则及虚空当前装备文本适配，不是作者逐英雄推荐或逐英雄实测。不采用画面叠层后的法强、法穿或每层数值；完整六件、出门、首回城、符文、加点、具体买序及强化轮次未提供，不补造。仅比较尚无其他传说绑定时的条件首件。"
+      }
+    },
+    {
+      "hero": "Lux",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命定虚空条件首件",
+      "summary": "敌方魔抗形成压力且能持续命中时比较，仅提供条件首件。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内敌方英雄阵亡才成长，绑定后无法售出。",
+      "play": [
+        "若尚无其他传说装备绑定，按魔抗压力比较虚空首件；已绑定别件时不承诺换绑。",
+        "Q命中或E引爆造成英雄伤害；技能标记可由后续普攻消耗产生额外魔法伤害，但不要求冒险接普攻。"
+      ],
+      "basicPlay": [
+        "无R时以Q/E命中消耗，W护盾保护队友和自身；不预支终极闪光。"
+      ],
+      "caution": "Q可被前方单位挡住，E需实际引爆命中；首件缺蓝缺急速，W保护也不能替代防御。 百分比法穿只增益魔法伤害；不预支成长、不按伤害跳数叠武器。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "项目条件首件·魔抗压力",
+          [
+            3135
+          ],
+          "95法强、40%法穿；虚空须是被绑定的第一件传说。它不提供法力、急速或防御，缺蓝、缺生存或对手魔抗低时不强选；不是整套购买顺序。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV18nnv6MEHR/",
+        "author": "路小非L（项目机制适配）",
+        "publishedAt": "2026-10-21T02:39:07.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "画面为端游海克斯大乱斗命运之武器；确切录制补丁和服务器未显示",
+        "evidenceSeconds": [
+          25,
+          30,
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95
+        ],
+        "adaptation": "实际查看5秒间隔抽样画面及画面内字幕；未连续播放或听完完整音轨。作者讨论法师首件方向，本英雄由项目依据当前16.21技能、命定3秒本人伤害规则及虚空当前装备文本适配，不是作者逐英雄推荐或逐英雄实测。不采用画面叠层后的法强、法穿或每层数值；完整六件、出门、首回城、符文、加点、具体买序及强化轮次未提供，不补造。仅比较尚无其他传说绑定时的条件首件。"
+      }
+    },
+    {
+      "hero": "Velkoz",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命定虚空条件首件",
+      "summary": "敌方魔抗形成压力且能持续命中时比较，仅提供条件首件。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内敌方英雄阵亡才成长，绑定后无法售出。",
+      "play": [
+        "若尚无其他传说装备绑定，按魔抗压力比较虚空首件；已绑定别件时不承诺换绑。",
+        "Q分裂命中或W两段、E命中均可能造成近期英雄伤害；被动三层真实伤害可参与近期伤害，但真实伤害不吃法穿。"
+      ],
+      "basicPlay": [
+        "无R时以Q/W/E实际命中并按机会叠被动，不依赖引导射线。"
+      ],
+      "caution": "法穿只作用于魔法伤害而非被动及研究后的R真伤；需权衡法力、急速、站位安全。 百分比法穿只增益魔法伤害；不预支成长、不按伤害跳数叠武器。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "项目条件首件·魔抗压力",
+          [
+            3135
+          ],
+          "95法强、40%法穿；虚空须是被绑定的第一件传说。它不提供法力、急速或防御，缺蓝、缺生存或对手魔抗低时不强选；不是整套购买顺序。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV18nnv6MEHR/",
+        "author": "路小非L（项目机制适配）",
+        "publishedAt": "2026-10-21T02:39:07.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "画面为端游海克斯大乱斗命运之武器；确切录制补丁和服务器未显示",
+        "evidenceSeconds": [
+          25,
+          30,
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95
+        ],
+        "adaptation": "实际查看5秒间隔抽样画面及画面内字幕；未连续播放或听完完整音轨。作者讨论法师首件方向，本英雄由项目依据当前16.21技能、命定3秒本人伤害规则及虚空当前装备文本适配，不是作者逐英雄推荐或逐英雄实测。不采用画面叠层后的法强、法穿或每层数值；完整六件、出门、首回城、符文、加点、具体买序及强化轮次未提供，不补造。仅比较尚无其他传说绑定时的条件首件。"
+      }
+    },
+    {
+      "hero": "Xerath",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命定虚空条件首件",
+      "summary": "敌方魔抗形成压力且能持续命中时比较，仅提供条件首件。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内敌方英雄阵亡才成长，绑定后无法售出。",
+      "play": [
+        "若尚无其他传说装备绑定，按魔抗压力比较虚空首件；已绑定别件时不承诺换绑。",
+        "Q长距离光束、W区域伤害或E命中英雄可建立近期窗口。"
+      ],
+      "basicPlay": [
+        "无R时用Q/W消耗，E保留为反制接近的工具；不依赖R远程炮击。"
+      ],
+      "caution": "被动周期性普攻回蓝需实际攻击且有距离风险，不保证不缺蓝；Q/W法力成本与蓄力站位须考虑。 百分比法穿只增益魔法伤害；不预支成长、不按伤害跳数叠武器。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "项目条件首件·魔抗压力",
+          [
+            3135
+          ],
+          "95法强、40%法穿；虚空须是被绑定的第一件传说。它不提供法力、急速或防御，缺蓝、缺生存或对手魔抗低时不强选；不是整套购买顺序。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV18nnv6MEHR/",
+        "author": "路小非L（项目机制适配）",
+        "publishedAt": "2026-10-21T02:39:07.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "画面为端游海克斯大乱斗命运之武器；确切录制补丁和服务器未显示",
+        "evidenceSeconds": [
+          25,
+          30,
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95
+        ],
+        "adaptation": "实际查看5秒间隔抽样画面及画面内字幕；未连续播放或听完完整音轨。作者讨论法师首件方向，本英雄由项目依据当前16.21技能、命定3秒本人伤害规则及虚空当前装备文本适配，不是作者逐英雄推荐或逐英雄实测。不采用画面叠层后的法强、法穿或每层数值；完整六件、出门、首回城、符文、加点、具体买序及强化轮次未提供，不补造。仅比较尚无其他传说绑定时的条件首件。"
+      }
+    },
+    {
+      "hero": "Ziggs",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命定虚空条件首件",
+      "summary": "敌方魔抗形成压力且能持续命中时比较，仅提供条件首件。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内敌方英雄阵亡才成长，绑定后无法售出。",
+      "play": [
+        "若尚无其他传说装备绑定，按魔抗压力比较虚空首件；已绑定别件时不承诺换绑。",
+        "Q炸弹、W爆破或敌人踩中E雷区造成的魔法伤害可建立近期英雄伤害窗口。"
+      ],
+      "basicPlay": [
+        "无R时以Q消耗、E限制走位，W按进退需要留用；不依赖大招。"
+      ],
+      "caution": "E需敌人踩中且后续地雷对同目标伤害递减；拆塔和小兵死亡不触发成长；不强求缺蓝或缺生存时先做虚空。 百分比法穿只增益魔法伤害；不预支成长、不按伤害跳数叠武器。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "项目条件首件·魔抗压力",
+          [
+            3135
+          ],
+          "95法强、40%法穿；虚空须是被绑定的第一件传说。它不提供法力、急速或防御，缺蓝、缺生存或对手魔抗低时不强选；不是整套购买顺序。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV18nnv6MEHR/",
+        "author": "路小非L（项目机制适配）",
+        "publishedAt": "2026-10-21T02:39:07.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "画面为端游海克斯大乱斗命运之武器；确切录制补丁和服务器未显示",
+        "evidenceSeconds": [
+          25,
+          30,
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95
+        ],
+        "adaptation": "实际查看5秒间隔抽样画面及画面内字幕；未连续播放或听完完整音轨。作者讨论法师首件方向，本英雄由项目依据当前16.21技能、命定3秒本人伤害规则及虚空当前装备文本适配，不是作者逐英雄推荐或逐英雄实测。不采用画面叠层后的法强、法穿或每层数值；完整六件、出门、首回城、符文、加点、具体买序及强化轮次未提供，不补造。仅比较尚无其他传说绑定时的条件首件。"
+      }
+    },
+    {
+      "hero": "Zyra",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命定虚空条件首件",
+      "summary": "敌方魔抗形成压力且能持续命中时比较，仅提供条件首件。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内敌方英雄阵亡才成长，绑定后无法售出。",
+      "play": [
+        "若尚无其他传说装备绑定，按魔抗压力比较虚空首件；已绑定别件时不承诺换绑。",
+        "Q或E直接命中英雄即可建立近期伤害窗口；种子可被Q/E转成植物，但不以植物攻击必定触发武器或继承法穿作依据。"
+      ],
+      "basicPlay": [
+        "无R时以Q/E伤害和束缚配合种子布局；不预给R激怒植物。"
+      ],
+      "caution": "不假设植物存活、攻击命中或持续伤害归属；首件不补法力急速，需自身安全与技能命中。 百分比法穿只增益魔法伤害；不预支成长、不按伤害跳数叠武器。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "项目条件首件·魔抗压力",
+          [
+            3135
+          ],
+          "95法强、40%法穿；虚空须是被绑定的第一件传说。它不提供法力、急速或防御，缺蓝、缺生存或对手魔抗低时不强选；不是整套购买顺序。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV18nnv6MEHR/",
+        "author": "路小非L（项目机制适配）",
+        "publishedAt": "2026-10-21T02:39:07.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "画面为端游海克斯大乱斗命运之武器；确切录制补丁和服务器未显示",
+        "evidenceSeconds": [
+          25,
+          30,
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95
+        ],
+        "adaptation": "实际查看5秒间隔抽样画面及画面内字幕；未连续播放或听完完整音轨。作者讨论法师首件方向，本英雄由项目依据当前16.21技能、命定3秒本人伤害规则及虚空当前装备文本适配，不是作者逐英雄推荐或逐英雄实测。不采用画面叠层后的法强、法穿或每层数值；完整六件、出门、首回城、符文、加点、具体买序及强化轮次未提供，不补造。仅比较尚无其他传说绑定时的条件首件。"
+      }
+    },
+    {
+      "hero": "Malzahar",
+      "patch": "16.21",
+      "augment": 3081,
+      "optional": [],
+      "title": "命定虚空条件首件",
+      "summary": "敌方魔抗形成压力且能持续命中时比较，仅提供条件首件。",
+      "coreBrief": "首件传说绑定命定；本人伤害后3秒内敌方英雄阵亡才成长，绑定后无法售出。",
+      "play": [
+        "若尚无其他传说装备绑定，按魔抗压力比较虚空首件；已绑定别件时不承诺换绑。",
+        "Q命中英雄或E对英雄的实际持续伤害可建立近期窗口；E目标感染期间死亡会传播至附近敌人并回复法力，但不保证传播目标为英雄。"
+      ],
+      "basicPlay": [
+        "无R时用Q/E与W虫群形成压力，不预给R压制；本方案的触发依据是本人Q/E英雄伤害，不假设虫群归属。"
+      ],
+      "caution": "不把小兵死亡、幻象每跳或虫群每次攻击当升级；E回蓝须实际满足死亡条件，仍须关注资源、急速和生存。 百分比法穿只增益魔法伤害；不预支成长、不按伤害跳数叠武器。",
+      "requiresUltimate": false,
+      "coreItems": [
+        3135
+      ],
+      "gear": [
+        [
+          "项目条件首件·魔抗压力",
+          [
+            3135
+          ],
+          "95法强、40%法穿；虚空须是被绑定的第一件传说。它不提供法力、急速或防御，缺蓝、缺生存或对手魔抗低时不强选；不是整套购买顺序。",
+          [
+            3081
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3135": "40317bddc5d92b12"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "3081": {
+            "fingerprint": "b757a4168f1a861c",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV18nnv6MEHR/",
+        "author": "路小非L（项目机制适配）",
+        "publishedAt": "2026-10-21T02:39:07.000Z",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "画面为端游海克斯大乱斗命运之武器；确切录制补丁和服务器未显示",
+        "evidenceSeconds": [
+          25,
+          30,
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95
+        ],
+        "adaptation": "实际查看5秒间隔抽样画面及画面内字幕；未连续播放或听完完整音轨。作者讨论法师首件方向，本英雄由项目依据当前16.21技能、命定3秒本人伤害规则及虚空当前装备文本适配，不是作者逐英雄推荐或逐英雄实测。不采用画面叠层后的法强、法穿或每层数值；完整六件、出门、首回城、符文、加点、具体买序及强化轮次未提供，不补造。仅比较尚无其他传说绑定时的条件首件。"
+      }
     }
   ],
   "championReview": {
@@ -39048,7 +39648,15 @@
       "Yunara": "01aaf8a5e404cd88",
       "Tryndamere": "9990ba943e8299c8",
       "Shaco": "ea2b12296434e0e4",
-      "Vladimir": "1b5e1102e29e8138"
+      "Vladimir": "1b5e1102e29e8138",
+      "Annie": "4cdab07f3ab9d0c4",
+      "Anivia": "52343f9ffaa815a9",
+      "Lux": "50314ad04c92f1a6",
+      "Velkoz": "4fc6f59617324dce",
+      "Xerath": "c6bf3b1c613437cd",
+      "Ziggs": "301986c8fed3e8fb",
+      "Zyra": "f653495a90d1586e",
+      "Malzahar": "573be40165ebd14c"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -42384,6 +42992,198 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "a1fec3f30e5fc1b9"
+          }
+        }
+      },
+      "Annie": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "4cdab07f3ab9d0c4",
+        "observedAt": "2026-10-23T02:03:51.450Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Annie",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/annie/annie.bin.json",
+            "sha256": "639eb1e2a65e1fccac7797899348741f46f0b8fe1be6e39a0e67810c89721af7"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "e388b73359b4c909"
+          }
+        }
+      },
+      "Anivia": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "52343f9ffaa815a9",
+        "observedAt": "2026-10-23T02:03:51.450Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Anivia",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/anivia/anivia.bin.json",
+            "sha256": "c0a7fec988a4af4386b82c5eca35a7c895461a4c30f6af5bb772f199387eef79"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "d7796f24d403cc8c"
+          }
+        }
+      },
+      "Lux": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "50314ad04c92f1a6",
+        "observedAt": "2026-10-23T02:03:51.540Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Lux",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/lux/lux.bin.json",
+            "sha256": "9223cdf0a3d94223309fc69eb0c3865444b2884004b443dbcd066e70ffe0b952"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "cc7818802b8d5fc7"
+          }
+        }
+      },
+      "Velkoz": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "4fc6f59617324dce",
+        "observedAt": "2026-10-23T02:03:51.637Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Velkoz",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/velkoz/velkoz.bin.json",
+            "sha256": "d7083b07c94482f1814bd603cd7831d0de5fd1ba1170dc9b5ff386793ab08ffb"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "83d561abb744eab5"
+          }
+        }
+      },
+      "Xerath": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "c6bf3b1c613437cd",
+        "observedAt": "2026-10-23T02:03:51.640Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Xerath",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/xerath/xerath.bin.json",
+            "sha256": "cd93216a854d592f605c11be9bb9e00acd9f35dab0bf98828909809f94145796"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "fe85c3d422f63fd0"
+          }
+        }
+      },
+      "Ziggs": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "301986c8fed3e8fb",
+        "observedAt": "2026-10-23T02:03:51.643Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Ziggs",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/ziggs/ziggs.bin.json",
+            "sha256": "0c07f0df0453c22942e9115fa6997b656808f49cd43225f4202741516c9abf3f"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "fdb99302b5ecb565"
+          }
+        }
+      },
+      "Zyra": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "f653495a90d1586e",
+        "observedAt": "2026-10-23T02:03:51.644Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Zyra",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/zyra/zyra.bin.json",
+            "sha256": "18f1cd91897b66a60a6c5c3b7205668e4c2ceb6305ce5e1e4e86d0cf649f89d3"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "e6ad7484cbc1effe"
+          }
+        }
+      },
+      "Malzahar": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "573be40165ebd14c",
+        "observedAt": "2026-10-23T02:03:51.540Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Malzahar",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/malzahar/malzahar.bin.json",
+            "sha256": "8ccc1397ea4398dcaf6db6ae128964c2e5ed11fefad368a8e0e21d89bc1dad6b"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "0f2001ea738afd77"
           }
         }
       }
