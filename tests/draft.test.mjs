@@ -12,23 +12,26 @@ const data=JSON.parse(await fs.readFile(new URL('../data/game.json',import.meta.
 const key=id=>data.champions.find(c=>c.id===id).key;
 const session=(a='Ashe',b='Lux')=>({myTeam:[{cellId:1,championId:key(a),assignedPosition:'BOTTOM'},{cellId:2,championId:key(b),assignedPosition:'UTILITY'}],localPlayerCellId:1});
 
-test('drag swaps champion bindings and locks but leaves ownership attached to positions',()=>{
+test('drag keeps live member ownership with champion bindings without changing group size',()=>{
  const initial=mergeClientSession(createSlots(),session(),data.champions).slots;initial[4].party=false;
  const moved=moveChampion(initial,'bottom','support');
- assert.equal(moved[3].champion,'Lux');assert.equal(moved[4].champion,'Ashe');assert.equal(moved[3].party,true);assert.equal(moved[4].party,false);
+ assert.equal(moved[3].champion,'Lux');assert.equal(moved[4].champion,'Ashe');assert.equal(moved[3].party,false);assert.equal(moved[4].party,true);
  assert.equal(moved[3].clientCellId,2);assert.equal(moved[4].clientCellId,1);assert.ok(moved[3].manualPosition&&moved[4].manualPosition);
  assert.equal(initial[3].champion,'Ashe');validateSlots(moved,data.champions);
- const toEmpty=moveChampion(moved,'support','top');assert.equal(toEmpty[0].champion,'Ashe');assert.equal(toEmpty[4].champion,null);assert.equal(toEmpty[0].party,false);
+ const toEmpty=moveChampion(moved,'support','top');assert.equal(toEmpty[0].champion,'Ashe');assert.equal(toEmpty[4].champion,null);assert.equal(toEmpty[0].party,true);
+ assert.equal(toEmpty.filter(s=>s.party).length,initial.filter(s=>s.party).length);
  assert.throws(()=>moveChampion(toEmpty,'support','top'),/已选英雄/);
 });
 test('dragging a public preview moves its member reservation without persisting an unconfirmed champion',()=>{
  const initial=mergeClientSession(createSlots(),session(),data.champions).slots;
+ initial[4].party=false;initial[4].partyManual=true;
  initial[3]={...initial[3],champion:null,locked:false};
  const visible=structuredClone(initial);visible[3]={...visible[3],champion:'Ashe',publicIntent:true};
  const before=structuredClone(initial),moved=moveDisplayedChampion(initial,visible,'bottom','support');
  assert.deepEqual(initial,before);assert.equal(moved[3].champion,'Lux');assert.equal(moved[3].clientCellId,2);
  assert.equal(moved[4].champion,null);assert.equal(moved[4].clientCellId,1);assert.equal(moved[4].manualPosition,true);
- assert.equal(moved[4].party,initial[4].party);assert.equal(moved[3].party,initial[3].party);
+ assert.equal(moved[4].party,initial[3].party);assert.equal(moved[3].party,initial[4].party);
+ assert.equal(moved[3].partyManual,true);assert.equal(moved[4].partyManual,undefined);
  const restored=validateState({...defaultState(),draft:{slots:moved}}).draft.slots;
  const hovering=session();hovering.myTeam[0].championId=0;hovering.myTeam[0].championPickIntent=key('Ashe');
  const view=clientRecommendationDraft(restored,hovering,data.champions,{includePreselected:true}).slots;
@@ -36,6 +39,19 @@ test('dragging a public preview moves its member reservation without persisting 
  assert.equal(mergeClientSession(restored,session(),data.champions).slots[4].champion,'Ashe');
  assert.deepEqual(moveDisplayedChampion(initial,visible,'bottom','bottom'),initial);
  assert.throws(()=>moveDisplayedChampion(initial,visible.map(s=>s.role==='bottom'?{...s,clientCellId:undefined}:s),'bottom','support'),/选人已变化/);
+});
+
+test('offline hero swaps preserve lane range and every explicit live range retains its count',()=>{
+ const planned=createSlots().map(s=>({...s,party:s.role==='bottom',...(s.role==='support'?{partyManual:true}:{}),champion:s.role==='bottom'?'Ashe':s.role==='support'?'Lux':null}));
+ const offline=moveChampion(planned,'bottom','support');assert.equal(offline[3].champion,'Lux');assert.equal(offline[4].champion,'Ashe');
+ assert.deepEqual(offline.map(s=>[s.party,s.partyManual]),planned.map(s=>[s.party,s.partyManual]));
+ const live=mergeClientSession(createSlots(),session(),data.champions).slots;
+ for(let mask=0;mask<32;mask++){
+  const before=live.map((s,i)=>({...s,party:!!(mask&(1<<i)),partyManual:true})),moved=moveChampion(before,'bottom','support');
+  assert.equal(moved.filter(s=>s.party).length,before.filter(s=>s.party).length);
+  for(const cellId of [1,2])assert.equal(moved.find(s=>s.clientCellId===cellId).party,before.find(s=>s.clientCellId===cellId).party);
+  assert.deepEqual(moveChampion(moved,'support','bottom'),before.map(s=>Number.isInteger(s.clientCellId)?{...s,manualPosition:true}:s));
+ }
 });
 test('manual client positions follow changed champions and atomic champion exchanges',()=>{
  let draft=moveChampion(mergeClientSession(createSlots(),session(),data.champions).slots,'bottom','top');
