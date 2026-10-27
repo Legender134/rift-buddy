@@ -1133,6 +1133,7 @@ function setCompanionRole(role){
  const previousRole=taskOwnRole();
  const cellId=client.session?.localPlayerCellId;
  const own=currentPlayerSelection(client.session,data.champions,slots),slot=own&&slots.find(s=>s.champion===own.id);
+ let followsPlayer=Number.isInteger(cellId)&&slot?.clientCellId===cellId;
  if(role&&own){
   if(slot&&slot.role!==role)slots=moveChampion(slots,slot.role,role);
   else if(slot&&Number.isInteger(cellId))slots=slots.map(s=>s===slot?{...s,clientCellId:cellId,manualPosition:true}:s);
@@ -1141,11 +1142,22 @@ function setCompanionRole(role){
   const target=slots.find(s=>s.role===role);if(Number.isInteger(target.clientCellId)&&target.clientCellId!==cellId)throw Error('这个位置已有其他玩家，请在阵容板交换位置');
   // Choosing who will play a proposed hero does not turn that proposal into
   // a public client pick. Keep the adopted lineup until the player chooses.
-  slots=clearManualPlayerPosition(slots,cellId).map(s=>s.role===role&&!s.champion?{...s,clientCellId:cellId,manualPosition:true}:s);
+  const savedPosition=saved.draft?.playerPosition;
+  const reservation=slots.find(s=>s.clientCellId===cellId)||(savedPosition?.cellId===cellId?slots.find(s=>s.role===savedPosition.role&&!Number.isInteger(s.clientCellId)):null);
+  slots=slots.map(s=>{
+   const owner=reservation?(s.role===role?reservation:s===reservation?target:null):null;
+   const {partyManual,clientCellId,manualPosition,automaticPosition,publicIntent,...rest}=s;
+   const next=owner?{...(s===reservation?rest:s),party:owner.party,...(owner.partyManual?{partyManual:true}:{})}:s;
+   if(owner&&!owner.partyManual)delete next.partyManual;
+   return s.role===role&&!s.champion?{...next,clientCellId:cellId,manualPosition:true}:next;
+  });
+  followsPlayer=!!reservation;
  }else if(!role&&Number.isInteger(cellId)){
   const merged=mergeClientSession(clearManualPlayerPosition(slots,cellId),client.session,data.champions,clientSyncOptions());slots=merged.slots;unassigned=merged.unassigned;
  }
- if(role)slots=movePartyMark(slots,role,previousRole);
+ // Bound players carry their range ownership through moveChampion. Moving
+ // the mark again would undo an explicit exclusion or steal a teammate's mark.
+ if(role&&!followsPlayer)slots=movePartyMark(slots,role,previousRole);
  if(role&&Number.isInteger(cellId))saved.draft={...saved.draft,playerPosition:{role,cellId}};else if(saved.draft)delete saved.draft.playerPosition;
  soloRole=role||assignedPlayerRole()||'';companionPreview=null;pendingIntentPreparation=null;unassigned=unassignedPublicPicks(slots,client.session,data.champions);invalidate();
 }
