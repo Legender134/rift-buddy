@@ -79,15 +79,17 @@ export function moveChampion(slots,fromRole,toRole){
  const from=slots.find(s=>s.role===fromRole),to=slots.find(s=>s.role===toRole);
  if(!from||!to||!from.champion)throw Error('请从已选英雄开始拖动');
  if(fromRole===toRole)return structuredClone(slots);
- const a=payload(from),b=payload(to);
+ const a=payload(from),b=payload(to),followsPlayer=[from,to].some(slot=>Number.isInteger(slot.clientCellId));
  return slots.map(s=>{
   if(![fromRole,toRole].includes(s.role))return {...s};
-  // Position ownership stays on the board; champion and client binding move together.
-  return {role:s.role,party:s.party,...(s.partyManual?{partyManual:true}:{}),...(s.role===toRole?a:b)};
+  // Live members keep their recommendation ownership when changing lanes.
+  // Offline suggestions carry no player identity, so their lane range stays put.
+  const owner=followsPlayer?(s.role===toRole?from:to):s;
+  return {role:s.role,party:owner.party,...(owner.partyManual?{partyManual:true}:{}),...(s.role===toRole?a:b)};
  });
 }
 // An unlocked public pick can reserve a lane, but must not be saved as a
-// confirmed champion. Member bindings move together; lane ownership stays put.
+// confirmed champion. Member bindings and their recommendation ownership move together.
 export function moveDisplayedChampion(slots,displayed,fromRole,toRole){
  const source=displayed.find(s=>s.role===fromRole),target=displayed.find(s=>s.role===toRole);
  if(!source?.champion||!target||source.publicIntent&&!Number.isInteger(source.clientCellId))throw Error('选人已变化，请重新拖动当前英雄');

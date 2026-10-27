@@ -4,7 +4,8 @@ import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import {createSlots,mergeClientSession,recommend} from '../src/core/recommend.mjs';
 import {initialPartyCount,selectionPartyCount,markedPartyCount,validPartyCount,reconcilePartyRange,partyRoleConflicts,movePartyMark,editPartyRange} from '../src/core/party-range.mjs';
-import {reconcileClientDraft,moveChampion,publicClientGameId} from '../src/core/draft.mjs';
+import {reconcileClientDraft,moveChampion,moveDisplayedChampion,publicClientGameId} from '../src/core/draft.mjs';
+import {companionRosterDraft} from '../src/core/draft-intents.mjs';
 import {defaultState,validateState} from '../services/storage.mjs';
 import {partyWithPregameIntents} from '../src/core/pregame-intent.mjs';
 import {rankedDraftPolicy} from '../src/core/ranked-draft.mjs';
@@ -47,6 +48,46 @@ test('count freezes through membership polls, public collisions, hover changes a
  for(let poll=0;poll<4;poll++)slots=merge(slots,s,2,p);
  assert.equal(markedPartyCount(slots),2);assert.ok(roles(slots).includes('bottom'));assert.equal(slots[3].clientCellId,1);
  assert.equal(slots[0].champion,'Garen');
+});
+
+test('dragging an outside teammate onto our lane moves the group range before the next recommendation',()=>{
+ const s=session(),p=party(2);
+ Object.assign(s.myTeam[0],{championId:key('Ashe'),pickState:'locked',assignedPosition:'BOTTOM'});
+ Object.assign(s.myTeam[1],{championId:key('Ahri'),pickState:'locked',assignedPosition:'MIDDLE'});
+ Object.assign(s.myTeam[2],{championId:key('Garen'),pickState:'locked',assignedPosition:'TOP'});
+ const initial=merge(createSlots(),s,2,p);assert.deepEqual(roles(initial),['mid','bottom']);
+ let moved=moveChampion(initial,'top','mid');
+ assert.deepEqual(roles(moved),['top','bottom']);assert.equal(moved[2].champion,'Garen');assert.equal(moved[2].party,false);
+ assert.equal(moved[0].champion,'Ahri');assert.equal(moved[0].party,true);
+ moved=validateState({...defaultState(),draft:{slots:moved,partyCount:2,scope:'party',clientGameId:'101'}}).draft.slots;
+ for(let poll=0;poll<3;poll++)moved=merge(moved,s,2,p);
+ assert.deepEqual(roles(moved),['top','bottom']);assert.equal(markedPartyCount(moved),2);
+ const [result]=recommend({slots:moved,champions:data.champions,scope:'party',clientSession:s,party:p,limit:1});
+ assert.ok(result);assert.deepEqual(roles(result.slots),['top','bottom']);
+ assert.deepEqual(result.analysis.members.map(m=>m.champion).sort(),['Ahri','Ashe']);
+ const alone=initial.map(slot=>({...slot,party:slot.clientCellId===0}));
+ const swapped=moveChampion(alone,'top','bottom');assert.deepEqual(roles(swapped),['top']);
+ const [solo]=recommend({slots:swapped,champions:data.champions,scope:'party',clientSession:s,party:party(1),limit:1});
+ assert.equal(solo.scope,'context');assert.deepEqual(roles(solo.slots),['top']);assert.equal(solo.slots[0].champion,'Ashe');
+});
+
+test('dragging a public group preview into an empty lane follows ownership through save and polling',()=>{
+ const s=session(),p=party(2);p.members[1].firstPosition='MIDDLE';
+ Object.assign(s.myTeam[0],{championId:key('Ashe'),pickState:'locked',assignedPosition:'BOTTOM'});
+ Object.assign(s.myTeam[1],{championPickIntent:key('Ahri')});
+ const initial=merge(createSlots(),s,2,p);assert.deepEqual(roles(initial),['mid','bottom']);
+ const shown=companionRosterDraft(initial,s,data.champions,{party:p,ownRole:'bottom'});
+ assert.equal(shown[2].clientCellId,1);assert.equal(shown[2].publicIntent,true);
+ let moved=moveDisplayedChampion(initial,shown,'mid','jungle');
+ assert.deepEqual(roles(moved),['jungle','bottom']);assert.equal(moved[1].clientCellId,1);
+ assert.equal(moved[1].champion,null);assert.equal(moved[1].locked,false);
+ moved=validateState({...defaultState(),draft:{slots:moved,partyCount:2,scope:'party',clientGameId:'101'}}).draft.slots;
+ for(let poll=0;poll<3;poll++)moved=merge(moved,s,2,p);
+ assert.deepEqual(roles(moved),['jungle','bottom']);assert.equal(moved[1].champion,null);
+ Object.assign(s.myTeam[1],{championId:key('Ahri'),championPickIntent:0,pickState:'locked'});
+ moved=merge(moved,s,2,p);assert.deepEqual(roles(moved),['jungle','bottom']);assert.equal(moved[1].champion,'Ahri');
+ const allOff=moveChampion(moved.map(slot=>({...slot,party:false,partyManual:true})),'jungle','top');
+ assert.equal(markedPartyCount(merge(allOff,s,0,p)),0,'Moving a member must not revive an explicitly cleared range');
 });
 
 test('a saved draft never pairs a stale range count with newer checkbox marks',async()=>{
