@@ -43680,6 +43680,474 @@
           }
         }
       }
+    },
+    {
+      "hero": "Kindred",
+      "patch": "16.21",
+      "augment": 1053,
+      "optional": [
+        1004,
+        1077,
+        3078
+      ],
+      "title": "科学狂人暴击持续输出",
+      "summary": "原图①暴击装，按每次重生后的实际形态调整站位。",
+      "coreBrief": "每次重生变大获得适应之力和生命，或变小获得急速和移速。",
+      "play": [
+        "Q翻滚后利用攻速普攻，在W区域内缩短Q冷却；E减速后接实际攻击，第三次攻击才引导额外狼灵扑击。",
+        "变大和变小在重生时决定，不预给两种收益；R可用时留意赐福也会保护敌方与中立单位。"
+      ],
+      "basicPlay": [
+        "无R时仅以Q/W区域机动、Q后攻速和E减速接续普攻；E要在时限内第三次攻击才引导额外扑击。",
+        "不提供R保护或结束治疗，不把回归基本功的技能增益扩展为所有普攻和装备伤害统一增伤。"
+      ],
+      "caution": "体型效果不是主动切换，也不能同时享有两种形态；不把大体型和巨人杀手直接认定为固定增伤组合。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6676,
+        3031
+      ],
+      "gear": [
+        [
+          "原图①·暴击买序",
+          [
+            6676,
+            3031,
+            3036,
+            3006,
+            3153,
+            3072
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。",
+          [
+            1053
+          ]
+        ],
+        [
+          "魔伤爆发·换⑥",
+          [
+            6676,
+            3031,
+            3036,
+            3006,
+            3153,
+            3156
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。只替换第⑥格，换取魔抗与受魔伤触发的生命线。",
+          [
+            1053
+          ]
+        ],
+        [
+          "需要韧性·换④",
+          [
+            6676,
+            3031,
+            3036,
+            3111,
+            3153,
+            3072
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。只替换第④格鞋，保持一双鞋；韧性不能解除所有控制。",
+          [
+            1053
+          ]
+        ],
+        [
+          "普攻伤害·换④",
+          [
+            6676,
+            3031,
+            3036,
+            3047,
+            3153,
+            3072
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。只替换第④格鞋，保持一双鞋；不把减伤扩展到所有技能。",
+          [
+            1053
+          ]
+        ]
+      ],
+      "skillPriority": [
+        "Q",
+        "W",
+        "E"
+      ],
+      "skillPriorityOrigin": "project",
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700439129087085874",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-25T11:16:43+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "端游海克斯大乱斗，原文与原图26.21",
+        "evidenceSections": [
+          "原图：三核心的多米尼克第③件角标",
+          "分叉①①—⑥顺序",
+          "按局势替换：魔伤爆发第⑥格、韧性或普攻鞋第④格"
+        ],
+        "adaptation": "父线程内置浏览器实际读原帖、准确日期、完整正文与单图，团队独立看图。三核心独立绑定同一①骨架，不按三种装备套路计数。保留作者指定格位和鞋互斥；凡性的提醒仅指主线第⑤格，未套用到本分叉。可选强化需实际取得后再按机制参考，不保证同时出现或具备英雄资格。Q>W>E为项目持续普攻参考，依据Q攻速和W区缩Q，非作者逐级加点或前三点。作者未给出门、首回城及符文，未补造；普通主线没有核心角标，留为私有参考。原图百分比不导入，不证明总池、英雄池或四轮池资格。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "items": {
+          "3006": "0456daa0af0073e0",
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3072": "6d238c0dfb1d9746",
+          "3111": "b015262b2d75ee9e",
+          "3153": "b957df6b74b79bb7",
+          "3156": "e82d90af81fa5a8d",
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "effects": {
+          "1004": {
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false
+          },
+          "1053": {
+            "fingerprint": "ff25ceb0210b1335",
+            "requiresUltimate": false
+          },
+          "1077": {
+            "fingerprint": "244429bb7a085640",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      }
+    },
+    {
+      "hero": "Kindred",
+      "patch": "16.21",
+      "augment": 1004,
+      "optional": [
+        1053,
+        1077,
+        3078,
+        1195
+      ],
+      "title": "回归基本功无R暴击",
+      "summary": "原图①暴击装，以Q/W区域机动与普攻持续输出。",
+      "coreBrief": "封印R，获得35%技能伤害、治疗、护盾提升和70技能急速。",
+      "play": [
+        "R被封印，依靠W区域缩短Q冷却、Q后攻速与E减速维持攻击窗口。",
+        "E的额外扑击要在时限内打出第三次实际攻击；没有R保命区，先保留退出敌方控制范围的空间。"
+      ],
+      "basicPlay": [
+        "无R时仅以Q/W区域机动、Q后攻速和E减速接续普攻；E要在时限内第三次攻击才引导额外扑击。",
+        "不提供R保护或结束治疗，不把回归基本功的技能增益扩展为所有普攻和装备伤害统一增伤。"
+      ],
+      "caution": "35%技能增益不等于所有普攻、装备特效和暴击伤害统一乘1.35；不能提供R保护或R结束治疗。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6676,
+        3031
+      ],
+      "gear": [
+        [
+          "原图①·暴击买序",
+          [
+            6676,
+            3031,
+            3036,
+            3006,
+            3153,
+            3072
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。",
+          [
+            1004
+          ]
+        ],
+        [
+          "魔伤爆发·换⑥",
+          [
+            6676,
+            3031,
+            3036,
+            3006,
+            3153,
+            3156
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。只替换第⑥格，换取魔抗与受魔伤触发的生命线。",
+          [
+            1004
+          ]
+        ],
+        [
+          "需要韧性·换④",
+          [
+            6676,
+            3031,
+            3036,
+            3111,
+            3153,
+            3072
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。只替换第④格鞋，保持一双鞋；韧性不能解除所有控制。",
+          [
+            1004
+          ]
+        ],
+        [
+          "普攻伤害·换④",
+          [
+            6676,
+            3031,
+            3036,
+            3047,
+            3153,
+            3072
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。只替换第④格鞋，保持一双鞋；不把减伤扩展到所有技能。",
+          [
+            1004
+          ]
+        ]
+      ],
+      "skillPriority": [
+        "Q",
+        "W",
+        "E"
+      ],
+      "skillPriorityOrigin": "project",
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700439129087085874",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-25T11:16:43+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "端游海克斯大乱斗，原文与原图26.21",
+        "evidenceSections": [
+          "原图：三核心的多米尼克第③件角标",
+          "分叉①①—⑥顺序",
+          "按局势替换：魔伤爆发第⑥格、韧性或普攻鞋第④格"
+        ],
+        "adaptation": "父线程内置浏览器实际读原帖、准确日期、完整正文与单图，团队独立看图。三核心独立绑定同一①骨架，不按三种装备套路计数。保留作者指定格位和鞋互斥；凡性的提醒仅指主线第⑤格，未套用到本分叉。可选强化需实际取得后再按机制参考，不保证同时出现或具备英雄资格。Q>W>E为项目持续普攻参考，依据Q攻速和W区缩Q，非作者逐级加点或前三点。作者未给出门、首回城及符文，未补造；普通主线没有核心角标，留为私有参考。原图百分比不导入，不证明总池、英雄池或四轮池资格。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "items": {
+          "3006": "0456daa0af0073e0",
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3072": "6d238c0dfb1d9746",
+          "3111": "b015262b2d75ee9e",
+          "3153": "b957df6b74b79bb7",
+          "3156": "e82d90af81fa5a8d",
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "effects": {
+          "1004": {
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false
+          },
+          "1053": {
+            "fingerprint": "ff25ceb0210b1335",
+            "requiresUltimate": false
+          },
+          "1077": {
+            "fingerprint": "244429bb7a085640",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1195": {
+            "fingerprint": "3ab42d1993bb7344",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      }
+    },
+    {
+      "hero": "Kindred",
+      "patch": "16.21",
+      "augment": 1077,
+      "optional": [
+        1053,
+        1004,
+        3078,
+        1195
+      ],
+      "title": "灵魂虹吸暴击续航",
+      "summary": "原图①暴击装，以实际暴击命中获得续航。",
+      "coreBrief": "获得25%暴击几率和作用于暴击的12%生命偷取。",
+      "play": [
+        "Q后加攻速，W区域缩Q；E减速帮助接续普攻，实际暴击才有灵魂虹吸的对应治疗。",
+        "重伤与敌方爆发会影响续航；R可用时区域同时保护友敌，10%阈值时区内单位不能受伤或治疗，不能预算持续吸满。"
+      ],
+      "basicPlay": [
+        "无R时仅以Q/W区域机动、Q后攻速和E减速接续普攻；E要在时限内第三次攻击才引导额外扑击。",
+        "不提供R保护或结束治疗，不把回归基本功的技能增益扩展为所有普攻和装备伤害统一增伤。"
+      ],
+      "caution": "灵魂虹吸不是全部伤害的全能吸血；E额外狼灵扑击是否暴击及治疗结算尚未核实，不宣称必触发。",
+      "requiresUltimate": false,
+      "coreItems": [
+        6676,
+        3031
+      ],
+      "gear": [
+        [
+          "原图①·暴击买序",
+          [
+            6676,
+            3031,
+            3036,
+            3006,
+            3153,
+            3072
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。",
+          [
+            1077
+          ]
+        ],
+        [
+          "魔伤爆发·换⑥",
+          [
+            6676,
+            3031,
+            3036,
+            3006,
+            3153,
+            3156
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。只替换第⑥格，换取魔抗与受魔伤触发的生命线。",
+          [
+            1077
+          ]
+        ],
+        [
+          "需要韧性·换④",
+          [
+            6676,
+            3031,
+            3036,
+            3111,
+            3153,
+            3072
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。只替换第④格鞋，保持一双鞋；韧性不能解除所有控制。",
+          [
+            1077
+          ]
+        ],
+        [
+          "普攻伤害·换④",
+          [
+            6676,
+            3031,
+            3036,
+            3047,
+            3153,
+            3072
+          ],
+          "原图①—⑥买序；科学狂人、回归基本功、灵魂虹吸旁均标多米尼克第③件，对应同一分叉①。只替换第④格鞋，保持一双鞋；不把减伤扩展到所有技能。",
+          [
+            1077
+          ]
+        ]
+      ],
+      "skillPriority": [
+        "Q",
+        "W",
+        "E"
+      ],
+      "skillPriorityOrigin": "project",
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7700439129087085874",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-25T11:16:43+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "端游海克斯大乱斗，原文与原图26.21",
+        "evidenceSections": [
+          "原图：三核心的多米尼克第③件角标",
+          "分叉①①—⑥顺序",
+          "按局势替换：魔伤爆发第⑥格、韧性或普攻鞋第④格"
+        ],
+        "adaptation": "父线程内置浏览器实际读原帖、准确日期、完整正文与单图，团队独立看图。三核心独立绑定同一①骨架，不按三种装备套路计数。保留作者指定格位和鞋互斥；凡性的提醒仅指主线第⑤格，未套用到本分叉。可选强化需实际取得后再按机制参考，不保证同时出现或具备英雄资格。Q>W>E为项目持续普攻参考，依据Q攻速和W区缩Q，非作者逐级加点或前三点。作者未给出门、首回城及符文，未补造；普通主线没有核心角标，留为私有参考。原图百分比不导入，不证明总池、英雄池或四轮池资格。"
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "items": {
+          "3006": "0456daa0af0073e0",
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3072": "6d238c0dfb1d9746",
+          "3111": "b015262b2d75ee9e",
+          "3153": "b957df6b74b79bb7",
+          "3156": "e82d90af81fa5a8d",
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "effects": {
+          "1004": {
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false
+          },
+          "1053": {
+            "fingerprint": "ff25ceb0210b1335",
+            "requiresUltimate": false
+          },
+          "1077": {
+            "fingerprint": "244429bb7a085640",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1195": {
+            "fingerprint": "3ab42d1993bb7344",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      }
     }
   ],
   "championReview": {
@@ -43842,7 +44310,8 @@
       "Gwen": "94ed9252d63745ca",
       "Zeri": "e4b5046a1a9b42bb",
       "Ezreal": "c2201358b91fa06b",
-      "KogMaw": "ba006aa34e05e235"
+      "KogMaw": "ba006aa34e05e235",
+      "Kindred": "b089b055eca4104f"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -47610,6 +48079,30 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "ad3707a256c213e5"
+          }
+        }
+      },
+      "Kindred": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "b089b055eca4104f",
+        "observedAt": "2026-10-23T02:03:51.534Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Kindred",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/kindred/kindred.bin.json",
+            "sha256": "c9ad94593cde53e26f5382a09be44bed274f4ec29a63fedd51500aecaa852c85"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "70b671b76c9f1fba"
           }
         }
       }
