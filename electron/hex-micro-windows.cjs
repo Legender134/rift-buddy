@@ -1,6 +1,6 @@
 const path=require('node:path');const {pathToFileURL}=require('node:url');
 const {HEX_WINDOWS,hexMicroPlacement,hexMicroOffset,hexMicroPayload}=require('../src/core/hex-micro.mjs');
-const {fitWindow}=require('../src/core/window-placement.mjs');
+const {tooltipPlacement}=require('../src/core/window-placement.mjs');
 const {hexMicroHint}=require('../src/core/hex-micro-hint.mjs');
 const {orderHexCards}=require('../src/core/hex-route-card.mjs');
 const escape=value=>String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -94,10 +94,10 @@ module.exports=function createHexMicroWindows({root,getState,setState,getPayload
    ({name,brief}=hexMicroHint(route,entry,input.kind));
   }
   const r=input.rect,b=e.win.getBounds();if(!r||!['x','y','width','height'].every(k=>Number.isFinite(r[k]))||r.x<0||r.y<0||r.width<1||r.height<1||r.x+r.width>b.width+1||r.y+r.height>b.height+1)return false;
-  const key=JSON.stringify([kind,p.context,name,brief,r]);if(key===tipKey)return true;hideTooltip();tipKey=key;tipKind=kind;const serial=hoverSerial;
+  const key=JSON.stringify([kind,p.context,name,brief,r]);if(key===tipKey)return true;hideTooltip();tipKey=key;tipKind=kind;const serial=hoverSerial,pointer=screen.getCursorScreenPoint();
   if(!tooltip){tooltip=new BrowserWindow({width:190,height:96,frame:false,show:false,alwaysOnTop:true,skipTaskbar:true,focusable:false,resizable:false,transparent:true,backgroundColor:'#00000000',webPreferences:{contextIsolation:true,nodeIntegration:false,sandbox:true}});tooltip.setAlwaysOnTop(true,'screen-saver');tooltip.setIgnoreMouseEvents(true);tooltip.webContents.setWindowOpenHandler(()=>({action:'deny'}));}
   const title=String(name).slice(0,48),text=String(brief).slice(0,100),html='<!doctype html><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'"><style>*{box-sizing:border-box}html,body{margin:0;background:transparent}body{font:11px/16px "Microsoft YaHei UI",sans-serif;color:#ced9df;padding:6px 8px;background:#0b1626f5;border:1px solid #52606c;border-radius:4px}b{display:block;color:#e8dfc9;margin-bottom:3px;font-weight:600}p{margin:0;overflow-wrap:anywhere}</style><b>'+escape(title)+'</b><p>'+escape(text)+'</p>';
-  try{await tooltip.loadURL('data:text/html;charset=utf-8,'+encodeURIComponent(html));if(serial!==hoverSerial||!active()||!enabled(kind)||!e.requested||!e.win.isVisible())return false;const height=Math.min(136,Math.max(38,await tooltip.webContents.executeJavaScript('Math.ceil(document.body.getBoundingClientRect().height)')));if(serial!==hoverSerial||!active()||!enabled(kind)||!e.requested||!e.win?.isVisible())return false;const area=getArea(),width=Math.min(190,area.width),x=kind==='economy'?b.x+b.width+5:b.x-width-5,next=fitWindow({x,y:b.y+r.y,width,height},area,{minWidth:width,maxWidth:width,minHeight:height,maxHeight:height});tooltip.setBounds(next);tooltip.showInactive();return true;}catch{if(serial===hoverSerial)hideTooltip();return false;}
+  try{await tooltip.loadURL('data:text/html;charset=utf-8,'+encodeURIComponent(html));if(serial!==hoverSerial||!active()||!enabled(kind)||!e.requested||!e.win.isVisible())return false;const height=Math.min(136,Math.max(64,await tooltip.webContents.executeJavaScript('Math.ceil(document.body.getBoundingClientRect().height)')));if(serial!==hoverSerial||!active()||!enabled(kind)||!e.requested||!e.win?.isVisible())return false;const area=getArea(),next=tooltipPlacement({x:b.x,y:b.y+r.y,width:b.width,height:r.height},area,{width:190,height,pointer,prefer:kind==='economy'?'right':'left'});if(!next||next.height<64){hideTooltip();return false;}tooltip.setBounds(next);tooltip.showInactive();return true;}catch{if(serial===hoverSerial)hideTooltip();return false;}
  });
  // Forward pointer coordinates without intercepting game clicks. Only the
  // drag strip, explicit controls and narrow scrollbar accept mouse input.

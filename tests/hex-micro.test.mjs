@@ -28,7 +28,7 @@ test('three micro routes preserve their own core and optional icons without visi
 test('micro positions stay independent of Rift layout and follow the game display at both text scales',()=>{
  const area={x:-1920,y:0,width:1920,height:1040},game={x:-1800,y:40,width:1600,height:900};
  const small=hexMicroPlacement('economy',null,area,game),large=hexMicroPlacement('routes',null,area,game,1.25);
- assert.deepEqual(small,{x:-1788,y:52,width:168,height:104});assert.equal(large.width,80);assert.equal(large.height,64);
+ assert.deepEqual(small,{x:-1788,y:96,width:168,height:118});assert.equal(large.width,80);assert.equal(large.height,80);assert.equal(large.y,96);
  const offset=hexMicroOffset({...large,x:-1600,y:120},area,game);assert.deepEqual(offset,{x:200,y:80});
  assert.equal(hexMicroPlacement('routes',offset,area,game).x,-1600);
  assert.deepEqual(validateHexWindows({economy:{x:10,y:20,width:900},routes:{x:Infinity,y:3},extra:'private'}),{economy:{x:10,y:20}});
@@ -40,7 +40,7 @@ test('micro routes take only the width required by real icons while full rows st
  const area={x:0,y:0,width:1920,height:1080},route=(a,i)=>({augments:Array(a).fill({}),items:Array(i).fill({})});
  const narrow=hexMicroPlacement('routes',null,area,null,1,[route(1,3)]),full=hexMicroPlacement('routes',null,area,null,1,[route(9,9)]);
  assert.equal(narrow.width,282);assert.equal(narrow.x+narrow.width,1908);
- assert.equal(full.width,282);assert.equal(full.height,197);assert.equal(full.x+full.width,1908);
+ assert.equal(full.width,282);assert.equal(full.height,211);assert.equal(full.x+full.width,1908);
  assert.equal(hexMicroPlacement('routes',null,area,null,1,Array(3).fill(route(9,9))).height,480);
  assert.equal(hexMicroPlacement('routes',null,area,null,1.25,[route(1,3)]).width,353);
 });
@@ -56,9 +56,11 @@ test('micro payloads ignore timers, wallets and unrelated combat changes so stab
 
 const bundled=JSON.parse(await fs.readFile(new URL('../data/game.json',import.meta.url)));
 bundled.hexBuilds=JSON.parse(await fs.readFile(new URL('../data/hex-builds.json',import.meta.url))).entries;
-test('heroes without paired recipes retain their actual configuration and distinct single augment references',()=>{
+test('withdrawn hero reviews retain the prepared configuration as distinct non-core references',()=>{
+ const unreviewed=structuredClone(bundled);
+ for(const hero of ['Ahri','Ashe','Garen'])unreviewed.champions.find(c=>c.id===hero).mechanicSource.character.sha256='0'.repeat(64);
  for(const hero of ['Ahri','Ashe','Garen']){
-  const model=createGuideModel(bundled,selectGuide(null,{id:hero,role:'mid',mode:'hex'})),fallback=model.hexMicroRoutes;
+  const model=createGuideModel(unreviewed,selectGuide(null,{id:hero,role:'mid',mode:'hex'})),fallback=model.hexMicroRoutes;
   assert.equal(fallback.length,1,hero);assert.equal(fallback[0].kind,'reference');assert.match(fallback[0].title,/非配套/);
   assert(fallback[0].augments.length>0);assert(fallback[0].items.length>0);assert(fallback[0].items.every(i=>model.route.some(r=>r.id===i.id)));assert(fallback[0].items.every(i=>!i.core));
   assert(fallback[0].augments.every(a=>!a.core&&a.brief.includes('单项')));
@@ -90,14 +92,15 @@ test('micro pairing withdraws changed prerequisites as whole groups and never up
 
 test('current source route is prioritized only for its actual core and old recipes never fill missing choices',()=>{
  const model=selection=>createGuideModel(bundled,selectGuide(null,{id:'Yasuo',role:'mid',mode:'hex',...selection}));
- for(const selection of [{},{ownedAugmentIds:[3078]},{compareIds:[3078]}])assert.deepEqual(model(selection).hexMicroRoutes.map(r=>r.id),['Yasuo-3078']);
+ for(const selection of [{},{ownedAugmentIds:[3078]},{compareIds:[3078]}]){const rows=model(selection).hexMicroRoutes;assert.equal(rows[0].id,'Yasuo-3078');assert(rows.every(r=>r.patch===bundled.patch));assert(rows.flatMap(r=>r.augments).filter(a=>a.core&&a.id!==3078).every(a=>!a.owned));}
  const selected=model({ownedAugmentIds:[3078]});assert.equal(selected.hexMicroRoutes[0].augments.find(a=>a.id===3078).owned,true);
  for(const selection of [{compareIds:[1315]},{ownedAugmentIds:[1058],compareIds:[1315]}])assert(model(selection).hexMicroRoutes.every(r=>!r.source?.includes('arammayhem.com')));
 });
 
-test('previous-patch community recipes stay out of current recommendations even when their mechanics still match',()=>{
+test('previous-patch community recipes stay out of current recommendations even when their mechanics still match',async()=>{
+ const recipe=JSON.parse(await fs.readFile(new URL('../src/core/hex-community-routes.json',import.meta.url))).routes.find(r=>r.hero==='Yasuo'&&r.augment===3078);
  assert.deepEqual(hexMicroRoutes({data:bundled,hero:'Yasuo'}),[]);
  const shown=createGuideModel(bundled,selectGuide(null,{id:'Yasuo',role:'mid',mode:'hex'})).hexMicroRoutes;
- assert.equal(shown.length,1);assert.equal(shown[0].communitySource.author,'一个老九');assert.equal(shown[0].card.sourceUrl,'https://www.bilibili.com/video/BV1HGHP6TEhy/');assert.equal(shown[0].patch,bundled.patch);
- for(const mutate of [d=>d.patch='16.22',d=>d.champions.find(c=>c.id==='Yasuo').mechanicSource.character.sha256='0'.repeat(64),d=>d.augments.find(a=>a.id===3078).key='Changed',d=>d.items[123430].maps['12']=false]){const changed=structuredClone(bundled);mutate(changed);const routes=createGuideModel(changed,selectGuide(null,{id:'Yasuo',role:'mid',mode:'hex'})).hexMicroRoutes;assert(routes.every(r=>r.id!=='Yasuo-3078'&&!r.source?.includes('arammayhem.com')));}
+ const original=shown.find(r=>r.id==='Yasuo-3078');assert(original);assert.equal(original.communitySource.author,recipe.communitySource.author);assert.equal(original.card.sourceUrl,recipe.communitySource.url);assert.equal(original.patch,bundled.patch);assert(shown.every(r=>r.patch===bundled.patch));
+ for(const mutate of [d=>d.patch='16.22',d=>d.champions.find(c=>c.id==='Yasuo').mechanicSource.character.sha256='0'.repeat(64),d=>d.augments.find(a=>a.id===3078).key='Changed',d=>d.items[recipe.coreItems[0]].maps['12']=false]){const changed=structuredClone(bundled);mutate(changed);const routes=createGuideModel(changed,selectGuide(null,{id:'Yasuo',role:'mid',mode:'hex'})).hexMicroRoutes;assert(routes.every(r=>r.id!=='Yasuo-3078'&&!r.source?.includes('arammayhem.com')));}
 });

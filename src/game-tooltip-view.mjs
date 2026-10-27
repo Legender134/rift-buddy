@@ -4,6 +4,7 @@ import {compareBuildPatches} from './core/builds.mjs';
 import {itemModeTooltip} from './core/item-mode-tooltip.mjs';
 import {hexAugmentReference} from './core/hex-augment-reference.mjs';
 import {isCurrentHexData} from './core/hex-data-current.mjs';
+import {tooltipPlacement} from './core/window-placement.mjs';
 const numbers=value=>String(value).split(/(\d+(?:\.\d+)?(?:%|秒|金币|金)?)/g).map((part,index)=>index%2?`<strong>${e(part)}</strong>`:e(part)).join('');
 export function gameTooltipView(data,kind,id,{mode='rift',image=asset,compact=false,brief='',poolStatus=''}={}){
  let name,description,meta='',partial=false,changes=[],basic='',modeDetail=null;
@@ -36,7 +37,7 @@ export function gameTooltipView(data,kind,id,{mode='rift',image=asset,compact=fa
 export function createGameTooltips({document,getData,getMode=()=> 'rift',getContent,observeRoots=[document.getElementById('app'),document.getElementById('overlay-root')]}){
  const view=document.defaultView,selector='[data-game-tooltip-kind][data-game-tooltip-id]',card=document.createElement('div');
  card.className='game-tooltip';card.id='game-tooltip';card.setAttribute('role','tooltip');card.setAttribute('popover','manual');document.body.append(card);
- let anchor=null,focusOwner=null,timer=null,closeTimer=null,titles=[],request=0,repainting=false;
+ let anchor=null,focusOwner=null,timer=null,closeTimer=null,titles=[],request=0,repainting=false,pointer=null;
  function removeDescription(owner){const ids=(owner.getAttribute('aria-describedby')||'').split(/\s+/).filter(id=>id&&id!==card.id);if(ids.length)owner.setAttribute('aria-describedby',ids.join(' '));else owner.removeAttribute('aria-describedby');}
  function assignOwner(owner){if(focusOwner&&focusOwner!==owner)removeDescription(focusOwner);focusOwner=owner;if(card.matches(':popover-open')){const ids=new Set((owner.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean));ids.add(card.id);owner.setAttribute('aria-describedby',[...ids].join(' '));}}
  function hide({restore=true}={}){
@@ -50,9 +51,10 @@ export function createGameTooltips({document,getData,getMode=()=> 'rift',getCont
   for(let parent=node;parent&&parent!==document.body;parent=parent.parentElement){if(parent.hasAttribute('title')){titles.push([parent,parent.getAttribute('title')]);parent.removeAttribute('title');}if(parent.matches('button,a,[role=button]'))break;}
  }
  function place(){
-  const r=anchor.getBoundingClientRect(),box=card.getBoundingClientRect(),margin=8;
-  card.style.left=Math.max(margin,Math.min(view.innerWidth-box.width-margin,r.left+r.width/2-box.width/2))+'px';
-  const below=r.bottom+8;card.style.top=(below+box.height<=view.innerHeight-margin?below:Math.max(margin,r.top-box.height-8))+'px';
+  card.style.width='';card.style.maxHeight='';
+  const r=anchor.getBoundingClientRect(),box=card.getBoundingClientRect(),next=tooltipPlacement(r,{x:0,y:0,width:view.innerWidth,height:view.innerHeight},{width:box.width,height:box.height,pointer,prefer:'bottom'});
+  if(!next){hide();return;}
+  card.style.width=next.width+'px';card.style.maxHeight=next.height+'px';card.style.left=next.x+'px';card.style.top=next.y+'px';
  }
  function show(node,owner=node){
   view.clearTimeout(closeTimer);if(node===anchor){assignOwner(owner);return;}hide();const serial=request,mode=getMode();
@@ -71,9 +73,9 @@ export function createGameTooltips({document,getData,getMode=()=> 'rift',getCont
  }
  const contextual='[data-history-tip],[data-ongoing-tip],.history-hover';
  const find=target=>{const node=target.closest?.(selector)||target.closest?.('button,a,[tabindex]')?.querySelector(selector);return node&&!node.closest(contextual)?node:null;};
- document.addEventListener('pointerover',event=>{if(card.contains(event.target)){view.clearTimeout(closeTimer);return;}const node=find(event.target);if(node)show(node);else if(event.target.closest?.(contextual))hide();});
+ document.addEventListener('pointerover',event=>{if(card.contains(event.target)){view.clearTimeout(closeTimer);return;}pointer={x:event.clientX,y:event.clientY};const node=find(event.target);if(node)show(node);else if(event.target.closest?.(contextual))hide();});
  document.addEventListener('pointerout',event=>{if(anchor&&!anchor.contains(event.relatedTarget)&&!card.contains(event.relatedTarget)&&!event.relatedTarget?.closest?.(selector)){view.clearTimeout(closeTimer);closeTimer=view.setTimeout(()=>hide(),180);}});
- document.addEventListener('focusin',event=>{const node=find(event.target);if(node)show(node,event.target);else hide();});
+ document.addEventListener('focusin',event=>{pointer=null;const node=find(event.target);if(node)show(node,event.target);else hide();});
  document.addEventListener('focusout',()=>{if(!repainting)hide();});
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&(card.matches(':popover-open')||timer)){event.preventDefault();hide({restore:false});}},true);
  document.addEventListener('scroll',event=>{if(repainting||card.contains(event.target))return;const node=anchor,owner=focusOwner,focused=owner===document.activeElement;if(node?.isConnected&&focused&&card.matches(':popover-open')){place();return;}hide();if(node?.isConnected&&focused)show(node,owner);},true);view.addEventListener('resize',()=>hide());view.addEventListener('blur',()=>hide());

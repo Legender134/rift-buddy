@@ -86,6 +86,23 @@ export function moveChampion(slots,fromRole,toRole){
   return {role:s.role,party:s.party,...(s.partyManual?{partyManual:true}:{}),...(s.role===toRole?a:b)};
  });
 }
+// An unlocked public pick can reserve a lane, but must not be saved as a
+// confirmed champion. Member bindings move together; lane ownership stays put.
+export function moveDisplayedChampion(slots,displayed,fromRole,toRole){
+ const source=displayed.find(s=>s.role===fromRole),target=displayed.find(s=>s.role===toRole);
+ if(!source?.champion||!target||source.publicIntent&&!Number.isInteger(source.clientCellId))throw Error('选人已变化，请重新拖动当前英雄');
+ if(fromRole===toRole)return structuredClone(slots);
+ const roles=new Set([fromRole,toRole]),positionsOnly=new Set();
+ const next=slots.map(slot=>{
+  if(!roles.has(slot.role))return slot;
+  const shown=displayed.find(s=>s.role===slot.role);
+  if(!shown?.publicIntent)return slot;
+  if(!Number.isInteger(shown.clientCellId)||shown.clientCellId<0||shown.clientCellId>=30)throw Error('位置所属尚未确认');
+  positionsOnly.add(shown.clientCellId);
+  return {...slot,champion:shown.champion,locked:false,clientCellId:shown.clientCellId};
+ });
+ return moveChampion(next,fromRole,toRole).map(slot=>positionsOnly.has(slot.clientCellId)?{...slot,champion:null,locked:false}:slot);
+}
 export function assignClientChampion(slots,pick,toRole){
  const target=slots.find(s=>s.role===toRole);
  if(!target||target.champion)throw Error('请拖到空位置；已选英雄之间可直接交换');

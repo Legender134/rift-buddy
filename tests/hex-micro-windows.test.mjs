@@ -13,31 +13,55 @@ function setup(preferences={}){
  let state={selection:{mode:'hex'},hexWindows:{}},active=true,cursor={x:0,y:0},height=()=>Promise.resolve(70),saves=0,write=async next=>{state=next;};
  const value={referenceRevision:1,model:{mode:'hex',champion:{id:'Yasuo',name:'亚索'},matchId:'5',equipment:{available:true,ally:{players:[{id:'Yasuo',name:'亚索',known:true,value:300}]},enemy:{players:[]}},hexMicroRoutes:[]}};
  class Window extends EventEmitter{
-  constructor(options){super();this.options=options;this.bounds={x:options.x||0,y:options.y||0,width:options.width,height:options.height};this.visible=false;this.shows=0;this.sent=[];this.webContents=new EventEmitter();this.webContents.mainFrame={};this.webContents.send=(...args)=>this.sent.push(args);this.webContents.setWindowOpenHandler=()=>{};this.webContents.executeJavaScript=()=>height();windows.push(this);}
-  getBounds(){return this.bounds;}setBounds(b){this.bounds=b;this.emit('move');}isDestroyed(){return this.destroyed===true;}isVisible(){return this.visible;}showInactive(){this.visible=true;this.shows++;}hide(){assert(!this.isDestroyed(),'must not touch a destroyed window');this.visible=false;}setAlwaysOnTop(){}setIgnoreMouseEvents(value){this.ignore=value;}loadFile(){}async loadURL(url){this.url=url;}destroy(){this.destroyed=true;this.emit('closed');}
+  constructor(options){super();this.options=options;this.bounds={x:options.x||0,y:options.y||0,width:options.width,height:options.height};this.visible=false;this.shows=0;this.sent=[];this.webContents=new EventEmitter();this.webContents.id=windows.length+1;this.webContents.mainFrame={};this.webContents.send=(...args)=>this.sent.push(args);this.webContents.setWindowOpenHandler=()=>{};this.webContents.executeJavaScript=()=>height();windows.push(this);}
+  getBounds(){return this.bounds;}setBounds(b){this.bounds=b;this.emit('move');}isDestroyed(){return this.destroyed===true;}isVisible(){return this.visible;}showInactive(){this.visible=true;this.shows++;}hide(){assert(!this.isDestroyed(),'must not touch a destroyed window');this.visible=false;}setAlwaysOnTop(value){this.top=value;}isAlwaysOnTop(){return !!this.top;}setIgnoreMouseEvents(value){this.ignore=value;}loadFile(){}async loadURL(url){this.url=url;}destroy(){this.destroyed=true;this.emit('closed');}
  }
- const module={exports:{}};vm.runInNewContext(fs.readFileSync(file,'utf8'),{module,require:name=>name==='electron'?{BrowserWindow:Window,ipcMain:{handle:(name,fn)=>{handlers[name]=fn;}},screen:{getCursorScreenPoint:()=>cursor}}:nativeRequire(name),setInterval:fn=>{intervals.push(fn);return {unref(){}};},clearInterval(){},setTimeout:fn=>{timers.set(++nextTimer,fn);return nextTimer;},clearTimeout:id=>timers.delete(id)});
+ const electron={BrowserWindow:Window,ipcMain:{handle:(name,fn)=>{handlers[name]=fn;}},screen:{getCursorScreenPoint:()=>cursor}},timing={setInterval:fn=>{intervals.push(fn);return {unref(){}};},clearInterval(){},setTimeout:fn=>{timers.set(++nextTimer,fn);return nextTimer;},clearTimeout:id=>timers.delete(id)};
+ const peek={exports:{}};vm.runInNewContext(fs.readFileSync(new URL('../electron/window-peek.cjs',import.meta.url),'utf8'),{module:peek,require:name=>name==='electron'?electron:nativeRequire(name),...timing});
+ const module={exports:{}};vm.runInNewContext(fs.readFileSync(file,'utf8'),{module,require:name=>name==='electron'?electron:name==='./window-peek.cjs'?peek.exports:nativeRequire(name),...timing});
  const micro=module.exports({root,getState:()=>state,setState:async(next,base)=>{saves++;await write(next,base);},getPayload:()=>value,getArea:()=>area,getGameBounds:()=>null,getScale:()=>1,getPreferences:()=>preferences,isActive:()=>active,isQuitting:()=>false,onHide(){},onChange(){},showMain(){},diagnostic(){}});
  const call=(kind,name,...args)=>{const win=windows.find(w=>w.options.webPreferences.additionalArguments?.includes('--rift-hex-window='+kind));return handlers[name]({sender:win.webContents,senderFrame:win.webContents.mainFrame},kind,...args);};
  return {micro,windows,value,handlers,call,ready:()=>windows.filter(w=>w.options.webPreferences.preload).forEach(w=>w.emit('ready-to-show')),active:v=>{active=v;},state:v=>{if(v)state=v;return state;},writer:fn=>{write=fn;},height:fn=>{height=fn;},pointer:p=>{cursor=p;intervals.forEach(fn=>fn());},timers,saveCount:()=>saves};
 }
 const hover={side:'ally',id:'Yasuo',rect:{x:6,y:10,width:18,height:18}};
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
+test('full, one-line and edge controls restore the same non-activating window and reject stale views',async()=>{
+ const s=setup();s.value.model.hexMicroRoutes=Array.from({length:4},(_,i)=>({id:'r'+i,augments:[],items:[]}));s.micro.show();s.ready();
+ const snapshot=()=>s.call('routes','hex-micro-bootstrap'),control=(action,p=snapshot())=>s.call('routes','hex-micro-control',action,{context:p.context,view:p.view}),win=s.windows[1],old=snapshot();
+ assert.equal(await control('line'),true);assert.equal(snapshot().layout,'line');assert.equal(await control('fold',old),false);
+ assert.equal(await control('fold'),true);s.ready();assert.equal(win.visible,false);
+ const handle=s.windows.find(w=>w.options.webPreferences.preload?.endsWith('peek-preload.cjs'));assert(handle.visible);assert.equal(handle.options.focusable,false);
+ assert.equal(s.handlers['peek-control']({sender:handle.webContents,senderFrame:handle.webContents.mainFrame},'restore'),true);
+ assert(win.visible);assert.equal(snapshot().layout,'line');assert.equal(await control('line'),true);assert.equal(snapshot().layout,'full');
+ assert.equal(win.options.focusable,false);s.micro.destroy();
+});
+test('native hover cards flip away from icons and the cursor when either micro window is dragged to the opposite edge',async()=>{
+ for(const kind of ['economy','routes']){
+  const s=setup();s.value.model.hexMicroRoutes=[{id:'r',augments:[{id:1,name:'强化',brief:'说明'}],items:[]}];s.micro.show();s.ready();
+  const win=s.windows[kind==='economy'?0:1];win.setBounds({...win.bounds,x:kind==='economy'?area.width-win.bounds.width-12:12});
+  const p=s.call(kind,'hex-micro-bootstrap'),b=win.bounds,point={x:b.x+18,y:b.y+34};s.pointer(point);
+  const input=kind==='economy'?{side:'ally',id:'Yasuo'}:{kind:'augment',id:1,route:'r'};
+  assert.equal(await s.call(kind,'hex-micro-hover',{...input,context:p.context,rect:{x:6,y:24,width:28,height:28}}),true);
+  const card=s.windows.at(-1).bounds;assert(card.x>=area.x&&card.x+card.width<=area.width);
+  assert(card.x+card.width<=b.x||card.x>=b.x+b.width);assert(point.x<card.x||point.x>card.x+card.width||point.y<card.y||point.y>card.y+card.height);
+  s.micro.destroy();
+ }
+});
 
-test('expanded pin order and bounded input regions survive refresh but reset with the match',()=>{
+test('expanded pin order and bounded input regions survive refresh but reset with the match',async()=>{
  const s=setup();s.value.model.hexMicroRoutes=Array.from({length:5},(_,i)=>({id:'r'+i,augments:[],items:[]}));s.micro.show();s.ready();
- const snapshot=()=>s.call('routes','hex-micro-bootstrap'),control=(action,id,context=snapshot().context)=>s.call('routes','hex-micro-control',action,{context,id});
- assert.equal(control('pin','r4'),false);assert.equal(control('expand',null,'stale'),false);assert.equal(control('expand'),true);
- assert.equal(control('pin','r4'),true);assert.deepEqual(Array.from(snapshot().routes,r=>r.id),['r4','r0','r1','r2','r3']);
+ const snapshot=()=>s.call('routes','hex-micro-bootstrap'),control=(action,id,context=snapshot().context)=>s.call('routes','hex-micro-control',action,{context,view:snapshot().view,id});
+ assert.equal(await control('pin','r4'),false);assert.equal(await control('expand',null,'stale'),false);assert.equal(await control('expand'),true);
+ assert.equal(await control('pin','r4'),true);assert.deepEqual(Array.from(snapshot().routes,r=>r.id),['r4','r0','r1','r2','r3']);
  const win=s.windows[1],b=win.bounds,rows=[{action:'pin',id:'r0',x:6,y:40,width:18,height:24}];
- assert.equal(s.call('routes','hex-micro-regions',{context:snapshot().context,rows}),true);
+ assert.equal(s.call('routes','hex-micro-regions',{context:snapshot().context,view:snapshot().view,rows}),true);
  s.pointer({x:b.x+10,y:b.y+45});assert.equal(win.ignore,false);s.pointer({x:b.x+50,y:b.y+45});assert.equal(win.ignore,true);
- s.call('routes','hex-micro-regions',{context:snapshot().context,rows:[{...rows[0],width:200,height:200}]});s.pointer({x:b.x+10,y:b.y+45});assert.equal(win.ignore,true,'An oversized region must not swallow game clicks');
+ s.call('routes','hex-micro-regions',{context:snapshot().context,view:snapshot().view,rows:[{...rows[0],width:200,height:200}]});s.pointer({x:b.x+10,y:b.y+45});assert.equal(win.ignore,true,'An oversized region must not swallow game clicks');
  s.value.referenceRevision++;s.micro.publish();assert.equal(snapshot().expanded,true);assert.equal(snapshot().routes[0].id,'r4');
  s.value.model.hexMicroRoutes=s.value.model.hexMicroRoutes.filter(r=>r.id!=='r4');s.micro.publish();assert.equal(snapshot().routes[0].id,'r0');
- assert.equal(control('pin','r4'),false);s.value.model.hexRound={context:'manual-reset'};s.micro.publish();assert.equal(snapshot().expanded,false);
- assert.equal(control('expand'),true);s.value.model.matchId='next';s.micro.publish();assert.equal(snapshot().expanded,false);
- s.call('routes','hex-micro-control','hide');assert.equal(control('expand'),false);s.micro.destroy();
+ assert.equal(await control('pin','r4'),false);s.value.model.hexRound={context:'manual-reset'};s.micro.publish();assert.equal(snapshot().expanded,false);
+ assert.equal(await control('expand'),true);s.value.model.matchId='next';s.micro.publish();assert.equal(snapshot().expanded,false);
+ await s.call('routes','hex-micro-control','hide');assert.equal(await control('expand'),false);s.micro.destroy();
 });
 
 test('narrow upgrade hovers distinguish suggested, prepared and held equipment before clipping the description',async()=>{
@@ -71,7 +95,7 @@ test('tooltip survives unchanged observer bounds; body clicks pass through and d
 test('layout recovery cancels pending drag persistence before clearing offsets',async()=>{
  const s=setup();s.micro.show();s.ready();const win=s.windows[0];win.setBounds({...win.bounds,x:450,y:300});assert.equal(s.timers.size,1);
  await s.micro.reset();s.state({...s.state(),hexWindows:undefined});s.micro.fit();for(const fn of s.timers.values())await fn();
- assert.equal(s.saveCount(),0);assert.equal(win.bounds.x,12);assert.equal(win.bounds.y,12);s.micro.destroy();
+ assert.equal(s.saveCount(),0);assert.equal(win.bounds.x,12);assert.equal(win.bounds.y,56);s.micro.destroy();
 });
 
 test('recovery drains an already saving drag before taking the latest state, preserving both independent positions',async()=>{
@@ -80,7 +104,7 @@ test('recovery drains an already saving drag before taking the latest state, pre
   s.writer(async(next,base)=>{assert.equal(base,s.state());entered=true;await new Promise(r=>{release=r;});s.state(next);});
   const win=s.windows[0];win.setBounds({...win.bounds,x:450,y:300});const save=[...s.timers.values()][0]();await tick();assert(entered);
   const reset=s.micro.reset().then(()=>{resetDone=true;});await tick();assert.equal(resetDone,false,'cannot clear offsets using a pre-save state');release();await save;await reset;
-  s.state({...s.state(),hexWindows:undefined});s.micro.fit();assert.equal(win.bounds.x,12);assert.equal(win.bounds.y,12);s.micro.destroy();
+  s.state({...s.state(),hexWindows:undefined});s.micro.fit();assert.equal(win.bounds.x,12);assert.equal(win.bounds.y,56);s.micro.destroy();
  }
 });
 
@@ -131,7 +155,7 @@ test('Hex manual preview and game use only two micro windows and preserve indepe
   await s.guide.phase('GameStart',true);s.ready();assert(s.micro().every(w=>w.isVisible()));
   await s.guide.phase('Offline',false);s.guide.publish();s.restore();s.ready();assert.equal(s.legacy(),undefined);
   assert(s.micro().every(w=>w.isVisible()),'disconnect during first loading must retain micro windows');
-  assert.throws(()=>s.call(s.micro()[1],'hex-micro-control','routes','main'),/不支持/);
+  await assert.rejects(s.call(s.micro()[1],'hex-micro-control','routes','main'),/不支持/);
   await s.guide.phase('InProgress',true);s.ready();assert.equal(s.micro().length,2);assert(s.micro().every(w=>w.isVisible()));assert.equal(s.legacy(),undefined);
   s.restore();s.ready();assert.equal(s.legacy(),undefined);
   await s.guide.phase('Offline',false);s.guide.publish();assert(s.micro().every(w=>w.isVisible()));assert.equal(s.legacy(),undefined);
