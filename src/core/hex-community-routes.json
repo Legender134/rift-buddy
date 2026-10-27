@@ -24668,6 +24668,623 @@
           "126697": "942097b9d9de1e23"
         }
       }
+    },
+    {
+      "hero": "Yunara",
+      "patch": "16.21",
+      "augment": 1225,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "双刀流暴击主线",
+      "summary": "普攻积灵蕴，Q开启后持续输出，W消耗，E调整位置。",
+      "coreBrief": "攻击发射弩箭，造成40%伤害并以40%效能施加攻击特效，另获10%总攻速。",
+      "play": [
+        "Q需先满足灵蕴条件再开启；R可用才进入超凡形态，不把常态E加速当作冲刺。",
+        "保证主攻击能安全命中；双刀箭矢、Q散播和飓风弩箭分别按实际效果兑现，不承诺彼此无限触发或固定倍数。"
+      ],
+      "basicPlay": [
+        "无R保留常态Q灵蕴循环、W念珠和E移速，失去超凡形态的Q即刻激活、W射线及E冲刺；不按升级形态安排追击。"
+      ],
+      "caution": "双刀流不保证额外箭矢触发全部技能，也不提供免控或无限输出空间。",
+      "coreItems": [
+        3032,
+        3085,
+        3031,
+        3006,
+        3036,
+        3153
+      ],
+      "gear": [
+        [
+          "①–⑥购买",
+          [
+            3032,
+            3085,
+            3031,
+            3006,
+            3036,
+            3153
+          ],
+          "原图主线，按①–⑥购买。",
+          [
+            1225
+          ]
+        ],
+        [
+          "敌方回复多：⑤换凡性的提醒",
+          [
+            3033
+          ],
+          "替换第5件领主。",
+          [
+            1225
+          ]
+        ],
+        [
+          "魔伤爆发高：⑥换玛莫提乌斯之噬",
+          [
+            3156
+          ],
+          "替换第6件。",
+          [
+            1225
+          ]
+        ],
+        [
+          "需要韧性：④换水银之靴",
+          [
+            3111
+          ],
+          "替换第4件。",
+          [
+            1225
+          ]
+        ],
+        [
+          "普攻伤害多：④换铁板靴",
+          [
+            3047
+          ],
+          "替换第4件。",
+          [
+            1225
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3006": "0456daa0af0073e0",
+          "3031": "00b9b8a238976a3f",
+          "3032": "a19dbb52aac34591",
+          "3033": "d17e8fe8776ae561",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3085": "33323dc6a3e8462a",
+          "3111": "b015262b2d75ee9e",
+          "3153": "b957df6b74b79bb7",
+          "3156": "e82d90af81fa5a8d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "1225": {
+            "fingerprint": "526b26238bcb531f",
+            "requiresUltimate": false
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7701013616299937050",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-27T00:26:03+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "原作者海克斯大乱斗26.21完整出装图",
+        "evidenceSections": [
+          "Yunara.webp：无标走主线、物法皆修分叉及①–⑥买序、条件替换"
+        ],
+        "adaptation": "图例明确无标走主线，从作者已列无标强化选择双刀流作为默认入口。独立保留对应条件替换，不要求其他强化共同取得。未提供加点、符文、出门或首回城；作者百分比不作项目胜率。"
+      }
+    },
+    {
+      "hero": "Yunara",
+      "patch": "16.21",
+      "augment": 1054,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "物法皆修领主第三件",
+      "summary": "普攻积灵蕴，Q开启后持续输出，W消耗，E调整位置。",
+      "coreBrief": "攻击叠法强、技能伤害叠攻击力；增益持续5秒，可刷新。",
+      "play": [
+        "Q需先满足灵蕴条件再开启；R可用才进入超凡形态，不把常态E加速当作冲刺。",
+        "用实际攻击获得短时法强，W实际伤害获得短时攻击力；不能把攻击特效、散播或飓风额外目标直接当成多次强化叠层。"
+      ],
+      "basicPlay": [
+        "无R保留常态Q灵蕴循环、W念珠和E移速，失去超凡形态的Q即刻激活、W射线及E冲刺；不按升级形态安排追击。"
+      ],
+      "caution": "物法皆修增益仅持续5秒，未刷新就会失去；作者顺序不保证每局最优。",
+      "coreItems": [
+        3032,
+        3085,
+        3036,
+        3006,
+        3031,
+        3072
+      ],
+      "gear": [
+        [
+          "①–⑥购买",
+          [
+            3032,
+            3085,
+            3036,
+            3006,
+            3031,
+            3072
+          ],
+          "原图分叉①，按①–⑥购买；领主第三件。",
+          [
+            1054
+          ]
+        ],
+        [
+          "魔伤爆发高：⑥换玛莫提乌斯之噬",
+          [
+            3156
+          ],
+          "替换第6件。",
+          [
+            1054
+          ]
+        ],
+        [
+          "需要韧性：④换水银之靴",
+          [
+            3111
+          ],
+          "替换第4件。",
+          [
+            1054
+          ]
+        ],
+        [
+          "普攻伤害多：④换铁板靴",
+          [
+            3047
+          ],
+          "替换第4件。",
+          [
+            1054
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "items": {
+          "3006": "0456daa0af0073e0",
+          "3031": "00b9b8a238976a3f",
+          "3032": "a19dbb52aac34591",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3072": "6d238c0dfb1d9746",
+          "3085": "33323dc6a3e8462a",
+          "3111": "b015262b2d75ee9e",
+          "3156": "e82d90af81fa5a8d"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27",
+        "effects": {
+          "1054": {
+            "fingerprint": "bfecefcc585d3a08",
+            "requiresUltimate": false
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7701013616299937050",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-27T00:26:03+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "原作者海克斯大乱斗26.21完整出装图",
+        "evidenceSections": [
+          "Yunara.webp：无标走主线、物法皆修分叉及①–⑥买序、条件替换"
+        ],
+        "adaptation": "采用原图物法皆修具名分叉、领主第三件与完整买序。独立保留对应条件替换，不要求其他强化共同取得。未提供加点、符文、出门或首回城；作者百分比不作项目胜率。"
+      }
+    },
+    {
+      "hero": "Tryndamere",
+      "patch": "16.21",
+      "augment": 1225,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "双刀流暴击主线",
+      "summary": "以普攻积累怒气，Q消耗怒气回复，E保留进退空间。",
+      "coreBrief": "攻击发射弩箭，造成40%伤害并以40%效能施加攻击特效，另获10%总攻速。",
+      "play": [
+        "Q消耗怒气回复自己，会改变怒气提供的暴击机会；W仅对背对自己的目标减速。",
+        "保证实际普攻命中；额外箭矢不保证额外暴击、E回转或固定倍数。",
+        "R可用时再安排低血量交战窗口；R不提供免控，结束前判断退路。"
+      ],
+      "basicPlay": [
+        "无R失去无尽怒火的保命窗口及施放获得的怒气；保留Q回复、W削攻与背身减速、E位移，不按有大招的残血站位硬打。"
+      ],
+      "caution": "被控制或无法近身时先退让，装备不保证持续普攻。",
+      "coreItems": [
+        3153,
+        3046,
+        3031,
+        3006,
+        6675,
+        3036
+      ],
+      "gear": [
+        [
+          "①–⑥购买",
+          [
+            3153,
+            3046,
+            3031,
+            3006,
+            6675,
+            3036
+          ],
+          "按原图默认主线的①–⑥顺序购买。",
+          [
+            1225
+          ]
+        ],
+        [
+          "敌方回血多：⑥换凡性的提醒",
+          [
+            3033
+          ],
+          "按原图替换本分支第6件装备。",
+          [
+            1225
+          ]
+        ],
+        [
+          "需要韧性：④换水银之靴",
+          [
+            3111
+          ],
+          "按原图替换本分支第4件装备。",
+          [
+            1225
+          ]
+        ],
+        [
+          "普攻伤害多：④换铁板靴",
+          [
+            3047
+          ],
+          "按原图替换本分支第4件装备。",
+          [
+            1225
+          ]
+        ],
+        [
+          "需要解控制：⑥换水银弯刀",
+          [
+            3139
+          ],
+          "按原图替换本分支第6件装备。",
+          [
+            1225
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "items": {
+          "3006": "0456daa0af0073e0",
+          "3031": "00b9b8a238976a3f",
+          "3033": "d17e8fe8776ae561",
+          "3036": "2758e8ff995f599d",
+          "3046": "abb0e687aaec4849",
+          "3047": "0b6eb528fea45bfb",
+          "3111": "b015262b2d75ee9e",
+          "3139": "b86d1fa554989f04",
+          "3153": "b957df6b74b79bb7",
+          "6675": "97702aa4586ca26f"
+        },
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27"
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "effects": {
+          "1225": {
+            "requiresUltimate": false,
+            "fingerprint": "526b26238bcb531f"
+          }
+        },
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27"
+      },
+      "communitySource": {
+        "sourcePatch": "26.21",
+        "author": "海克斯乱斗大发明家",
+        "url": "https://www.douyin.com/note/7701011549745450276",
+        "adaptation": "采用原图默认主线；默认主线由无标走主线图例支持，两分叉按面板具名条件区分。独立保留本分支指定槽位替换，不要求其他强化同获。未提供加点、符文、出门或首回城；作者百分比不作项目胜率。",
+        "observedMode": "原作者海克斯大乱斗26.21完整出装图",
+        "medium": "text",
+        "evidenceSections": [
+          "Tryndamere-page.jpg中央完整原图与原帖正文：默认/两分叉、①–⑥买序和条件替换"
+        ],
+        "publishedAt": "2026-10-27T00:18:06+08:00"
+      }
+    },
+    {
+      "hero": "Tryndamere",
+      "patch": "16.21",
+      "augment": 2009,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "狂热者心钢分叉",
+      "summary": "以普攻积累怒气，Q消耗怒气回复，E保留进退空间。",
+      "coreBrief": "获得随法术强度变化的暴击几率和攻击速度。",
+      "play": [
+        "Q消耗怒气回复自己，会改变怒气提供的暴击机会；W仅对背对自己的目标减速。",
+        "狂热者收益按实际法强计算；心之钢不是法强装备，不额外推算属性转化。",
+        "R可用时再安排低血量交战窗口；R不提供免控，结束前判断退路。"
+      ],
+      "basicPlay": [
+        "无R失去无尽怒火的保命窗口及施放获得的怒气；保留Q回复、W削攻与背身减速、E位移，不按有大招的残血站位硬打。"
+      ],
+      "caution": "被控制或无法近身时先退让，装备不保证持续普攻。",
+      "coreItems": [
+        3084,
+        3153,
+        3031,
+        3006,
+        3046,
+        6675
+      ],
+      "gear": [
+        [
+          "①–⑥购买",
+          [
+            3084,
+            3153,
+            3031,
+            3006,
+            3046,
+            6675
+          ],
+          "按原图狂热者分叉①的①–⑥顺序购买。",
+          [
+            2009
+          ]
+        ],
+        [
+          "敌方回血多：⑥换凡性的提醒",
+          [
+            3033
+          ],
+          "按原图替换本分支第6件装备。",
+          [
+            2009
+          ]
+        ],
+        [
+          "需要韧性：④换水银之靴",
+          [
+            3111
+          ],
+          "按原图替换本分支第4件装备。",
+          [
+            2009
+          ]
+        ],
+        [
+          "普攻伤害多：④换铁板靴",
+          [
+            3047
+          ],
+          "按原图替换本分支第4件装备。",
+          [
+            2009
+          ]
+        ],
+        [
+          "需要解控制：⑥换水银弯刀",
+          [
+            3139
+          ],
+          "按原图替换本分支第6件装备。",
+          [
+            2009
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "items": {
+          "3006": "0456daa0af0073e0",
+          "3031": "00b9b8a238976a3f",
+          "3033": "d17e8fe8776ae561",
+          "3046": "abb0e687aaec4849",
+          "3047": "0b6eb528fea45bfb",
+          "3084": "1d15c5181f27ae02",
+          "3111": "b015262b2d75ee9e",
+          "3139": "b86d1fa554989f04",
+          "3153": "b957df6b74b79bb7",
+          "6675": "97702aa4586ca26f"
+        },
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27"
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "effects": {
+          "2009": {
+            "requiresUltimate": false,
+            "fingerprint": "a8c4a2a764b25b07"
+          }
+        },
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27"
+      },
+      "communitySource": {
+        "sourcePatch": "26.21",
+        "author": "海克斯乱斗大发明家",
+        "url": "https://www.douyin.com/note/7701011549745450276",
+        "adaptation": "采用原图狂热者分叉①；默认主线由无标走主线图例支持，两分叉按面板具名条件区分。独立保留本分支指定槽位替换，不要求其他强化同获。未提供加点、符文、出门或首回城；作者百分比不作项目胜率。",
+        "observedMode": "原作者海克斯大乱斗26.21完整出装图",
+        "medium": "text",
+        "evidenceSections": [
+          "Tryndamere-page.jpg中央完整原图与原帖正文：默认/两分叉、①–⑥买序和条件替换"
+        ],
+        "publishedAt": "2026-10-27T00:18:06+08:00"
+      }
+    },
+    {
+      "hero": "Tryndamere",
+      "patch": "16.21",
+      "augment": 3049,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "装甲冲击心钢分叉",
+      "summary": "以普攻积累怒气，Q消耗怒气回复，E保留进退空间。",
+      "coreBrief": "施放技能后，下一次普通攻击对附近敌人造成额外物理伤害，随额外护甲和等级变化。",
+      "play": [
+        "Q消耗怒气回复自己，会改变怒气提供的暴击机会；W仅对背对自己的目标减速。",
+        "技能后接实际普通攻击兑现装甲冲击；心之钢生命值不直接当成额外护甲。",
+        "R可用时再安排低血量交战窗口；R不提供免控，结束前判断退路。"
+      ],
+      "basicPlay": [
+        "无R失去无尽怒火的保命窗口及施放获得的怒气；保留Q回复、W削攻与背身减速、E位移，不按有大招的残血站位硬打。"
+      ],
+      "caution": "被控制或无法近身时先退让，装备不保证持续普攻。",
+      "coreItems": [
+        3084,
+        3153,
+        3046,
+        3006,
+        3031,
+        3036
+      ],
+      "gear": [
+        [
+          "①–⑥购买",
+          [
+            3084,
+            3153,
+            3046,
+            3006,
+            3031,
+            3036
+          ],
+          "按原图装甲冲击分叉②的①–⑥顺序购买。",
+          [
+            3049
+          ]
+        ],
+        [
+          "敌方回血多：⑥换凡性的提醒",
+          [
+            3033
+          ],
+          "按原图替换本分支第6件装备。",
+          [
+            3049
+          ]
+        ],
+        [
+          "需要韧性：④换水银之靴",
+          [
+            3111
+          ],
+          "按原图替换本分支第4件装备。",
+          [
+            3049
+          ]
+        ],
+        [
+          "普攻伤害多：④换铁板靴",
+          [
+            3047
+          ],
+          "按原图替换本分支第4件装备。",
+          [
+            3049
+          ]
+        ],
+        [
+          "需要解控制：⑥换水银弯刀",
+          [
+            3139
+          ],
+          "按原图替换本分支第6件装备。",
+          [
+            3049
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "items": {
+          "3006": "0456daa0af0073e0",
+          "3031": "00b9b8a238976a3f",
+          "3033": "d17e8fe8776ae561",
+          "3036": "2758e8ff995f599d",
+          "3046": "abb0e687aaec4849",
+          "3047": "0b6eb528fea45bfb",
+          "3084": "1d15c5181f27ae02",
+          "3111": "b015262b2d75ee9e",
+          "3139": "b86d1fa554989f04",
+          "3153": "b957df6b74b79bb7"
+        },
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27"
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "effects": {
+          "3049": {
+            "requiresUltimate": false,
+            "fingerprint": "96c15aed0a2b8dc2"
+          }
+        },
+        "patch": "16.21",
+        "reviewedAt": "2026-10-27"
+      },
+      "communitySource": {
+        "sourcePatch": "26.21",
+        "author": "海克斯乱斗大发明家",
+        "url": "https://www.douyin.com/note/7701011549745450276",
+        "adaptation": "采用原图装甲冲击分叉②；默认主线由无标走主线图例支持，两分叉按面板具名条件区分。独立保留本分支指定槽位替换，不要求其他强化同获。未提供加点、符文、出门或首回城；作者百分比不作项目胜率。",
+        "observedMode": "原作者海克斯大乱斗26.21完整出装图",
+        "medium": "text",
+        "evidenceSections": [
+          "Tryndamere-page.jpg中央完整原图与原帖正文：默认/两分叉、①–⑥买序和条件替换"
+        ],
+        "publishedAt": "2026-10-27T00:18:06+08:00"
+      }
     }
   ],
   "championReview": {
@@ -24808,7 +25425,9 @@
       "Syndra": "6fd0f8bd70c981dd",
       "Taliyah": "164392e23c74360e",
       "Singed": "65d32cdacd60176e",
-      "Pyke": "750b7cf6d1187481"
+      "Pyke": "750b7cf6d1187481",
+      "Yunara": "01aaf8a5e404cd88",
+      "Tryndamere": "9990ba943e8299c8"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -28048,6 +28667,54 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "2fc94ca452c59007"
+          }
+        }
+      },
+      "Yunara": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "01aaf8a5e404cd88",
+        "observedAt": "2026-10-21T19:28:20.537Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Yunara",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/yunara/yunara.bin.json",
+            "sha256": "b9a6a3759e1fa3828f493e63f097c23897a6f92a390e7404b703f24653f8f592"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "a0e8ac488585a6a0"
+          }
+        }
+      },
+      "Tryndamere": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "9990ba943e8299c8",
+        "observedAt": "2026-10-21T19:28:20.530Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Tryndamere",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/tryndamere/tryndamere.bin.json",
+            "sha256": "e181cc3b757253793fafacf96aa32cc6f5ed15724415629074157d75ac08f944"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "c1e046cb2e38b31b"
           }
         }
       }
