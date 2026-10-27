@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {createSlots,recommend,mergeClientSession,clearClientPicks,validateSlots} from '../src/core/recommend.mjs';
-import {moveChampion,assignClientChampion,draftTargets,scopeSlots} from '../src/core/draft.mjs';
+import {moveChampion,moveDisplayedChampion,assignClientChampion,draftTargets,scopeSlots} from '../src/core/draft.mjs';
+import {clientRecommendationDraft} from '../src/core/draft-intents.mjs';
 import {DUOS,CROSS_SYNERGIES} from '../src/core/rules.mjs';
 import {defaultState,validateState} from '../services/storage.mjs';
 import {currentPlayerSelection} from '../src/core/guide.mjs';
@@ -19,6 +20,22 @@ test('drag swaps champion bindings and locks but leaves ownership attached to po
  assert.equal(initial[3].champion,'Ashe');validateSlots(moved,data.champions);
  const toEmpty=moveChampion(moved,'support','top');assert.equal(toEmpty[0].champion,'Ashe');assert.equal(toEmpty[4].champion,null);assert.equal(toEmpty[0].party,false);
  assert.throws(()=>moveChampion(toEmpty,'support','top'),/已选英雄/);
+});
+test('dragging a public preview moves its member reservation without persisting an unconfirmed champion',()=>{
+ const initial=mergeClientSession(createSlots(),session(),data.champions).slots;
+ initial[3]={...initial[3],champion:null,locked:false};
+ const visible=structuredClone(initial);visible[3]={...visible[3],champion:'Ashe',publicIntent:true};
+ const before=structuredClone(initial),moved=moveDisplayedChampion(initial,visible,'bottom','support');
+ assert.deepEqual(initial,before);assert.equal(moved[3].champion,'Lux');assert.equal(moved[3].clientCellId,2);
+ assert.equal(moved[4].champion,null);assert.equal(moved[4].clientCellId,1);assert.equal(moved[4].manualPosition,true);
+ assert.equal(moved[4].party,initial[4].party);assert.equal(moved[3].party,initial[3].party);
+ const restored=validateState({...defaultState(),draft:{slots:moved}}).draft.slots;
+ const hovering=session();hovering.myTeam[0].championId=0;hovering.myTeam[0].championPickIntent=key('Ashe');
+ const view=clientRecommendationDraft(restored,hovering,data.champions,{includePreselected:true}).slots;
+ assert.equal(view[4].champion,'Ashe');assert.equal(view[4].publicIntent,true);
+ assert.equal(mergeClientSession(restored,session(),data.champions).slots[4].champion,'Ashe');
+ assert.deepEqual(moveDisplayedChampion(initial,visible,'bottom','bottom'),initial);
+ assert.throws(()=>moveDisplayedChampion(initial,visible.map(s=>s.role==='bottom'?{...s,clientCellId:undefined}:s),'bottom','support'),/选人已变化/);
 });
 test('manual client positions follow changed champions and atomic champion exchanges',()=>{
  let draft=moveChampion(mergeClientSession(createSlots(),session(),data.champions).slots,'bottom','top');

@@ -602,6 +602,8 @@ body:has(.recommendation-ui,.recommendation-app) #overlay-root :is(button,input,
 /* The roster displays picks; choosing a hero lives in the preselection entry. */
 :is(.recommendation-ui,.recommendation-app) .roster-display {cursor:default}
 :is(.recommendation-ui,.recommendation-app) .roster-display[draggable=true] {cursor:grab}
+.recommendation-ui .companion-roster-row.drag-origin {opacity:.5}
+.recommendation-ui .companion-roster-row.drop-ready {border-color:var(--rb-accent);box-shadow:inset 0 0 0 1px var(--rb-accent)}
 :is(.recommendation-ui,.recommendation-app) .roster-display:hover {background:transparent}
 .recommendation-ui .companion-team-compact .companion-roster-hero.roster-display:hover,.recommendation-app .task-roster .champ-pick.roster-display:hover {background:transparent}
 :is(.recommendation-ui,.recommendation-app) .roster-empty>.icon {width:23px;height:23px;opacity:.55;stroke-width:1.4}

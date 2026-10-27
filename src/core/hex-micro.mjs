@@ -15,7 +15,7 @@ export function hexMicroPlacement(kind,offset,area,game,scale=1,routes=[],expand
  // Windows gives these frameless windows at least64px. Repeatedly fitting a
  // requested60px route to its actual64px bounds keeps closing hover cards.
  const s=scaleOf(scale),anchor=game||area,[w,h]=layout==='line'?[kind==='economy'?356:282,44]:kind==='economy'?[168,118]:[routeWidth,Math.min(routeHeight,Math.min(480,area.height*.65/s))],width=Math.ceil(w*s),height=Math.max(64,Math.ceil(h*s));
- return fitWindow({x:anchor.x+(offset?.x??(kind==='economy'?12:anchor.width-width-12)),y:anchor.y+(offset?.y??(kind==='economy'?12:Math.round(anchor.height*.26))),width,height},area,{minWidth:width,minHeight:height,maxWidth:width,maxHeight:height});
+ return fitWindow({x:anchor.x+(offset?.x??(kind==='economy'?12:anchor.width-width-12)),y:anchor.y+(offset?.y??56),width,height},area,{minWidth:width,minHeight:height,maxWidth:width,maxHeight:height});
 }
 export function hexMicroOffset(bounds,area,game){const anchor=game||area;return {x:Math.round(bounds.x-anchor.x),y:Math.round(bounds.y-anchor.y)};}
 export function hexMicroPayload(value,kind){

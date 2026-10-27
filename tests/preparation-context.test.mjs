@@ -42,6 +42,10 @@ test('the public own hero wins over a conflicting adopted member; an applicable 
  assert.equal(createPreparationContext({...input,lastTaskSelection:last}).task.selection.runeId,'personal-page');
  assert.equal(createPreparationContext({...input,lastTaskSelection:{...last,id:'Ahri'}}).task.selection.id,'Ashe');
 });
+test('a hero moved to a different lane cannot reuse the previous lane task configuration',()=>{
+ const input=fixture({role:'support',lastTaskSelection:{id:'Ashe',role:'bottom',mode:'rift',runeId:'old-bottom-page'}});
+ const context=createPreparationContext(input);assert.equal(context.task.selection.role,'support');assert.notEqual(context.task.selection.runeId,'old-bottom-page');
+});
 test('full choice cache distinguishes personal config, opponent, shared equipment and combo contents',()=>{
  let calls=0;const context=createPreparationContext(fixture(),{build:(_hero,_role,_data,selection)=>({selection:structuredClone(selection),number:++calls})});
  const base={id:'Ashe',role:'bottom',mode:'rift'};
