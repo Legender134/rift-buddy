@@ -45863,6 +45863,875 @@
       "excludedAugments": [
         1206
       ]
+    },
+    {
+      "hero": "Gangplank",
+      "patch": "16.21",
+      "augment": 1195,
+      "optional": [],
+      "excludedAugments": [
+        1004
+      ],
+      "requiresUltimate": true,
+      "title": "巨人杀手·夺萃主线",
+      "summary": "依体型差寻找输出，Q与火药桶按实际命中施压。",
+      "coreBrief": "体型变小并获得移速，对体型更大的敌方英雄造成额外伤害。",
+      "play": [
+        "Q可攻击目标或引爆自己的桶；敌方英雄能先摧毁桶使其哑火，连桶不重复对同一目标造成伤害。",
+        "W用于解除限制与自疗；R炮幕需实际命中，装备效果按当前完整配置及触发条件判断。"
+      ],
+      "basicPlay": [
+        "已封印R时，本条依赖公理终极冷却收益的完整主线不展示；船长仍可用Q/W/E与被动按条件战斗。",
+        "Q可攻击或引爆己方桶；敌人能抢桶，W自疗需实际时机；不安排R炮幕、公理返还或伪造无R的完整六件替换。"
+      ],
+      "caution": "体型差和桶命中均有条件；本条保守限定R未封印，替换装备后只计实际保留的效果。",
+      "skillPriority": [
+        "Q",
+        "E",
+        "W"
+      ],
+      "skillPriorityOrigin": "project",
+      "coreItems": [
+        3508,
+        6676,
+        3031,
+        3036
+      ],
+      "gear": [
+        [
+          "①–⑥作者主线",
+          [
+            3508,
+            6676,
+            3031,
+            3158,
+            3036,
+            6696
+          ],
+          "按原帖顺序购买；夺萃咒刃需施法后对应攻击且有冷却；公理的终极冷却返还需实际满足参与条件。",
+          [
+            1195
+          ],
+          true
+        ],
+        [
+          "魔伤爆发高：⑥换玛莫提乌斯之噬",
+          [
+            3508,
+            6676,
+            3031,
+            3158,
+            3036,
+            3156
+          ],
+          "保留其他槽位，作者条件替换第6件；护盾具体值未解析，不预支触发。",
+          [
+            1195
+          ],
+          true
+        ],
+        [
+          "需要韧性：④换水银之靴",
+          [
+            3508,
+            6676,
+            3031,
+            3111,
+            3036,
+            6696
+          ],
+          "保留其他槽位，作者条件替换第4件；不能同时购买另一双鞋。公理返还需本人对敌方英雄造成伤害后该英雄在规定窗口内阵亡，不预给触发。",
+          [
+            1195
+          ],
+          true
+        ],
+        [
+          "普攻伤害多：④换铁板靴",
+          [
+            3508,
+            6676,
+            3031,
+            3047,
+            3036,
+            6696
+          ],
+          "保留其他槽位，作者条件替换第4件；不能同时购买另一双鞋。公理返还需本人对敌方英雄造成伤害后该英雄在规定窗口内阵亡，不预给触发。",
+          [
+            1195
+          ],
+          true
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "items": {
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3111": "b015262b2d75ee9e",
+          "3156": "e82d90af81fa5a8d",
+          "3158": "819a53a1e50becff",
+          "3508": "ffe2a266e059296a",
+          "6676": "20a9c2a3ea1c7555",
+          "6696": "7604f9811d98418e"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "effects": {
+          "1004": {
+            "coverage": "complete",
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false
+          },
+          "1195": {
+            "coverage": "dynamic-counters",
+            "fingerprint": "3ab42d1993bb7344",
+            "requiresUltimate": true
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7701497340019936575",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-28T07:43:09+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "端游海克斯大乱斗26.21原帖正文",
+        "evidenceSections": [
+          "父线程内置浏览器两次读原帖正文、准确日期及无角标主线和替换；原图未读"
+        ],
+        "adaptation": "作者列出本核心但无装备角标，按无角标默认主线配对是项目整理，不称作者逐局实测。具体技能、无R边界及加点为项目参考；作者未给符文、出门、首回城及逐级加点，不补造。作者百分比缺独立统计口径，不导入胜率；不据此宣称英雄强化池或轮次资格。1195与3078分别按无角标主线配对；保留作者魔伤爆发时第六件及韧性或普攻压力时第四件的独立替换。1004与1388的领主第三件角标同时匹配两套分叉，归属未明，未纳入。本条按原作主线保守设为需要未封印R并排除已持有1004；替换装备后只计实际保留效果；该限制不是强化的固有R要求，也不代表船长无R不能玩。"
+      }
+    },
+    {
+      "hero": "Gangplank",
+      "patch": "16.21",
+      "augment": 3078,
+      "optional": [],
+      "excludedAugments": [
+        1004
+      ],
+      "requiresUltimate": true,
+      "title": "鼓声暴起·夺萃主线",
+      "summary": "技能后寻找实际普攻窗口，Q与火药桶按实际命中施压。",
+      "coreBrief": "施法后下一次普攻附带额外魔法伤害并提供短暂移速。",
+      "play": [
+        "Q可攻击目标或引爆自己的桶；敌方英雄能先摧毁桶使其哑火，连桶不重复对同一目标造成伤害。",
+        "W用于解除限制与自疗；R炮幕需实际命中，装备效果按当前完整配置及触发条件判断。"
+      ],
+      "basicPlay": [
+        "已封印R时，本条依赖公理终极冷却收益的完整主线不展示；船长仍可用Q/W/E与被动按条件战斗。",
+        "Q可攻击或引爆己方桶；敌人能抢桶，W自疗需实际时机；不安排R炮幕、公理返还或伪造无R的完整六件替换。"
+      ],
+      "caution": "强化须后续普攻实际命中；Q及桶对该强化的具体消费或传递未核，本条保守限定R未封印。",
+      "skillPriority": [
+        "Q",
+        "E",
+        "W"
+      ],
+      "skillPriorityOrigin": "project",
+      "coreItems": [
+        3508,
+        6676,
+        3031,
+        3036
+      ],
+      "gear": [
+        [
+          "①–⑥作者主线",
+          [
+            3508,
+            6676,
+            3031,
+            3158,
+            3036,
+            6696
+          ],
+          "按原帖顺序购买；夺萃咒刃需施法后对应攻击且有冷却；公理的终极冷却返还需实际满足参与条件。",
+          [
+            3078
+          ],
+          true
+        ],
+        [
+          "魔伤爆发高：⑥换玛莫提乌斯之噬",
+          [
+            3508,
+            6676,
+            3031,
+            3158,
+            3036,
+            3156
+          ],
+          "保留其他槽位，作者条件替换第6件；护盾具体值未解析，不预支触发。",
+          [
+            3078
+          ],
+          true
+        ],
+        [
+          "需要韧性：④换水银之靴",
+          [
+            3508,
+            6676,
+            3031,
+            3111,
+            3036,
+            6696
+          ],
+          "保留其他槽位，作者条件替换第4件；不能同时购买另一双鞋。公理返还需本人对敌方英雄造成伤害后该英雄在规定窗口内阵亡，不预给触发。",
+          [
+            3078
+          ],
+          true
+        ],
+        [
+          "普攻伤害多：④换铁板靴",
+          [
+            3508,
+            6676,
+            3031,
+            3047,
+            3036,
+            6696
+          ],
+          "保留其他槽位，作者条件替换第4件；不能同时购买另一双鞋。公理返还需本人对敌方英雄造成伤害后该英雄在规定窗口内阵亡，不预给触发。",
+          [
+            3078
+          ],
+          true
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "items": {
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "3047": "0b6eb528fea45bfb",
+          "3111": "b015262b2d75ee9e",
+          "3156": "e82d90af81fa5a8d",
+          "3158": "819a53a1e50becff",
+          "3508": "ffe2a266e059296a",
+          "6676": "20a9c2a3ea1c7555",
+          "6696": "7604f9811d98418e"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "effects": {
+          "1004": {
+            "coverage": "complete",
+            "fingerprint": "7ffe9a159784099f",
+            "requiresUltimate": false
+          },
+          "3078": {
+            "coverage": "dynamic-counters",
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": true
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7701497340019936575",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-28T07:43:09+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "端游海克斯大乱斗26.21原帖正文",
+        "evidenceSections": [
+          "父线程内置浏览器两次读原帖正文、准确日期及无角标主线和替换；原图未读"
+        ],
+        "adaptation": "作者列出本核心但无装备角标，按无角标默认主线配对是项目整理，不称作者逐局实测。具体技能、无R边界及加点为项目参考；作者未给符文、出门、首回城及逐级加点，不补造。作者百分比缺独立统计口径，不导入胜率；不据此宣称英雄强化池或轮次资格。1195与3078分别按无角标主线配对；保留作者魔伤爆发时第六件及韧性或普攻压力时第四件的独立替换。1004与1388的领主第三件角标同时匹配两套分叉，归属未明，未纳入。本条按原作主线保守设为需要未封印R并排除已持有1004；替换装备后只计实际保留效果；该限制不是强化的固有R要求，也不代表船长无R不能玩。"
+      }
+    },
+    {
+      "hero": "Illaoi",
+      "patch": "16.21",
+      "augment": 1053,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "科学狂人生命成长主线",
+      "summary": "依地形与实际触手布置寻找团战位置，Q猛击、W命中与E灵魂各按实际条件兑现。",
+      "coreBrief": "每次重生后变大获适应之力与生命，或变小获技能急速与移速；结果二择一。",
+      "play": [
+        "E命中才能拉出灵魂；触手需实际存在并命中英雄才治疗，W命中才令附近触手猛击。",
+        "装备提供成长和恢复机会，但心之钢要实际近身攻击；狂徒须满足额外生命与脱战条件。"
+      ],
+      "basicPlay": [
+        "无R时以现有地形触手和Q/W/E作战；失去R创造触手、猛击加速、触手不可选中及特殊W冷却，不预设团战触手数量。"
+      ],
+      "caution": "近身、E命中、地形、当前法力和实际重生分支都会影响输出；不保证续航或无限触发。",
+      "coreItems": [
+        3084,
+        2501
+      ],
+      "skillPriority": [
+        "Q",
+        "E",
+        "W"
+      ],
+      "skillPriorityOrigin": "project",
+      "gear": [
+        [
+          "作者主线①—⑥",
+          [
+            3084,
+            3083,
+            2501,
+            3111,
+            3065,
+            2502
+          ],
+          "1053无角标，按作者主线。",
+          [
+            1053
+          ]
+        ],
+        [
+          "普攻回血多·换⑥",
+          [
+            3084,
+            3083,
+            2501,
+            3111,
+            3065,
+            3075
+          ],
+          "⑥换荆棘之甲，受攻击后才对英雄施加重伤。",
+          [
+            1053
+          ]
+        ],
+        [
+          "魔伤消耗·换⑥",
+          [
+            3084,
+            3083,
+            2501,
+            3111,
+            3065,
+            4401
+          ],
+          "⑥换自然之力，效果需实际承受魔法伤害叠加。",
+          [
+            1053
+          ]
+        ],
+        [
+          "敌方暴击·换⑥",
+          [
+            3084,
+            3083,
+            2501,
+            3111,
+            3065,
+            3143
+          ],
+          "⑥换兰顿之兆，按实际装备和使用时机生效。",
+          [
+            1053
+          ]
+        ]
+      ],
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "effects": {
+          "1053": {
+            "fingerprint": "ff25ceb0210b1335",
+            "requiresUltimate": false
+          }
+        }
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "items": {
+          "2501": "3268d650a8c61050",
+          "2502": "f70d011ead077bb3",
+          "3065": "522ddd38f23d9014",
+          "3075": "77e99cfe1e808733",
+          "3083": "1f9ef0d0fe8bf89d",
+          "3084": "1d15c5181f27ae02",
+          "3111": "b015262b2d75ee9e",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c"
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7701497631222156571",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-28T07:44:21+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "端游海克斯大乱斗4.0；原帖正文明确26.21",
+        "evidenceSections": [
+          "内置浏览器实际读原帖全文、发表日期、强化列表、主线及替换条件；未查看原图或视频"
+        ],
+        "adaptation": "作者列出本核心但无装备角标，按无角标默认主线配对是项目整理，不称作者逐局实测。具体技能、无R边界及加点为项目参考；作者未给符文、出门、首回城及逐级加点，不补造。作者百分比缺独立统计口径，不导入胜率；不据此宣称英雄强化池或轮次资格。仅采用作者主线和明确的第六件条件替换，不预支其他强化。"
+      }
+    },
+    {
+      "hero": "Illaoi",
+      "patch": "16.21",
+      "augment": 1388,
+      "optional": [],
+      "requiresUltimate": false,
+      "title": "无限循环往复生命成长主线",
+      "summary": "保持法力与安全距离，按实际E命中和附近触手布置寻找机会。",
+      "coreBrief": "获得60技能急速，每次参与击杀另加3；额外成长按实际参与次数计算。",
+      "play": [
+        "Q猛击需命中；E命中才有灵魂，W实际攻击才命令附近现有触手。",
+        "急速帮助技能周转，但不等于冷却归零或无限法力，额外层数需实际参与击杀。"
+      ],
+      "basicPlay": [
+        "无R时只使用被动地形触手、Q/W/E；没有R创造触手、触手不可选中、快速猛击或特殊W冷却。"
+      ],
+      "caution": "需要实际触手、接敌机会和英雄命中；不默认层数、治疗、E必中或灵魂与本体重复计数。",
+      "coreItems": [
+        3084,
+        2501
+      ],
+      "skillPriority": [
+        "Q",
+        "E",
+        "W"
+      ],
+      "skillPriorityOrigin": "project",
+      "gear": [
+        [
+          "作者主线①—⑥",
+          [
+            3084,
+            3083,
+            2501,
+            3111,
+            3065,
+            2502
+          ],
+          "1388无角标，按作者主线。",
+          [
+            1388
+          ]
+        ],
+        [
+          "普攻回血多·换⑥",
+          [
+            3084,
+            3083,
+            2501,
+            3111,
+            3065,
+            3075
+          ],
+          "⑥换荆棘之甲，受攻击后才对英雄施加重伤。",
+          [
+            1388
+          ]
+        ],
+        [
+          "魔伤消耗·换⑥",
+          [
+            3084,
+            3083,
+            2501,
+            3111,
+            3065,
+            4401
+          ],
+          "⑥换自然之力，效果需实际承受魔法伤害叠加。",
+          [
+            1388
+          ]
+        ],
+        [
+          "敌方暴击·换⑥",
+          [
+            3084,
+            3083,
+            2501,
+            3111,
+            3065,
+            3143
+          ],
+          "⑥换兰顿之兆，按实际装备和使用时机生效。",
+          [
+            1388
+          ]
+        ]
+      ],
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "effects": {
+          "1388": {
+            "fingerprint": "12dd29d764b4b6c4",
+            "requiresUltimate": false,
+            "coverage": "buff-counter"
+          }
+        }
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "items": {
+          "2501": "3268d650a8c61050",
+          "2502": "f70d011ead077bb3",
+          "3065": "522ddd38f23d9014",
+          "3075": "77e99cfe1e808733",
+          "3083": "1f9ef0d0fe8bf89d",
+          "3084": "1d15c5181f27ae02",
+          "3111": "b015262b2d75ee9e",
+          "3143": "398abf4b21f13cf0",
+          "4401": "9db4164eddf26a1c"
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7701497631222156571",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-28T07:44:21+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "端游海克斯大乱斗4.0；原帖正文明确26.21",
+        "evidenceSections": [
+          "内置浏览器实际读原帖全文、发表日期、强化列表、主线及替换条件；未查看原图或视频"
+        ],
+        "adaptation": "作者列出本核心但无装备角标，按无角标默认主线配对是项目整理，不称作者逐局实测。具体技能、无R边界及加点为项目参考；作者未给符文、出门、首回城及逐级加点，不补造。作者百分比缺独立统计口径，不导入胜率；不据此宣称英雄强化池或轮次资格。仅采用作者主线和明确的第六件条件替换，不预支其他强化。"
+      }
+    },
+    {
+      "hero": "Leblanc",
+      "patch": "16.21",
+      "augment": 1195,
+      "optional": [],
+      "excludedAugments": [
+        1206
+      ],
+      "requiresUltimate": false,
+      "title": "巨人杀手法伤主线",
+      "summary": "以Q标记配合实际技能伤害，W位移并考虑回返，E链条持续后才禁锢。",
+      "coreBrief": "体型缩小并获得20%移速；对英雄额外伤害随对方体型大于自身程度变化，不预给30%上限。",
+      "play": [
+        "Q命中标记后需其他实际技能伤害触发；E命中并持续连锁1.5秒才禁锢。",
+        "W进场需预留回返空间和法力；R可用时复制上次技能，不能固定预设复制形式。"
+      ],
+      "basicPlay": [
+        "无R不能复制Q/W/E；只用基础Q标记、W位移及回返、E真实连锁，不能承诺第二段复制位移或爆发。"
+      ],
+      "caution": "体型差、技能命中、安全回返与实际法力决定收益；被动幻像不造成伤害。已持有1206会改变法强前提，项目撤回此路线，不代表官方禁选。",
+      "coreItems": [
+        6655,
+        4645
+      ],
+      "skillPriority": [
+        "W",
+        "Q",
+        "E"
+      ],
+      "skillPriorityOrigin": "project",
+      "gear": [
+        [
+          "作者主线①—⑥",
+          [
+            6655,
+            4645,
+            3089,
+            3020,
+            3135,
+            4646
+          ],
+          "1195无角标，按作者主线。",
+          [
+            1195
+          ]
+        ],
+        [
+          "敌方回复多·换⑥",
+          [
+            6655,
+            4645,
+            3089,
+            3020,
+            3135,
+            3165
+          ],
+          "⑥换莫雷洛秘典，实际魔法伤害命中英雄才施加重伤。",
+          [
+            1195
+          ]
+        ],
+        [
+          "突进多·换⑥",
+          [
+            6655,
+            4645,
+            3089,
+            3020,
+            3135,
+            3157
+          ],
+          "⑥换中娅，主动凝滞期间不能施法。",
+          [
+            1195
+          ]
+        ],
+        [
+          "挡关键技能·换⑥",
+          [
+            6655,
+            4645,
+            3089,
+            3020,
+            3135,
+            3102
+          ],
+          "⑥换女妖面纱，按护盾实际就绪判断。",
+          [
+            1195
+          ]
+        ],
+        [
+          "需要韧性·换④",
+          [
+            6655,
+            4645,
+            3089,
+            3111,
+            3135,
+            4646
+          ],
+          "④用水银之靴替代法穿鞋，鞋子互斥。",
+          [
+            1195
+          ]
+        ]
+      ],
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "effects": {
+          "1195": {
+            "fingerprint": "3ab42d1993bb7344",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1206": {
+            "fingerprint": "d861b53cc39eb046",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "items": {
+          "3020": "8f10962e9a05ce28",
+          "3089": "27fe94d33bb7a1af",
+          "3102": "2a329cbcbcd641bf",
+          "3111": "b015262b2d75ee9e",
+          "3135": "40317bddc5d92b12",
+          "3157": "742632d905f9bd60",
+          "3165": "9b3138b0e27b6c44",
+          "4645": "4389cef3a456f687",
+          "4646": "96e96d64e74507fd",
+          "6655": "9fccc6565c56da03"
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7701497972818758975",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-28T07:45:34+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "端游海克斯大乱斗4.0；原帖正文明确26.21",
+        "evidenceSections": [
+          "内置浏览器实际读原帖全文、发表日期、强化列表、主线及替换条件；未查看原图或视频"
+        ],
+        "adaptation": "作者列出本核心但无装备角标，按无角标默认主线配对是项目整理，不称作者逐局实测。具体技能、无R边界及加点为项目参考；作者未给符文、出门、首回城及逐级加点，不补造。作者百分比缺独立统计口径，不导入胜率；不据此宣称英雄强化池或轮次资格。1195巨人杀手、3051蓝色屏障均在正文中明确列出且无角标；法伤路线排除已持有1206是项目取舍，不是官方禁搭。"
+      }
+    },
+    {
+      "hero": "Leblanc",
+      "patch": "16.21",
+      "augment": 3051,
+      "optional": [],
+      "excludedAugments": [
+        1206
+      ],
+      "requiresUltimate": false,
+      "title": "蓝色屏障法伤主线",
+      "summary": "基础技能实际消耗法力时才取得短时护盾，结合Q标记与W安全位移。",
+      "coreBrief": "实际消耗法力提供持续1.5秒护盾，额度按花费、等级和上限计算。",
+      "play": [
+        "Q、W、E实际消耗法力时考虑短时护盾与站位；Q标记由技能真实命中引爆。",
+        "Q某段伤害击杀才返还法力与部分冷却；不推断退款和护盾结算时序，W回返不预设额外耗蓝。"
+      ],
+      "basicPlay": [
+        "无R不能复制基础技能，仅Q/W/E形成伤害、位移和控制；R本身零法力，不预支由R产生的耗蓝护盾。"
+      ],
+      "caution": "护盾短时且不免控，法力和安全回返仍有限；已持有1206时项目撤回法伤路线，不代表官方禁选。",
+      "coreItems": [
+        6655,
+        4645
+      ],
+      "skillPriority": [
+        "W",
+        "Q",
+        "E"
+      ],
+      "skillPriorityOrigin": "project",
+      "gear": [
+        [
+          "作者主线①—⑥",
+          [
+            6655,
+            4645,
+            3089,
+            3020,
+            3135,
+            4646
+          ],
+          "3051在原帖无角标，按默认主线配对。",
+          [
+            3051
+          ]
+        ],
+        [
+          "敌方回复多·换⑥",
+          [
+            6655,
+            4645,
+            3089,
+            3020,
+            3135,
+            3165
+          ],
+          "⑥换莫雷洛秘典，实际魔法伤害命中英雄才施加重伤。",
+          [
+            3051
+          ]
+        ],
+        [
+          "突进多·换⑥",
+          [
+            6655,
+            4645,
+            3089,
+            3020,
+            3135,
+            3157
+          ],
+          "⑥换中娅沙漏，主动凝滞期间不能施法。",
+          [
+            3051
+          ]
+        ],
+        [
+          "挡关键技能·换⑥",
+          [
+            6655,
+            4645,
+            3089,
+            3020,
+            3135,
+            3102
+          ],
+          "⑥换女妖面纱，按护盾实际就绪判断。",
+          [
+            3051
+          ]
+        ],
+        [
+          "需要韧性·换④",
+          [
+            6655,
+            4645,
+            3089,
+            3111,
+            3135,
+            4646
+          ],
+          "④用水银之靴替代法穿鞋，鞋子互斥。",
+          [
+            3051
+          ]
+        ]
+      ],
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "effects": {
+          "1206": {
+            "fingerprint": "d861b53cc39eb046",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3051": {
+            "fingerprint": "4d23510760161ae7",
+            "requiresUltimate": false,
+            "coverage": "complete"
+          }
+        }
+      },
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-28",
+        "items": {
+          "3020": "8f10962e9a05ce28",
+          "3089": "27fe94d33bb7a1af",
+          "3102": "2a329cbcbcd641bf",
+          "3111": "b015262b2d75ee9e",
+          "3135": "40317bddc5d92b12",
+          "3157": "742632d905f9bd60",
+          "3165": "9b3138b0e27b6c44",
+          "4645": "4389cef3a456f687",
+          "4646": "96e96d64e74507fd",
+          "6655": "9fccc6565c56da03"
+        }
+      },
+      "communitySource": {
+        "url": "https://www.douyin.com/note/7701497972818758975",
+        "author": "海克斯乱斗大发明家",
+        "publishedAt": "2026-10-28T07:45:34+08:00",
+        "sourcePatch": "26.21",
+        "medium": "text",
+        "observedMode": "端游海克斯大乱斗4.0；原帖正文明确26.21",
+        "evidenceSections": [
+          "内置浏览器实际读原帖全文、发表日期、强化列表、主线及替换条件；未查看原图或视频"
+        ],
+        "adaptation": "作者列出本核心但无装备角标，按无角标默认主线配对是项目整理，不称作者逐局实测。具体技能、无R边界及加点为项目参考；作者未给符文、出门、首回城及逐级加点，不补造。作者百分比缺独立统计口径，不导入胜率；不据此宣称英雄强化池或轮次资格。1195巨人杀手、3051蓝色屏障均在正文中明确列出且无角标；法伤路线排除已持有1206是项目取舍，不是官方禁搭。"
+      }
     }
   ],
   "championReview": {
@@ -46026,7 +46895,10 @@
       "Zeri": "e4b5046a1a9b42bb",
       "Ezreal": "c2201358b91fa06b",
       "KogMaw": "ba006aa34e05e235",
-      "Kindred": "b089b055eca4104f"
+      "Kindred": "b089b055eca4104f",
+      "Gangplank": "a95425b6c963e756",
+      "Illaoi": "ba605a46a85c0de4",
+      "Leblanc": "7c6be3d94aa080db"
     },
     "sourceAnchors": {
       "Lillia": {
@@ -49818,6 +50690,78 @@
           "dataDragon": {
             "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
             "fingerprint": "70b671b76c9f1fba"
+          }
+        }
+      },
+      "Gangplank": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "a95425b6c963e756",
+        "observedAt": "2026-10-23T02:03:51.462Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Gangplank",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/gangplank/gangplank.bin.json",
+            "sha256": "5a232d6960866995f2ecaa20479a2ab6357adc50edc60e5f22d50abb3060f67c"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "7b9ddd39cfa14347"
+          }
+        }
+      },
+      "Illaoi": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "ba605a46a85c0de4",
+        "observedAt": "2026-10-23T02:03:51.529Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Illaoi",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/illaoi/illaoi.bin.json",
+            "sha256": "444d120e7d535c864fbd6559d2eab012415ab7be0b68af28ca8f5bc6e69baf67"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "39a403ddae7730f5"
+          }
+        }
+      },
+      "Leblanc": {
+        "schema": 1,
+        "kind": "explicit-review",
+        "reviewCoverage": "summary-v1",
+        "legacyFingerprint": "7c6be3d94aa080db",
+        "observedAt": "2026-10-23T02:03:51.536Z",
+        "input": {
+          "schema": 1,
+          "normalizer": 1,
+          "champion": "Leblanc",
+          "patch": "16.21",
+          "version": "16.21.1",
+          "locale": "zh_CN",
+          "character": {
+            "algorithm": "canonical-json-sha256-v1",
+            "url": "https://raw.communitydragon.org/16.21/game/data/characters/leblanc/leblanc.bin.json",
+            "sha256": "889d0275962fac17c4c8ce0536d4930548acabccfe0a122f7fe979a6e1f9d357"
+          },
+          "dataDragon": {
+            "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+            "fingerprint": "4b02fbdb42c5987e"
           }
         }
       }
