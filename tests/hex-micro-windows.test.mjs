@@ -29,6 +29,9 @@ test('full, one-line and edge controls restore the same non-activating window an
  const s=setup();s.value.model.hexMicroRoutes=Array.from({length:4},(_,i)=>({id:'r'+i,augments:[],items:[]}));s.micro.show();s.ready();
  const snapshot=()=>s.call('routes','hex-micro-bootstrap'),control=(action,p=snapshot())=>s.call('routes','hex-micro-control',action,{context:p.context,view:p.view}),win=s.windows[1],old=snapshot();
  assert.equal(await control('line'),true);assert.equal(snapshot().layout,'line');assert.equal(await control('fold',old),false);
+ const line=win.bounds,p=snapshot();s.call('routes','hex-micro-regions',{context:p.context,view:p.view,rows:[]});s.pointer({x:line.x+10,y:line.y+10});assert.equal(win.ignore,true,'A fitting line stays click-through');
+ s.call('routes','hex-micro-regions',{context:p.context,view:p.view,rows:[{action:'scroll-line',x:0,y:0,width:line.width,height:92}]});s.pointer({x:line.x+10,y:line.y+10});assert.equal(win.ignore,false,'A clipped line can receive scrolling');
+
  assert.equal(await control('fold'),true);s.ready();assert.equal(win.visible,false);
  const handle=s.windows.find(w=>w.options.webPreferences.preload?.endsWith('peek-preload.cjs'));assert(handle.visible);assert.equal(handle.options.focusable,false);
  assert.equal(s.handlers['peek-control']({sender:handle.webContents,senderFrame:handle.webContents.mainFrame},'restore'),true);
@@ -57,6 +60,7 @@ test('expanded pin order and bounded input regions survive refresh but reset wit
  assert.equal(s.call('routes','hex-micro-regions',{context:snapshot().context,view:snapshot().view,rows}),true);
  s.pointer({x:b.x+10,y:b.y+45});assert.equal(win.ignore,false);s.pointer({x:b.x+50,y:b.y+45});assert.equal(win.ignore,true);
  s.call('routes','hex-micro-regions',{context:snapshot().context,view:snapshot().view,rows:[{...rows[0],width:200,height:200}]});s.pointer({x:b.x+10,y:b.y+45});assert.equal(win.ignore,true,'An oversized region must not swallow game clicks');
+ const scroll={action:'scroll',x:6,y:25,width:b.width-12,height:b.height-50};s.call('routes','hex-micro-regions',{context:snapshot().context,view:snapshot().view,rows:[scroll]});s.pointer({x:b.x+30,y:b.y+30});assert.equal(win.ignore,false,'Overflowing list receives wheel input');s.pointer({x:b.x+2,y:b.y+30});assert.equal(win.ignore,true,'The margin remains click-through');
  s.value.referenceRevision++;s.micro.publish();assert.equal(snapshot().expanded,true);assert.equal(snapshot().routes[0].id,'r4');
  s.value.model.hexMicroRoutes=s.value.model.hexMicroRoutes.filter(r=>r.id!=='r4');s.micro.publish();assert.equal(snapshot().routes[0].id,'r0');
  assert.equal(await control('pin','r4'),false);s.value.model.hexRound={context:'manual-reset'};s.micro.publish();assert.equal(snapshot().expanded,false);

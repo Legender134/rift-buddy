@@ -19,11 +19,11 @@ test('pin order remains bounded, unique and stable when routes disappear',()=>{
  assert.deepEqual(orderHexCards(rows.slice(0,5),['8','2']).map(r=>r.id),['2','0','1','3','4']);
 });
 
-test('micro cards expose only three collapsed rows, expanded pin controls and escaped captions',()=>{
+test('micro cards expose every row, expanded pin controls and escaped captions',()=>{
  const rows=Array.from({length:5},(_,i)=>({id:String(i),augments:[],items:[],card:{title:'<script>x</script>',source:'来源',priority:'主Q副E'}}));
  const image=()=>'';
  const short=hexMicroRoutesView(rows,image),full=hexMicroRoutesView(rows,image,{expanded:true});
- assert.equal((short.match(/data-micro-route=/g)||[]).length,3);assert.equal((full.match(/data-micro-route=/g)||[]).length,5);
+ assert.equal((short.match(/data-micro-route=/g)||[]).length,5);assert.equal((full.match(/data-micro-route=/g)||[]).length,5);
  assert.doesNotMatch(short,/data-action="pin"/);assert.equal((full.match(/data-action="pin"/g)||[]).length,5);
  assert.doesNotMatch(full,/<script>/);assert.match(full,/&lt;script&gt;/);assert.match(full,/主Q副E/);
 });

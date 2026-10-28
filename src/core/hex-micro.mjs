@@ -8,13 +8,16 @@ export function validateHexWindows(value){
  return Object.keys(result).length?result:undefined;
 }
 export function hexMicroPlacement(kind,offset,area,game,scale=1,routes=[],expanded=false,layout='full'){
- const count=routes.slice(0,expanded?30:3),rows=(n,size,unit)=>n?Math.ceil(n/size)*(unit+3)-3:0;
- const routeHeight=count.length?30+14*(count.length-1)+count.reduce((h,r)=>h+rows(r.augments.length,7,36)+4+Math.max(36,rows(r.items.length,4,32)),0)+(routes.length>3?22:0):64;
- const rowWidth=(n,size,unit)=>Math.min(n,size)*(unit+3)-3;
- const routeWidth=count.length?Math.max(282,...count.map(r=>12+rowWidth(r.augments.length,7,36)))+(expanded?24:0):64;
- // Windows gives these frameless windows at least64px. Repeatedly fitting a
- // requested60px route to its actual64px bounds keeps closing hover cards.
- const s=scaleOf(scale),anchor=game||area,[w,h]=layout==='line'?[kind==='economy'?356:282,44]:kind==='economy'?[168,118]:[routeWidth,Math.min(routeHeight,Math.min(480,area.height*.65/s))],width=Math.ceil(w*s),height=Math.max(64,Math.ceil(h*s));
+ const visible=routes.slice(0,expanded?30:3),all=routes.slice(0,30);
+ const rowWidth=(r,controls=0,caption=72)=>Math.max(Math.max(0,r.augments.length*39-3)+controls,Math.max(0,r.items.length*27-3)+6+caption);
+ // The compact view keeps the first complete recipe in two rows, with the
+ // controls beside the augment row. Full cards use the same icon geometry.
+ const lineWidth=routes.length?Math.max(282,12+rowWidth(routes[0],58)):282;
+ const routeWidth=all.length?Math.max(282,...all.map(r=>20+rowWidth(r,0,110)+(expanded?18:0))):64;
+ const routeHeight=visible.length?30+visible.length*81+Math.max(0,visible.length-1)*7+(routes.length>3?20:0):64;
+ // Native frameless windows can have a 64 DIP minimum. fitWindow caps width
+ // to the working area; the renderer provides horizontal scrolling if needed.
+ const s=scaleOf(scale),anchor=game||area,[w,h]=layout==='line'?[kind==='economy'?356:lineWidth,kind==='economy'?44:92]:kind==='economy'?[168,118]:[routeWidth,Math.min(routeHeight,Math.min(480,area.height*.65/s))],width=Math.ceil(w*s),height=Math.max(64,Math.ceil(h*s));
  return fitWindow({x:anchor.x+(offset?.x??(kind==='economy'?12:anchor.width-width-12)),y:anchor.y+(offset?.y??56),width,height},area,{minWidth:width,minHeight:height,maxWidth:width,maxHeight:height});
 }
 export function hexMicroOffset(bounds,area,game){const anchor=game||area;return {x:Math.round(bounds.x-anchor.x),y:Math.round(bounds.y-anchor.y)};}

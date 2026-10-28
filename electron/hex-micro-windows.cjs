@@ -70,16 +70,17 @@ module.exports=function createHexMicroWindows({root,getState,setState,getPayload
   throw Error('不支持此操作');
  });
  // Only bounded control hit areas can interrupt game click-through. The
- // renderer refreshes them after scrolling; icon bodies remain transparent.
+ // renderer refreshes them after scrolling; only an overflowing list accepts input.
  guard('hex-micro-regions',(kind,input)=>{
   const e=entries[kind],p=e.payload;
   if(input?.context!==p?.context||input?.view!==p?.view||!Array.isArray(input.rows)||input.rows.length>36)return false;
   const b=e.win.getBounds(),s=p.scale||1;
   e.regions=input.rows.filter(r=>r&&['x','y','width','height'].every(k=>Number.isFinite(r[k]))&&r.x>=0&&r.y>=0&&r.width>0&&r.height>0&&r.x+r.width<=b.width+1&&r.y+r.height<=b.height+1&&(
    ['line','fold','hide'].includes(r.action)&&r.y<=20*s&&r.width<=20*s&&r.height<=22*s||
+   kind==='routes'&&e.layout==='line'&&r.action==='scroll-line'&&r.x===0&&r.y===0&&r.width<=b.width+1&&r.width>=b.width-1&&r.height<=Math.min(b.height,92*s)+1||
    kind==='routes'&&e.layout==='full'&&(r.action==='expand'&&p.routes.length>3&&r.width<=26*s&&r.height<=22*s||
    r.action==='pin'&&p.expanded&&p.routes.some(route=>route.id===r.id)&&r.width<=18*s&&r.height<=30*s||
-   r.action==='scroll'&&r.width<=12*s&&r.x>=b.width-20*s)));
+   r.action==='scroll'&&r.x>=4*s&&r.x<=8*s&&r.y>=24*s&&r.y<=26*s&&r.width>=b.width-16*s&&r.width<=b.width-8*s&&r.height<=b.height-24*s)));
   return true;
  });
  guard('hex-micro-hover',async(kind,input)=>{
@@ -100,7 +101,7 @@ module.exports=function createHexMicroWindows({root,getState,setState,getPayload
   try{await tooltip.loadURL('data:text/html;charset=utf-8,'+encodeURIComponent(html));if(serial!==hoverSerial||!active()||!enabled(kind)||!e.requested||!e.win.isVisible())return false;const height=Math.min(136,Math.max(64,await tooltip.webContents.executeJavaScript('Math.ceil(document.body.getBoundingClientRect().height)')));if(serial!==hoverSerial||!active()||!enabled(kind)||!e.requested||!e.win?.isVisible())return false;const area=getArea(),next=tooltipPlacement({x:b.x,y:b.y+r.y,width:b.width,height:r.height},area,{width:190,height,pointer,prefer:kind==='economy'?'right':'left'});if(!next||next.height<64){hideTooltip();return false;}tooltip.setBounds(next);tooltip.showInactive();return true;}catch{if(serial===hoverSerial)hideTooltip();return false;}
  });
  // Forward pointer coordinates without intercepting game clicks. Only the
- // drag strip, explicit controls and narrow scrollbar accept mouse input.
+ // drag strip, explicit controls and an overflowing list accept mouse input.
  const pointer=setInterval(()=>{for(const kind of HEX_WINDOWS){const e=entries[kind],win=e.win;if(!win||win.isDestroyed()||!win.isVisible()||!active())continue;const p=screen.getCursorScreenPoint(),b=win.getBounds(),x=p.x-b.x,y=p.y-b.y,inside=x>=0&&y>=0&&x<b.width&&y<b.height,s=e.payload?.scale||1,control=e.regions.some(r=>x>=r.x&&x<r.x+r.width&&y>=r.y&&y<r.y+r.height),header=e.layout==='line'?x>b.width-58*s&&y<40*s:y<20*s;win.setIgnoreMouseEvents(!(inside&&(header||control)),{forward:true});win.webContents.send('hex-micro-pointer',inside?{x,y}:null);}},40);pointer.unref?.();
  return {show,resume,suspend,hide,publish,visible,requested,reset,fit:()=>{for(const k of HEX_WINDOWS){fit(k);entries[k].peek.sync(!suspended&&active()&&enabled(k)&&entries[k].requested&&entries[k].payload?.active);}},info:()=>Object.fromEntries(HEX_WINDOWS.map(k=>[k,{requested:entries[k].requested,visible:!!entries[k].win?.isVisible(),layout:entries[k].peek.active()?'edge':entries[k].layout,bounds:entries[k].win?.getBounds()}])),destroy:()=>{placementEpoch++;clearInterval(pointer);hideTooltip();tooltip?.destroy();for(const e of Object.values(entries)){clearTimeout(e.timer);e.peek.destroy();e.win?.destroy();}}};
 };

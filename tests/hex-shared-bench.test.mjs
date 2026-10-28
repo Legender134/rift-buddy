@@ -46,3 +46,21 @@ test('shared bench clicks exclude occupied, disabled and locally unpickable hero
  f.client.eligibility={context:pickEligibilityContext(f.client.session),localPlayerCellId:0,receivedAt:new Date().toISOString(),pickable:pool.filter(id=>id!=='Brand').map(key),disabled:[key('Garen')]};
  assert.deepEqual(visiblePool(f.render()).sort(),pool.filter(id=>!['Brand','Garen'].includes(id)).sort());
 });
+test('missing bench shows local reference ranking while preserving observed player ownership',()=>{
+ const f=fixture();delete f.client.session.bench;f.client.party.members.push({cellId:2});
+ const html=f.render(),section=html.match(/<section class="hex-reference-board"[^>]*>([\s\S]*?)<\/section>/)?.[1];assert(section);
+ assert.equal((section.match(/class="hex-bench-hero /g)||[]).length,173);
+ assert.match(section,/class="hex-bench-hero self" data-action="hex-local-pick" data-id="Lux"/);
+ assert.match(section,/class="hex-bench-hero party" data-action="hex-reference-preview" data-id="Veigar"/);
+ assert.match(section,/class="hex-bench-hero teammate" data-action="hex-reference-preview" data-id="Ashe"/);
+ assert.match(section,/data-action="hex-local-pick" data-id="Ahri"/);
+ assert.doesNotMatch(section,/data-action="hex-quick-pick"/);
+});
+test('when versioned statistics are unavailable the manual reference remains usable without invented rates',()=>{
+ const f=fixture();delete f.client.session.bench;
+ const stale={...data,patch:'99.1',version:'99.1.1'},html=companionView({data:stale,client:f.client,slots:[],tab:'recommend',preferences:{},configurationStatus:{}});
+ const section=html.match(/<section class="hex-reference-board"[^>]*>([\s\S]*?)<\/section>/)?.[1];assert(section);
+ assert.equal((section.match(/class="hex-bench-hero /g)||[]).length,stale.champions.length);
+ assert.match(section,/data-action="hex-local-pick" data-id="Ahri"/);assert.doesNotMatch(section,/\d+\.\d+%/);
+ assert.match(html,/强化胜率[\s\S]*暂无当版统计/);
+});

@@ -34,7 +34,10 @@ export function hexPartyDraft({data,client,slots=[]}){
  const read=client?.eligibility,age=Date.now()-Date.parse(read?.receivedAt),fresh=base.active&&read?.context===pickEligibilityContext(client.session)&&read.localPlayerCellId===client.session.localPlayerCellId&&age>=-5000&&age<=15000;
  const pickable=fresh?normalizeChampionIds(read.pickable):null,disabledIds=fresh?normalizeChampionIds(read.disabled):null;
  const disabled=new Set([...(disabledIds||[]),...(client?.session?.bans||[]),...(client?.session?.allowDuplicatePicks===false?(client.session.theirTeam||[]).map(p=>p.championId):[])]),bench=new Set(base.active?(client?.session?.bench?.championIds||[]).slice(0,50):[]);
- const board=data.champions.filter(hero=>bench.has(hero.key)).map(hero=>({hero,statistics:rates.get(hero.id)||null,selected:selected.get(hero.id)||null,inBench:true,available:!!base.own&&!occupied.has(hero.key)&&!selected.has(hero.id)&&pickable!==null&&disabledIds!==null&&pickable.includes(hero.key)&&!disabled.has(hero.key)})).sort((a,b)=>(b.statistics?.winRate??-1)-(a.statistics?.winRate??-1)||a.hero.key-b.hero.key);
+ // A missing/expired eligibility cache must not turn a real bench click into
+ // a read-only preview. This is permission to request a swap, not to write:
+ // the selection service re-reads the session and eligibility before swapping.
+ const board=data.champions.filter(hero=>bench.has(hero.key)).map(hero=>({hero,statistics:rates.get(hero.id)||null,selected:selected.get(hero.id)||null,inBench:true,available:!!base.own&&!occupied.has(hero.key)&&!selected.has(hero.id)&&(pickable===null||pickable.includes(hero.key))&&!disabled.has(hero.key)})).sort((a,b)=>(b.statistics?.winRate??-1)-(a.statistics?.winRate??-1)||a.hero.key-b.hero.key);
  if(!base.active||!base.benchKnown||!base.own||!party.length)return {...base,party,board,statistics,lineups:[]};
  const profiles=new Map(),traits=hero=>{if(!hero||!isCurrentHexData(data))return null;if(!profiles.has(hero.id))profiles.set(hero.id,hexDraftProfile(hero,data.patch));return profiles.get(hero.id);};
  const all=new Map(data.champions.map(h=>[h.key,h])),pool=[...new Set([...bench,...party.filter(p=>p.hero).map(p=>p.hero.key)])].map(id=>all.get(id)).filter(h=>h&&!occupied.has(h.key)&&!disabled.has(h.key));
