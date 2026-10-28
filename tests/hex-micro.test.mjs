@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {hexEconomyCells,hexEconomyView,hexMicroRoutesView} from '../src/hex-micro-view.mjs';
+import {hexEconomyCells,hexEconomyView,hexMicroRoutesView,hexMicroLineView} from '../src/hex-micro-view.mjs';
 import {publicEquipment} from '../src/core/scoreboard.mjs';
 import fs from 'node:fs/promises';
 import {hexMicroPayload,hexMicroPlacement,hexMicroOffset,validateHexWindows} from '../src/core/hex-micro.mjs';
@@ -19,10 +19,16 @@ test('micro economy shows public holdings only; missing bags and unknown prices 
  const html=hexEconomyView(equipment,image);assert.doesNotMatch(html,/999999/);assert.equal((html.match(/class="hex-economy-/g)||[]).length,4);assert.match(html,/>400</);
 });
 
-test('three micro routes preserve their own core and optional icons without visible prose',()=>{
+test('micro routes retain all paired icons and expose every route to scrolling',()=>{
  const routes=Array.from({length:4},(_,i)=>({id:'route-'+i,title:'路线'+i,augments:Array.from({length:9},(_,j)=>({id:i*10+j,name:'强化'+j,core:j===0})),items:[{id:1001+i,name:'装备'+i,core:true}]}));
- const html=hexMicroRoutesView(routes,image);assert.equal((html.match(/class="hex-micro-route"/g)||[]).length,3);assert.equal((html.match(/data-micro-kind="augment"/g)||[]).length,27);assert.equal((html.match(/is-core/g)||[]).length,6);
- assert.match(html,/item\/1002.png/);assert.match(html,/augment\/20.png/);assert.doesNotMatch(html,/item\/1004.png/);assert.match(html,/路线0/);assert.match(html,/来源待核/);assert.doesNotMatch(html,/hex-micro-pin/);assert.match(html,/data-action="expand"/);
+ const html=hexMicroRoutesView(routes,image);assert.equal((html.match(/class="hex-micro-route"/g)||[]).length,4);assert.equal((html.match(/data-micro-kind="augment"/g)||[]).length,36);assert.equal((html.match(/is-core/g)||[]).length,8);
+ assert.match(html,/item\/1002.png/);assert.match(html,/augment\/20.png/);assert.match(html,/item\/1004.png/);assert.match(html,/路线0/);assert.match(html,/来源待核/);assert.doesNotMatch(html,/hex-micro-pin/);assert.match(html,/data-action="expand"/);
+});
+
+test('one-line route keeps all paired icons and provenance',()=>{
+ const route={id:'one',title:'方案',augments:Array.from({length:7},(_,i)=>({id:i,name:'强化'+i,core:i===0})),items:Array.from({length:8},(_,i)=>({id:i+100,name:'装备'+i,core:i===0})),card:{source:'作者',priority:'主Q副E'}};
+ const html=hexMicroLineView({kind:'routes',routes:[route]},image);
+ assert.equal((html.match(/data-micro-kind="augment"/g)||[]).length,7);assert.equal((html.match(/data-micro-kind="item"/g)||[]).length,8);assert.equal((html.match(/is-core/g)||[]).length,2);assert.match(html,/作者/);assert.match(html,/主Q副E/);
 });
 
 test('micro positions stay independent of Rift layout and follow the game display at both text scales',()=>{
@@ -36,13 +42,14 @@ test('micro positions stay independent of Rift layout and follow the game displa
  const next=selectGuide(state,{id:'Ashe',role:'bottom',mode:'rift'});assert.deepEqual(next.hexWindows,state.hexWindows);assert.deepEqual(next.bounds,state.bounds);
 });
 
-test('micro routes take only the width required by real icons while full rows still fit',()=>{
+test('micro window fits compact two-row recipes, scales and keeps narrow displays bounded',()=>{
  const area={x:0,y:0,width:1920,height:1080},route=(a,i)=>({augments:Array(a).fill({}),items:Array(i).fill({})});
- const narrow=hexMicroPlacement('routes',null,area,null,1,[route(1,3)]),full=hexMicroPlacement('routes',null,area,null,1,[route(9,9)]);
+ const narrow=hexMicroPlacement('routes',null,area,null,1,[route(1,3)]),full=hexMicroPlacement('routes',null,area,null,1,[route(7,8)]),line=hexMicroPlacement('routes',null,area,null,1,[route(7,8)],false,'line');
  assert.equal(narrow.width,282);assert.equal(narrow.x+narrow.width,1908);
- assert.equal(full.width,282);assert.equal(full.height,211);assert.equal(full.x+full.width,1908);
- assert.equal(hexMicroPlacement('routes',null,area,null,1,Array(3).fill(route(9,9))).height,480);
- assert.equal(hexMicroPlacement('routes',null,area,null,1.25,[route(1,3)]).width,353);
+ assert.equal(full.width,349);assert.equal(full.height,111);assert.equal(line.width,340);assert.equal(line.height,92);
+ assert.equal(hexMicroPlacement('routes',null,area,null,1,Array(30).fill(route(7,8)),true).height,480);
+ assert.equal(hexMicroPlacement('routes',null,area,null,1.25,[route(7,8)],false,'line').width,425);
+ const tiny={x:0,y:0,width:320,height:236};assert.equal(hexMicroPlacement('routes',null,tiny,null,1,[route(7,8)],false,'line').width,320);
 });
 
 test('micro payloads ignore timers, wallets and unrelated combat changes so stable hovers do not flicker',()=>{
@@ -83,9 +90,12 @@ test('reviewed hero mechanism routes reach the micro guide with conditions and p
 });
 
 test('micro pairing withdraws changed prerequisites as whole groups and never upgrades fallback references',()=>{
- for(const mutate of [d=>d.patch='16.22',d=>d.champions.find(h=>h.id==='Gwen').mechanicSource.character.sha256='0'.repeat(64),d=>d.augments.find(a=>a.id===1129).description+=' changed']){
+ for(const mutate of [d=>d.patch='16.22',d=>d.champions.find(h=>h.id==='Gwen').mechanicSource.character.sha256='0'.repeat(64)]){
   const changed=structuredClone(bundled);mutate(changed);const model=createGuideModel(changed,selectGuide(null,{id:'Gwen',role:'top',mode:'hex',ownedAugmentIds:[1129]}));assert(model.hexMicroRoutes.every(r=>['reference','item-synergy'].includes(r.kind)),'A changed hero kit withdraws hero routes; separately reviewed item/augment links need no kit claims');
  }
+ const changedAugment=structuredClone(bundled);changedAugment.augments.find(a=>a.id===1129).description+=' changed';
+ const remaining=createGuideModel(changedAugment,selectGuide(null,{id:'Gwen',role:'top',mode:'hex',ownedAugmentIds:[1129]})).hexMicroRoutes;
+ assert(remaining.every(r=>!r.augments.some(a=>a.id===1129)),'Changed augment withdraws its own dependencies, not unrelated valid routes');
  const changed=structuredClone(bundled);changed.items[3115].description+=' changed';const [micro]=createGuideModel(changed,selectGuide(null,{id:'Gwen',role:'top',mode:'hex',ownedAugmentIds:[1129]})).hexMicroRoutes;
  assert.equal(micro.kind,'mechanism');assert(!micro.items.some(i=>i.id===3115||i.id===3089));assert(!micro.items.some(i=>i.brief.includes('纳什')));assert.match(micro.augments[0].brief,/部分装备待核对/);
 });

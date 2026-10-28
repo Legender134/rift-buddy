@@ -1018,10 +1018,12 @@ async function boot(){
  const {HEX_CHAMPION_SOURCE}=await import('../src/core/hex-champion-statistics.mjs');
  guard('open-link',async url=>{
   const parsed=new URL(url);const allowed=['developer.riotgames.com','www.leagueoflegends.com','lol.qq.com','101.qq.com','www.communitydragon.org','raw.communitydragon.org','ddragon.leagueoflegends.com','game.gtimg.cn','op.gg','www.reddit.com','reddit.com','www.mobafire.com','mobafire.com','botdiff.lol','github.com','gitee.com'];
+  // Exact credited statistics source and its pinned license, never arbitrary GitHub paths.
+  const augmentStatisticsURLs=['https://github.com/czgreat/aramhex-data','https://github.com/czgreat/aramhex-data/blob/f4d80d48110951b7319ab74ffaa2c351bc7c8652/LICENSE'];
   const catalogSources=[...data.catalog.duos,...data.catalog.trios].flatMap(c=>c.sources||[]).map(s=>s.url);
   const communitySource=['www.youtube.com','www.bilibili.com','deeparam.com','expcarry.com','www.douyin.com'].includes(parsed.hostname)&&hexCommunitySourceURLs(data).includes(url);
   if(!catalogCore.safeSourceURL(url)||!allowed.includes(parsed.hostname)&&!catalogSources.includes(url)&&!communitySource&&url!==HEX_CHAMPION_SOURCE)throw new Error('不支持的链接');
-  if(['github.com','gitee.com'].includes(parsed.hostname)&&!isReleaseNotesUrl(url)&&!catalogSources.includes(url))throw new Error('不支持的链接');await shell.openExternal(parsed.href);return true;
+  if(['github.com','gitee.com'].includes(parsed.hostname)&&!isReleaseNotesUrl(url)&&!catalogSources.includes(url)&&!augmentStatisticsURLs.includes(url))throw new Error('不支持的链接');await shell.openExternal(parsed.href);return true;
  });
  guard('export-preparation',async value=>{
   const {preparationFileText}=await import('../src/core/preparation-file.mjs'),text=preparationFileText(value);

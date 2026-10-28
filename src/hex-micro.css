@@ -25,3 +25,21 @@ html{width:100%;height:100%}
 .hex-economy-line img{width:21px;height:21px;border-radius:2px}
 .hex-economy-line small{font:inherit;white-space:nowrap}
 .hex-economy-line .hex-micro-empty{width:24px;height:32px}
+
+/* The first recipe and every full card share the same two-row geometry. */
+.hex-micro-route,[data-kind=routes] .hex-micro-line:not(.hex-micro-pending){display:grid;grid-template-columns:max-content minmax(72px,1fr);align-items:center;column-gap:6px;row-gap:4px}
+.hex-micro-route{width:max-content;min-width:100%;padding:0 0 4px}
+.hex-micro-route .hex-micro-augments,[data-kind=routes] .hex-micro-line .hex-micro-augments{grid-column:1/-1;display:flex;gap:3px;margin:0}
+.hex-micro-route .hex-micro-items,[data-kind=routes] .hex-micro-line .hex-micro-items{grid-column:1;display:flex;gap:3px;margin:0}
+.hex-micro-route .hex-micro-augments .hex-micro-icon,[data-kind=routes] .hex-micro-line .hex-micro-augments .hex-micro-icon{width:36px;height:36px}
+.hex-micro-route .hex-micro-augments img,[data-kind=routes] .hex-micro-line .hex-micro-augments img{width:32px;height:32px}
+.hex-micro-route .hex-micro-items .hex-micro-icon,[data-kind=routes] .hex-micro-line .hex-micro-items .hex-micro-icon{width:24px;height:24px}
+.hex-micro-route .hex-micro-items img,[data-kind=routes] .hex-micro-line .hex-micro-items img{width:20px;height:20px}
+.hex-micro-line .hex-route-caption,.hex-micro-route .hex-route-caption{grid-column:2;min-width:72px;max-width:110px}
+.hex-micro-route-list{overflow-x:auto}
+[data-kind=routes][data-layout=line] .hex-micro-grip{z-index:2}
+[data-kind=routes][data-layout=line] #hex-micro-root{height:100%;padding-right:0}
+[data-kind=routes] .hex-micro-line:not(.hex-micro-pending){height:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#516472 transparent;color:#c2cbd1}
+[data-kind=routes] .hex-micro-line .hex-micro-augments{padding-right:58px;min-width:max-content}
+[data-kind=routes] .hex-micro-line::-webkit-scrollbar{height:6px}
+[data-kind=routes] .hex-micro-line::-webkit-scrollbar-thumb{background:#516472;border-radius:3px}
