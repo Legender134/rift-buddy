@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "patch": "16.21",
-  "reviewedAt": "2026-10-28",
+  "reviewedAt": "2026-10-29",
   "routes": [
     {
       "hero": "Lillia",
@@ -72456,6 +72456,291 @@
       "excludedAugments": [
         3081
       ]
+    },
+    {
+      "hero": "Briar",
+      "patch": "16.21",
+      "augment": 1058,
+      "optional": [
+        1225,
+        3078
+      ],
+      "requiresUltimate": false,
+      "title": "冲拳普攻轮转",
+      "summary": "Q、W后接实际普攻，E留作脱离。",
+      "coreBrief": "攻击特效使各技能冷却缩短1.25秒。",
+      "play": [
+        "秘术冲拳使攻击特效命中时缩短各技能冷却1.25秒；Q或W后寻找安全的实际攻击机会。",
+        "留意实际攻击目标和距离；受到控制或无法攻击时，强化不能替你缩短冷却。",
+        "W血莽会追击目标，W二段需实际命中；E可移除血莽并争取撤离窗口。"
+      ],
+      "basicPlay": [
+        "没有R时仍可按实际目标使用Q和W；E留给结束W血莽，不等待远距离大招。"
+      ],
+      "caution": "强化能否同时出现取决于本局；受控、脱离普攻范围或遭重伤时收益下降。额外触发次数未证实，不承诺固定减5秒或无限技能。",
+      "gear": [
+        [
+          "续战攻击机会",
+          [
+            3153
+          ],
+          "项目比较破败；需实际攻击，额外伤害基于目标当前生命值，目标血量降低后该部分伤害也会降低。"
+        ],
+        [
+          "物理压力",
+          [
+            6333
+          ],
+          "项目比较死亡之舞的护甲与延后承伤；参与击杀后的恢复有条件，不等于免伤。"
+        ],
+        [
+          "对方恢复较多",
+          [
+            3033
+          ],
+          "项目比较凡性的提醒；须对敌方英雄造成物理伤害才能施加重伤。"
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "items": {
+          "3033": "d17e8fe8776ae561",
+          "3153": "b957df6b74b79bb7",
+          "6333": "95058514bbf67ac0"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "effects": {
+          "1058": {
+            "fingerprint": "5921c7b1e541526c",
+            "requiresUltimate": false
+          },
+          "1225": {
+            "fingerprint": "526b26238bcb531f",
+            "requiresUltimate": false
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1kfxG6rEWz/",
+        "author": "可乐乱斗",
+        "publishedAt": "2026-10-28T17:05:00+08:00",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "海克斯大乱斗4.0；画面有26.21新增强化，录像服务器与精确补丁未独立确认",
+        "evidenceSeconds": [
+          6,
+          13,
+          16,
+          30,
+          38,
+          40,
+          44
+        ],
+        "adaptation": "原视频展示贝蕾亚及三项强化；录像版本和服务器未确认。装备为项目按当前机制比较，非作者指定。QA固定减5秒、箭矢或附伤的额外触发次数未独立核实，不承诺无限技能。"
+      }
+    },
+    {
+      "hero": "Jax",
+      "patch": "16.21",
+      "augment": 1058,
+      "optional": [
+        1225,
+        3078
+      ],
+      "requiresUltimate": false,
+      "title": "冲拳连击衔接",
+      "summary": "持续攻击积累攻速，W强化下一次攻击。",
+      "coreBrief": "攻击特效使各技能冷却缩短1.25秒。",
+      "play": [
+        "秘术冲拳由实际攻击特效触发；寻找持续攻击机会，Q用于接近，W强化下一次攻击仍需命中。",
+        "连续普攻可积累被动攻速；根据实际目标与走位，保留下一次攻击机会。",
+        "E可躲避普通攻击并在结束时造成晕眩，注意它不能阻挡所有技能。"
+      ],
+      "basicPlay": [
+        "无R时仍可用Q接近、W强化攻击、E处理普攻压力；不把R抗性计入。"
+      ],
+      "caution": "近身受控或被拉开时难以持续触发；强化组合和英雄资格以本局实际出现为准，不承诺无限技能。",
+      "gear": [
+        [
+          "技能接普攻",
+          [
+            3078
+          ],
+          "项目比较三相之力；施法后的下一次普攻触发咒刃，咒刃有自身冷却。"
+        ],
+        [
+          "持续攻击",
+          [
+            3153
+          ],
+          "项目比较破败；按实际攻击造成当前生命值伤害，低血目标的该部分伤害会减少。"
+        ],
+        [
+          "物理压力",
+          [
+            6333
+          ],
+          "项目比较死亡之舞；延后承伤与参与击杀后的恢复不能当作无伤。"
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "items": {
+          "3078": "9b97f8ba78b6fba5",
+          "3153": "b957df6b74b79bb7",
+          "6333": "95058514bbf67ac0"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "effects": {
+          "1058": {
+            "fingerprint": "5921c7b1e541526c",
+            "requiresUltimate": false
+          },
+          "1225": {
+            "fingerprint": "526b26238bcb531f",
+            "requiresUltimate": false
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1kfxG6rEWz/",
+        "author": "可乐乱斗",
+        "publishedAt": "2026-10-28T17:05:00+08:00",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "海克斯大乱斗4.0；画面有26.21新增强化，录像服务器与精确补丁未独立确认",
+        "evidenceSeconds": [
+          6,
+          13,
+          16,
+          30,
+          38,
+          40,
+          44
+        ],
+        "adaptation": "视频仅展示贝蕾亚；本英雄、操作和装备是项目按当前16.21机制适配，非作者对本英雄的配置或实测。录像服务器与本局强化资格未确认，不承诺固定连招减5秒。"
+      }
+    },
+    {
+      "hero": "Warwick",
+      "patch": "16.21",
+      "augment": 1058,
+      "optional": [
+        1225,
+        3078
+      ],
+      "requiresUltimate": false,
+      "title": "冲拳近身续战",
+      "summary": "Q命中后寻找普攻窗口，留E处理集火。",
+      "coreBrief": "攻击特效使各技能冷却缩短1.25秒。",
+      "play": [
+        "秘术冲拳由实际攻击特效缩短技能冷却；Q需要实际命中和造成伤害，不把每次技能伤害都当成普攻特效。",
+        "W对低生命敌人提供追击收益，E用于减伤并制造恐惧窗口；根据实际目标和控制情况决定进退。",
+        "持续贴近并实际攻击时再观察冷却；无法保持距离时优先寻找脱离窗口。"
+      ],
+      "basicPlay": [
+        "没有R时依靠Q接近、实际攻击与E减伤和恐惧，不能使用大招远距离压制。"
+      ],
+      "caution": "重伤、控制、距离与蓝量都会限制续战；强化可选资格以本局实际出现为准，不承诺无缝治疗或无限技能。",
+      "gear": [
+        [
+          "能持续普攻",
+          [
+            3153
+          ],
+          "项目比较破败；须实际攻击，当前生命值伤害会随目标剩余生命降低。"
+        ],
+        [
+          "魔法压力与治疗",
+          [
+            3065
+          ],
+          "项目比较振奋；提升自身受到的治疗和护盾，不保证能抵消重伤。"
+        ],
+        [
+          "物理压力",
+          [
+            6333
+          ],
+          "项目比较死亡之舞；延后承伤不是免伤，回血需满足参与击杀条件。"
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "items": {
+          "3065": "522ddd38f23d9014",
+          "3153": "b957df6b74b79bb7",
+          "6333": "95058514bbf67ac0"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "effects": {
+          "1058": {
+            "fingerprint": "5921c7b1e541526c",
+            "requiresUltimate": false
+          },
+          "1225": {
+            "fingerprint": "526b26238bcb531f",
+            "requiresUltimate": false
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "url": "https://www.bilibili.com/video/BV1kfxG6rEWz/",
+        "author": "可乐乱斗",
+        "publishedAt": "2026-10-28T17:05:00+08:00",
+        "sourcePatch": null,
+        "medium": "video",
+        "observedMode": "海克斯大乱斗4.0；画面有26.21新增强化，录像服务器与精确补丁未独立确认",
+        "evidenceSeconds": [
+          6,
+          13,
+          16,
+          30,
+          38,
+          40,
+          44
+        ],
+        "adaptation": "视频仅展示贝蕾亚；本英雄、操作和装备是项目按当前16.21机制适配，非作者对本英雄的配置或实测。录像服务器与本局强化资格未确认，不承诺固定连招减5秒。"
+      }
     }
   ],
   "championReview": {
