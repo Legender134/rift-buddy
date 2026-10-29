@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.29.7",
+  "version": "2026.10.29.8",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
@@ -13012,6 +13012,145 @@
             "dataDragon": {
               "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "324a3700d293797b"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "community-kog-karma-2621",
+      "name": "生化护盾",
+      "style": "balanced",
+      "difficulty": "适中",
+      "tempo": "protect",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "tags": [
+        "护盾加速",
+        "减速牵制"
+      ],
+      "partners": [],
+      "why": "卡尔玛可用减速、牵制与护盾帮助大嘴在安全位置输出；两人仍需保留撤退空间。",
+      "plan": "大嘴下路补刀，卡尔玛辅助。视频展示一次卡尔玛 W 牵制后大嘴跟进，作者另说明 E 可给大嘴加速。",
+      "risk": "卡尔玛 W 需要维持连接才禁锢；大嘴机动性有限，护盾不保证能挡住控制。视频作者自标韩服，录像补丁和是否预组未知。",
+      "early": "下路优先补刀并保持施法距离，卡尔玛用 Q 消耗、必要时给 E 帮助走位；视野不足时不过河追击。",
+      "window": "确认卡尔玛有保护技能、敌方控制位置可见且大嘴 W 可用时，选择安全目标输出；保护或 W 结束就重新拉开。",
+      "economy": "大嘴负责补刀，卡尔玛以辅助任务和视野获得经济；辅助装备成型受对线条件影响。",
+      "steps": [
+        "卡尔玛看准时机用 Q 减速或 W 牵制；W 连接被拉断不会禁锢，不为维持连接进入危险区域。",
+        "大嘴确认自身站位后开 W 攻击安全目标；卡尔玛按需要用 E 提供护盾和加速。",
+        "敌方切入或关键技能进入冷却时一起后退；不要把护盾当作免疫控制。"
+      ],
+      "members": [
+        {
+          "champion": "KogMaw",
+          "role": "bottom",
+          "loadoutId": "community-kogmaw-bottom-reference-2621",
+          "job": "补刀并在安全距离开 W 输出，保护结束时及时后退。"
+        },
+        {
+          "champion": "Karma",
+          "role": "support",
+          "loadoutId": "community-karma-support-reference-2621",
+          "job": "提供视野、减速与护盾加速；W 只在安全时维持连接。"
+        }
+      ],
+      "sources": [
+        {
+          "name": "丞丞owo · 大嘴与卡尔玛实战（10/27发布）",
+          "url": "https://www.bilibili.com/video/BV1FDHF6REKQ/",
+          "kind": "一次 W 牵制与跟进；作者说明 E 加速，录像补丁未知",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "OP.GG · 大嘴下路 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/kogmaw/build/adc?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "大嘴位置分项统计，非视频玩家或组合胜率",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "OP.GG · 卡尔玛辅助 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/karma/build/support?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "卡尔玛位置分项统计，非视频玩家或组合胜率",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-sg/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "当前机制复核；不证明录像补丁",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:KogMaw": "ba006aa34e05e235",
+        "champion:Karma": "36385f1555005577",
+        "item:3124": "a5fa166d09295f8f",
+        "item:6675": "b2ad1db20decb6ca",
+        "item:3302": "c3e9201cb2cb4ba1",
+        "item:3006": "d8d9fde1f7908326",
+        "rune:8008": "d8ed59948702367b",
+        "rune:9111": "6667591beed15f1b",
+        "rune:9103": "7d88abbfc22dd0df",
+        "rune:8299": "d7db081cd64d0bc2",
+        "rune:8429": "b82860aabb36e71f",
+        "rune:8451": "9e4f8837510e3998",
+        "item:6620": "cfb94d4a02cc64c8",
+        "item:6617": "6dccd52cee1f2c6e",
+        "item:3107": "53bdbba0a53ca5c6",
+        "item:3158": "72ca672b9221f063",
+        "rune:8214": "6d3b2bf192d500da",
+        "rune:8226": "b05a5d0fb43e4a6e",
+        "rune:8210": "e78877d51ff049ea",
+        "rune:8236": "a1bb7cfc15c3d089",
+        "rune:8453": "f9a0180e7f2f0432",
+        "rune:8463": "3296414353df0e65"
+      },
+      "reviewSourceAnchors": {
+        "KogMaw": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "ba006aa34e05e235",
+          "observedAt": "2026-10-23T02:03:51.535Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "KogMaw",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/kogmaw/kogmaw.bin.json",
+              "sha256": "2b7676bd783ef9d58380c1f10aefff5546e71946ba21c91bd44980befeb0376c"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "ad3707a256c213e5"
+            }
+          }
+        },
+        "Karma": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "36385f1555005577",
+          "observedAt": "2026-10-23T02:03:51.532Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Karma",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/karma/karma.bin.json",
+              "sha256": "7b6328b43d94f80ea6eec0998d8f81d9e54f3f8c6bb7a37a12ebbd04d569bcf5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "1f2620463bdb38d1"
             }
           }
         }
@@ -31929,6 +32068,174 @@
           }
         }
       }
+    },
+    {
+      "id": "community-kogmaw-bottom-reference-2621",
+      "name": "大嘴 · 下路特效参考",
+      "champions": [
+        "KogMaw"
+      ],
+      "roles": [
+        "bottom"
+      ],
+      "base": "onhit",
+      "items": [
+        3124,
+        6675,
+        3302
+      ],
+      "boots": 3006,
+      "late": [],
+      "runes": [
+        "kogmaw-bottom-reference-2621"
+      ],
+      "damage": "mixed",
+      "skillOrder": "WQEWWRWQWQRQQEE",
+      "skillReason": "OP.GG 同位置前15级独立加点样本，不代表视频玩家或整套联动对局。",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerBarrier"
+      ],
+      "why": "OP.GG 全球翡翠及以上下路分项参考；装备、鞋、符文和加点分别统计，不是作者配套或组合胜率。开 W 后在安全距离攻击，装备和开局按对局调整。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "OP.GG · 大嘴下路 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/kogmaw/build/adc?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "装备、符文等独立位置统计，非视频玩家配置",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 大嘴 16.21 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/KogMaw.json",
+          "kind": "当前机制复核",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:KogMaw": "ba006aa34e05e235",
+        "item:3124": "a5fa166d09295f8f",
+        "item:6675": "b2ad1db20decb6ca",
+        "item:3302": "c3e9201cb2cb4ba1",
+        "item:3006": "d8d9fde1f7908326",
+        "rune:8008": "d8ed59948702367b",
+        "rune:9111": "6667591beed15f1b",
+        "rune:9103": "7d88abbfc22dd0df",
+        "rune:8299": "d7db081cd64d0bc2",
+        "rune:8429": "b82860aabb36e71f",
+        "rune:8451": "9e4f8837510e3998"
+      },
+      "reviewSourceAnchors": {
+        "KogMaw": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "ba006aa34e05e235",
+          "observedAt": "2026-10-23T02:03:51.535Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "KogMaw",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/kogmaw/kogmaw.bin.json",
+              "sha256": "2b7676bd783ef9d58380c1f10aefff5546e71946ba21c91bd44980befeb0376c"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "ad3707a256c213e5"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "community-karma-support-reference-2621",
+      "name": "卡尔玛 · 辅助保护参考",
+      "champions": [
+        "Karma"
+      ],
+      "roles": [
+        "support"
+      ],
+      "base": "enchanter",
+      "items": [
+        6620,
+        6617,
+        3107
+      ],
+      "boots": 3158,
+      "late": [],
+      "runes": [
+        "karma-support-reference-2621"
+      ],
+      "damage": "ap",
+      "skillOrder": "QEWQQRQEQEREEWW",
+      "skillReason": "OP.GG 同位置前15级独立加点样本，不代表视频玩家或整套联动对局。",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerHeal"
+      ],
+      "why": "OP.GG 全球翡翠及以上辅助分项参考；装备、鞋、符文和加点分别统计，不是作者配套或组合胜率。海力亚先对英雄造成伤害积攒充能，再给友军治疗或护盾触发；辅助经济和站位会影响成型。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "OP.GG · 卡尔玛辅助 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/karma/build/support?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "装备、符文等独立位置统计，非视频玩家配置",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 卡尔玛 16.21 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Karma.json",
+          "kind": "当前机制复核",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Karma": "36385f1555005577",
+        "item:6620": "cfb94d4a02cc64c8",
+        "item:6617": "6dccd52cee1f2c6e",
+        "item:3107": "53bdbba0a53ca5c6",
+        "item:3158": "72ca672b9221f063",
+        "rune:8214": "6d3b2bf192d500da",
+        "rune:8226": "b05a5d0fb43e4a6e",
+        "rune:8210": "e78877d51ff049ea",
+        "rune:8236": "a1bb7cfc15c3d089",
+        "rune:8453": "f9a0180e7f2f0432",
+        "rune:8463": "3296414353df0e65"
+      },
+      "reviewSourceAnchors": {
+        "Karma": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "36385f1555005577",
+          "observedAt": "2026-10-23T02:03:51.532Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Karma",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/karma/karma.bin.json",
+              "sha256": "7b6328b43d94f80ea6eec0998d8f81d9e54f3f8c6bb7a37a12ebbd04d569bcf5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "1f2620463bdb38d1"
+            }
+          }
+        }
+      }
     }
   ],
   "runes": {
@@ -32518,6 +32825,44 @@
           5005,
           5001,
           5001
+        ]
+      }
+    },
+    "kogmaw-bottom-reference-2621": {
+      "name": "大嘴 · 下路位置参考",
+      "when": "OP.GG 全球翡翠及以上同位置符文统计；不是视频玩家或组合专属。",
+      "page": {
+        "primaryStyleId": 8000,
+        "subStyleId": 8400,
+        "selectedPerkIds": [
+          8008,
+          9111,
+          9103,
+          8299,
+          8429,
+          8451,
+          5005,
+          5008,
+          5001
+        ]
+      }
+    },
+    "karma-support-reference-2621": {
+      "name": "卡尔玛 · 辅助位置参考",
+      "when": "OP.GG 全球翡翠及以上同位置符文统计；不是视频玩家或组合专属。",
+      "page": {
+        "primaryStyleId": 8200,
+        "subStyleId": 8400,
+        "selectedPerkIds": [
+          8214,
+          8226,
+          8210,
+          8236,
+          8453,
+          8463,
+          5007,
+          5008,
+          5011
         ]
       }
     }
