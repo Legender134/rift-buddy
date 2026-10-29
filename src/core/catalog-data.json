@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.29.9",
+  "version": "2026.10.29.10",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
@@ -13290,6 +13290,282 @@
             "dataDragon": {
               "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "32194f4e3319e474"
+            }
+          }
+        }
+      }
+    },
+    {
+      "style": "balanced",
+      "difficulty": "适中",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "partners": [],
+      "id": "community-kaisa-tahm-2621",
+      "name": "深渊护航",
+      "tempo": "protect",
+      "tags": [
+        "前排保护",
+        "安全跟进"
+      ],
+      "why": "塔姆可选择安全落点分担压力，卡莎根据局势后撤或跟进；关键技能命中和退路需先确认。",
+      "plan": "卡莎下路补刀，塔姆辅助。视频展示卡莎受威胁时塔姆 W 到附近分担压力，随后卡莎后撤。",
+      "risk": "W 有明显落点且可能被打断；录像补丁、服务器、预组关系和双方作者配装未知。画面未证明 R 救援或必定脱险。",
+      "early": "卡莎补刀并关注侧翼，塔姆在可以接应的位置布置视野；敌方接近时先确认安全落点。",
+      "window": "对手接近且塔姆 W 可达安全位置时考虑分担压力，卡莎可根据血量和控制状态后撤。",
+      "economy": "卡莎负责补刀，塔姆以辅助任务与视野获取经济；近身型装备应按局势与资金选择。",
+      "steps": [
+        "塔姆确认卡莎位置和撤退路线，用 W 落到可接应的位置；实际命中才有击飞。",
+        "卡莎先处理自身安全，再判断是否普攻或技能跟进；不要把辅助到场当作无敌。",
+        "六级后塔姆可视情况用 R 保护友军，但该视频片段未展示 R 救援。"
+      ],
+      "members": [
+        {
+          "champion": "Kaisa",
+          "role": "bottom",
+          "loadoutId": "community-kaisa-bottom-reference-2621",
+          "job": "补刀并优先保安全，确认落点和技能条件后再跟进。"
+        },
+        {
+          "champion": "TahmKench",
+          "role": "support",
+          "loadoutId": "community-tahm-support-2621",
+          "job": "负责视野与接应，选择安全 W 落点，必要时保留 R 保护。"
+        }
+      ],
+      "sources": [
+        {
+          "name": "studyliang · 卡莎与塔姆实战（10/28发布）",
+          "url": "https://www.bilibili.com/video/BV1QGxE6TEBe/",
+          "kind": "一次 W 到附近分担压力；录像补丁未知",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "OP.GG · 卡莎下路 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/kaisa/build/adc?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "独立位置统计及无神奇鞋符文备选，非视频玩家",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "OP.GG · 塔姆辅助 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/tahmkench/build/support?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "独立位置统计，非视频玩家或组合胜率",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-sg/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "当前机制复核；不证明录像补丁",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Kaisa": "792e7d85c3acdc09",
+        "champion:TahmKench": "9635271a9add58c5",
+        "item:6672": "56acf36018ec56ee",
+        "item:3124": "a5fa166d09295f8f",
+        "item:3302": "c3e9201cb2cb4ba1",
+        "item:3006": "d8d9fde1f7908326",
+        "rune:8008": "d8ed59948702367b",
+        "rune:9111": "6667591beed15f1b",
+        "rune:9103": "7d88abbfc22dd0df",
+        "rune:8017": "50a79a13bce940f0",
+        "rune:8321": "ec014268b03afd2b",
+        "rune:8347": "def2a55844436c47",
+        "item:3084": "674b7125a8312547",
+        "item:3075": "6d456e96c01062c6",
+        "item:3065": "3891f4b9ee257a38",
+        "item:3047": "46ff9ea0f9199a8e",
+        "rune:8437": "c950f9daf1edb09d",
+        "rune:8401": "0c0323486ace9a0c",
+        "rune:8444": "fbb59f496f94894e",
+        "rune:8242": "37935df8d31dd429",
+        "rune:9104": "e6b524a54b35a2f3"
+      },
+      "reviewSourceAnchors": {
+        "Kaisa": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "792e7d85c3acdc09",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Kaisa",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/kaisa/kaisa.bin.json",
+              "sha256": "702f5270f6b4e24fa894679a67117b18896ef62b4897d409cabb1c53344375c8"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "e793368118ed867a"
+            }
+          }
+        },
+        "TahmKench": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "9635271a9add58c5",
+          "observedAt": "2026-10-23T02:03:51.633Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "TahmKench",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/tahmkench/tahmkench.bin.json",
+              "sha256": "2c4d245e198a57458a95879789133f011276421c3cbc2f5a5293507a8ba34073"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "324a3700d293797b"
+            }
+          }
+        }
+      }
+    },
+    {
+      "style": "balanced",
+      "difficulty": "适中",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "partners": [],
+      "id": "community-jhin-thresh-2621",
+      "name": "锁链华彩",
+      "tempo": "poke",
+      "tags": [
+        "控制衔接",
+        "灯笼撤退"
+      ],
+      "why": "锤石的控制与伤害可为烬提供跟进机会；烬 W 需命中首个英雄且目标已有标记才禁锢。",
+      "plan": "烬下路补刀，锤石辅助。视频展示锤石交战、烬施放 W 并跟进输出；该次交战还有魔腾在场。",
+      "risk": "Q 和 W 都可能落空或命中错误目标；灯笼需队友自己点击。录像补丁、服务器、预组关系和双方作者配置未知，不能保证击杀。",
+      "early": "烬补刀并保留换弹间距，锤石布视野寻找安全角度；没有接应时不追进草丛。",
+      "window": "目标在可接触距离、已有标记且烬 W 可用时尝试跟控；灯笼路径安全且队友能点击才安排撤退。",
+      "economy": "烬负责补刀，锤石以辅助任务与视野获取经济，保护装按威胁和队友位置选择。",
+      "steps": [
+        "锤石以 Q 或 E 寻找实际命中的控制，先确认目标和队友跟进距离。",
+        "烬确认目标已有标记并位于 W 路径的首个英雄位置，命中后才安排禁锢与后续输出。",
+        "需要撤退时锤石放灯笼，队友须自行点击；R 墙需敌人碰触才减速，不当作必然禁锢。"
+      ],
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "community-jhin-bottom-reference-2621",
+          "job": "补刀并留意换弹；目标有标记、W 路径可靠时跟进。"
+        },
+        {
+          "champion": "Thresh",
+          "role": "support",
+          "loadoutId": "community-thresh-support-reference-2621",
+          "job": "负责视野与控制角度，灯笼留给可点击并能安全撤退的队友。"
+        }
+      ],
+      "sources": [
+        {
+          "name": "寒洛大大-落幕为烬 · 烬与锤石实战（10/29发布）",
+          "url": "https://www.bilibili.com/video/BV1dnsR6CEQs/",
+          "kind": "一次交战有第三名队友；录像补丁未知",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "OP.GG · 烬下路 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/jhin/build/adc?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "独立位置统计，非视频玩家或组合胜率",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "OP.GG · 锤石辅助 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/thresh/build/support?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "独立位置统计，非视频玩家或组合胜率",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-sg/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "当前机制复核；不证明录像补丁",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Thresh": "766a02f3f37aa314",
+        "item:6697": "c7c1f0e9c6a7f9c5",
+        "item:3046": "70a1d226735997bb",
+        "item:3031": "0ccdceb96f0cd392",
+        "item:3009": "f95ed3b88b918eed",
+        "rune:8021": "bffe59ad8f3db438",
+        "rune:8009": "e88eb74c171319c4",
+        "rune:9103": "7d88abbfc22dd0df",
+        "rune:8014": "04092c4f9754532b",
+        "rune:8234": "018bc04903dfba25",
+        "rune:8236": "a1bb7cfc15c3d089",
+        "item:3190": "89cdf2838748dfc7",
+        "item:3109": "97c25fae90d4a8a4",
+        "item:3050": "c3e25c9df9075147",
+        "rune:8439": "b2c74fd18c4ad076",
+        "rune:8463": "3296414353df0e65",
+        "rune:8473": "ed2f46234183276d",
+        "rune:8242": "37935df8d31dd429",
+        "rune:8345": "02157c1d4d7f7531",
+        "rune:8347": "def2a55844436c47"
+      },
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Thresh": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "766a02f3f37aa314",
+          "observedAt": "2026-10-23T02:03:51.634Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Thresh",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/thresh/thresh.bin.json",
+              "sha256": "f55dc93e1986c0547aa2b2446989f249186cbd3a2d604df58c1777e58410c5bf"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "9d08c31186ec4f58"
             }
           }
         }
@@ -32146,7 +32422,7 @@
       ],
       "damage": "mixed",
       "skillOrder": "QWEQQRQWQWRWWEE",
-      "skillReason": "OP.GG 同位置的前15级加点样本；与该装备、符文及韦鲁斯组合分别统计，不代表同局或最优。",
+      "skillReason": "OP.GG 同位置的前15级加点样本；与该装备、符文及具体组合分别统计，不代表同局或最优。",
       "summoners": [
         "SummonerFlash",
         "SummonerDot"
@@ -32539,6 +32815,258 @@
             "dataDragon": {
               "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "32194f4e3319e474"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "community-kaisa-bottom-reference-2621",
+      "name": "卡莎 · 下路特效参考",
+      "champions": [
+        "Kaisa"
+      ],
+      "roles": [
+        "bottom"
+      ],
+      "base": "onhit",
+      "items": [
+        6672,
+        3124,
+        3302
+      ],
+      "boots": 3006,
+      "late": [],
+      "runes": [
+        "kaisa-bottom-reference-2621"
+      ],
+      "damage": "mixed",
+      "skillOrder": "QWEQQRQEQEREEWW",
+      "skillReason": "OP.GG 同位置前15级独立加点样本，不代表视频玩家或整套联动对局。",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerBarrier"
+      ],
+      "why": "OP.GG 全球翡翠及以上的独立位置分项参考，不是视频玩家配置或组合胜率。符文选用无神奇之鞋的备选页；技能进化按游戏内实际属性确认。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "OP.GG · 卡莎 · 下路特效参考 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/kaisa/build/adc?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "装备、符文等独立位置统计，非视频玩家配置",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 卡莎 · 下路特效参考 16.21 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Kaisa.json",
+          "kind": "当前机制复核",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Kaisa": "792e7d85c3acdc09",
+        "item:6672": "56acf36018ec56ee",
+        "item:3124": "a5fa166d09295f8f",
+        "item:3302": "c3e9201cb2cb4ba1",
+        "item:3006": "d8d9fde1f7908326",
+        "rune:8008": "d8ed59948702367b",
+        "rune:9111": "6667591beed15f1b",
+        "rune:9103": "7d88abbfc22dd0df",
+        "rune:8017": "50a79a13bce940f0",
+        "rune:8321": "ec014268b03afd2b",
+        "rune:8347": "def2a55844436c47"
+      },
+      "reviewSourceAnchors": {
+        "Kaisa": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "792e7d85c3acdc09",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Kaisa",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/kaisa/kaisa.bin.json",
+              "sha256": "702f5270f6b4e24fa894679a67117b18896ef62b4897d409cabb1c53344375c8"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "e793368118ed867a"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "community-jhin-bottom-reference-2621",
+      "name": "烬 · 下路暴击参考",
+      "champions": [
+        "Jhin"
+      ],
+      "roles": [
+        "bottom"
+      ],
+      "base": "jhin",
+      "items": [
+        6697,
+        3046,
+        3031
+      ],
+      "boots": 3009,
+      "late": [],
+      "runes": [
+        "jhin-bottom-reference-2621"
+      ],
+      "damage": "ad",
+      "skillOrder": "QWEQQRQWQWRWWEE",
+      "skillReason": "OP.GG 同位置前15级独立加点样本，不代表视频玩家或整套联动对局。",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerBarrier"
+      ],
+      "why": "OP.GG 全球翡翠及以上的独立位置分项参考，不是视频玩家配置或组合胜率。第四发后需要换弹；W 命中且目标已有标记才禁锢。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "OP.GG · 烬 · 下路暴击参考 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/jhin/build/adc?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "装备、符文等独立位置统计，非视频玩家配置",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 烬 · 下路暴击参考 16.21 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Jhin.json",
+          "kind": "当前机制复核",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Jhin": "226e6c11b8a992f5",
+        "item:6697": "c7c1f0e9c6a7f9c5",
+        "item:3046": "70a1d226735997bb",
+        "item:3031": "0ccdceb96f0cd392",
+        "item:3009": "f95ed3b88b918eed",
+        "rune:8021": "bffe59ad8f3db438",
+        "rune:8009": "e88eb74c171319c4",
+        "rune:9103": "7d88abbfc22dd0df",
+        "rune:8014": "04092c4f9754532b",
+        "rune:8234": "018bc04903dfba25",
+        "rune:8236": "a1bb7cfc15c3d089"
+      },
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "community-thresh-support-reference-2621",
+      "name": "锤石 · 辅助保护参考",
+      "champions": [
+        "Thresh"
+      ],
+      "roles": [
+        "support"
+      ],
+      "base": "supportTank",
+      "items": [
+        3190,
+        3109,
+        3050
+      ],
+      "boots": 3009,
+      "late": [],
+      "runes": [
+        "thresh-support-reference-2621"
+      ],
+      "damage": "mixed",
+      "skillOrder": "QEWQQRQEQEREEWW",
+      "skillReason": "OP.GG 同位置前15级独立加点样本，不代表视频玩家或整套联动对局。",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerDot"
+      ],
+      "why": "OP.GG 全球翡翠及以上的独立位置分项参考，不是视频玩家配置或组合胜率。余震须实际定身；灯笼需队友点击，骑士之誓需绑定并保持距离。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "OP.GG · 锤石 · 辅助保护参考 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/thresh/build/support?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "装备、符文等独立位置统计，非视频玩家配置",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 锤石 · 辅助保护参考 16.21 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Thresh.json",
+          "kind": "当前机制复核",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Thresh": "766a02f3f37aa314",
+        "item:3190": "89cdf2838748dfc7",
+        "item:3109": "97c25fae90d4a8a4",
+        "item:3050": "c3e25c9df9075147",
+        "item:3009": "f95ed3b88b918eed",
+        "rune:8439": "b2c74fd18c4ad076",
+        "rune:8463": "3296414353df0e65",
+        "rune:8473": "ed2f46234183276d",
+        "rune:8242": "37935df8d31dd429",
+        "rune:8345": "02157c1d4d7f7531",
+        "rune:8347": "def2a55844436c47"
+      },
+      "reviewSourceAnchors": {
+        "Thresh": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "766a02f3f37aa314",
+          "observedAt": "2026-10-23T02:03:51.634Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Thresh",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/thresh/thresh.bin.json",
+              "sha256": "f55dc93e1986c0547aa2b2446989f249186cbd3a2d604df58c1777e58410c5bf"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "9d08c31186ec4f58"
             }
           }
         }
@@ -33206,6 +33734,63 @@
           8453,
           8473,
           5007,
+          5008,
+          5001
+        ]
+      }
+    },
+    "kaisa-bottom-reference-2621": {
+      "name": "卡莎 · 下路位置备选",
+      "when": "OP.GG 全球翡翠及以上同位置独立符文备选，不含神奇之鞋；非视频玩家或组合专属。",
+      "page": {
+        "primaryStyleId": 8000,
+        "subStyleId": 8300,
+        "selectedPerkIds": [
+          8008,
+          9111,
+          9103,
+          8017,
+          8321,
+          8347,
+          5005,
+          5008,
+          5011
+        ]
+      }
+    },
+    "jhin-bottom-reference-2621": {
+      "name": "烬 · 下路位置参考",
+      "when": "OP.GG 全球翡翠及以上同位置符文统计；非视频玩家或组合专属。",
+      "page": {
+        "primaryStyleId": 8000,
+        "subStyleId": 8200,
+        "selectedPerkIds": [
+          8021,
+          8009,
+          9103,
+          8014,
+          8234,
+          8236,
+          5008,
+          5008,
+          5001
+        ]
+      }
+    },
+    "thresh-support-reference-2621": {
+      "name": "锤石 · 辅助位置参考",
+      "when": "OP.GG 全球翡翠及以上同位置符文统计；非视频玩家或组合专属。",
+      "page": {
+        "primaryStyleId": 8400,
+        "subStyleId": 8300,
+        "selectedPerkIds": [
+          8439,
+          8463,
+          8473,
+          8242,
+          8345,
+          8347,
+          5008,
           5008,
           5001
         ]
