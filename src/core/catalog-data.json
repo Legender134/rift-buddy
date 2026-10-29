@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.29.6",
+  "version": "2026.10.29.7",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
@@ -12877,6 +12877,141 @@
             "dataDragon": {
               "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "14165b7ab2f27514"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "community-varus-tahm-2621",
+      "name": "深渊接箭",
+      "style": "balanced",
+      "difficulty": "适中",
+      "tempo": "protect",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "tags": [
+        "潜航接箭",
+        "吞人保护"
+      ],
+      "partners": [
+        "Sejuani",
+        "Galio"
+      ],
+      "why": "塔姆潜航命中后，韦鲁斯可以利用击飞窗口蓄箭；危险时塔姆留大招保护射手。",
+      "plan": "韦鲁斯下路补刀，塔姆辅助。视频展示一次塔姆 W 击飞后韦鲁斯蓄 WQ 跟进；其余分工和保护时机按当前技能机制整理。",
+      "risk": "塔姆 W 有落点提示，可能被躲开或打断；韦鲁斯 Q 蓄力会减速。视频录像补丁、服务器及是否预组未知；辅助配置是独立统计参考。",
+      "early": "韦鲁斯稳补刀并消耗，塔姆利用草丛和视野寻找安全落点；射手跟不上时不独自潜入。",
+      "window": "两人均可跟进且塔姆 W 有安全落点时尝试控制；六级后按形势保留 R 救援，不保证击飞命中。",
+      "economy": "韦鲁斯负责补刀，塔姆靠辅助任务与视野获取经济；心之钢价格较高，应按局势决定成型节奏。",
+      "steps": [
+        "塔姆确认射手距离与撤退路线，再用 W 潜航；实际落地命中才击飞。",
+        "命中后韦鲁斯可蓄 Q 并按机会开启 W 强化；有普攻机会时叠枯萎，再用 E 或 Q 引爆。",
+        "射手受威胁时塔姆可用 R 吞友保护，选择安全方向；吞敌须先有三层被动，不能同时用于保护队友。"
+      ],
+      "members": [
+        {
+          "champion": "Varus",
+          "role": "bottom",
+          "loadoutId": "community-varus-onhit-2621",
+          "job": "补刀并在可跟进的位置蓄箭，普攻叠枯萎后按机会引爆。"
+        },
+        {
+          "champion": "TahmKench",
+          "role": "support",
+          "loadoutId": "community-tahm-support-2621",
+          "job": "辅助任务与视野，选择 W 落点并根据危险保留 R。"
+        }
+      ],
+      "sources": [
+        {
+          "name": "陪子哥 · 韦鲁斯与塔姆实战（10/26发布）",
+          "url": "https://www.bilibili.com/video/BV1b3n46GEHA/",
+          "kind": "一次潜航击飞后接箭画面，录像版本与预组未知",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "OP.GG · 塔姆辅助 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/tahmkench/build/support?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "塔姆装备与符文等独立统计，非该视频配套",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 及 10/22 热修",
+          "url": "https://www.leagueoflegends.com/en-sg/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "当前机制复核；不证明录像补丁",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Varus": "643e042201703827",
+        "champion:TahmKench": "9635271a9add58c5",
+        "item:3087": "84e4dae75d4d4953",
+        "item:3124": "a5fa166d09295f8f",
+        "item:3302": "c3e9201cb2cb4ba1",
+        "item:3008": "6213d0c34d0819cf",
+        "item:6665": "9693faf50145df4e",
+        "rune:8008": "d8ed59948702367b",
+        "rune:9111": "6667591beed15f1b",
+        "rune:9104": "e6b524a54b35a2f3",
+        "rune:8017": "50a79a13bce940f0",
+        "rune:8313": "00b2fb901efb6c81",
+        "rune:8347": "def2a55844436c47",
+        "item:3084": "674b7125a8312547",
+        "item:3075": "6d456e96c01062c6",
+        "item:3065": "3891f4b9ee257a38",
+        "item:3047": "46ff9ea0f9199a8e",
+        "rune:8437": "c950f9daf1edb09d",
+        "rune:8401": "0c0323486ace9a0c",
+        "rune:8444": "fbb59f496f94894e",
+        "rune:8242": "37935df8d31dd429"
+      },
+      "reviewSourceAnchors": {
+        "Varus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "643e042201703827",
+          "observedAt": "2026-10-23T02:03:51.637Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Varus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/varus/varus.bin.json",
+              "sha256": "bac170ccc806133bc4f998eca45d7bcbbdd9c6ecf1057c5d63fe1d02ffe06937"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "7b616ac861086a8b"
+            }
+          }
+        },
+        "TahmKench": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "9635271a9add58c5",
+          "observedAt": "2026-10-23T02:03:51.633Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "TahmKench",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/tahmkench/tahmkench.bin.json",
+              "sha256": "2c4d245e198a57458a95879789133f011276421c3cbc2f5a5293507a8ba34073"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "324a3700d293797b"
             }
           }
         }
@@ -31710,6 +31845,90 @@
           }
         }
       }
+    },
+    {
+      "id": "community-tahm-support-2621",
+      "name": "塔姆 · 承伤辅助参考",
+      "champions": [
+        "TahmKench"
+      ],
+      "roles": [
+        "support"
+      ],
+      "base": "supportTank",
+      "items": [
+        3084,
+        3075,
+        3065
+      ],
+      "boots": 3047,
+      "late": [],
+      "runes": [
+        "tahm-support-reference-2621"
+      ],
+      "damage": "mixed",
+      "skillOrder": "QWEQQRQWQWRWWEE",
+      "skillReason": "OP.GG 同位置的前15级加点样本；与该装备、符文及韦鲁斯组合分别统计，不代表同局或最优。",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerDot"
+      ],
+      "why": "OP.GG 全球翡翠及以上的塔姆辅助分项参考；核心、鞋、符文与加点各自统计，不是视频作者配套或组合胜率。心之钢要近身充能后普攻，荆棘之甲被普攻才反伤并施加重伤；魔法压力和鞋子按局势调整。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "OP.GG · 塔姆辅助 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/tahmkench/build/support?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "装备、符文、加点和技能为独立同位置统计",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 塔姆 16.21 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/TahmKench.json",
+          "kind": "当前机制复核",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:TahmKench": "9635271a9add58c5",
+        "item:3084": "674b7125a8312547",
+        "item:3075": "6d456e96c01062c6",
+        "item:3065": "3891f4b9ee257a38",
+        "item:3047": "46ff9ea0f9199a8e",
+        "rune:8437": "c950f9daf1edb09d",
+        "rune:8401": "0c0323486ace9a0c",
+        "rune:8444": "fbb59f496f94894e",
+        "rune:8242": "37935df8d31dd429",
+        "rune:9104": "e6b524a54b35a2f3",
+        "rune:9111": "6667591beed15f1b"
+      },
+      "reviewSourceAnchors": {
+        "TahmKench": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "9635271a9add58c5",
+          "observedAt": "2026-10-23T02:03:51.633Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "TahmKench",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/tahmkench/tahmkench.bin.json",
+              "sha256": "2c4d245e198a57458a95879789133f011276421c3cbc2f5a5293507a8ba34073"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "324a3700d293797b"
+            }
+          }
+        }
+      }
     }
   ],
   "runes": {
@@ -32280,6 +32499,25 @@
           5005,
           5008,
           5011
+        ]
+      }
+    },
+    "tahm-support-reference-2621": {
+      "name": "塔姆 · 辅助位置参考",
+      "when": "OP.GG 全球翡翠及以上的同位置符文统计，非视频作者或组合专属。",
+      "page": {
+        "primaryStyleId": 8400,
+        "subStyleId": 8000,
+        "selectedPerkIds": [
+          8437,
+          8401,
+          8444,
+          8242,
+          9104,
+          9111,
+          5005,
+          5001,
+          5001
         ]
       }
     }
