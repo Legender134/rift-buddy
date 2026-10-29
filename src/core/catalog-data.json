@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.29.5",
+  "version": "2026.10.29.6",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
@@ -31629,6 +31629,87 @@
           }
         }
       }
+    },
+    {
+      "id": "community-varus-onhit-2621",
+      "name": "韦鲁斯 · 电刀羊刀特效",
+      "champions": [
+        "Varus"
+      ],
+      "roles": [
+        "bottom"
+      ],
+      "base": "onhit",
+      "items": [
+        3087,
+        3124,
+        3302
+      ],
+      "boots": 3008,
+      "late": [
+        6665
+      ],
+      "runes": [
+        "varus-onhit-community-2621"
+      ],
+      "damage": "mixed",
+      "why": "作者图示电刀、羊刀、界弓与暴食胫甲，并建议后续补贾修；图里共五件，余下格位与购买时机按局势自选。技能加点、召唤师技能、出门及首回未由作者明确，界面其他参考不归于作者。作者称“新版本”，录像补丁和服务器未证；不采信其唯一选择或胜率主张。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "陪子哥 · 韦鲁斯特效（10/26发布，录像补丁未证）",
+          "url": "https://www.bilibili.com/video/BV1b3n46GEHA/",
+          "kind": "作者图示完整符文与电刀、羊刀、界弓；其余项目按当前机制参考",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21正式改动",
+          "url": "https://www.leagueoflegends.com/en-au/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "当前机制复核，非录像版本证明",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Varus": "643e042201703827",
+        "item:3087": "84e4dae75d4d4953",
+        "item:3124": "a5fa166d09295f8f",
+        "item:3302": "c3e9201cb2cb4ba1",
+        "item:3008": "6213d0c34d0819cf",
+        "item:6665": "9693faf50145df4e",
+        "rune:8008": "d8ed59948702367b",
+        "rune:9111": "6667591beed15f1b",
+        "rune:9104": "e6b524a54b35a2f3",
+        "rune:8017": "50a79a13bce940f0",
+        "rune:8313": "00b2fb901efb6c81",
+        "rune:8347": "def2a55844436c47"
+      },
+      "reviewSourceAnchors": {
+        "Varus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "643e042201703827",
+          "observedAt": "2026-10-23T02:03:51.637Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Varus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/varus/varus.bin.json",
+              "sha256": "bac170ccc806133bc4f998eca45d7bcbbdd9c6ecf1057c5d63fe1d02ffe06937"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "7b616ac861086a8b"
+            }
+          }
+        }
+      }
     }
   ],
   "runes": {
@@ -32178,6 +32259,25 @@
           8321,
           8316,
           5008,
+          5008,
+          5011
+        ]
+      }
+    },
+    "varus-onhit-community-2621": {
+      "name": "韦鲁斯 · 致命节奏特效",
+      "when": "作者图示完整符文；按实际对线与装备选择。",
+      "page": {
+        "primaryStyleId": 8000,
+        "subStyleId": 8300,
+        "selectedPerkIds": [
+          8008,
+          9111,
+          9104,
+          8017,
+          8313,
+          8347,
+          5005,
           5008,
           5011
         ]
