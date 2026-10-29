@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.29.8",
+  "version": "2026.10.29.9",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
@@ -13151,6 +13151,145 @@
             "dataDragon": {
               "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "1f2620463bdb38d1"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "community-tristana-milio-2621",
+      "name": "篝火炮台",
+      "style": "balanced",
+      "difficulty": "适中",
+      "tempo": "protect",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "tags": [
+        "射程增益",
+        "防守反击"
+      ],
+      "partners": [],
+      "why": "米利欧 W 的范围可增强友军普攻射程，Q 命中后可帮助处理接近威胁；小炮需要在安全位置输出。",
+      "plan": "小炮下路补刀，米利欧辅助。视频作者说明用 Q 应对女坦接近，并展示小炮在 W 范围内补刀和跟进。",
+      "risk": "Q 需要命中且不是所有位移都能打断；W 增益需在范围内。录像补丁、服务器和是否预组未知。",
+      "early": "小炮先处理兵线，米利欧保持视野与保护距离；敌方先手技能未交时留意 Q 的防守时机。",
+      "window": "小炮能安全普攻且处于 W 范围时输出；威胁接近先保护退路，增益结束或被切开就后退。",
+      "economy": "小炮负责补刀，米利欧以辅助任务与视野获取经济；装备顺序随局势和资金变化。",
+      "steps": [
+        "米利欧在可能被切入时保留 Q；只有实际命中并产生击退后才安排后续动作。",
+        "米利欧按局势放 W 与 E；小炮在 W 覆盖内普攻，按实际距离选择目标。",
+        "小炮跳跃前确认落点与退路；保护脱节、范围结束或敌方控制可用时停止追击。"
+      ],
+      "members": [
+        {
+          "champion": "Tristana",
+          "role": "bottom",
+          "loadoutId": "community-tristana-bottom-reference-2621",
+          "job": "补刀，在安全范围普攻，跳跃前确认退路。"
+        },
+        {
+          "champion": "Milio",
+          "role": "support",
+          "loadoutId": "community-milio-support-reference-2621",
+          "job": "提供视野、护盾与范围增益，Q 留给可处理的接近威胁。"
+        }
+      ],
+      "sources": [
+        {
+          "name": "studyliang · 小炮与米利欧实战（10/23发布）",
+          "url": "https://www.bilibili.com/video/BV15pnt69Ege/",
+          "kind": "作者说明 Q 防守和 W 范围站位；录像补丁未知",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "OP.GG · 小炮下路 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/tristana/build/adc?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "小炮位置分项统计，非视频玩家或组合胜率",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "OP.GG · 米利欧辅助 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/milio/build/support?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "米利欧位置分项统计，非视频玩家或组合胜率",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-sg/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "当前机制复核；不证明录像补丁",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Tristana": "931894a6ac7e80f4",
+        "champion:Milio": "9176ff8b22c1f1c9",
+        "item:3032": "9f8d772a9d1273f5",
+        "item:3031": "0ccdceb96f0cd392",
+        "item:6675": "b2ad1db20decb6ca",
+        "item:3006": "d8d9fde1f7908326",
+        "rune:8008": "d8ed59948702367b",
+        "rune:9111": "6667591beed15f1b",
+        "rune:9104": "e6b524a54b35a2f3",
+        "rune:8014": "04092c4f9754532b",
+        "rune:8135": "d7b9ee19a520bf84",
+        "rune:8139": "86885f2b5b5d7df9",
+        "item:6620": "cfb94d4a02cc64c8",
+        "item:6617": "6dccd52cee1f2c6e",
+        "item:3504": "f6eed220149ca076",
+        "item:3158": "72ca672b9221f063",
+        "rune:8214": "6d3b2bf192d500da",
+        "rune:8226": "b05a5d0fb43e4a6e",
+        "rune:8210": "e78877d51ff049ea",
+        "rune:8237": "141d0a7c16b98b91",
+        "rune:8453": "f9a0180e7f2f0432",
+        "rune:8473": "ed2f46234183276d"
+      },
+      "reviewSourceAnchors": {
+        "Tristana": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "931894a6ac7e80f4",
+          "observedAt": "2026-10-23T02:03:51.635Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Tristana",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/tristana/tristana.bin.json",
+              "sha256": "62d0dcaec7b4f7498a55af4d7ca3a30ac433fa08913fa095194a5c920dfb7891"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "dedfd8b3d11580bb"
+            }
+          }
+        },
+        "Milio": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "9176ff8b22c1f1c9",
+          "observedAt": "2026-10-23T02:03:51.541Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Milio",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/milio/milio.bin.json",
+              "sha256": "0b3afeb21eccfeb7d42d41cf6ea2abfd0d940e2ee0c501645a0b78d70a4843fa"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "32194f4e3319e474"
             }
           }
         }
@@ -32236,6 +32375,174 @@
           }
         }
       }
+    },
+    {
+      "id": "community-tristana-bottom-reference-2621",
+      "name": "小炮 · 下路暴击参考",
+      "champions": [
+        "Tristana"
+      ],
+      "roles": [
+        "bottom"
+      ],
+      "base": "crit",
+      "items": [
+        3032,
+        3031,
+        6675
+      ],
+      "boots": 3006,
+      "late": [],
+      "runes": [
+        "tristana-bottom-reference-2621"
+      ],
+      "damage": "ad",
+      "skillOrder": "EWQEEREQEQRQQWW",
+      "skillReason": "OP.GG 同位置前15级独立加点样本，不代表视频玩家或整套联动对局。",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerBarrier"
+      ],
+      "why": "OP.GG 全球翡翠及以上下路分项参考；装备、鞋、符文和加点分别统计，不是视频作者配置或组合胜率。育恩塔尔通过攻击叠暴击；跳跃要先看落点和退路。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "OP.GG · 小炮下路 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/tristana/build/adc?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "装备、符文等独立位置统计，非视频玩家配置",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 小炮 16.21 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Tristana.json",
+          "kind": "当前机制复核",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Tristana": "931894a6ac7e80f4",
+        "item:3032": "9f8d772a9d1273f5",
+        "item:3031": "0ccdceb96f0cd392",
+        "item:6675": "b2ad1db20decb6ca",
+        "item:3006": "d8d9fde1f7908326",
+        "rune:8008": "d8ed59948702367b",
+        "rune:9111": "6667591beed15f1b",
+        "rune:9104": "e6b524a54b35a2f3",
+        "rune:8014": "04092c4f9754532b",
+        "rune:8135": "d7b9ee19a520bf84",
+        "rune:8139": "86885f2b5b5d7df9"
+      },
+      "reviewSourceAnchors": {
+        "Tristana": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "931894a6ac7e80f4",
+          "observedAt": "2026-10-23T02:03:51.635Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Tristana",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/tristana/tristana.bin.json",
+              "sha256": "62d0dcaec7b4f7498a55af4d7ca3a30ac433fa08913fa095194a5c920dfb7891"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "dedfd8b3d11580bb"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "community-milio-support-reference-2621",
+      "name": "米利欧 · 辅助保护参考",
+      "champions": [
+        "Milio"
+      ],
+      "roles": [
+        "support"
+      ],
+      "base": "enchanter",
+      "items": [
+        6620,
+        6617,
+        3504
+      ],
+      "boots": 3158,
+      "late": [],
+      "runes": [
+        "milio-support-reference-2621"
+      ],
+      "damage": "ap",
+      "skillOrder": "EWQEEREWEWRWWQQ",
+      "skillReason": "OP.GG 同位置前15级独立加点样本，不代表视频玩家或整套联动对局。",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerHeal"
+      ],
+      "why": "OP.GG 全球翡翠及以上辅助分项参考；装备、鞋、符文和加点分别统计，不是视频作者配置或组合胜率。海力亚先伤害英雄充能，再治疗或护盾友军触发；香炉须实际增益友军。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "OP.GG · 米利欧辅助 16.21（全球翡翠+）",
+          "url": "https://op.gg/lol/champions/milio/build/support?region=global&type=ranked&tier=emerald_plus&patch=16.21",
+          "kind": "装备、符文等独立位置统计，非视频玩家配置",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 米利欧 16.21 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Milio.json",
+          "kind": "当前机制复核",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Milio": "9176ff8b22c1f1c9",
+        "item:6620": "cfb94d4a02cc64c8",
+        "item:6617": "6dccd52cee1f2c6e",
+        "item:3504": "f6eed220149ca076",
+        "item:3158": "72ca672b9221f063",
+        "rune:8214": "6d3b2bf192d500da",
+        "rune:8226": "b05a5d0fb43e4a6e",
+        "rune:8210": "e78877d51ff049ea",
+        "rune:8237": "141d0a7c16b98b91",
+        "rune:8453": "f9a0180e7f2f0432",
+        "rune:8473": "ed2f46234183276d"
+      },
+      "reviewSourceAnchors": {
+        "Milio": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "9176ff8b22c1f1c9",
+          "observedAt": "2026-10-23T02:03:51.541Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Milio",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/milio/milio.bin.json",
+              "sha256": "0b3afeb21eccfeb7d42d41cf6ea2abfd0d940e2ee0c501645a0b78d70a4843fa"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "32194f4e3319e474"
+            }
+          }
+        }
+      }
     }
   ],
   "runes": {
@@ -32863,6 +33170,44 @@
           5007,
           5008,
           5011
+        ]
+      }
+    },
+    "tristana-bottom-reference-2621": {
+      "name": "小炮 · 下路位置参考",
+      "when": "OP.GG 全球翡翠及以上同位置符文统计；不是视频玩家或组合专属。",
+      "page": {
+        "primaryStyleId": 8000,
+        "subStyleId": 8100,
+        "selectedPerkIds": [
+          8008,
+          9111,
+          9104,
+          8014,
+          8135,
+          8139,
+          5005,
+          5008,
+          5001
+        ]
+      }
+    },
+    "milio-support-reference-2621": {
+      "name": "米利欧 · 辅助位置参考",
+      "when": "OP.GG 全球翡翠及以上同位置符文统计；不是视频玩家或组合专属。",
+      "page": {
+        "primaryStyleId": 8200,
+        "subStyleId": 8400,
+        "selectedPerkIds": [
+          8214,
+          8226,
+          8210,
+          8237,
+          8453,
+          8473,
+          5007,
+          5008,
+          5001
         ]
       }
     }
