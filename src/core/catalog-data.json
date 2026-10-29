@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.29.3",
+  "version": "2026.10.29.4",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
@@ -31536,6 +31536,99 @@
           }
         }
       }
+    },
+    {
+      "id": "community-jhin-dft-2621",
+      "name": "烬 · 冥火远程消耗",
+      "champions": [
+        "Jhin"
+      ],
+      "roles": [
+        "bottom"
+      ],
+      "base": "jhin",
+      "items": [
+        6697,
+        3046,
+        3031
+      ],
+      "boots": 3009,
+      "late": [
+        3036,
+        3094,
+        3026,
+        2517
+      ],
+      "runes": [
+        "jhin-dft-2621"
+      ],
+      "priority": "QWE",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerBarrier"
+      ],
+      "damage": "ad",
+      "why": "作者用于对线法师或敌方手长：技能命中触发冥火，W须目标先被标记才禁锢。装备图列狂妄、轻灵靴、绿叉、无尽、多米尼克、火炮、复活甲七项，鞋图列在狂妄之后；无穷饥渴另列备选。按六个装备格和局势取舍，作者未明确末位替换条件。",
+      "skillReason": "作者明确主Q副W；前三点在独立计划中标为项目参考，逐级顺序、出门和首回未由作者提供。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "逗逗辅助 · 冥火烬（10/26标题标16.21）",
+          "url": "https://www.bilibili.com/video/BV1Fnno6UEhB/",
+          "kind": "作者符文、装备候选与加点优先；后期格按局势取舍",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21正式改动",
+          "url": "https://www.leagueoflegends.com/en-ph/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "当前机制复核",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Jhin": "226e6c11b8a992f5",
+        "item:6697": "c7c1f0e9c6a7f9c5",
+        "item:3046": "70a1d226735997bb",
+        "item:3031": "0ccdceb96f0cd392",
+        "item:3009": "f95ed3b88b918eed",
+        "item:3036": "fcf5de31162e9e9d",
+        "item:3094": "fe69f998d9961e0d",
+        "item:3026": "9ac9f874ae405bd1",
+        "item:2517": "f23ba0d4e55015bf",
+        "rune:8992": "40814cf22b170c27",
+        "rune:8226": "b05a5d0fb43e4a6e",
+        "rune:8233": "8d66599d9c2e18c9",
+        "rune:8237": "141d0a7c16b98b91",
+        "rune:8321": "ec014268b03afd2b",
+        "rune:8316": "fd614d9f0a50c60b"
+      },
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        }
+      }
     }
   ],
   "runes": {
@@ -32066,6 +32159,25 @@
           8233,
           8236,
           5005,
+          5008,
+          5011
+        ]
+      }
+    },
+    "jhin-dft-2621": {
+      "name": "烬 · 冥火消耗",
+      "when": "作者用于应对下路法师或敌方手长；碎片为双适应和固定生命。",
+      "page": {
+        "primaryStyleId": 8200,
+        "subStyleId": 8300,
+        "selectedPerkIds": [
+          8992,
+          8226,
+          8233,
+          8237,
+          8321,
+          8316,
+          5008,
           5008,
           5011
         ]
@@ -34611,6 +34723,61 @@
             "dataDragon": {
               "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
               "fingerprint": "7e6432fe64cf372b"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "jhin-bottom-community-dft-2621",
+      "name": "烬 · 项目开局与作者补点优先",
+      "champion": "Jhin",
+      "role": "bottom",
+      "loadoutId": "community-jhin-dft-2621",
+      "order": "QWE",
+      "continuationPriority": "QWE",
+      "reason": "作者只给出主Q副W；前三点Q/W/E沿用项目现有同英雄开局参考，不是作者指定：Q可用于补刀消耗，W须目标被标记后才禁锢，E可布置陷阱。只整理前三点与后续优先，不补造4—18级节点；开局按对线局势调整。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "逗逗辅助 · 冥火烬（10/26标题标16.21）",
+          "url": "https://www.bilibili.com/video/BV1Fnno6UEhB/",
+          "kind": "作者主Q副W；前三点为项目参考",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 烬当前技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Jhin.json",
+          "kind": "项目开局机制依据",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "reviewBaseline": {
+        "champion:Jhin": "226e6c11b8a992f5"
+      },
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
             }
           }
         }

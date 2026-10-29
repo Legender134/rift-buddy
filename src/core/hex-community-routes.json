@@ -73352,6 +73352,96 @@
           "6665": "d68c9621bce20749"
         }
       }
+    },
+    {
+      "hero": "Thresh",
+      "patch": "16.21",
+      "augment": 1206,
+      "optional": [],
+      "excludedAugments": [
+        1205
+      ],
+      "requiresUltimate": false,
+      "title": "法强转攻击·锤石",
+      "summary": "捡魂与法强转换，按距离寻找攻击窗口。",
+      "coreBrief": "法术强度转为额外攻击力；技能伤害类型不会因此全变为物理。",
+      "play": [
+        "灵魂提供护甲和法术强度；取得魔法转物理后按当前强化规则转化，不把已转出的法强再算作保留。",
+        "E被动附加的魔法伤害随上次攻击间隔积累；Q命中后可再施放接近目标，但先考虑能否安全退出。",
+        "心之钢需靠近英雄完成充能并实际攻击；物理穿透和法术穿透分别服务各自的伤害。"
+      ],
+      "basicPlay": [
+        "禁用R时不预支监牢减速；保留Q、灯笼和E的控制及撤退空间。",
+        "灵魂、装备与法强转化的收益取决于实际获得的属性；不保证固定叠层或单次伤害。"
+      ],
+      "caution": "作者六件是不含鞋的娱乐方向，容易被风筝或集火；六件同局可买及录像补丁未独立确认。项目保守排除已选物理转魔法，不声称官方禁用同选。",
+      "gear": [
+        [
+          "作者六件集合",
+          [
+            3084,
+            6699,
+            4645,
+            3036,
+            3135,
+            3146
+          ],
+          "作者图示六件及枪刃末位，不证明实际成装或完整购买顺序；没有鞋，按局势留出移动速度与防御空间。",
+          [
+            1206
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "items": {
+          "3036": "2758e8ff995f599d",
+          "3084": "1d15c5181f27ae02",
+          "3135": "40317bddc5d92b12",
+          "3146": "646d5d7859215e01",
+          "4645": "4389cef3a456f687",
+          "6699": "bd3bde89570950ef"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1206": {
+            "coverage": "dynamic-counters",
+            "fingerprint": "d861b53cc39eb046",
+            "requiresUltimate": false
+          }
+        }
+      },
+      "communitySource": {
+        "medium": "video",
+        "author": "海斗小助手",
+        "url": "https://www.bilibili.com/video/BV1Hjno6nEyP/",
+        "publishedAt": "2026-10-26T23:49:27+08:00",
+        "sourcePatch": null,
+        "observedMode": "作者简介为海克斯大乱斗4.0；混剪录像补丁及服务器未确认",
+        "evidenceSeconds": [
+          0,
+          45,
+          47,
+          65
+        ],
+        "adaptation": "作者图示锤石与魔法转物理、六件集合；本项目按当前16.21英雄、强化及装备资料整理玩法，不声称录像已证当前补丁、六件同时持有或顺序。原作未给该分支完整符文、加点、出门及首回；作者的评分和夸张伤害不作为项目统计。1205排除是项目保守取舍，不推断官方强化互斥或四轮资格。 心之钢边框及整组失效处理为项目标记。"
+      },
+      "coreItems": [
+        3084
+      ]
     }
   ],
   "championReview": {
