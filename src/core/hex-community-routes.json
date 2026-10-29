@@ -73442,6 +73442,411 @@
       "coreItems": [
         3084
       ]
+    },
+    {
+      "hero": "Lucian",
+      "patch": "16.21",
+      "augment": 3018,
+      "optional": [
+        1092,
+        1048,
+        1336
+      ],
+      "excludedAugments": [
+        1205,
+        2018
+      ],
+      "requiresUltimate": false,
+      "title": "大腕·双枪远程",
+      "summary": "技能后接普攻，留好位移与大招位置。",
+      "coreBrief": "大腕增加暴击伤害与额外攻击力，并将部分攻击速度转化为暴击伤害；不提供暴击概率。",
+      "play": [
+        "施放技能后下一次普攻连射；E位移应优先考虑安全，别为叠伤硬追。",
+        "作者前三件与后续候选以仍通过复核的装备组为准，按剩余装备格取舍。",
+        "大腕增加暴击伤害与额外攻击力，并将部分攻击速度转化为暴击伤害；不提供暴击概率。",
+        "已选物理转魔法或纯粹术师时，项目保守不推荐此方向；不声称官方禁止同时出现。"
+      ],
+      "basicPlay": [
+        "禁用R时公理与猎魔人弩箭的终极技能收益无法兑现，本路线不按原套展示。"
+      ],
+      "caution": "原视频的R暴伤和子弹数说法未核验，不能据此保证效果；作者列七项，未写末位替换条件。",
+      "coreItems": [
+        6676,
+        3031,
+        6696
+      ],
+      "gear": [
+        [
+          "作者前三件",
+          [
+            6676,
+            3031,
+            6696
+          ],
+          "按作者字幕列出的前三件；公理效果与大招相关。",
+          [
+            3018
+          ],
+          true
+        ],
+        [
+          "对方护甲高可比较",
+          [
+            3036
+          ],
+          "护甲穿透服务实际物理伤害，不改变魔法伤害类型。",
+          [
+            3018
+          ]
+        ],
+        [
+          "大招后可比较",
+          [
+            2512
+          ],
+          "需实际施放R后才进入有限次攻击窗口。",
+          [
+            3018
+          ],
+          true
+        ],
+        [
+          "作者后续候选",
+          [
+            2517
+          ],
+          "按当前可购效果与局势比较；作者未指定替换槽位。",
+          [
+            3018
+          ]
+        ],
+        [
+          "作者后续候选",
+          [
+            2523
+          ],
+          "作者另列镜片；按实际装备属性与对局选择。",
+          [
+            3018
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "items": {
+          "2512": "bebb5c6185b8d535",
+          "2517": "0c0a477cb6b266bb",
+          "2523": "46df0edeac0ad5ea",
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "6676": "20a9c2a3ea1c7555",
+          "6696": "7604f9811d98418e"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "effects": {
+          "1048": {
+            "fingerprint": "6ce3b8f9d6a38828",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1092": {
+            "fingerprint": "d008e882c4f56b77",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1336": {
+            "fingerprint": "ea1bd9a526a56194",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3018": {
+            "fingerprint": "08e2a77b56224367",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "medium": "video",
+        "author": "海斗小助手",
+        "url": "https://www.bilibili.com/video/BV1HysX6nEyf/",
+        "publishedAt": "2026-10-28T23:46:28+08:00",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗视频；录像具体补丁和服务器未确认",
+        "evidenceSeconds": [
+          70,
+          80,
+          85,
+          90,
+          95
+        ],
+        "adaptation": "作者视频给出该英雄前三件与多于六格的后续候选；本项目按当前16.21技能、强化及装备资料整理，不声称素材已证补丁、同局持有或最优胜率。未提供作者逐级加点、符文、出门或首回；不采用作者未核算的伤害百分比。1205和2018排除是项目保守取舍，不推断官方互斥或各轮资格。"
+      }
+    },
+    {
+      "hero": "Rengar",
+      "patch": "16.21",
+      "augment": 3018,
+      "optional": [
+        1336,
+        3078
+      ],
+      "excludedAugments": [
+        1205,
+        2018
+      ],
+      "requiresUltimate": false,
+      "title": "大腕·狮子狗进退",
+      "summary": "利用草丛与强化技能寻找安全窗口。",
+      "coreBrief": "大腕增加暴击伤害与额外攻击力，并将部分攻击速度转化为暴击伤害；不提供暴击概率。",
+      "play": [
+        "草丛内普通攻击可跳向目标；满残暴后选择强化技能，W可基于近期受伤回复。",
+        "作者前三件与后续候选以仍通过复核的装备组为准，按剩余装备格取舍。",
+        "大腕增加暴击伤害与额外攻击力，并将部分攻击速度转化为暴击伤害；不提供暴击概率。",
+        "已选物理转魔法或纯粹术师时，项目保守不推荐此方向；不声称官方禁止同时出现。"
+      ],
+      "basicPlay": [
+        "禁用R时不能依赖大招伪装或无草跳跃；仍可利用草丛和已实际准备好的残暴技能。",
+        "大腕增加暴击伤害与额外攻击力，并将部分攻击速度转化为暴击伤害；不提供暴击概率。",
+        "已选物理转魔法或纯粹术师时，项目保守不推荐此方向；不声称官方禁止同时出现。"
+      ],
+      "caution": "攻击速度转换和短时增益的结算未实测，不预给强化Q的固定暴伤；近身容易被控制。",
+      "coreItems": [
+        126697,
+        6676,
+        3031
+      ],
+      "gear": [
+        [
+          "作者前三件",
+          [
+            126697,
+            6676,
+            3031
+          ],
+          "模式版狂妄、收集者和无尽；按可获得的经济与对局调整。",
+          [
+            3018
+          ]
+        ],
+        [
+          "作者后续候选",
+          [
+            3036,
+            6333,
+            2517
+          ],
+          "作者列出这些候选，但未说明七件如何互换；按剩余装备格和局势取舍。",
+          [
+            3018
+          ]
+        ],
+        [
+          "R可用时另比较",
+          [
+            6696
+          ],
+          "公理效果依赖大招及实际参与击杀；作者未指定替换位。",
+          [
+            3018
+          ],
+          true
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "items": {
+          "2517": "0c0a477cb6b266bb",
+          "3031": "00b9b8a238976a3f",
+          "3036": "2758e8ff995f599d",
+          "6333": "95058514bbf67ac0",
+          "6676": "20a9c2a3ea1c7555",
+          "6696": "7604f9811d98418e",
+          "126697": "942097b9d9de1e23"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "effects": {
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1336": {
+            "fingerprint": "ea1bd9a526a56194",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3018": {
+            "fingerprint": "08e2a77b56224367",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3078": {
+            "fingerprint": "86578d325322e9e8",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "medium": "video",
+        "author": "海斗小助手",
+        "url": "https://www.bilibili.com/video/BV1HysX6nEyf/",
+        "publishedAt": "2026-10-28T23:46:28+08:00",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗视频；录像具体补丁和服务器未确认",
+        "evidenceSeconds": [
+          125,
+          135,
+          140,
+          145
+        ],
+        "adaptation": "作者视频给出该英雄前三件与多于六格的后续候选；本项目按当前16.21技能、强化及装备资料整理，不声称素材已证补丁、同局持有或最优胜率。未提供作者逐级加点、符文、出门或首回；不采用作者未核算的伤害百分比。1205和2018排除是项目保守取舍，不推断官方互斥或各轮资格。"
+      }
+    },
+    {
+      "hero": "Graves",
+      "patch": "16.21",
+      "augment": 3018,
+      "optional": [
+        1007,
+        1195
+      ],
+      "excludedAugments": [
+        1205,
+        2018
+      ],
+      "requiresUltimate": false,
+      "title": "大腕·男枪装弹窗口",
+      "summary": "留意两发子弹、掩体与装弹节奏。",
+      "coreBrief": "大腕增加暴击伤害与额外攻击力，并将部分攻击速度转化为暴击伤害；不提供暴击概率。",
+      "play": [
+        "普攻弹丸不能穿过单位；靠近目标可改变实际命中弹丸数，但须先确认安全。",
+        "Q命中地形可更快爆炸；E位移留意装弹与对方控制，不为追伤害交掉退路。",
+        "大腕增加暴击伤害与额外攻击力，并将部分攻击速度转化为暴击伤害；不提供暴击概率。",
+        "已选物理转魔法或纯粹术师时，项目保守不推荐此方向；不声称官方禁止同时出现。"
+      ],
+      "basicPlay": [
+        "禁用R时不预支终极爆弹；利用Q、烟幕与E安排进退，留意实际弹药与装弹。",
+        "大腕增加暴击伤害与额外攻击力，并将部分攻击速度转化为暴击伤害；不提供暴击概率。",
+        "已选物理转魔法或纯粹术师时，项目保守不推荐此方向；不声称官方禁止同时出现。"
+      ],
+      "caution": "原作者六件不含鞋；攻速转换可能改变射击和装弹手感，不能保证固定暴伤或单次击杀。",
+      "coreItems": [
+        6676,
+        3031,
+        3036
+      ],
+      "gear": [
+        [
+          "作者六件",
+          [
+            6676,
+            3031,
+            3036,
+            3032,
+            3072,
+            3095
+          ],
+          "作者推荐集合；六件无鞋，按局势调整移动与防御，不称其为同局实测。",
+          [
+            3018
+          ]
+        ]
+      ],
+      "itemReview": {
+        "schema": 1,
+        "algorithm": "hex-item-semantic-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "items": {
+          "3031": "00b9b8a238976a3f",
+          "3032": "a19dbb52aac34591",
+          "3036": "2758e8ff995f599d",
+          "3072": "6d238c0dfb1d9746",
+          "3095": "204f75afec63eeaa",
+          "6676": "20a9c2a3ea1c7555"
+        }
+      },
+      "augmentReview": {
+        "schema": 1,
+        "algorithm": "hex-effect-detail-v1",
+        "patch": "16.21",
+        "reviewedAt": "2026-10-29",
+        "effects": {
+          "1007": {
+            "fingerprint": "1d417616e36f68a1",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1195": {
+            "fingerprint": "3ab42d1993bb7344",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "1205": {
+            "fingerprint": "37c47a9324e4eb2e",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "2018": {
+            "fingerprint": "a3ad5c1515f15acd",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          },
+          "3018": {
+            "fingerprint": "08e2a77b56224367",
+            "requiresUltimate": false,
+            "coverage": "dynamic-counters"
+          }
+        }
+      },
+      "communitySource": {
+        "medium": "video",
+        "author": "海斗小助手",
+        "url": "https://www.bilibili.com/video/BV1HysX6nEyf/",
+        "publishedAt": "2026-10-28T23:46:28+08:00",
+        "sourcePatch": null,
+        "observedMode": "海克斯大乱斗视频；录像具体补丁和服务器未确认",
+        "evidenceSeconds": [
+          150,
+          160,
+          170,
+          175
+        ],
+        "adaptation": "作者视频给出男枪六件集合；本项目按当前16.21技能、强化及装备资料整理，不声称素材已证补丁、同局持有或最优胜率。未提供作者逐级加点、符文、出门或首回；不采用作者未核算的伤害百分比。1205和2018排除是项目保守取舍，不推断官方互斥或各轮资格。"
+      }
     }
   ],
   "championReview": {
