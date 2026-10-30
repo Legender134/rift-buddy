@@ -13,7 +13,7 @@ export function combinationRows(data,options,slots){
  }
  if(options.kind==='links'){
   const links=CROSS_SYNERGIES.filter(([a,b,text])=>!options.query||match(a)||match(b)||text.includes(options.query));
-  return `<p class="combo-count">${links.length} 条跨位置联动 · 可用于三人组合中的两两配合</p>${links.map(([a,b,text])=>`<article class="combo-row"><div class="combo-members">${[a,b].map(id=>`<div>${portrait(byId.get(id),'sm')}<b>${e(byId.get(id)?.name||id)}</b></div>`).join('<span>＋</span>')}</div><p>${e(text)}</p></article>`).join('')||'<div class="empty-state">没有找到联动，换个英雄或关键词试试。</div>'}`;
+  return `<p class="combo-count">${links.length} 条跨位置联动${data.patch!==COMBINATION_SOURCE.patch?' · 旧版本待复核':' · 可用于三人组合中的两两配合'}</p>${links.map(([a,b,text])=>`<article class="combo-row"><div class="combo-members">${[a,b].map(id=>`<div>${portrait(byId.get(id),'sm')}<b>${e(byId.get(id)?.name||id)}</b></div>`).join('<span>＋</span>')}</div><p>${e(text)}</p></article>`).join('')||'<div class="empty-state">没有找到联动，换个英雄或关键词试试。</div>'}`;
  }
  const configured=d=>comboMembers(d).some(m=>comboLoadout(d,byId.get(m.champion),m.role)!=='default');
  const list=DUOS.filter(d=>(options.style==='all'||d.style===options.style)&&(!options.source||options.source==='all'||(options.source==='community')===!!communitySources(d).length)&&(!options.configured||configured(d))&&(!options.query||comboMembers(d).some(m=>match(m.champion))||`${d.name} ${d.tags.join(' ')} ${d.why} ${d.plan} ${comboSources(d).map(s=>s.name).join(' ')}`.includes(options.query))&&(!options.fit||comboMembers(d).every(m=>{const slot=slots.find(s=>s.role===m.role);return !slot?.champion||!slot.locked||slot.champion===m.champion;})));
