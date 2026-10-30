@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.30.3",
+  "version": "2026.10.30.4",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
-  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。 2026-10-30复核尼菈与阿利斯塔、索拉卡两套下路配合；复用已审共享配置，索拉卡为位置默认配置，机制整理不代表组合实测。",
+  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。 2026-10-30复核尼菈与阿利斯塔、索拉卡两套下路配合；复用已审共享配置，索拉卡为位置默认配置，机制整理不代表组合实测。 2026-10-30复核布隆辅助共享配置与艾希、霞、尼菈三套下路配合的16.21触发和退出；单英雄配置参考不代表组合实测，其他组合保留旧状态。",
   "source": {
     "date": "2026-10-06",
     "patch": "16.19",
@@ -3053,24 +3053,22 @@
     },
     {
       "id": "ashe-braum",
-      "carry": "Ashe",
-      "support": "Braum",
       "name": "冰霜叠盾",
       "style": "balanced",
       "tags": [
         "普攻接控",
         "保护"
       ],
-      "why": "寒冰减速帮助布隆接近目标，两人普攻叠布隆被动。",
-      "plan": "寒冰补刀；布隆命中 Q 后一起普攻，盾留给关键飞行物。",
-      "risk": "没有位移；未叠满被动时不等于已经控制住。",
+      "why": "布隆实际挂上被动后，艾希可在安全距离用普攻协助叠层；双方保持接应位置。",
+      "plan": "艾希先保兵线，布隆 Q 或普攻击中敌方英雄后，确认不在免叠层期且实际挂上第一层才报同一目标。 艾希在安全距离普攻同一目标，实际叠到四层才眩晕；Q 减速和艾希 W 不直接代替普攻层数。 布隆 E 对准弹体来向，W 留可接应友军或小兵；远箭命中但队友到不了、目标脱离或退路不安全就撤。",
+      "risk": "艾希没有位移，布隆 W 依赖范围内可接应的友方英雄或小兵；Q 可被小兵挡，E 不挡所有方向或技能，远箭命中不保证队友能到达。",
       "partners": [
         "Sejuani",
         "Shen"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 艾希技能资料",
@@ -3083,15 +3081,29 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Braum.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Ashe 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ashe.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Braum 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Braum.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "braum-peel"
-      },
       "reviewBaseline": {
-        "champion:Ashe": "7f33044ee104f59d",
-        "champion:Braum": "4726b43beaea9728",
+        "champion:Ashe": "f363e1846cfe0370",
+        "champion:Braum": "ae3aa48403ffcbe5",
         "item:3190": "89cdf2838748dfc7",
         "item:3109": "97c25fae90d4a8a4",
         "item:3050": "c3e25c9df9075147",
@@ -3107,7 +3119,79 @@
         "rune:8242": "37935df8d31dd429",
         "rune:8306": "68d4bd3d69d9d19c"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Ashe",
+          "loadoutId": "default",
+          "job": "艾希补刀，先看安全普攻距离；Q 需要已有满层全神贯注才可施放，R 命中首个敌方英雄才眩晕，周围敌人仅减速。"
+        },
+        {
+          "role": "support",
+          "champion": "Braum",
+          "loadoutId": "braum-peel",
+          "job": "Q 或普攻命中敌方英雄后，确认不在免叠层期且实际挂上首层才报目标，四层才眩晕；E 对准弹体来向，W 留可接应友军或小兵，不为叠层离开射手。"
+        }
+      ],
+      "steps": [
+        "艾希先保兵线，布隆 Q 或普攻击中敌方英雄后，确认不在免叠层期且实际挂上第一层才报同一目标。",
+        "艾希在安全距离普攻同一目标，实际叠到四层才眩晕；Q 减速和艾希 W 不直接代替普攻层数。",
+        "布隆 E 对准弹体来向，W 留可接应友军或小兵；远箭命中但队友到不了、目标脱离或退路不安全就撤。"
+      ],
+      "window": "目标不在免叠层期且实际挂上首层、双方在安全距离并实际命中时接力；未挂上、目标脱离或退路不安全时停止追击。",
+      "early": "下路成员先保兵线、补刀与血量；布隆照看视野和接应路线，按真实等级与技能状态换血。",
+      "economy": "射手以补刀为主，布隆保留辅助任务与视野经济；射手使用位置默认配置，布隆是单英雄共享机制参考，均不代表组合实测配装。",
+      "reviewSourceAnchors": {
+        "Ashe": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "f363e1846cfe0370",
+          "observedAt": "2026-10-23T02:03:51.451Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Ashe",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ashe/ashe.bin.json",
+              "sha256": "ada00af1ea15a42094a914a05794e0d3cedcb66c150ed52e8d3762b8d12dc6b5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "1ab1be4161ebeecc"
+            }
+          }
+        },
+        "Braum": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "ae3aa48403ffcbe5",
+          "observedAt": "2026-10-23T02:03:51.454Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Braum",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/braum/braum.bin.json",
+              "sha256": "14ba3f22becfa225f217102f4a3afefbda7342212a388624b799162df15a68ef"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "e136059064aa1034"
+            }
+          }
+        }
+      }
     },
     {
       "id": "ashe-zyra",
@@ -7901,24 +7985,22 @@
     },
     {
       "id": "xayah-braum",
-      "carry": "Xayah",
-      "support": "Braum",
       "name": "盾后羽阵",
       "style": "balanced",
       "tags": [
         "后排保护",
         "普攻接控"
       ],
-      "why": "霞普攻叠布隆被动，羽毛与盾帮助限制正面追击。",
-      "plan": "霞补刀；布隆守输出位置，霞借羽毛控制追击者。",
-      "risk": "远程主动先手有限，需要队友创造接战条件。",
+      "why": "霞可在安全输出时协助叠布隆被动，布隆按实际威胁保护射手。",
+      "plan": "布隆 Q 或普攻击中敌方英雄后，确认不在免叠层期且实际挂上第一层才报同一目标；霞安全普攻协助叠层，达到四层才眩晕。 霞按实际羽毛位置判断 E：至少三根羽毛穿过同一目标才禁锢，不预设所有羽毛都会命中。 布隆 E 对准弹体来向，W 留接应；羽毛不覆盖、保护距离断开或侧翼有威胁就停止追击。",
+      "risk": "布隆盾墙不能挡所有技能和背后威胁，霞的 R 不可选取也不等于无敌。",
       "partners": [
         "Ornn",
         "Sejuani"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 霞技能资料",
@@ -7931,15 +8013,29 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Braum.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Xayah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Xayah.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Braum 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Braum.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "braum-peel"
-      },
       "reviewBaseline": {
-        "champion:Xayah": "b7332402902225ee",
-        "champion:Braum": "4726b43beaea9728",
+        "champion:Xayah": "6218a12d2240d28e",
+        "champion:Braum": "ae3aa48403ffcbe5",
         "item:3190": "89cdf2838748dfc7",
         "item:3109": "97c25fae90d4a8a4",
         "item:3050": "c3e25c9df9075147",
@@ -7955,7 +8051,79 @@
         "rune:8242": "37935df8d31dd429",
         "rune:8306": "68d4bd3d69d9d19c"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Xayah",
+          "loadoutId": "default",
+          "job": "霞负责补刀并留意羽毛位置；安全普攻布隆已挂层的同一目标，E 至少三根羽毛实际穿过同一目标才禁锢，R 不可选取不等于无敌。"
+        },
+        {
+          "role": "support",
+          "champion": "Braum",
+          "loadoutId": "braum-peel",
+          "job": "Q 或普攻命中敌方英雄后，确认不在免叠层期且实际挂上首层才报目标，四层才眩晕；E 对准弹体来向，W 留可接应友军或小兵，不为叠层离开射手。"
+        }
+      ],
+      "steps": [
+        "布隆 Q 或普攻击中敌方英雄后，确认不在免叠层期且实际挂上第一层才报同一目标；霞安全普攻协助叠层，达到四层才眩晕。",
+        "霞按实际羽毛位置判断 E：至少三根羽毛穿过同一目标才禁锢，不预设所有羽毛都会命中。",
+        "布隆 E 对准弹体来向，W 留接应；羽毛不覆盖、保护距离断开或侧翼有威胁就停止追击。"
+      ],
+      "window": "目标不在免叠层期且实际挂上首层、双方在安全距离并实际命中时接力；未挂上、目标脱离或退路不安全时停止追击。",
+      "early": "下路成员先保兵线、补刀与血量；布隆照看视野和接应路线，按真实等级与技能状态换血。",
+      "economy": "射手以补刀为主，布隆保留辅助任务与视野经济；射手使用位置默认配置，布隆是单英雄共享机制参考，均不代表组合实测配装。",
+      "reviewSourceAnchors": {
+        "Xayah": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "6218a12d2240d28e",
+          "observedAt": "2026-10-23T02:03:51.640Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Xayah",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/xayah/xayah.bin.json",
+              "sha256": "94e7c4f849daefb1f7967fda0b4abd1848747fceb9ff04b2530e00471f848de5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "ef84e7c599b03475"
+            }
+          }
+        },
+        "Braum": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "ae3aa48403ffcbe5",
+          "observedAt": "2026-10-23T02:03:51.454Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Braum",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/braum/braum.bin.json",
+              "sha256": "14ba3f22becfa225f217102f4a3afefbda7342212a388624b799162df15a68ef"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "e136059064aa1034"
+            }
+          }
+        }
+      }
     },
     {
       "id": "smolder-milio",
@@ -13766,24 +13934,22 @@
     },
     {
       "id": "nilah-braum",
-      "carry": "Nilah",
-      "support": "Braum",
       "name": "鞭刃盾墙",
       "style": "fun",
       "tags": [
         "普攻接控",
         "投射物保护"
       ],
-      "why": "尼菈持续普攻帮助叠布隆被动，布隆盾墙和控制保护近战输出。",
-      "plan": "尼菈补刀；先给同一目标挂被动，W 躲普攻和盾墙错开使用。",
-      "risk": "缺少远程清线，布隆盾墙不能挡下所有技能。",
+      "why": "尼菈可在安全近身时协助叠布隆被动，双方按实际攻击与保护窗口接力。",
+      "plan": "布隆 Q 或普攻击中敌方英雄后，确认不在免叠层期且实际挂上第一层；双方再按同一目标与安全距离普攻叠层，实际四层才眩晕。 尼菈 Q 命中后按射程和对方控制判断接触；W 触及布隆才共享闪避，与 E 盾墙按实际威胁错开。 布隆 E 对准弹体来向，W 留可接应友军或小兵；目标离开、安全退出单位不存在或保护距离断开时停止深入。",
+      "risk": "双近身易受长手消耗；尼菈 W 不免所有技能，布隆 E 也不保证挡下全部伤害。",
       "partners": [
         "Sejuani",
         "Orianna"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-06",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 尼菈技能资料",
@@ -13796,20 +13962,34 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Braum.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Nilah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nilah.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Braum 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Braum.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "nilah-sustain",
-        "support": "braum-peel"
-      },
       "reviewBaseline": {
-        "champion:Nilah": "040a6c8c12c965e3",
-        "champion:Braum": "4726b43beaea9728",
+        "champion:Nilah": "30e5ef1b4f79390e",
+        "champion:Braum": "ae3aa48403ffcbe5",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
-        "item:3072": "5c29525fccb26a37",
-        "item:3006": "d8d9fde1f7908326",
         "item:3036": "fcf5de31162e9e9d",
+        "item:3006": "d8d9fde1f7908326",
+        "item:3072": "5c29525fccb26a37",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
@@ -13836,7 +14016,79 @@
         "rune:8242": "37935df8d31dd429",
         "rune:8306": "68d4bd3d69d9d19c"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Nilah",
+          "loadoutId": "nilah-sustain",
+          "job": "尼菈负责补刀，Q 命中敌方单位或建筑后才有额外射程；W 接触友军才共享闪避，不能免所有技能，E 进场前确认有效退出单位。"
+        },
+        {
+          "role": "support",
+          "champion": "Braum",
+          "loadoutId": "braum-peel",
+          "job": "Q 或普攻命中敌方英雄后，确认不在免叠层期且实际挂上首层才报目标，四层才眩晕；E 对准弹体来向，W 留可接应友军或小兵，不为叠层离开射手。"
+        }
+      ],
+      "steps": [
+        "布隆 Q 或普攻击中敌方英雄后，确认不在免叠层期且实际挂上第一层；双方再按同一目标与安全距离普攻叠层，实际四层才眩晕。",
+        "尼菈 Q 命中后按射程和对方控制判断接触；W 触及布隆才共享闪避，与 E 盾墙按实际威胁错开。",
+        "布隆 E 对准弹体来向，W 留可接应友军或小兵；目标离开、安全退出单位不存在或保护距离断开时停止深入。"
+      ],
+      "window": "目标不在免叠层期且实际挂上首层、双方在安全距离并实际命中时接力；未挂上、目标脱离或退路不安全时停止追击。",
+      "early": "下路成员先保兵线、补刀与血量；布隆照看视野和接应路线，按真实等级与技能状态换血。",
+      "economy": "尼菈以补刀为主，布隆保留辅助任务与视野经济；双方配置是单英雄共享机制参考，不代表本组合实测配装。",
+      "reviewSourceAnchors": {
+        "Nilah": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "30e5ef1b4f79390e",
+          "observedAt": "2026-10-23T02:03:51.545Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nilah",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nilah/nilah.bin.json",
+              "sha256": "fb7dedbe829ca6073bed427ce77d930fe790697aa011d7096b2e696bde3f11fc"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2f18ee1a98588cd1"
+            }
+          }
+        },
+        "Braum": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "ae3aa48403ffcbe5",
+          "observedAt": "2026-10-23T02:03:51.454Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Braum",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/braum/braum.bin.json",
+              "sha256": "14ba3f22becfa225f217102f4a3afefbda7342212a388624b799162df15a68ef"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "e136059064aa1034"
+            }
+          }
+        }
+      }
     },
     {
       "id": "nilah-alistar",
@@ -36248,10 +36500,10 @@
         "aftershock"
       ],
       "priority": "QEW",
-      "first": "QWE",
-      "why": "钢铁烈阳和骑士之誓优先保实际承伤队友，盾墙对准来弹方向并保留 W 接应。Q 只挂被动和减速，要实际达到四层才眩晕；余震不能由单发 Q 减速触发，需四层眩晕或 R 击飞。基克要自己施放 R 且附近有敌人，不能在远处按绑定搭档常驻增益计算。",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-10",
+      "first": "QEW",
+      "why": "布隆 Q 或普攻击中敌方英雄后，先确认目标不在免叠层期且实际挂上第一层；布隆或友军安全普攻击中同一目标才继续叠层，达到四层才眩晕。目标刚被该被动眩晕后的免叠层期不能重新挂层，未挂上就不能按层数成立。W 跳范围内友方英雄或小兵接应，E 朝来向拦截弹体，不能阻挡所有伤害。守护者看友军受威胁，余震须被动眩晕或 R 击飞实际定身；骑士之誓需绑定且队友在附近，基克需自己施 R 且敌人在附近。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "reviewBaseline": {
         "champion:Braum": "ae3aa48403ffcbe5",
         "item:3190": "89cdf2838748dfc7",
@@ -36287,34 +36539,66 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/runesReforged.json",
           "kind": "符文触发依据",
           "checkedAt": "2026-10-10"
+        },
+        {
+          "name": "Riot · Braum 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Braum.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 16.21.1 装备",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/item.json",
+          "kind": "装备触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 16.21.1 符文",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/runesReforged.json",
+          "kind": "符文触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Mobalytics · 16.21 布隆辅助单英雄配置（非组合实测）",
+          "url": "https://mobalytics.gg/lol/champions/braum/build/support",
+          "kind": "单英雄统计参考",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
       "reviewSourceAnchors": {
         "Braum": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "ae3aa48403ffcbe5",
-          "observedAt": "2026-10-18T23:14:25.367Z",
+          "observedAt": "2026-10-23T02:03:51.454Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Braum",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/braum/braum.bin.json",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/braum/braum.bin.json",
               "sha256": "14ba3f22becfa225f217102f4a3afefbda7342212a388624b799162df15a68ef"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "e136059064aa1034"
             }
           }
         }
-      }
+      },
+      "skillOrder": "QEWQQRQEQEREEWWRWW",
+      "skillReason": "参考 Mobalytics 16.21 布隆辅助单英雄逐级加点；并非本组合实测，可按对线与接应需要调整。"
     },
     {
       "id": "renata-rescue",
