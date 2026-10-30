@@ -3,6 +3,7 @@ import {ROLES} from './core/rules.mjs';
 import {SHARDS} from './core/builds.mjs';
 import {creativeMemberCombo} from './core/creative-plan.mjs';
 import {duoPlayView} from './duo-play-view.mjs';
+import {subgroupNotice} from './subgroup-view.mjs';
 
 const roleName=id=>ROLES.find(r=>r.id===id)?.name||'位置未定';
 export function roomPlanSummary(config,data){
@@ -23,8 +24,8 @@ export function roomWorkspace({data,role,configurations,share,ownPlan,clientCont
    ${clientMessage?`<p class="bottom-note">${e(clientMessage)}</p>`:''}
   </div></section>
   <section class="${hasParty?'panel':'room-empty-section'} room-party-plan"><div class="panel-head"><div><h2>${strategy?e(strategy.name):'我们的配合方案'}</h2>${strategy?`<p>${e(strategy.plan)}</p>`:''}</div>${button('room-combinations','选择组合','spark','small')}</div><div class="panel-body">
-   ${strategy?`<div class="room-team-brief"><p><b>配合窗口</b> ${e(strategy.window)}</p><p><b>停止条件</b> ${e(strategy.caution)}</p></div>`:''}
-   <div class="room-local-roster">${configurations.map(c=>{const play=strategy?creativeMemberCombo(strategy,c.champion,c.role)?.play:null;return `<article class="room-local-member"><header>${portrait(champion(c.champion),'sm')}<div><b>${e(champion(c.champion)?.name)} · ${e(roleName(c.role))}</b><small>${c.role===role?'我的方案':'本机拟定 · 请与队友确认'}</small></div>${button('build','配置','sword','quiet small',`data-id="${c.champion}" data-role="${c.role}" data-mode="${c.mode}"`)}</header>${roomPlanSummary(c,data)}${play?`<details class="ui-disclosure"><summary>配合玩法与停止条件</summary>${duoPlayView(play,{compact:true})}</details>`:''}</article>`;}).join('')||'<p class="room-empty-copy">选择组合后查看配置与分工。</p>'}</div>
+   ${subgroupNotice(strategy,share?.lineup,data)}${strategy?`<div class="room-team-brief"><p><b>配合窗口</b> ${e(strategy.window)}</p><p><b>停止条件</b> ${e(strategy.caution)}</p></div>`:''}
+   <div class="room-local-roster">${configurations.map(c=>{const play=strategy?creativeMemberCombo(strategy,c.champion,c.role)?.play:null;return `<article class="room-local-member"><header>${portrait(champion(c.champion),'sm')}<div><b>${e(champion(c.champion)?.name)} · ${e(roleName(c.role))}</b><small>${c.role===role?'我的方案':'本机拟定 · 请与队友确认'}</small></div>${button('build','配置','sword','quiet small',`data-id="${c.champion}" data-role="${c.role}" data-mode="${c.mode}"`)}</header>${roomPlanSummary(c,data)}${play?`<details class="ui-disclosure"><summary>配合玩法与停止条件</summary>${duoPlayView(play,{compact:true,currentPatch:data.patch})}</details>`:''}</article>`;}).join('')||'<p class="room-empty-copy">选择组合后查看配置与分工。</p>'}</div>
    ${strategy?button('room-copy-plan','复制配合与配置','copy','small'):''}
   </div></section>
   ${connected?`<section id="room-connection" class="room-connection-section" aria-label="连接房间与队友分享"><h2>队友的实际分享</h2>${connection}</section>`:''}

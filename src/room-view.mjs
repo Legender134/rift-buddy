@@ -5,6 +5,7 @@ import {roomPreparation} from './core/room-configuration.mjs';
 import {SHARDS} from './core/builds.mjs';
 import {creativeMemberCombo} from './core/creative-plan.mjs';
 import {duoPlayView} from './duo-play-view.mjs';
+import {stageVersionNotice} from './core/stage-versions.mjs';
 import {DEFAULT_RELAY_URL} from './core/room-relay.mjs';
 import {cleanSharedChampionUsage} from './core/room-champion-usage.mjs';
 
@@ -101,10 +102,10 @@ export function roomConfigurationText(config,data,from,strategy){
  const champion=data.champions.find(c=>c.id===config.champion),runes=new Map(data.runes.flatMap(t=>t.slots.flatMap(s=>s.runes.map(r=>[r.id,r.name]))));
  const names=ids=>ids.map(id=>data.items[id]?.name||`装备 #${id}`).join(' → ')||'未提供';
  const order=config.skills||config.first,coverage=order&&order.length<18?`；仅覆盖前 ${order.length} 个技能点；发送方未提供后续逐级加点，后续按游戏内可升级选项核对。`:'';
- const play=strategy?.members?.some(m=>m.champion===config.champion&&m.role===config.role)?creativeMemberCombo(strategy,config.champion,config.role)?.play:null;
+ const member=!!strategy?.members?.some(m=>m.champion===config.champion&&m.role===config.role),play=member?creativeMemberCombo(strategy,config.champion,config.role)?.play:null;
  return [`${from} 分享：${champion?.name||config.champion} · ${roleName(config.role)} · ${config.mode==='hex'?'海克斯':'峡谷'} · 资料 ${config.patch}`,
-  ...(strategy?[`组合：${strategy.name}；${strategy.plan}`,`窗口：${strategy.window}；停止：${strategy.caution}`]:[]),
-  ...(play?Object.values(play.stages).map(stage=>`${stage.label}：${stage.ownAction}\n${stage.steps.join(' → ')}\n窗口：${stage.window}\n停止：${stage.exit}`):[]),
+  ...(strategy?[`配合成员：${strategy.members.map(m=>roleName(m.role)+'·'+(data.champions.find(c=>c.id===m.champion)?.name||m.champion)).join('、')}`,`组合：${strategy.name}；${strategy.plan}`,`窗口：${strategy.window}；停止：${strategy.caution}`]:[]),
+  ...(play?Object.values(play.stages).map(stage=>{const notice=stageVersionNotice(stage,play,data.patch);return `${stage.label}${notice?' · '+notice:''}：${stage.ownAction}\n${stage.steps.join(' → ')}\n窗口：${stage.window}\n停止：${stage.exit}`;}):strategy?[member?'旧方案未保存阶段分工。':'此英雄不在所分享组合的成员中；该英雄配置为单独参考。']:[]),
   `出门：${names(config.start)}`,`装备计划：${names(config.items)}`,`鞋子：${names(config.boots)}`,`召唤师技能：${config.spells.map(id=>data.spells[id]?.name||id).join(' / ')}`,
   `完整符文：${config.runes?config.runes.selectedPerkIds.map(id=>runes.get(id)||SHARDS[id]||`符文 #${id}`).join(' / '):'发送方未提供可用符文页'}`,
   ...(config.attributePlan?attributeLines(config.attributePlan):[`${order?.length===3?'开局三点':'逐级加点'}：${order?order.split('').map((s,i)=>`${i+1}级 ${s}`).join(' → '):'发送方未提供后续逐级加点'}${coverage}`]),
@@ -117,8 +118,8 @@ export function roomConfigurationDialog(config,data,from,strategy,{localStrategy
  const names=ids=>ids.map(id=>e(data.items[id]?.name||`装备 #${id}`)).join(' → ')||'未提供';
  let adoptionError='',adoption=null;try{adoption=roomPreparation(config,data,strategy,{localStrategy});}catch(error){adoptionError=error.message;}
  const keepsLocal=adoption?.creativePlan&&strategy&&adoption.creativePlan.id!==strategy.id;
- const page=config.runes,play=strategy?.members?.some(m=>m.champion===config.champion&&m.role===config.role)?creativeMemberCombo(strategy,config.champion,config.role)?.play:null;
- const strategyHtml=strategy?`<section class="detail-section" data-room-section="strategy"><h3>发送方组合 · ${e(strategy.name)}</h3><p>${e(strategy.plan)}</p><p><b>成立窗口：</b>${e(strategy.window)}</p><p class="decision-caution"><b>停止条件：</b>${e(strategy.caution)}</p>${play?duoPlayView(play):'<p>此英雄不在所分享组合的成员中；上方为单独配置。</p>'}<p class="bottom-note">保存资料 ${e(strategy.dataVersion)} · 机制整理参考，未经真实组合对局验证；不是本局敌人或技能就绪判断。</p></section>`:'';
+ const page=config.runes,member=!!strategy?.members?.some(m=>m.champion===config.champion&&m.role===config.role),play=member?creativeMemberCombo(strategy,config.champion,config.role)?.play:null;
+ const strategyHtml=strategy?`<section class="detail-section" data-room-section="strategy"><h3>发送方组合 · ${e(strategy.name)}</h3><p class="bottom-note">配合成员：${strategy.members.map(m=>e(roleName(m.role)+'·'+(data.champions.find(c=>c.id===m.champion)?.name||m.champion))).join('、')}</p><p>${e(strategy.plan)}</p><p><b>成立窗口：</b>${e(strategy.window)}</p><p class="decision-caution"><b>停止条件：</b>${e(strategy.caution)}</p>${play?duoPlayView(play,{currentPatch:data.patch}):member?'<p>旧方案未保存阶段分工。</p>':'<p>此英雄不在所分享组合的成员中；上方为单独配置。</p>'}<p class="bottom-note">保存资料 ${e(strategy.dataVersion)} · 机制整理参考，未经真实组合对局验证；不是本局敌人或技能就绪判断。</p></section>`:'';
  const gearHtml=`<section class="detail-section" data-room-section="gear"><h3>发送方装备计划</h3><p>出门：${names(config.start)}</p><p>装备：${names(config.items)}</p><p>鞋子：${names(config.boots)}</p></section>`;
  const runeHtml=`<section class="detail-section" data-room-section="runes"><h3>发送方完整符文与碎片</h3>${page?`<p>${e(trees.get(page.primaryStyleId)?.name||`符文系 #${page.primaryStyleId}`)} / ${e(trees.get(page.subStyleId)?.name||`符文系 #${page.subStyleId}`)}</p><div class="room-runes">${page.selectedPerkIds.map(id=>`<span>${e(runes.get(id)?.name||SHARDS[id]||`未知符文 #${id}`)} <small>#${id}</small></span>`).join('')}</div>`:'<p>发送方未提供可用符文页；海克斯不应用峡谷符文。</p>'}</section>`;
  const order=config.skills||config.first;
