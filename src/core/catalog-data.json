@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.30.8",
+  "version": "2026.10.30.9",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
-  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。 2026-10-30复核尼菈与阿利斯塔、索拉卡两套下路配合；复用已审共享配置，索拉卡为位置默认配置，机制整理不代表组合实测。 2026-10-30复核布隆辅助共享配置与艾希、霞、尼菈三套下路配合的16.21触发和退出；单英雄配置参考不代表组合实测，其他组合保留旧状态。 2026-10-30复核布隆与金克丝、厄斐琉斯、薇恩、克格莫、斯莫德五套下路配合；复用布隆共享配置，射手为位置默认配置，机制整理不代表组合实测。 2026-10-30复核九套下路双人及加里奥、尼菈、洛三人配合的当前技能条件和退出；复用共享配置及位置默认资料不代表组合专配或实测。 2026-10-30复核悠米五套搭档、三套下路配合和特朗德尔/艾希/布隆三人配合；位置参考与共享配置不代表组合专配或实测。 2026-10-30复核莎弥拉六套配合及千珏/尼菈/塔里克三人配合；共享机制配置和单英雄加点不代表组合实测。",
+  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。 2026-10-30复核尼菈与阿利斯塔、索拉卡两套下路配合；复用已审共享配置，索拉卡为位置默认配置，机制整理不代表组合实测。 2026-10-30复核布隆辅助共享配置与艾希、霞、尼菈三套下路配合的16.21触发和退出；单英雄配置参考不代表组合实测，其他组合保留旧状态。 2026-10-30复核布隆与金克丝、厄斐琉斯、薇恩、克格莫、斯莫德五套下路配合；复用布隆共享配置，射手为位置默认配置，机制整理不代表组合实测。 2026-10-30复核九套下路双人及加里奥、尼菈、洛三人配合的当前技能条件和退出；复用共享配置及位置默认资料不代表组合专配或实测。 2026-10-30复核悠米五套搭档、三套下路配合和特朗德尔/艾希/布隆三人配合；位置参考与共享配置不代表组合专配或实测。 2026-10-30复核莎弥拉六套配合及千珏/尼菈/塔里克三人配合；共享机制配置和单英雄加点不代表组合实测。 2026-10-30复核烬与九名辅助的技能配合；旧普通装备与符文不作为组合必要条件，同位置参考按来源状态显示。",
   "source": {
     "date": "2026-10-06",
     "patch": "16.19",
@@ -404,8 +404,6 @@
     },
     {
       "id": "rose-thorns",
-      "carry": "Jhin",
-      "support": "Zyra",
       "name": "花园留客",
       "style": "fun",
       "difficulty": "适中",
@@ -413,16 +411,16 @@
         "远程接控",
         "区域封锁"
       ],
-      "why": "婕拉技能与植物制造命中机会，烬用 W 接住控制链。",
-      "plan": "烬补刀。婕拉先消耗，烬接 W；打团利用植物与大招分割战场。",
-      "risk": "两人都缺少位移，压线时需要防绕后。",
+      "why": "婕拉的技能实际伤害目标后，烬可在标记有效期内用 W 接同一目标；E 若命中提供独立禁锢。 W 命中时标记仍有效才禁锢。",
+      "plan": "烬下路补刀，婕拉辅助兼顾视野。婕拉 Q 或 E 实际伤害敌方英雄后报目标；烬确认 W 已学会可用、射线上的首个敌方英雄就是该目标，再在标记期内射击。婕拉 R 若可用，以目标实际停留位置判断延迟击飞。 留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。",
+      "risk": "两人都缺少可靠位移；敌人绕侧、婕拉落空或烬射线被其他英雄挡住时，不追进危险位置。植物单独伤害是否触发烬 W 仍待核，不把它作为必要标记来源。",
       "partners": [
         "Sejuani",
         "Galio",
         "Poppy"
       ],
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 烬技能资料",
@@ -435,35 +433,92 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Zyra.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能原文",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "jhin-control",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Jhin": "cc35368c11100f62",
-        "champion:Zyra": "7c484794dc761405",
-        "item:6676": "f75b10fbdb261e7f",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3094": "fe69f998d9961e0d",
-        "item:3009": "f95ed3b88b918eed",
-        "item:3036": "fcf5de31162e9e9d",
-        "item:3072": "5c29525fccb26a37",
-        "rune:8021": "bffe59ad8f3db438",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9103": "7d88abbfc22dd0df",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8347": "def2a55844436c47",
-        "rune:8128": "d4f527472e056bb3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea"
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Zyra": "f653495a90d1586e"
       },
-      "tempo": "poke"
+      "tempo": "poke",
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "优先补刀并观察弹药和退路；辅助实际伤害目标后，确认 W 可用及目标为弹道首个敌方英雄，留足施法和弹道时间。命中时标记仍有效才禁锢。"
+        },
+        {
+          "champion": "Zyra",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "优先完成辅助任务和安全视野；Q/E 实际伤害敌方英雄后报目标，R 可用时留意延迟和敌人位置。"
+        }
+      ],
+      "steps": [
+        "烬下路补刀，婕拉辅助兼顾视野。",
+        "婕拉 Q 或 E 实际伤害敌方英雄后报目标；烬确认 W 已学会可用、射线上的首个敌方英雄就是该目标，再在标记期内射击。",
+        "婕拉 R 若可用，以目标实际停留位置判断延迟击飞。",
+        "留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。"
+      ],
+      "early": "烬先保补刀和经验；辅助按双方血量、技能、兵线与视野决定是否消耗，不预设已学 R。",
+      "window": "辅助实际伤害同一敌方英雄，烬 W 已学可用，预计 W 命中时标记仍有效、目标为弹道首个敌方英雄，且双方有安全退路时。",
+      "economy": "烬补刀，辅助完成辅助任务和安全视野；各自装备与符文使用同英雄同位置参考，来源缺失或缓存过旧时按页面提示核对，并非组合作者专配。",
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Zyra": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "f653495a90d1586e",
+          "observedAt": "2026-10-23T02:03:51.644Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Zyra",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/zyra/zyra.bin.json",
+              "sha256": "18f1cd91897b66a60a6c5c3b7205668e4c2ceb6305ce5e1e4e86d0cf649f89d3"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "e6ad7484cbc1effe"
+            }
+          }
+        }
+      }
     },
     {
       "id": "trap-light",
@@ -2093,8 +2148,6 @@
     },
     {
       "id": "jin-swain",
-      "carry": "Jhin",
-      "support": "Swain",
       "name": "禁锢与乌鸦",
       "style": "fun",
       "difficulty": "适中",
@@ -2102,16 +2155,16 @@
         "控制衔接",
         "中距离拉扯"
       ],
-      "why": "斯维因先命中技能，烬接 W 限制移动，为后续输出创造机会。",
-      "plan": "烬补刀。先在安全距离消耗，控制命中后再考虑跟进。",
-      "risk": "斯维因与烬的理想距离不同，开大后不要过度脱离队友。",
+      "why": "斯维因实际伤害同一敌方英雄后，烬可在标记有效期内用 W 尝试禁锢；斯维因 E 的返回段可另行禁锢。 W 命中时标记仍有效才禁锢。",
+      "plan": "烬下路补刀，斯维因辅助负责安全消耗与视野。斯维因 E 返回爆炸实际命中目标，或 W 延迟后实际造成英雄伤害，报同一目标；烬确认 W 已学会可用、首个敌方英雄与标记窗口，再射击。E 实际禁锢英雄后，斯维因才按落点决定是否重施拉回。 留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。",
+      "risk": "E 返回落空、W 区域被避开、敌人挡住烬 W 或双方距离不利时停止追击；烬换弹期间斯维因不要独自深入。",
       "partners": [
         "JarvanIV",
         "Sejuani",
         "Orianna"
       ],
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 烬技能资料",
@@ -2124,35 +2177,92 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Swain.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能原文",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "jhin-control",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Jhin": "cc35368c11100f62",
-        "champion:Swain": "2f1ca8910269fb77",
-        "item:6676": "f75b10fbdb261e7f",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3094": "fe69f998d9961e0d",
-        "item:3009": "f95ed3b88b918eed",
-        "item:3036": "fcf5de31162e9e9d",
-        "item:3072": "5c29525fccb26a37",
-        "rune:8021": "bffe59ad8f3db438",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9103": "7d88abbfc22dd0df",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8347": "def2a55844436c47",
-        "rune:8128": "d4f527472e056bb3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea"
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Swain": "2df9ea554c5ac91d"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "优先补刀并观察弹药和退路；辅助实际伤害目标后，确认 W 可用及目标为弹道首个敌方英雄，留足施法和弹道时间。命中时标记仍有效才禁锢。"
+        },
+        {
+          "champion": "Swain",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "优先完成辅助任务和安全视野；E 返回爆炸或 W 实际伤害英雄后报目标，E 实际禁锢后再判断是否拉回。"
+        }
+      ],
+      "steps": [
+        "烬下路补刀，斯维因辅助负责安全消耗与视野。",
+        "斯维因 E 返回爆炸实际命中目标，或 W 延迟后实际造成英雄伤害，报同一目标；烬确认 W 已学会可用、首个敌方英雄与标记窗口，再射击。",
+        "E 实际禁锢英雄后，斯维因才按落点决定是否重施拉回。",
+        "留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。"
+      ],
+      "early": "烬先保补刀和经验；辅助按双方血量、技能、兵线与视野决定是否消耗，不预设已学 R。",
+      "window": "辅助实际伤害同一敌方英雄，烬 W 已学可用，预计 W 命中时标记仍有效、目标为弹道首个敌方英雄，且双方有安全退路时。",
+      "economy": "烬补刀，辅助完成辅助任务和安全视野；各自装备与符文使用同英雄同位置参考，来源缺失或缓存过旧时按页面提示核对，并非组合作者专配。",
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Swain": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "2df9ea554c5ac91d",
+          "observedAt": "2026-10-23T02:03:51.632Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Swain",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/swain/swain.bin.json",
+              "sha256": "f60a7fef52ba32c6cf5ee594ce5296229f8b0030d8f5082cf9ac17c03ddc74f8"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "f08241c738bc1369"
+            }
+          }
+        }
+      }
     },
     {
       "id": "ez-karma",
@@ -2766,24 +2876,22 @@
     },
     {
       "id": "jhin-nami",
-      "carry": "Jhin",
-      "support": "Nami",
       "name": "潮汐谢幕",
       "style": "balanced",
       "tags": [
         "远程接控",
         "换血回复"
       ],
-      "why": "娜美先命中技能，烬 W 接禁锢；增益帮助短换血。",
-      "plan": "烬补刀；娜美先消耗或减速，烬接 W，泡泡用于续控或保护。",
-      "risk": "泡泡容易空；烬换弹时不要继续追击。",
+      "why": "娜美 Q 或 W 实际伤害敌方英雄后，烬可在标记期内用 W 尝试禁锢；娜美 E 增益来自技能本身。 W 命中时标记仍有效才禁锢。",
+      "plan": "烬下路补刀，娜美辅助兼顾视野与保护。娜美 Q 命中，或 W 弹到敌方英雄并实际造成伤害后报同一目标；烬确认 W 可用、目标是首个敌方英雄且标记仍在再射击。娜美 E 强化友方有限次数的普攻与技能，具体是否跟进以增益剩余时间和双方位置为准。 留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。",
+      "risk": "Q 落空、W 没有弹到敌人、烬换弹或退路不安全时停止追击；E 的赋能不证明指定装备或符文已触发。",
       "partners": [
         "Vi",
         "Sejuani"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 烬技能资料",
@@ -2796,67 +2904,111 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nami.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能原文",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "jhin-control",
-        "support": "nami-empower"
-      },
       "reviewBaseline": {
-        "champion:Jhin": "cc35368c11100f62",
-        "champion:Nami": "6a067b32874ba55a",
-        "item:6676": "f75b10fbdb261e7f",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3094": "fe69f998d9961e0d",
-        "item:3009": "f95ed3b88b918eed",
-        "item:3036": "fcf5de31162e9e9d",
-        "item:3072": "5c29525fccb26a37",
-        "rune:8021": "bffe59ad8f3db438",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9103": "7d88abbfc22dd0df",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8347": "def2a55844436c47",
-        "rune:8128": "d4f527472e056bb3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea",
-        "item:4005": "049fc32e0486e5b6",
-        "item:6620": "cfb94d4a02cc64c8",
-        "item:3107": "53bdbba0a53ca5c6",
-        "item:3158": "72ca672b9221f063",
-        "item:6617": "6dccd52cee1f2c6e",
-        "rune:8214": "6d3b2bf192d500da",
-        "rune:8236": "a1bb7cfc15c3d089",
-        "rune:8463": "3296414353df0e65",
-        "rune:8453": "f9a0180e7f2f0432",
-        "rune:8465": "4b16b0cca812d727",
-        "rune:8473": "ed2f46234183276d"
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Nami": "b10366f1187813b9"
       },
-      "tempo": "poke"
+      "tempo": "poke",
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "优先补刀并观察弹药和退路；辅助实际伤害目标后，确认 W 可用及目标为弹道首个敌方英雄，留足施法和弹道时间。命中时标记仍有效才禁锢。"
+        },
+        {
+          "champion": "Nami",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "优先完成辅助任务与保护；Q 命中或 W 实际伤害敌方英雄后报目标，E 按友军距离及增益时机使用。"
+        }
+      ],
+      "steps": [
+        "烬下路补刀，娜美辅助兼顾视野与保护。",
+        "娜美 Q 命中，或 W 弹到敌方英雄并实际造成伤害后报同一目标；烬确认 W 可用、目标是首个敌方英雄且标记仍在再射击。",
+        "娜美 E 强化友方有限次数的普攻与技能，具体是否跟进以增益剩余时间和双方位置为准。",
+        "留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。"
+      ],
+      "early": "烬先保补刀和经验；辅助按双方血量、技能、兵线与视野决定是否消耗，不预设已学 R。",
+      "window": "辅助实际伤害同一敌方英雄，烬 W 已学可用，预计 W 命中时标记仍有效、目标为弹道首个敌方英雄，且双方有安全退路时。",
+      "economy": "烬补刀，辅助完成辅助任务和安全视野；各自装备与符文使用同英雄同位置参考，来源缺失或缓存过旧时按页面提示核对，并非组合作者专配。",
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Nami": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "b10366f1187813b9",
+          "observedAt": "2026-10-23T02:03:51.543Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nami",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nami/nami.bin.json",
+              "sha256": "aba90cdddcd8bfe1cf6688273adc153f996acc12cf73890f4f10f8cf80acf104"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "d41e55e60af3c37e"
+            }
+          }
+        }
+      }
     },
     {
       "id": "jhin-xerath",
-      "carry": "Jhin",
-      "support": "Xerath",
       "name": "远程双狙",
       "style": "fun",
       "tags": [
         "远程消耗",
         "接控"
       ],
-      "why": "泽拉斯技能先命中，烬 W 接住标记目标，两人可远程收尾。",
-      "plan": "烬补刀；泽拉斯消耗后叫烬接 W，大招时互相照看侧翼。",
-      "risk": "缺少位移和前排，怕突进；站得太远也会漏掉普攻输出。",
+      "why": "泽拉斯先实际伤害目标，烬可在标记窗口内用 W 接同一目标，两人从安全距离进行后续消耗。 W 命中时标记仍有效才禁锢。",
+      "plan": "烬下路补刀，泽拉斯辅助兼顾视野。泽拉斯 Q、W 或 E 实际伤害敌方英雄后报目标；烬确认 W 已学会可用且目标是弹道首个敌方英雄，在标记期内尝试命中。泽拉斯 E 命中首个敌人，晕眩时间随飞行距离变化。 留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。",
+      "risk": "泽拉斯蓄力或引导时侧翼暴露；技能落空、被突进或双方无法安全覆盖目标时后撤，不因射程盲追。",
       "partners": [
         "Shen",
         "Poppy"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 烬技能资料",
@@ -2869,56 +3021,111 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Xerath.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能原文",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "jhin-control",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Jhin": "cc35368c11100f62",
-        "champion:Xerath": "8686c1e8e481fd88",
-        "item:6676": "f75b10fbdb261e7f",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3094": "fe69f998d9961e0d",
-        "item:3009": "f95ed3b88b918eed",
-        "item:3036": "fcf5de31162e9e9d",
-        "item:3072": "5c29525fccb26a37",
-        "rune:8021": "bffe59ad8f3db438",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9103": "7d88abbfc22dd0df",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8347": "def2a55844436c47",
-        "rune:8128": "d4f527472e056bb3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea"
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Xerath": "c6bf3b1c613437cd"
       },
-      "tempo": "poke"
+      "tempo": "poke",
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "优先补刀并观察弹药和退路；辅助实际伤害目标后，确认 W 可用及目标为弹道首个敌方英雄，留足施法和弹道时间。命中时标记仍有效才禁锢。"
+        },
+        {
+          "champion": "Xerath",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "优先完成辅助任务和安全视野；Q/W/E 实际伤害英雄后报目标，蓄力时留意侧翼及退路。"
+        }
+      ],
+      "steps": [
+        "烬下路补刀，泽拉斯辅助兼顾视野。",
+        "泽拉斯 Q、W 或 E 实际伤害敌方英雄后报目标；烬确认 W 已学会可用且目标是弹道首个敌方英雄，在标记期内尝试命中。",
+        "泽拉斯 E 命中首个敌人，晕眩时间随飞行距离变化。",
+        "留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。"
+      ],
+      "early": "烬先保补刀和经验；辅助按双方血量、技能、兵线与视野决定是否消耗，不预设已学 R。",
+      "window": "辅助实际伤害同一敌方英雄，烬 W 已学可用，预计 W 命中时标记仍有效、目标为弹道首个敌方英雄，且双方有安全退路时。",
+      "economy": "烬补刀，辅助完成辅助任务和安全视野；各自装备与符文使用同英雄同位置参考，来源缺失或缓存过旧时按页面提示核对，并非组合作者专配。",
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Xerath": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "c6bf3b1c613437cd",
+          "observedAt": "2026-10-23T02:03:51.640Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Xerath",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/xerath/xerath.bin.json",
+              "sha256": "cd93216a854d592f605c11be9bb9e00acd9f35dab0bf98828909809f94145796"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "fe85c3d422f63fd0"
+            }
+          }
+        }
+      }
     },
     {
       "id": "jhin-velkoz",
-      "carry": "Jhin",
-      "support": "Velkoz",
       "name": "几何定身",
       "style": "fun",
       "tags": [
         "远程接控",
         "法术补伤"
       ],
-      "why": "维克兹消耗标记目标，烬 W 帮助限制移动，便于后续技能命中。",
-      "plan": "烬补刀；先命中消耗再接 W，维克兹留 E 对付突进。",
-      "risk": "大招站桩容易被打断，压线需要视野。",
+      "why": "维克兹先实际伤害目标，烬可在标记期内尝试 W 禁锢；维克兹 E 可视贴近威胁用于反制。 W 命中时标记仍有效才禁锢。",
+      "plan": "烬下路补刀，维克兹辅助兼顾视野。维克兹 Q 或 W 实际伤害敌方英雄后报目标，烬确认已学会 W 且弹道首个敌方英雄为目标，再在标记期内射击；维克兹 E 实际命中后才算发生击飞或近处击退。 留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。",
+      "risk": "Q 可被前方目标截住，R 需要引导；侧翼不安全、目标走出射线或技能落空时停止追击。",
       "partners": [
         "Sejuani",
         "Galio"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 烬技能资料",
@@ -2931,56 +3138,110 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Velkoz.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能原文",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "jhin-control",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Jhin": "cc35368c11100f62",
-        "champion:Velkoz": "06abcf2e8bb52be6",
-        "item:6676": "f75b10fbdb261e7f",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3094": "fe69f998d9961e0d",
-        "item:3009": "f95ed3b88b918eed",
-        "item:3036": "fcf5de31162e9e9d",
-        "item:3072": "5c29525fccb26a37",
-        "rune:8021": "bffe59ad8f3db438",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9103": "7d88abbfc22dd0df",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8347": "def2a55844436c47",
-        "rune:8128": "d4f527472e056bb3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea"
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Velkoz": "4fc6f59617324dce"
       },
-      "tempo": "poke"
+      "tempo": "poke",
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "优先补刀并观察弹药和退路；辅助实际伤害目标后，确认 W 可用及目标为弹道首个敌方英雄，留足施法和弹道时间。命中时标记仍有效才禁锢。"
+        },
+        {
+          "champion": "Velkoz",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "优先完成辅助任务和安全视野；Q/W 实际伤害英雄后报目标，E 保留给需要反制的贴近威胁。"
+        }
+      ],
+      "steps": [
+        "烬下路补刀，维克兹辅助兼顾视野。",
+        "维克兹 Q 或 W 实际伤害敌方英雄后报目标，烬确认已学会 W 且弹道首个敌方英雄为目标，再在标记期内射击；维克兹 E 实际命中后才算发生击飞或近处击退。",
+        "留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。"
+      ],
+      "early": "烬先保补刀和经验；辅助按双方血量、技能、兵线与视野决定是否消耗，不预设已学 R。",
+      "window": "辅助实际伤害同一敌方英雄，烬 W 已学可用，预计 W 命中时标记仍有效、目标为弹道首个敌方英雄，且双方有安全退路时。",
+      "economy": "烬补刀，辅助完成辅助任务和安全视野；各自装备与符文使用同英雄同位置参考，来源缺失或缓存过旧时按页面提示核对，并非组合作者专配。",
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Velkoz": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "4fc6f59617324dce",
+          "observedAt": "2026-10-23T02:03:51.637Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Velkoz",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/velkoz/velkoz.bin.json",
+              "sha256": "d7083b07c94482f1814bd603cd7831d0de5fd1ba1170dc9b5ff386793ab08ffb"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "83d561abb744eab5"
+            }
+          }
+        }
+      }
     },
     {
       "id": "jhin-lux",
-      "carry": "Jhin",
-      "support": "Lux",
       "name": "禁锢双拍",
       "style": "balanced",
       "tags": [
         "控制接力",
         "远程爆发"
       ],
-      "why": "拉克丝技能标记目标后，烬 W 接禁锢，形成远程控制接力。",
-      "plan": "烬补刀；先用 E 消耗制造标记，再接 W 和 Q，控制错开使用。",
-      "risk": "两人都怕贴脸；别同时交掉所有保护技能。",
+      "why": "拉克丝 Q 或 E 爆炸实际伤害目标后，烬可在标记期内用 W 尝试禁锢；Q 命中时另有束缚。 W 命中时标记仍有效才禁锢。",
+      "plan": "烬下路补刀，拉克丝辅助兼顾视野。拉克丝 Q 命中敌方英雄，或由拉克丝引爆 E 并实际造成英雄伤害后报目标；烬确认 W 可用、射线的首个敌方英雄为该目标且标记未过期，再射击。双方 Q/W 实际命中后再评估是否跟进。 留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。",
+      "risk": "拉克丝 E 放置区域的减速本身不等于已造成伤害；Q 只束缚前两个敌方单位。侧翼不安全或射线被挡时撤退。",
       "partners": [
         "Vi",
         "JarvanIV"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 烬技能资料",
@@ -2993,56 +3254,111 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Lux.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能原文",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "jhin-control",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Jhin": "cc35368c11100f62",
-        "champion:Lux": "ca4ca5d4fa16b8c8",
-        "item:6676": "f75b10fbdb261e7f",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3094": "fe69f998d9961e0d",
-        "item:3009": "f95ed3b88b918eed",
-        "item:3036": "fcf5de31162e9e9d",
-        "item:3072": "5c29525fccb26a37",
-        "rune:8021": "bffe59ad8f3db438",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9103": "7d88abbfc22dd0df",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8347": "def2a55844436c47",
-        "rune:8128": "d4f527472e056bb3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea"
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Lux": "50314ad04c92f1a6"
       },
-      "tempo": "poke"
+      "tempo": "poke",
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "优先补刀并观察弹药和退路；辅助实际伤害目标后，确认 W 可用及目标为弹道首个敌方英雄，留足施法和弹道时间。命中时标记仍有效才禁锢。"
+        },
+        {
+          "champion": "Lux",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "优先完成辅助任务和安全视野；Q 命中或 E 爆炸实际伤害敌方英雄后报目标，留意弹道和退路。"
+        }
+      ],
+      "steps": [
+        "烬下路补刀，拉克丝辅助兼顾视野。",
+        "拉克丝 Q 命中敌方英雄，或由拉克丝引爆 E 并实际造成英雄伤害后报目标；烬确认 W 可用、射线的首个敌方英雄为该目标且标记未过期，再射击。",
+        "双方 Q/W 实际命中后再评估是否跟进。",
+        "留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。"
+      ],
+      "early": "烬先保补刀和经验；辅助按双方血量、技能、兵线与视野决定是否消耗，不预设已学 R。",
+      "window": "辅助实际伤害同一敌方英雄，烬 W 已学可用，预计 W 命中时标记仍有效、目标为弹道首个敌方英雄，且双方有安全退路时。",
+      "economy": "烬补刀，辅助完成辅助任务和安全视野；各自装备与符文使用同英雄同位置参考，来源缺失或缓存过旧时按页面提示核对，并非组合作者专配。",
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Lux": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "50314ad04c92f1a6",
+          "observedAt": "2026-10-23T02:03:51.540Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Lux",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/lux/lux.bin.json",
+              "sha256": "9223cdf0a3d94223309fc69eb0c3865444b2884004b443dbcd066e70ffe0b952"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "cc7818802b8d5fc7"
+            }
+          }
+        }
+      }
     },
     {
       "id": "jhin-leona",
-      "carry": "Jhin",
-      "support": "Leona",
       "name": "日光谢幕",
       "style": "balanced",
       "tags": [
         "先手控制",
         "爆发换血"
       ],
-      "why": "蕾欧娜先手限制移动，烬接 W 或第四枪。",
-      "plan": "烬补刀；烬有子弹且能跟上时蕾欧娜再进场。",
-      "risk": "烬装弹时跟进有限，辅助别独自打太深。",
+      "why": "蕾欧娜安全先手并实际造成英雄伤害后，烬可在标记期内 W 跟进；Q 需强化普攻实际命中才晕眩。 W 命中时标记仍有效才禁锢。",
+      "plan": "烬下路补刀，蕾欧娜辅助先确认烬可接应、弹药与退路。蕾欧娜 E 实际命中最后一名敌方英雄并到达安全落点后报位置；烬确认 W 可用、目标是弹道首个敌方英雄且标记有效再射击。蕾欧娜 Q 强化普攻须实际打中目标才眩晕。 留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。",
+      "risk": "E 命中错误英雄或无人跟到落点时取消深入；R 中心才晕，外围仅减速。烬换弹时不要假设有第四枪跟进。",
       "partners": [
         "Galio",
         "Lissandra"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 烬技能资料",
@@ -3055,56 +3371,111 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Leona.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能原文",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "jhin-control",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Jhin": "cc35368c11100f62",
-        "champion:Leona": "060aef3e3162ad2d",
-        "item:6676": "f75b10fbdb261e7f",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3094": "fe69f998d9961e0d",
-        "item:3009": "f95ed3b88b918eed",
-        "item:3036": "fcf5de31162e9e9d",
-        "item:3072": "5c29525fccb26a37",
-        "rune:8021": "bffe59ad8f3db438",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9103": "7d88abbfc22dd0df",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8347": "def2a55844436c47",
-        "rune:8128": "d4f527472e056bb3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea"
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Leona": "2b7d4e998553b365"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "优先补刀并观察弹药和退路；辅助实际伤害目标后，确认 W 可用及目标为弹道首个敌方英雄，留足施法和弹道时间。命中时标记仍有效才禁锢。"
+        },
+        {
+          "champion": "Leona",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "优先完成辅助任务和安全视野；E 确认目标与落点后报位置，Q 强化普攻实际命中才眩晕。"
+        }
+      ],
+      "steps": [
+        "烬下路补刀，蕾欧娜辅助先确认烬可接应、弹药与退路。",
+        "蕾欧娜 E 实际命中最后一名敌方英雄并到达安全落点后报位置；烬确认 W 可用、目标是弹道首个敌方英雄且标记有效再射击。",
+        "蕾欧娜 Q 强化普攻须实际打中目标才眩晕。",
+        "留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。"
+      ],
+      "early": "烬先保补刀和经验；辅助按双方血量、技能、兵线与视野决定是否消耗，不预设已学 R。",
+      "window": "辅助实际伤害同一敌方英雄，烬 W 已学可用，预计 W 命中时标记仍有效、目标为弹道首个敌方英雄，且双方有安全退路时。",
+      "economy": "烬补刀，辅助完成辅助任务和安全视野；各自装备与符文使用同英雄同位置参考，来源缺失或缓存过旧时按页面提示核对，并非组合作者专配。",
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Leona": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "2b7d4e998553b365",
+          "observedAt": "2026-10-23T02:03:51.536Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Leona",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/leona/leona.bin.json",
+              "sha256": "9064d034ca61a09ed84bff5f9f907af1d6e08ecf7a54ec2c58b1baa658480fd0"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "7ff3b8a69842091d"
+            }
+          }
+        }
+      }
     },
     {
       "id": "jhin-nautilus",
-      "carry": "Jhin",
-      "support": "Nautilus",
       "name": "深海四重奏",
       "style": "balanced",
       "tags": [
-        "稳定先手",
+        "条件先手",
         "控制接力"
       ],
-      "why": "泰坦先手，烬用 W 延长控制并寻找第四枪窗口。",
-      "plan": "烬补刀；先约好子弹状态，泰坦控制后烬跟进。",
-      "risk": "面对多前排时持续输出不足，需要第三人补足。",
+      "why": "诺提勒斯 Q 实际命中敌方英雄并造成伤害后，烬可在标记期内用 W 尝试接同一目标。 W 命中时标记仍有效才禁锢。",
+      "plan": "烬下路补刀，诺提勒斯辅助先确认烬跟进距离、弹药和退路。Q 钩子实际命中敌方英雄时双方会被拉近；烬确认 W 可用、首个敌方英雄为同一目标且标记有效后射击。诺提勒斯被动普攻的禁锢和 R 控制仅在各自条件成立时使用。 留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。",
+      "risk": "Q 命中小兵或地形不算钩中目标英雄；钩空、烬赶不到或落点不安全就取消深入。W 与先手重叠时不承诺延长控制。",
       "partners": [
         "Kindred",
         "Orianna"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 烬技能资料",
@@ -3117,56 +3488,111 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能原文",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "jhin-control",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Jhin": "cc35368c11100f62",
-        "champion:Nautilus": "89b73fd1b583624c",
-        "item:6676": "f75b10fbdb261e7f",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3094": "fe69f998d9961e0d",
-        "item:3009": "f95ed3b88b918eed",
-        "item:3036": "fcf5de31162e9e9d",
-        "item:3072": "5c29525fccb26a37",
-        "rune:8021": "bffe59ad8f3db438",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9103": "7d88abbfc22dd0df",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8347": "def2a55844436c47",
-        "rune:8128": "d4f527472e056bb3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea"
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "优先补刀并观察弹药和退路；辅助实际伤害目标后，确认 W 可用及目标为弹道首个敌方英雄，留足施法和弹道时间。命中时标记仍有效才禁锢。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "优先完成辅助任务和安全视野；Q 仅在实际命中目标英雄时报告先手，未命中或落点危险则撤退。"
+        }
+      ],
+      "steps": [
+        "烬下路补刀，诺提勒斯辅助先确认烬跟进距离、弹药和退路。",
+        "Q 钩子实际命中敌方英雄时双方会被拉近；烬确认 W 可用、首个敌方英雄为同一目标且标记有效后射击。",
+        "诺提勒斯被动普攻的禁锢和 R 控制仅在各自条件成立时使用。",
+        "留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。"
+      ],
+      "early": "烬先保补刀和经验；辅助按双方血量、技能、兵线与视野决定是否消耗，不预设已学 R。",
+      "window": "辅助实际伤害同一敌方英雄，烬 W 已学可用，预计 W 命中时标记仍有效、目标为弹道首个敌方英雄，且双方有安全退路时。",
+      "economy": "烬补刀，辅助完成辅助任务和安全视野；各自装备与符文使用同英雄同位置参考，来源缺失或缓存过旧时按页面提示核对，并非组合作者专配。",
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "jhin-bard",
-      "carry": "Jhin",
-      "support": "Bard",
       "name": "旅行者谢幕",
       "style": "fun",
       "tags": [
         "控制接力",
         "游走"
       ],
-      "why": "巴德消耗为烬 W 创造标记，凝滞也能争取包夹时间。",
-      "plan": "烬补刀；巴德游走前推线，远程控制用于接应而非盲目追杀。",
-      "risk": "巴德不在时烬要守安全线；大招可能救下对手。",
+      "why": "巴德 Q 实际伤害敌方英雄后，烬可在标记期内用 W 尝试禁锢；巴德 Q 眩晕需要额外条件。 W 命中时标记仍有效才禁锢。",
+      "plan": "烬下路补刀，巴德辅助先协商兵线与视野。巴德 Q 实际伤害目标后报同一英雄，烬确认 W 可用、首个敌方英雄与标记窗口再射击；巴德 Q 命中第二个敌人或墙体时才形成眩晕。巴德游走前先确保烬能安全处理兵线。 留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。",
+      "risk": "巴德不在时烬守安全线；巴德 R 会使区域内单位和防御塔凝滞，可能保护对手。通道敌我均可使用，退路不安全时停追。",
       "partners": [
         "Vi",
         "Galio"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 烬技能资料",
@@ -3179,35 +3605,92 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Bard.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能原文",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "jhin-control",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Jhin": "cc35368c11100f62",
-        "champion:Bard": "1cfeb08305868b88",
-        "item:6676": "f75b10fbdb261e7f",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3094": "fe69f998d9961e0d",
-        "item:3009": "f95ed3b88b918eed",
-        "item:3036": "fcf5de31162e9e9d",
-        "item:3072": "5c29525fccb26a37",
-        "rune:8021": "bffe59ad8f3db438",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9103": "7d88abbfc22dd0df",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8347": "def2a55844436c47",
-        "rune:8128": "d4f527472e056bb3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea"
+        "champion:Jhin": "226e6c11b8a992f5",
+        "champion:Bard": "59e4186e87276c5f"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Jhin",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "优先补刀并观察弹药和退路；辅助实际伤害目标后，确认 W 可用及目标为弹道首个敌方英雄，留足施法和弹道时间。命中时标记仍有效才禁锢。"
+        },
+        {
+          "champion": "Bard",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "优先完成辅助任务和安全视野；Q 实际伤害英雄后报目标，游走前先确认烬能安全处理兵线。"
+        }
+      ],
+      "steps": [
+        "烬下路补刀，巴德辅助先协商兵线与视野。",
+        "巴德 Q 实际伤害目标后报同一英雄，烬确认 W 可用、首个敌方英雄与标记窗口再射击；巴德 Q 命中第二个敌人或墙体时才形成眩晕。",
+        "巴德游走前先确保烬能安全处理兵线。",
+        "留足 W 的施法与弹道时间，命中目标时标记仍有效才会禁锢。"
+      ],
+      "early": "烬先保补刀和经验；辅助按双方血量、技能、兵线与视野决定是否消耗，不预设已学 R。",
+      "window": "辅助实际伤害同一敌方英雄，烬 W 已学可用，预计 W 命中时标记仍有效、目标为弹道首个敌方英雄，且双方有安全退路时。",
+      "economy": "烬补刀，辅助完成辅助任务和安全视野；各自装备与符文使用同英雄同位置参考，来源缺失或缓存过旧时按页面提示核对，并非组合作者专配。",
+      "reviewSourceAnchors": {
+        "Jhin": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "226e6c11b8a992f5",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Jhin",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jhin/jhin.bin.json",
+              "sha256": "8a8ab1af1ce47b0b95605ac535aa2e118c9ea15b494a4bd91b167ae39fe1cbc1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "3aaa1bcaed04d760"
+            }
+          }
+        },
+        "Bard": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "59e4186e87276c5f",
+          "observedAt": "2026-10-23T02:03:51.452Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Bard",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/bard/bard.bin.json",
+              "sha256": "4b73426120b4a794709001352620eeb7b5644f1b7c78d674aee68a5e2b0ac692"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "20f447261a6d2716"
+            }
+          }
+        }
+      }
     },
     {
       "id": "ashe-braum",
