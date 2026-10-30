@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.30.2",
+  "version": "2026.10.30.3",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
-  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。",
+  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。 2026-10-30复核尼菈与阿利斯塔、索拉卡两套下路配合；复用已审共享配置，索拉卡为位置默认配置，机制整理不代表组合实测。",
   "source": {
     "date": "2026-10-06",
     "patch": "16.19",
@@ -6658,24 +6658,22 @@
     },
     {
       "id": "nilah-soraka",
-      "carry": "Nilah",
-      "support": "Soraka",
       "name": "近战续航站",
       "style": "fun",
       "tags": [
         "回复保护",
         "持续作战"
       ],
-      "why": "索拉卡持续回复帮助尼菈维持近战作战状态，E 可限制追击。",
-      "plan": "尼菈补刀；保住索拉卡的位置，换血后回复再打一轮。",
-      "risk": "索拉卡怕被集火，不能只照顾尼菈忘记自身站位。",
+      "why": "索拉卡实际治疗可支持尼菈近身换血，尼菈分享附近友方治疗；双方需照看索拉卡自身生命与站位。",
+      "plan": "尼菈先保补刀与血量；索拉卡观察自身生命、蓝量、距离和退路。 索拉卡 Q 命中英雄获得活力焕发时可降低 W 生命消耗；急需治疗且自身状态允许时也可直接 W。尼菈确认 Q 命中、目标与退路后决定是否接近。 索拉卡 E 沉默区域内敌方英雄，只有区域消失时仍在其中的敌方英雄才被禁锢；血量不足、保护距离断开或退路受威胁时撤。",
+      "risk": "两人容易被集火；索拉卡 W 消耗生命，活力焕发时消耗降低，急需治疗且自身状态允许时无需先命中 Q；E 先沉默区域内敌方英雄，结束时仍在区域内的敌方英雄才被禁锢。尼菈 W 不免所有技能，治疗不能保证存活。",
       "partners": [
         "Shen",
         "Sejuani"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 尼菈技能资料",
@@ -6688,20 +6686,34 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Soraka.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Nilah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nilah.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Soraka 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Soraka.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "nilah-sustain",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Nilah": "040a6c8c12c965e3",
-        "champion:Soraka": "99175be210bfdbdd",
+        "champion:Nilah": "30e5ef1b4f79390e",
+        "champion:Soraka": "46ec394f508ebcc0",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
-        "item:3072": "5c29525fccb26a37",
-        "item:3006": "d8d9fde1f7908326",
         "item:3036": "fcf5de31162e9e9d",
+        "item:3006": "d8d9fde1f7908326",
+        "item:3072": "5c29525fccb26a37",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
@@ -6716,7 +6728,79 @@
         "rune:8345": "02157c1d4d7f7531",
         "rune:8410": "da4ec8f245880032"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Nilah",
+          "loadoutId": "nilah-sustain",
+          "job": "下路补刀；先保血量、兵线与退出路线，Q 命中敌方单位或建筑才有额外射程，E 冲向单位前确认可接应的退路。"
+        },
+        {
+          "role": "support",
+          "champion": "Soraka",
+          "loadoutId": "default",
+          "job": "辅助保持安全位置并管理自身生命；Q 命中英雄获得活力焕发时 W 消耗降低，急需治疗且自身状态允许时也可直接 W；E 区域内沉默，消失时敌方英雄仍在区域内才禁锢。"
+        }
+      ],
+      "steps": [
+        "尼菈先保补刀与血量；索拉卡观察自身生命、蓝量、距离和退路。",
+        "索拉卡 Q 命中英雄获得活力焕发时可降低 W 生命消耗；急需治疗且自身状态允许时也可直接 W。尼菈确认 Q 命中、目标与退路后决定是否接近。",
+        "索拉卡 E 沉默区域内敌方英雄，只有区域消失时仍在其中的敌方英雄才被禁锢；血量不足、保护距离断开或退路受威胁时撤。"
+      ],
+      "window": "双方技能实际可用、距离和退路成立时再行动；控制或保护没有实际生效就取消。",
+      "early": "尼菈先保补刀、经验与血量；辅助照看视野和兵线，按实际等级、蓝量和对手技能决定换血。",
+      "economy": "尼菈以补刀为主，索拉卡保留任务和视野经济；尼菈共享配置是机制参考，辅助为位置默认配置，来源以界面实际显示，不代表组合实测。",
+      "reviewSourceAnchors": {
+        "Nilah": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "30e5ef1b4f79390e",
+          "observedAt": "2026-10-23T02:03:51.545Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nilah",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nilah/nilah.bin.json",
+              "sha256": "fb7dedbe829ca6073bed427ce77d930fe790697aa011d7096b2e696bde3f11fc"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2f18ee1a98588cd1"
+            }
+          }
+        },
+        "Soraka": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "46ec394f508ebcc0",
+          "observedAt": "2026-10-23T02:03:51.632Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Soraka",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/soraka/soraka.bin.json",
+              "sha256": "efdf1cfccf0fbb6bb3de9f8e2e7e5641eb0e628955c602dbe93be699b2ce8e83"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "43b0fc1302f2816c"
+            }
+          }
+        }
+      }
     },
     {
       "id": "nilah-nautilus",
@@ -13756,24 +13840,22 @@
     },
     {
       "id": "nilah-alistar",
-      "carry": "Nilah",
-      "support": "Alistar",
       "name": "鞭牛入场",
       "style": "fun",
       "tags": [
-        "稳定击飞",
+        "击飞接力",
         "治疗联动"
       ],
-      "why": "阿利斯塔先手控制给尼菈进场空间，团队治疗与尼菈被动形成保护联动。",
-      "plan": "尼菈补刀；牛头先确认她能跟上，击退用于保护时不要把目标顶离大招。",
-      "risk": "都是近身英雄，前期补刀受压；控制空了先撤。",
+      "why": "阿利斯塔实际控制可为尼菈接近创造窗口，被动治疗与尼菈的治疗分享按实际生效条件计算。",
+      "plan": "尼菈先保补刀、血量和兵线；牛头确认两人距离、蓝量与退路。 牛头 Q 实际击飞且尼菈能够安全接近时，尼菈 Q 命中后再按实际射程接普攻；W 击退方向避免把目标推离队友。 牛头被动层数满时才治疗附近友军；控制落空、队友跟不上或撤退路线受威胁时停止追击。",
+      "risk": "双近战前期容易受远程消耗；牛头 W 可能改变目标位置，尼菈 W 不免所有技能，治疗和护盾不保证安全。",
       "partners": [
         "Sejuani",
         "Orianna"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-06",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 尼菈技能资料",
@@ -13786,20 +13868,34 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Alistar.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Nilah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nilah.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Alistar 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Alistar.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "nilah-sustain",
-        "support": "tank-peel"
-      },
       "reviewBaseline": {
-        "champion:Nilah": "040a6c8c12c965e3",
-        "champion:Alistar": "8a197011035cf22f",
+        "champion:Nilah": "30e5ef1b4f79390e",
+        "champion:Alistar": "e2aa1310b144ff1f",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
-        "item:3072": "5c29525fccb26a37",
-        "item:3006": "d8d9fde1f7908326",
         "item:3036": "fcf5de31162e9e9d",
+        "item:3006": "d8d9fde1f7908326",
+        "item:3072": "5c29525fccb26a37",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
@@ -13826,7 +13922,79 @@
         "rune:8242": "37935df8d31dd429",
         "rune:8306": "68d4bd3d69d9d19c"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Nilah",
+          "loadoutId": "nilah-sustain",
+          "job": "下路补刀；Q 命中敌方单位或建筑后才获得额外射程，确认牛头控制实际命中、距离和退路后再决定跟进；W 接触友军才能分享闪避，E 要有可用目标单位。"
+        },
+        {
+          "role": "support",
+          "champion": "Alistar",
+          "loadoutId": "tank-peel",
+          "job": "辅助先保视野与兵线；Q 实际命中才击飞，W 击退方向可能改变目标位置；被动层数满时才治疗附近友军，不能预支回复。"
+        }
+      ],
+      "steps": [
+        "尼菈先保补刀、血量和兵线；牛头确认两人距离、蓝量与退路。",
+        "牛头 Q 实际击飞且尼菈能够安全接近时，尼菈 Q 命中后再按实际射程接普攻；W 击退方向避免把目标推离队友。",
+        "牛头被动层数满时才治疗附近友军；控制落空、队友跟不上或撤退路线受威胁时停止追击。"
+      ],
+      "window": "双方技能实际可用、距离和退路成立时再行动；控制或保护没有实际生效就取消。",
+      "early": "尼菈先保补刀、经验与血量；辅助照看视野和兵线，按实际等级、蓝量和对手技能决定换血。",
+      "economy": "尼菈以补刀为主，牛头保留任务和视野经济；双方共享配置为机制参考，不代表本组合实测配装。",
+      "reviewSourceAnchors": {
+        "Nilah": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "30e5ef1b4f79390e",
+          "observedAt": "2026-10-23T02:03:51.545Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nilah",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nilah/nilah.bin.json",
+              "sha256": "fb7dedbe829ca6073bed427ce77d930fe790697aa011d7096b2e696bde3f11fc"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2f18ee1a98588cd1"
+            }
+          }
+        },
+        "Alistar": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "e2aa1310b144ff1f",
+          "observedAt": "2026-10-23T02:03:51.449Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Alistar",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/alistar/alistar.bin.json",
+              "sha256": "1cab5ab714cd3675401bd947d668313154162d93409f35b46612e509ec603e7b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "60b70b49d6326ac5"
+            }
+          }
+        }
+      }
     },
     {
       "id": "nilah-yuumi",
