@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.30.6",
+  "version": "2026.10.30.7",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
-  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。 2026-10-30复核尼菈与阿利斯塔、索拉卡两套下路配合；复用已审共享配置，索拉卡为位置默认配置，机制整理不代表组合实测。 2026-10-30复核布隆辅助共享配置与艾希、霞、尼菈三套下路配合的16.21触发和退出；单英雄配置参考不代表组合实测，其他组合保留旧状态。 2026-10-30复核布隆与金克丝、厄斐琉斯、薇恩、克格莫、斯莫德五套下路配合；复用布隆共享配置，射手为位置默认配置，机制整理不代表组合实测。 2026-10-30复核九套下路双人及加里奥、尼菈、洛三人配合的当前技能条件和退出；复用共享配置及位置默认资料不代表组合专配或实测。",
+  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。 2026-10-30复核尼菈与阿利斯塔、索拉卡两套下路配合；复用已审共享配置，索拉卡为位置默认配置，机制整理不代表组合实测。 2026-10-30复核布隆辅助共享配置与艾希、霞、尼菈三套下路配合的16.21触发和退出；单英雄配置参考不代表组合实测，其他组合保留旧状态。 2026-10-30复核布隆与金克丝、厄斐琉斯、薇恩、克格莫、斯莫德五套下路配合；复用布隆共享配置，射手为位置默认配置，机制整理不代表组合实测。 2026-10-30复核九套下路双人及加里奥、尼菈、洛三人配合的当前技能条件和退出；复用共享配置及位置默认资料不代表组合专配或实测。 2026-10-30复核悠米五套搭档、三套下路配合和特朗德尔/艾希/布隆三人配合；位置参考与共享配置不代表组合专配或实测。",
   "source": {
     "date": "2026-10-06",
     "patch": "16.19",
@@ -5007,24 +5007,22 @@
     },
     {
       "id": "twitch-yuumi",
-      "carry": "Twitch",
-      "support": "Yuumi",
       "name": "隐身猫车",
       "style": "fun",
       "tags": [
         "增益保护",
         "侧翼输出"
       ],
-      "why": "悠米附身跟随图奇，帮助隐身后的侧翼输出。",
-      "plan": "图奇补刀；先约好开火位置，悠米保留技能支撑输出窗口。",
-      "risk": "别把附身当作第二个前排，阵容需要别人探路。",
+      "why": "图奇寻找安全侧翼输出，悠米附身后按宿主状态提供保护。",
+      "plan": "确认兵线、可见威胁、双方血蓝与出口。 悠米实际附身，图奇 Q 伪装后选择安全位置，不预设无人发现。 安全开火，按 W 或普攻实际叠加的毒层与距离决定 E。 无法安全输出或退路受威胁时停止追击并撤回。",
+      "risk": "伪装不是完全隐形，防御塔仍可选取附身悠米；护盾非无敌，前方视野不明或宿主受集火时撤。",
       "partners": [
         "Shen",
         "Sejuani"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 图奇技能资料",
@@ -5037,17 +5035,98 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Yuumi.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Twitch 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Twitch.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Yuumi 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Yuumi.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Twitch": "111f0429fcbd016f",
-        "champion:Yuumi": "8878f62a7e5e6ec8"
+        "champion:Twitch": "ab3e76d629cf2787",
+        "champion:Yuumi": "74372983c2c1dbfe"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Twitch",
+          "loadoutId": "default",
+          "job": "下路补刀，报告 Q 状态、开火位置和撤退方向；Q 为伪装，W 命中后按目标实际毒层与距离决定 E。"
+        },
+        {
+          "role": "support",
+          "champion": "Yuumi",
+          "loadoutId": "default",
+          "job": "完成辅助任务和安全视野；确认 W 实际附身，按宿主受到的威胁使用 E，并提示技能状态。"
+        }
+      ],
+      "steps": [
+        "确认兵线、可见威胁、双方血蓝与出口。",
+        "悠米实际附身，图奇 Q 伪装后选择安全位置，不预设无人发现。",
+        "安全开火，按 W 或普攻实际叠加的毒层与距离决定 E。",
+        "无法安全输出或退路受威胁时停止追击并撤回。"
+      ],
+      "early": "优先守住补刀与血量，不为绕侧丢掉整波兵线或让宿主无路可退。",
+      "window": "附身、技能与开火角度均可用，且图奇能安全进出时才尝试；挚友效果以实际条件为准。",
+      "economy": "图奇补刀；悠米使用辅助任务经济，并在安全时布置视野。 双方配置使用各自位置参考。",
+      "reviewSourceAnchors": {
+        "Twitch": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "ab3e76d629cf2787",
+          "observedAt": "2026-10-23T02:03:51.636Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Twitch",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/twitch/twitch.bin.json",
+              "sha256": "53894a05d1e512a9fdbfd4d2898f70d6ee38c2339efe94316ffed1a165a58e2d"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "461e810ef4e30853"
+            }
+          }
+        },
+        "Yuumi": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "74372983c2c1dbfe",
+          "observedAt": "2026-10-23T02:03:51.642Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Yuumi",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/yuumi/yuumi.bin.json",
+              "sha256": "b65fd4e92df3a120fe88ee2ebd588f55a7f1a642f249c22d0668eae860f9c3aa"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2bfcd21ddb05bd3f"
+            }
+          }
+        }
+      }
     },
     {
       "id": "twitch-nami",
@@ -5169,24 +5248,22 @@
     },
     {
       "id": "zeri-yuumi",
-      "carry": "Zeri",
-      "support": "Yuumi",
       "name": "电光猫车",
       "style": "fun",
       "tags": [
         "跟随增益",
         "拉扯"
       ],
-      "why": "悠米跟随泽丽移动，提供持续作战的保护。",
-      "plan": "泽丽补刀；先约好进退方向，保留技能应对反扑。",
-      "risk": "两人难以承担先手和前排，其他位置要补分工。",
+      "why": "悠米跟随并保护泽丽，双方先约定安全拉扯方向。",
+      "plan": "观察兵线、地形和出口，确认悠米实际附身。 泽丽选择安全 Q 角度；E 强化期间 Q 的子弹可以穿透，仍需按实际目标位置判断。 有安全机会时配合悠米 E 护盾拉扯；泽丽 E 接触地形才会延长穿越。 子弹被挡、护盾消失或落点不安全时后撤。",
+      "risk": "护盾不保证穿越控制，越墙出口可能受威胁；防御塔仍可选取附身悠米。",
       "partners": [
         "Ornn",
         "Sejuani"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 泽丽技能资料",
@@ -5199,38 +5276,117 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Yuumi.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Zeri 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Zeri.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Yuumi 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Yuumi.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Zeri": "58ee526ccf585ea7",
-        "champion:Yuumi": "8878f62a7e5e6ec8"
+        "champion:Zeri": "e4b5046a1a9b42bb",
+        "champion:Yuumi": "74372983c2c1dbfe"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Zeri",
+          "loadoutId": "default",
+          "job": "下路补刀，判断 Q 射线与 E 落点并保留退路；R 是否获得对应强化以实际命中敌方英雄为准。"
+        },
+        {
+          "role": "support",
+          "champion": "Yuumi",
+          "loadoutId": "default",
+          "job": "完成辅助任务和安全视野；W 实际附身后按威胁使用 E，及时告知护盾和技能状态。"
+        }
+      ],
+      "steps": [
+        "观察兵线、地形和出口，确认悠米实际附身。",
+        "泽丽选择安全 Q 角度；E 强化期间 Q 的子弹可以穿透，仍需按实际目标位置判断。",
+        "有安全机会时配合悠米 E 护盾拉扯；泽丽 E 接触地形才会延长穿越。",
+        "子弹被挡、护盾消失或落点不安全时后撤。"
+      ],
+      "early": "以补刀与状态为先，不为了越墙或换血交掉唯一安全出口。",
+      "window": "附身已完成、进退方向清楚且所需技能可用时行动；挚友增益只按实际条件计算。",
+      "economy": "泽丽补刀；悠米用辅助任务经济并处理安全视野。 双方配置使用各自位置参考。",
+      "reviewSourceAnchors": {
+        "Zeri": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "e4b5046a1a9b42bb",
+          "observedAt": "2026-10-23T02:03:51.643Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Zeri",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/zeri/zeri.bin.json",
+              "sha256": "709a5b68794967ec275e7fd5c1ca11c9289ea72da65f946b0652a4cdfade41ed"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "0b2a7f8ab974859e"
+            }
+          }
+        },
+        "Yuumi": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "74372983c2c1dbfe",
+          "observedAt": "2026-10-23T02:03:51.642Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Yuumi",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/yuumi/yuumi.bin.json",
+              "sha256": "b65fd4e92df3a120fe88ee2ebd588f55a7f1a642f249c22d0668eae860f9c3aa"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2bfcd21ddb05bd3f"
+            }
+          }
+        }
+      }
     },
     {
       "id": "sivir-yuumi",
-      "carry": "Sivir",
-      "support": "Yuumi",
       "name": "疾跑猫车",
       "style": "balanced",
       "tags": [
         "清线",
         "团队加速"
       ],
-      "why": "希维尔清线并用大招为团队提供移动速度，悠米保护输出。",
-      "plan": "希维尔补刀；清线后一起转线，关键控制用法术护盾处理。",
-      "risk": "缺主动硬控，不能仅靠加速正面冲进对方控制。",
+      "why": "希维尔处理兵线，在路线安全时与附身悠米及附近队友转线。",
+      "plan": "确认兵线、附近友军位置、护盾及路线。 希维尔清线，面对关键技能按时机使用 E。 R 已学可用且队友在范围、道路安全时再转线。 队伍分散、护盾耗尽或前路不安全时停止转线。",
+      "risk": "E 只格挡一次技能，不是持续免控；加速不能保证突破控制。悠米挚友效果以实际条件为准，防御塔仍可选取附身悠米。",
       "partners": [
         "Hecarim",
         "Sejuani"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 希维尔技能资料",
@@ -5243,17 +5399,98 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Yuumi.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Sivir 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Sivir.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Yuumi 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Yuumi.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Sivir": "9b8397c8bae846c7",
-        "champion:Yuumi": "8878f62a7e5e6ec8"
+        "champion:Sivir": "6c42062d13c38ce6",
+        "champion:Yuumi": "74372983c2c1dbfe"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Sivir",
+          "loadoutId": "default",
+          "job": "下路补刀和清线；根据真实来袭技能使用 E，R 已学且可用时为范围内友军提供移速。"
+        },
+        {
+          "role": "support",
+          "champion": "Yuumi",
+          "loadoutId": "default",
+          "job": "实际附身后在宿主受威胁时使用 E，承担辅助任务与安全视野。"
+        }
+      ],
+      "steps": [
+        "确认兵线、附近友军位置、护盾及路线。",
+        "希维尔清线，面对关键技能按时机使用 E。",
+        "R 已学可用且队友在范围、道路安全时再转线。",
+        "队伍分散、护盾耗尽或前路不安全时停止转线。"
+      ],
+      "early": "以清线和保持血蓝为主，不因有移速就穿过未知区域。",
+      "window": "有安全线权、路线和队友距离合适时行动；希维尔 E 实际挡住一次技能才产生相应回复。",
+      "economy": "希维尔补刀；悠米用辅助任务经济，视安全情况补视野。 双方配置使用各自位置参考。",
+      "reviewSourceAnchors": {
+        "Sivir": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "6c42062d13c38ce6",
+          "observedAt": "2026-10-23T02:03:51.628Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Sivir",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/sivir/sivir.bin.json",
+              "sha256": "12c68a433a466cff6396e4e8642834ae342650bb54d7b4251a10152b501703b4"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "6b46b8e16bb65277"
+            }
+          }
+        },
+        "Yuumi": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "74372983c2c1dbfe",
+          "observedAt": "2026-10-23T02:03:51.642Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Yuumi",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/yuumi/yuumi.bin.json",
+              "sha256": "b65fd4e92df3a120fe88ee2ebd588f55a7f1a642f249c22d0668eae860f9c3aa"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2bfcd21ddb05bd3f"
+            }
+          }
+        }
+      }
     },
     {
       "id": "sivir-karma",
@@ -5592,24 +5829,22 @@
     },
     {
       "id": "ezreal-yuumi",
-      "carry": "Ezreal",
-      "support": "Yuumi",
       "name": "探险猫车",
       "style": "balanced",
       "tags": [
         "灵活撤退",
         "增益"
       ],
-      "why": "悠米跟随伊泽瑞尔位移，给他持续换血的保护。",
-      "plan": "伊泽瑞尔补刀；先保状态，用技能消耗，E 不轻易向前交。",
-      "risk": "主动控制少，阵容其他位置需要开团与前排。",
+      "why": "伊泽瑞尔安全消耗并保留位移退路，悠米在实际附身后提供保护。",
+      "plan": "确认附身、血蓝和 E 出口。 伊泽瑞尔从安全角度用 Q 消耗，确认命中的第一个敌方单位。 根据危险使用悠米 E，必要时伊泽瑞尔 E 到安全位置。 Q 被兵挡、E 已交或出口受威胁时停止追击。",
+      "risk": "两人主动控制有限；护盾和附身不是无敌，防御塔仍可选取悠米。挚友效果看实际条件。",
       "partners": [
         "Sejuani",
         "Ornn"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 伊泽瑞尔技能资料",
@@ -5622,17 +5857,98 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Yuumi.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Ezreal 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ezreal.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Yuumi 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Yuumi.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Ezreal": "9509ab661fff89d0",
-        "champion:Yuumi": "8878f62a7e5e6ec8"
+        "champion:Ezreal": "c2201358b91fa06b",
+        "champion:Yuumi": "74372983c2c1dbfe"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Ezreal",
+          "loadoutId": "default",
+          "job": "下路补刀并判断 Q 的第一个碰撞单位；E 选安全落点，不轻易向前交。"
+        },
+        {
+          "role": "support",
+          "champion": "Yuumi",
+          "loadoutId": "default",
+          "job": "完成辅助任务与安全视野，W 成功附身后按宿主实际危险使用 E。"
+        }
+      ],
+      "steps": [
+        "确认附身、血蓝和 E 出口。",
+        "伊泽瑞尔从安全角度用 Q 消耗，确认命中的第一个敌方单位。",
+        "根据危险使用悠米 E，必要时伊泽瑞尔 E 到安全位置。",
+        "Q 被兵挡、E 已交或出口受威胁时停止追击。"
+      ],
+      "early": "优先补刀与维持状态，不为了伤害向前交位移。",
+      "window": "目标可安全触及且退出路线清楚时行动；Q 命中才减少技能冷却，不能假设 E 立刻刷新。",
+      "economy": "伊泽瑞尔补刀；悠米承担辅助任务和安全视野。 双方配置使用各自位置参考。",
+      "reviewSourceAnchors": {
+        "Ezreal": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "c2201358b91fa06b",
+          "observedAt": "2026-10-23T02:03:51.460Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Ezreal",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ezreal/ezreal.bin.json",
+              "sha256": "017fe85cc1493ac674d9ff34600edfa48ec7af0f20cde53c12f184ea6d6b40a1"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "6b1155906c9a8a0b"
+            }
+          }
+        },
+        "Yuumi": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "74372983c2c1dbfe",
+          "observedAt": "2026-10-23T02:03:51.642Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Yuumi",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/yuumi/yuumi.bin.json",
+              "sha256": "b65fd4e92df3a120fe88ee2ebd588f55a7f1a642f249c22d0668eae860f9c3aa"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2bfcd21ddb05bd3f"
+            }
+          }
+        }
+      }
     },
     {
       "id": "ezreal-bard",
@@ -6928,24 +7244,22 @@
     },
     {
       "id": "kalista-thresh",
-      "carry": "Kalista",
-      "support": "Thresh",
       "name": "誓约灯笼",
       "style": "fun",
       "tags": [
         "进退配合",
         "主动控制"
       ],
-      "why": "卡莉丝塔大招让绑定的锤石参与进场或撤退，灯笼也能接应。",
-      "plan": "卡莉丝塔补刀并绑定锤石；先约定谁开团、谁保留救人技能。",
-      "risk": "两人位移方向要沟通，减速会限制卡莉丝塔。",
+      "why": "先确认誓约、R 和灯笼的主动操作，再商量进退与接应。",
+      "plan": "确认锤石是誓约者、R 已学可用且距离合适。 沟通目标与退路后卡莉丝塔使用 R。 锤石进入凝滞被拉回后自行选择点击投放，实际命中首个敌方英雄并停止后才判断跟进。 需要接应时锤石放安全灯笼，队友自行点击；跟不上或落点危险则撤。",
+      "risk": "R 不是自动投掷或必定命中；灯笼需要友军主动点击，不保证救援。投放方向、射手距离或退出路线不安全就取消。",
       "partners": [
         "Galio",
         "JarvanIV"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 卡莉丝塔技能资料",
@@ -6958,17 +7272,98 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Thresh.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Kalista 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Kalista.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Thresh 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Thresh.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Kalista": "f7feae9ddcfb9d20",
-        "champion:Thresh": "89037d310bb2f03a"
+        "champion:Kalista": "1793244f0dc8a65c",
+        "champion:Thresh": "766a02f3f37aa314"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Kalista",
+          "loadoutId": "default",
+          "job": "下路补刀，确认誓约对象、R 可用与距离，并选择安全输出位置。"
+        },
+        {
+          "role": "support",
+          "champion": "Thresh",
+          "loadoutId": "default",
+          "job": "完成辅助任务与安全视野；被 R 拉回后自行选择是否主动点击投放，W 灯笼放在队友可安全点击的位置。"
+        }
+      ],
+      "steps": [
+        "确认锤石是誓约者、R 已学可用且距离合适。",
+        "沟通目标与退路后卡莉丝塔使用 R。",
+        "锤石进入凝滞被拉回后自行选择点击投放，实际命中首个敌方英雄并停止后才判断跟进。",
+        "需要接应时锤石放安全灯笼，队友自行点击；跟不上或落点危险则撤。"
+      ],
+      "early": "卡莉丝塔保补刀与血量，锤石保辅助经济和技能，不把未学会的 R 当可用。",
+      "window": "誓约、R、距离和沟通均满足，目标可触及且队友能跟进时。",
+      "economy": "卡莉丝塔补刀；锤石承担辅助任务和安全视野。 双方配置使用各自位置参考。",
+      "reviewSourceAnchors": {
+        "Kalista": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "1793244f0dc8a65c",
+          "observedAt": "2026-10-23T02:03:51.532Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Kalista",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/kalista/kalista.bin.json",
+              "sha256": "d9745c7fdf99f1ec7baded98bba9547e6b6f0a9ec604edce4f88f0dbdfe30b39"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "44f72f75e4385140"
+            }
+          }
+        },
+        "Thresh": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "766a02f3f37aa314",
+          "observedAt": "2026-10-23T02:03:51.634Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Thresh",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/thresh/thresh.bin.json",
+              "sha256": "f55dc93e1986c0547aa2b2446989f249186cbd3a2d604df58c1777e58410c5bf"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "9d08c31186ec4f58"
+            }
+          }
+        }
+      }
     },
     {
       "id": "kalista-alistar",
@@ -10598,24 +10993,22 @@
     },
     {
       "id": "garen-yuumi",
-      "carry": "Garen",
-      "support": "Yuumi",
       "name": "猫骑大风车",
       "style": "wild",
       "tags": [
         "近战娱乐",
         "增益保护"
       ],
-      "why": "悠米附身保护盖伦，帮助他接近和撤退。",
-      "plan": "盖伦补刀，悠米辅助；先接受前期被远程压线，再找安全换血。",
-      "risk": "非常规下路缺射程和稳定硬控，娱乐试法而非对线优势。",
+      "why": "非常规近战下路以安全补刀为先，悠米附身辅助盖伦寻找短暂换血机会。",
+      "plan": "确认兵线、血量及撤退方向。 只在可安全接近时使用 Q 并尝试强化攻击。 悠米根据实际风险提供 E，双方短换后向安全位置撤。 被持续消耗、接近失败或兵线危险时放弃换血。",
+      "risk": "Q 不能解除所有控制，附身和护盾并非无敌，防御塔仍可选取悠米；无安全接近路径时不强追。",
       "partners": [
         "Kindred",
         "Tristana"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 盖伦技能资料",
@@ -10628,17 +11021,98 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Yuumi.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Garen 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Garen.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Yuumi 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Yuumi.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Garen": "a2fd61f5a7cf7d0d",
-        "champion:Yuumi": "8878f62a7e5e6ec8"
+        "champion:Garen": "da16a590f3304db3",
+        "champion:Yuumi": "74372983c2c1dbfe"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Garen",
+          "loadoutId": "default",
+          "job": "下路承担补刀、经验和接近距离判断；Q 移除自身减速并加速，强化攻击实际命中才沉默。"
+        },
+        {
+          "role": "support",
+          "champion": "Yuumi",
+          "loadoutId": "default",
+          "job": "完成辅助任务及安全视野，实际附身后按盖伦血量与威胁使用 E。"
+        }
+      ],
+      "steps": [
+        "确认兵线、血量及撤退方向。",
+        "只在可安全接近时使用 Q 并尝试强化攻击。",
+        "悠米根据实际风险提供 E，双方短换后向安全位置撤。",
+        "被持续消耗、接近失败或兵线危险时放弃换血。"
+      ],
+      "early": "射程短，先尽量保经验与可安全取得的补刀，不预设能压制远程组合。",
+      "window": "目标可安全触及且退路可用、双方关键技能和血量允许时；挚友附加效果以实际条件为准。",
+      "economy": "盖伦补刀；悠米用辅助任务经济。近战承压可能损失补刀，不假设这一问题已解决。 双方配置使用各自位置参考。",
+      "reviewSourceAnchors": {
+        "Garen": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "da16a590f3304db3",
+          "observedAt": "2026-10-23T02:03:51.462Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Garen",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/garen/garen.bin.json",
+              "sha256": "1f70b1e66d622e433606d551b6f23f5d170deba6dc4347ddff88fa9e6053a710"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "63254cd43dff2e1d"
+            }
+          }
+        },
+        "Yuumi": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "74372983c2c1dbfe",
+          "observedAt": "2026-10-23T02:03:51.642Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Yuumi",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/yuumi/yuumi.bin.json",
+              "sha256": "b65fd4e92df3a120fe88ee2ebd588f55a7f1a642f249c22d0668eae860f9c3aa"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2bfcd21ddb05bd3f"
+            }
+          }
+        }
+      }
     },
     {
       "id": "rengar-ivern",
@@ -17353,24 +17827,22 @@
     },
     {
       "id": "ziggs-taric",
-      "carry": "Ziggs",
-      "support": "Taric",
       "name": "宝石拆迁",
       "style": "wild",
       "tags": [
         "反突进",
         "延迟保护"
       ],
-      "why": "吉格斯负责远程清线与推进，塔里克保护对手靠近时的撤退窗口。",
-      "plan": "吉格斯补刀；不强求宝石跟远程消耗，E 和保护主要留给反打。",
-      "risk": "两人行动距离不同，前期对线会被消耗，属于实验玩法。",
+      "why": "吉格斯远程清线并保留自救方向，塔里克负责接应和延迟保护，不勉强同步远程消耗。",
+      "plan": "判断兵线、绑定距离、血蓝和撤退方向。 吉格斯安全清线，塔里克保留反打与接应技能。 突进发生时塔里克以 E 实际命中限制对手，R 已学可用且来得及时才考虑使用。 等 R 保护实际生效后再判断承伤；E 空、联结断开或退路不安全则撤。",
+      "risk": "塔里克 R 保护免疫伤害不等于免控；吉格斯 W 爆炸可能推走敌人，拆塔有生命值阈值。血蓝不足或路径受阻时停止推进。",
       "partners": [
         "Shen",
         "JarvanIV"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-06",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 吉格斯技能资料",
@@ -17389,15 +17861,23 @@
           "url": "https://www.mobafire.com/league-of-legends/build/patch-26-19-quick-taric-guide-613270",
           "kind": "社区玩法参考",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Ziggs 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ziggs.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Taric 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Taric.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "taric-guardian"
-      },
       "reviewBaseline": {
-        "champion:Ziggs": "cbc8f3b971dff5cb",
-        "champion:Taric": "c80b2adac0419e29",
+        "champion:Ziggs": "301986c8fed3e8fb",
+        "champion:Taric": "d7034e2662bef2b0",
         "item:3109": "97c25fae90d4a8a4",
         "item:3190": "89cdf2838748dfc7",
         "item:3107": "53bdbba0a53ca5c6",
@@ -17413,7 +17893,80 @@
         "rune:8351": "6594874b24a7b00e",
         "rune:8306": "68d4bd3d69d9d19c"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Ziggs",
+          "loadoutId": "default",
+          "job": "下路补刀、清线，预判 W 爆炸与自己的安全位移方向；拆塔时只在实际达到 W 摧毁阈值后尝试。"
+        },
+        {
+          "role": "support",
+          "champion": "Taric",
+          "loadoutId": "taric-guardian",
+          "job": "完成辅助任务和视野；W 绑定与距离可接应，E 延迟后实际命中才晕；需要保护时提前使用 R。"
+        }
+      ],
+      "steps": [
+        "判断兵线、绑定距离、血蓝和撤退方向。",
+        "吉格斯安全清线，塔里克保留反打与接应技能。",
+        "突进发生时塔里克以 E 实际命中限制对手，R 已学可用且来得及时才考虑使用。",
+        "等 R 保护实际生效后再判断承伤；E 空、联结断开或退路不安全则撤。"
+      ],
+      "early": "吉格斯保持距离补刀；塔里克不为触发近战效果而强行前压。",
+      "window": "两人距离、技能延迟和安全落点允许配合；塔里克 R 延迟生效，不能把施放瞬间当已经无敌。",
+      "economy": "吉格斯补刀；塔里克使用辅助任务经济并在安全时布置视野。 吉格斯采用下路位置参考，塔里克使用已审辅助共享配置。",
+      "reviewSourceAnchors": {
+        "Ziggs": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "301986c8fed3e8fb",
+          "observedAt": "2026-10-23T02:03:51.643Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Ziggs",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ziggs/ziggs.bin.json",
+              "sha256": "0c07f0df0453c22942e9115fa6997b656808f49cd43225f4202741516c9abf3f"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "fdb99302b5ecb565"
+            }
+          }
+        },
+        "Taric": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "d7034e2662bef2b0",
+          "observedAt": "2026-10-23T02:03:51.634Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Taric",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/taric/taric.bin.json",
+              "sha256": "e03353ee1a9f08920f02f40c69489552f73953fcf396707e5ba884f5bb3c0e62"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "a0599325a1012892"
+            }
+          }
+        }
+      }
     },
     {
       "id": "brand-leona",
@@ -17968,8 +18521,6 @@
     },
     {
       "id": "morgana-twitch-roam",
-      "carry": "Morgana",
-      "support": "Twitch",
       "name": "守线与潜行换班",
       "style": "wild",
       "tempo": "early",
@@ -17978,18 +18529,14 @@
         "法核守线",
         "潜行游走"
       ],
-      "why": "莫甘娜守住下路兵线，辅助老鼠只在有线权和落点时短程游走；两人重新汇合后用禁锢限制目标，给老鼠叠毒输出。",
-      "plan": "莫甘娜补刀，老鼠走辅助任务经济。先约定离线和返回时间；莫甘娜 Q 命中后老鼠从安全角度输出，E 按实际毒层使用。没有可抓目标就留在线上，不拿队友经验和兵线换无效游走。",
-      "risk": "莫甘娜 E 只吸收魔法伤害并在盾存续时阻挡控制，不能挡物理普攻，也不保证一打二；老鼠低经济、下路要被越塔或兵线失控就立即回防。旧视频配装不直接沿用，使用本机位置默认参考。",
+      "why": "莫甘娜守线，辅助图奇仅在兵线及回程允许时短程游走；重新汇合后按实际控制与毒层配合。",
+      "plan": "判断莫甘娜能否安全守线、公开视野、游走路径和回程。 条件成立才短程游走，无机会就留线。 重聚后莫甘娜 Q 若实际命中，图奇从安全角度跟进，按毒层及距离使用 E。 线崩、下路受越塔威胁、辅助无法及时回防或目标脱离范围时撤回。",
+      "risk": "莫甘娜 E 吸收魔法伤害并在盾存在时阻挡可阻挡的控制，不吸收物理伤害，也不等于解除已受到的控制；图奇伪装可被发现。",
       "partners": [
         "Vi",
         "TwistedFate",
         "Shen"
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "sources": [
         {
           "name": "Riot · 莫甘娜 16.20 技能",
@@ -18008,10 +18555,22 @@
           "url": "https://www.douyin.com/video/6983345786771836167",
           "kind": "旧版玩法启发，未沿用旧装备符文或强度结论",
           "checkedAt": "2026-10-16"
+        },
+        {
+          "name": "Riot · Morgana 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Morgana.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Twitch 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Twitch.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "patch": "16.20",
-      "reviewedAt": "2026-10-16",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "reviewBaseline": {
         "champion:Morgana": "e0588c7ab7dba463",
         "champion:Twitch": "ab3e76d629cf2787"
@@ -18019,53 +18578,76 @@
       "reviewSourceAnchors": {
         "Morgana": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "e0588c7ab7dba463",
-          "observedAt": "2026-10-18T23:15:13.642Z",
+          "observedAt": "2026-10-23T02:03:51.543Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Morgana",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/morgana/morgana.bin.json",
-              "sha256": "f48727fed5dfa69a7da34bffa1f07608b69e5fb7c3999d74abd13fd127bf8811"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/morgana/morgana.bin.json",
+              "sha256": "063a6e6093dbeec416babbbe415461322fb20d02f249abf93e6ac885e31f2828"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "57d5f698304a1f45"
             }
           }
         },
         "Twitch": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "ab3e76d629cf2787",
-          "observedAt": "2026-10-18T23:15:53.260Z",
+          "observedAt": "2026-10-23T02:03:51.636Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Twitch",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/twitch/twitch.bin.json",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/twitch/twitch.bin.json",
               "sha256": "53894a05d1e512a9fdbfd4d2898f70d6ee38c2339efe94316ffed1a165a58e2d"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "461e810ef4e30853"
             }
           }
         }
-      }
+      },
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Morgana",
+          "loadoutId": "default",
+          "job": "下路补刀并报告兵线与越塔风险；Q 实际命中后禁锢，E 按来袭威胁给护盾。"
+        },
+        {
+          "role": "support",
+          "champion": "Twitch",
+          "loadoutId": "default",
+          "job": "承担辅助任务与安全视野；约定离线和返回时间，Q 伪装，W 加毒，按实际毒层与范围使用 E。"
+        }
+      ],
+      "steps": [
+        "判断莫甘娜能否安全守线、公开视野、游走路径和回程。",
+        "条件成立才短程游走，无机会就留线。",
+        "重聚后莫甘娜 Q 若实际命中，图奇从安全角度跟进，按毒层及距离使用 E。",
+        "线崩、下路受越塔威胁、辅助无法及时回防或目标脱离范围时撤回。"
+      ],
+      "early": "不以莫甘娜被孤立或丢失经验为代价强行游走，图奇先完成辅助任务。",
+      "window": "离线和回线安全，或双方重聚且 Q 实际命中、图奇可安全输出时。",
+      "economy": "莫甘娜补刀；图奇走辅助任务经济，不无故分走下路兵线。 双方配置使用各自位置参考。"
     },
     {
       "id": "kalista-tahm-rescue",
@@ -31071,39 +31653,40 @@
         "四层普攻",
         "前排优先"
       ],
-      "why": "巨魔柱子缩窄退路，艾希减速让布隆 Q/普攻被动更容易由队友持续叠满；三人集中打能触及的一个目标，柱子本身不保证眩晕。",
-      "plan": "艾希先减速、布隆挂被动，巨魔 E 限退路而不挡己方前进；两位普攻成员补足四层，巨魔 R 处理实际承伤前排，不强追后排。",
-      "risk": "柱子可能挡己方路径，布隆被动有同目标触发后的空档；三人物理普攻比重高，余下位置需留意法伤，远程消耗或无法近身时先撤。",
+      "why": "三人到位后围绕能安全触及的同一目标协作；柱子限制路径，叠层必须实际成立。",
+      "plan": "确认三人距离、兵线、可见威胁及退路。 选择可触及目标，艾希按实际命中减速，布隆确认免叠层期结束且 Q 或普攻实际给敌方英雄挂上首层。 布隆或队友在安全范围内普攻同一英雄，实际叠满四层才眩晕；特朗德尔 E 放在目标撤退侧并避免挡住队友。 对方逃开、射手受威胁、柱子阻住己方或退路不明时立即停止并撤退。",
+      "risk": "布隆 Q 可先碰小兵，不能把命中小兵说成英雄挂层；柱子可能挡己方，四层不保证叠满。特朗德尔 R 偷取目标护甲和魔抗并增加自身抗性，不直接给队友穿甲属性。",
       "members": [
         {
           "champion": "Trundle",
           "role": "jungle",
           "loadoutId": "default",
-          "job": "E 放目标撤退侧而非队友脚下，W 区域内普攻跟布隆被动；R 按实际目标抗性和承伤选择，不当全队自动获得破甲。"
+          "job": "以野区经济和安全到场为先；E 留意阻路，W 强化自身，R 按自身承伤目标使用。"
         },
         {
           "champion": "Ashe",
           "role": "bottom",
           "loadoutId": "default",
-          "job": "W/普攻先减速，同一目标安全普攻补布隆层数；E 查看行动侧公共视野，R 命中后再喊接控，不能假定远程箭必定命中。"
+          "job": "补刀并报告能否到场，安全时用普攻或 W 减速并续同目标普攻；R 仅在已学可用且射线合适时尝试。"
         },
         {
           "champion": "Braum",
           "role": "support",
           "loadoutId": "braum-peel",
-          "job": "Q/普攻先挂被动并报目标，等队友实际四层再期待眩晕；E 面向投射物威胁、W 留作接应，不离开艾希独追叠层。"
+          "job": "完成辅助任务与安全视野；确认敌方英雄免叠层期结束，Q 或普攻击中该英雄并实际挂首层，再提示队友安全续层。"
         }
       ],
       "steps": [
-        "艾希减速、布隆 Q/普攻实际挂到被动后报同一目标。",
-        "巨魔 E 缩退路，艾希与巨魔在安全攻击距离内普攻补到四层；不能靠柱子替代层数。",
-        "巨魔 R 处理眼前前排、布隆保护艾希；触发后不重复追求同目标立刻再晕，射手被绕就撤。"
+        "确认三人距离、兵线、可见威胁及退路。",
+        "选择可触及目标，艾希按实际命中减速，布隆确认免叠层期结束且 Q 或普攻实际给敌方英雄挂上首层。",
+        "布隆或队友在安全范围内普攻同一英雄，实际叠满四层才眩晕；特朗德尔 E 放在目标撤退侧并避免挡住队友。",
+        "对方逃开、射手受威胁、柱子阻住己方或退路不明时立即停止并撤退。"
       ],
-      "early": "布隆 Q 与队友普攻已能接力，巨魔只有下路线允许且能正常刷野衔接时到场；没到六级不安排冰箭或巨魔 R。",
-      "window": "前中期同一目标能被两位队友连续攻击，布隆被动可重新挂层、巨魔 E 可用；六级后冰箭只是另一段起手。",
-      "economy": "巨魔用普通打野默认、艾希普通下路普攻默认，本组未新增两人的专用配装复核；布隆复用保护配置。射手补刀、巨魔保野区、布隆辅助经济，余下位置核对法术输出。",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-13",
+      "early": "各自先完成野区、兵线和辅助任务；三人未到位时不要按三人控制链冒进。",
+      "window": "目标免叠层期结束、首层实际挂上、队友有足够安全普攻机会时；艾希 R 只有实际命中首个敌方英雄才晕该目标，附近敌人受减速。",
+      "economy": "特朗德尔打野；艾希补刀；布隆用辅助任务经济并承担安全视野。 特朗德尔与艾希使用位置参考，布隆复用已审辅助共享配置。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 特朗德尔 16.20 技能",
@@ -31122,6 +31705,24 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/champion/Braum.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-13"
+        },
+        {
+          "name": "Riot · Trundle 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Trundle.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Ashe 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ashe.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Braum 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Braum.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
       "reviewBaseline": {
@@ -31146,72 +31747,72 @@
       "reviewSourceAnchors": {
         "Trundle": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "63bbe05e19260ce3",
-          "observedAt": "2026-10-18T23:15:51.731Z",
+          "observedAt": "2026-10-23T02:03:51.635Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Trundle",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/trundle/trundle.bin.json",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/trundle/trundle.bin.json",
               "sha256": "cc871076dceaa7cd474c1dc994f3c0e859ac814e4f687307eb693f61bcc48847"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "1d69ff1938c31389"
             }
           }
         },
         "Ashe": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "f363e1846cfe0370",
-          "observedAt": "2026-10-18T23:14:19.680Z",
+          "observedAt": "2026-10-23T02:03:51.451Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Ashe",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/ashe/ashe.bin.json",
-              "sha256": "7b0dd985c8c17c1f4438cc622059dc686a1709925668e906d59a3f831ff040a8"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ashe/ashe.bin.json",
+              "sha256": "ada00af1ea15a42094a914a05794e0d3cedcb66c150ed52e8d3762b8d12dc6b5"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "1ab1be4161ebeecc"
             }
           }
         },
         "Braum": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "ae3aa48403ffcbe5",
-          "observedAt": "2026-10-18T23:14:25.367Z",
+          "observedAt": "2026-10-23T02:03:51.454Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Braum",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/braum/braum.bin.json",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/braum/braum.bin.json",
               "sha256": "14ba3f22becfa225f217102f4a3afefbda7342212a388624b799162df15a68ef"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "e136059064aa1034"
             }
           }
