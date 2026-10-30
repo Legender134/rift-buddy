@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.30.7",
+  "version": "2026.10.30.8",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
-  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。 2026-10-30复核尼菈与阿利斯塔、索拉卡两套下路配合；复用已审共享配置，索拉卡为位置默认配置，机制整理不代表组合实测。 2026-10-30复核布隆辅助共享配置与艾希、霞、尼菈三套下路配合的16.21触发和退出；单英雄配置参考不代表组合实测，其他组合保留旧状态。 2026-10-30复核布隆与金克丝、厄斐琉斯、薇恩、克格莫、斯莫德五套下路配合；复用布隆共享配置，射手为位置默认配置，机制整理不代表组合实测。 2026-10-30复核九套下路双人及加里奥、尼菈、洛三人配合的当前技能条件和退出；复用共享配置及位置默认资料不代表组合专配或实测。 2026-10-30复核悠米五套搭档、三套下路配合和特朗德尔/艾希/布隆三人配合；位置参考与共享配置不代表组合专配或实测。",
+  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。 2026-10-30复核尼菈与阿利斯塔、索拉卡两套下路配合；复用已审共享配置，索拉卡为位置默认配置，机制整理不代表组合实测。 2026-10-30复核布隆辅助共享配置与艾希、霞、尼菈三套下路配合的16.21触发和退出；单英雄配置参考不代表组合实测，其他组合保留旧状态。 2026-10-30复核布隆与金克丝、厄斐琉斯、薇恩、克格莫、斯莫德五套下路配合；复用布隆共享配置，射手为位置默认配置，机制整理不代表组合实测。 2026-10-30复核九套下路双人及加里奥、尼菈、洛三人配合的当前技能条件和退出；复用共享配置及位置默认资料不代表组合专配或实测。 2026-10-30复核悠米五套搭档、三套下路配合和特朗德尔/艾希/布隆三人配合；位置参考与共享配置不代表组合专配或实测。 2026-10-30复核莎弥拉六套配合及千珏/尼菈/塔里克三人配合；共享机制配置和单英雄加点不代表组合实测。",
   "source": {
     "date": "2026-10-06",
     "patch": "16.19",
@@ -800,8 +800,6 @@
     },
     {
       "id": "rose-metal",
-      "carry": "Samira",
-      "support": "Rell",
       "name": "双人冲阵",
       "style": "fun",
       "difficulty": "较高",
@@ -809,16 +807,16 @@
         "强开",
         "近身收割"
       ],
-      "why": "芮尔聚拢和控制对手，为莎弥拉创造接近战场的机会。",
-      "plan": "莎弥拉补刀。先让芮尔探出控制，莎弥拉再跟进积累连招评价。",
-      "risk": "怕反开与打断；双方状态不好时不要硬进。",
+      "why": "芮尔以实际命中的控制为莎弥拉创造接近机会，莎弥拉依据位置与评价选择是否跟进。",
+      "plan": "先确认兵线、双方血量、芮尔形态和撤退路径。 芮尔选择安全角度使用 W 或 Q，确认实际命中和控制类型；莎弥拉只在距离与位置安全时普攻跟进。 交替不同攻击与技能命中积累评价；R 已学可用、S 评价且施法窗口安全时才考虑施放。 W 落空、芮尔披甲后难退、队友跟不上或敌方反开时停止追击并撤退。",
+      "risk": "芮尔 R 拉拽及 W 命中不保证同时控制所有人；莎弥拉 W 只摧毁敌方飞行道具，E 不能跳友方，未满足重置条件不预支。",
       "partners": [
         "Diana",
         "Galio",
         "JarvanIV"
       ],
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 莎弥拉技能资料",
@@ -831,15 +829,23 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Rell.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Samira 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Rell 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "samira-reset",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Samira": "c5f97ec28c913a72",
-        "champion:Rell": "41676b37935fa0dc",
+        "champion:Samira": "fb97a340c89c0ba1",
+        "champion:Rell": "bec49be1ddcf29c0",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
         "item:3072": "5c29525fccb26a37",
@@ -859,29 +865,100 @@
         "rune:8345": "02157c1d4d7f7531",
         "rune:8410": "da4ec8f245880032"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Samira",
+          "role": "bottom",
+          "loadoutId": "samira-reset",
+          "job": "补刀并报距离及退路；队友实际控制且安全时普攻跟进，交替攻击与技能命中积累评价，S 评价且施法安全才考虑 R。"
+        },
+        {
+          "champion": "Rell",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "完成辅助任务和安全视野；按当前形态判断 W，骑乘轰落实际命中才击飞，披甲转骑乘后下一次攻击实际命中才击飞；Q 实际命中才晕。"
+        }
+      ],
+      "steps": [
+        "先确认兵线、双方血量、芮尔形态和撤退路径。",
+        "芮尔选择安全角度使用 W 或 Q，确认实际命中和控制类型；莎弥拉只在距离与位置安全时普攻跟进。",
+        "交替不同攻击与技能命中积累评价；R 已学可用、S 评价且施法窗口安全时才考虑施放。",
+        "W 落空、芮尔披甲后难退、队友跟不上或敌方反开时停止追击并撤退。"
+      ],
+      "early": "先保补刀与经验，辅助确认蓝量和形态，不预设已有 R。",
+      "window": "控制实际命中、双方距离适当且有退路时；Q 眩晕不是击飞，不能写成必然延长击飞。",
+      "economy": "莎弥拉补刀；芮尔承担辅助任务与安全视野。共享机制配置不是作者组合配装。 莎弥拉采用共享机制备选，其他配置按各自英雄位置参考。",
+      "reviewSourceAnchors": {
+        "Samira": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "fb97a340c89c0ba1",
+          "observedAt": "2026-10-23T02:03:51.551Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Samira",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/samira/samira.bin.json",
+              "sha256": "66207c6c2fbf270bfa686b40c2e39d6197c632bd26e959c7c75ed3843d6a24bb"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "12851dd9ef379ec4"
+            }
+          }
+        },
+        "Rell": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "bec49be1ddcf29c0",
+          "observedAt": "2026-10-23T02:03:51.549Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Rell",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/rell/rell.bin.json",
+              "sha256": "1225a8f35e320898977194bcbc616538c20de3cdd99156ef7a8e963e56b67084"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "f5469dea7fbc0dcb"
+            }
+          }
+        }
+      }
     },
     {
       "id": "naut-samira",
-      "carry": "Samira",
-      "support": "Nautilus",
       "name": "深海入场券",
       "style": "balanced",
       "difficulty": "适中",
       "tags": [
-        "稳定先手",
+        "控制接力",
         "爆发收割"
       ],
-      "why": "泰坦的控制让莎弥拉更容易找到第一波接近目标的机会。",
-      "plan": "莎弥拉补刀。泰坦先控制关键目标，莎弥拉留意对手剩余的打断技能。",
-      "risk": "全队都突进时容易脱节，第三人需要及时跟上。",
+      "why": "诺提勒斯实际控制创造莎弥拉接近的机会，跟进以距离与退路为前提。",
+      "plan": "先确认兵线、双方血量、诺提勒斯钩线和莎弥拉跟进距离。 诺提勒斯 Q 命中敌人后才考虑拉近，若碰到地形则按实际位移处理；莎弥拉确认目标受控和安全再跟进。 交替攻击与技能命中积评价；R 已学可用、S 评级且可安全施法时再考虑使用。 Q 落空或勾到危险地形、射手跟不上或对方保留打断时停止追击。",
+      "risk": "钩子并非稳定命中；禁锢不等于击飞，R 实际击飞按命中情况判断。莎弥拉 E 的刷新须本人伤害后 3 秒内敌方英雄死亡，不能预支。",
       "partners": [
         "Galio",
         "Diana",
         "Orianna"
       ],
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 莎弥拉技能资料",
@@ -894,15 +971,23 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Samira 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "samira-reset",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Samira": "c5f97ec28c913a72",
-        "champion:Nautilus": "89b73fd1b583624c",
+        "champion:Samira": "fb97a340c89c0ba1",
+        "champion:Nautilus": "67da151a84906467",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
         "item:3072": "5c29525fccb26a37",
@@ -922,7 +1007,80 @@
         "rune:8345": "02157c1d4d7f7531",
         "rune:8410": "da4ec8f245880032"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Samira",
+          "role": "bottom",
+          "loadoutId": "samira-reset",
+          "job": "补刀并保退路；确认敌人实际受控且距离安全后普攻跟进，交替攻击与技能积评价，S 且安全时才考虑 R。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "完成辅助任务与安全视野；Q 观察第一个碰撞对象，普攻禁锢按实际目标与条件生效，R 已学可用时按实际命中接控。"
+        }
+      ],
+      "steps": [
+        "先确认兵线、双方血量、诺提勒斯钩线和莎弥拉跟进距离。",
+        "诺提勒斯 Q 命中敌人后才考虑拉近，若碰到地形则按实际位移处理；莎弥拉确认目标受控和安全再跟进。",
+        "交替攻击与技能命中积评价；R 已学可用、S 评级且可安全施法时再考虑使用。",
+        "Q 落空或勾到危险地形、射手跟不上或对方保留打断时停止追击。"
+      ],
+      "early": "莎弥拉保补刀与经验，诺提勒斯根据兵线和实际血蓝决定是否接近。",
+      "window": "诺提勒斯控制实际成立，射手在安全距离且退出方向明确时。",
+      "economy": "莎弥拉补刀；诺提勒斯承担辅助任务和安全视野。 莎弥拉采用共享机制备选，其他配置按各自英雄位置参考。",
+      "reviewSourceAnchors": {
+        "Samira": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "fb97a340c89c0ba1",
+          "observedAt": "2026-10-23T02:03:51.551Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Samira",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/samira/samira.bin.json",
+              "sha256": "66207c6c2fbf270bfa686b40c2e39d6197c632bd26e959c7c75ed3843d6a24bb"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "12851dd9ef379ec4"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "style": "fun",
@@ -7999,24 +8157,22 @@
     },
     {
       "id": "samira-alistar",
-      "carry": "Samira",
-      "support": "Alistar",
       "name": "牛头旋风",
       "style": "fun",
       "tags": [
         "击飞跟进",
         "反开"
       ],
-      "why": "牛头击飞给莎弥拉接近战场的机会，也可留控制保护她。",
-      "plan": "莎弥拉补刀；牛头先控制，莎弥拉再叠评价，留意打断技能。",
-      "risk": "不保证能开出大招，评价没叠好不要硬进。",
+      "why": "阿利斯塔实际击飞后，莎弥拉可按攻击条件接近并短暂延长击飞；阿利斯塔也可保留控制接应。",
+      "plan": "先确认兵线、血量、双方距离与退路。 阿利斯塔 Q 实际击飞敌方英雄且安全时，莎弥拉普攻跟进并交替不同攻击与技能。 阿利斯塔 E 对敌方英雄攒满后，下一次对敌方英雄普攻实际命中才晕；莎弥拉达到 S 且安全时才考虑 R。 Q 空、W 将目标推离、队友跟不上或关键打断仍在时停止追击。",
+      "risk": "W 会击退，E 晕眩不是击飞；莎弥拉 E 的目标和重置均有条件，不能假设可跳友方或自动刷新。",
       "partners": [
         "Galio",
         "Diana"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 莎弥拉技能资料",
@@ -8029,15 +8185,23 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Alistar.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Samira 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Alistar 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "samira-reset",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Samira": "c5f97ec28c913a72",
-        "champion:Alistar": "8a197011035cf22f",
+        "champion:Samira": "fb97a340c89c0ba1",
+        "champion:Alistar": "e2aa1310b144ff1f",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
         "item:3072": "5c29525fccb26a37",
@@ -8057,28 +8221,99 @@
         "rune:8345": "02157c1d4d7f7531",
         "rune:8410": "da4ec8f245880032"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Samira",
+          "role": "bottom",
+          "loadoutId": "samira-reset",
+          "job": "补刀并确认退路；阿利斯塔 Q 实际击飞且安全时普攻跟进，交替攻击与技能命中积评价，S 且可安全施法时才考虑 R。"
+        },
+        {
+          "champion": "Alistar",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "完成辅助任务和安全视野；按距离用 Q 击飞或保留控制，W 会击退目标；E 对英雄攒满后下一次对英雄普攻才晕。"
+        }
+      ],
+      "steps": [
+        "先确认兵线、血量、双方距离与退路。",
+        "阿利斯塔 Q 实际击飞敌方英雄且安全时，莎弥拉普攻跟进并交替不同攻击与技能。",
+        "阿利斯塔 E 对敌方英雄攒满后，下一次对敌方英雄普攻实际命中才晕；莎弥拉达到 S 且安全时才考虑 R。",
+        "Q 空、W 将目标推离、队友跟不上或关键打断仍在时停止追击。"
+      ],
+      "early": "莎弥拉保补刀、经验和血量，辅助按实际等级、蓝量与对手技能决定换血。",
+      "window": "Q 实际击飞且距离与退路成立；不能保证大招安全施放。",
+      "economy": "莎弥拉补刀，阿利斯塔完成辅助任务并布置安全视野。 莎弥拉采用共享机制备选，其他配置按各自英雄位置参考。",
+      "reviewSourceAnchors": {
+        "Samira": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "fb97a340c89c0ba1",
+          "observedAt": "2026-10-23T02:03:51.551Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Samira",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/samira/samira.bin.json",
+              "sha256": "66207c6c2fbf270bfa686b40c2e39d6197c632bd26e959c7c75ed3843d6a24bb"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "12851dd9ef379ec4"
+            }
+          }
+        },
+        "Alistar": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "e2aa1310b144ff1f",
+          "observedAt": "2026-10-23T02:03:51.449Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Alistar",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/alistar/alistar.bin.json",
+              "sha256": "1cab5ab714cd3675401bd947d668313154162d93409f35b46612e509ec603e7b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "60b70b49d6326ac5"
+            }
+          }
+        }
+      }
     },
     {
       "id": "samira-leona",
-      "carry": "Samira",
-      "support": "Leona",
       "name": "日光旋舞",
       "style": "balanced",
       "tags": [
         "先手控制",
         "近身收割"
       ],
-      "why": "蕾欧娜连续控制为莎弥拉创造接近与叠评价的时间。",
-      "plan": "莎弥拉补刀；先确认控制命中，再跟进连招。",
-      "risk": "两人全进场容易被反开，关键打断没交时保留退路。",
+      "why": "蕾欧娜实际禁锢或晕眩为莎弥拉创造接近机会，莎弥拉伤害可触发日光。",
+      "plan": "按兵线、血量、技能和距离决定是否换血。 蕾欧娜 E 命中敌方英雄并确认实际冲刺目标后，莎弥拉在安全范围内普攻跟进；Q 晕眩需蕾欧娜实际普攻命中。 莎弥拉交替攻击和技能，达到 S 且窗口安全时才考虑 R。 E 空、队友跟不上或敌方关键打断仍在时停止追击。",
+      "risk": "蕾欧娜 R 边缘为减速，不能写成全范围眩晕；莎弥拉未到 S 或被打断时不保证 R 完整。",
       "partners": [
         "Galio",
         "JarvanIV"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 莎弥拉技能资料",
@@ -8091,15 +8326,23 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Leona.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Samira 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Leona 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "samira-reset",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Samira": "c5f97ec28c913a72",
-        "champion:Leona": "060aef3e3162ad2d",
+        "champion:Samira": "fb97a340c89c0ba1",
+        "champion:Leona": "2b7d4e998553b365",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
         "item:3072": "5c29525fccb26a37",
@@ -8119,7 +8362,80 @@
         "rune:8345": "02157c1d4d7f7531",
         "rune:8410": "da4ec8f245880032"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Samira",
+          "role": "bottom",
+          "loadoutId": "samira-reset",
+          "job": "补刀并确认对方受控和退路；安全时普攻接近、交替不同攻击与技能积累评价，S 且可安全施法时才考虑 R。"
+        },
+        {
+          "champion": "Leona",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "完成辅助任务与安全视野；E 以最后命中的敌方英雄为冲刺目标，Q 下一次普攻实际命中才晕；R 中心晕眩、边缘减速。"
+        }
+      ],
+      "steps": [
+        "按兵线、血量、技能和距离决定是否换血。",
+        "蕾欧娜 E 命中敌方英雄并确认实际冲刺目标后，莎弥拉在安全范围内普攻跟进；Q 晕眩需蕾欧娜实际普攻命中。",
+        "莎弥拉交替攻击和技能，达到 S 且窗口安全时才考虑 R。",
+        "E 空、队友跟不上或敌方关键打断仍在时停止追击。"
+      ],
+      "early": "先保补刀、经验和血量，蕾欧娜按对手距离与技能决定接近。",
+      "window": "控制实际命中、队友跟进与退路成立时；禁锢和晕眩不是击飞。",
+      "economy": "莎弥拉补刀，蕾欧娜完成辅助任务并布置安全视野。 莎弥拉采用共享机制备选，其他配置按各自英雄位置参考。",
+      "reviewSourceAnchors": {
+        "Samira": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "fb97a340c89c0ba1",
+          "observedAt": "2026-10-23T02:03:51.551Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Samira",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/samira/samira.bin.json",
+              "sha256": "66207c6c2fbf270bfa686b40c2e39d6197c632bd26e959c7c75ed3843d6a24bb"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "12851dd9ef379ec4"
+            }
+          }
+        },
+        "Leona": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "2b7d4e998553b365",
+          "observedAt": "2026-10-23T02:03:51.536Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Leona",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/leona/leona.bin.json",
+              "sha256": "9064d034ca61a09ed84bff5f9f907af1d6e08ecf7a54ec2c58b1baa658480fd0"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "7ff3b8a69842091d"
+            }
+          }
+        }
+      }
     },
     {
       "id": "varus-karma",
@@ -15681,24 +15997,22 @@
     },
     {
       "id": "samira-taric",
-      "carry": "Samira",
-      "support": "Taric",
       "name": "华丽宝石",
       "style": "fun",
       "tags": [
         "控制跟进",
         "延迟无敌"
       ],
-      "why": "塔里克 E 命中为莎弥拉跟进创造机会，延迟大招覆盖她的近身输出窗口。",
-      "plan": "莎弥拉补刀；提前约好 E 方向和大招读条，确认无敌生效才深入。",
-      "risk": "延迟期间仍会被击杀，莎弥拉大招仍可能被打断。",
+      "why": "塔里克实际控制为莎弥拉提供接近机会，延迟生效的保护可为双方创造承伤窗口。",
+      "plan": "先报双方技能、W 联结对象、兵线、血蓝与退路。 塔里克 W 联结并判断 E 方向；E 延迟后实际命中，莎弥拉才判断是否安全跟进。 塔里克 R 已学可用时提前施放，确认保护实际生效与覆盖后再考虑深入；莎弥拉 S 评价且安全时才考虑 R。 联结断开、E 空、保护未生效或存在致命打断时停止追击。",
+      "risk": "塔里克 E 是晕眩而非击飞，R 免疫伤害不免控制；莎弥拉 R 仍可能被打断，E 不能跳友方或预支刷新。",
       "partners": [
         "Sejuani",
         "Orianna"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-06",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 莎弥拉技能资料",
@@ -15717,15 +16031,23 @@
           "url": "https://www.mobafire.com/league-of-legends/build/patch-26-19-quick-taric-guide-613270",
           "kind": "社区玩法参考",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Samira 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Taric 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "samira-reset",
-        "support": "taric-guardian"
-      },
       "reviewBaseline": {
-        "champion:Samira": "c5f97ec28c913a72",
-        "champion:Taric": "c80b2adac0419e29",
+        "champion:Samira": "fb97a340c89c0ba1",
+        "champion:Taric": "d7034e2662bef2b0",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
         "item:3072": "5c29525fccb26a37",
@@ -15757,28 +16079,99 @@
         "rune:8351": "6594874b24a7b00e",
         "rune:8306": "68d4bd3d69d9d19c"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Samira",
+          "role": "bottom",
+          "loadoutId": "samira-reset",
+          "job": "补刀并观察控制、保护实际生效和退路；安全时交替不同攻击与技能积评价，S 且能安全施法才考虑 R。"
+        },
+        {
+          "champion": "Taric",
+          "role": "support",
+          "loadoutId": "taric-guardian",
+          "job": "完成辅助任务和安全视野；W 联结队友并保持接应距离，E 延迟命中才晕，需要保护时提前安排有延迟的 R。"
+        }
+      ],
+      "steps": [
+        "先报双方技能、W 联结对象、兵线、血蓝与退路。",
+        "塔里克 W 联结并判断 E 方向；E 延迟后实际命中，莎弥拉才判断是否安全跟进。",
+        "塔里克 R 已学可用时提前施放，确认保护实际生效与覆盖后再考虑深入；莎弥拉 S 评价且安全时才考虑 R。",
+        "联结断开、E 空、保护未生效或存在致命打断时停止追击。"
+      ],
+      "early": "莎弥拉先保补刀与经验，塔里克留意辅助经济、蓝量与可接应距离。",
+      "window": "控制实际成立，保护生效且双方在有效范围与安全路线内时；塔里克 R 生效前仍会受伤。",
+      "economy": "莎弥拉补刀；塔里克承担辅助任务和安全视野。taric-guardian 是既有单英雄共享参考。 莎弥拉采用共享机制备选，其他配置按各自英雄位置参考。",
+      "reviewSourceAnchors": {
+        "Samira": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "fb97a340c89c0ba1",
+          "observedAt": "2026-10-23T02:03:51.551Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Samira",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/samira/samira.bin.json",
+              "sha256": "66207c6c2fbf270bfa686b40c2e39d6197c632bd26e959c7c75ed3843d6a24bb"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "12851dd9ef379ec4"
+            }
+          }
+        },
+        "Taric": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "d7034e2662bef2b0",
+          "observedAt": "2026-10-23T02:03:51.634Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Taric",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/taric/taric.bin.json",
+              "sha256": "e03353ee1a9f08920f02f40c69489552f73953fcf396707e5ba884f5bb3c0e62"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "a0599325a1012892"
+            }
+          }
+        }
+      }
     },
     {
       "id": "samira-rakan",
-      "carry": "Samira",
-      "support": "Rakan",
       "name": "舞步枪火",
       "style": "fun",
       "tags": [
         "击飞跟进",
         "护盾撤退"
       ],
-      "why": "洛的击飞便于莎弥拉接控制，护盾与返回队友的移动提供进退空间。",
-      "plan": "莎弥拉补刀；洛先命中，莎弥拉再叠评级，留一个安全撤退位置。",
-      "risk": "两人都怕控制打断；进场距离太远会脱离返回范围。",
+      "why": "洛 W 实际击飞后，莎弥拉可在攻击条件和安全允许时普攻跟进；洛 E 可向范围内友方英雄接应。",
+      "plan": "确认兵线、W 可用、队友跟进和范围内可接应的友方英雄。 洛 W 实际击飞且安全时莎弥拉再普攻跟进，交替攻击与技能积评价。 洛 E 向范围内友方英雄提供护盾并按实际技能窗口决定重施；莎弥拉 S 且可安全施法时才考虑 R。 W 落空、回跳对象不可用、队伍脱节或退路受阻时停止追击。",
+      "risk": "洛回跳受友军位置与距离限制；莎弥拉 E 只能选敌方单位或建筑，不能跳友方，未满足重置条件不能预支。",
       "partners": [
         "Sejuani",
         "Orianna"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-06",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 莎弥拉技能资料",
@@ -15791,15 +16184,23 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Rakan.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Samira 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Rakan 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "samira-reset",
-        "support": "rakan-engage"
-      },
       "reviewBaseline": {
-        "champion:Samira": "c5f97ec28c913a72",
-        "champion:Rakan": "5dadfc0f0f54ae6b",
+        "champion:Samira": "fb97a340c89c0ba1",
+        "champion:Rakan": "69d7edc48cac55e5",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
         "item:3072": "5c29525fccb26a37",
@@ -15818,11 +16219,11 @@
         "rune:8014": "04092c4f9754532b",
         "rune:8345": "02157c1d4d7f7531",
         "rune:8410": "da4ec8f245880032",
+        "item:3050": "c3e25c9df9075147",
         "item:3190": "89cdf2838748dfc7",
         "item:3109": "97c25fae90d4a8a4",
-        "item:2065": "a30335c7d456f5fd",
         "item:3158": "72ca672b9221f063",
-        "item:3107": "53bdbba0a53ca5c6",
+        "item:2065": "a30335c7d456f5fd",
         "rune:8465": "4b16b0cca812d727",
         "rune:8463": "3296414353df0e65",
         "rune:8453": "f9a0180e7f2f0432",
@@ -15832,7 +16233,80 @@
         "rune:8439": "b2c74fd18c4ad076",
         "rune:8242": "37935df8d31dd429"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Samira",
+          "role": "bottom",
+          "loadoutId": "samira-reset",
+          "job": "补刀；洛 W 实际击飞且安全时普攻跟进，交替攻击与技能命中积评价，E 前确认敌方目标和落点。"
+        },
+        {
+          "champion": "Rakan",
+          "role": "support",
+          "loadoutId": "rakan-engage",
+          "job": "完成辅助任务与安全视野；先确认队友跟进及 E 的范围内友方回跳对象，W 实际击飞后报目标；Q 命中英雄或史诗级野怪才启动治疗。"
+        }
+      ],
+      "steps": [
+        "确认兵线、W 可用、队友跟进和范围内可接应的友方英雄。",
+        "洛 W 实际击飞且安全时莎弥拉再普攻跟进，交替攻击与技能积评价。",
+        "洛 E 向范围内友方英雄提供护盾并按实际技能窗口决定重施；莎弥拉 S 且可安全施法时才考虑 R。",
+        "W 落空、回跳对象不可用、队伍脱节或退路受阻时停止追击。"
+      ],
+      "early": "先保补刀、经验与血量，洛以辅助任务及安全视野为主。",
+      "window": "W 实际击飞、两人距离和洛 E 接应条件成立时；洛 R 魅惑不是击飞。",
+      "economy": "莎弥拉补刀；洛承担辅助任务和安全视野。rakan-engage 为既有单英雄共享参考。 莎弥拉采用共享机制备选，其他配置按各自英雄位置参考。",
+      "reviewSourceAnchors": {
+        "Samira": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "fb97a340c89c0ba1",
+          "observedAt": "2026-10-23T02:03:51.551Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Samira",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/samira/samira.bin.json",
+              "sha256": "66207c6c2fbf270bfa686b40c2e39d6197c632bd26e959c7c75ed3843d6a24bb"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "12851dd9ef379ec4"
+            }
+          }
+        },
+        "Rakan": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "69d7edc48cac55e5",
+          "observedAt": "2026-10-23T02:03:51.548Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Rakan",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/rakan/rakan.bin.json",
+              "sha256": "c4e16a57f1a6f13ba5c08e1fe861629afca5435b0a3154c4c444fe89aaa17d6a"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "14165b7ab2f27514"
+            }
+          }
+        }
+      }
     },
     {
       "id": "samira-milio",
@@ -27602,41 +28076,41 @@
         "生命保护",
         "接力窗口"
       ],
-      "why": "以生命保护、接力窗口形成三人分工；组合依据是公开技能机制，没有组合胜率样本。",
-      "plan": "塔里克先 W 联结尼菈，千珏 R 覆盖实际承伤区并报结束；塔里克按延迟提前安排 R，尼菈确认保护实际生效再 Q/普攻接触，R 结束段才拉拢；接不上保护就留 E 目标撤回。",
-      "risk": "千珏 R 保护敌我且在 10% 阈值阻止治疗，塔里克 R 有延迟；尼菈 W 闪避普攻并减魔法伤害，不能免所有技能。尼菈 R 拉拢在结束段，三人保护失败时不能靠吸血硬撑。",
+      "why": "千珏和塔里克按实际区域、延迟和时间沟通保护，尼菈在可接应的范围内寻找安全输出。",
+      "plan": "确认三人位置、兵线、两人 R 是否已学可用、W 联结对象、保护范围与尼菈可达的撤退目标。 千珏按实际承伤位置放 R；敌方和中立单位也受保护。各单位生命降至 10% 且仍在圈内时，该单位不再受到伤害或治疗；离圈失去保护，结束时圈内单位获得治疗。 塔里克根据千珏区域结束时间提前安排延迟 R，等保护实际生效并覆盖自己与队友后才判断能否继续；尼菈 Q 实际命中敌方单位或建筑后可利用延伸射程，W 接触友方英雄才共享。 尼菈 R 先持续伤害，结束段才拉拢；保护未衔接、联结断开、目标离开或没有安全撤退路径时停止并撤退。",
+      "risk": "千珏圈同时保护敌人；各单位生命降至 10% 且仍在圈内时不能继续受到治疗，离圈失去保护。塔里克 R 延迟免疫伤害但不免控制。尼菈 W 躲避攻击并降低魔法伤害，不能免所有技能；E 目标与退路未实际存在时不能预设可撤。",
       "difficulty": "适中",
       "members": [
         {
           "champion": "Kindred",
           "role": "jungle",
-          "job": "Q/普攻安全输出，R 实际可用才保护区域并报结束时刻；圈内敌人也不会死亡，不为印记丢掉队友接应。",
-          "loadoutId": "default"
+          "loadoutId": "default",
+          "job": "保野区经济并报告 R 是否学会可用；在实际承伤区域放 R，报覆盖和结束时机，不假设圈内敌人会死亡。"
         },
         {
           "champion": "Nilah",
           "role": "bottom",
-          "job": "Q 命中单位后才有延长攻击距离，普攻保持安全接触，W 触碰友军才共享闪避且不能免所有技能；R 在 1 秒结束段才拉拢。按千珏圈结束和宝石无敌实际生效决定进退，E 留真实可达单位退出，不为吸血追出保护区。",
-          "loadoutId": "nilah-sustain"
+          "loadoutId": "nilah-sustain",
+          "job": "补刀并留意保护范围；Q 命中敌方单位或建筑后才获得延伸攻击距离，W 接触友方英雄才共享效果，E 前确认可达单位和退出方向。"
         },
         {
           "champion": "Taric",
           "role": "support",
-          "job": "W 联结承伤者，E 留反打；提前为千珏 R 结束后的伤害安排有延迟的 R，不把两个保护同时全部交掉。",
-          "loadoutId": "taric-guardian"
+          "loadoutId": "taric-guardian",
+          "job": "完成辅助任务和安全视野；W 联结承伤队友并保持范围，E 实际命中才晕，提前安排延迟生效的 R。"
         }
       ],
       "steps": [
-        "先报千珏/塔里克 R 就绪、W 联结对象及尼菈可 E 返回的实际单位。",
-        "千珏 R 领域也保护敌人，10% 生命阈值后不能继续治疗，不把尼菈或宝石的回复当阈值下续命。",
-        "塔里克按领域结束提前施放有延迟的 R，尼菈在有效覆盖内 Q/普攻；W 接触友军才能共享闪避窗口。",
-        "尼菈 R 经过 1 秒才在结束段拉拢；保护未衔接、敌人脱离或退路消失就保留 E 撤出，不追出圈。"
+        "确认三人位置、兵线、两人 R 是否已学可用、W 联结对象、保护范围与尼菈可达的撤退目标。",
+        "千珏按实际承伤位置放 R；敌方和中立单位也受保护。各单位生命降至 10% 且仍在圈内时，该单位不再受到伤害或治疗；离圈失去保护，结束时圈内单位获得治疗。",
+        "塔里克根据千珏区域结束时间提前安排延迟 R，等保护实际生效并覆盖自己与队友后才判断能否继续；尼菈 Q 实际命中敌方单位或建筑后可利用延伸射程，W 接触友方英雄才共享。",
+        "尼菈 R 先持续伤害，结束段才拉拢；保护未衔接、联结断开、目标离开或没有安全撤退路径时停止并撤退。"
       ],
-      "window": "千珏 R、塔里克 R 与 W 联结实际可用，尼菈能留在保护覆盖内且有真实 E 目标退出；先沟通领域结束和无敌生效，缺一环就只打短轮次。",
-      "early": "千珏先保营地和印记风险，E 不能选小型野怪；尼菈与塔里克先保下路经验、补刀和蓝量。尼菈被动增益不要求千珏长期蹭线，六级前用 Q/W/E 短接触与接应。",
-      "economy": "千珏保野区经济，尼菈补下路兵线，塔里克留辅助任务和视野位；宝石蓝量不足时先回补，不为刷被动普攻抢尼菈补刀。",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-12",
+      "window": "千珏与塔里克 R 已学可用且保护实际覆盖和时序成立、尼菈有安全接触和退出路径时；不能保证两段保护接上。",
+      "early": "千珏先保野区节奏；尼菈与塔里克先保经验、补刀和蓝量，未学 R 时只按基础技能与安全距离行动。",
+      "economy": "千珏保野区经济，尼菈补下路兵线，塔里克完成辅助任务并处理安全视野。 千珏使用位置参考，尼菈与塔里克使用已审共享配置。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · Kindred 16.20.1 技能",
@@ -27661,6 +28135,24 @@
           "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-20-notes/",
           "kind": "版本机制依据",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "name": "Riot · Kindred 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Nilah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Taric 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
       "reviewBaseline": {
@@ -27702,72 +28194,72 @@
       "reviewSourceAnchors": {
         "Kindred": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "b089b055eca4104f",
-          "observedAt": "2026-10-18T23:14:58.042Z",
+          "observedAt": "2026-10-23T02:03:51.534Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Kindred",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/kindred/kindred.bin.json",
-              "sha256": "352cc3698820e525279b0bf7bc16092c5d35c5acfe93289b43d8e18d83208507"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/kindred/kindred.bin.json",
+              "sha256": "c9ad94593cde53e26f5382a09be44bed274f4ec29a63fedd51500aecaa852c85"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "70b671b76c9f1fba"
             }
           }
         },
         "Nilah": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "30e5ef1b4f79390e",
-          "observedAt": "2026-10-18T23:15:19.166Z",
+          "observedAt": "2026-10-23T02:03:51.545Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Nilah",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/nilah/nilah.bin.json",
-              "sha256": "9b8a2b7e046df9dac003b9ed8d82e4359ed0b56908b131c900ef0a0ad9c48530"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nilah/nilah.bin.json",
+              "sha256": "fb7dedbe829ca6073bed427ce77d930fe790697aa011d7096b2e696bde3f11fc"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "2f18ee1a98588cd1"
             }
           }
         },
         "Taric": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "d7034e2662bef2b0",
-          "observedAt": "2026-10-18T23:15:48.905Z",
+          "observedAt": "2026-10-23T02:03:51.634Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Taric",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/taric/taric.bin.json",
-              "sha256": "784d4735aa5679afd1af82dc275959dec1aa4b1a63a5ba08550571bd09fc99b1"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/taric/taric.bin.json",
+              "sha256": "e03353ee1a9f08920f02f40c69489552f73953fcf396707e5ba884f5bb3c0e62"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "a0599325a1012892"
             }
           }
@@ -37742,9 +38234,9 @@
       ],
       "priority": "QEW",
       "first": "QEW",
-      "why": "收集者与无尽先建暴击，饮血用于可持续攻击的续航；穿插不同攻击和技能叠评级，R 只有评级满足且打断威胁处理后才引导。征服者需持续命中，强攻需实际三次普攻，Q/R 不替代三次普攻触发。W 留可拦截弹体，E 结束位置要有退路；本人造成伤害后 3 秒内该英雄死亡才刷新 E，含有效助攻，尚未死亡就不预支。",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-10",
+      "why": "项目依据单英雄技能、装备和符文触发条件整理的机制备选，非组合实测或统计最优。收集者、无尽和饮血按经济取舍；铁板靴针对攻击压力，领主和复活甲按局势安排。征服者须实际命中敌方英雄，强攻需连续三次普攻击中同一敌方英雄，Q 与 R 不代替普攻。W 摧毁敌方飞行道具；E 选敌方单位或建筑，先确认落点和退路，受到莎弥拉伤害的敌方英雄在 3 秒内被击杀才重置。R 需 S 评价且可能被打断。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "reviewBaseline": {
         "champion:Samira": "fb97a340c89c0ba1",
         "item:6676": "f75b10fbdb261e7f",
@@ -37784,34 +38276,64 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/runesReforged.json",
           "kind": "符文触发依据",
           "checkedAt": "2026-10-10"
+        },
+        {
+          "name": "Riot · 16.21.1 装备说明",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/item.json",
+          "kind": "装备触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 16.21.1 符文说明",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/runesReforged.json",
+          "kind": "符文触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Mobalytics · 16.21 莎弥拉下路加点与召唤师技能",
+          "url": "https://mobalytics.gg/lol/champions/samira/build",
+          "kind": "单英雄加点参考",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Samira 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
       "reviewSourceAnchors": {
         "Samira": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "fb97a340c89c0ba1",
-          "observedAt": "2026-10-18T23:15:33.460Z",
+          "observedAt": "2026-10-23T02:03:51.551Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Samira",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/samira/samira.bin.json",
-              "sha256": "c3a9e70c65a0dcc6fa72b5f4af09312ec2c903817529cf82bd604e4bcfc65fe8"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/samira/samira.bin.json",
+              "sha256": "66207c6c2fbf270bfa686b40c2e39d6197c632bd26e959c7c75ed3843d6a24bb"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "12851dd9ef379ec4"
             }
           }
         }
-      }
+      },
+      "skillOrder": "QEWQQRQEQEREEWWRWW",
+      "skillReason": "参考 Mobalytics 16.21 莎弥拉下路单英雄逐级加点；并非这些组合的实测配置，可按对线调整。",
+      "summoners": [
+        "SummonerFlash",
+        "SummonerBarrier"
+      ]
     },
     {
       "id": "nami-empower",
