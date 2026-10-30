@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.29.12",
+  "version": "2026.10.29.13",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
-  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。",
+  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。",
   "source": {
     "date": "2026-10-06",
     "patch": "16.19",
@@ -2962,24 +2962,22 @@
     },
     {
       "id": "ashe-leona",
-      "carry": "Ashe",
-      "support": "Leona",
       "name": "冰与日光",
       "style": "balanced",
       "tags": [
         "控制接力",
         "主动开团"
       ],
-      "why": "寒冰大招和蕾欧娜控制可以错开，延长集火窗口。",
-      "plan": "寒冰补刀；远处先箭命中再跟进，近处让蕾欧娜先手。",
-      "risk": "两人进场距离不同，辅助不要越过寒冰能跟上的范围。",
+      "why": "艾希远箭实际命中后可由蕾欧娜接控，近距离也可由辅助先手。",
+      "plan": "远处先确认艾希 R 命中首个英雄、蕾欧娜能够到场；近距离可由辅助先手。 蕾欧娜 E 命中后接近，Q 下一次普攻才晕；R 中心眩晕、外围减速。 技能落空、侧翼不安全或双方距离不足时回撤。",
+      "risk": "远箭命中不等于辅助一定能到达，艾希缺少位移。",
       "partners": [
         "Galio",
         "Orianna"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 艾希技能资料",
@@ -2992,38 +2990,122 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Leona.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Ashe 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ashe.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Leona 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Leona.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Ashe": "7f33044ee104f59d",
-        "champion:Leona": "060aef3e3162ad2d"
+        "champion:Ashe": "f363e1846cfe0370",
+        "champion:Leona": "2b7d4e998553b365"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Ashe",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀并保持安全距离；R 眩晕首名命中英雄，周围仅减速。"
+        },
+        {
+          "champion": "Leona",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；E 追最后命中的英雄，Q 下一次普攻与 R 中心命中才眩晕。"
+        }
+      ],
+      "steps": [
+        "远处先确认艾希 R 命中首个英雄、蕾欧娜能够到场；近距离可由辅助先手。",
+        "蕾欧娜 E 命中后接近，Q 下一次普攻才晕；R 中心眩晕、外围减速。",
+        "技能落空、侧翼不安全或双方距离不足时回撤。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Ashe": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "f363e1846cfe0370",
+          "observedAt": "2026-10-23T02:03:51.451Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Ashe",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ashe/ashe.bin.json",
+              "sha256": "ada00af1ea15a42094a914a05794e0d3cedcb66c150ed52e8d3762b8d12dc6b5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "1ab1be4161ebeecc"
+            }
+          }
+        },
+        "Leona": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "2b7d4e998553b365",
+          "observedAt": "2026-10-23T02:03:51.536Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Leona",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/leona/leona.bin.json",
+              "sha256": "9064d034ca61a09ed84bff5f9f907af1d6e08ecf7a54ec2c58b1baa658480fd0"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "7ff3b8a69842091d"
+            }
+          }
+        }
+      }
     },
     {
       "id": "ashe-nautilus",
-      "carry": "Ashe",
-      "support": "Nautilus",
       "name": "深海冰链",
       "style": "balanced",
       "tags": [
         "远程开团",
         "连续控制"
       ],
-      "why": "寒冰箭与泰坦大招提供两种先手，可以互相续控。",
-      "plan": "寒冰补刀；一人开、一人留控制保护，避免同一刻全交。",
-      "risk": "寒冰无位移，泰坦追击时需要有人照顾后排。",
+      "why": "艾希箭与泰坦控制可按双方距离和实际命中错开。",
+      "plan": "艾希 R 命中首个敌方英雄才眩晕，附近其他目标只是减速。 泰坦根据队友距离及 Q/普攻/R 的实际命中接控或留一段保护。 远箭命中但队友到不了、控制落空或射手被绕时不要继续追。",
+      "risk": "艾希无位移，泰坦追击过深会失去后排保护。",
       "partners": [
         "Shen",
         "Galio"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 艾希技能资料",
@@ -3036,17 +3118,103 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Ashe 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ashe.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Ashe": "7f33044ee104f59d",
-        "champion:Nautilus": "89b73fd1b583624c"
+        "champion:Ashe": "f363e1846cfe0370",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "poke"
+      "tempo": "poke",
+      "members": [
+        {
+          "champion": "Ashe",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀并保持安全距离；R 眩晕首名命中英雄，周围仅减速。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；Q 可碰到首个单位或地形，按实际控制命中与队友距离行动。"
+        }
+      ],
+      "steps": [
+        "艾希 R 命中首个敌方英雄才眩晕，附近其他目标只是减速。",
+        "泰坦根据队友距离及 Q/普攻/R 的实际命中接控或留一段保护。",
+        "远箭命中但队友到不了、控制落空或射手被绕时不要继续追。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Ashe": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "f363e1846cfe0370",
+          "observedAt": "2026-10-23T02:03:51.451Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Ashe",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ashe/ashe.bin.json",
+              "sha256": "ada00af1ea15a42094a914a05794e0d3cedcb66c150ed52e8d3762b8d12dc6b5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "1ab1be4161ebeecc"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "jinx-lulu",
@@ -5380,24 +5548,22 @@
     },
     {
       "id": "draven-nautilus",
-      "carry": "Draven",
-      "support": "Nautilus",
       "name": "斧头锚点",
       "style": "balanced",
       "tags": [
         "稳定控制",
         "进攻对线"
       ],
-      "why": "泰坦控制制造德莱文接斧普攻的窗口。",
-      "plan": "德莱文补刀；先确保斧头数量，再报能否跟钩。",
-      "risk": "追接斧头会暴露走位，钩中不一定要全追。",
+      "why": "泰坦实际控制后，德莱文可在安全范围接斧输出。",
+      "plan": "泰坦确认 Q 首个碰撞目标与射手距离，控制命中再跟。 德莱文 Q 斧实际接住才延续，接斧后 W 才刷新；落点危险时不强接。 目标不对、斧头落进危险区域或退路被堵就撤。",
+      "risk": "泰坦钩中不等于可以无条件追击，接斧会影响走位。",
       "partners": [
         "Elise",
         "Galio"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 德莱文技能资料",
@@ -5410,38 +5576,122 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Draven 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Draven.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Draven": "f663c75656c0aae3",
-        "champion:Nautilus": "89b73fd1b583624c"
+        "champion:Draven": "6e70cb90d9331e71",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Draven",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀；接住 Q 斧才延续并刷新 W，落点危险时可以放弃。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；Q 可碰到首个单位或地形，按实际控制命中与队友距离行动。"
+        }
+      ],
+      "steps": [
+        "泰坦确认 Q 首个碰撞目标与射手距离，控制命中再跟。",
+        "德莱文 Q 斧实际接住才延续，接斧后 W 才刷新；落点危险时不强接。",
+        "目标不对、斧头落进危险区域或退路被堵就撤。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Draven": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "6e70cb90d9331e71",
+          "observedAt": "2026-10-23T02:03:51.458Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Draven",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/draven/draven.bin.json",
+              "sha256": "530f1eee4e7bfe9fbe6dc5ba9711aad33f15e3dd9dc81378e217a090fc319747"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "b7e878515739012b"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "draven-leona",
-      "carry": "Draven",
-      "support": "Leona",
       "name": "日光双斧",
       "style": "balanced",
       "tags": [
         "先手",
         "短爆发"
       ],
-      "why": "蕾欧娜限制对手，德莱文用斧头普攻集中换血。",
-      "plan": "德莱文补刀；先报斧头与状态，再让蕾欧娜先手。",
-      "risk": "推进过深容易被抓，辅助不要离开接斧路线太远。",
+      "why": "蕾欧娜实际控制后，德莱文按安全斧头落点集中输出。",
+      "plan": "蕾欧娜 E 追向最后命中的英雄，Q 下一次普攻命中才眩晕。 德莱文按实际斧头落点输出，接斧才延续 Q 并刷新 W。 射手距离断开、斧头落点危险或侧翼有反包就退出。",
+      "risk": "蕾欧娜 R 中心眩晕、外围减速；不能为接斧硬走入集火。",
       "partners": [
         "Elise",
         "JarvanIV"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 德莱文技能资料",
@@ -5454,38 +5704,122 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Leona.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Draven 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Draven.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Leona 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Leona.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Draven": "f663c75656c0aae3",
-        "champion:Leona": "060aef3e3162ad2d"
+        "champion:Draven": "6e70cb90d9331e71",
+        "champion:Leona": "2b7d4e998553b365"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Draven",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀；接住 Q 斧才延续并刷新 W，落点危险时可以放弃。"
+        },
+        {
+          "champion": "Leona",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；E 追最后命中的英雄，Q 下一次普攻与 R 中心命中才眩晕。"
+        }
+      ],
+      "steps": [
+        "蕾欧娜 E 追向最后命中的英雄，Q 下一次普攻命中才眩晕。",
+        "德莱文按实际斧头落点输出，接斧才延续 Q 并刷新 W。",
+        "射手距离断开、斧头落点危险或侧翼有反包就退出。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Draven": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "6e70cb90d9331e71",
+          "observedAt": "2026-10-23T02:03:51.458Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Draven",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/draven/draven.bin.json",
+              "sha256": "530f1eee4e7bfe9fbe6dc5ba9711aad33f15e3dd9dc81378e217a090fc319747"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "b7e878515739012b"
+            }
+          }
+        },
+        "Leona": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "2b7d4e998553b365",
+          "observedAt": "2026-10-23T02:03:51.536Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Leona",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/leona/leona.bin.json",
+              "sha256": "9064d034ca61a09ed84bff5f9f907af1d6e08ecf7a54ec2c58b1baa658480fd0"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "7ff3b8a69842091d"
+            }
+          }
+        }
+      }
     },
     {
       "id": "draven-thresh",
-      "carry": "Draven",
-      "support": "Thresh",
       "name": "斧头与灯笼",
       "style": "balanced",
       "tags": [
         "控制",
         "撤退保护"
       ],
-      "why": "锤石控制帮德莱文接近目标，灯笼提供撤退选择。",
-      "plan": "德莱文补刀；钩中后安全集火，追斧头前确认灯笼方向。",
-      "risk": "接斧和点灯笼都需要操作，别指望灯笼救所有失位。",
+      "why": "锤石实际钩控后德莱文可安全输出，灯笼提供主动撤退选择。",
+      "plan": "锤石 Q 命中首个单位，先确认目标和射手距离。 德莱文接住 Q 斧才延续并刷新 W，斧落危险处可放弃；锤石不必每次二段。 灯笼需要队友主动点击并看锤石的落点；钩空或退路被堵就撤。",
+      "risk": "钩子、接斧和灯笼都需实际操作，不保证救援成功。",
       "partners": [
         "Elise",
         "Vi"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 德莱文技能资料",
@@ -5498,17 +5832,103 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Thresh.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Draven 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Draven.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Thresh 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Thresh.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Draven": "f663c75656c0aae3",
-        "champion:Thresh": "89037d310bb2f03a"
+        "champion:Draven": "6e70cb90d9331e71",
+        "champion:Thresh": "766a02f3f37aa314"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "champion": "Draven",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀；接住 Q 斧才延续并刷新 W，落点危险时可以放弃。"
+        },
+        {
+          "champion": "Thresh",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助看钩子首个碰撞目标；灯笼需队友主动点击，二段不必强交。"
+        }
+      ],
+      "steps": [
+        "锤石 Q 命中首个单位，先确认目标和射手距离。",
+        "德莱文接住 Q 斧才延续并刷新 W，斧落危险处可放弃；锤石不必每次二段。",
+        "灯笼需要队友主动点击并看锤石的落点；钩空或退路被堵就撤。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Draven": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "6e70cb90d9331e71",
+          "observedAt": "2026-10-23T02:03:51.458Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Draven",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/draven/draven.bin.json",
+              "sha256": "530f1eee4e7bfe9fbe6dc5ba9711aad33f15e3dd9dc81378e217a090fc319747"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "b7e878515739012b"
+            }
+          }
+        },
+        "Thresh": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "766a02f3f37aa314",
+          "observedAt": "2026-10-23T02:03:51.634Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Thresh",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/thresh/thresh.bin.json",
+              "sha256": "f55dc93e1986c0547aa2b2446989f249186cbd3a2d604df58c1777e58410c5bf"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "9d08c31186ec4f58"
+            }
+          }
+        }
+      }
     },
     {
       "id": "kalista-thresh",
@@ -6026,24 +6446,22 @@
     },
     {
       "id": "varus-nautilus",
-      "carry": "Varus",
-      "support": "Nautilus",
       "name": "深海箭链",
       "style": "balanced",
       "tags": [
         "稳定先手",
         "控制接力"
       ],
-      "why": "泰坦先控制，韦鲁斯接大招延长限制或阻断跟进。",
-      "plan": "韦鲁斯补刀；控制错开用，泰坦不要离开韦鲁斯输出距离。",
-      "risk": "两人缺少灵活撤退，控制全交后容易被反扑。",
+      "why": "泰坦实际控制后，韦鲁斯可按目标位置接 R 或保留控制。",
+      "plan": "先确认泰坦 Q 的首个碰撞单位与韦鲁斯距离，实际控制命中后再安排接力。 韦鲁斯 R 命中首个英雄才禁锢，向其他目标蔓延也需实际触及；并非击飞。 留一段控制应对反扑；目标离开或射手跟不上就撤。",
+      "risk": "两人撤退能力有限；本版 Q/W 数值有变化，不沿用旧伤害保证。",
       "partners": [
         "Galio",
         "Orianna"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 韦鲁斯技能资料",
@@ -6056,17 +6474,103 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Varus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Varus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Varus": "ae3624a9b39454a2",
-        "champion:Nautilus": "89b73fd1b583624c"
+        "champion:Varus": "643e042201703827",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Varus",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀；R 命中首个英雄才禁锢，蔓延需实际触及其他目标。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；Q 可碰到首个单位或地形，按实际控制命中与队友距离行动。"
+        }
+      ],
+      "steps": [
+        "先确认泰坦 Q 的首个碰撞单位与韦鲁斯距离，实际控制命中后再安排接力。",
+        "韦鲁斯 R 命中首个英雄才禁锢，向其他目标蔓延也需实际触及；并非击飞。",
+        "留一段控制应对反扑；目标离开或射手跟不上就撤。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Varus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "643e042201703827",
+          "observedAt": "2026-10-23T02:03:51.637Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Varus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/varus/varus.bin.json",
+              "sha256": "bac170ccc806133bc4f998eca45d7bcbbdd9c6ecf1057c5d63fe1d02ffe06937"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "7b616ac861086a8b"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "varus-renata",
@@ -6129,24 +6633,22 @@
     },
     {
       "id": "missfortune-leona",
-      "carry": "MissFortune",
-      "support": "Leona",
       "name": "日光弹幕",
       "style": "balanced",
       "tags": [
         "控制接大",
         "团战爆发"
       ],
-      "why": "蕾欧娜限制目标移动，女枪从安全方向铺弹幕。",
-      "plan": "女枪补刀；先确认控制落点，再找不会被打断的 R 位置。",
-      "risk": "女枪大招站桩，不能把全部保护控制交完。",
+      "why": "蕾欧娜实际控制后，女枪可寻找安全方向引导 R。",
+      "plan": "蕾欧娜 E 追最后命中的英雄，Q 下一次普攻或 R 中心命中才眩晕。 女枪确认射线、侧翼与退路后沿实际控制区域引导 R。 控制落空、队友距离不足或打断者逼近时停止追击和引导。",
+      "risk": "没有绝对不会被打断的站位，蕾欧娜 R 外围只减速。",
       "partners": [
         "Galio",
         "JarvanIV"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 厄运小姐技能资料",
@@ -6159,38 +6661,122 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Leona.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · MissFortune 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/MissFortune.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Leona 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Leona.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:MissFortune": "ddbf8a2569548361",
-        "champion:Leona": "060aef3e3162ad2d"
+        "champion:MissFortune": "10b496d2ce7c344d",
+        "champion:Leona": "2b7d4e998553b365"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "MissFortune",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀；确认控制、射线与退路后引导 R，遇打断威胁及时移位。"
+        },
+        {
+          "champion": "Leona",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；E 追最后命中的英雄，Q 下一次普攻与 R 中心命中才眩晕。"
+        }
+      ],
+      "steps": [
+        "蕾欧娜 E 追最后命中的英雄，Q 下一次普攻或 R 中心命中才眩晕。",
+        "女枪确认射线、侧翼与退路后沿实际控制区域引导 R。",
+        "控制落空、队友距离不足或打断者逼近时停止追击和引导。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "MissFortune": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "10b496d2ce7c344d",
+          "observedAt": "2026-10-23T02:03:51.542Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "MissFortune",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/missfortune/missfortune.bin.json",
+              "sha256": "90f1824101a107b2c6615d37fb83d38442de537737302976dd3f592692c377c5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "45c6c8d43f1a5c2f"
+            }
+          }
+        },
+        "Leona": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "2b7d4e998553b365",
+          "observedAt": "2026-10-23T02:03:51.536Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Leona",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/leona/leona.bin.json",
+              "sha256": "9064d034ca61a09ed84bff5f9f907af1d6e08ecf7a54ec2c58b1baa658480fd0"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "7ff3b8a69842091d"
+            }
+          }
+        }
+      }
     },
     {
       "id": "missfortune-nautilus",
-      "carry": "MissFortune",
-      "support": "Nautilus",
       "name": "深海弹幕",
       "style": "balanced",
       "tags": [
         "稳定先手",
         "范围输出"
       ],
-      "why": "泰坦控制帮助女枪覆盖弹幕，也能保护她的站桩窗口。",
-      "plan": "女枪补刀；泰坦先控，女枪调整方向后开 R。",
-      "risk": "大招角度和距离要沟通，钩到前排不一定适合开大。",
+      "why": "泰坦实际控制后，女枪可寻找同一战区的安全弹幕角度。",
+      "plan": "泰坦确认 Q 首个碰撞目标和射手距离；控制命中后再呼叫。 女枪从侧后方观察可见打断威胁，确认退路及射线覆盖后引导 R。 钩被挡、目标离开射线或打断者逼近时取消引导并移位。",
+      "risk": "控制成立不保证整段弹幕命中，泰坦应留意后排。",
       "partners": [
         "Orianna",
         "Galio"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 厄运小姐技能资料",
@@ -6203,38 +6789,122 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · MissFortune 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/MissFortune.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:MissFortune": "ddbf8a2569548361",
-        "champion:Nautilus": "89b73fd1b583624c"
+        "champion:MissFortune": "10b496d2ce7c344d",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "MissFortune",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀；确认控制、射线与退路后引导 R，遇打断威胁及时移位。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；Q 可碰到首个单位或地形，按实际控制命中与队友距离行动。"
+        }
+      ],
+      "steps": [
+        "泰坦确认 Q 首个碰撞目标和射手距离；控制命中后再呼叫。",
+        "女枪从侧后方观察可见打断威胁，确认退路及射线覆盖后引导 R。",
+        "钩被挡、目标离开射线或打断者逼近时取消引导并移位。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "MissFortune": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "10b496d2ce7c344d",
+          "observedAt": "2026-10-23T02:03:51.542Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "MissFortune",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/missfortune/missfortune.bin.json",
+              "sha256": "90f1824101a107b2c6615d37fb83d38442de537737302976dd3f592692c377c5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "45c6c8d43f1a5c2f"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "missfortune-rell",
-      "carry": "MissFortune",
-      "support": "Rell",
       "name": "铁骑弹幕",
       "style": "fun",
       "tags": [
         "聚拢控制",
         "团战爆发"
       ],
-      "why": "芮尔聚拢控制让女枪更容易覆盖多个目标。",
-      "plan": "女枪补刀；芮尔先手，女枪在安全距离接 R。",
-      "risk": "辅助进得很深时女枪未必跟得上，别隔墙空开。",
+      "why": "芮尔实际控制后，女枪可沿可覆盖区域引导弹幕。",
+      "plan": "芮尔 Q/W 实际控制命中后确认队友距离；R 先拉后持续拖曳，不是持续眩晕。 女枪观察侧翼、打断威胁与退路，确认射线覆盖后引导 R。 芮尔过深、敌人走出范围或打断逼近时取消并撤离。",
+      "risk": "聚拢不保证所有目标都吃满弹幕。",
       "partners": [
         "Orianna",
         "Galio"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 厄运小姐技能资料",
@@ -6247,38 +6917,122 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Rell.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · MissFortune 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/MissFortune.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Rell 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Rell.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:MissFortune": "ddbf8a2569548361",
-        "champion:Rell": "41676b37935fa0dc"
+        "champion:MissFortune": "10b496d2ce7c344d",
+        "champion:Rell": "bec49be1ddcf29c0"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "MissFortune",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀；确认控制、射线与退路后引导 R，遇打断威胁及时移位。"
+        },
+        {
+          "champion": "Rell",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助 Q/W 实际控制命中后才报跟进；R 的持续拖曳不能视为持续眩晕。"
+        }
+      ],
+      "steps": [
+        "芮尔 Q/W 实际控制命中后确认队友距离；R 先拉后持续拖曳，不是持续眩晕。",
+        "女枪观察侧翼、打断威胁与退路，确认射线覆盖后引导 R。",
+        "芮尔过深、敌人走出范围或打断逼近时取消并撤离。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "MissFortune": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "10b496d2ce7c344d",
+          "observedAt": "2026-10-23T02:03:51.542Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "MissFortune",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/missfortune/missfortune.bin.json",
+              "sha256": "90f1824101a107b2c6615d37fb83d38442de537737302976dd3f592692c377c5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "45c6c8d43f1a5c2f"
+            }
+          }
+        },
+        "Rell": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "bec49be1ddcf29c0",
+          "observedAt": "2026-10-23T02:03:51.549Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Rell",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/rell/rell.bin.json",
+              "sha256": "1225a8f35e320898977194bcbc616538c20de3cdd99156ef7a8e963e56b67084"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "f5469dea7fbc0dcb"
+            }
+          }
+        }
+      }
     },
     {
       "id": "xayah-nautilus",
-      "carry": "Xayah",
-      "support": "Nautilus",
       "name": "深海羽阵",
       "style": "balanced",
       "tags": [
         "控制接羽",
         "自保"
       ],
-      "why": "泰坦固定目标位置，霞有机会铺羽毛并接倒钩。",
-      "plan": "霞补刀；控制后先铺羽毛，留大招处理反扑。",
-      "risk": "霞需要输出距离，泰坦不能强行拉得太远。",
+      "why": "泰坦实际控制后，霞可按羽毛位置判断是否接 E。",
+      "plan": "泰坦控制命中且霞可到达时，霞安全铺羽。 霞 E 至少三根羽毛实际穿过同一目标才禁锢，目标移动后重新判断轨迹。 霞 R 的不可选取不等于无敌，留给真实威胁；队友距离断开就退。",
+      "risk": "泰坦过深或羽毛未穿过同一目标时不能预设续控。",
       "partners": [
         "Sejuani",
         "Galio"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 霞技能资料",
@@ -6291,17 +7045,103 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Xayah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Xayah.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Xayah": "b7332402902225ee",
-        "champion:Nautilus": "89b73fd1b583624c"
+        "champion:Xayah": "6218a12d2240d28e",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Xayah",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀；E 至少三根羽毛穿过同一目标才禁锢，R 不可选取不等于无敌。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；Q 可碰到首个单位或地形，按实际控制命中与队友距离行动。"
+        }
+      ],
+      "steps": [
+        "泰坦控制命中且霞可到达时，霞安全铺羽。",
+        "霞 E 至少三根羽毛实际穿过同一目标才禁锢，目标移动后重新判断轨迹。",
+        "霞 R 的不可选取不等于无敌，留给真实威胁；队友距离断开就退。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Xayah": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "6218a12d2240d28e",
+          "observedAt": "2026-10-23T02:03:51.640Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Xayah",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/xayah/xayah.bin.json",
+              "sha256": "94e7c4f849daefb1f7967fda0b4abd1848747fceb9ff04b2530e00471f848de5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "ef84e7c599b03475"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "xayah-braum",
@@ -6466,24 +7306,22 @@
     },
     {
       "id": "senna-nautilus",
-      "carry": "Senna",
-      "support": "Nautilus",
       "name": "长枪与铁锚",
       "style": "fun",
       "tags": [
         "远程输出",
         "先手控制"
       ],
-      "why": "赛娜补刀输出，泰坦提供前排控制和保护。",
-      "plan": "赛娜补刀，泰坦辅助；先控制再消耗，不套用赛娜辅助的经济分工。",
-      "risk": "赛娜补刀会影响灵魂获取节奏，需接受这套分工的代价。",
+      "why": "赛娜承担下路补刀，泰坦辅助控制并保护。",
+      "plan": "泰坦 Q 确认首个碰撞目标，控制成立后赛娜按安全距离 Q/普攻。 赛娜 Q 可治疗友军；W 命中首个敌人后延迟才禁锢目标及附近敌人。 钩空、W 被挡或队友距离断开时撤退，不假定一定获得灵魂。",
+      "risk": "赛娜补刀会影响灵魂获取节奏；本方案不套用辅助经济。",
       "partners": [
         "Orianna",
         "Graves"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 赛娜技能资料",
@@ -6496,38 +7334,122 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Senna 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Senna.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Senna": "f950f738d007c58a",
-        "champion:Nautilus": "89b73fd1b583624c"
+        "champion:Senna": "5e547c9cf10f2a05",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "poke"
+      "tempo": "poke",
+      "members": [
+        {
+          "champion": "Senna",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "承担下路补刀；按实际灵魂与距离判断输出，不套用辅助经济。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；Q 可碰到首个单位或地形，按实际控制命中与队友距离行动。"
+        }
+      ],
+      "steps": [
+        "泰坦 Q 确认首个碰撞目标，控制成立后赛娜按安全距离 Q/普攻。",
+        "赛娜 Q 可治疗友军；W 命中首个敌人后延迟才禁锢目标及附近敌人。",
+        "钩空、W 被挡或队友距离断开时撤退，不假定一定获得灵魂。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Senna": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "5e547c9cf10f2a05",
+          "observedAt": "2026-10-23T02:03:51.552Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Senna",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/senna/senna.bin.json",
+              "sha256": "1bc811e1ca9551f77ec55081571f502bac7d95d19297f3e8d12c56138b485c8a"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "58582c22f3d6346b"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "ziggs-nautilus",
-      "carry": "Ziggs",
-      "support": "Nautilus",
       "name": "深海爆破",
       "style": "balanced",
       "tags": [
         "控制接技能",
         "推进"
       ],
-      "why": "泰坦限制目标移动，吉格斯更容易命中技能并推进。",
-      "plan": "吉格斯补刀；钩中后接炸弹，W 可留作撤退。",
-      "risk": "持续普攻输出较少，全队需要别的位置补物理伤害。",
+      "why": "泰坦实际控制可帮助下路吉格斯预判区域技能。",
+      "plan": "泰坦 Q 会碰到首个单位或地形，实际控制命中后吉格斯按目标位置接 Q/E。 吉格斯 W 可击退自己和敌人，留作撤退时先看爆炸方向。 钩空、对手离开技能区域或被绕时撤回安全位置。",
+      "risk": "非常规下路需提前沟通，全队伤害类型与保护应按其他位置补足。",
       "partners": [
         "Kindred",
         "Graves"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 吉格斯技能资料",
@@ -6540,38 +7462,122 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Ziggs 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ziggs.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Ziggs": "cbc8f3b971dff5cb",
-        "champion:Nautilus": "89b73fd1b583624c"
+        "champion:Ziggs": "301986c8fed3e8fb",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Ziggs",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀并按实际目标位置用技能；W 的击退方向需避开队友技能和退路。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；Q 可碰到首个单位或地形，按实际控制命中与队友距离行动。"
+        }
+      ],
+      "steps": [
+        "泰坦 Q 会碰到首个单位或地形，实际控制命中后吉格斯按目标位置接 Q/E。",
+        "吉格斯 W 可击退自己和敌人，留作撤退时先看爆炸方向。",
+        "钩空、对手离开技能区域或被绕时撤回安全位置。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Ziggs": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "301986c8fed3e8fb",
+          "observedAt": "2026-10-23T02:03:51.643Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Ziggs",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ziggs/ziggs.bin.json",
+              "sha256": "0c07f0df0453c22942e9115fa6997b656808f49cd43225f4202741516c9abf3f"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "fdb99302b5ecb565"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "ziggs-alistar",
-      "carry": "Ziggs",
-      "support": "Alistar",
       "name": "牛头拆迁队",
       "style": "fun",
       "tags": [
         "控制接爆破",
         "反开"
       ],
-      "why": "牛头击飞限制目标，吉格斯跟上范围技能。",
-      "plan": "吉格斯补刀；牛头留一轮控制反开，推塔前确认侧翼视野。",
-      "risk": "牛头顶走目标会影响炸弹落点，先约好方向。",
+      "why": "牛头 Q 实际击飞可为下路吉格斯创造技能窗口。",
+      "plan": "牛头 Q 命中才击飞；W 可能把目标顶出技能范围，先沟通方向。 吉格斯根据实际位置放 Q/E，W 的击退方向应避免破坏接控或退路。 推塔前看侧翼，W 只会直接摧毁达到低血阈值的防御塔；控制空或被绕就撤。",
+      "risk": "非常规下路应先沟通分工，不能预设所有防御塔都能炸毁。",
       "partners": [
         "Kindred",
         "Graves"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 吉格斯技能资料",
@@ -6584,17 +7590,103 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Alistar.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Ziggs 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ziggs.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Alistar 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Alistar.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Ziggs": "cbc8f3b971dff5cb",
-        "champion:Alistar": "8a197011035cf22f"
+        "champion:Ziggs": "301986c8fed3e8fb",
+        "champion:Alistar": "e2aa1310b144ff1f"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Ziggs",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀并按实际目标位置用技能；W 的击退方向需避开队友技能和退路。"
+        },
+        {
+          "champion": "Alistar",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助保护与控制；Q 命中才击飞，W 方向可能改变队友技能落点。"
+        }
+      ],
+      "steps": [
+        "牛头 Q 命中才击飞；W 可能把目标顶出技能范围，先沟通方向。",
+        "吉格斯根据实际位置放 Q/E，W 的击退方向应避免破坏接控或退路。",
+        "推塔前看侧翼，W 只会直接摧毁达到低血阈值的防御塔；控制空或被绕就撤。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Ziggs": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "301986c8fed3e8fb",
+          "observedAt": "2026-10-23T02:03:51.643Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Ziggs",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ziggs/ziggs.bin.json",
+              "sha256": "0c07f0df0453c22942e9115fa6997b656808f49cd43225f4202741516c9abf3f"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "fdb99302b5ecb565"
+            }
+          }
+        },
+        "Alistar": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "e2aa1310b144ff1f",
+          "observedAt": "2026-10-23T02:03:51.449Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Alistar",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/alistar/alistar.bin.json",
+              "sha256": "1cab5ab714cd3675401bd947d668313154162d93409f35b46612e509ec603e7b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "60b70b49d6326ac5"
+            }
+          }
+        }
+      }
     },
     {
       "id": "swain-nautilus",
@@ -6953,24 +8045,22 @@
     },
     {
       "id": "karthus-nautilus",
-      "carry": "Karthus",
-      "support": "Nautilus",
       "name": "深海安魂曲",
       "style": "wild",
       "tags": [
         "控制接技能",
         "法术下路"
       ],
-      "why": "泰坦限制移动，卡尔萨斯更容易连续命中 Q。",
-      "plan": "卡尔萨斯补刀；控制期间打 Q，避免为被动故意无意义送掉。",
-      "risk": "缺灵活撤退，法术输出多；非常规位置先沟通。",
+      "why": "泰坦实际控制可帮助下路卡尔萨斯预判 Q。",
+      "plan": "泰坦确认 Q 首个目标，实际控制后卡尔萨斯按目标位置预判 Q。 Q 爆炸只命中一个敌方单位时才有单体伤害条件；W 可穿行，只提供减速与削魔抗。 R 需安全引导且不保证击杀；控制落空、法力不足或无退路就撤，不为被动主动送命。",
+      "risk": "非常规法师下路缺少灵活撤退，兵线存在时不能按单目标伤害计算。",
       "partners": [
         "Kindred",
         "Graves"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 卡尔萨斯技能资料",
@@ -6983,17 +8073,103 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Karthus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Karthus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Karthus": "e30d9782e246595c",
-        "champion:Nautilus": "89b73fd1b583624c"
+        "champion:Karthus": "c1de84b19ac00ffe",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Karthus",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀并管理法力；Q 单体条件与 R 引导均按实际情况判断，不为被动故意送命。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；Q 可碰到首个单位或地形，按实际控制命中与队友距离行动。"
+        }
+      ],
+      "steps": [
+        "泰坦确认 Q 首个目标，实际控制后卡尔萨斯按目标位置预判 Q。",
+        "Q 爆炸只命中一个敌方单位时才有单体伤害条件；W 可穿行，只提供减速与削魔抗。",
+        "R 需安全引导且不保证击杀；控制落空、法力不足或无退路就撤，不为被动主动送命。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Karthus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "c1de84b19ac00ffe",
+          "observedAt": "2026-10-23T02:03:51.532Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Karthus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/karthus/karthus.bin.json",
+              "sha256": "b4ac31106c87eec4085d1e93d37f54357a0dc5bbffd92b2fc08a4ab4c1dd8dfc"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "74e873421db425cc"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "veigar-alistar",
@@ -9933,17 +11109,15 @@
     },
     {
       "id": "veigar-leona",
-      "carry": "Veigar",
-      "support": "Leona",
       "name": "日光牢笼",
       "style": "fun",
       "tags": [
         "先手接笼",
         "控制延长"
       ],
-      "why": "蕾欧娜先限制目标，维迦接笼子与技能。",
-      "plan": "维迦补刀；控制错开，给法师保持施法距离。",
-      "risk": "前期清线与蓝量有限，辅助别独自冲进远处。",
+      "why": "蕾欧娜控制实际命中后，维迦可布置 E 限制退路并跟技能。",
+      "plan": "确认兵线和距离，蕾欧娜 E 命中后接近，Q 下一次普攻命中才眩晕。 维迦 E 封退路，只有目标碰到笼边才眩晕；按实际位置接 W/Q。 技能落空、法师跟不上或辅助进场过深时撤退。",
+      "risk": "蕾欧娜 R 中心才眩晕、外围减速；笼子中央不会自动眩晕。",
       "partners": [
         "Graves",
         "Shen"
@@ -9955,20 +11129,106 @@
           "url": "https://www.mobafire.com/league-of-legends/build/trieuloos-challenger-in-depth-veigar-bot-guide-594691",
           "kind": "guide",
           "checkedAt": "2026-10-04"
+        },
+        {
+          "name": "Riot · Veigar 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Veigar.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Leona 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Leona.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "evidence": "社区玩法启发 · 机制人工复核",
-      "reviewedAt": "2026-10-04",
-      "patch": "16.19",
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
+      "reviewedAt": "2026-10-29",
+      "patch": "16.21",
       "reviewBaseline": {
-        "champion:Veigar": "ed94011fc60b7ad1",
-        "champion:Leona": "060aef3e3162ad2d"
+        "champion:Veigar": "b0c876605f73d7f8",
+        "champion:Leona": "2b7d4e998553b365"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Veigar",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀、管理蓝量；E 只有目标碰到笼边才眩晕。"
+        },
+        {
+          "champion": "Leona",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；E 追最后命中的英雄，Q 下一次普攻与 R 中心命中才眩晕。"
+        }
+      ],
+      "steps": [
+        "确认兵线和距离，蕾欧娜 E 命中后接近，Q 下一次普攻命中才眩晕。",
+        "维迦 E 封退路，只有目标碰到笼边才眩晕；按实际位置接 W/Q。",
+        "技能落空、法师跟不上或辅助进场过深时撤退。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Veigar": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "b0c876605f73d7f8",
+          "observedAt": "2026-10-23T02:03:51.637Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Veigar",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/veigar/veigar.bin.json",
+              "sha256": "3525cce16451c015199a0a478dd3298c85ac39cb9cc2bc41e1b643426c03cf24"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "0d5181fbdf1760ef"
+            }
+          }
+        },
+        "Leona": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "2b7d4e998553b365",
+          "observedAt": "2026-10-23T02:03:51.536Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Leona",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/leona/leona.bin.json",
+              "sha256": "9064d034ca61a09ed84bff5f9f907af1d6e08ecf7a54ec2c58b1baa658480fd0"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "7ff3b8a69842091d"
+            }
+          }
+        }
+      }
     },
     {
       "id": "veigar-nautilus",
@@ -10095,17 +11355,15 @@
     },
     {
       "id": "veigar-thresh",
-      "carry": "Veigar",
-      "support": "Thresh",
       "name": "灯笼牢笼",
       "style": "fun",
       "tags": [
         "撤退保护",
         "连续控制"
       ],
-      "why": "锤石控制帮助维迦布笼，灯笼增加撤退选择。",
-      "plan": "维迦补刀；优先接已命中的控制，灯笼放在能点到的位置。",
-      "risk": "不能每钩必中；蓝量和清线仍需管理。",
+      "why": "锤石控制实际命中后，维迦可限制退路；灯笼供队友主动点击。",
+      "plan": "锤石 Q 会碰到首个单位，先确认钩线与双方距离。 实际控制后维迦 E 限制退路，目标触碰边缘才眩晕，不假定钩住就一定撞笼。 灯笼须队友主动点击且落点安全；钩空或蓝量不足时回撤。",
+      "risk": "灯笼不能自动救援，控制与距离不足时不要追击。",
       "partners": [
         "Graves",
         "Shen"
@@ -10117,34 +11375,118 @@
           "url": "https://www.mobafire.com/league-of-legends/build/trieuloos-challenger-in-depth-veigar-bot-guide-594691",
           "kind": "guide",
           "checkedAt": "2026-10-04"
+        },
+        {
+          "name": "Riot · Veigar 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Veigar.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Thresh 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Thresh.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "evidence": "社区玩法启发 · 机制人工复核",
-      "reviewedAt": "2026-10-04",
-      "patch": "16.19",
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
+      "reviewedAt": "2026-10-29",
+      "patch": "16.21",
       "reviewBaseline": {
-        "champion:Veigar": "ed94011fc60b7ad1",
-        "champion:Thresh": "89037d310bb2f03a"
+        "champion:Veigar": "b0c876605f73d7f8",
+        "champion:Thresh": "766a02f3f37aa314"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "champion": "Veigar",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀、管理蓝量；E 只有目标碰到笼边才眩晕。"
+        },
+        {
+          "champion": "Thresh",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助看钩子首个碰撞目标；灯笼需队友主动点击，二段不必强交。"
+        }
+      ],
+      "steps": [
+        "锤石 Q 会碰到首个单位，先确认钩线与双方距离。",
+        "实际控制后维迦 E 限制退路，目标触碰边缘才眩晕，不假定钩住就一定撞笼。",
+        "灯笼须队友主动点击且落点安全；钩空或蓝量不足时回撤。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Veigar": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "b0c876605f73d7f8",
+          "observedAt": "2026-10-23T02:03:51.637Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Veigar",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/veigar/veigar.bin.json",
+              "sha256": "3525cce16451c015199a0a478dd3298c85ac39cb9cc2bc41e1b643426c03cf24"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "0d5181fbdf1760ef"
+            }
+          }
+        },
+        "Thresh": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "766a02f3f37aa314",
+          "observedAt": "2026-10-23T02:03:51.634Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Thresh",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/thresh/thresh.bin.json",
+              "sha256": "f55dc93e1986c0547aa2b2446989f249186cbd3a2d604df58c1777e58410c5bf"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "9d08c31186ec4f58"
+            }
+          }
+        }
+      }
     },
     {
       "id": "veigar-pantheon",
-      "carry": "Veigar",
-      "support": "Pantheon",
       "name": "盾击牢笼",
       "style": "fun",
       "tags": [
         "点控接笼",
         "短时爆发"
       ],
-      "why": "潘森点控给维迦布置后续技能的时间。",
-      "plan": "维迦补刀；潘森辅助用低经济找接控机会，不抢清线资源。",
-      "risk": "过度追击会脱离法师射程；双人缺回复。",
+      "why": "潘森 W 实际晕住目标后，维迦可限制退路并预判后续技能。",
+      "plan": "潘森辅助先确认接近距离及退路，W 实际命中目标后再报控制。 维迦 E 封退路，目标碰到边缘才眩晕；W/Q 根据实际位置预判。 两人距离断开、W 失效或附近有反包时停止追击。",
+      "risk": "一次点控不保证后续全部命中，法师蓝量和射程需留意。",
       "partners": [
         "Shen",
         "Kindred"
@@ -10156,20 +11498,106 @@
           "url": "https://www.mobafire.com/league-of-legends/build/trieuloos-challenger-in-depth-veigar-bot-guide-594691",
           "kind": "guide",
           "checkedAt": "2026-10-04"
+        },
+        {
+          "name": "Riot · Veigar 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Veigar.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Pantheon 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Pantheon.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "evidence": "社区玩法启发 · 机制人工复核",
-      "reviewedAt": "2026-10-04",
-      "patch": "16.19",
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
+      "reviewedAt": "2026-10-29",
+      "patch": "16.21",
       "reviewBaseline": {
-        "champion:Veigar": "ed94011fc60b7ad1",
-        "champion:Pantheon": "c193013ff5c96a21"
+        "champion:Veigar": "b0c876605f73d7f8",
+        "champion:Pantheon": "ade6cc95e4c6b966"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Veigar",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "下路补刀、管理蓝量；E 只有目标碰到笼边才眩晕。"
+        },
+        {
+          "champion": "Pantheon",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助守视野；W 实际命中目标后才报控制，避免脱离法师范围。"
+        }
+      ],
+      "steps": [
+        "潘森辅助先确认接近距离及退路，W 实际命中目标后再报控制。",
+        "维迦 E 封退路，目标碰到边缘才眩晕；W/Q 根据实际位置预判。",
+        "两人距离断开、W 失效或附近有反包时停止追击。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键技能命中时；条件不成立就保留撤退。",
+      "early": "下路成员先保补刀与经验，辅助照看血量、视野和兵线；按实际等级、法力与对手技能选择换血。",
+      "economy": "下路成员以补刀为主，辅助以任务和视野经济为主；默认配置按当前界面实际来源与状态显示，不冒称组合专配。",
+      "reviewSourceAnchors": {
+        "Veigar": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "b0c876605f73d7f8",
+          "observedAt": "2026-10-23T02:03:51.637Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Veigar",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/veigar/veigar.bin.json",
+              "sha256": "3525cce16451c015199a0a478dd3298c85ac39cb9cc2bc41e1b643426c03cf24"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "0d5181fbdf1760ef"
+            }
+          }
+        },
+        "Pantheon": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "ade6cc95e4c6b966",
+          "observedAt": "2026-10-23T02:03:51.546Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Pantheon",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/pantheon/pantheon.bin.json",
+              "sha256": "0acb5fa598525639a78e444a98a3e50cc46533843446d17657921c3639dd23df"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "0ab565075cf8e870"
+            }
+          }
+        }
+      }
     },
     {
       "id": "veigar-zilean",
@@ -16613,15 +18041,39 @@
       ],
       "why": "皇子限制移动，加里奥提供后续控制，女枪从安全角度持续开大。",
       "plan": "皇子确认女枪距离后先手；加里奥以队友为落点接支援；女枪等控制生效再开弹幕。",
-      "risk": "加里奥落地有延迟；皇子地形也可能妨碍队友，女枪大招怕打断。",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-05",
+      "risk": "加里奥落地有延迟；皇子地形也可能妨碍队友，女枪大招怕打断。 嘉文 Q 未连接旗或目标未在路径上就不击飞，加里奥护盾只吸魔法伤害。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot Galio 技能说明",
           "url": "https://www.leagueoflegends.com/en-us/champions/galio/",
           "kind": "官方技能依据",
           "checkedAt": "2026-10-05"
+        },
+        {
+          "name": "Riot · JarvanIV 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/JarvanIV.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Galio 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Galio.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · MissFortune 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/MissFortune.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "members": [
@@ -16645,47 +18097,120 @@
         }
       ],
       "steps": [
-        "皇子确认女枪距离后先手",
-        "加里奥以队友为落点接支援",
-        "女枪等控制生效再开弹幕。"
+        "嘉文 Q 连接 E 旗且路径目标实际被击飞后才报落点；R 围墙不是持续控制，妨碍队友时重施拆除。",
+        "加里奥对范围内友军当前位置施 R，落点固定且有延迟；只在实际落地命中时期待击飞。",
+        "女枪观察侧翼与退路，在安全射线引导 R；敌人离开或打断者逼近时取消。"
       ],
       "window": "嘉文四世负责限制位置，加里奥负责支援与后续控制，厄运小姐负责安全铺弹幕；三人关键技能齐、输出跟得上且没有同时瞄准不同目标时。",
       "early": "嘉文四世先保野区清野节奏，加里奥先保中路兵线经验，厄运小姐先保下路兵线经验；这套以完整技能的接力为主，前期先使用小技能换血，别等同于已经有大招连招。",
       "economy": "嘉文四世以野区经济为主，支援后别长期蹭线；加里奥保留中路补刀和经验；厄运小姐保留下路补刀和经验。这套按正式位置分工，换位先在客户端确认。",
       "reviewBaseline": {
-        "champion:JarvanIV": "3906c2327e3ea4cf",
-        "champion:Galio": "93e234e70ba0094e",
-        "champion:MissFortune": "ddbf8a2569548361",
+        "champion:JarvanIV": "c9d96bc727699c9b",
+        "champion:Galio": "62214853523131ad",
+        "champion:MissFortune": "10b496d2ce7c344d",
+        "item:6610": "93878c29ffe17b52",
         "item:3071": "8b44dc349847ea0e",
-        "item:3053": "6f40bd5cd29bb7d2",
-        "item:3047": "46ff9ea0f9199a8e",
         "item:6333": "60ed05035db8354d",
+        "item:3047": "46ff9ea0f9199a8e",
+        "item:3053": "6f40bd5cd29bb7d2",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
-        "rune:8473": "ed2f46234183276d",
-        "rune:8451": "9e4f8837510e3998",
         "rune:9104": "e6b524a54b35a2f3",
-        "item:6655": "e593f4433de96e4b",
+        "rune:8014": "04092c4f9754532b",
+        "rune:8304": "aa454bdce540cb11",
+        "rune:8347": "def2a55844436c47",
+        "item:3152": "37dc7712644a19f0",
+        "item:4005": "049fc32e0486e5b6",
         "item:3157": "4e1ddce33472ee0f",
-        "item:3089": "a8a9b060b253391c",
         "item:3020": "357a162d6a40286e",
+        "item:3089": "a8a9b060b253391c",
         "item:3135": "9eb1465e02c69db0",
-        "item:3102": "74374782f1274206",
-        "rune:8112": "0082006b65520bc3",
-        "rune:8126": "9e648d4b51a0c973",
-        "rune:8140": "93302565a400fc06",
-        "rune:8106": "bfb83fa22daf18de",
-        "rune:8226": "b05a5d0fb43e4a6e",
-        "rune:8210": "e78877d51ff049ea",
         "rune:8439": "b2c74fd18c4ad076",
         "rune:8463": "3296414353df0e65",
+        "rune:8473": "ed2f46234183276d",
         "rune:8242": "37935df8d31dd429",
         "rune:8306": "68d4bd3d69d9d19c",
-        "rune:8347": "def2a55844436c47",
-        "item:6610": "93878c29ffe17b52",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8304": "aa454bdce540cb11"
+        "rune:8230": "b4da4b07836c5635",
+        "rune:8226": "b05a5d0fb43e4a6e",
+        "rune:8234": "018bc04903dfba25",
+        "rune:8237": "141d0a7c16b98b91",
+        "rune:8444": "fbb59f496f94894e",
+        "rune:8451": "9e4f8837510e3998"
+      },
+      "reviewSourceAnchors": {
+        "JarvanIV": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "c9d96bc727699c9b",
+          "observedAt": "2026-10-23T02:03:51.530Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "JarvanIV",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jarvaniv/jarvaniv.bin.json",
+              "sha256": "6dfa4b87b045841df8ae4ffb982baf6308b5b5e34108ed8cfd3ae73141f9d141"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "62ea4f1e9467d2b7"
+            }
+          }
+        },
+        "Galio": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "62214853523131ad",
+          "observedAt": "2026-10-23T02:03:51.461Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Galio",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/galio/galio.bin.json",
+              "sha256": "7aa1e6e5b363ddcf43803eb25cc09aa80b8bbb39e563ae9d37443a83d08b2df5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "e3a8cfa71c0b2970"
+            }
+          }
+        },
+        "MissFortune": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "10b496d2ce7c344d",
+          "observedAt": "2026-10-23T02:03:51.542Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "MissFortune",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/missfortune/missfortune.bin.json",
+              "sha256": "90f1824101a107b2c6615d37fb83d38442de537737302976dd3f592692c377c5"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "45c6c8d43f1a5c2f"
+            }
+          }
+        }
       }
     },
     {
@@ -16699,9 +18224,9 @@
       ],
       "why": "三人的进场围绕同一目标，加里奥帮助前排进场后撑过第一轮。",
       "plan": "先处理兵线并确认加里奥支援范围；卡蜜尔或蔚先手，另一人后手接控；加里奥跟上，确认击杀后一起撤。",
-      "risk": "加里奥 R 以友军位置为落点且有延迟，不保证敌人留在范围内；蔚 W 是被动，不能接控。前两人都深入、友军被逼退或三人覆盖断开就取消强接并互相接应，不追进敌方全队。",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-10",
+      "risk": "加里奥 R 以友军位置为落点且有延迟，不保证敌人留在范围内；蔚 W 是被动，不能接控。前两人都深入、友军被逼退或三人覆盖断开就取消强接并互相接应，不追进敌方全队。 卡蜜尔 E 要先挂地形再撞英雄，蔚 Q 击退、R 主目标击飞。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot Camille 16.20.1 技能说明",
@@ -16720,6 +18245,30 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/champion/Galio.json",
           "kind": "官方技能依据",
           "checkedAt": "2026-10-10"
+        },
+        {
+          "name": "Riot · Camille 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Camille.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Vi 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Vi.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Galio 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Galio.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "members": [
@@ -16732,7 +18281,7 @@
         {
           "role": "jungle",
           "champion": "Vi",
-          "job": "先报 Q/R 是否可用；卡蜜尔留住同一目标、加里奥能接应时，用 Q 命中或 R 追到该敌方英雄并实际击飞，别与卡蜜尔同时交完先手。落地普攻接 E 重置普攻并叠 W 被动；W 不能主动施放或作为接控。队友跟不上、目标越出共同覆盖就停止深入，留 Q 作接应或撤退。",
+          "job": "先报 Q/R 是否可用；卡蜜尔留住目标、加里奥能接应时，Q 命中英雄击退或 R 抵达主目标后击飞，别与卡蜜尔同时交完先手。普攻/E 按实际情况叠 W；队友跟不上或退路不清时停止深入。",
           "loadoutId": "trio-vi-followup"
         },
         {
@@ -16754,16 +18303,18 @@
         "champion:Camille": "d8925ce8a69d2250",
         "champion:Vi": "ed4ccc20b476dc0e",
         "champion:Galio": "62214853523131ad",
+        "item:3078": "00721100a51ed120",
         "item:3071": "8b44dc349847ea0e",
-        "item:3053": "6f40bd5cd29bb7d2",
-        "item:3047": "46ff9ea0f9199a8e",
         "item:6333": "60ed05035db8354d",
+        "item:3047": "46ff9ea0f9199a8e",
+        "item:3053": "6f40bd5cd29bb7d2",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
         "rune:9105": "8f6975f18cf3ff8d",
-        "rune:8473": "ed2f46234183276d",
-        "rune:8451": "9e4f8837510e3998",
+        "rune:8014": "04092c4f9754532b",
+        "rune:8304": "aa454bdce540cb11",
+        "rune:8347": "def2a55844436c47",
         "item:3152": "37dc7712644a19f0",
         "item:4005": "049fc32e0486e5b6",
         "item:3157": "4e1ddce33472ee0f",
@@ -16772,87 +18323,85 @@
         "item:3135": "9eb1465e02c69db0",
         "rune:8439": "b2c74fd18c4ad076",
         "rune:8463": "3296414353df0e65",
+        "rune:8473": "ed2f46234183276d",
         "rune:8242": "37935df8d31dd429",
         "rune:8306": "68d4bd3d69d9d19c",
-        "rune:8347": "def2a55844436c47",
         "rune:8230": "b4da4b07836c5635",
         "rune:8226": "b05a5d0fb43e4a6e",
         "rune:8234": "018bc04903dfba25",
         "rune:8237": "141d0a7c16b98b91",
         "rune:8444": "fbb59f496f94894e",
-        "item:3078": "00721100a51ed120",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8304": "aa454bdce540cb11"
+        "rune:8451": "9e4f8837510e3998"
       },
       "reviewSourceAnchors": {
         "Camille": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "d8925ce8a69d2250",
-          "observedAt": "2026-10-18T23:14:26.848Z",
+          "observedAt": "2026-10-23T02:03:51.455Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Camille",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/camille/camille.bin.json",
-              "sha256": "4a71a33c3849552befed54f0ae747ad470c25ac1a4921095d44c43ee3167df80"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/camille/camille.bin.json",
+              "sha256": "032045fc45a37b5c7e01084660a1e374e98463d64bfbfb16238213f44a028907"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "67751120f662608d"
             }
           }
         },
         "Vi": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "ed4ccc20b476dc0e",
-          "observedAt": "2026-10-18T23:15:58.907Z",
+          "observedAt": "2026-10-23T02:03:51.638Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Vi",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/vi/vi.bin.json",
-              "sha256": "bdbc6f55f084d4b8ff4a76ece0cbba208bd349518c052cf52086036b23234714"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/vi/vi.bin.json",
+              "sha256": "39ab18fb02a711038ea11b42a89b8d69a8d5e61f0d3257def025935e78340269"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "8c5f2d227a1d26cb"
             }
           }
         },
         "Galio": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "62214853523131ad",
-          "observedAt": "2026-10-18T23:14:38.102Z",
+          "observedAt": "2026-10-23T02:03:51.461Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Galio",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/galio/galio.bin.json",
-              "sha256": "1f96ad492546bfe653baf90a1c9fa473f81fbe8b1f911e0d3c14d4bb5a33dfad"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/galio/galio.bin.json",
+              "sha256": "7aa1e6e5b363ddcf43803eb25cc09aa80b8bbb39e563ae9d37443a83d08b2df5"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "e3a8cfa71c0b2970"
             }
           }
@@ -18319,8 +19868,8 @@
       "why": "蔚与泰坦创造狐狸命中技能的窗口，适合协作抓落单。",
       "plan": "先从有视野的方向接近；泰坦或蔚先手；狐狸确认目标控制生效再接 E，另一人留控制处理逃跑。",
       "risk": "不建议交三人大招追同一个残血；抓不到人时先处理线与目标。",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-05",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 蔚技能资料",
@@ -18339,6 +19888,30 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Vi 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Vi.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Ahri 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ahri.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "members": [
@@ -18362,27 +19935,29 @@
         }
       ],
       "steps": [
-        "先从有视野的方向接近",
-        "泰坦或蔚先手",
-        "狐狸确认目标控制生效再接 E，另一人留控制处理逃跑。"
+        "从有视野的方向接近，确认三人距离与目标附近人数。",
+        "泰坦 Q 碰到首个单位或地形，蔚 Q 命中英雄击退、R 主目标击飞；实际控制后再呼叫后续。",
+        "阿狸 E 会命中第一个单位，确认弹道后接魅惑；控制空或队友跟不上就停止追击。"
       ],
       "window": "泰坦先手命中或蔚 R 能留住目标，阿狸魅惑接得上且目标附近人数已确认时。",
       "early": "阿狸推线后靠近河道，泰坦从下路状态允许时游走，蔚先清野到能跟控制的一侧。",
       "economy": "蔚以野区经济为主，支援后别长期蹭线；阿狸保留中路补刀和经验；诺提勒斯走辅助经济，保任务装与视野。这套按正式位置分工，换位先在客户端确认。",
       "reviewBaseline": {
-        "champion:Vi": "3397db3348f1185c",
-        "champion:Ahri": "8f6a93d0d1909974",
-        "champion:Nautilus": "89b73fd1b583624c",
+        "champion:Vi": "ed4ccc20b476dc0e",
+        "champion:Ahri": "bde1d83c334a89af",
+        "champion:Nautilus": "67da151a84906467",
+        "item:3078": "00721100a51ed120",
         "item:3071": "8b44dc349847ea0e",
-        "item:3053": "6f40bd5cd29bb7d2",
-        "item:3047": "46ff9ea0f9199a8e",
         "item:6333": "60ed05035db8354d",
+        "item:3047": "46ff9ea0f9199a8e",
+        "item:3053": "6f40bd5cd29bb7d2",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
         "rune:9105": "8f6975f18cf3ff8d",
-        "rune:8473": "ed2f46234183276d",
-        "rune:8345": "02157c1d4d7f7531",
+        "rune:8014": "04092c4f9754532b",
+        "rune:8304": "aa454bdce540cb11",
+        "rune:8347": "def2a55844436c47",
         "item:3190": "89cdf2838748dfc7",
         "item:3050": "c3e25c9df9075147",
         "item:3109": "97c25fae90d4a8a4",
@@ -18390,14 +19965,86 @@
         "item:3075": "6d456e96c01062c6",
         "rune:8439": "b2c74fd18c4ad076",
         "rune:8463": "3296414353df0e65",
+        "rune:8473": "ed2f46234183276d",
         "rune:8242": "37935df8d31dd429",
         "rune:8306": "68d4bd3d69d9d19c",
-        "rune:8347": "def2a55844436c47",
         "rune:8351": "6594874b24a7b00e",
-        "rune:8453": "f9a0180e7f2f0432",
-        "item:3078": "00721100a51ed120",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8304": "aa454bdce540cb11"
+        "rune:8345": "02157c1d4d7f7531",
+        "rune:8453": "f9a0180e7f2f0432"
+      },
+      "reviewSourceAnchors": {
+        "Vi": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "ed4ccc20b476dc0e",
+          "observedAt": "2026-10-23T02:03:51.638Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Vi",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/vi/vi.bin.json",
+              "sha256": "39ab18fb02a711038ea11b42a89b8d69a8d5e61f0d3257def025935e78340269"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "8c5f2d227a1d26cb"
+            }
+          }
+        },
+        "Ahri": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "bde1d83c334a89af",
+          "observedAt": "2026-10-23T02:03:51.448Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Ahri",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ahri/ahri.bin.json",
+              "sha256": "7c53539d053f4bc18d564247c1bf33cd969637e151b5409fd23476a5a5c3598c"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "e4656df5a2cc81d8"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
       }
     },
     {
@@ -20684,14 +22331,15 @@
         "抓人节奏"
       ],
       "why": "蔚和泰坦的控制帮助卡莎获得进场机会，但卡莎要自己确认落点安全。",
-      "plan": "泰坦先留人，蔚 R 锁目标；卡莎看到印记后选择安全 R 落点，再打最近可击杀目标。",
-      "risk": "卡莎跟进可能与辅助脱节，点名目标若有反开会把三人带进包围。",
+      "plan": "泰坦或蔚实际控制同一目标后，卡莎查看电浆与距离；只有 R 可用、合法落点安全且有接应时才考虑飞，也可以留在原位输出。",
+      "risk": "卡莎跟进可能与辅助脱节，点名目标若有反开会把三人带进包围。 卡莎 R 只可落在带电浆的敌方英雄附近，不能保证落点安全或击杀。",
       "early": "卡莎先补刀并避免无支援换血，蔚清野后只抓能接控制的一侧。",
       "window": "目标缺少保护、卡莎 R 可用且落点有退路时。",
       "economy": "卡莎补刀发育，蔚保野区节奏，泰坦不为秒人堆输出装。",
       "steps": [
-        "泰坦先留人，蔚 R 锁目标",
-        "卡莎看到印记后选择安全 R 落点，再打最近可击杀目标。"
+        "泰坦实际留住目标后，蔚按 Q 击退或已就绪 R 的击飞条件接同一目标。",
+        "卡莎确认目标带电浆、R 可用和安全落点后再决定是否跟进，也可留在原位输出。",
+        "反包、目标无标记或队友保护距离断开时撤退。"
       ],
       "members": [
         {
@@ -20713,8 +22361,8 @@
           "loadoutId": "tank-engage"
         }
       ],
-      "patch": "16.19",
-      "reviewedAt": "2026-10-05",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 蔚技能资料",
@@ -20733,22 +22381,48 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Vi 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Vi.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Kaisa 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Kaisa.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "reviewBaseline": {
-        "champion:Vi": "3397db3348f1185c",
-        "champion:Kaisa": "c5aaf2939b58e718",
-        "champion:Nautilus": "89b73fd1b583624c",
+        "champion:Vi": "ed4ccc20b476dc0e",
+        "champion:Kaisa": "792e7d85c3acdc09",
+        "champion:Nautilus": "67da151a84906467",
+        "item:3078": "00721100a51ed120",
         "item:3071": "8b44dc349847ea0e",
-        "item:3053": "6f40bd5cd29bb7d2",
-        "item:3047": "46ff9ea0f9199a8e",
         "item:6333": "60ed05035db8354d",
+        "item:3047": "46ff9ea0f9199a8e",
+        "item:3053": "6f40bd5cd29bb7d2",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
         "rune:9105": "8f6975f18cf3ff8d",
-        "rune:8473": "ed2f46234183276d",
-        "rune:8345": "02157c1d4d7f7531",
+        "rune:8014": "04092c4f9754532b",
+        "rune:8304": "aa454bdce540cb11",
+        "rune:8347": "def2a55844436c47",
         "item:3190": "89cdf2838748dfc7",
         "item:3050": "c3e25c9df9075147",
         "item:3109": "97c25fae90d4a8a4",
@@ -20756,14 +22430,86 @@
         "item:3075": "6d456e96c01062c6",
         "rune:8439": "b2c74fd18c4ad076",
         "rune:8463": "3296414353df0e65",
+        "rune:8473": "ed2f46234183276d",
         "rune:8242": "37935df8d31dd429",
         "rune:8306": "68d4bd3d69d9d19c",
-        "rune:8347": "def2a55844436c47",
         "rune:8351": "6594874b24a7b00e",
-        "rune:8453": "f9a0180e7f2f0432",
-        "item:3078": "00721100a51ed120",
-        "rune:8014": "04092c4f9754532b",
-        "rune:8304": "aa454bdce540cb11"
+        "rune:8345": "02157c1d4d7f7531",
+        "rune:8453": "f9a0180e7f2f0432"
+      },
+      "reviewSourceAnchors": {
+        "Vi": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "ed4ccc20b476dc0e",
+          "observedAt": "2026-10-23T02:03:51.638Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Vi",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/vi/vi.bin.json",
+              "sha256": "39ab18fb02a711038ea11b42a89b8d69a8d5e61f0d3257def025935e78340269"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "8c5f2d227a1d26cb"
+            }
+          }
+        },
+        "Kaisa": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "792e7d85c3acdc09",
+          "observedAt": "2026-10-23T02:03:51.531Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Kaisa",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/kaisa/kaisa.bin.json",
+              "sha256": "702f5270f6b4e24fa894679a67117b18896ef62b4897d409cabb1c53344375c8"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "e793368118ed867a"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
       }
     },
     {
@@ -27903,7 +29649,7 @@
         {
           "champion": "JarvanIV",
           "role": "jungle",
-          "job": "EQ 真击飞才报跟进，R 围住不等于持续控制；队友被卡住或需要撤退就拆地形。",
+          "job": "Q 连接 E 旗且路径目标实际被击飞后才报跟进；R 围住不等于持续控制，队友被卡住或需撤退时重施拆墙。",
           "loadoutId": "trio-jarvan-engage"
         },
         {
@@ -27915,20 +29661,20 @@
         {
           "champion": "Ziggs",
           "role": "bottom",
-          "job": "按下路法核补刀，向实际受控区域放技能；W 留作保命或拆塔，别提前炸走目标。",
+          "job": "按下路法核补刀，向实际受控区域放技能；W 留作保命或拆达到低血阈值的塔，别提前炸走目标。",
           "loadoutId": "default"
         }
       ],
       "steps": [
         "处理两条兵线，嘉文选不妨碍队友撤退的入口。",
-        "EQ 命中后维迦 E 卡边缘，吉格斯跟 Q/E，R 依实际命中机会使用。",
+        "嘉文 Q 连接 E 旗并实际命中后维迦 E 卡边缘，只有触碰边缘才眩晕；吉格斯按实际位置跟 Q/E。",
         "对手交位移或自己人被卡住时解除地形，回去推线与布视野。"
       ],
       "early": "双法核优先保证蓝量与补刀，嘉文不要为追联动放弃全部野区；三级后仅抓实际前压目标。",
       "window": "三人有可用基础控制与区域伤害，敌方关键位移已交或撤退路径明确。",
       "economy": "野、中、下分别保正常经济；嘉文复用打野开团配置，其余采用位置默认参考，辅助与上路优先补物理持续输出和保护。",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-16",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "Riot · 嘉文四世 16.20 技能",
@@ -27947,6 +29693,30 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/champion/Ziggs.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-16"
+        },
+        {
+          "name": "Riot · JarvanIV 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/JarvanIV.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Veigar 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Veigar.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · Ziggs 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Ziggs.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "reviewBaseline": {
@@ -27969,72 +29739,72 @@
       "reviewSourceAnchors": {
         "JarvanIV": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "c9d96bc727699c9b",
-          "observedAt": "2026-10-18T23:14:48.003Z",
+          "observedAt": "2026-10-23T02:03:51.530Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "JarvanIV",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/jarvaniv/jarvaniv.bin.json",
-              "sha256": "4632b2033cbe7984d07f1482438f675379c5dab54887c0a5d59560275c3f7274"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jarvaniv/jarvaniv.bin.json",
+              "sha256": "6dfa4b87b045841df8ae4ffb982baf6308b5b5e34108ed8cfd3ae73141f9d141"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "62ea4f1e9467d2b7"
             }
           }
         },
         "Veigar": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "b0c876605f73d7f8",
-          "observedAt": "2026-10-18T23:15:57.418Z",
+          "observedAt": "2026-10-23T02:03:51.637Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Veigar",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/veigar/veigar.bin.json",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/veigar/veigar.bin.json",
               "sha256": "3525cce16451c015199a0a478dd3298c85ac39cb9cc2bc41e1b643426c03cf24"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "0d5181fbdf1760ef"
             }
           }
         },
         "Ziggs": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "301986c8fed3e8fb",
-          "observedAt": "2026-10-18T23:16:11.665Z",
+          "observedAt": "2026-10-23T02:03:51.643Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Ziggs",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/ziggs/ziggs.bin.json",
-              "sha256": "0bf2bab56f3c53b50d95cf898bcc3b5f0ed5020c7491063d65f73e073826fb9f"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/ziggs/ziggs.bin.json",
+              "sha256": "0c07f0df0453c22942e9115fa6997b656808f49cd43225f4202741516c9abf3f"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "fdb99302b5ecb565"
             }
           }
@@ -33740,10 +35510,10 @@
       "runes": [
         "trio-jarvan-conqueror"
       ],
-      "why": "E/Q 实际击飞后确认发条球位或加里奥 R 落点，能接应才 R 围场；围墙妨碍队友时拆除。焚天需普攻英雄才兑现暴击与回复，黑切需实际物理伤害叠层；征服者要持续命中叠满，不能按位移落地就满收益。死舞延后承伤，参与伤害的目标及时阵亡才清流血和回复；加里奥到不了、目标脱离或无法安全近身时保退路，不能把护甲路线当魔法爆发防护。 起点：OP.GG 16.20 全球翡翠及以上 打野本地快照，获取 2026-10-07T21:27:10.861Z。普通单英雄同位置本地快照；人工组合机制参考，不代表组合胜率、最优路线或装备符文联合统计。",
+      "why": "Q 连接 E 旗且路径上的目标实际击飞后确认发条球位或加里奥 R 落点，能接应才 R 围场；围墙妨碍队友时拆除。焚天需普攻英雄才兑现暴击与回复，黑切需实际物理伤害叠层；征服者要持续命中叠满，不能按位移落地就满收益。死舞延后承伤，在目标死亡前 3 秒内对其造成伤害，目标死亡时才清剩余流血并回复；加里奥到不了、目标脱离或无法安全近身时保退路，不能把护甲路线当魔法爆发防护。 起点：OP.GG 16.20 全球翡翠及以上 打野本地快照，获取 2026-10-07T21:27:10.861Z。普通单英雄同位置本地快照；人工组合机制参考，不代表组合胜率、最优路线或装备符文联合统计。",
       "damage": "ad",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-13",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "OP.GG · JarvanIV同位置本地快照",
@@ -33768,6 +35538,30 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/runesReforged.json",
           "kind": "符文触发依据",
           "checkedAt": "2026-10-13"
+        },
+        {
+          "name": "Riot · JarvanIV 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/JarvanIV.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 16.21.1 装备",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/item.json",
+          "kind": "装备触发依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 16.21.1 符文",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/runesReforged.json",
+          "kind": "符文触发依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "reviewBaseline": {
@@ -33788,24 +35582,24 @@
       "reviewSourceAnchors": {
         "JarvanIV": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "c9d96bc727699c9b",
-          "observedAt": "2026-10-18T23:14:48.003Z",
+          "observedAt": "2026-10-23T02:03:51.530Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "JarvanIV",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/jarvaniv/jarvaniv.bin.json",
-              "sha256": "4632b2033cbe7984d07f1482438f675379c5dab54887c0a5d59560275c3f7274"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/jarvaniv/jarvaniv.bin.json",
+              "sha256": "6dfa4b87b045841df8ae4ffb982baf6308b5b5e34108ed8cfd3ae73141f9d141"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "62ea4f1e9467d2b7"
             }
           }
@@ -33835,10 +35629,10 @@
       "runes": [
         "trio-vi-conqueror"
       ],
-      "why": "Q/R 实际抵达并击飞后，让加里奥或后续控制跟到同一目标；R 不可阻挡不等于免伤。三相要求施放技能后接普攻兑现咒刃，W 要实际连续三次攻击同一目标才触发，黑切仍需物理伤害叠层；征服者服务可持续接触的战斗。死舞偏护甲承伤、回复需实际击杀参与；加里奥跟不上、Q 落空或目标已远离队友，就停止深入，不能把一次 R 当完整收尾。 起点：OP.GG 16.20 全球翡翠及以上 打野本地快照，获取 2026-10-07T21:29:57.993Z。普通单英雄同位置本地快照；人工组合机制参考，不代表组合胜率、最优路线或装备符文联合统计。",
+      "why": "蔚 Q 命中英雄时击退，R 抵达目标后击飞；确认加里奥或队友能够接续。R 不可阻挡不等于免伤。三相之力需要施放技能后实际普攻兑现咒刃；W 要对同一目标实际叠满三层，Q 命中可施加层数；黑切需对英雄造成物理伤害叠层。征服者要持续命中才能叠满；死舞需在敌方英雄死亡前 3 秒内对其造成伤害才清除剩余流血并回复。队友跟不上、Q 落空或目标脱离共同覆盖时停止深入。 起点：OP.GG 16.20 全球翡翠及以上 打野本地快照，获取 2026-10-07T21:29:57.993Z。普通单英雄同位置本地快照；人工组合机制参考，不代表组合胜率、最优路线或装备符文联合统计。",
       "damage": "ad",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-13",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-29",
       "sources": [
         {
           "name": "OP.GG · Vi同位置本地快照",
@@ -33863,6 +35657,30 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/runesReforged.json",
           "kind": "符文触发依据",
           "checkedAt": "2026-10-13"
+        },
+        {
+          "name": "Riot · Vi 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Vi.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 16.21.1 装备",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/item.json",
+          "kind": "装备触发依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 16.21.1 符文",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/runesReforged.json",
+          "kind": "符文触发依据",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-29"
         }
       ],
       "reviewBaseline": {
@@ -33883,24 +35701,24 @@
       "reviewSourceAnchors": {
         "Vi": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "ed4ccc20b476dc0e",
-          "observedAt": "2026-10-18T23:15:58.907Z",
+          "observedAt": "2026-10-23T02:03:51.638Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Vi",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/vi/vi.bin.json",
-              "sha256": "bdbc6f55f084d4b8ff4a76ece0cbba208bd349518c052cf52086036b23234714"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/vi/vi.bin.json",
+              "sha256": "39ab18fb02a711038ea11b42a89b8d69a8d5e61f0d3257def025935e78340269"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "8c5f2d227a1d26cb"
             }
           }
