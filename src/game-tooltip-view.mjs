@@ -2,19 +2,22 @@ import {escape as e,gameDescription,asset} from './ui.mjs';
 import {itemPatchNotes,patchDirectionLabel} from './core/patch-notes.mjs';
 import {compareBuildPatches} from './core/builds.mjs';
 import {itemModeTooltip} from './core/item-mode-tooltip.mjs';
+import {itemSourceConflict,itemSourceDescriptions} from './core/item-source-conflict.mjs';
 import {hexAugmentReference} from './core/hex-augment-reference.mjs';
 import {isCurrentHexData} from './core/hex-data-current.mjs';
 import {tooltipPlacement} from './core/window-placement.mjs';
 const numbers=value=>String(value).split(/(\d+(?:\.\d+)?(?:%|秒|金币|金)?)/g).map((part,index)=>index%2?`<strong>${e(part)}</strong>`:e(part)).join('');
 export function gameTooltipView(data,kind,id,{mode='rift',image=asset,compact=false,brief='',poolStatus=''}={}){
- let name,description,meta='',partial=false,changes=[],basic='',modeDetail=null;
+ let name,description,meta='',partial=false,changes=[],basic='',modeDetail=null,sourceConflict=null;
  if(kind==='item'){
   const item=data.items[id];if(!item)return '';
   modeDetail=itemModeTooltip(item,data.patch,mode);
   const detailed=modeDetail||(item.tooltip?.patch===data.patch&&typeof item.tooltip.description==='string'?item.tooltip:null);
   name=item.name;description=detailed?.description||item.description;partial=detailed?.status==='partial';
-  if(partial){const official=gameDescription(item.description).split(/\n\s*\n/).find(block=>/^\s*\d/.test(block));if(official&&official.replace(/\s/g,'')!==gameDescription(description).split(/\n\s*\n/)[0].replace(/\s/g,''))basic=official;}
-  meta=[modeDetail?'海克斯参数':'峡谷',data.patch,Number.isFinite(item.gold?.total)?(modeDetail?'基础标价 ':'')+item.gold.total+' 金':''].filter(Boolean).join(' · ');
+  sourceConflict=itemSourceConflict(data,id);
+  if(sourceConflict&&!modeDetail){description='';partial=false;}
+  if(partial&&!sourceConflict){const official=gameDescription(item.description).split(/\n\s*\n/).find(block=>/^\s*\d/.test(block));if(official&&official.replace(/\s/g,'')!==gameDescription(description).split(/\n\s*\n/)[0].replace(/\s/g,''))basic=official;}
+  meta=[modeDetail?'海克斯参数':sourceConflict?'峡谷资料':'峡谷',data.patch,Number.isFinite(item.gold?.total)?(modeDetail||sourceConflict&&mode==='hex'?'基础标价 ':'')+item.gold.total+' 金':''].filter(Boolean).join(' · ');
   changes=itemPatchNotes(data,id).filter(row=>compareBuildPatches(row.patch,data.patch)<=0).slice(0,2);
  }else if(kind==='rune'){
   const rune=data.runes.flatMap(tree=>tree.slots.flatMap(slot=>slot.runes)).find(rune=>String(rune.id)===String(id));if(!rune)return '';
@@ -27,9 +30,14 @@ export function gameTooltipView(data,kind,id,{mode='rift',image=asset,compact=fa
   const augment=hexAugmentReference(data.augments.find(a=>String(a.id)===String(id)),{patch:data.patch});if(!augment)return '';
   name=augment.name;description=augment.description;partial=augment.descriptionStatus!=='complete';meta=[data.patch,poolStatus].filter(Boolean).join(' · ');
  }else return '';
- if(compact&&mode==='hex')return `<header>${image(kind,id,name)}<div><b>${e(name)}</b><small>${e(kind==='item'?(modeDetail?'海克斯':'峡谷基础值')+' · '+data.patch:meta)}</small></div></header>${brief?`<p class="game-tooltip-condition">${numbers(brief)}</p>`:''}<div class="game-tooltip-description">${gameDescription(description).slice(0,7000).split(/\n\s*\n/).filter(Boolean).map(text=>`<p>${numbers(text)}</p>`).join('')}</div>${partial?'<small class="game-tooltip-note">动态值以局内为准</small>':''}`;
+ const conflict=sourceConflict?.status==='conflict'?'<p class="game-tooltip-note">两份峡谷来源的触发描述不一致，实际触发待核。</p>':sourceConflict?'<p class="game-tooltip-note">装备来源内容或版本待重新核对，实际触发待核。</p>':'';
+ const sourceRows=sourceConflict?itemSourceDescriptions(data,id):[];
+ const renderSources=rows=>rows.map(row=>`<section class="game-tooltip-basics"><small>${e(row.label)}${row.partial?' · 部分数值未解析':''}</small>${gameDescription(row.description.slice(0,7000)).slice(0,7000).split(/\n\s*\n/).filter(Boolean).map(text=>`<p>${numbers(text)}</p>`).join('')}</section>`).join('');
+ const sourceTexts=renderSources(sourceRows);
+ const compactConflict=sourceConflict?.status==='conflict'?'<p class="game-tooltip-note">来源有分歧：Data Dragon 简介称施放 R 时召唤；实际触发待核。</p>':conflict;
+ if(compact&&mode==='hex')return `<header>${image(kind,id,name)}<div><b>${e(name)}</b><small>${e(kind==='item'?(modeDetail?'海克斯参数':sourceConflict?'峡谷资料':'峡谷基础值')+' · '+data.patch:meta)}</small></div></header>${brief&&!sourceConflict?`<p class="game-tooltip-condition">${numbers(brief)}</p>`:''}${sourceConflict?(modeDetail?'<small class="game-tooltip-note">公开海克斯参数；基础属性、其他模式修正与强化未合算。</small>':'<small class="game-tooltip-note">海克斯具体数值与调整未核对。</small>'):''}${compactConflict}${sourceConflict?renderSources(sourceConflict.status==='conflict'?sourceRows.slice(0,1):sourceRows):''}${sourceConflict&&modeDetail?'<small>海克斯公开参数层</small>':''}<div class="game-tooltip-description">${gameDescription(description).slice(0,7000).split(/\n\s*\n/).filter(Boolean).map(text=>`<p>${numbers(text)}</p>`).join('')}</div>${partial?'<small class="game-tooltip-note">动态值以局内为准</small>':''}`;
  const paragraphs=gameDescription(description).slice(0,7000).split(/\n\s*\n/).filter(Boolean);
- return `<header>${image(kind,id,name)}<div><b>${e(name)}</b><small>${e(meta)}</small></div></header>${mode==='hex'?`<p class="game-tooltip-note">${modeDetail?'已应用公开海克斯参数；基础属性、其他模式修正与强化未合算。':'以下为峡谷基础值，海克斯模式调整未核对。'}</p>`:''}${basic?`<section class="game-tooltip-basics"><small>${modeDetail?'峡谷基础属性 · 同版本简介':'基础属性 · 同版本官方简介'}</small><p>${numbers(basic)}</p></section>`:''}<div class="game-tooltip-description">${paragraphs.map(text=>`<p>${numbers(text)}</p>`).join('')}</div>${partial?'<small class="game-tooltip-note">部分数值尚未解析，请以游戏内显示为准。</small>':''}${changes.length?`<section class="game-tooltip-changes"><b>近期峡谷改动</b>${changes.map(row=>`<div><small>${e(row.officialPatch)} · ${patchDirectionLabel(row.direction)}</small>${row.changes.slice(0,5).map(change=>`<p><span>${e(change.field)}</span><span>${numbers(change.before)} <i>→</i> ${numbers(change.after)}</span></p>`).join('')}</div>`).join('')}</section>`:''}`;
+ return `<header>${image(kind,id,name)}<div><b>${e(name)}</b><small>${e(meta)}</small></div></header>${mode==='hex'?`<p class="game-tooltip-note">${modeDetail?'已应用公开海克斯参数；基础属性、其他模式修正与强化未合算。':sourceConflict?'以下来源为峡谷公开资料；海克斯模式数值与调整未核对。':'以下为峡谷基础值，海克斯模式调整未核对。'}</p>`:''}${conflict}${sourceTexts}${basic?`<section class="game-tooltip-basics"><small>${modeDetail?'峡谷基础属性 · 同版本简介':'基础属性 · 同版本官方简介'}</small><p>${numbers(basic)}</p></section>`:''}${sourceConflict&&modeDetail?'<small>海克斯公开参数层</small>':''}<div class="game-tooltip-description">${paragraphs.map(text=>`<p>${numbers(text)}</p>`).join('')}</div>${partial?'<small class="game-tooltip-note">部分数值尚未解析，请以游戏内显示为准。</small>':''}${changes.length?`<section class="game-tooltip-changes"><b>近期峡谷改动</b>${changes.map(row=>`<div><small>${e(row.officialPatch)} · ${patchDirectionLabel(row.direction)}</small>${row.changes.slice(0,5).map(change=>`<p><span>${e(change.field)}</span><span>${numbers(change.before)} <i>→</i> ${numbers(change.after)}</span></p>`).join('')}</div>`).join('')}</section>`:''}`;
 }
 
 // A single top-layer card follows game assets across renderers and dialogs.
