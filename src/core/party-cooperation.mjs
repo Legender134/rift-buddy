@@ -6,6 +6,8 @@ import {tacticalCooperationPlan} from './tactical-cooperation.mjs';
 import {independentCooperationAction} from './shared-cooperation.mjs';
 import {sidePressureRoute} from './side-pressure.mjs';
 import {sharedResourceConflict} from './cooperation-resources.mjs';
+import {catalogEntryRevision} from './catalog-choice.mjs';
+import {LOADOUTS,RUNE_PLANS,SKILL_PLANS} from './loadouts.mjs';
 
 const roles=['top','jungle','mid','bottom','support'];
 const same=(a,b)=>a.role===b.role&&a.champion===b.champion;
@@ -40,7 +42,8 @@ function partyRoutes(members,graph,edges,tempo,curated,requestedTempo,basePlan){
    return {role:m.role,champion:m.champion,job:job+' 成立前先确认：'+row[1]+' 停止条件：'+row[2]};
   });
   const t=lead.curated;
-  const loadoutGroup=t?{id:t.id,kind:'trio',reviewedAt:t.reviewedAt,early:t.early,economy:t.economy,sources:t.sources||[],members:t.members.map(m=>({role:m.role,champion:m.champion,loadoutId:m.loadoutId||'default'}))}:null;
+  const revision=t&&catalogEntryRevision(t,{loadouts:LOADOUTS,runes:RUNE_PLANS,skillPlans:SKILL_PLANS});
+  const loadoutGroup=t?{id:t.id,kind:'trio',reviewedAt:t.reviewedAt,early:t.early,economy:t.economy,sources:t.sources||[],...(revision?{revision}:{}),members:t.members.map(m=>({role:m.role,champion:m.champion,loadoutId:m.loadoutId||'default'}))}:null;
   return {id:lead.id,label:members.filter(m=>lead.actors.includes(m.champion)).map(m=>name(m.champion)).join(' / '),tempo:lead.curated?.tempo||lead.edge?.tempo||'teamfight',step:lead.step,condition:lead.condition,failure:lead.failure,memberJobs:jobs,...(loadoutGroup?{loadoutGroup}:{})};
  });
  const tactical=tacticalCooperationPlan(members,graph,{tempo:requestedTempo});

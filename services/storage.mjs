@@ -13,6 +13,7 @@ import {normalizeOngoingSettings} from '../src/core/ongoing-game.mjs';
 import {validatePreparations,validatePreparation,storedPreparation,PREPARATION_LIMIT} from '../src/core/preparation.mjs';
 import {validateTeamConfigurations} from '../src/core/team-favorites.mjs';
 import {validateCreativePlan} from '../src/core/creative-plan.mjs';
+import {validateCatalogChoice} from '../src/core/catalog-choice.mjs';
 import {normalizePartyIds} from '../src/core/client-party.mjs';
 import {savedWindowBounds} from '../src/core/window-placement.mjs';
 import {validPartyCount,markedPartyCount} from '../src/core/party-range.mjs';
@@ -75,6 +76,7 @@ export function validateState(value) {
    ...(Number.isFinite(Date.parse(p.lastCheck))?{lastCheck:p.lastCheck}:{}),...(Number.isFinite(Date.parse(p.lastAppUpdateCheck))?{lastAppUpdateCheck:p.lastAppUpdateCheck}:{}),...(typeof p.dismissedAppVersion==='string'&&/^v?\d+\.\d+\.\d+$/.test(p.dismissedAppVersion)?{dismissedAppVersion:p.dismissedAppVersion}:{})},
   draft:value.draft?{slots:slots(value.draft.slots,true),...(validateEnemyRoles(value.draft.enemyRoles).length?{enemyRoles:validateEnemyRoles(value.draft.enemyRoles)}:{}),...(Number.isInteger(value.draft.referenceQueue)&&value.draft.referenceQueue>=0&&value.draft.referenceQueue<=10000?{referenceQueue:value.draft.referenceQueue}:{}),...(['party','context'].includes(value.draft.scopeSelection)?{scopeSelection:value.draft.scopeSelection}:{}),...(value.draft.preselection?{preselection:validatePregameIntent(value.draft.preselection)}:{}),...(validPartyCount(value.draft.partyCount)?{partyCount:value.draft.partyCount}:{}),...(roles.includes(value.draft.playerPosition?.role)&&Number.isInteger(value.draft.playerPosition?.cellId)&&value.draft.playerPosition.cellId>=0&&value.draft.playerPosition.cellId<30?{playerPosition:{role:value.draft.playerPosition.role,cellId:value.draft.playerPosition.cellId}}:{}),...(value.draft.creativePlan?{creativePlan:validateCreativePlan(value.draft.creativePlan,slots(value.draft.slots,true),{allowUnknown:true})}:{}),...(typeof value.draft.clientGameId==='string'&&/^\d{1,20}$/.test(value.draft.clientGameId)&&Number(value.draft.clientGameId)>0?{clientGameId:value.draft.clientGameId}:{}),style:styles.includes(value.draft.style)?value.draft.style:'fun',scope:['party','context'].includes(value.draft.scopeSelection)?value.draft.scopeSelection:validPartyCount(value.draft.partyCount)?(value.draft.scope==='context'?'context':'party'):['solo','context','party','bot'].includes(value.draft.scope)?value.draft.scope:'context',...(value.draft.scope==='solo'||Object.hasOwn(value.draft,'soloRole')?{soloRole:roles.includes(value.draft.soloRole)?value.draft.soloRole:''}:{})}:null,
   ownedPageId:Number.isInteger(value.ownedPageId)&&value.ownedPageId>0?value.ownedPageId:null,guide:validateGuideState(value.guide)};
+ if(normalized.draft&&value.draft.catalogChoice)normalized.draft.catalogChoice=validateCatalogChoice(value.draft.catalogChoice);
  checkSize(normalized);return normalized;
 }
 const recoveryBlocked=new Set();
