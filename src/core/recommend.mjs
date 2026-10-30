@@ -1,4 +1,4 @@
-import { ROLES, DUOS, TRIOS, CROSS_SYNERGIES,profile,conventionalRole } from './rules.mjs';
+import { ROLES, DUOS, TRIOS, CROSS_SYNERGIES, RULES_PATCH,profile,conventionalRole } from './rules.mjs';
 import {draftTargets,scopeSlots,effectiveDraftScope,CLIENT_POSITION_ROLES} from './draft.mjs';
 import {recommendationDraft,clientRecommendationDraft,lockedOwnSlot,confirmedPlayerPick} from './draft-intents.mjs';
 import {validPartyCount,reconcilePartyRange} from './party-range.mjs';
@@ -158,6 +158,10 @@ export function comboContextKnown(slots,champion,role,previousComboId,previousCr
 }
 const SINGLE_ROLE_WEIGHTS={top:{frontline:4,sustain:4,engage:2,peel:1,poke:2,aoe:1},jungle:{frontline:2,sustain:2,engage:4,peel:2,poke:1,aoe:2},
   mid:{frontline:1,sustain:3,engage:2,peel:1,poke:3,aoe:2},bottom:{frontline:0,sustain:5,engage:1,peel:1,poke:2,aoe:2},support:{frontline:3,sustain:0,engage:4,peel:5,poke:2,aoe:1}};
+// Legacy links have one catalog-wide review version, not per-link evidence.
+// Keep them available for historical browsing, but do not use an older link
+// as a current recommendation explanation or candidate-search shortcut.
+const currentCatalogLinks=patch=>typeof patch==='string'&&patch===RULES_PATCH?CROSS_SYNERGIES:[];
 // Search explores far more teams than it displays. Memoize scalar scores only;
 // retaining every team's analysis and play instructions grows the worker heap
 // by hundreds of MB in a wide draft. Eviction changes work, never scoring.
@@ -197,9 +201,9 @@ function grade(slots, champions, style, requestedIds=[],roleWeights={},context,s
  if((trio||duo)?.style===style)score+=5;
  let connections;
  if(!scoreOnly){
-  const ids=new Set(slots.map(s=>s.champion)),linkHit=new Set(),{linkByChamp}=comboIndex();
+  const links=currentCatalogLinks(context?.catalogLinksPatch),ids=new Set(slots.map(s=>s.champion)),linkHit=new Set(),{linkByChamp}=comboIndex();
   for(const id of ids)for(const link of linkByChamp.get(id)||[])if(ids.has(link[0])&&ids.has(link[1]))linkHit.add(link);
-  connections=CROSS_SYNERGIES.filter(l=>linkHit.has(l));
+  connections=links.filter(l=>linkHit.has(l));
  }
  const partyMembers=slots.filter(s=>scope==='bot'?['bottom','support'].includes(s.role):s.party).filter(s=>s.champion);
  const tempo=context?.play?.tempo;
@@ -314,7 +318,7 @@ export function recommend({slots,champions,style='fun',excluded=[],publicBans=[]
  // Profiles are constant for one calculation; reuse them across the search beam.
  // Visibility affects fit in every draft; `enemy` separately controls which
  // heroes cannot be selected. Keep the legacy argument as the default.
- const context={byId:new Map(champions.map(c=>[c.id,c])),mandatoryOwn:lockedOwnSlot(slots,clientSession),publicAllies,profiles:new Map(),pool:new Set(heroPool),poolMode,scope,play,rolePools,catalogStatus,enemyTraits:summarizeEnemyTraits(visibleEnemies,champions),comboCache:new Map(),scoreCache:new Map(),comboLoadouts:new Map()};
+ const context={byId:new Map(champions.map(c=>[c.id,c])),mandatoryOwn:lockedOwnSlot(slots,clientSession),publicAllies,profiles:new Map(),pool:new Set(heroPool),poolMode,scope,play,rolePools,catalogStatus,catalogLinksPatch:patch,enemyTraits:summarizeEnemyTraits(visibleEnemies,champions),comboCache:new Map(),scoreCache:new Map(),comboLoadouts:new Map()};
  context.rankedMatchup=rankedDraft?.ranked?createRankedMatchupIndex(rankedDraft.enemies,builds,{patch,source:buildSource}):null;
  context.patch=patch||champions[0]?.combatStatsSource?.patch;context.cooperationGraph=createCooperationGraph(champions,{currentPatch:context.patch});
  context.pairStatistics=createPairStatisticsIndex(pairStatistics,champions,{source:buildSource,patch});
@@ -405,13 +409,14 @@ export function recommend({slots,champions,style='fun',excluded=[],publicBans=[]
  }
  const familiarSeeds=familiarityLineups(fixed,targets,candidateSets,exploration,randomSeed);
  let finished=[...discoveryLineups(fixed,targets,candidateSets,randomSeed),...familiarSeeds].map(slots=>({slots,score:0}));
+ const hasCurrentCatalogLinks=currentCatalogLinks(context.catalogLinksPatch).length>0;
  for(const seed of new Map(seeds.map(seed=>[signature(seed),seed])).values()) {
   let beam=[{slots:seed,score:0}];
   for(const role of ['bottom','support','jungle','mid','top'].filter(r=>targets.includes(r)&&!seed.find(s=>s.role===r).champion)) {
    const next=[];
    // Wide drafts keep every valid authored seed. Bound generic expansions,
    // while retaining low-ranked catalog links and authored skill partners.
-   for(const partial of beam)for(const c of candidateSets[role].filter((c,rank)=>targets.length<4||rank<24||(comboIndex().linkByChamp.get(c.id)||[]).some(link=>partial.slots.some(s=>s.champion===(link[0]===c.id?link[1]:link[0])))||partial.slots.some(s=>s.champion&&context.cooperationGraph.edge({champion:c.id,role},s)?.family.startsWith('pair:')))) {
+   for(const partial of beam)for(const c of candidateSets[role].filter((c,rank)=>targets.length<4||rank<24||(hasCurrentCatalogLinks&&(comboIndex().linkByChamp.get(c.id)||[]).some(link=>partial.slots.some(s=>s.champion===(link[0]===c.id?link[1]:link[0]))))||partial.slots.some(s=>s.champion&&context.cooperationGraph.edge({champion:c.id,role},s)?.family.startsWith('pair:')))) {
     if(partial.slots.some(s=>s.champion===c.id))continue;
     const result=partial.slots.map(s=>s.role===role?{...s,champion:c.id}:s);
     const score=grade(result,champions,style,result.filter(s=>targets.includes(s.role)).map(s=>s.champion),roleWeights,context,true);
@@ -560,7 +565,7 @@ export function explainContributions(fixed,next,targets,champions,context,reuse=
   hero:m.champion,role:m.role,name:m.c.name,unusual:!conventionalRole(m.c,m.role),
   damage:m.p.damage==='ap'?'法术':m.p.damage==='ad'?'物理':'混合',
   helps:Object.entries(labels).filter(([key])=>m.p[key]).map(([key,label])=>`${before.traits[key]?'增加':'补上'}${label}`),
-  pairings:CROSS_SYNERGIES.filter(([a,b])=>[a,b].includes(m.champion)&&fixed.some(s=>s.champion===([a,b].find(id=>id!==m.champion)))).map(([, ,text])=>text),
+  pairings:currentCatalogLinks(context?.catalogLinksPatch).filter(([a,b])=>[a,b].includes(m.champion)&&fixed.some(s=>s.champion===([a,b].find(id=>id!==m.champion)))).map(([, ,text])=>text),
   interactions:after.members.filter(other=>other.champion!==m.champion).map(other=>{const edge=graph.edge(m,other);return edge?.current?{with:other.champion,kept:kept.has(other.champion),name:edge.name,step:edge.step,condition:edge.condition,failure:edge.failure}:null;}).filter(Boolean).sort((a,b)=>Number(b.kept)-Number(a.kept)),
  }));
 }
