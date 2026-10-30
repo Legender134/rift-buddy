@@ -17,6 +17,7 @@ export function validateClientPreparation(value,data){
  const sessionGameId=String(value.sessionGameId||'');
  if(!/^[1-9]\d{0,19}$/.test(sessionGameId)||context.gameId&&context.gameId!==sessionGameId)throw Error('尚未确认本局编号，请同步客户端后重试');
  if(hexHover)return {champion:champion.id,championId:champion.key,role:null,mode:'hex',context,sessionGameId,preselectOnly:true};
+ if(value.preselectOnly===true)return {champion:champion.id,championId:champion.key,role:value.role,mode:'rift',context,sessionGameId,preselectOnly:true,claimPosition:value.claimPosition===true};
  if(!validateRunePage(value.page,data.runes))throw Error('当前符文页不可用，请重新选择方案');
  const summoners=validateSummonerIds(value.summoners,'rift');
  if(!summoners||!summoners.every(id=>summonerOptions(data,'rift').includes(id)))throw Error('当前召唤师技能不可用');
@@ -27,9 +28,10 @@ export function validateClientPreparation(value,data){
   summoners:[...summoners],preserveFlashSlot:value.preserveFlashSlot!==false,preselectOnly:value.preselectOnly===true,claimPosition:value.claimPosition===true,itemSet,
   ...(value.notice?{notice:value.notice}:{})};
 }
-export async function prepareClientSelection({value,data,installPath='',ownedPageId},{discover=path=>discoverClient(path,{reuseSnapshot:true}),request=lcuRequest,writeRunes=writeRunePage,writeItems=importItemSet,isCurrent=()=>true}={}){
+export async function prepareClientSelection({value,data,installPath='',ownedPageId},{discover=path=>discoverClient(path,{reuseSnapshot:true}),request=lcuRequest,writeRunes=writeRunePage,writeItems=importItemSet,isCurrent=()=>true,isCurrentSession=()=>true}={}){
  const selected=validateClientPreparation(value,data),auth=await discover(installPath);
  if(!auth?.port)throw Error('请先连接客户端并确认 Windows 权限');
+ const currentRequest=async(...args)=>{if(!isCurrent())throw Error('组合或配置已变化，请重新选择');return request(...args);};
  const read=async()=>{
   if(await request(auth,'/lol-gameflow/v1/gameflow-phase')!=='ChampSelect')throw Error('已离开选人阶段，请在客户端核对');
   const [gameValue,raw]=await Promise.all([request(auth,'/lol-gameflow/v1/session'),request(auth,'/lol-champ-select/v1/session')]);
@@ -73,16 +75,16 @@ export async function prepareClientSelection({value,data,installPath='',ownedPag
   (now.own.championId===selected.championId||now.own.championId===0&&now.action.completed===false&&now.own.championPickIntent===selected.championId);
  const ensure=async()=>{
   const now=await read();
-  if(!isCurrent())throw Error('已由新的英雄选择替代');
+  if(!isCurrent()||!isCurrentSession(now.session))throw Error('组合或选人已变化，请重新选择');
   if(!sameContext(now.context,expected)||selected.mode!=='hex'&&now.action.id!==initial.action.id||confirmedTarget&&!targetMatches(now))throw Error('选人对象或阶段已变化，已停止后续配置；请在客户端核对');
   return now;
  };
  const runeRequest=async(auth,route,...args)=>{
-  const result=await request(auth,route,...args);
+  const result=await currentRequest(auth,route,...args);
   if(route==='/lol-gameflow/v1/session'&&identifyMode(sanitizeGame(result)).id!=='rift')throw Error('当前模式已变化，已停止符文配置；请在客户端核对');
   if(route==='/lol-champ-select/v1/session'){
    const own=result?.myTeam?.find(p=>p.cellId===initial.context.cellId),actions=(Array.isArray(result?.actions)?result.actions:[]).flat().filter(a=>a?.type==='pick'&&a.actorCellId===initial.context.cellId);
-   if(result.localPlayerCellId!==initial.context.cellId||!own||actions.length!==1||actions[0].id!==initial.action.id||!targetMatches({own,action:actions[0]}))throw Error('目标英雄或选人操作已变化，已停止符文配置；请在客户端核对');
+   if(!isCurrentSession(sanitizeSession(result))||result.localPlayerCellId!==initial.context.cellId||!own||actions.length!==1||actions[0].id!==initial.action.id||!targetMatches({own,action:actions[0]}))throw Error('组合、目标英雄或选人操作已变化，已停止符文配置；请在客户端核对');
   }
   return result;
  };
@@ -97,12 +99,12 @@ export async function prepareClientSelection({value,data,installPath='',ownedPag
   if(!locked||hexHover){
    assertSelectable(before.session,eligibility);
    if(!hexHover&&(before.action.completed===true||before.timer!=='PLANNING'&&before.action.isInProgress!==true))throw Error('选人轮次已变化，尚未预选');
-   if(hexHover)await request(auth,`/lol-champ-select/v1/session/bench/swap/${selected.championId}`,'POST');
-   else await request(auth,`/lol-champ-select/v1/session/actions/${before.action.id}`,'PATCH',{championId:selected.championId,completed:false});
+   if(hexHover)await currentRequest(auth,`/lol-champ-select/v1/session/bench/swap/${selected.championId}`,'POST');
+   else await currentRequest(auth,`/lol-champ-select/v1/session/actions/${before.action.id}`,'PATCH',{championId:selected.championId,completed:false});
   }
   const after=await read();
   if(after.context.cellId!==initial.context.cellId||after.context.assignedPosition!==initial.context.assignedPosition||(selected.mode!=='hex'&&after.action.id!==initial.action.id)||!targetMatches(after))throw Error('客户端未确认目标英雄，已停止配置；请在客户端核对预选');
-  if(!isCurrent())return {...result,complete:false,superseded:true};
+  if(!isCurrent()||!isCurrentSession(after.session))return {...result,complete:false,superseded:true};
   expected=after.context;confirmedTarget=true;result.steps.hover={status:'done',locked:selected.mode==='hex'||after.action.completed===true};
   if(selected.preselectOnly){for(const key of ['runes','spells','items'])result.steps[key]={status:'skipped'};return {...result,preselectOnly:true,complete:true};}
   step='runes';await ensure();
@@ -115,12 +117,12 @@ export async function prepareClientSelection({value,data,installPath='',ownedPag
    if(currentSlot>=0&&targetSlot>=0&&currentSlot!==targetSlot)summoners.reverse();
   }
   const [spell1Id,spell2Id]=summoners.map(id=>Number(data.spells[id].key));
-  await request(auth,'/lol-champ-select/v1/session/my-selection','PATCH',{spell1Id,spell2Id});
+  await currentRequest(auth,'/lol-champ-select/v1/session/my-selection','PATCH',{spell1Id,spell2Id});
   await ensure();const spells=await request(auth,'/lol-champ-select/v1/session/my-selection');
   if(spells?.spell1Id!==spell1Id||spells?.spell2Id!==spell2Id)throw Error('客户端未确认召唤师技能，请手动核对');
   result.steps.spells={status:'done',summoners};
   step='items';await ensure();
-  const items=await writeItems({itemSet:selected.itemSet,data,installPath},{discover:async()=>auth,request,beforeCommit:ensure});
+  const items=await writeItems({itemSet:selected.itemSet,data,installPath},{discover:async()=>auth,request:currentRequest,beforeCommit:ensure});
   result.steps.items={status:'done',title:items.title};
  }catch(error){
   result.steps[step]={status:'failed',message:String(error.message||'操作未完成')};

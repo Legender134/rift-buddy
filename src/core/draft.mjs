@@ -23,7 +23,7 @@ export function publicClientGameId(client){return client?.connected?(client.phas
 export function reconcileClientDraft(draft,gameId,previousId=null,{phase='',previousPhase=''}={}){
  const queue=['None','Lobby','Matchmaking','ReadyCheck'];
  if(draft&&queue.includes(phase)&&(draft.clientGameId||Number.isInteger(draft.partyCount)||['ChampSelect','GameStart','InProgress','Reconnect','WaitingForStats','PreEndOfGame','EndOfGame'].includes(previousPhase))){
-  const {creativePlan,playerPosition,partyCount,preselection,referenceQueue,scopeSelection,enemyRoles,clientGameId:oldId,...rest}=draft;
+  const {creativePlan,catalogChoice,playerPosition,partyCount,preselection,referenceQueue,scopeSelection,enemyRoles,clientGameId:oldId,...rest}=draft;
   return {draft:{...rest,slots:clearDraftPicks(draft.slots).map(s=>({...s,party:false})),soloRole:''},changed:true,newGame:true};
  }
  if(queue.includes(phase))return {draft,changed:false,newGame:false};
@@ -36,6 +36,10 @@ export function reconcileClientDraft(draft,gameId,previousId=null,{phase='',prev
  const next={...draft,clientGameId:gameId,slots:newGame?clearDraftPicks(draft.slots).map(s=>({...s,party:false})):draft.slots,...(clearSoloRole?{soloRole:''}:{})};
  if(newGame){
   delete next.playerPosition;delete next.partyCount;delete next.referenceQueue;delete next.scopeSelection;delete next.enemyRoles;
+  // A fresh lobby intent and its explicit catalog choice form one operation.
+  // The prior match's saved choice must never hitch a ride into the new game.
+  const freshChoice=!draft.clientGameId&&!next.preselection?.attemptedGameId&&next.preselection?.reviewStamp&&next.preselection?.catalogChoiceToken&&next.preselection.catalogChoiceToken===next.catalogChoice?.token&&next.catalogChoice?.members.some(m=>m.role===next.preselection.role&&m.champion===next.preselection.champion);
+  if(!freshChoice)delete next.catalogChoice;
   // A previous guide may prove that old heroes need clearing on entry. A
   // fresh, unconsumed lobby click was made after that game and must survive.
   if(draft.clientGameId||next.preselection?.attemptedGameId)delete next.preselection;

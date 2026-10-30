@@ -105,6 +105,7 @@ async function removeShopConflicts(conflicts,io,beforeCommit){
   for(const entry of conflicts.entries){
    await directory(path.dirname(entry.filename),io);const stat=await io.lstat(entry.filename);
    if(!stat.isFile()||stat.isSymbolicLink()||!(await io.readFile(entry.filename)).equals(entry.content))throw Error('其他配装发生变化，已停止清理');
+   if(beforeCommit)await beforeCommit();
    await io.unlink(entry.filename);removed.push(entry);
   }
  }catch(error){
@@ -144,9 +145,11 @@ async function writeItemSet({itemSet,data,installPath=''},{discover=discoverClie
   if(legacy!==null){
    await directory(legacyDirectory,io);
    if(await existingFile(legacyFilename,selected,io)!==legacy)throw Error('装备集已写入，但旧版同名文件发生变化，已保留；请重新导入核对');
+   if(beforeCommit)await beforeCommit();
    await io.unlink(legacyFilename);
   }
   await removeShopConflicts(conflicts,io,beforeCommit);
+  if(beforeCommit)try{await beforeCommit();}catch(error){throw Error('装备集已写入，清理可能部分完成；选择已变化，请在客户端核对。'+(conflicts.backupDirectory?'备份位于 '+conflicts.backupDirectory+'。':'')+error.message);}
   return {uid:selected.uid,title:selected.title,replaced:previous!==null||legacy!==null,confirmation:'disk',preferred:true,legacyMigrated:legacy!==null,displacedSets:conflicts.entries.length,backupDirectory:conflicts.backupDirectory};
  })().catch(error=>{
   if(error.code==='EACCES'||error.code==='EPERM')throw Error('装备集写入被拒绝，请确认 Windows 权限后重试，或导出 JSON');

@@ -13,6 +13,7 @@ import {prepareGear} from './gear-choices.mjs';
 import {legalSkillOrder,orderPriority,skillMechanismNote,attributePreparation,validateCustomSkillOrder} from './skill-advice.mjs';
 import {duoPlay,duoPlayText} from './duo-plays.mjs';
 import {creativeMemberCombo,validateCreativePlan} from './creative-plan.mjs';
+import {catalogEntryRevision,catalogPlanGroups,catalogPlanCurrent} from './catalog-choice.mjs';
 import {fallbackMemberPlay} from './plan-stages.mjs';
 import {validateRunePage,validateCustomRunePage} from './rune-page.mjs';
 import {validHexPoolRecord} from './hex-pool-evidence.mjs';
@@ -161,6 +162,11 @@ export function getBuild(champion,role,data,{mode='rift',variant='default',condi
  if(currentReferencePreferred)selectionWarnings.push(`原组合配装版本或依赖资料待复核，当前先展示${standardRef?` ${standardRef.patch} 同位置统计参考`:'同位置基础参考'}；组合专用配装可在“配置玩法”主动选择，统计不代表组合适配已经验证。`);
  if(comboId&&!duo)selectionWarnings.push('原组合已移出当前库，或不适用于这个英雄位置；请重新确认玩法。');
  if(duo?.patch&&duo.patch!==data.patch)selectionWarnings.push(`这套组合整理于 ${duo.patch}，当前资料 ${data.patch}；${creative?'旧版配合说明保留，机制待复核':'机制与专用配置待复核'}。`);
+ if(creative?.archetype==='curated'){
+  const entry=[...(data.catalog?.duos||[]),...(data.catalog?.trios||[])].find(c=>c.id===creative.curated?.id),revision=entry&&catalogEntryRevision(entry,data.catalog);
+  if(!revision||creative.curated?.revision!==revision)selectionWarnings.push('保存的组合说明或配置与当前目录不一致，保留历史内容供阅读，请重新核对后选择。');
+ }
+ if(creative?.archetype==='shared'&&catalogPlanGroups(creative).length&&!catalogPlanCurrent(creative,data.catalog,data.catalogInfo?.status,data.patch))selectionWarnings.push('保存的局部组合与当前目录不一致或待复核，保留历史内容供阅读。');
  if(requested!=='default'&&!config)selectionWarnings.push('原玩法不适用于当前英雄或位置，已使用通用配置。');
  if(config)key=config.base;
  if(config&&data.catalogInfo?.loadoutStatus?.[config.id]?.stale)selectionWarnings.push('这套专用配置关联的资料已变化，请在资料依赖复核中检查后再使用。');

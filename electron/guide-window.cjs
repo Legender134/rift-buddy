@@ -71,7 +71,7 @@ const micro=createHexMicroWindows({root,getState,setState,getPayload:payload,get
   if(getState()?.skillWidget?.enabled===false)skill.hide();skill.publish(value);jungle.publish(value);
   if(win&&!win.isDestroyed()){inputMode();if(isStrip()||isCompact())fit();const key=JSON.stringify(value);if(key!==lastPublished){lastPublished=key;win.webContents.send('guide-update',value);}}
  }
- async function save(next,hexContext){await setState(next,getState(),hexContext);publish();return payload();}
+ async function save(next,hexContext){await setState(next,getState(),hexContext,true);publish();return payload();}
  function applyMode(){
   if(usesHexMicro()){suppressLegacy();return;}if(!win||win.isDestroyed())return;
   clearTimeout(boundsTimer);boundsTimer=null;resize.cancel();win.setResizable(false);fit();inputMode();publish();

@@ -10,10 +10,14 @@ export function validatePregameIntent(value){
  const attemptedGameId=typeof value.attemptedGameId==='string'&&/^[1-9]\d{0,19}$/.test(value.attemptedGameId)?value.attemptedGameId:'';
  const hoveredCellId=attemptedGameId&&Number.isInteger(value.hoveredCellId)&&value.hoveredCellId>=0&&value.hoveredCellId<30?value.hoveredCellId:null;
  const kind=['position','hero'].includes(value.kind)?value.kind:null;
+ if(value.reviewStamp!==undefined&&(typeof value.reviewStamp!=='string'||!value.reviewStamp.length||value.reviewStamp.length>10000))throw Error('预选资料状态格式不正确');
+ const reviewStamp=value.reviewStamp||null;
+ if(value.catalogChoiceToken!==undefined&&(typeof value.catalogChoiceToken!=='string'||!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value.catalogChoiceToken)))throw Error('预选组合标识格式不正确');
  if(kind==='hero'&&!value.champion)throw Error('请先选择预选英雄');
  const selection=kind==='hero'&&value.selection?validateGuideSelection(value.selection):null;
  if(selection&&(selection.id!==value.champion||selection.mode!=='rift'||value.role&&selection.role!==value.role))throw Error('预选配置与英雄不一致');
- return {role:value.role,champion:value.champion,...(kind?{kind}:{}),...(selection?{selection}:{}),...(attemptedGameId?{attemptedGameId}:{}),...(hoveredCellId!==null?{hoveredCellId}:{})};
+ if(value.selectionFields!==undefined&&(!selection||!Array.isArray(value.selectionFields)||value.selectionFields.length>30||!value.selectionFields.every(field=>typeof field==='string'&&/^[A-Za-z][A-Za-z0-9]{0,39}$/.test(field))))throw Error('预选配置字段格式不正确');
+ return {role:value.role,champion:value.champion,...(kind?{kind}:{}),...(selection?{selection}:{}),...(value.selectionFields?{selectionFields:[...new Set(value.selectionFields)]}:{}),...(reviewStamp?{reviewStamp}:{}),...(value.catalogChoiceToken?{catalogChoiceToken:value.catalogChoiceToken}:{}),...(attemptedGameId?{attemptedGameId}:{}),...(hoveredCellId!==null?{hoveredCellId}:{})};
 }
 // Restore only a confirmed placeholder for this exact public game/player/hero.
 // This is display state, not permission to repeat a write after restarting.

@@ -4,7 +4,7 @@ import {recommendationDraft,clientRecommendationDraft,lockedOwnSlot,confirmedPla
 import {validPartyCount,reconcilePartyRange} from './party-range.mjs';
 import {clientContextDraft,publicAllyIds} from './client-context-draft.mjs';
 export {clearClientPicks} from './draft.mjs';
-import {comboLoadout,loadoutOptions} from './loadouts.mjs';
+import {comboLoadout,loadoutOptions,LOADOUTS,RUNE_PLANS,SKILL_PLANS} from './loadouts.mjs';
 import {generateCreativeTrios} from './creative-trios.mjs';
 import {creativePlanMatches,creativeMemberCombo,validateCreativePlan,creativePlanId,resultCooperation} from './creative-plan.mjs';
 import {createRankedMatchupIndex} from './ranked-statistics.mjs';
@@ -14,6 +14,7 @@ import {reviewedCatalogEntry} from './mechanic-review.mjs';
 import {createPairStatisticsIndex} from './pair-statistics.mjs';
 import {compositionFit} from './composition-fit.mjs';
 import {comboMembers,comboKey} from './combo-members.mjs';
+import {catalogChoiceMatches,catalogPlanCurrent} from './catalog-choice.mjs';
 import {discoveryLineups,seededFraction} from './recommendation-diversity.mjs';
 import {roleFamiliarityWeights,familiarityLineups,familiarityWinner} from './recommendation-familiarity.mjs';
 import {roomChampionUsageWeights} from './champion-usage.mjs';
@@ -118,8 +119,20 @@ export function findTrio(slots){
  }
  return best??undefined;
 }
-export function currentCombo(slots,champion,role,status={},comboCache=null,creativePlan=null,{allowPending=false,patch=COOPERATION_PATCH}={}){
- if(creativePlanMatches(creativePlan,slots)){const own=champion||creativePlan.members[0].champion,position=role||creativePlan.members[0].role,creative=creativeMemberCombo(creativePlan,own,position);if(creative)return creative;}
+// Accepted catalog snapshots remain readable, but cannot become an automatic
+// current recommendation after their source or review status changes.
+export function automaticCreativePlan(plan,status,patch){
+ if(!plan)return plan;
+ const catalog={duos:DUOS,trios:TRIOS,loadouts:LOADOUTS,runes:RUNE_PLANS,skillPlans:SKILL_PLANS};
+ return catalogPlanCurrent(plan,catalog,status,patch)?plan:null;
+}
+export function currentCombo(slots,champion,role,status={},comboCache=null,creativePlan=null,{allowPending=false,patch:requestedPatch,catalogChoice=null}={}){
+ const patch=requestedPatch||COOPERATION_PATCH;
+ if(catalogChoice&&!requestedPatch)return null;
+ const selected=catalogChoice&&[...TRIOS,...DUOS].find(c=>c.id===catalogChoice.id);
+ if(selected&&requestedPatch&&status?.[selected.id]&&reviewedCatalogEntry(selected,status,requestedPatch)&&catalogChoiceMatches(catalogChoice,selected,slots)&&(!champion||comboLoadout(selected,{id:champion},role)!==null))return selected;
+ const usablePlan=allowPending?creativePlan:automaticCreativePlan(creativePlan,status,requestedPatch);
+ if(creativePlanMatches(usablePlan,slots)){const own=champion||usablePlan.members[0].champion,position=role||usablePlan.members[0].role,creative=creativeMemberCombo(usablePlan,own,position);if(creative)return creative;}
  const matches=matchingCombos(slots,comboCache).filter(c=>allowPending?!status?.[c.id]?.invalid:reviewedCatalogEntry(c,status,patch));
  return memberCombo(matches,champion,role);
 }
@@ -277,6 +290,7 @@ function comboIndex(){
  return comboIndexCache;
 }
 export function recommend({slots,champions,style='fun',excluded=[],publicBans=[],eligibleByRole={},confirmedPick=null,enemy=[],visibleEnemies=enemy,publicPicks=[],publicAllies=[],rankedDraft=null,sourceRoles=[],limit=5,offset=0,builds={},pairStatistics=null,buildSource,patch,pool:heroPool=[],poolMode='off',scope='context',soloRole='',soloChampion=null,play={},rolePools={},catalogStatus={},creativePlan=null,clientSession=null,party=null,includePreselected=false,randomSeed='',familiarityByRole={},roomFamiliarity=[],minimumFitScore=null,fitSlots=null,fitSession=null,fitScope='',fitSoloRole='',stylePolicy=false}) {
+ creativePlan=automaticCreativePlan(creativePlan,catalogStatus,patch);
  if(Array.isArray(clientSession?.myTeam)){
   ({slots,session:clientSession}=clientRecommendationDraft(slots,clientSession,champions,{includePreselected,ownRole:soloRole}));
   const picked=new Set(clientSession.myTeam.map(player=>champions.find(champion=>Number(champion.key)===Number(player.championId))?.id).filter(Boolean));
