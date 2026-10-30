@@ -60,7 +60,7 @@ export function savedMemberPlay(plan,champion,role){
  if(!plan.stagePlan)return null;
  const stages=Object.fromEntries(Object.entries(plan.stagePlan).map(([id,stage])=>{
   const member=stage.memberJobs.find(m=>m.champion===champion&&m.role===role);
-  const original={label:stage.label,patch:member.patch,reviewedAt:member.reviewedAt,ownAction:member.job,steps:[...stage.steps],window:stage.window,exit:stage.exit,...(member.generic?{generic:true}:{})};
+  const original={label:stage.label,patch:member.patch,sourcePatch:stage.patch,memberPatches:[...new Set(stage.memberJobs.map(m=>m.patch))],reviewedAt:member.reviewedAt,ownAction:member.job,steps:[...stage.steps],window:stage.window,exit:stage.exit,...(member.generic?{generic:true}:{})};
   return [id,id==='opening'?original:counterplayStage(original,plan.counterplay,champion,role)];
  }));
  return {kind:plan.members.length===2?'duo':'party',id:plan.id,members:plan.members.map(m=>({...m})),patch:stages.key.patch,reviewedAt:stages.key.reviewedAt,stages,...(plan.counterplay?{counterplay:plan.counterplay,ownJob:stages.key.ownAction,steps:stages.key.steps,window:stages.key.window,risk:stages.key.exit}:{}),economy:plan.curated?.economy||plan.shared?.economy||plan.cooperation?.economy||plan.plan,source:'Riot 英雄机制 · 采用时保存的阶段分工，未经组合对局验证'};

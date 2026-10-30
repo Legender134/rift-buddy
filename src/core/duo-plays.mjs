@@ -1,4 +1,5 @@
 import {rolePlay,ROLE_PLAYS_PATCH,ROLE_PLAYS_REVIEWED_AT} from './role-plays.mjs';
+import {stageVersionNotice} from './stage-versions.mjs';
 import {partyCounterplayText} from './party-counterplay.mjs';
 
 // Windows are conditions to confirm in the game, never inferred cooldowns.
@@ -113,7 +114,7 @@ export function duoPlay(duo,data,{champion,role}={}){
   source:'Riot 英雄机制 · 人工分工与条件顺序，未经组合对局统计验证',
   sources:[carry,support].map(c=>({name:'Riot · '+c.name+'技能机制',url:`https://ddragon.leagueoflegends.com/cdn/${encodeURIComponent(data.version)}/data/zh_CN/champion/${c.id}.json`,kind:'技能依据',checkedAt:ROLE_PLAYS_REVIEWED_AT}))};
 }
-export function duoPlayText(play){
+export function duoPlayText(play,currentPatch=play?.currentPatch){
  if(!play)return '';
- return [...(play.counterplay?[partyCounterplayText(play.counterplay)]:[]),...Object.values(play.stages).map(stage=>`${stage.label}：\n${stage.steps.map((step,index)=>(index+1)+'. '+step).join('\n')}\n玩家确认的窗口：${stage.window}\n何时停：${stage.exit}`),`经济分工：${play.economy}`,`${play.source} · ${play.patch}${play.stale?' · 旧版本需核对':''}`].join('\n');
+ return [...(play.counterplay?[partyCounterplayText(play.counterplay)]:[]),...Object.values(play.stages).map(stage=>{const notice=stageVersionNotice(stage,play,currentPatch);return `${stage.label}${notice?' · '+notice:''}：\n${stage.steps.map((step,index)=>(index+1)+'. '+step).join('\n')}\n玩家确认的窗口：${stage.window}\n何时停：${stage.exit}`;}),`经济分工：${play.economy}`,`${play.source} · ${play.patch}`].join('\n');
 }
