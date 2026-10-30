@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.30.12",
+  "version": "2026.10.30.13",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
@@ -12031,24 +12031,22 @@
     },
     {
       "id": "yasuo-gragas",
-      "carry": "Yasuo",
-      "support": "Gragas",
       "name": "快乐酒局",
       "style": "wild",
       "tags": [
         "击飞接大",
         "反开"
       ],
-      "why": "古拉加斯的击飞为亚索提供接大窗口。",
-      "plan": "亚索补刀，酒桶辅助；报好 E 与 R 落点，不必把所有控制一起用。",
-      "risk": "酒桶大招会改变目标位置，前期辅助经济有限。",
+      "why": "酒桶 E 撞击首个敌人后对附近敌人击飞；亚索 R 要以浮空敌方英雄为目标，进场与落点需确认。",
+      "plan": "亚索下路补刀，古拉加斯辅助先保视野；E 实际击飞目标英雄，亚索六级且可安全接近时再考虑 R。酒桶 R 会击退目标，注意别把目标推离队友；没法跟进或侧翼危险就撤。",
+      "risk": "酒桶 E 可被前方敌人阻挡；大招会改位置，敌方解控、反打或退路不安全则取消。",
       "partners": [
         "Diana",
         "Orianna"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 亚索技能资料",
@@ -12061,17 +12059,91 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Gragas.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "checkedAt": "2026-10-30",
+          "kind": "技能依据"
         }
       ],
-      "loadouts": {
-        "bottom": "default",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Yasuo": "bc4e1091fdb3cfb7",
-        "champion:Gragas": "871db132fcd944dd"
+        "champion:Yasuo": "d36ebea001e3d1cb",
+        "champion:Gragas": "5703c0be06b9ebf2"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Yasuo",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "安全补刀；Q 先命中两次积两层，再以旋风实际击飞目标。辅助已击飞敌方英雄时，确认 R 可用、距离与安全落点后才接，E 注意目标冷却与退路。"
+        },
+        {
+          "champion": "Gragas",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "承担辅助视野；E 会撞首个敌人，实际击飞后报位置；R 按击退方向接应，避免送走目标。"
+        }
+      ],
+      "window": "酒桶 E 实际击飞目标英雄，亚索 R 可用且可安全接近；六级前不安排亚索 R。",
+      "economy": "亚索吃下路兵线，酒桶按辅助有限经济布置视野。",
+      "steps": [
+        "双方报 E、R、目标和退路，酒桶留意兵线与首个碰撞单位。",
+        "酒桶 E 实际击飞目标英雄后，亚索确认 R 可用和安全落点再跟进。",
+        "酒桶 R 根据击退方向决定是否使用；目标脱离、队友跟不上或被反打时撤。"
+      ],
+      "early": "亚索安全补刀、酒桶保视野；亚索六级前不安排 R 接击飞。",
+      "reviewSourceAnchors": {
+        "Yasuo": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "d36ebea001e3d1cb",
+          "observedAt": "2026-10-26T13:38:40.604Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Yasuo",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/yasuo/yasuo.bin.json",
+              "sha256": "5ba9fbc24ac284698c7067f178bcf75781be14e58febbae0bd75fe15d25a69f6"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "5c4d9aa5346ca2f7"
+            }
+          }
+        },
+        "Gragas": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "5703c0be06b9ebf2",
+          "observedAt": "2026-10-26T13:38:40.396Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Gragas",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/gragas/gragas.bin.json",
+              "sha256": "5b7a63175a2c0e545c74b391cf34237baa809689ccb1b126250ff7d243b5148d"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "34e130a71102aad7"
+            }
+          }
+        }
+      }
     },
     {
       "id": "heimerdinger-blitzcrank",
@@ -20240,24 +20312,22 @@
     },
     {
       "id": "yasuo-nautilus",
-      "carry": "Yasuo",
-      "support": "Nautilus",
       "name": "深海风墙",
       "style": "fun",
       "tags": [
         "击飞接大",
         "近身输出"
       ],
-      "why": "泰坦的击飞给亚索大招创造条件，后续限制帮助持续近身作战。",
-      "plan": "亚索补刀；六级前别当成已经能接大，泰坦进场要确认兵线与亚索距离。",
-      "risk": "近战下路会受补刀压制，大招不能解决所有跟进风险。",
+      "why": "泰坦 R 目标及沿途敌人可被击飞，亚索 R 以实际浮空敌方英雄为目标。",
+      "plan": "亚索补刀，泰坦辅助控制视野；六级后确认 R 目标并等待实际击飞，再视亚索 R 与落点跟进。泰坦 Q 会被首个命中单位挡，跟进条件不足就撤。",
+      "risk": "六级前不承诺接大；兵线挡 Q、敌人保护到位或跟进落点危险就退。",
       "partners": [
         "Sejuani",
         "Orianna"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-06",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 亚索技能资料",
@@ -20270,68 +20340,110 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "checkedAt": "2026-10-30",
+          "kind": "技能依据"
         }
       ],
-      "loadouts": {
-        "bottom": "melee-crit",
-        "support": "tank-engage"
-      },
       "reviewBaseline": {
-        "champion:Yasuo": "bc4e1091fdb3cfb7",
-        "champion:Nautilus": "89b73fd1b583624c",
-        "item:3153": "a6d836f7e8db72c4",
-        "item:6673": "1fcc3aa1128ff960",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3006": "d8d9fde1f7908326",
-        "item:6333": "60ed05035db8354d",
-        "item:3026": "9ac9f874ae405bd1",
-        "rune:8008": "d8ed59948702367b",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9104": "e6b524a54b35a2f3",
-        "rune:8017": "50a79a13bce940f0",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8410": "da4ec8f245880032",
-        "rune:8010": "b8dd7b11cee84803",
-        "rune:9111": "6667591beed15f1b",
-        "rune:9105": "8f6975f18cf3ff8d",
-        "rune:8299": "d7db081cd64d0bc2",
-        "rune:8473": "ed2f46234183276d",
-        "rune:8451": "9e4f8837510e3998",
-        "item:3190": "89cdf2838748dfc7",
-        "item:3050": "c3e25c9df9075147",
-        "item:3109": "97c25fae90d4a8a4",
-        "item:3158": "72ca672b9221f063",
-        "item:3075": "6d456e96c01062c6",
-        "rune:8439": "b2c74fd18c4ad076",
-        "rune:8463": "3296414353df0e65",
-        "rune:8242": "37935df8d31dd429",
-        "rune:8306": "68d4bd3d69d9d19c",
-        "rune:8347": "def2a55844436c47",
-        "rune:8351": "6594874b24a7b00e",
-        "rune:8453": "f9a0180e7f2f0432"
+        "champion:Yasuo": "d36ebea001e3d1cb",
+        "champion:Nautilus": "67da151a84906467"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Yasuo",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "安全补刀；Q 先命中两次积两层，再以旋风实际击飞目标。辅助已击飞敌方英雄时，确认 R 可用、距离与安全落点后才接，E 注意目标冷却与退路。"
+        },
+        {
+          "champion": "Nautilus",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "按辅助经济保视野；Q 只认首个命中目标，R 命中目标或路径英雄时报位置。"
+        }
+      ],
+      "window": "双方 R 可用，泰坦 R 实际击飞敌方英雄且亚索能安全到场。",
+      "economy": "亚索吃下路兵线，泰坦承担辅助视野；分别参考同英雄同分路配置。",
+      "steps": [
+        "双方先报大招、目标距离及安全落点；泰坦 Q 注意前方兵线。",
+        "泰坦 R 实际击飞敌方英雄后，亚索确认 R 可用与落点安全再跟进。",
+        "目标脱离、侧翼受威胁或队友跟不上时撤。"
+      ],
+      "early": "亚索保下路兵线，泰坦维护视野；六级前不安排双方 R 接力。",
+      "reviewSourceAnchors": {
+        "Yasuo": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "d36ebea001e3d1cb",
+          "observedAt": "2026-10-26T13:38:40.604Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Yasuo",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/yasuo/yasuo.bin.json",
+              "sha256": "5ba9fbc24ac284698c7067f178bcf75781be14e58febbae0bd75fe15d25a69f6"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "5c4d9aa5346ca2f7"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-26T13:38:40.506Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "yasuo-rell",
-      "carry": "Yasuo",
-      "support": "Rell",
       "name": "铁骑疾风",
       "style": "fun",
       "tags": [
         "击飞接大",
         "范围开团"
       ],
-      "why": "芮尔击飞为亚索提供大招窗口，范围限制支持团战跟进。",
-      "plan": "亚索补刀；先沟通击飞落点，确认对手关键技能后再一起进场。",
-      "risk": "未到六级与大招空档要靠基础换血，不能反复无脑强开。",
+      "why": "芮尔 W 骑乘轰落明示击飞；亚索 R 需要实际浮空的敌方英雄。",
+      "plan": "亚索补刀，芮尔辅助保视野；确认骑乘形态、W 可用和跟进距离，轰落实际击飞后，亚索视 R 可用和安全落点决定是否接大；落空、失去退路就退。",
+      "risk": "Q 的晕眩不能当作击飞；披甲形态和技能空档可能遭反打，落空或退路不安全时撤。",
       "partners": [
         "Sejuani",
         "Orianna"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-06",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 亚索技能资料",
@@ -20344,47 +20456,91 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Rell.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "checkedAt": "2026-10-30",
+          "kind": "技能依据"
         }
       ],
-      "loadouts": {
-        "bottom": "melee-crit",
-        "support": "tank-engage"
-      },
       "reviewBaseline": {
-        "champion:Yasuo": "bc4e1091fdb3cfb7",
-        "champion:Rell": "41676b37935fa0dc",
-        "item:3153": "a6d836f7e8db72c4",
-        "item:6673": "1fcc3aa1128ff960",
-        "item:3031": "0ccdceb96f0cd392",
-        "item:3006": "d8d9fde1f7908326",
-        "item:6333": "60ed05035db8354d",
-        "item:3026": "9ac9f874ae405bd1",
-        "rune:8008": "d8ed59948702367b",
-        "rune:8009": "e88eb74c171319c4",
-        "rune:9104": "e6b524a54b35a2f3",
-        "rune:8017": "50a79a13bce940f0",
-        "rune:8345": "02157c1d4d7f7531",
-        "rune:8410": "da4ec8f245880032",
-        "rune:8010": "b8dd7b11cee84803",
-        "rune:9111": "6667591beed15f1b",
-        "rune:9105": "8f6975f18cf3ff8d",
-        "rune:8299": "d7db081cd64d0bc2",
-        "rune:8473": "ed2f46234183276d",
-        "rune:8451": "9e4f8837510e3998",
-        "item:3190": "89cdf2838748dfc7",
-        "item:3050": "c3e25c9df9075147",
-        "item:3109": "97c25fae90d4a8a4",
-        "item:3158": "72ca672b9221f063",
-        "item:3075": "6d456e96c01062c6",
-        "rune:8439": "b2c74fd18c4ad076",
-        "rune:8463": "3296414353df0e65",
-        "rune:8242": "37935df8d31dd429",
-        "rune:8306": "68d4bd3d69d9d19c",
-        "rune:8347": "def2a55844436c47",
-        "rune:8351": "6594874b24a7b00e",
-        "rune:8453": "f9a0180e7f2f0432"
+        "champion:Yasuo": "d36ebea001e3d1cb",
+        "champion:Rell": "bec49be1ddcf29c0"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "champion": "Yasuo",
+          "role": "bottom",
+          "loadoutId": "default",
+          "job": "安全补刀；Q 先命中两次积两层，再以旋风实际击飞目标。辅助已击飞敌方英雄时，确认 R 可用、距离与安全落点后才接，E 注意目标冷却与退路。"
+        },
+        {
+          "champion": "Rell",
+          "role": "support",
+          "loadoutId": "default",
+          "job": "辅助保视野，确认形态并用 W 骑乘轰落实际击飞；先观察跟进位置。"
+        }
+      ],
+      "window": "芮尔骑乘轰落 W 实际击飞且亚索 R 可用、能够安全接近。",
+      "economy": "亚索下路补刀，芮尔以辅助经济维护视野；分别参考同英雄同分路配置。",
+      "steps": [
+        "先确认芮尔骑乘形态、W、亚索 R、双方距离及退路。",
+        "芮尔 W 骑乘轰落实际击飞敌方英雄后，亚索确认 R 可用及落点安全再跟。",
+        "控制落空、队友跟不上或被反打时撤。"
+      ],
+      "early": "亚索保兵线，芮尔保视野；亚索六级前不安排 R 接击飞。",
+      "reviewSourceAnchors": {
+        "Yasuo": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "d36ebea001e3d1cb",
+          "observedAt": "2026-10-26T13:38:40.604Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Yasuo",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/yasuo/yasuo.bin.json",
+              "sha256": "5ba9fbc24ac284698c7067f178bcf75781be14e58febbae0bd75fe15d25a69f6"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "5c4d9aa5346ca2f7"
+            }
+          }
+        },
+        "Rell": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "bec49be1ddcf29c0",
+          "observedAt": "2026-10-26T13:38:40.515Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Rell",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/rell/rell.bin.json",
+              "sha256": "1225a8f35e320898977194bcbc616538c20de3cdd99156ef7a8e963e56b67084"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "f5469dea7fbc0dcb"
+            }
+          }
+        }
+      }
     },
     {
       "id": "yasuo-thresh",
@@ -20959,31 +21115,31 @@
         "首个击杀",
         "收割接力"
       ],
-      "why": "丽桑卓先限制同一目标，佛耶戈跟进；首个击杀后分别利用幽魂和冰封奴仆继续作战。",
-      "plan": "先确认佛耶戈能到场，丽桑卓再用 W 或对敌 R 留人；集中同一目标，击杀后观察幽魂与后续站位再续战。",
-      "risk": "丽桑卓自 R 不能定住敌人；没有首个击杀就没有这轮收割窗口。幽魂位置危险、控制被解或队友跟不上时撤，不为附身走进集火。",
+      "why": "丽桑卓 W 近身禁锢或对敌 R 命中眩晕，佛耶戈到场时可集中同一目标；附近敌方英雄阵亡后按实际出现的幽魂和冰封奴仆决定是否继续。",
+      "plan": "先保野区与中线，确认佛耶戈到场路线和目标，再由丽桑卓 W 或对敌 R 实际控制；佛耶戈 W 投射物须命中首个敌人。击杀后不假定一定有安全幽魂，观察再决定附身或退出。",
+      "risk": "丽桑卓自 R 不是对敌眩晕；佛耶戈 W 可被前方敌人挡，附身需要真实幽魂，敌方解控、反蹲或走位危险即停。",
       "members": [
         {
           "champion": "Viego",
           "role": "jungle",
           "loadoutId": "default",
-          "job": "先清野到能支援的位置，等丽桑卓确认控制再跟同一目标；W 注意小兵阻挡。击杀后先看幽魂是否安全，再决定附身与下一次 R。"
+          "job": "清野后报路线和可跟进距离，W 蓄力及首个碰撞均须核对；确认实际幽魂和站位后再考虑附身。"
         },
         {
           "champion": "Lissandra",
           "role": "mid",
           "loadoutId": "default",
-          "job": "先处理兵线并报 E/W/R，确认佛耶戈跟得到再进场；对敌 R 与自 R 分清。首个敌人倒下后利用奴仆逼位，危险时自保退出。"
+          "job": "处理中线，确认同目标及队友距离；W 近身、R 选敌才眩晕，自 R 用于自保。"
         }
       ],
       "steps": [
-        "丽桑卓报兵线与控制，佛耶戈报到场路线和跟进距离。",
-        "丽桑卓 W 或对敌 R 实际命中后，两人集中同一目标，控制错开。",
-        "有击杀再判断幽魂和奴仆的实际位置；能安全跟进才续战，否则撤离。"
+        "确认视野、野路线、兵线和敌方保护。",
+        "丽桑卓 W 实际禁锢或对敌 R 实际眩晕后集中同目标；佛耶戈 W 首个命中对象必须是目标。",
+        "有附近敌方英雄死亡后观察实际奴仆和幽魂；安全才续战，否则撤离。"
       ],
-      "window": "控制、伤害和到场距离足够的同目标机会；六级前可用 W 与佛耶戈 W 配合，不把自 R 当敌方眩晕。",
-      "early": "佛耶戈保清野等级，丽桑卓保中路线；先用小技能接力，不为等大招放弃可安全处理的兵线和野区。",
-      "economy": "佛耶戈吃野区经济、丽桑卓保中路经济；支援后恢复各自发育，不绑定过时的专用符文或固定出装。",
+      "window": "同目标处于控制范围且打野实际能到场，六级时按 R 实际可用情况调整。",
+      "early": "先清野、推线并确认实际小技能可用；六级前不安排 R。",
+      "economy": "佛耶戈打野清野，丽桑卓中路补刀；支援后恢复各自发育，配置采用当前同英雄同分路参考。",
       "partners": [],
       "sources": [
         {
@@ -20995,18 +21151,24 @@
         {
           "name": "Riot Viego 技能说明",
           "url": "https://www.leagueoflegends.com/en-us/champions/viego/",
-          "kind": "当前机制依据",
+          "kind": "技能依据",
           "checkedAt": "2026-10-19"
         },
         {
           "name": "Riot Lissandra 技能说明",
           "url": "https://www.leagueoflegends.com/en-us/champions/lissandra/",
-          "kind": "当前机制依据",
+          "kind": "技能依据",
           "checkedAt": "2026-10-19"
+        },
+        {
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "checkedAt": "2026-10-30",
+          "kind": "技能依据"
         }
       ],
-      "patch": "16.20",
-      "reviewedAt": "2026-10-19",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "reviewBaseline": {
         "champion:Viego": "61185e81ee691f67",
         "champion:Lissandra": "599da97edcf817b9"
@@ -21017,21 +21179,21 @@
           "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "61185e81ee691f67",
-          "observedAt": "2026-10-18T23:16:00.238Z",
+          "observedAt": "2026-10-26T13:38:40.599Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Viego",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/viego/viego.bin.json",
-              "sha256": "36b40b37291f0d6d157691933427c3d9966b51d6cde748ad62f53e8de8045e79"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/viego/viego.bin.json",
+              "sha256": "0b49991c3a4dd8aed0e97f623dfcd277e5c693a5f9a7eff07cf2bdf7179b2863"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "d5b6622648148ffc"
             }
           }
@@ -21041,21 +21203,21 @@
           "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "599da97edcf817b9",
-          "observedAt": "2026-10-18T23:15:03.729Z",
+          "observedAt": "2026-10-26T13:38:40.499Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Lissandra",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/lissandra/lissandra.bin.json",
-              "sha256": "d2c0392ab0f7ca1f827dfc16416803253caf66be6899ebb771ec3b34ef48c0eb"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/lissandra/lissandra.bin.json",
+              "sha256": "a6ec51003dc0dd7956bc6f5aad1e6e6d61cd0d506eb59e91e651b7866cb4cbfe"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "f6bc405fcfcae9d6"
             }
           }
@@ -21073,31 +21235,31 @@
         "边线支援",
         "到场接力"
       ],
-      "why": "卡牌侦察并准备落点，两人从各自大招范围内支援同一路，黄牌给梦魇跟进留时间。",
-      "plan": "先确认边线能接战、双方大招范围和卡牌落点，再选同一目标；卡牌准备黄牌，梦魇按实际距离跟进并维持 E 连线。",
-      "risk": "两人大招都有限距，开大不代表能到场；卡牌引导可能被打断、落点可能被蹲，黄牌也可能被挡或解除。关灯不保证切断所有反应，无法同时到场就取消。",
+      "why": "卡牌 R 提供敌方英雄视野并可再施放传送；梦魇 R 限制敌方视野并可再施放突进敌方英雄。两人需分别确认施法、目标和可到达位置，金牌实际命中后才能眩晕。",
+      "plan": "中野各自处理资源，六级后确认双方大招、目标位置、落点与反蹲；卡牌锁金牌，R 二段引导 1.5 秒后到场，实际攻击命中后梦魇按可选目标跟进，E 连线保持至恐惧。目标不再可选或落点不安全就取消。",
+      "risk": "金牌是强化普攻，可能被弹体阻挡类技能或法术护盾干扰；卡牌 R 二段引导 1.5 秒，落点可能被蹲。双方大招、敌方位置及落点均须逐次确认。",
       "members": [
         {
           "champion": "Nocturne",
           "role": "jungle",
           "loadoutId": "default",
-          "job": "先报自己大招的可达目标和边线队友位置，卡牌落点安全且能跟上才二段突进；W 留给关键技能，E 要维持范围。进不去就不独自飞。"
+          "job": "清野并报大招可选目标；二段突进前确认落点，E 连线不中断才恐惧，W 按实际威胁挡一次技能。"
         },
         {
           "champion": "TwistedFate",
           "role": "mid",
           "loadoutId": "default",
-          "job": "先处理中路线、查看敌人位置和侧翼，准备黄牌并选安全可达落点；引导会被打断时先退。落地后确认黄牌命中，再让梦魇接续。"
+          "job": "先处理兵线，R 获取视野、二段选择安全位置并引导 1.5 秒；W 锁金牌并实际普攻目标，不能把锁牌当已眩晕。"
         }
       ],
       "steps": [
-        "六级后先报双方大招、边线兵线和各自能到的范围。",
-        "卡牌侦察并准备黄牌，确认安全落点与同一目标；梦魇确认自己能跟进。",
-        "卡牌安全落地、黄牌命中后接梦魇突进与 E；目标已逃或反蹲出现时及时停手。"
+        "确认目标视野、各自可达范围、卡牌安全落点和边线状态。",
+        "卡牌锁金牌，R 二段引导 1.5 秒并安全到场；实际普攻命中后梦魇按实际目标可选情况决定是否突进。",
+        "梦魇 E 保持连线至触发恐惧；目标逃脱、技能被挡或发现反蹲时撤。"
       ],
-      "window": "双方六级、大招可用且同一目标处于各自可达范围，边线队友能配合时；不是全地图无条件双飞。",
-      "early": "六级前各自保清野和中路线；卡牌可用黄牌配合近距离支援，不能提前按双大招到场安排打法。",
-      "economy": "卡牌保中路补刀、梦魇保野区等级；支援后及时回线和清野，不长期分掉被支援队友的兵线。",
+      "window": "双方 R 可用且各自范围和目标选择成立，边线队友能接应；不是无距离限制的双飞。",
+      "early": "六级前各自发育，可按普通黄牌和近距离支援协作，不假设双大可用。",
+      "economy": "梦魇保野区等级，卡牌保中路兵线，结束支援后恢复各自发育。",
       "partners": [],
       "sources": [
         {
@@ -21109,18 +21271,24 @@
         {
           "name": "Riot Nocturne 技能说明",
           "url": "https://www.leagueoflegends.com/en-us/champions/nocturne/",
-          "kind": "当前机制依据",
+          "kind": "技能依据",
           "checkedAt": "2026-10-19"
         },
         {
           "name": "Riot TwistedFate 技能说明",
           "url": "https://www.leagueoflegends.com/en-us/champions/twistedfate/",
-          "kind": "当前机制依据",
+          "kind": "技能依据",
           "checkedAt": "2026-10-19"
+        },
+        {
+          "name": "Riot Data Dragon · 16.21.1 全英雄技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+          "checkedAt": "2026-10-30",
+          "kind": "技能依据"
         }
       ],
-      "patch": "16.20",
-      "reviewedAt": "2026-10-19",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "reviewBaseline": {
         "champion:Nocturne": "2759f235cb713880",
         "champion:TwistedFate": "4b3a9807b94dcc47"
@@ -21131,21 +21299,21 @@
           "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "2759f235cb713880",
-          "observedAt": "2026-10-18T23:15:19.330Z",
+          "observedAt": "2026-10-26T13:38:40.508Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Nocturne",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/nocturne/nocturne.bin.json",
-              "sha256": "ead50283b87590564919c6df79e48cf2d9f65ce5768b8748a3c41507065864ac"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nocturne/nocturne.bin.json",
+              "sha256": "93338da160b2ed4c8ff61ee45eac0e21363f69939f6202524c29910e7beabf58"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "7e6432fe64cf372b"
             }
           }
@@ -21155,21 +21323,21 @@
           "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "4b3a9807b94dcc47",
-          "observedAt": "2026-10-18T23:15:53.155Z",
+          "observedAt": "2026-10-26T13:38:40.595Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "TwistedFate",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/twistedfate/twistedfate.bin.json",
-              "sha256": "0bd50cf5bca7c6fb7e59408bddb72da6e78a3736d7cbd02bca7e8c556eda422b"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/twistedfate/twistedfate.bin.json",
+              "sha256": "ec60137c806e0ca6e86bad8bcf6a216b8295761503dbb7a61eddc6b7e82bf4f4"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "f83bddbc2f7bb85b"
             }
           }
