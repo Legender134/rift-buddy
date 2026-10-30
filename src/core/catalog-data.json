@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "id": "rift-buddy-curated",
-  "version": "2026.10.30.1",
+  "version": "2026.10.30.2",
   "patch": "16.19",
   "reviewedAt": "2026-10-06",
   "name": "开黑搭子机制与社区组合库",
-  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。",
+  "notes": "扩充可执行的下路与三人配合、明确经济分工和失败条件；新增保护/接控/增益配置与技能节点。资料依赖基线用于提醒未来复核，不代表对局验证。 补齐原有 50 套三人组合的个人技能、接力与退出条件；保留各套原动作顺序及旧版配装来源，不自动更新旧收藏。 近身救援舞已对照 Riot 16.19.1 与 16.20.1 的三位成员技能、冷却及范围复核，补齐可用、支援与退出条件；其余旧版套路与专用配装仍保留待复核状态。 本次逐项复核 28 套配装的技能、装备与符文触发条件，并拆开无定身消耗辅助及加里奥接控配置；其他条目保留原版本待复核，复核不代表组合实战或统计强度已验证。 新增六位英雄、七个英雄位置与配置范围的独立加点方案；仅这些加点按 16.20 机制复核，旧组合、配装与符文的版本和待复核状态保持原样。 再逐项整理青钢影上路、加里奥中路、蔚打野、慎上路与梦魇打野的技能节点及加里奥下路前三点；各自保留位置、配置、来源覆盖和机制取舍，加里奥下路不借用中路统计、不补造后续节点。 逐范围整理29个非常规下路/辅助配置的开局三点与后续补点优先，按实际经济、技能条件与退出方式说明；只更新独立加点，不提升旧组合或装备符文复核状态。 2026-10-11逐项复核慎/魔腾/加里奥、皎月/亚索/牛头、翠神/狮子狗/璐璐的实际技能接力、六级前准备、经济代价与取消条件，并核对五英雄低经济保护前排装备/符文触发；其他旧内容状态保留。 2026-10-13新增16套三人机制执行卡，覆盖中下辅、上野中、野下辅、上中辅；仅新增条目按 Riot 16.20.1 技能复核。复用配置保持各自复核日期，普通位置默认不伪装成专用配装；Mobalytics常驻指南只作打法参考，不提供本组合当前版本胜率或强度证据，原有旧条目与资料状态保留。 2026-10-16新增四套双人、四套三人机制配合；旧社区内容仅作玩法灵感，未沿用旧配装、胜率或强度结论，旧条目复核状态保留。 2026-10-19新增三套跨位置双人执行卡：造墙配合、中野收割和双支援；仅新增条目对照当前16.20角色源复核，历史社区资料只作线索，不沿用其旧符文、配装或强度断言；原条目版本与复核锚点不变。 2026-10-24：仅新增霞/凯尔保护路线、两套专用配置及完整符文/加点，按16.21复核；其他条目不续期。来源首发未知，10/19为凯尔正文更新，霞10/22仅声明补丁兼容。；10/24补齐霞洛成员配置、加入洛与AP图奇联动，作者配置和项目加点分别标注。 2026-10-29对22套下路双人、13套三人及3个共享配置逐项核对16.21技能、装备和符文触发条件；普通位置默认配置不冒称组合专配。机制复核不代表实战强度或胜率。 2026-10-29第二批逐项复核17套下路双人、5套三人及嘉文、蔚两套打野配置的16.21触发与退出条件；保留原16.20单英雄统计来源，不冒称当前组合胜率。 2026-10-30逐项复核12套下路双人组合的16.21技能条件与撤退；双方默认位置配置不是组合专配或胜率证据。 2026-10-30复核尼菈与塔里克、洛、诺提勒斯三套下路配合及对应三份配置的16.21机制；普通辅助默认配置不冒称组合专配，未复核组合保留旧版本。",
   "source": {
     "date": "2026-10-06",
     "patch": "16.19",
@@ -1191,8 +1191,6 @@
     },
     {
       "id": "nilah-taric",
-      "carry": "Nilah",
-      "support": "Taric",
       "name": "贴身双保险",
       "style": "fun",
       "difficulty": "较高",
@@ -1200,36 +1198,50 @@
         "近战双人",
         "回复保护"
       ],
-      "why": "尼菈喜欢近距离持续作战，塔里克提供控制与保护窗口。",
-      "plan": "尼菈补刀。一起进退，塔里克提前预判爆发开大，不要等到残血才施放。",
-      "risk": "手短，前期容易被消耗；大招有延迟。",
+      "why": "尼菈需要近身接触，塔里克用联结、延迟眩晕与保护创造有条件的输出窗口；治疗与护盾按实际技能和距离生效，不保证无限续航。",
+      "plan": "尼菈先保兵线和补刀；塔里克确认 W 联结、距离、蓝量与退路。 塔里克 E 实际眩晕且尼菈可安全接触时，再由尼菈 Q 和普攻跟进；W 接触友军才共享闪避。 需要保护时提前安排塔里克 R，确认保护实际生效；技能落空、血蓝不足或距离断开就撤。",
+      "risk": "双近身前期怕远程消耗，塔里克 E 与 R 均有延迟；尼菈 W 不免所有技能，保护未生效不能强开。",
       "partners": [
         "Diana",
         "JarvanIV",
         "Galio"
       ],
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "MOBAFire · 26.19 塔里克指南",
           "url": "https://www.mobafire.com/league-of-legends/build/patch-26-19-quick-taric-guide-613270",
           "kind": "社区玩法参考",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Nilah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nilah.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Taric 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Taric.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "nilah-sustain",
-        "support": "taric-guardian"
-      },
       "reviewBaseline": {
-        "champion:Nilah": "040a6c8c12c965e3",
-        "champion:Taric": "c80b2adac0419e29",
+        "champion:Nilah": "30e5ef1b4f79390e",
+        "champion:Taric": "d7034e2662bef2b0",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
-        "item:3072": "5c29525fccb26a37",
-        "item:3006": "d8d9fde1f7908326",
         "item:3036": "fcf5de31162e9e9d",
+        "item:3006": "d8d9fde1f7908326",
+        "item:3072": "5c29525fccb26a37",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
@@ -1256,7 +1268,79 @@
         "rune:8351": "6594874b24a7b00e",
         "rune:8306": "68d4bd3d69d9d19c"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Nilah",
+          "loadoutId": "nilah-sustain",
+          "job": "负责下路补刀；Q 命中敌方单位或建筑才有额外射程，控制实际命中且安全时再接普攻，W 留攻击压力并接触友军共享，E 留有效退出单位。"
+        },
+        {
+          "role": "support",
+          "champion": "Taric",
+          "loadoutId": "taric-guardian",
+          "job": "W 绑定实际承伤者并确认距离，E 延迟命中后再报眩晕；R 有延迟，按实际爆发窗口提前安排，保护未生效不要催队友深入。"
+        }
+      ],
+      "steps": [
+        "尼菈先保兵线和补刀；塔里克确认 W 联结、距离、蓝量与退路。",
+        "塔里克 E 实际眩晕且尼菈可安全接触时，再由尼菈 Q 和普攻跟进；W 接触友军才共享闪避。",
+        "需要保护时提前安排塔里克 R，确认保护实际生效；技能落空、血蓝不足或距离断开就撤。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键控制命中时再接；条件不成立就保留撤退。",
+      "early": "尼菈先保补刀、经验与血量；辅助照看视野和兵线，按实际等级、蓝量及对手技能决定换血。",
+      "economy": "尼菈以补刀为主，辅助保留任务和视野经济；双方配置是单英雄共享机制参考，不代表本组合实测配装。",
+      "reviewSourceAnchors": {
+        "Nilah": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "30e5ef1b4f79390e",
+          "observedAt": "2026-10-23T02:03:51.545Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nilah",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nilah/nilah.bin.json",
+              "sha256": "fb7dedbe829ca6073bed427ce77d930fe790697aa011d7096b2e696bde3f11fc"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2f18ee1a98588cd1"
+            }
+          }
+        },
+        "Taric": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "d7034e2662bef2b0",
+          "observedAt": "2026-10-23T02:03:51.634Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Taric",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/taric/taric.bin.json",
+              "sha256": "e03353ee1a9f08920f02f40c69489552f73953fcf396707e5ba884f5bb3c0e62"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "a0599325a1012892"
+            }
+          }
+        }
+      }
     },
     {
       "id": "cho-senna",
@@ -6415,24 +6499,22 @@
     },
     {
       "id": "nilah-rakan",
-      "carry": "Nilah",
-      "support": "Rakan",
       "name": "贴身双人舞",
       "style": "fun",
       "tags": [
         "近战联动",
         "回复保护"
       ],
-      "why": "尼菈近距离作战，洛的进场、护盾和回复提供配合窗口。",
-      "plan": "尼菈补刀；洛先控制、尼菈再跟，撤退时保留洛的支援距离。",
-      "risk": "两人手短，前期容易被消耗。",
+      "why": "洛的进场、护盾与回复可为尼菈创造有条件的近身输出窗口，双方需确认控制、距离和撤退对象。",
+      "plan": "尼菈保补刀；洛先确认队友能跟进、E 可用及安全回跳对象。 洛 W 实际击飞且落点安全时尼菈才 Q 与普攻跟进；洛 Q 命中英雄或史诗级野怪后才能启动回复。 控制落空、回跳对象离开或退路被封时停止追击；尼菈 W 接触友军才共享闪避。",
+      "risk": "双近身容易被远程消耗；洛 W 落空或 E 没有可回跳的友军时不能强开，护盾与回复不保证生存。",
       "partners": [
         "Galio",
         "Diana"
       ],
       "difficulty": "较高",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 尼菈技能资料",
@@ -6445,20 +6527,34 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Rakan.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Nilah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nilah.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Rakan 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Rakan.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "nilah-sustain",
-        "support": "rakan-engage"
-      },
       "reviewBaseline": {
-        "champion:Nilah": "040a6c8c12c965e3",
-        "champion:Rakan": "5dadfc0f0f54ae6b",
+        "champion:Nilah": "30e5ef1b4f79390e",
+        "champion:Rakan": "69d7edc48cac55e5",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
-        "item:3072": "5c29525fccb26a37",
-        "item:3006": "d8d9fde1f7908326",
         "item:3036": "fcf5de31162e9e9d",
+        "item:3006": "d8d9fde1f7908326",
+        "item:3072": "5c29525fccb26a37",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
@@ -6472,11 +6568,11 @@
         "rune:8014": "04092c4f9754532b",
         "rune:8345": "02157c1d4d7f7531",
         "rune:8410": "da4ec8f245880032",
+        "item:3050": "c3e25c9df9075147",
         "item:3190": "89cdf2838748dfc7",
         "item:3109": "97c25fae90d4a8a4",
-        "item:2065": "a30335c7d456f5fd",
         "item:3158": "72ca672b9221f063",
-        "item:3107": "53bdbba0a53ca5c6",
+        "item:2065": "a30335c7d456f5fd",
         "rune:8465": "4b16b0cca812d727",
         "rune:8463": "3296414353df0e65",
         "rune:8453": "f9a0180e7f2f0432",
@@ -6486,7 +6582,79 @@
         "rune:8439": "b2c74fd18c4ad076",
         "rune:8242": "37935df8d31dd429"
       },
-      "tempo": "protect"
+      "tempo": "protect",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Nilah",
+          "loadoutId": "nilah-sustain",
+          "job": "下路补刀；洛实际击飞且落点安全时再 Q 与普攻接触，E 进场前确认可退出的有效单位；W 留攻击压力并接触队友才共享。"
+        },
+        {
+          "role": "support",
+          "champion": "Rakan",
+          "loadoutId": "rakan-engage",
+          "job": "先确认 W 落点和 E 范围内安全回跳友军；W 实际击飞后报同一目标，Q 命中英雄或史诗级野怪后按实际回复范围接应，无法返回时停止深入。"
+        }
+      ],
+      "steps": [
+        "尼菈保补刀；洛先确认队友能跟进、E 可用及安全回跳对象。",
+        "洛 W 实际击飞且落点安全时尼菈才 Q 与普攻跟进；洛 Q 命中英雄或史诗级野怪后才能启动回复。",
+        "控制落空、回跳对象离开或退路被封时停止追击；尼菈 W 接触友军才共享闪避。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键控制命中时再接；条件不成立就保留撤退。",
+      "early": "尼菈先保补刀、经验与血量；辅助照看视野和兵线，按实际等级、蓝量及对手技能决定换血。",
+      "economy": "尼菈以补刀为主，辅助保留任务和视野经济；双方配置是单英雄共享机制参考，不代表本组合实测配装。",
+      "reviewSourceAnchors": {
+        "Nilah": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "30e5ef1b4f79390e",
+          "observedAt": "2026-10-23T02:03:51.545Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nilah",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nilah/nilah.bin.json",
+              "sha256": "fb7dedbe829ca6073bed427ce77d930fe790697aa011d7096b2e696bde3f11fc"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2f18ee1a98588cd1"
+            }
+          }
+        },
+        "Rakan": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "69d7edc48cac55e5",
+          "observedAt": "2026-10-23T02:03:51.548Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Rakan",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/rakan/rakan.bin.json",
+              "sha256": "c4e16a57f1a6f13ba5c08e1fe861629afca5435b0a3154c4c444fe89aaa17d6a"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "14165b7ab2f27514"
+            }
+          }
+        }
+      }
     },
     {
       "id": "nilah-soraka",
@@ -6552,24 +6720,22 @@
     },
     {
       "id": "nilah-nautilus",
-      "carry": "Nilah",
-      "support": "Nautilus",
       "name": "深海近战组",
       "style": "balanced",
       "tags": [
         "稳定控制",
         "贴身输出"
       ],
-      "why": "泰坦锁住目标，帮助尼菈进入近距离输出范围。",
-      "plan": "尼菈补刀；先控再跟，不要在关键保护技能冷却时跳进去。",
-      "risk": "前期手短，泰坦离开后尼菈要控好兵线。",
+      "why": "诺提勒斯实际命中的控制可为尼菈创造接近机会，双方仍需确认兵线、射程与退出条件。",
+      "plan": "尼菈先保补刀；诺提勒斯观察兵线与钩线，Q 实际命中敌方英雄且队友能跟上才继续。 诺提勒斯安全时接被动普攻；尼菈 Q 命中后按射程与对手控制决定是否普攻，E 需保留有效退出单位。 R 已学且实际命中时才安排后续；钩被挡、碰到地形、队友跟不上或退路被封就撤。",
+      "risk": "Q 会碰到首个单位或地形；诺提勒斯 W 只保护自己，尼菈 W 不能免所有技能，两人被消耗时先保兵线。",
       "partners": [
         "Galio",
         "Diana"
       ],
       "difficulty": "适中",
-      "patch": "16.19",
-      "reviewedAt": "2026-10-04",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "sources": [
         {
           "name": "Riot · 尼菈技能资料",
@@ -6582,20 +6748,34 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/data/zh_CN/champion/Nautilus.json",
           "kind": "技能依据",
           "checkedAt": "2026-10-06"
+        },
+        {
+          "name": "Riot · Nilah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nilah.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · Nautilus 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nautilus.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
-      "loadouts": {
-        "bottom": "nilah-sustain",
-        "support": "default"
-      },
       "reviewBaseline": {
-        "champion:Nilah": "040a6c8c12c965e3",
-        "champion:Nautilus": "89b73fd1b583624c",
+        "champion:Nilah": "30e5ef1b4f79390e",
+        "champion:Nautilus": "67da151a84906467",
         "item:6676": "f75b10fbdb261e7f",
         "item:3031": "0ccdceb96f0cd392",
-        "item:3072": "5c29525fccb26a37",
-        "item:3006": "d8d9fde1f7908326",
         "item:3036": "fcf5de31162e9e9d",
+        "item:3006": "d8d9fde1f7908326",
+        "item:3072": "5c29525fccb26a37",
         "item:3026": "9ac9f874ae405bd1",
         "rune:8010": "b8dd7b11cee84803",
         "rune:9111": "6667591beed15f1b",
@@ -6610,7 +6790,79 @@
         "rune:8345": "02157c1d4d7f7531",
         "rune:8410": "da4ec8f245880032"
       },
-      "tempo": "teamfight"
+      "tempo": "teamfight",
+      "members": [
+        {
+          "role": "bottom",
+          "champion": "Nilah",
+          "loadoutId": "nilah-sustain",
+          "job": "负责下路补刀；钩控实际成立且能安全接触时再 Q 与普攻，E 进场前确认有效退出单位，W 留攻击压力并接触友军才共享。"
+        },
+        {
+          "role": "support",
+          "champion": "Nautilus",
+          "loadoutId": "default",
+          "job": "Q 先确认首个碰撞单位和射手距离，实际命中敌方英雄后再报控制；安全时补被动普攻，W 只保护自己，R 已学可用时按目标范围接控。"
+        }
+      ],
+      "steps": [
+        "尼菈先保补刀；诺提勒斯观察兵线与钩线，Q 实际命中敌方英雄且队友能跟上才继续。",
+        "诺提勒斯安全时接被动普攻；尼菈 Q 命中后按射程与对手控制决定是否普攻，E 需保留有效退出单位。",
+        "R 已学且实际命中时才安排后续；钩被挡、碰到地形、队友跟不上或退路被封就撤。"
+      ],
+      "window": "双方技能实际可用、距离与退路成立且关键控制命中时再接；条件不成立就保留撤退。",
+      "early": "尼菈先保补刀、经验与血量；辅助照看视野和兵线，按实际等级、蓝量及对手技能决定换血。",
+      "economy": "尼菈以补刀为主，辅助保留任务和视野经济；尼菈配置是单英雄共享机制参考，诺提勒斯使用位置默认配置，均不代表本组合实测配装。",
+      "reviewSourceAnchors": {
+        "Nilah": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "30e5ef1b4f79390e",
+          "observedAt": "2026-10-23T02:03:51.545Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nilah",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nilah/nilah.bin.json",
+              "sha256": "fb7dedbe829ca6073bed427ce77d930fe790697aa011d7096b2e696bde3f11fc"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "2f18ee1a98588cd1"
+            }
+          }
+        },
+        "Nautilus": {
+          "schema": 1,
+          "kind": "explicit-review",
+          "reviewCoverage": "summary-v1",
+          "legacyFingerprint": "67da151a84906467",
+          "observedAt": "2026-10-23T02:03:51.544Z",
+          "input": {
+            "schema": 1,
+            "normalizer": 1,
+            "champion": "Nautilus",
+            "patch": "16.21",
+            "version": "16.21.1",
+            "locale": "zh_CN",
+            "character": {
+              "algorithm": "canonical-json-sha256-v1",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nautilus/nautilus.bin.json",
+              "sha256": "09a3dc32269053da4833aa505e2b0b3f258771802b318be07566bd4d88adb82b"
+            },
+            "dataDragon": {
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
+              "fingerprint": "21ceeeee51e3b384"
+            }
+          }
+        }
+      }
     },
     {
       "id": "samira-alistar",
@@ -34985,9 +35237,9 @@
       "first": "EQW",
       "skillOrder": "EQWQEREEEWRWWWQRQQ",
       "skillReason": "四级补第二点 Q，提高可储存治疗充能，再主 E 缩短控制冷却；需要能安全穿插强化普攻，不能保证无限治疗。",
-      "why": "四级给第二点 Q 保留两层治疗容量，再优先 E；被动的两次强化普攻能补 Q 层数和减冷却，但要实际接触且有蓝，不能无限空转。W 先联结本轮承伤者，R 有延迟，按实际生效衔接尼菈或千珏等队友。骑士之誓需与绑定者保持距离；钢铁烈阳用于实际承伤窗口，救赎需要提前落点。",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-10",
+      "why": "四级补第二点 Q 可储存两层治疗充能，再优先 E；技能后两次强化普攻可补 Q 层数并减少基础技能冷却，但需实际接触且有蓝，不能保证无限治疗。W 绑定实际承伤者并保持距离，E 延迟命中才眩晕，R 提前安排生效；骑士之誓需绑定且誓约者在附近，烈阳与救赎按承伤窗口和落点使用。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "reviewBaseline": {
         "champion:Taric": "d7034e2662bef2b0",
         "item:3109": "97c25fae90d4a8a4",
@@ -35023,29 +35275,53 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/runesReforged.json",
           "kind": "符文触发依据",
           "checkedAt": "2026-10-10"
+        },
+        {
+          "name": "Riot · Taric 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Taric.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 16.21.1 装备",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/item.json",
+          "kind": "装备触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 16.21.1 符文",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/runesReforged.json",
+          "kind": "符文触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
         }
       ],
       "reviewSourceAnchors": {
         "Taric": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "d7034e2662bef2b0",
-          "observedAt": "2026-10-18T23:15:48.905Z",
+          "observedAt": "2026-10-23T02:03:51.634Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Taric",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/taric/taric.bin.json",
-              "sha256": "784d4735aa5679afd1af82dc275959dec1aa4b1a63a5ba08550571bd09fc99b1"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/taric/taric.bin.json",
+              "sha256": "e03353ee1a9f08920f02f40c69489552f73953fcf396707e5ba884f5bb3c0e62"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "a0599325a1012892"
             }
           }
@@ -35175,9 +35451,9 @@
       ],
       "priority": "QEW",
       "first": "QEW",
-      "why": "收集者与无尽先提供暴击，尼菈 Q 命中后才有延长攻击范围，穿插普攻持续接触；第三件多米尼克服务实际护甲威胁，续航压力可在后续选择饮血。征服者要持续命中叠层，强攻要实际三次普攻；W 只按真实闪避窗口使用，不能免所有技能。近身目标不可持续接触时不靠吸血保证生存。",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-10",
+      "why": "收集者与无尽提供暴击，护甲威胁出现时再比较多米尼克领主的致意；需要续航可考虑饮血。尼菈 Q 命中敌方单位或建筑才获得额外射程；W 可躲避攻击并减轻魔法伤害，接触友军才能共享，不能免所有技能。征服者要持续命中叠层，强攻要连续三次普攻击中同一英雄；没有安全接触机会时先撤。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "reviewBaseline": {
         "champion:Nilah": "30e5ef1b4f79390e",
         "item:6676": "f75b10fbdb261e7f",
@@ -35217,34 +35493,66 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/runesReforged.json",
           "kind": "符文触发依据",
           "checkedAt": "2026-10-10"
+        },
+        {
+          "name": "Riot · Nilah 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Nilah.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 16.21.1 装备",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/item.json",
+          "kind": "装备触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 16.21.1 符文",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/runesReforged.json",
+          "kind": "符文触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "OP.GG · 16.21 尼菈下路单英雄配置（非组合实测）",
+          "url": "https://op.gg/lol/champions/nilah/build?type=ranked",
+          "kind": "单英雄统计参考",
+          "checkedAt": "2026-10-30"
         }
       ],
       "reviewSourceAnchors": {
         "Nilah": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "30e5ef1b4f79390e",
-          "observedAt": "2026-10-18T23:15:19.166Z",
+          "observedAt": "2026-10-23T02:03:51.545Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Nilah",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/nilah/nilah.bin.json",
-              "sha256": "9b8a2b7e046df9dac003b9ed8d82e4359ed0b56908b131c900ef0a0ad9c48530"
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/nilah/nilah.bin.json",
+              "sha256": "fb7dedbe829ca6073bed427ce77d930fe790697aa011d7096b2e696bde3f11fc"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "2f18ee1a98588cd1"
             }
           }
         }
-      }
+      },
+      "skillOrder": "QEWQQRQEQEREEWWRWW",
+      "skillReason": "参考 OP.GG 16.21 尼菈下路单英雄前 15 级；第 16–18 级按技能等级上限补齐。该路线不是本组合实测，可按对线调整。"
     },
     {
       "id": "samira-reset",
@@ -35647,10 +35955,10 @@
         "aftershock"
       ],
       "priority": "WEQ",
-      "first": "WQE",
-      "why": "基克在自己施放 R 后于自身周围生成短时风暴，不是旧版绑定搭档增伤；只有能安全贴近目标才兑现。钢铁烈阳承接集火，骑士之誓绑定可接应输出者并保持距离。守护者偏接应，冰川或余震都要 W/R 实际硬控；W 落空就 E 回安全队友，不把大招触碰当必定能控全队。",
-      "patch": "16.20",
-      "reviewedAt": "2026-10-10",
+      "first": "WEQ",
+      "why": "确认队友能跟进与 E 回跳目标后再 W；实际击飞或 R 接触魅惑后才安排接力。Q 需命中英雄或史诗级野怪才启动治疗，E 护盾与骑士之誓要看友军距离；W 落空、队友跟不上或退路被封时回到可接应位置。基克需自身施放 R 且敌人在附近，才能造成风暴伤害与减速。",
+      "patch": "16.21",
+      "reviewedAt": "2026-10-30",
       "reviewBaseline": {
         "champion:Rakan": "69d7edc48cac55e5",
         "item:3050": "c3e25c9df9075147",
@@ -35687,34 +35995,66 @@
           "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/en_US/runesReforged.json",
           "kind": "符文触发依据",
           "checkedAt": "2026-10-10"
+        },
+        {
+          "name": "Riot · Rakan 16.21.1 技能",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/champion/Rakan.json",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 16.21.1 装备",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/item.json",
+          "kind": "装备触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 16.21.1 符文",
+          "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/runesReforged.json",
+          "kind": "符文触发依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Riot · 26.21 正式补丁",
+          "url": "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+          "kind": "技能依据",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "name": "Mobalytics · 16.21 洛辅助单英雄配置（非组合实测）",
+          "url": "https://mobalytics.gg/lol/champions/rakan/build/support",
+          "kind": "单英雄统计参考",
+          "checkedAt": "2026-10-30"
         }
       ],
       "reviewSourceAnchors": {
         "Rakan": {
           "schema": 1,
-          "kind": "migration-anchor",
+          "kind": "explicit-review",
           "reviewCoverage": "summary-v1",
           "legacyFingerprint": "69d7edc48cac55e5",
-          "observedAt": "2026-10-18T23:15:26.394Z",
+          "observedAt": "2026-10-23T02:03:51.548Z",
           "input": {
             "schema": 1,
             "normalizer": 1,
             "champion": "Rakan",
-            "patch": "16.20",
-            "version": "16.20.1",
+            "patch": "16.21",
+            "version": "16.21.1",
             "locale": "zh_CN",
             "character": {
               "algorithm": "canonical-json-sha256-v1",
-              "url": "https://raw.communitydragon.org/16.20/game/data/characters/rakan/rakan.bin.json",
+              "url": "https://raw.communitydragon.org/16.21/game/data/characters/rakan/rakan.bin.json",
               "sha256": "c4e16a57f1a6f13ba5c08e1fe861629afca5435b0a3154c4c444fe89aaa17d6a"
             },
             "dataDragon": {
-              "url": "https://ddragon.leagueoflegends.com/cdn/16.20.1/data/zh_CN/championFull.json",
+              "url": "https://ddragon.leagueoflegends.com/cdn/16.21.1/data/zh_CN/championFull.json",
               "fingerprint": "14165b7ab2f27514"
             }
           }
         }
-      }
+      },
+      "skillOrder": "WEQWWRWEWEREEQQRQQ",
+      "skillReason": "参考 Mobalytics 16.21 洛辅助单英雄加点；该路线不是本组合实测，可按对线调整。"
     },
     {
       "id": "braum-peel",
