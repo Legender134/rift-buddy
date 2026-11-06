@@ -353,7 +353,7 @@ async function refreshPairData(){
 let catalogPreview=null,catalogBusy=false,catalogRequest=0,catalogEditorKind="trio",resultDraftSignature="";
 let comboView=null,dragPick=null,draggedAt=0,pendingDragRender=false,activeRecommendation=null,generating=false,recommendationRun=0,recommendationSearchActive=false,recommendationRunner=null,recommendationFactoryGeneration=0,communityAfter='';
 let cancelRecommendationReveal=()=>{};
-function cancelRecommendation({releaseFactory=false}={}){cancelRecommendationReveal();recommendationRun++;autoRecommendationKey='';recommendationSearchActive=false;if(activeRecommendation){activeRecommendation.cancel();activeRecommendation=null;}if(releaseFactory){recommendationRunner?.dispose();communityAfter='';}else recommendationRunner?.invalidate();generating=false;}
+function cancelRecommendation({releaseFactory=false}={}){cancelRecommendationReveal();recommendationRun++;autoRecommendationKey='';recommendationSearchActive=false;communityAfter='';if(activeRecommendation){activeRecommendation.cancel();activeRecommendation=null;}if(releaseFactory)recommendationRunner?.dispose();else recommendationRunner?.invalidate();generating=false;}
 let client={connected:false,phase:'Offline',message:'正在检查客户端…'},syncing=false,unassigned=[],enemy=[],clientBans=[];
 let picker=null,buildView=null,detailResult=null,updating=false,pinned=false;
 let libraryQuery='',libraryRole='all',hexQuery='',hexRarity='all',hexHero=null,hexSelected=[],hexSelectedOnly=false,hexForHero=false;
@@ -1692,7 +1692,9 @@ async function generate(next=false,automatic=false){
   let emptyPages=page.search?.complete&&!page.rows.length?1:0;
   // Each worker slice shares one page-size scoring budget across all lanes.
   // Pending draws retain their original heroes; a slow draw is never rerolled.
-  while(page.search&&(!page.search.complete||!page.rows.length&&!page.search.exhausted)&&(!page.rows.length||page.search.communityPending)&&(!page.search.prepared||!page.rows.length)&&!page.search.capacity&&emptyPages<3&&slices<192&&performance.now()<deadline){
+  // A ready recipe should not end the first slice before ordinary candidates get a chance.
+  const needsNormalCandidate=()=>slices===1&&page.rows.length===1&&page.rows[0].communityRecommendation===true;
+  while(page.search&&(!page.search.complete||!page.rows.length&&!page.search.exhausted)&&(!page.rows.length||needsNormalCandidate()||page.search.communityPending&&!page.search.prepared)&&!page.search.capacity&&emptyPages<3&&slices<192&&performance.now()<deadline){
    // Yield between slices so client sync, picks and cancellation can run.
    await new Promise(resolve=>setTimeout(resolve,0));if(!current())throw Object.assign(Error('条件已变化'),{cancelled:true});
    page=await calculateRecommendation({...input,continueSearch:true},accept,true);slices++;
@@ -1714,7 +1716,7 @@ async function generate(next=false,automatic=false){
   results=result;showAllCandidates=false;resultsSignature=signature;
   if(page.search?.fallback)recommendationError='暂无所选玩法，显示其他匹配';
   if(!result.length)recommendationError=page.search?.preferenceConflict?'英雄偏好与所选玩法无匹配':page.search?.exhausted?'当前范围已搜索完，可调整选人条件':'本批暂无达标候选，可继续查找';if(!results.length)toast(recommendationError,true);else reveal=true;
- }catch(err){if(run===recommendationRun){if(err.cancelled){autoRecommendationKey='';recommendationSearchActive=false;markResultStale();results=[];resultsSignature='';retry=true;}else{recommendationError=err.message;toast(err.message,true);}}}finally{if(run===recommendationRun){generating=false;render();if(retry)queueCompanionRecommendation();else if(recommendationSearchActive&&prepareNextGuard())recommendationRunner.prepareNext();}}
+ }catch(err){if(run===recommendationRun){if(err.cancelled){autoRecommendationKey='';recommendationSearchActive=false;communityAfter='';markResultStale();results=[];resultsSignature='';retry=true;}else{recommendationError=err.message;toast(err.message,true);}}}finally{if(run===recommendationRun){generating=false;render();if(retry)queueCompanionRecommendation();else if(recommendationSearchActive&&prepareNextGuard())recommendationRunner.prepareNext();}}
 }
 const sync=createClientSync(performSync);
 const recommendationSessionSeed=crypto.randomUUID();

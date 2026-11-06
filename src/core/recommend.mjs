@@ -188,6 +188,38 @@ function rememberSearchValue(cache,key,value,limit){
  if(!cache.has(key)&&cache.size>=limit)cache.delete(cache.keys().next().value);
  cache.set(key,value);
 }
+
+function mechanicSearchSeeds(fixed,scope,targets,candidateSets,mechanics){
+ if(!mechanics)return [];
+ const domains=scopeSlots(fixed,scope).flatMap(({role,champion})=>{
+  const ids=champion?[champion]:(candidateSets[role]||[]).map(hero=>hero.id);
+  const members=ids.filter(mechanics.has).map(id=>({role,champion:id}));
+  return members.length?[{role,members}]:[];
+ });
+ const seeds=[];
+ for(let i=0;i<domains.length;i++)for(let j=i+1;j<domains.length;j++){
+  const a=domains[i],b=domains[j];
+  if(!targets.includes(a.role)&&!targets.includes(b.role))continue;
+  const pairs=[];
+  for(const lead of a.members)for(const follow of b.members){
+   const match=mechanics.match(lead,follow,false);
+   if(match)pairs.push({lead,follow,quality:match.relation.quality});
+  }
+  // Only a small priority prefix. The ordinary domain still covers every
+  // legal lineup, with the original per-member familiarity draw unchanged.
+  pairs.sort((left,right)=>right.quality-left.quality);
+  const distinct=[],deferred=[],seen=new Set();
+  for(const pair of pairs){
+   const editable=[pair.lead,pair.follow].filter(member=>targets.includes(member.role));
+   if(editable.some(member=>seen.has(member.champion))){deferred.push(pair);continue;}
+   distinct.push(pair);
+   for(const member of editable)seen.add(member.champion);
+   if(distinct.length===4)break;
+  }
+  for(const {lead,follow} of [...distinct,...deferred].slice(0,4))seeds.push(fixed.map(slot=>slot.role===lead.role?{...slot,champion:lead.champion}:slot.role===follow.role?{...slot,champion:follow.champion}:slot));
+ }
+ return seeds;
+}
 function sourceRoleWeights(builds){
  const maxSamples={},weights={};
  for(const ref of Object.values(builds||{}))if(Number.isFinite(ref.runeSamples))maxSamples[ref.champion]=Math.max(maxSamples[ref.champion]||1,ref.runeSamples);
@@ -426,20 +458,23 @@ export function recommend({slots,champions,style='fun',excluded=[],publicBans=[]
  }):[];
  const supportedBySource=new Set((Array.isArray(sourceRoles)?sourceRoles:[]).filter(r=>byId.has(r?.champion)&&ROLES.some(role=>role.id===r.role)).map(r=>r.champion+':'+r.role));
  const candidateSets={},reviewedDuos=DUOS.filter(combo=>reviewedCatalogEntry(combo,catalogStatus,patch)),reviewedTrios=TRIOS.filter(combo=>reviewedCatalogEntry(combo,catalogStatus,patch));
+ const reviewedEntries=[...reviewedDuos,...reviewedTrios].map(combo=>({combo,members:comboMembers(combo)}));
+ const extrasByRole=new Map(targets.map(role=>[role,new Set()]));
+ if(play.unusual!==false)for(const {members} of reviewedEntries)for(const {role,champion} of members)extrasByRole.get(role)?.add(champion);
  // Both filtering and analysis reuse the immutable role-only base profile;
  // analysis applies a recipe's damage override to a new object, never here.
  const profOf=(c,role)=>{const k=`${c.id}:${role}`;let p=profCache.get(k);if(!p){p=profile(c,role);profCache.set(k,p);}return p;};
  for(const role of targets) {
-  let candidates=champions.filter(c=>allowed(c,role)&&(play.unusual===false?conventionalRole(c,role,profCache):profOf(c,role).roles.includes(role)||supportedBySource.has(c.id+':'+role)));
+  const candidates=champions.filter(c=>allowed(c,role)&&(play.unusual===false?conventionalRole(c,role,profCache):profOf(c,role).roles.includes(role)||supportedBySource.has(c.id+':'+role)));
   // Curated pairs can deliberately use unconventional roles.
-  const extras=play.unusual===false?[]:[...reviewedDuos.flatMap(d=>comboMembers(d).filter(m=>m.role===role).map(m=>m.champion)),...reviewedTrios.flatMap(t=>t.members.filter(m=>m.role===role).map(m=>m.champion))];
-  for(const id of extras)if(byId.has(id)&&allowed(byId.get(id),role)&&!candidates.some(c=>c.id===id))candidates.push(byId.get(id));
+  const present=new Set(candidates.map(c=>c.id));
+  for(const id of extrasByRole.get(role))if(!present.has(id)&&byId.has(id)&&allowed(byId.get(id),role))candidates.push(byId.get(id));
   // Incremental product search needs a legal domain, not hundreds of partial
   // team grades before its first cancellable slice. Frequency/pool preferences
   // only choose traversal order; final visible fit is still graded exactly.
   const traversalScore=c=>(roleWeights[`${c.id}:${role}`]||0)+(poolMode==='prefer'&&context.pool.has(c.id)?2:0)+(rolePools[role]?.mode==='prefer'&&rolePools[role].heroes?.includes(c.id)?2:0);
-  candidates=candidates.map(c=>({c,score:searchFactory?traversalScore(c):grade(fixed.map(s=>s.role===role?{...s,champion:c.id}:s),champions,style,[c.id],roleWeights,context,true)})).sort((a,b)=>b.score-a.score||a.c.id.localeCompare(b.c.id));
-  candidateSets[role]=candidates.map(x=>x.c);
+  candidateSets[role]=candidates.map(c=>({c,score:searchFactory?traversalScore(c):grade(fixed.map(s=>s.role===role?{...s,champion:c.id}:s),champions,style,[c.id],roleWeights,context,true)}))
+   .sort((a,b)=>b.score-a.score||a.c.id.localeCompare(b.c.id)).map(x=>x.c);
  }
  // At most one target remains outside the pair. Check that it has a distinct
  // ordinary candidate; separate reviewed pairs cannot be combined here.
@@ -456,18 +491,25 @@ export function recommend({slots,champions,style='fun',excluded=[],publicBans=[]
   const revisions=resources?.revisions;if(revisions&&!revisions.has(combo.id))revisions.set(combo.id,catalogEntryRevision(combo,RULE_CATALOG));
   return revision===(revisions?revisions.get(combo.id):catalogEntryRevision(combo,RULE_CATALOG));
  };
- for(const duo of DUOS) {
-  if(!reviewedCatalogEntry(duo,catalogStatus,patch))continue;
-  const members=comboMembers(duo);
-  if(members.some(m=>{const slot=fixed.find(s=>s.role===m.role);return slot.champion?slot.champion!==m.champion:!targets.includes(m.role)||!candidateSets[m.role]?.some(c=>c.id===m.champion);}))continue;
-  if(fixed.some(s=>s.champion&&members.some(m=>m.champion===s.champion&&m.role!==s.role)))continue;
-  const seed=fixed.map(s=>{const m=members.find(m=>m.role===s.role);return m?{...s,champion:m.champion}:s;});seeds.push(seed);if(publicRecipe(duo)&&members.some(m=>targets.includes(m.role))&&members.every(m=>scopeSlots(fixed,scope).some(slot=>slot.role===m.role)))communityRecords.push({id:duo.id,name:duo.name,why:duo.why,seed});
- }
- for(const trio of TRIOS){
-  if(!reviewedCatalogEntry(trio,catalogStatus,patch)||!trio.members.some(m=>targets.includes(m.role)))continue;
-  if(trio.members.some(m=>{const slot=fixed.find(s=>s.role===m.role);return slot.champion?slot.champion!==m.champion:!targets.includes(m.role)||!candidateSets[m.role]?.some(c=>c.id===m.champion);}))continue;
-  if(fixed.some(s=>s.champion&&trio.members.some(m=>m.champion===s.champion&&m.role!==s.role)))continue;
-  const seed=fixed.map(s=>{const m=trio.members.find(m=>m.role===s.role);return m?{...s,champion:m.champion}:s;});seeds.push(seed);if(publicRecipe(trio)&&trio.members.every(m=>scopeSlots(fixed,scope).some(slot=>slot.role===m.role)))communityRecords.push({id:trio.id,name:trio.name,why:trio.why,seed});
+ const fixedByRole=new Map(fixed.map(slot=>[slot.role,slot.champion]));
+ const occupied=fixed.filter(slot=>slot.champion);
+ const candidateIds=new Map(targets.map(role=>[role,new Set(candidateSets[role].map(c=>c.id))]));
+ const scopedRoles=new Set(scopeSlots(fixed,scope).map(slot=>slot.role));
+ for(const {combo,members} of reviewedEntries){
+  const editable=members.some(m=>candidateIds.has(m.role));
+  if(members.length===3&&!editable)continue;
+  if(members.some(({role,champion})=>{
+   const locked=fixedByRole.get(role);
+   return (locked?locked!==champion:!candidateIds.get(role)?.has(champion))||occupied.some(slot=>slot.champion===champion&&slot.role!==role);
+  }))continue;
+  const seed=fixed.map(slot=>{
+   const member=members.find(m=>m.role===slot.role);
+   return member?{...slot,champion:member.champion}:slot;
+  });
+  seeds.push(seed);
+  if(editable&&members.every(m=>scopedRoles.has(m.role))&&publicRecipe(combo)){
+   communityRecords.push({id:combo.id,name:combo.name,why:combo.why,seed,roles:members.map(m=>m.role)});
+  }
  }
  if(searchFactory){
   // The entire legal role domain determines member weights before any search.
@@ -476,21 +518,22 @@ export function recommend({slots,champions,style='fun',excluded=[],publicBans=[]
   const weightedSets=Object.fromEntries(targets.map(role=>[role,[...new Map([...candidateSets[role],...viableLinkOwners.flatMap(members=>members.filter(m=>m.role===role).map(m=>byId.get(m.champion)))].map(hero=>[hero.id,hero])).values()]]));
   const familiarity=roleFamiliarityWeights(targets,weightedSets,familiarityByRole),shared=canonicalRoomFamiliarity(roomFamiliarity);
   const weights={...(shared.length?Object.fromEntries(targets.map(role=>[role,roomChampionUsageWeights(weightedSets[role],shared)])):{}),...familiarity};
-  const searchSeeds=[...seeds.slice(1),...pairSeeds];
-  // These automatic cooperation seeds only reorder candidateSets/fixed picks.
-  // The incremental fixed source already covers that entire legal product;
-  // do not enumerate every pair/triple before the first worker slice. Grade
-  // still derives the exact same cooperation plan for each visited lineup.
+  const mechanicSeeds=mechanicSearchSeeds(fixed,scope,targets,candidateSets,context.cooperationGraph.mechanics);
+  const searchSeeds=[...mechanicSeeds,...seeds.slice(1),...pairSeeds];
   const creativeFor=createCreativeTrioLookup({targets,candidateSets,champions,patch:context.patch,style,profiles:context.profiles,reviews:resources?.reviews});
   const evaluated=new Map();
   const communityIds=new Set(communityRecords.map(record=>record.id));
+  const fitFor=(next,selectionId,selectedContext,details)=>recommendationFit({slots:next,communityCombinationId:selectionId,targets,scope},{
+   slots:fitSlots||slots,champions,scope:fitScope||scope,soloRole:fitSoloRole||soloRole,clientSession:fitSession||clientSession,party,includePreselected,patch,catalogStatus,context:selectedContext,details,
+  });
   const evaluate=(next,selectionId='')=>{
    const key=signature(next)+'|'+selectionId;if(evaluated.has(key))return evaluated.get(key);
    if(selectionId&&(!communityIds.has(selectionId)||!selectedCatalogCombo(scopeSlots(next,scope),selectionId,catalogStatus,patch)))throw Error('社区组合已变化，请重新推荐');
-   const creative=!selectionId&&creativeFor(next),selectedContext=selectionId?{...context,catalogSelectionId:selectionId}:context;
-   const row={slots:next,...grade(next,champions,style,next.filter(slot=>targets.includes(slot.role)).map(slot=>slot.champion),roleWeights,selectedContext),...(creative?{creative}:{}),...(selectionId?{communityCombinationId:selectionId}:{} )};
-   row.recommendationFit=recommendationFit({...row,targets,scope},{slots:fitSlots||slots,champions,scope:fitScope||scope,soloRole:fitSoloRole||soloRole,clientSession:fitSession||clientSession,party,includePreselected,patch,catalogStatus,context:selectedContext});
-   if(!meetsRecommendationFit(row.recommendationFit,Number.isFinite(minimumFitScore)?minimumFitScore:60)){rememberSearchValue(evaluated,key,null,128);return null;}
+   const selectedContext=selectionId?{...context,catalogSelectionId:selectionId}:context;
+   const fit=fitFor(next,selectionId,selectedContext,false);
+   if(!meetsRecommendationFit(fit,Number.isFinite(minimumFitScore)?minimumFitScore:60)){rememberSearchValue(evaluated,key,null,128);return null;}
+   const creative=!selectionId&&creativeFor(next);
+   const row={slots:next,...grade(next,champions,style,next.filter(slot=>targets.includes(slot.role)).map(slot=>slot.champion),roleWeights,selectedContext),recommendationFit:fit,...(creative?{creative}:{}),...(selectionId?{communityCombinationId:selectionId}:{} )};
    row.reviewedCombinationIds=matchingCombos(next,context.comboCache).filter(combo=>reviewedCatalogEntry(combo,catalogStatus,patch)).map(combo=>combo.id);
    rememberSearchValue(evaluated,key,row,128);
    return row;
@@ -507,10 +550,16 @@ export function recommend({slots,champions,style='fun',excluded=[],publicBans=[]
    // the final authored plan with the exact member bindings can acknowledge
    // an ordinary presentation; its unbound score is never reused as evidence.
    const presentedCatalogId=!execution&&!entry.creative&&scope!=='solo'&&communityIds.has(presented?.id)&&comboMembers(presented).every(member=>entry.analysis.members.some(value=>value.champion===member.champion&&value.role===member.role&&value.catalogLoadoutId===(member.loadoutId||'default')))?presented.id:'';
-   return attachPartyCounterplay({...entry,...(presentedCatalogId?{presentedCatalogId}:{}),id:signature(entry.slots),targets,scope,origin,title:entry.communityTitle||execution?.name||entry.creative?.name||entry.trio?.name||entry.duo?.name||entry.adaptive?.name||'职能搭配参考',reason:entry.communityWhy||execution?.why||entry.creative?.why||entry.trio?.why||entry.duo?.why||entry.adaptive?.why||entry.connections[0]?.[2]||describeComposition(entry.analysis),reasonPoints:buildReasonPoints(entry,scope),catalogState:catalogStatus[(entry.trio||entry.duo)?.id]||null,strategy:strategySummary(entry.analysis,summaryCombo(entry),play.tempo,context.enemyTraits),contributions:explainContributions(scopeSlots(fixed,scope),scopeSlots(entry.slots,scope),targets,champions,chosen?{...context,catalogSelectionId:chosen.id}:context,{before:sharedBefore,after:entry.analysis})},scope,champions,visibleEnemies,context.patch);
+   const selectedContext=chosen?{...context,catalogSelectionId:chosen.id}:context;
+   const recommendationFit=fitFor(raw.slots,raw.communityCombinationId,selectedContext,true);
+   return attachPartyCounterplay({...entry,recommendationFit,...(presentedCatalogId?{presentedCatalogId}:{}),id:signature(entry.slots),targets,scope,origin,title:entry.communityTitle||execution?.name||entry.creative?.name||entry.trio?.name||entry.duo?.name||entry.adaptive?.name||'职能搭配参考',reason:entry.communityWhy||execution?.why||entry.creative?.why||entry.trio?.why||entry.duo?.why||entry.adaptive?.why||entry.connections[0]?.[2]||describeComposition(entry.analysis),reasonPoints:buildReasonPoints(entry,scope),catalogState:catalogStatus[(entry.trio||entry.duo)?.id]||null,strategy:strategySummary(entry.analysis,summaryCombo(entry),play.tempo,context.enemyTraits),contributions:explainContributions(scopeSlots(fixed,scope),scopeSlots(entry.slots,scope),targets,champions,selectedContext,{before:sharedBefore,after:entry.analysis})},scope,champions,visibleEnemies,context.patch);
   };
   const preferred=play.tempo&&play.tempo!=='any'?entry=>strategySummary(entry.analysis,summaryCombo(entry),play.tempo).matched===true:null;
-  return searchFactory({fixed,targets,candidates:candidateSets,seeds:searchSeeds,weights,evaluate,format,preferred,communityRecords:fitScope==='solo'?[]:communityRecords,communityAfter,priority:entry=>stylePolicy?recommendationStyleTier({...entry,targets},style):0});
+  const session=fitSession||clientSession,localCell=session?.localPlayerCellId;
+  const assigned=session?.myTeam?.find(player=>player.cellId===localCell)?.assignedPosition;
+  const fallbackRole=ROLES.some(role=>role.id===soloRole)?soloRole:'';
+  const focusRole=Number.isInteger(localCell)?(fitSlots||slots).find(slot=>slot.clientCellId===localCell)?.role||CLIENT_POSITION_ROLES[String(assigned||'').toUpperCase()]||fallbackRole:fallbackRole;
+  return searchFactory({fixed,targets,candidates:candidateSets,seeds:searchSeeds,weights,evaluate,format,preferred,communityRecords:fitScope==='solo'?[]:communityRecords,communityAfter,focusRole,randomSeed,priority:entry=>stylePolicy?recommendationStyleTier({...entry,targets},style):0});
  }
  // A reviewed link is only a candidate anchor, not a complete cooperation
  // plan or a scoring bonus. Limit additional beams using the existing grade.
