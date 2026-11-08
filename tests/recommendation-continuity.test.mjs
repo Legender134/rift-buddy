@@ -740,6 +740,46 @@ test('an explicit local hero click can replace its earlier manual plan position 
  assert.equal(calls.prepared.length,1);assert.equal(c.slots.filter(s=>s.champion==='Ashe').length,1);assert.equal(c.slots.find(s=>s.champion==='Ashe').role,'bottom');
 });
 
+test('explicit configuration switching preserves the chosen runes and spells while a fresh avatar resets to the role default',async()=>{
+ for(const locked of [false,true]){
+  const current=client();current.session.myTeam[0].championId=hero('Ashe').key;current.session.myTeam[0].pickState=locked?'locked':'hovered';
+  const {context:c,calls}=setup({current,incoming:structuredClone(current)}),base=getBuild(hero('Ashe'),'bottom',data,{mode:'rift',loadoutId:'default'});
+  const chosen={id:'Ashe',role:'bottom',mode:'rift',loadoutId:'default',customRunePage:{primaryStyleId:base.runePage.primaryStyleId,subStyleId:base.runePage.subStyleId,selectedPerkIds:[...base.runePage.selectedPerkIds],patch:data.patch},summonerIds:['SummonerHeal','SummonerFlash'],skillOrder:base.skillOrder};
+  const build=getBuild(hero('Ashe'),'bottom',data,chosen);
+  c.overlay={contains:()=>false};c.companionPreparation=()=>({selection:chosen,build});c.assertConfigurationEditable=()=>{};
+  c.selectionRequestContext=()=> 'same-current-hero';c.configurationChoices=()=>[{id:'current',selection:chosen,build}];
+  vm.runInContext(`async function switchConfiguration(el){const action='configuration-switch';${extract("if(action==='configuration-switch'){","if(action==='companion-jump')")}}`,c);
+  await c.switchConfiguration({dataset:{plan:'Ashe:bottom:rift',config:'current'}});
+  assert.equal(calls.prepared.length,1);assert.deepEqual(structuredClone(calls.prepared[0].selection.customRunePage),chosen.customRunePage);
+  assert.deepEqual(structuredClone(calls.prepared[0].selection.summonerIds),chosen.summonerIds);
+  await c.prepareHeroClick(chosen);
+  assert.equal(calls.prepared.length,2);assert.equal(calls.prepared[1].selection.customRunePage,undefined);assert.equal(calls.prepared[1].selection.summonerIds,undefined);
+  assert.equal(c.preparations.recall(chosen).customRunePage,undefined);assert.equal(c.preparations.recall(chosen).summonerIds,undefined);
+  assert.deepEqual(c.ownTaskPreparation().build.runePage.selectedPerkIds,base.runePage.selectedPerkIds);
+ }
+});
+
+test('a newer configuration edit during a client write remains saved after the older click completes',async()=>{
+ const current=client();current.session.myTeam[0].championId=hero('Ashe').key;
+ const {context:c,calls}=setup({current,incoming:structuredClone(current)}),apply=c.api.prepareSelection;
+ const newer={id:'Ashe',role:'bottom',mode:'rift',loadoutId:'default',summonerIds:['SummonerHeal','SummonerFlash']};
+ c.api.prepareSelection=async value=>{const result=await apply(value);if(!value.preselectOnly)c.rememberPreparation(newer);return result;};
+ await c.prepareHeroClick({id:'Ashe',role:'bottom',mode:'rift'});
+ assert.equal(calls.prepared[0].selection.summonerIds,undefined);
+ assert.deepEqual(structuredClone(c.preparations.recall(newer).summonerIds),newer.summonerIds);
+});
+
+test('opening the current task keeps the explicitly selected generic identity even with a matching accepted combination',()=>{
+ const slots=createSlots().map(s=>({...s,party:['mid','bottom'].includes(s.role),champion:s.role==='mid'?'Orianna':s.role==='bottom'?'Ashe':null}));
+ const [result]=recommend({slots,champions:data.champions,scope:'party'}),accepted=captureCreativePlan(result,data),member=accepted.members.find(m=>m.role==='bottom');
+ const current=client();current.session.myTeam[0].championId=hero(member.champion).key;
+ const generic=heroClickSelection(data,{id:member.champion,role:'bottom',mode:'rift'}),group={...generic,...creativeComboContext(creativeMemberCombo(accepted,member.champion,'bottom'))};
+ const store=createPreparationStore();store.remember({...group,summonerIds:['SummonerHeal','SummonerFlash']});store.remember(generic);
+ const context=createPreparationContext({data,client:current,slots:result.slots,ownRole:'bottom',activePlan:accepted,lastTaskSelection:generic,recall:selection=>store.recall(selection)});
+ assert.equal(context.task.selection.comboId,undefined);assert.equal(context.task.selection.creativePlan,undefined);assert.equal(context.task.selection.summonerIds,undefined);
+ assert.equal(store.recall(group).comboId,group.comboId);assert.deepEqual(store.recall(group).summonerIds,['SummonerHeal','SummonerFlash']);
+});
+
 test('cancelling a lobby hero preserves the selected lane and never prepares a placeholder',async()=>{
  const {context:c,calls}=setup();c.saved.draft={slots:structuredClone(c.slots),preselection:{role:'bottom',champion:'Ashe',kind:'hero'}};
  const before=structuredClone(c.saved.draft),requests=[];let closed=0;

@@ -8,7 +8,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {createCommunityFeedCache,downloadCommunityFeed} from '../services/community-feed-cache.mjs';
 import {createCatalogStore} from '../services/catalog-store.mjs';
-import {BUNDLED_CATALOG} from '../src/core/catalog.mjs';
+import {BUNDLED_CATALOG,CATALOG_LIMIT} from '../src/core/catalog.mjs';
 import {feedHash,createDataFeedActivationGate} from '../services/data-feed.mjs';
 import {atomicJSON} from '../services/data.mjs';
 import {hexPlayerRoutes,hexCommunitySourceURLs} from '../src/core/hex-routes.mjs';
@@ -177,7 +177,7 @@ for(const budget of ['loadouts','runes','bytes'])test('saving validates the comp
  const installed=structuredClone(BUNDLED_CATALOG),originalLoadout=installed.loadouts.find(l=>l.id==='xayah-kayle-feathers'),key=originalLoadout.runes[0],rune=structuredClone(installed.runes[key]),template={id:originalLoadout.id,name:'预算配置',base:originalLoadout.base,why:'预算验证',champions:['Xayah'],roles:['bottom'],items:originalLoadout.items,late:[],boots:originalLoadout.boots,runes:[key]};installed.duos=[];installed.trios=[];installed.links=[];installed.skillPlans=[];installed.runes={[key]:rune};installed.loadouts=[template];const personal={duos:[],trios:[],loadouts:[],runes:{},skillPlans:[]};
  if(budget==='loadouts')for(let n=0;n<501-BUNDLED_CATALOG.loadouts.length;n++)personal.loadouts.push({...structuredClone(template),id:'local-budget-'+n});
  if(budget==='runes')for(let n=0;n<101-Object.keys(BUNDLED_CATALOG.runes).length;n++)personal.runes['local-budget-'+n]=structuredClone(rune);
- if(budget==='bytes')personal.loadouts.push({...structuredClone(template),id:'local-large',extra:'x'.repeat(1500000)});
+ if(budget==='bytes')personal.loadouts.push({...structuredClone(template),id:'local-large',extra:'x'.repeat(CATALOG_LIMIT-1_000_000)});
  const state={schema:1,installed,previous:null,personal,sourceUrl:'',lastCheckedAt:null},f=await fixture(t,{state}),filename=path.join(f.root,'combinations.json'),before=await fs.readFile(filename),entry={...structuredClone(BUNDLED_CATALOG.duos.find(d=>d.id==='xayah-kayle-guard')),id:'local-over-budget'};for(const m of entry.members)m.loadoutId='default';assert.equal(f.store.summary().info.recovery,'');await assert.rejects(f.store.savePersonal(entry),/组合库检查失败/);assert.ok((await fs.readFile(filename)).equals(before));const restarted=await createCatalogStore({root:f.root,getData:()=>f.data()});assert.equal(restarted.summary().info.recovery,'');assert.equal(restarted.summary().catalog.duos.some(d=>d.id===entry.id),false);
 });
 

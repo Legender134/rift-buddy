@@ -975,8 +975,8 @@ function renderTaskMembers(){overlay.innerHTML=`<div class="modal-backdrop" data
 function taskControls(plan=ownTaskPreparation()){if(!plan)return '';return preparationProgressView({data,plan,client,view:'task',available:!!api.prepareSelection,busy:clientPreparing||runeApplying||!!itemSetPending,pendingKey:preparationPendingKey,statuses:clientPreparationStatuses,runeApplied:!!plan&&runeAppliedKeys.has(runeApplicationKey(plan.selection.id,plan.selection.role,plan.build.runePage)),compact:windowLayout.docked});}
 function memberHeroAction(id,role){return companionHeroAction(client,champ(id),saved.preferences.clickPrepare!==false);}
 let riftHeroClickRevision=0,riftHeroConfigurationFlight=Promise.resolve();
-async function selectRiftHero(context){
- const revision=++riftHeroClickRevision,selection=heroClickSelection(data,context),gameId=preparationGameId(client),writeContext=runeWriteContext(client),manualRole=ownManualRole();
+async function selectRiftHero(context,{preserveConfiguration=false}={}){
+ const revision=++riftHeroClickRevision,selection=preserveConfiguration?{...context,mode:'rift'}:heroClickSelection(data,context),gameId=preparationGameId(client),writeContext=runeWriteContext(client),manualRole=ownManualRole();
  const current=()=>revision===riftHeroClickRevision&&client.connected&&client.phase==='ChampSelect'&&client.mode?.id==='rift'&&preparationGameId(client)===gameId&&client.session?.localPlayerCellId===writeContext.cellId&&ownManualRole()===manualRole&&String(client.session?.myTeam?.find(player=>player.cellId===writeContext.cellId)?.assignedPosition||'').toUpperCase()===writeContext.assignedPosition;
  const changed=()=>{if(lastTaskSelection?.id===selection.id&&lastTaskSelection?.role===selection.role)lastTaskSelection=null;throw Error('选人或配置已变化，请按当前英雄重新选择配置');};
  // This request contains no build, catalog adoption, rune or equipment work.
@@ -995,13 +995,13 @@ async function selectRiftHero(context){
    changed();
   }
   if(clientPreparing||runeApplying||itemSetPending){toast('英雄已选好；当前配置完成后可在“我的配置”应用默认方案');return selected;}
-  return prepareHeroClick(selection,null,true,selected);
+  return prepareHeroClick(selection,null,true,selected,{preserveConfiguration});
  })();
  riftHeroConfigurationFlight=preparing;
  return preparing;
 }
-async function prepareHeroClick(context,expected=null,selectedFirst=false,preselected=null){
- if(!selectedFirst&&context.readOnly!==true&&context.mode==='rift'&&client.connected&&client.phase==='ChampSelect'&&memberHeroAction(context.id,context.role).prepare)return selectRiftHero(context);
+async function prepareHeroClick(context,expected=null,selectedFirst=false,preselected=null,{preserveConfiguration=false}={}){
+ if(!selectedFirst&&context.readOnly!==true&&context.mode==='rift'&&client.connected&&client.phase==='ChampSelect'&&memberHeroAction(context.id,context.role).prepare)return selectRiftHero(context,{preserveConfiguration});
  const busy=clientPreparing||runeApplying||itemSetPending,clientMode=client.mode?.id,selectionMode=context.mode||'rift',fastSwitch=busy&&client.connected&&client.phase==='ChampSelect'&&clientMode===selectionMode&&clientMode==='hex';
  if(busy&&!fastSwitch)throw Error('正在应用配置，请稍候');
  if(context.readOnly!==true&&client.connected&&pregamePhase(client.phase)&&(context.mode||'rift')==='rift'){
@@ -1024,13 +1024,17 @@ async function prepareHeroClick(context,expected=null,selectedFirst=false,presel
  // or silently move that ally; use the clicked build in the player's current lane.
  const target=slots.find(s=>s.role===context.role);
  if(action.prepare&&taskOwnRole()!==context.role&&(!Number.isInteger(target?.clientCellId)||target.clientCellId===client.session?.localPlayerCellId))setCompanionRole(context.role);
- const mode=context.mode||'rift',combo=mode==='rift'?currentCombo(slots,context.id,context.role,data.catalogInfo?.status,null,activeCreativePlan,{patch:data.patch,catalogChoice:saved.draft?.catalogChoice}):null;
- // Resolve the lineup after a lane change, before recalling choices, so a
- // solo default cannot override the combination's own avatar configuration.
- context={...creativeComboContext(combo),...context,mode};
- const prior=recallPreparation(preparations,guideSelection,context);
- if(prior&&prior.coreAuto!==true&&context.coreAuto===true&&!context.coreId){delete context.coreAuto;delete context.coreIndex;}
- context=heroClickSelection(data,{...(prior||rememberedPreparation(context)),...context});
+ const mode=context.mode||'rift';
+ // An explicit configuration row is already materialized as a complete choice.
+ // Only fresh avatar clicks start again from the role's ordinary default.
+ if(preserveConfiguration)context={...context,mode};
+ else{
+  const combo=mode==='rift'?currentCombo(slots,context.id,context.role,data.catalogInfo?.status,null,activeCreativePlan,{patch:data.patch,catalogChoice:saved.draft?.catalogChoice}):null;
+  context={...creativeComboContext(combo),...context,mode};
+  const prior=recallPreparation(preparations,guideSelection,context);
+  if(prior&&prior.coreAuto!==true&&context.coreAuto===true&&!context.coreId){delete context.coreAuto;delete context.coreIndex;}
+  context=heroClickSelection(data,{...(prior||rememberedPreparation(context)),...context});
+ }
  if(!client.connected&&context.mode==='rift'&&context.readOnly!==true){
   const bound=slots.some(slot=>Number.isInteger(slot.clientCellId)&&(slot.role===context.role||slot.champion===context.id));
   if(!bound){slots=selectManualChampion(slots,context.role,context.id);soloRole=context.role;lastTaskSelection=context;persist();}
@@ -1168,7 +1172,7 @@ async function useClientPreparation(el,directClick=false,expected=null,preselect
   const dispatchPlan=selectedClientPreparation(view),dispatch=clientPreparationPlan(data,dispatchPlan);
   if(!dispatch||dispatch.fingerprint!==prepared.fingerprint||readOnlyPreparation(view,dispatchPlan)||preparationGameId(client)!==gameId||JSON.stringify(runeWriteContext(client))!==JSON.stringify(clickedContext)||reviewStamp!==selectionReviewStamp(selection)||pendingReviewChanged(selection)||expected&&expected.planId!==(activeCreativePlan?.id||''))throw Error('本人位置、选人或方案已变化，尚未操作；请重新核对');
   if(directClick&&!memberHeroAction(selection.id,selection.role).prepare)throw Error('当前英雄或位置已由队友选择，请查看队友配置或选择另一位');
-  const notice=saved.preferences.chatNotice===true?champSelectNoticePayload(selection.id,dispatchPlan.build):null;clientDispatched=true;const result=clientResult=await api.prepareSelection({...prepared.value,selection,reviewStamp,buildSource:data.buildSource,sourceEpoch:++buildSourceEpoch,sessionGameId:gameId,context:clickedContext,notice,...(snapshotView?{expectedPreparation:snapshotBefore}:{}),...(preselectOnly?{preselectOnly:true}:{})});
+  const choiceRevision=preparations.revision(selection),notice=saved.preferences.chatNotice===true?champSelectNoticePayload(selection.id,dispatchPlan.build):null;clientDispatched=true;const result=clientResult=await api.prepareSelection({...prepared.value,selection,reviewStamp,buildSource:data.buildSource,sourceEpoch:++buildSourceEpoch,sessionGameId:gameId,context:clickedContext,notice,...(snapshotView?{expectedPreparation:snapshotBefore}:{}),...(preselectOnly?{preselectOnly:true}:{})});
   await guideSyncChain;
   await sync(false,{fresh:true});
   if(!client.connected||client.phase!=='ChampSelect'||preparationGameId(client)!==gameId||client.session?.localPlayerCellId!==clickedContext.cellId){
@@ -1190,7 +1194,9 @@ async function useClientPreparation(el,directClick=false,expected=null,preselect
     reconcileCreativePlan();if(!snapshotView)lastTaskSelection=selection;
    }
   }
-  const latestSelection=snapshotView?selection:preparations.recall(selection)||selection;
+  // Show what this click actually applied. Only an edit made after dispatch
+  // may supersede it; an older saved choice must not undo a fresh default.
+  const latestSelection=snapshotView||preparations.revision(selection)===choiceRevision?selection:preparations.recall(selection)||selection;
   if(snapshotView)preparations.remember(latestSelection);else rememberPreparation(latestSelection);const acceptedRevision=snapshotView?preparations.revision(selection):0;
   const changedAfterAccept=()=>!!snapshotView&&(buildView!==snapshotView||!snapshotView.snapshotPreview||snapshotView.savedSnapshotConflict||buildChoiceKey(buildSelection())!==buildChoiceKey(selection)||preparations.revision(selection)!==acceptedRevision);
   await persist({throwOnError:true,...(snapshotView?{preparationGuard:{selection,expected:snapshotBefore}}:{})});if(positionChanged())return result;if(changedAfterAccept()){snapshotConflict();return result;}syncPreparedGuide(latestSelection,snapshotView?()=>!changedAfterAccept():null);await guideSyncChain;if(changedAfterAccept()){snapshotConflict();return result;}await sync(false,{fresh:true});if(positionChanged())return result;if(changedAfterAccept()){snapshotConflict();return result;}scheduleRoomPublish();
@@ -2020,7 +2026,7 @@ document.addEventListener('click',async event=>{
   const selected=structuredClone(choice.selection);if(choice.id!=='default'){delete selected.coreAuto;if(choice.build.reference&&choice.build.selectedCoreId){selected.coreId=choice.build.selectedCoreId;selected.coreIndex=choice.build.selectedCoreIndex;}}
   const context=selectionRequestContext(),next=rememberPreparation(selected);
   await saveChain;if(context!==selectionRequestContext())throw Error('选人已变化，请重新选择配置');
-  syncPreparedGuide(next);await guideSyncChain;await prepareHeroClick(next);return;
+  syncPreparedGuide(next);await guideSyncChain;await prepareHeroClick(next,null,false,null,{preserveConfiguration:true});return;
  }
  if(action==='companion-jump'){const section=document.querySelector(`[data-companion-section="${el.dataset.section}"]`);if(section){if(section.tagName==='DETAILS')section.open=true;section.scrollIntoView({block:'start'});}return;}
  if(action==='companion-refresh'){const plan=companionPreparation();if(!plan||el.dataset.plan!==[plan.selection.id,plan.selection.role,plan.selection.mode].join(':'))throw Error('选人已变化，请核对当前方案');await refreshConfiguration(plan.selection.id,plan.selection.role,plan.selection.mode);return;}

@@ -20,6 +20,12 @@ test('an older busy configuration cannot block a new explicit hero selection',as
  const f=setup({busy:true});await f.context.selectRiftHero({id:'Jinx',role:'bottom',mode:'rift'});
  assert.equal(f.calls.length,1);assert.equal(f.calls[0].champion,'Jinx');assert.equal(f.context.lastTaskSelection.id,'Jinx');
 });
+
+test('an explicit complete configuration survives the hero-only fast request',async()=>{
+ const f=setup(),selection={id:'Ashe',role:'bottom',mode:'rift',loadoutId:'chosen',customRunePage:{selectedPerkIds:[8439]},summonerIds:['SummonerHeal','SummonerFlash']};
+ await f.context.selectRiftHero(selection,{preserveConfiguration:true});
+ assert.equal(f.calls[0].preselectOnly,true);assert.deepEqual(structuredClone(f.calls[1].configuration),selection);
+});
 test('latest avatar wins without configuring the old hero after its delayed reply',async()=>{
  const f=setup();let firstReply;f.context.api.prepareSelection=value=>{f.calls.push(value);if(value.champion==='Jinx')f.client.session.myTeam[0].championPickIntent=222;return value.champion==='Ashe'?new Promise(r=>firstReply=r):Promise.resolve({steps:{hover:{status:'done'}}});};
  const first=f.context.selectRiftHero({id:'Ashe',role:'bottom',mode:'rift'});await f.context.selectRiftHero({id:'Jinx',role:'bottom',mode:'rift'});firstReply({steps:{hover:{status:'done'}}});await first;

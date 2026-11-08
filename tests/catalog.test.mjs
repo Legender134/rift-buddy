@@ -6,7 +6,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {EventEmitter} from 'node:events';
-import {BUNDLED_CATALOG,validateCatalog,configureCatalog,catalogIssues,mergePersonal,catalogDiff,safeSourceURL} from '../src/core/catalog.mjs';
+import {BUNDLED_CATALOG,validateCatalog,CATALOG_LIMIT,configureCatalog,catalogIssues,mergePersonal,catalogDiff,safeSourceURL} from '../src/core/catalog.mjs';
 import {createCatalogStore,downloadCatalog,publicAddress} from '../services/catalog-store.mjs';
 import {createSlots,recommend as recommendActual,replaceMember} from '../src/core/recommend.mjs';
 import {getBuild,validateRunePage} from '../src/core/builds.mjs';
@@ -50,7 +50,7 @@ test('downloads reject loopback, private/reserved DNS, credentials, redirects an
  for(const address of ['127.0.0.1','10.1.0.4','169.254.1.2','192.168.1.5','172.20.0.1','::1','::ffff:127.0.0.1','2001:db8::1','0.0.0.0','100.64.1.2'])assert.equal(publicAddress(address),false,address);assert.equal(publicAddress('8.8.8.8'),true);assert.equal(publicAddress('2606:4700:4700::1111'),true);
  await assert.rejects(downloadCatalog('https://a.example/x',{lookup:async()=>[{address:'10.0.0.2',family:4}]}),/内网/);await assert.rejects(downloadCatalog('https://a:b@a.example/x'),/HTTPS/);
  const request=(status,body)=>(url,options,callback)=>{const req=new EventEmitter();req.end=()=>queueMicrotask(()=>{const res=new EventEmitter();res.statusCode=status;res.resume=()=>{};callback(res);res.emit('data',Buffer.from(body));res.emit('end');req.emit('close');});req.destroy=e=>{req.emit('error',e);req.emit('close');};return req;};
- const lookup=async()=>[{address:'8.8.8.8',family:4}];await assert.rejects(downloadCatalog('https://a.example/x',{lookup,request:request(302,'{}')}),/跳转/);await assert.rejects(downloadCatalog('https://a.example/x',{lookup,request:request(200,'x'.repeat(2_000_001))}),/2 MB/);assert.deepEqual(await downloadCatalog('https://a.example/x',{lookup,request:request(200,'{"schema":1}')}),{schema:1});
+ const lookup=async()=>[{address:'8.8.8.8',family:4}];await assert.rejects(downloadCatalog('https://a.example/x',{lookup,request:request(302,'{}')}),/跳转/);await assert.rejects(downloadCatalog('https://a.example/x',{lookup,request:request(200,'x'.repeat(CATALOG_LIMIT+1))}),/8 MB/);assert.deepEqual(await downloadCatalog('https://a.example/x',{lookup,request:request(200,'{"schema":1}')}),{schema:1});
 });
 test('a newly applied pack changes recommendation and member builds in the same process',()=>{
  const c=clone();c.trios[0].name='新名称';c.trios[0].patch=data.patch;configureCatalog(c);try{assert.equal(TRIOS[0].name,'新名称');const slots=createSlots().map(s=>({...s,party:['top','jungle','mid'].includes(s.role)}));for(const m of TRIOS[0].members)Object.assign(slots.find(s=>s.role===m.role),{champion:m.champion,locked:true});const r=recommend({slots,champions:data.champions});assert.equal(r[0].title,'新名称');assert.equal(getBuild(hero('Orianna'),'mid',data,{comboId:TRIOS[0].id}).combo.title,'新名称');}finally{configureCatalog(BUNDLED_CATALOG);}
@@ -104,3 +104,10 @@ test('imported source names and URLs render as escaped data and never become exe
 
 // Supply the same version/source context as the application recommendation call.
 function recommend(input){return recommendActual({patch:data.patch,builds:data.builds,catalogStatus:data.catalogInfo?.status,...input});}
+
+test('the current bundled library can be imported without exceeding the bounded transport limit',async()=>{
+ const raw=await fs.readFile('src/core/catalog-data.json','utf8');assert(Buffer.byteLength(raw)>2_000_000);assert(Buffer.byteLength(raw)<CATALOG_LIMIT);
+ const current=JSON.parse(await fs.readFile('data/game.json','utf8')),root=await fs.mkdtemp(path.join(os.tmpdir(),'rift-current-catalog-size-'));
+ const store=await createCatalogStore({root,getData:()=>current}),preview=await store.previewFile(path.resolve('src/core/catalog-data.json'));
+ assert.equal(preview.version,JSON.parse(raw).version);assert.equal(preview.issues.invalid,0);assert(preview.token);
+});
