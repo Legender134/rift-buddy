@@ -122,6 +122,7 @@ import {itemReferenceView,referenceItemTiles} from './item-reference-view.mjs';
 import {createHistoryController} from './match-history-controller.mjs';
 import {matchHistoryView as baseHistoryView,matchHistorySearchView} from './match-history-view.mjs';
 import {patchChampionUsage} from './champion-usage-view.mjs';
+import {holdRenderDuringPointer} from './pointer-render.mjs';
 import {advancedHistoryFilters} from './match-history-filters-view.mjs';
 import {createOngoingGameController} from './ongoing-game-controller.mjs';
 import {ongoingGameView} from './ongoing-game-view.mjs';
@@ -540,6 +541,7 @@ function changeMatchupTarget(el){
 let buildReturn=null,guideSelection=null,lastGuideSyncKey='',guideSyncChain=Promise.resolve(),guideSyncPending=0,guideSyncBase=null,guideRevision=0,runeApplying=false;const runeAppliedKeys=createRuneApplicationState();
 // Each explicit click replaces one editable page; remember the applied scheme.
 const app=document.getElementById('app'),overlay=document.getElementById('overlay-root');
+const renderInteraction=holdRenderDuringPointer({document,root:app,render});
 const vueRoutes=createVueRouteHost();
 const champ=id=>data.champions.find(c=>c.id===id);
 const roleName=id=>ROLES.find(r=>r.id===id)?.name||id;
@@ -863,6 +865,7 @@ function markNewRoomProposals(previous){
  for(const row of app.querySelectorAll('.room-ballot-row'))if(!previous.has(row.dataset.proposalKey))row.dataset.arrival='true';
 }
 function render(){
+ if(renderInteraction.defer())return;
  const poolTab=app.querySelector('.hex-config-pool-tabs input:checked'),poolSelection=poolTab?{name:poolTab.name,value:poolTab.value}:null;
  const ballotKey=overlay.querySelector('[data-action="room-adopt-ballot"][data-key]')?.dataset.key;
  if(ballotKey&&!roomBallotBoard(room,publicDraftContext(),data.champions,{scope,soloRole:taskOwnRole(),clientSession:client.connected?client.session:null,party:currentParty(),includePreselected:includePublicPreselection(),patch:data.patch,catalogStatus:data.catalogInfo?.status}).some(row=>row.key===ballotKey))closeOverlay();
@@ -973,24 +976,31 @@ function taskControls(plan=ownTaskPreparation()){if(!plan)return '';return prepa
 function memberHeroAction(id,role){return companionHeroAction(client,champ(id),saved.preferences.clickPrepare!==false);}
 let riftHeroClickRevision=0,riftHeroConfigurationFlight=Promise.resolve();
 async function selectRiftHero(context){
- const revision=++riftHeroClickRevision,selection=heroClickSelection(data,context),gameId=preparationGameId(client),writeContext=runeWriteContext(client);
- const current=()=>revision===riftHeroClickRevision&&client.connected&&client.phase==='ChampSelect'&&client.mode?.id==='rift'&&preparationGameId(client)===gameId&&client.session?.localPlayerCellId===writeContext.cellId;
+ const revision=++riftHeroClickRevision,selection=heroClickSelection(data,context),gameId=preparationGameId(client),writeContext=runeWriteContext(client),manualRole=ownManualRole();
+ const current=()=>revision===riftHeroClickRevision&&client.connected&&client.phase==='ChampSelect'&&client.mode?.id==='rift'&&preparationGameId(client)===gameId&&client.session?.localPlayerCellId===writeContext.cellId&&ownManualRole()===manualRole&&String(client.session?.myTeam?.find(player=>player.cellId===writeContext.cellId)?.assignedPosition||'').toUpperCase()===writeContext.assignedPosition;
+ const changed=()=>{if(lastTaskSelection?.id===selection.id&&lastTaskSelection?.role===selection.role)lastTaskSelection=null;throw Error('选人或配置已变化，请按当前英雄重新选择配置');};
  // This request contains no build, catalog adoption, rune or equipment work.
  // It remains available while an older configuration is finishing.
  const selected=await api.prepareSelection({champion:selection.id,role:selection.role,mode:'rift',preselectOnly:true,sessionGameId:gameId,context:writeContext});
- if(!current()||selected.superseded||selected.steps?.hover?.status!=='done')return selected;
+ if(revision!==riftHeroClickRevision||selected.superseded||selected.steps?.hover?.status!=='done')return selected;
+ if(!current())changed();
  lastTaskSelection=selection;companionPreview=null;closeOverlay();render();
  const previous=riftHeroConfigurationFlight;
  const preparing=(async()=>{
-  await previous.catch(()=>{});if(!current())return selected;
-  await sync(false,{fresh:true});if(!current())return selected;
+  await previous.catch(()=>{});if(revision!==riftHeroClickRevision)return selected;
+  if(!current())changed();
+  await sync(false,{fresh:true});if(revision!==riftHeroClickRevision)return selected;
+  const own=client.session?.myTeam?.find(player=>player.cellId===writeContext.cellId);
+  if(!current()||Number(own?.championId||own?.championPickIntent)!==Number(champ(selection.id)?.key)){
+   changed();
+  }
   if(clientPreparing||runeApplying||itemSetPending){toast('英雄已选好；当前配置完成后可在“我的配置”应用默认方案');return selected;}
-  return prepareHeroClick(selection,null,true);
+  return prepareHeroClick(selection,null,true,selected);
  })();
  riftHeroConfigurationFlight=preparing;
  return preparing;
 }
-async function prepareHeroClick(context,expected=null,selectedFirst=false){
+async function prepareHeroClick(context,expected=null,selectedFirst=false,preselected=null){
  if(!selectedFirst&&context.readOnly!==true&&context.mode==='rift'&&client.connected&&client.phase==='ChampSelect'&&memberHeroAction(context.id,context.role).prepare)return selectRiftHero(context);
  const busy=clientPreparing||runeApplying||itemSetPending,clientMode=client.mode?.id,selectionMode=context.mode||'rift',fastSwitch=busy&&client.connected&&client.phase==='ChampSelect'&&clientMode===selectionMode&&clientMode==='hex';
  if(busy&&!fastSwitch)throw Error('正在应用配置，请稍候');
@@ -1021,7 +1031,10 @@ async function prepareHeroClick(context,expected=null,selectedFirst=false){
  const prior=recallPreparation(preparations,guideSelection,context);
  if(prior&&prior.coreAuto!==true&&context.coreAuto===true&&!context.coreId){delete context.coreAuto;delete context.coreIndex;}
  context=heroClickSelection(data,{...(prior||rememberedPreparation(context)),...context});
- if(!client.connected&&context.mode==='rift'&&context.readOnly!==true){slots=selectManualChampion(slots,context.role,context.id);soloRole=context.role;lastTaskSelection=context;persist();}
+ if(!client.connected&&context.mode==='rift'&&context.readOnly!==true){
+  const bound=slots.some(slot=>Number.isInteger(slot.clientCellId)&&(slot.role===context.role||slot.champion===context.id));
+  if(!bound){slots=selectManualChampion(slots,context.role,context.id);soloRole=context.role;lastTaskSelection=context;persist();}
+ }
  const selection={...context,...localConfigurationPreview(context,client,taskOwnRole())};
  let reviewStamp=selectionReviewStamp(selection);
  const sourceGuardStamp=selectionReviewStamp(selection,saved,{includeSource:false});
@@ -1031,7 +1044,7 @@ async function prepareHeroClick(context,expected=null,selectedFirst=false){
   clickedHeroPreparation={selection,build:getBuild(champ(selection.id),selection.role,data,selection)};companionPreview=null;companionTab='recommend';closeOverlay();render();
   let sourceReloaded=false;
   try{
-   return await prepareHeroWithSource({build:clickedHeroPreparation.build,canRefresh:typeof api.refreshBuild==='function',
+   return await prepareHeroWithSource({preselected,build:clickedHeroPreparation.build,canRefresh:typeof api.refreshBuild==='function',
     apply:hoverOnly=>{if(reviewStamp!==selectionReviewStamp(selection)||pendingReviewChanged(selection))throw Error('组合或资料复核状态已变化，请重新选择配置');clickedHeroPreparation={selection,build:getBuild(champ(selection.id),selection.role,data,selection)};const checked=expected?{...expected,planId:activeCreativePlan?.id||'',...(sourceReloaded?{fingerprint:clientPreparationPlan(data,clickedHeroPreparation)?.fingerprint}:{})}:null;return useClientPreparation({dataset:{preparationView:'clicked'}},true,checked,hoverOnly);},
     refresh:async()=>{clientPreparing=true;render();try{const reference=await refreshConfiguration(selection.id,selection.role,mode,true);if(sourceGuardStamp!==selectionReviewStamp(selection,saved,{includeSource:false})||pendingReviewChanged(selection))throw Error('组合或资料复核状态已变化，请重新选择配置');sourceReloaded=!!reference;if(reference)reviewStamp=selectionReviewStamp(selection);return reference;}finally{clientPreparing=false;render();}},
     operationSnapshot:()=>{const context=runeWriteContext(client);return JSON.stringify([preparationGameId(client),context.phase,context.cellId,context.assignedPosition,client.game?.queueId,data.patch,data.buildSource,activeCreativePlan?.id||'',selectionReviewStamp(selection),buildChoiceKey(validatePreparation(preparations.recall(selection)||selection))]);},
@@ -1388,7 +1401,7 @@ function renderDraft(){
  ${pregameControls({scope,style,ranked:rankedDraftPolicy(client).ranked,busy:clientPreparing||runeApplying||!!itemSetPending,includePreselected:includePublicPreselection(),ownRole:taskOwnRole(),slots,room,party:currentParty(),preselection:displayedPreselection(),preselectionHero:displayedPreselection()?.champion?portrait(champ(displayedPreselection().champion),'sm'):''})}
  ${eligibility.status==='checked'||eligibility.status==='manual'?'':pickEligibilityView(eligibility)}${recommendationError?`<section class="callout warning recommendation-error"><p>${e(recommendationError)}</p>${button('role-pools','调整位置英雄池','','small')}${button('exclusions','调整排除英雄','','small')}</section>`:''}
 
- <div class="task-candidate-list" aria-busy="${!!generating}">${incoming}${heroSelectionHint(client,saved.preferences,results.some(result=>result.slots.some(slot=>slot.champion&&memberHeroAction(slot.champion,slot.role).prepare)))}${rankedCurveReady(client,data,{slots})?'':`<div class="draft-list-heading recommend-heading"><div class="draft-result-actions"><h2>${scope==='solo'?'推荐英雄':'推荐阵容'}</h2>${button(results.length?'reroll':'recommend',generating?'正在搭配…':results.length?'换一批':scope==='solo'?'推荐英雄':'推荐阵容','refresh',results.length?'small recommendation-refresh':'primary small',generating||noRange?'disabled':'')}${button('task-rankings','本路排行','','quiet small')}</div></div>${availableResults.length?availableResults.slice(0,showAllCandidates?6:3).map(({result,index})=>resultCard(result,index)).join('')+(availableResults.length>3?button('more-candidates',showAllCandidates?'收起备选':'更多候选','','quiet small'):''):results.length?'':generating?recommendationLoading(scope==='solo'?1:slots.filter(s=>s.party).length):'<div class="empty-state draft-empty">'+(noRange?'勾选要参与推荐的位置':scope==='solo'&&!taskOwnRole()?'选择本人位置，自动推荐英雄。':'按当前队伍推荐，可调整上方位置与风格。')+'</div>'}`}</div><footer class="draft-compare-status">${e(client.connected?phaseLabel(client.phase)+' · '+(client.mode?.label||'模式待确认'):'手动搭配 · 连接客户端后可预选配置')}<span data-client-countdown>${live.remaining!==null?' · 约剩 '+live.remaining+' 秒':''}</span>${creativePlanNotice?`<span data-creative-plan-notice role="status"> · ${e(creativePlanNotice)}</span>`:''}</footer></section>`;
+ <div class="task-candidate-list" aria-busy="${!!generating}">${incoming}${heroSelectionHint(client,saved.preferences,results.some(result=>result.slots.some(slot=>slot.champion&&memberHeroAction(slot.champion,slot.role).prepare)))}${rankedCurveReady(client,data,{slots})?'':`<div class="draft-list-heading recommend-heading"><div class="draft-result-actions"><h2>${scope==='solo'?'推荐英雄':'推荐阵容'}</h2>${button(results.length?'reroll':'recommend',generating?'正在搭配…':results.length?'换一批':scope==='solo'?'推荐英雄':'推荐阵容','refresh',results.length?'small recommendation-refresh':'primary small',generating||noRange?'disabled':'')}${button('task-rankings','本路排行','','quiet small')}</div></div>${availableResults.length?availableResults.map(({result,index})=>resultCard(result,index)).join(''):results.length?'':generating?recommendationLoading(scope==='solo'?1:slots.filter(s=>s.party).length):'<div class="empty-state draft-empty">'+(noRange?'勾选要参与推荐的位置':scope==='solo'&&!taskOwnRole()?'选择本人位置，自动推荐英雄。':'按当前队伍推荐，可调整上方位置与风格。')+'</div>'}`}</div><footer class="draft-compare-status">${e(client.connected?phaseLabel(client.phase)+' · '+(client.mode?.label||'模式待确认'):'手动搭配 · 连接客户端后可预选配置')}<span data-client-countdown>${live.remaining!==null?' · 约剩 '+live.remaining+' 秒':''}</span>${creativePlanNotice?`<span data-creative-plan-notice role="status"> · ${e(creativePlanNotice)}</span>`:''}</footer></section>`;
 }
 function slotHTML(s){
  const c=champ(s.champion),mine=scope==='solo'?s.role===soloRole:s.party,pick=client.session?.myTeam?.find(p=>p.cellId===s.clientCellId);

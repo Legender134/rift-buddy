@@ -1,3 +1,5 @@
+import {comboMembers,comboKey} from '../src/core/combo-members.mjs';
+import {DEFAULT_BUILD_SOURCE,projectBuildSources} from '../src/core/build-source.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -6,26 +8,27 @@ import path from 'node:path';
 import {EventEmitter} from 'node:events';
 import {BUNDLED_CATALOG,validateCatalog,configureCatalog,catalogIssues,mergePersonal,catalogDiff,safeSourceURL} from '../src/core/catalog.mjs';
 import {createCatalogStore,downloadCatalog,publicAddress} from '../services/catalog-store.mjs';
-import {createSlots,recommend,replaceMember} from '../src/core/recommend.mjs';
-import {getBuild} from '../src/core/builds.mjs';
+import {createSlots,recommend as recommendActual,replaceMember} from '../src/core/recommend.mjs';
+import {getBuild,validateRunePage} from '../src/core/builds.mjs';
 import {DUOS,TRIOS} from '../src/core/rules.mjs';
 import {validateState,defaultState,mergeState} from '../services/storage.mjs';
 import {comboSourceLinks} from '../src/build-options-view.mjs';
 import {combinationDialog} from '../src/draft-library-view.mjs';
 const data=JSON.parse(await fs.readFile('data/game.json','utf8')),clone=()=>structuredClone(BUNDLED_CATALOG),hero=id=>data.champions.find(h=>h.id===id);
-data.builds=JSON.parse(await fs.readFile('data/builds.json','utf8')).entries;
+data.builds=projectBuildSources(JSON.parse(await fs.readFile('data/builds.json','utf8')).entries,DEFAULT_BUILD_SOURCE,data.patch);
+data.catalog=BUNDLED_CATALOG;data.catalogInfo=catalogIssues(BUNDLED_CATALOG,data);
 const store=async options=>createCatalogStore({root:await fs.mkdtemp(path.join(os.tmpdir(),'buddy-catalog-')),getData:()=>data,...options});
 test('bundled pack has validated independent content and complete playable trio configs',()=>{
  const c=validateCatalog(clone(),data);assert.ok(c.duos.length>=200);assert.ok(c.trios.length>=68);
- for(const t of c.trios)for(const m of t.members){const b=getBuild(hero(m.champion),m.role,data,{comboId:t.id,loadoutId:m.loadoutId});assert.equal(b.combo.id,t.id);assert.equal(b.loadoutId,m.loadoutId);assert.equal(b.missing.length,0);assert.ok(b.runeOptions.length>=2,`${t.id}:${m.champion}`);}
+ for(const t of c.trios)for(const m of t.members){const b=getBuild(hero(m.champion),m.role,data,{comboId:t.id,loadoutId:m.loadoutId});assert.equal(b.combo.id,t.id);assert.equal(b.loadoutId,m.loadoutId);assert.equal(b.missing.length,0);assert.ok(b.runeOptions.every(o=>validateRunePage(o.page,data.runes)));assert.ok(b.runeOptions.length>=(c.loadouts.find(l=>l.id===m.loadoutId)?.runes.length||1),`${t.id}:${m.champion}`);}
 });
 test('pack rejects duplicate heroes, incompatible configs, bad items, rune pages and unsafe sources',()=>{
  for(const edit of [c=>c.duos.push(c.duos[0]),c=>c.trios[0].members[1].role=c.trios[0].members[0].role,c=>c.trios[0].members[0].loadoutId='trio-ball',c=>c.loadouts[0].items[0]=123456789,c=>c.runes.lethal.page.selectedPerkIds[0]=999,c=>c.duos[0].sources=[{name:'x',url:'javascript:alert(1)'}],c=>c.links.push(c.links[0])]){const c=clone();edit(c);assert.throws(()=>validateCatalog(c,data),/组合库/);}
  assert.equal(safeSourceURL('https://user:secret@site.example/file.json'),false);
 });
 test('patch review is per combo and invalid equipment marks only affected configs',async()=>{
- const old=JSON.parse(await fs.readFile('tests/fixtures/snapshot-16.20/game.json')),next={...old,items:{...old.items}};delete next.items[3142];const combo=BUNDLED_CATALOG.duos.find(d=>d.carry==='Varus'&&d.support==='Ashe');const issues=catalogIssues(clone(),next);assert.equal(issues.status[combo.id].stale,true);assert.equal(issues.status['galio-nilah-rakan'].stale,false);assert.equal(issues.status['camille-galio-vi'].stale,false);assert.ok(issues.status[combo.id].invalid);assert.equal(issues.status['jarvan-galio-mf'].invalid,false);assert.ok(issues.errors.length);
- const b=getBuild(hero('Varus'),'bottom',next,{comboId:combo.id});assert.equal(b.loadoutId,'default');assert.ok(b.selectionWarnings.length);
+ const old=JSON.parse(await fs.readFile('tests/fixtures/snapshot-16.20/game.json')),next={...old,items:{...old.items}};delete next.items[3142];const historical=JSON.parse(await fs.readFile('tests/fixtures/snapshot-16.20/catalog.json'));const combo=historical.duos.find(d=>comboMembers(d).some(m=>m.champion==='Varus'&&m.role==='bottom')&&comboMembers(d).some(m=>m.champion==='Ashe'&&m.role==='support'));const issues=catalogIssues(historical,next);assert.equal(issues.status[combo.id].stale,true);assert.equal(issues.status['galio-nilah-rakan'].stale,false);assert.equal(issues.status['camille-galio-vi'].stale,false);assert.ok(issues.status[combo.id].invalid);assert.equal(issues.status['jarvan-galio-mf'].invalid,false);assert.ok(issues.errors.length);
+ configureCatalog(historical);try{const b=getBuild(hero('Varus'),'bottom',next,{comboId:combo.id,loadoutId:comboMembers(combo).find(m=>m.champion==='Varus').loadoutId});assert.equal(b.loadoutId,'default');assert.ok(b.selectionWarnings.length);}finally{configureCatalog(BUNDLED_CATALOG);}
 });
 test('preview is inert, apply/rollback survive restart and retain custom combos',async()=>{
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'buddy-pack-')),s=await store({root});const local={...clone().trios[0],id:'local-mine',name:'自己练的接力'};await s.savePersonal(local);
@@ -63,7 +66,7 @@ test('partial replacement changes only one recommended position and reports lost
  const slots=createSlots();slots[0]={...slots[0],champion:'Garen',locked:true};slots[1]={...slots[1],champion:'LeeSin',locked:true};const input={slots,champions:data.champions,scope:'bot'},r=recommend(input)[0],next=replaceMember(r,'bottom',input);assert.ok(next.length);for(const n of next){for(const old of r.slots.filter(s=>s.role!=='bottom'))assert.equal(n.slots.find(s=>s.role===old.role).champion,old.champion);assert.notEqual(n.slots.find(s=>s.role==='bottom').champion,r.slots.find(s=>s.role==='bottom').champion);assert.ok(n.replacementNote);}assert.throws(()=>replaceMember(r,'top',input),/只能替换/);
 });
 test('personal variants of an existing pair survive base updates without inflating pair counts',()=>{
- const c=clone(),duo={...c.duos[0],id:'local-wind',name:'我们练的风牛'};const merged=mergePersonal(c,{duos:[duo]});assert.equal(merged.duos.length,c.duos.length);assert.equal(merged.duos.find(x=>x.carry===duo.carry&&x.support===duo.support).id,duo.id);assert.ok(catalogDiff(c,merged).some(x=>x.type==='removed'));
+ const c=clone(),duo={...c.duos[0],id:'local-wind',name:'我们练的风牛'};const merged=mergePersonal(c,{duos:[duo]});assert.equal(merged.duos.length,c.duos.length);assert.equal(merged.duos.find(x=>comboKey(x)===comboKey(duo)).id,duo.id);assert.ok(catalogDiff(c,merged).some(x=>x.type==='removed'));
 });
 test('update preview describes the effective merged library and discloses preserved personal changes',async()=>{
  const s=await store({write:async()=>{}}),local={...clone().duos[0],id:'local-preview-consistency',name:'我们保存的名称'};
@@ -98,3 +101,6 @@ test('imported source names and URLs render as escaped data and never become exe
  const html=comboSourceLinks([{name:'<img src=x onerror=alert(1)>',url:'https://example.com/" onmouseover="x',kind:'<b>x</b>'}]);assert.ok(html.includes('&lt;img'));assert.ok(html.includes('&quot;'));assert.equal(html.includes('<img src=x'),false);assert.equal(html.includes('<b>x</b>'),false);
  const c=clone();c.source.url='https://example.com/" onclick="x';configureCatalog(c);try{const dialog=combinationDialog(data,{kind:'trios',query:'',style:'all'},createSlots());assert.ok(dialog.includes('&quot;'));assert.equal(dialog.includes(' onclick="x'),false);}finally{configureCatalog(BUNDLED_CATALOG);}
 });
+
+// Supply the same version/source context as the application recommendation call.
+function recommend(input){return recommendActual({patch:data.patch,builds:data.builds,catalogStatus:data.catalogInfo?.status,...input});}
