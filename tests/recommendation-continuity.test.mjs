@@ -162,6 +162,22 @@ function setup({slots=partySlots(),current=client(),incoming=client(),results=[{
  return {context,calls,timers,worker,startCalculation,runTimer,clock};
 }
 
+test('explicit sync restores its button with a focused input or select while background sync preserves editing',async()=>{
+ for(const manual of [false,true])for(const focused of ['input','select']){
+  const incoming=client(),{context:c}=setup({incoming,results:[]});await c.performSync(false,true);
+  incoming.receivedAt='2026-11-11T12:00:00.000Z';c.clientRenderIdentity=value=>value.receivedAt||'';
+  c.document.activeElement={tagName:focused.toUpperCase(),matches:selector=>selector.split(',').includes(focused)};
+  const readStarted=Promise.withResolvers(),finishRead=Promise.withResolvers(),renders=[];let buttonDisabled=false;
+  c.render=()=>{buttonDisabled=c.syncing;renders.push(c.syncing);};
+  c.api.client=async()=>{readStarted.resolve();await finishRead.promise;return structuredClone(incoming);};
+  const operation=c.performSync(manual,true);await readStarted.promise;
+  assert.equal(c.syncing,true);assert.equal(buttonDisabled,manual);assert.deepEqual(renders,manual?[true]:[]);
+  finishRead.resolve();await operation;
+  assert.equal(c.syncing,false);assert.equal(buttonDisabled,false);assert.deepEqual(renders,manual?[true,false]:[]);
+  assert.equal(c.client.receivedAt,incoming.receivedAt);
+ }
+});
+
 test('client identity bindings preserve candidates and an in-flight recommendation when its input is unchanged',async()=>{
  const incoming=client();incoming.session.myTeam[0].championId=hero('Ashe').key;
  const s=setup({incoming}),before=s.context.results,signature=s.context.resultsSignature;s.startCalculation();

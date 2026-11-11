@@ -1935,7 +1935,7 @@ async function performSync(manual=true,fresh=false){
  }catch(err){client={connected:false,phase:'Offline',message:err.message,...(lastClientRead?{receivedAt:lastClientRead}:{})};if(manual)toast(err.message,true);}
  finally{scheduleRoomPublish();if(previousPhase==='ChampSelect'&&client.phase!=='ChampSelect')cancelRecommendation();if(newGame||previousRecommendation!==recommendationKey(recommendationInput())){markResultStale();cancelRecommendation();results=[];offset=0;changed=true;}changed=runeAppliedKeys.observe(client)||changed;await saveChain;syncing=false;if(manual||changed||before!==clientRenderIdentity(client)){
   // A background status tick must not replace an active search field while typing.
-  if(dragPick)pendingDragRender=true;else if(activeAppSelect||windowLayout.docked&&changed||!document.activeElement?.matches('input,select'))render();
+  if(dragPick)pendingDragRender=true;else if(manual||activeAppSelect||windowLayout.docked&&changed||!document.activeElement?.matches('input,select'))render();
   if(buildView&&(renderedBuildContext!==buildSelectionContext(buildView.build)||previousMatchups!==matchupContext()))renderBuild();
  }}
  refreshClientClock();queueCompanionRecommendation();prefetchRankedDraft().catch(()=>{});if(sharedClient?.receivedAt&&sharedClient.receivedAt===client.receivedAt)sharedClient=null;if(sharedClient)setTimeout(()=>sync(false),0);
