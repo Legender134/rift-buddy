@@ -109,6 +109,10 @@ async function run(){
     assert.equal(interval.visible,1,'Pointer and keyboard displayed overlapping curve tooltips');
     const percentages=[...interval.text.matchAll(/(\d+(?:\.\d+)?)%/g)].map(match=>Number(match[1]));assert.equal(percentages.length,2);assert.equal(Math.round(percentages.reduce((sum,value)=>sum+value,0)*10),1000);
    }
+   await js('window.focusedInterval=document.activeElement');
+   await click('.companion-footer [data-action=sync]');
+   await until(()=>js('!window.focusedInterval.isConnected'),'The chart did not repaint on client refresh');
+   assert.equal(await js('document.activeElement===document.querySelectorAll(".ranked-curve .duration-hit")[4]'),true,'Refreshing the same draft dropped the focused chart interval');
    await capture('curve-narrow-sidebar.png');
   }finally{surface.webContents.setZoomFactor(priorZoom);surface.setContentSize(priorWidth,priorHeight);await js('document.activeElement.blur()');}
  }

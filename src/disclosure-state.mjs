@@ -77,7 +77,7 @@ function scanDisclosures(root){
 }
 
 function buttonIdentity(node,root){
- const action=attr(node,'data-action');if(!action)return null;
+ const action=attr(node,'data-action'),focusKey=attr(node,'data-focus-key');if(!action&&!focusKey)return null;
  const candidate=(()=>{for(let p=node.parentElement;p&&p!==root;p=p.parentElement)if(attr(p,'data-result-index'))return p;return null;})();
  const detail=candidate&&descendants(candidate).find(child=>child.tagName==='DETAILS'&&classes(child).includes('candidate-details'));
  const candidateContext=candidate?(detail?candidateKey(candidate,detail):null):null;
