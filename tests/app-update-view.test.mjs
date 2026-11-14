@@ -24,7 +24,7 @@ test('verified incremental updates explain background installation and use the s
  const record={kind:'incremental',version:'0.59.78',bytes:1048576};
  const ready=appUpdatePanel({...base,update:{phase:'ready',record,error:'blocked'}});
  assert.match(ready,/增量更新 v0\.59\.78 已下载并通过校验/);
- assert.match(ready,/助手退出后在后台更新，完成后重新打开即可/);
+ assert.match(ready,/助手退出后在后台更新，完成后自动启动/);
  assert.match(ready,/可重试“安装更新”/);
  assert.doesNotMatch(ready,/退出并安装/);
  assert.match(appUpdatePanel({...base,update:{phase:'installing',record}}),/正在复验增量包/);

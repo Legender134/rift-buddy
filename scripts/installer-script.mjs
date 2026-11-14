@@ -116,6 +116,7 @@ ${diagnosticFile?`  FileOpen $2 ${quote(diagnosticFile)} w\n  FileWriteUTF16LE $
   \${EndIf}
   SetOutPath "$INSTDIR"
 ${removeLocales}
+${baseManifest?`  Exec '"$INSTDIR\\开黑搭子.exe"'`:''}
 SectionEnd
 Section "Uninstall"
   SetShellVarContext current
