@@ -119,7 +119,10 @@ async function run(){
  for(const zoom of [1,1.25]){side.webContents.setZoomFactor(zoom);await delay(150);await capture('sidebar-'+zoom+'.png',side);assert.equal(await j(side,'document.documentElement.scrollWidth>innerWidth'),false);}
  await j(side,'document.querySelector(".hex-config-pool-tabs input[value=\\"2\\"]").click()');await capture('pool-stage.png',side);assert.equal(await j(side,'getComputedStyle(document.querySelector(".hex-config-pool-total")).display'), 'none');
  assert.equal(await j(side,'document.querySelector("[data-stage=\\"2\\"]").querySelectorAll("img").length'),0);
- side.webContents.setZoomFactor(1);mode='rift';ownHero='LeeSin';gameId++;phase='InProgress';await j(main,'window.buddy.client(true)');await j(main,'window.buddy.openGuide({id:"LeeSin",role:"jungle",mode:"rift"})');
+ side.webContents.setZoomFactor(1);mode='rift';ownHero='LeeSin';gameId++;phase='InProgress';await j(main,'window.buddy.client(true)');
+ // The player reopens the main window to interact with it during the match.
+ app.emit('second-instance',{},[]);
+ await j(main,'window.buddy.openGuide({id:"LeeSin",role:"jungle",mode:"rift"})');
  const gear=await until(()=>windows.find(w=>!w.isDestroyed()&&w.webContents.getURL().endsWith('/src/guide.html')),'Rift card missing');await until(()=>j(gear,'!!document.querySelector(".compact-guide-main")'),'Compact not rendered');
  let allowLive=false,heldLive=[],allyItem=1001,enemyItem=2003;
  https.get=(options,callback)=>{

@@ -56,6 +56,10 @@ api.onPointer(point=>{
   const width=Math.min(r.right,viewport?.right??innerWidth,innerWidth)-x,height=Math.min(r.bottom,viewport?.bottom??innerHeight,innerHeight)-y;
   input=input&&width>=1&&height>=1?{...input,context:state.context,rect:{x,y,width,height}}:null;
  }
- const key=JSON.stringify([input,price]);if(key!==hoverKey){hoverKey=key;api.hover(input).catch(()=>{});}
+ const key=JSON.stringify([input,price]);
+ if(key===hoverKey)return;
+ hoverKey=key;
+ const retry=()=>{if(input&&hoverKey===key)hoverKey='';};
+ api.hover(input).then(shown=>{if(!shown)retry();},retry);
 });
 api.onUpdate(render);render(await api.bootstrap());
