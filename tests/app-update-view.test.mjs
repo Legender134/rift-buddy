@@ -20,6 +20,16 @@ test('install and cleanup actions explain their scope before the user chooses',(
  const failed=appUpdatePanel({...base,update:{phase:'ready',record:{version:'0.59.58'},error:'blocked'}});
  assert.match(failed,/安装包已保留，可重试/);
 });
+test('verified incremental updates explain background installation and use the same label for retry',()=>{
+ const record={kind:'incremental',version:'0.59.78',bytes:1048576};
+ const ready=appUpdatePanel({...base,update:{phase:'ready',record,error:'blocked'}});
+ assert.match(ready,/增量更新 v0\.59\.78 已下载并通过校验/);
+ assert.match(ready,/助手退出后在后台更新，完成后重新打开即可/);
+ assert.match(ready,/可重试“安装更新”/);
+ assert.doesNotMatch(ready,/退出并安装/);
+ assert.match(appUpdatePanel({...base,update:{phase:'installing',record}}),/正在复验增量包/);
+ assert.match(appUpdatePanel({...base,update:{phase:'ready',record:{...record,kind:'full'}}}),/退出并安装/);
+});
 test('download and paused states distinguish preserving progress from discarding it',()=>{
  const release={version:'0.57.3',tag:'v0.57.3'},transfer={release,kind:'incremental',received:524288,total:2097152};
  const downloading=appUpdatePanel({...base,update:{...transfer,phase:'downloading'}}),paused=appUpdatePanel({...base,update:{...transfer,phase:'paused'}});

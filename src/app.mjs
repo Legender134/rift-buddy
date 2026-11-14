@@ -2077,7 +2077,7 @@ async function checkAppUpdate(silent=false){
   const snapshot=await api.checkAppUpdate(silent);
   if(appUpdate.phase==='checking')appUpdate={phase:snapshot.phase,release:snapshot.release||null,received:snapshot.received||0,total:snapshot.total??null,kind:snapshot.kind||snapshot.record?.kind||'full',via:snapshot.via||null,error:snapshot.error||'',...(snapshot.record?{record:snapshot.record}:{}),...(snapshot.dismissed?{dismissed:true}:{})};
   if(['available','current','ready','paused'].includes(snapshot.phase)){saved.preferences.lastAppUpdateCheck=new Date().toISOString();persist();}
-  if(!silent){if(snapshot.phase==='available')toast(`发现新版 v${snapshot.release.version}，可下载安装`);else if(snapshot.phase==='ready')toast('新版安装包已就绪，可退出并安装');else if(snapshot.phase==='paused')toast('已找到上次下载，可继续下载');else if(snapshot.phase==='current')toast('软件已是最新版本');else toast('软件更新检查未完成：'+cleanError(snapshot.error),true);}
+  if(!silent){if(snapshot.phase==='available')toast(`发现新版 v${snapshot.release.version}，可下载安装`);else if(snapshot.phase==='ready')toast(snapshot.record?.kind==='incremental'?'增量更新已就绪，可安装更新':'新版安装包已就绪，可退出并安装');else if(snapshot.phase==='paused')toast('已找到上次下载，可继续下载');else if(snapshot.phase==='current')toast('软件已是最新版本');else toast('软件更新检查未完成：'+cleanError(snapshot.error),true);}
  }catch(err){appUpdate={phase:'error',release:null,received:0,total:null,error:cleanError(err.message),via:null};if(!silent)toast('软件更新检查未完成：'+appUpdate.error,true);}
  finally{if(route==='settings'||!silent)render();}
 }
