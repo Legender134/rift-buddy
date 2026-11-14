@@ -1,8 +1,11 @@
+<h1 align="center">开黑搭子 · Rift Buddy</h1>
+<p align="center"><strong>少翻攻略，专注游戏。</strong></p>
 <p align="center">
-  <a href="https://room.riftbuddy.dpdns.org/downloads/">
-    <img src="deploy/downloads/media/cover.png" alt="开黑搭子 Rift Buddy 1.0 — 少翻攻略，专注游戏。英雄联盟国服桌面助手" width="100%">
+  <a href="https://room.riftbuddy.dpdns.org/downloads/media/rift-buddy-1.0-promo-7a9911ac.mp4">
+    <img src="deploy/downloads/media/promo-1.0-poster.webp" alt="点击播放开黑搭子 1.0 宣传片：从选人、符文出装到局内小窗和海克斯搭配，2 分 24 秒" width="100%">
   </a>
 </p>
+<p align="center"><a href="https://room.riftbuddy.dpdns.org/downloads/media/rift-buddy-1.0-promo-7a9911ac.mp4"><strong>▶ 播放 1.0 宣传片 · 02:24</strong></a>　·　<a href="https://room.riftbuddy.dpdns.org/downloads/#trailer">在官网观看</a></p>
 
 <p align="center"><strong>选人有搭子，进局有参考。</strong><br>阵容推荐 · 分路配置 · 局内小窗 · 海克斯大乱斗</p>
 <p align="center">
