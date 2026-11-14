@@ -101,7 +101,8 @@ module.exports=function createHexMicroWindows({root,getState,setState,getPayload
   const e=entries[kind],p=e.payload;if(!active()||!enabled(kind)||!e.requested||!e.win.isVisible()||!p?.active||input.context!==p.context)return false;
   let name,brief;
   if(kind==='economy'){
-   const player=p.equipment?.available&&p.equipment[input.side]?.players?.find(row=>row.id===input.id);if(!player||!['ally','enemy'].includes(input.side))return false;
+   if(!p.equipment?.available||!['ally','enemy'].includes(input.side)||!Number.isInteger(input.index)||input.index<0||input.index>=5)return false;
+   const player=p.equipment[input.side]?.players?.[input.index];if(!player||player.id!==input.id)return false;
    name=player.name;brief=player.known&&Number.isFinite(player.value)?'公开装备标价 '+Math.floor(player.value)+' 金；不含未花金币。':'装备尚未读全。';
   }else if(input.kind==='status'&&!p.routes.length){name=p.hero?.name;brief=p.pending;}else{
    const route=p.routes.find(row=>row.id===input.route);if(!route)return false;

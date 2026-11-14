@@ -66,7 +66,7 @@ const inventory=inventoryOf(own);
 const inventoryKnown=ownInventoryKnown(own.items);
 const teamKnown=['ORDER','CHAOS'].includes(own.team);
 const roster=teamKnown?players.slice(0,20).filter(p=>p&&['ORDER','CHAOS'].includes(p.team)).map(p=>{
- const c=championOf(p,champions);return c?{champion:c.id,side:p.team===own.team?'ally':'enemy',self:p===own,level:Number.isInteger(p.level)&&p.level>=1&&p.level<=30?p.level:null,position:positionOf(p),inventory:filterEnemyItems(p.items),itemsKnown:p===own?inventoryKnown:publicInventoryKnown(p.items),scores:scores(p)}:null;
+ const c=championOf(p,champions);return c?{champion:c.id,side:p.team===own.team?'ally':'enemy',self:p===own,level:Number.isInteger(p.level)&&p.level>=1&&p.level<=30?p.level:null,position:positionOf(p),inventory:filterEnemyItems(p.items),itemsKnown:publicInventoryKnown(p.items),scores:scores(p)}:null;
 }).filter(Boolean):[];
 const liveMap=Number(stats?.mapNumber),lobbyMap=Number(game?.mapId);
 const mapId=Number.isInteger(liveMap)&&liveMap>0?liveMap:Number.isInteger(lobbyMap)&&lobbyMap>0?lobbyMap:null;

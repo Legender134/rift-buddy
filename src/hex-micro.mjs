@@ -45,7 +45,7 @@ api.onPointer(point=>{
   if(state.kind==='economy'){
    const row=target.closest('.ally,.enemy'),side=row?.classList.contains('ally')?'ally':'enemy';
    const index=[...target.parentElement.children].indexOf(target),player=painted?.equipment?.[side]?.players?.[index];
-   if(player){input={side,id:player.id};price=player.known?player.value:null;}
+   if(player){input={side,index,id:player.id};price=player.known?player.value:null;}
   }else{
    const route=target.closest('[data-micro-route]')?.dataset.microRoute;
    if(target.classList.contains('hex-route-caption'))input={kind:'caption',route};

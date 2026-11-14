@@ -126,7 +126,7 @@ async function run(){
   assert.equal(options.hostname,'127.0.0.1');assert.equal(options.port,2999);
   const own={riotId:'isolated-live-player',rawChampionName:'game_character_displayname_LeeSin',team:'ORDER',position:'JUNGLE',items:[{itemID:allyItem,count:1}]};
   const team=(ids,team,itemID)=>ids.map(id=>({rawChampionName:'game_character_displayname_'+id,team,items:[{itemID,count:1}]}));
-  const players=[own,...team(['Ahri','Ashe','Lux','Sona'],'ORDER',1001),...team(['Garen','Jhin','Annie','Nami','Warwick'],'CHAOS',enemyItem)];
+  const players=[own,...team(['Ahri','Ashe','Lux','Sona'],'ORDER',1001),...team(['LeeSin','Jhin','Annie','Nami','Warwick'],'CHAOS',enemyItem)];
   const values={'/liveclientdata/activeplayer':{riotId:own.riotId,currentGold:425,level:1},'/liveclientdata/playerlist':players,'/liveclientdata/gamestats':{gameMode:'CLASSIC',mapNumber:11,gameTime:25},'/liveclientdata/eventdata':{Events:[]}};
   const request=new EventEmitter(),send=()=>{assert.ok(Object.hasOwn(values,options.path));const response=new EventEmitter();response.statusCode=200;callback(response);response.emit('data',Buffer.from(JSON.stringify(values[options.path])));response.emit('end');};
   if(allowLive)queueMicrotask(send);else heldLive.push(send);
@@ -144,11 +144,23 @@ async function run(){
  await until(async()=>(await totals())?.diff==='+1,250','Complete public equipment did not show a team lead');
  await capture('economy-team-lead.png',economy);
  assert.deepEqual(await totals(),{ally:'我 1,500',enemy:'敌 250',diff:'+1,250',color:'rgb(124, 230, 163)',fits:true});
- const economyIcon=await j(economy,'(()=>{const r=document.querySelector(".hex-economy-icons.ally img").getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()'),economyBounds=economy.getBounds();
- cursor={x:Math.round(economyBounds.x+economyIcon.x),y:Math.round(economyBounds.y+economyIcon.y)};
- const economyTip=await until(()=>windows.find(w=>!w.isDestroyed()&&w.isVisible()&&w.webContents.getURL().startsWith('data:text/html;charset=utf-8,')),'Economy hover did not open');
+ const mirroredHero=data.champions.find(row=>row.id==='LeeSin').name;
+ assert.deepEqual(await j(economy,`['ally','enemy'].map(side=>({hero:document.querySelector('.hex-economy-icons.'+side+' img').alt,value:document.querySelector('.hex-economy-values.'+side+' span').textContent}))`),[{hero:mirroredHero,value:'300'},{hero:mirroredHero,value:'50'}]);
+ const aimEconomy=async side=>{
+  const point=await j(economy,`(()=>{const icon=document.querySelector('.hex-economy-icons.${side} img'),r=icon.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`),bounds=economy.getBounds();
+  cursor={x:Math.round(bounds.x+point.x),y:Math.round(bounds.y+point.y)};
+ };
+ const economyTip=await until(async()=>{
+  if(!economy.isVisible())return null;
+  await aimEconomy('ally');
+  return windows.find(w=>!w.isDestroyed()&&w.isVisible()&&w.webContents.getURL().startsWith('data:text/html;charset=utf-8,'));
+ },'Economy hover did not open');
  const economyTipText=()=>j(economyTip,'document.querySelector("p").textContent');
  assert.match(await economyTipText(),/300 金/);
+ await aimEconomy('enemy');
+ await until(async()=>economyTip.isVisible()&&(await economyTipText()).includes('50 金'),'The enemy copy of the same champion did not show its own value');
+ await aimEconomy('ally');
+ await until(async()=>economyTip.isVisible()&&(await economyTipText()).includes('300 金'),'The allied copy did not restore its own value');
  let hoverInterruptions=0;const recordHide=()=>hoverInterruptions++;economyTip.on('hide',recordHide);
  enemyItem=1036;
  await j(main,'window.buddy.openGuide()');

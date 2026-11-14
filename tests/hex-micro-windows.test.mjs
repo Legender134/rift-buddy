@@ -24,7 +24,7 @@ function setup(preferences={}){
  const call=(kind,name,...args)=>{const win=windows.find(w=>w.options.webPreferences.additionalArguments?.includes('--rift-hex-window='+kind));return handlers[name]({sender:win.webContents,senderFrame:win.webContents.mainFrame},kind,...args);};
  return {micro,windows,value,handlers,call,ready:()=>windows.filter(w=>w.options.webPreferences.preload).forEach(w=>w.emit('ready-to-show')),active:v=>{active=v;},state:v=>{if(v)state=v;return state;},writer:fn=>{write=fn;},height:fn=>{height=fn;},pointer:p=>{cursor=p;intervals.forEach(fn=>fn());},timers,saveCount:()=>saves};
 }
-const hover={side:'ally',id:'Yasuo',rect:{x:6,y:10,width:18,height:18}};
+const hover={side:'ally',index:0,id:'Yasuo',rect:{x:6,y:10,width:18,height:18}};
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 
 test('initial DPI rounding and programmatic layouts do not save defaults as a manual position',async()=>{
@@ -56,7 +56,7 @@ test('native hover cards flip away from icons and the cursor when either micro w
   const s=setup();s.value.model.hexMicroRoutes=[{id:'r',augments:[{id:1,name:'强化',brief:'说明'}],items:[]}];s.micro.show();s.ready();
   const win=s.windows[kind==='economy'?0:1];win.setBounds({...win.bounds,x:kind==='economy'?area.width-win.bounds.width-12:12});
   const p=s.call(kind,'hex-micro-bootstrap'),b=win.bounds,point={x:b.x+18,y:b.y+34};s.pointer(point);
-  const input=kind==='economy'?{side:'ally',id:'Yasuo'}:{kind:'augment',id:1,route:'r'};
+  const input=kind==='economy'?hover:{kind:'augment',id:1,route:'r'};
   assert.equal(await s.call(kind,'hex-micro-hover',{...input,context:p.context,rect:{x:6,y:24,width:28,height:28}}),true);
   const card=s.windows.at(-1).bounds;assert(card.x>=area.x&&card.x+card.width<=area.width);
   assert(card.x+card.width<=b.x||card.x>=b.x+b.width);assert(point.x<card.x||point.x>card.x+card.width||point.y<card.y||point.y>card.y+card.height);
@@ -123,6 +123,21 @@ test('an inventory refresh between pressing and releasing an economy control lea
  assert.equal(s.call('economy','hex-micro-bootstrap').layout,'line');
  assert.equal(await s.call('economy','hex-micro-control','line',{context:p.context,view:p.view}),false,'A click from the prior layout must still be refused');
  s.micro.destroy();
+});
+
+test('economy hover resolves the player in the selected side and slot when champions repeat',async()=>{
+ const s=setup();
+ try{
+  const {equipment}=s.value.model;
+  equipment.ally.players.push({...equipment.ally.players[0],value:900});
+  equipment.enemy.players.push({...equipment.ally.players[0],value:650});
+  s.micro.show();s.ready();const {context}=s.call('economy','hex-micro-bootstrap');
+  for(const [side,index,cost] of [['ally',0,300],['ally',1,900],['enemy',0,650]]){
+   assert.equal(await s.call('economy','hex-micro-hover',{...hover,side,index,context}),true);
+   assert.match(decodeURIComponent(s.windows.at(-1).url),new RegExp(`${cost} 金`));
+  }
+  for(const index of [-1,2,5])assert.equal(await s.call('economy','hex-micro-hover',{...hover,index,context}),false);
+ }finally{s.micro.destroy();}
 });
 
 test('layout recovery cancels pending drag persistence before clearing offsets',async()=>{

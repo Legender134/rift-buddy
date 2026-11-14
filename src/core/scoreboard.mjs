@@ -6,11 +6,11 @@ const score=value=>Number.isInteger(value)&&value>=0&&value<=10000?value:null;
 // a power rating: sold items, unspent gold and free upgrades are not recovered.
 export function publicEquipment(data,live){
  if(!live?.teamKnown||!Array.isArray(live.roster))return {available:false,reason:'双方公开装备尚未读取'};
- const seen=new Set(),rows=[];
+ // Each row represents a player. Mirror and duplicate picks can share an icon.
+ const rows=[];
  for(const p of live.roster){
-  const champion=data.champions.find(c=>c.id===p.champion),key=p.side+':'+p.champion;
-  if(!champion||!['ally','enemy'].includes(p.side)||seen.has(key))continue;
-  seen.add(key);
+  const champion=data.champions.find(c=>c.id===p.champion);
+  if(!champion||!['ally','enemy'].includes(p.side))continue;
   const inventory=(p.inventory||[]).filter(i=>Number.isInteger(i.count)&&i.count>0);
   const items=inventory.map(i=>{const item=data.items[String(i.id)];return {id:String(i.id),name:item?.name||'未知装备',count:i.count,cost:Number.isFinite(item?.gold?.total)?item.gold.total:null,
    recovery:!!item&&(recovery.has(String(i.id))||item.tags?.some(t=>['LifeSteal','SpellVamp'].includes(t))),grievous:grievous.has(String(i.id))};});
