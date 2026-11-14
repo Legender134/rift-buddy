@@ -24,7 +24,15 @@ await fs.writeFile(legacyScript,legacyModule.installerScript({version:'98.0.0',d
 await run(compiler,['/NOCONFIG','/INPUTCHARSET','UTF8',legacyScript]);
 const cleanupLifecycle=path.join(root,'cleanup-lock.ps1');await fs.writeFile(cleanupLifecycle,(await fs.readFile(lifecycle,'utf8')).replace('function ClearBackup([string]$Root){',"function ClearBackup([string]$Root){ throw 'Synthetic backup cleanup lock';"));
 const cleanupInstaller=await compile(next,'cleanup-incremental',old,cleanupLifecycle);
-const installRun=file=>run(file,['/S','/D='+install],{windowsVerbatimArguments:true});
+const restartProbe=path.join(root,'restart-probe.cjs'),restartResult=path.join(root,'restart.json');
+await fs.writeFile(restartProbe,`const fs=require('node:fs'),path=require('node:path');
+if(path.basename(process.execPath)==='开黑搭子.exe'){
+ const manifest=JSON.parse(fs.readFileSync(path.join(path.dirname(process.execPath),'rift-buddy-install.json'),'utf8'));
+ fs.writeFileSync(${JSON.stringify(restartResult)},JSON.stringify({version:manifest.version,pid:process.pid}));
+ process.exit(0);
+}`);
+const restartEnv={...process.env,NODE_OPTIONS:`--require "${restartProbe.replaceAll('\\','/')}"`};
+const installRun=(file,env)=>run(file,['/S','/D='+install],{windowsVerbatimArguments:true,env});
 const launch=async file=>{const child=spawn(file,['-e','setInterval(()=>{},1000)'],{windowsHide:true,stdio:'ignore'});await once(child,'spawn');return child;};
 let running,unrelated,locker;try{
  await installRun(oldInstaller);assert.ok(await fs.stat(path.join(install,'卸载开黑搭子.exe')));
@@ -39,7 +47,8 @@ let running,unrelated,locker;try{
  await assert.rejects(run(full,['/S','/D='+migration],{windowsVerbatimArguments:true}));
  assert.equal(await fs.readFile(path.join(migration,'resources/app.asar'),'utf8'),'user migration file');assert.equal(running.exitCode,null);
  await fs.writeFile(path.join(install,'added.txt'),'user file at a newly introduced payload path');
- await assert.rejects(installRun(delta));
+ await assert.rejects(installRun(delta,restartEnv));
+ assert.equal(await fs.stat(restartResult).then(()=>true,()=>false),false,'A rejected update must not launch the application');
  assert.equal(await fs.readFile(path.join(install,'added.txt'),'utf8'),'user file at a newly introduced payload path');
  assert.equal(await fs.readFile(path.join(install,'resources/app.asar'),'utf8'),'old application');assert.ok(await fs.stat(path.join(install,'卸载开黑搭子.exe')));
  assert.match(await run('reg.exe',['query','HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\'+registryId,'/v','DisplayVersion']),/98\.0\.0/);
@@ -55,7 +64,14 @@ let running,unrelated,locker;try{
  running=await launch(path.join(install,'开黑搭子.exe'));const upgradedPid=running.pid;
  // Older desktop updaters launch without flags. The patch must find the registered install and finish on its own.
  const patchTimeout=AbortSignal.timeout(60000);
- await run(delta,[],{signal:patchTimeout});await Promise.race([running.exitCode!==null?Promise.resolve():once(running,'exit'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Old process survived upgrade')),5000))]);
+ await run(delta,[],{signal:patchTimeout,env:restartEnv});await Promise.race([running.exitCode!==null?Promise.resolve():once(running,'exit'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Old process survived upgrade')),5000))]);
+ let restarted;
+ for(let n=0;n<50&&!restarted;n++){
+  restarted=await fs.readFile(restartResult,'utf8').then(JSON.parse,error=>{if(error.code!=='ENOENT')throw error;});
+  if(!restarted)await new Promise(resolve=>setTimeout(resolve,100));
+ }
+ assert.equal(restarted?.version,'98.0.1','The patch must start the newly installed version');
+ assert.notEqual(restarted.pid,upgradedPid);
  assert.match(await run('reg.exe',['query','HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\'+registryId,'/v','DisplayVersion']),/98\.0\.1/);
  assert.equal(unrelated.exitCode,null,'An unrelated tools/node.exe must survive');
  assert.ok(!await fs.stat(path.join(install,'retired.txt')).then(()=>true,()=>false));assert.equal(await fs.readFile(userFile,'utf8'),'User-owned file must survive');
@@ -66,7 +82,7 @@ let running,unrelated,locker;try{
  await run(path.join(install,'卸载开黑搭子.exe'),['/S','_?='+install],{windowsVerbatimArguments:true});
  await installRun(legacyOutput);assert.ok(!await fs.stat(path.join(install,INSTALL_MANIFEST)).then(()=>true,()=>false));
  running=await launch(path.join(install,'开黑搭子.exe'));await installRun(full);assert.equal(await fs.readFile(path.join(install,'resources/app.asar'),'utf8'),'new application');
- await installRun(oldInstaller);await installRun(cleanupInstaller);assert.match(await run('reg.exe',['query','HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\'+registryId,'/v','DisplayVersion']),/98\.0\.1/);assert.ok((await fs.readdir(root)).some(name=>name.startsWith('installed app.rollback-')),'Cleanup failure must retain recovery backup');
+ await installRun(oldInstaller);await installRun(cleanupInstaller,restartEnv);assert.match(await run('reg.exe',['query','HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\'+registryId,'/v','DisplayVersion']),/98\.0\.1/);assert.ok((await fs.readdir(root)).some(name=>name.startsWith('installed app.rollback-')),'Cleanup failure must retain recovery backup');
  const report={passed:true,blockDeltaReconstructed:true,cleanupFailureKeptRegistration:true,root,registryId,oldPid,upgradedPid,processStopped:true,invalidStagePreservedOld:true,missingUninstallerPreservedOld:true,migrationCollisionPreserved:true,newFileCollisionRestoredOld:true,lockedFileRollbackRestoredOtherFiles:true,unrelatedProcessPreserved:true,legacyUninstallerCompatible:true,retiredFileRemoved:true,userFilesPreserved:true,preferencesPreserved:true,fullBytes:(await fs.stat(full)).size,incrementalBytes:(await fs.stat(delta)).size,reusedBytes:deltaPayload(old.manifest,next.manifest).reusedBytes+(await binaryPatches(old.directory,next.directory,old.manifest,next.manifest,deltaPayload(old.manifest,next.manifest).changed)).reusedBytes};
  await fs.writeFile(path.join(root,'report.json'),JSON.stringify(report,null,2));await fs.writeFile('.local/latest-installer-upgrade-smoke.json',JSON.stringify({root},null,2));console.log(JSON.stringify(report,null,2));
 }finally{

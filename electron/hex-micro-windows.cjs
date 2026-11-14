@@ -52,7 +52,7 @@ module.exports=function createHexMicroWindows({root,getState,setState,getPayload
   win.setAlwaysOnTop(true,'screen-saver');win.setIgnoreMouseEvents(true,{forward:true});win.webContents.setWindowOpenHandler(()=>({action:'deny'}));
   const url=pathToFileURL(path.join(root,'src/hex-micro.html')).href;win.webContents.on('will-navigate',(event,next)=>{if(next!==url)event.preventDefault();});
   win.once('ready-to-show',()=>{if(e.win!==win||win.isDestroyed())return;e.ready=true;if(!suspended&&active()&&enabled(kind)&&e.payload?.active&&e.requested&&!e.peek.active())win.showInactive();publish();win.webContents.send('hex-micro-measure');});
-  win.on('move',()=>{hideTooltip();if(e.adjusting||resetting||!e.ready)return;const bounds=win.getBounds();if(e.expectedBounds&&['x','y'].every(key=>Math.abs(bounds[key]-e.expectedBounds[key])<=2))return;clearTimeout(e.timer);e.timer=setTimeout(()=>remember(kind),350);});
+  win.on('move',()=>{if(e.adjusting||resetting||!e.ready)return;const bounds=win.getBounds();if(e.expectedBounds&&['x','y'].every(key=>Math.abs(bounds[key]-e.expectedBounds[key])<=2))return;if(tipKind===kind)hideTooltip();clearTimeout(e.timer);e.timer=setTimeout(()=>remember(kind),350);});
   win.on('close',event=>{if(!isQuitting()){event.preventDefault();close(kind);}});
   win.on('closed',()=>{clearTimeout(e.timer);e.timer=null;e.peek.unfold();e.win=null;e.ready=false;e.last='';e.regions=[];hideTooltip();});win.loadFile(path.join(root,'src/hex-micro.html'));
  }
