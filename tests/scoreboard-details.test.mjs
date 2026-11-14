@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import {publicEquipment} from '../src/core/scoreboard.mjs';
 import {sanitizeLive} from '../services/live-client.mjs';
 import {createGuideModel,selectGuide} from '../src/core/guide.mjs';
+import {hexMicroPayload} from '../src/core/hex-micro.mjs';
 import {renderGuide as renderGuideActual} from '../src/guide-view.mjs';
 const renderGuide=(snapshot,...rest)=>renderGuideActual({...snapshot,model:snapshot?.model?{...snapshot.model,compact:false}:snapshot?.model},...rest);
 const data=JSON.parse(fs.readFileSync(new URL('../data/game.json',import.meta.url)));
@@ -37,6 +38,24 @@ test('unread equipment does not erase known current scores or invent a team valu
  const board=publicEquipment(data,{teamKnown:true,gameTime:600,roster:[player({itemsKnown:false,inventory:[{id:'1001',count:1}]}),player({side:'enemy',self:false})]});
  assert.equal(board.ally.players[0].value,null);assert.equal(board.ally.players[0].scores.deaths,2);assert.equal(board.difference,null);
  assert.equal(board.ally.players.length,1);assert.equal(board.enemy.players.length,1,'A mirror matchup has one row on each side');
+});
+
+test('mirrored champions keep separate equipment rows and counts in the compact window',()=>{
+ const roster=['ORDER','CHAOS'].flatMap(team=>['Ashe','Jhin','Ashe','Lux','Sona'].map((hero,index)=>({
+  riotId:`private-${team}-${index}`,rawChampionName:`game_character_displayname_${hero}`,team,
+  items:[{itemID:1001,...(team==='ORDER'&&index===0?{}:{count:team==='ORDER'?index+1:1})}]
+ })));
+ const live=sanitizeLive({riotId:roster[0].riotId},roster,{gameMode:'CLASSIC',mapNumber:11,gameTime:600},data.champions);
+ assert.equal(live.inventoryKnown,false,'Incomplete personal item counts must stay unavailable for shopping');
+ const model=createGuideModel(data,selectGuide(null,{id:'Ashe',role:'bottom',mode:'rift'}),live);
+ const {equipment}=hexMicroPayload({model},'economy');
+ assert.deepEqual(equipment.ally.players.filter(row=>row.id==='Ashe').map(row=>row.value),[300,900]);
+ assert.deepEqual(equipment.enemy.players.filter(row=>row.id==='Ashe').map(row=>row.value),[300,300]);
+ assert.equal(equipment.ally.value,4500);assert.equal(equipment.enemy.value,1500);assert.equal(equipment.difference,3000);
+ const html=hexEconomyView(equipment,(_kind,id)=>`<img alt="${id}">`);
+ assert.equal((html.match(/alt="Ashe"/g)||[]).length,4);
+ assert.match(html,/data-economy-diff="ahead"[^>]*>\+3,000</);
+ assert.doesNotMatch(JSON.stringify(equipment),/private-/);
 });
 
 test('dedicated scoreboard shows current facts with unread markers, and removes stale snapshots',()=>{
