@@ -573,7 +573,7 @@ async function boot(){
  const decorateRoom=snapshot=>{const identity=snapshot?.mode==='idle'?'':snapshot?.room||'';if(identity!==ballotRoom){roomBallot=null;roomPublicShare=null;ballotRoom=identity;}return decorateAutoRoom(snapshot,{auto:!!roomAutoKey&&!!roomAutoPin,pin:roomAutoPin,error:roomAutoError,retryAt:roomAutoFailedUntil||null});};
  // The sandboxed renderer never needs the lobby identifier or the raw identity
  // used as the room nickname: only this process derives the room from them.
- const forRenderer=client=>{if(!client)return client;const {own,party,...rest}=client,{key,...cleanParty}=party||{};return {...rest,...(showGameDisplay(client)?{gameDisplay:'fullscreen'}:{}),...(own?.riotId?{playerName:own.riotId}:{}),...(party?{party:cleanParty}:{})};};
+ const forRenderer=client=>{if(!client)return client;const {own,party,...rest}=client,{key,...cleanParty}=party||{};return {...rest,...(showGameDisplay(client)?{gameDisplay:'fullscreen',...(gameDisplaySaving?{gameDisplayPending:true}:{})}:{}),...(own?.riotId?{playerName:own.riotId}:{}),...(party?{party:cleanParty}:{})};};
  // Closing the auto room always clears the whole auto state, so a later
  // re-enable starts clean instead of inheriting a stale failure or pin. The
  // cancelled key lets an in-flight handshake tell a local close apart from a
@@ -810,14 +810,15 @@ async function boot(){
   const assertWritable=()=>assertGameDisplayWritable(transport);
   assertWritable();gameDisplaySaving=true;
   try{
+   publishWindows('client-update',forRenderer(latestClient));
    const current=await helper.displayContext(transport,true);
    if(!canSetGameDisplay(current.phase)||current.directory!==directory)throw Error('客户端状态或游戏目录已变化，请重试');
    await saveBorderless(directory,{confirm:async()=>{
     if(!canSetGameDisplay((await helper.displayContext(transport,false)).phase))throw Error('游戏已开始，请在下一局开始前切换');
    },beforeWrite:assertWritable});
    gameDisplay={mode:'borderless',transport,directory,at:Date.now()};
-   publishWindows('client-update',forRenderer(latestClient));
-  }catch(error){gameDisplay.at=0;throw error;}finally{gameDisplaySaving=false;}
+  }catch(error){gameDisplay.at=0;throw error;}
+  finally{gameDisplaySaving=false;publishWindows('client-update',forRenderer(latestClient));}
  });
  guard('companion-mode',(value,{surface})=>{if(typeof value!=='boolean')throw Error('窗口模式格式不正确');const operation=companion.setMode(value);return {...companion.layout(surface),opened:value?operation.docked:undefined,reason:operation.reason};},true);
  guard('open-main-page',destination=>{
@@ -1316,7 +1317,7 @@ async function boot(){
  guard('app-update-download',async()=>{
   if(appUpdateFlight||appUpdateAbort||appUpdateInstallFlight)throw Error('软件更新正在处理，请等待本次完成');
   const release=appUpdateStatus.release;
-  if(!['available','paused'].includes(appUpdateStatus.phase)||!release)throw Error('没有可下载的新版本，请先检查更新');
+  if(!['available','paused','error'].includes(appUpdateStatus.phase)||!release||release.manualOnly)throw Error('没有可下载的新版本，请先检查更新');
   appUpdateAbort=new AbortController();
   appUpdateStop=null;
   let fellBack=false;

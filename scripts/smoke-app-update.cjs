@@ -155,8 +155,14 @@ async function run(){
  mode='nocsum';
  await click('[data-action=app-update-download]');
  await until(()=>js('document.querySelector("#app-update-message")?.textContent.includes("缺失")'),'Missing-asset message not shown');
+ assert.match(await js('document.querySelector("#app-update-message").textContent'),/v100\.0\.0 下载失败/);
  await until(async()=>js('!!document.querySelector("[data-action=app-update-check]")')&&!(await js('document.querySelector("[data-action=app-update-check]").disabled')),'Failure not retryable');
  assert.deepEqual((await fs.readdir(path.join(root,'update-tmp'))).filter(n=>n.endsWith('.exe')||n.endsWith('.part')),[]);
+ mode='feed2';
+ await click('[data-action=app-update-download]');
+ await until(()=>js('!!document.querySelector("[data-app-update-phase=ready]")'),'A failed download could not be retried directly');
+ await click('[data-action=app-update-delete]');
+ await until(()=>js('!!document.querySelector("[data-app-update-phase=idle]")'),'Retry fixture did not reset');
  // 阶段 8：发布说明链接越权拒绝（有效链接不断言，避免在 CI 拉起浏览器）
  assert.ok((await js('window.buddy.openLink("https://github.com/other/repo/releases/tag/v1").then(()=> "OPENED").catch(()=> "REJECTED")')).startsWith('REJECTED'));
  assert.ok((await js('window.buddy.openLink("https://github.com/Legender134/rift-buddy/blob/main/README.md").then(()=> "OPENED").catch(()=> "REJECTED")')).startsWith('REJECTED'));

@@ -954,7 +954,7 @@ function render(){
  if(!selectionUiReset)disclosureState.capture(renderedDisclosureScope,app);
  applyPresentation(saved.preferences.presentation);
  const old=document.querySelector('.companion-content');if(old&&!selectionUiReset){
-   companionScroll.set(old.dataset.view,old.scrollTop);
+   companionScroll.set(old.dataset.view,{top:old.scrollTop,inner:captureScroll(old)});
  }
  if(windowLayout.docked||selectionUiReset)renderedItemReference=null;
  selectionUiReset=false;
@@ -1003,7 +1003,7 @@ function render(){
   renderedDisclosureScope='companion:'+disclosureScope;disclosureState.restore(renderedDisclosureScope,app);markNewRoomProposals(previousProposals);
   if(poolSelection){const input=[...app.querySelectorAll('.hex-config-pool-tabs input')].find(node=>node.name===poolSelection.name&&node.value===poolSelection.value);if(input)input.checked=true;}
   if(disclosureFocus.scope===renderedDisclosureScope&&old?.dataset.focusScope===focusScope)disclosureState.restoreFocus(disclosureFocus.key,app);
-  content.scrollTop=companionScroll.get(view)||0;
+  const scroll=companionScroll.get(view);content.scrollTop=scroll?.top||0;restoreScroll(content,scroll?.inner);
   renderedSelectContext=appSelectionContext(prepared);reflectRunePending();
   if(view==='rankings'&&old?.dataset.view===view&&rankingFocus)restoreRankingFocus(rankingFocus);
   if(focus&&(focus.room&&companionTab==='room'||old?.dataset.focusScope===focusScope)){const target=focus.id?document.getElementById(focus.id):[...app.querySelectorAll('button,input,select')].find(control=>control.tagName===focus.tag&&Object.keys(focus.data).length&&Object.entries(focus.data).every(([key,value])=>control.dataset[key]===value));if(target&&!target.disabled&&(!focus.room||!target.readOnly)){if(focus.room){target.value=focus.value;if(['room-nick','room-relay-url'].includes(target.id))target.restoredChangeDraft=true;}target.focus({preventScroll:true});if(focus.room)try{target.setSelectionRange(focus.start,focus.end);}catch{}}}return;
@@ -2034,7 +2034,7 @@ async function performSync(manual=true,fresh=false){
   if(dragPick)pendingDragRender=true;else if(manual||activeAppSelect||windowLayout.docked&&changed||!document.activeElement?.matches('input,select'))render();
   if(buildView&&(renderedBuildContext!==buildSelectionContext(buildView.build)||previousMatchups!==matchupContext()))renderBuild();
  }}
- refreshClientClock();queueCompanionRecommendation();prefetchRankedDraft().catch(()=>{});if(sharedClient?.receivedAt&&sharedClient.receivedAt===client.receivedAt&&sharedClient.gameDisplay===client.gameDisplay)sharedClient=null;if(sharedClient)setTimeout(()=>sync(false),0);
+ refreshClientClock();queueCompanionRecommendation();prefetchRankedDraft().catch(()=>{});if(sharedClient?.receivedAt&&sharedClient.receivedAt===client.receivedAt&&sharedClient.gameDisplay===client.gameDisplay&&sharedClient.gameDisplayPending===client.gameDisplayPending)sharedClient=null;if(sharedClient)setTimeout(()=>sync(false),0);
 }
 function reflectRunePending(){
  reflectItemSetPending();
@@ -2231,8 +2231,8 @@ document.addEventListener('click',async event=>{
   if(!api.gameDisplay)return;
   const borderless=action==='game-display-borderless',controls=[...el.closest('.game-display-notice').querySelectorAll('button')];
   for(const button of controls)button.disabled=true;
-  try{await api.gameDisplay(borderless?'borderless':'dismiss');delete client.gameDisplay;render();if(borderless)toast('已保存无边框，进局时生效');}
-  finally{for(const button of controls)button.disabled=false;}
+  try{await api.gameDisplay(borderless?'borderless':'dismiss');if(borderless)toast('已保存无边框，进局时生效');}
+  finally{for(const button of controls)if(button.isConnected)button.disabled=client.gameDisplayPending===true;}
   return;
  }
  if(action==='theme-open'){closeOverlay();updateThemeDialog(overlay,saved.preferences.presentation);return;}
@@ -2716,7 +2716,7 @@ try{api.onHexRound?.(acceptHexRound);stopDataUpdates=api.onData?.(acceptSharedDa
   await restorePreparationSnapshot(boot.preparationSnapshot);render();api.onChampionUsage?.(acceptChampionUsage);api.championUsage?.().then(acceptChampionUsage).catch(()=>{});api.onClient?.(value=>{
    acceptOngoingClient(value);
   if(value?.connecting&&syncing){client={...client,...value};render();return;}
-  if(value?.connected===false&&!value.connecting||value?.receivedAt&&(value.receivedAt!==client.receivedAt||value.gameDisplay!==client.gameDisplay))sharedClient=value;
+  if(value?.connected===false&&!value.connecting||value?.receivedAt&&(value.receivedAt!==client.receivedAt||value.gameDisplay!==client.gameDisplay||value.gameDisplayPending!==client.gameDisplayPending))sharedClient=value;
   if(!syncing&&(saved.preferences.autoSync!==false||sharedClient))sync(false);
  });const ready=await api.ready?.();await restorePreparationSnapshot(ready?.preparationSnapshot);if(ready?.state&&ready.revision>Math.max(stateRevision,externalState?.revision||0)){externalState=ready;drainExternalState();}queueCompanionRecommendation();if(saved.preferences.autoSync!==false)sync(false,{fresh:true});else if(client.receivedAt){sharedClient=client;sync(false);}
  

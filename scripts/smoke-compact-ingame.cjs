@@ -121,10 +121,10 @@ async function run(){
  assert.equal(await j(side,'document.querySelector("[data-stage=\\"2\\"]").querySelectorAll("img").length'),0);
  side.webContents.setZoomFactor(1);mode='rift';ownHero='LeeSin';gameId++;phase='InProgress';await j(main,'window.buddy.client(true)');await j(main,'window.buddy.openGuide({id:"LeeSin",role:"jungle",mode:"rift"})');
  const gear=await until(()=>windows.find(w=>!w.isDestroyed()&&w.webContents.getURL().endsWith('/src/guide.html')),'Rift card missing');await until(()=>j(gear,'!!document.querySelector(".compact-guide-main")'),'Compact not rendered');
- let allowLive=false,heldLive=[],enemyItem=2003;
+ let allowLive=false,heldLive=[],allyItem=1001,enemyItem=2003;
  https.get=(options,callback)=>{
   assert.equal(options.hostname,'127.0.0.1');assert.equal(options.port,2999);
-  const own={riotId:'isolated-live-player',rawChampionName:'game_character_displayname_LeeSin',team:'ORDER',position:'JUNGLE',items:[{itemID:1001,count:1}]};
+  const own={riotId:'isolated-live-player',rawChampionName:'game_character_displayname_LeeSin',team:'ORDER',position:'JUNGLE',items:[{itemID:allyItem,count:1}]};
   const team=(ids,team,itemID)=>ids.map(id=>({rawChampionName:'game_character_displayname_'+id,team,items:[{itemID,count:1}]}));
   const players=[own,...team(['Ahri','Ashe','Lux','Sona'],'ORDER',1001),...team(['Garen','Jhin','Annie','Nami','Warwick'],'CHAOS',enemyItem)];
   const values={'/liveclientdata/activeplayer':{riotId:own.riotId,currentGold:425,level:1},'/liveclientdata/playerlist':players,'/liveclientdata/gamestats':{gameMode:'CLASSIC',mapNumber:11,gameTime:25},'/liveclientdata/eventdata':{Events:[]}};
@@ -144,11 +144,36 @@ async function run(){
  await until(async()=>(await totals())?.diff==='+1,250','Complete public equipment did not show a team lead');
  await capture('economy-team-lead.png',economy);
  assert.deepEqual(await totals(),{ally:'我 1,500',enemy:'敌 250',diff:'+1,250',color:'rgb(124, 230, 163)',fits:true});
- await j(main,'window.buddy.openGuide()');
- await until(()=>j(economy,'window.hexMicro.bootstrap().then(({context,view})=>window.hexMicro.control("line",{context,view}))'),'Economy line control did not accept the current view');
- await until(()=>j(economy,'document.documentElement.dataset.layout==="line"'),'Economy did not switch to compact layout');
+ const economyIcon=await j(economy,'(()=>{const r=document.querySelector(".hex-economy-icons.ally img").getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()'),economyBounds=economy.getBounds();
+ cursor={x:Math.round(economyBounds.x+economyIcon.x),y:Math.round(economyBounds.y+economyIcon.y)};
+ const economyTip=await until(()=>windows.find(w=>!w.isDestroyed()&&w.isVisible()&&w.webContents.getURL().startsWith('data:text/html;charset=utf-8,')),'Economy hover did not open');
+ const economyTipText=()=>j(economyTip,'document.querySelector("p").textContent');
+ assert.match(await economyTipText(),/300 金/);
+ let hoverInterruptions=0;const recordHide=()=>hoverInterruptions++;economyTip.on('hide',recordHide);
  enemyItem=1036;
  await j(main,'window.buddy.openGuide()');
+ await until(async()=>(await totals())?.diff==='-250','Enemy purchases did not update while hovering an ally');
+ assert.equal(hoverInterruptions,0,'Enemy purchases closed an unrelated ally tooltip');
+ assert.equal(economyTip.isVisible(),true);assert.match(await economyTipText(),/300 金/);
+ economyTip.removeListener('hide',recordHide);
+ allyItem=1036;
+ await j(main,'window.buddy.openGuide()');
+ await until(async()=>economyTip.isVisible()&&(await economyTipText()).includes('350 金'),'A hovered player’s own purchase left an old value in the tooltip');
+ cursor={x:-1000,y:-1000};await until(()=>!economyTip.isVisible(),'Economy tooltip did not close on pointer exit');
+ allyItem=1001;enemyItem=2003;
+ await j(main,'window.buddy.openGuide()');
+ await until(async()=>(await totals())?.diff==='+1,250','Economy did not return to the starting inventory');
+ const lineControl=await j(economy,'(()=>{const r=document.querySelector("[data-action=line]").getBoundingClientRect();return {x:Math.round(r.x+r.width/2),y:Math.round(r.y+r.height/2)};})()');
+ const lineBounds=economy.getBounds(),mouse=type=>economy.webContents.sendInputEvent({type,...lineControl,button:'left',clickCount:1});
+ cursor={x:lineBounds.x+lineControl.x,y:lineBounds.y+lineControl.y};
+ await until(()=>economy.__ignoring===false,'Economy line control does not receive clicks');
+ mouse('mouseMove');mouse('mouseDown');
+ try{
+  enemyItem=1036;
+  await j(main,'window.buddy.openGuide()');
+  await until(()=>j(economy,'window.hexMicro.bootstrap().then(p=>p.equipment.difference===-250)'),'Inventory did not change during the click');
+ }finally{mouse('mouseUp');cursor={x:-1000,y:-1000};}
+ await until(()=>j(economy,'document.documentElement.dataset.layout==="line"'),'Economy did not switch to compact layout');
  await until(async()=>(await totals())?.diff==='-250','Live enemy equipment did not update the team difference');
  assert.deepEqual(await totals(),{ally:'我 1,500',enemy:'敌 1,750',diff:'-250',color:'rgb(255, 148, 151)',fits:true});
  await capture('economy-team-trail.png',economy);
