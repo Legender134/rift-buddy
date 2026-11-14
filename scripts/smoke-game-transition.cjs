@@ -9,7 +9,7 @@ async function evaluate(window,code,label){
 async function run(){
  app.setPath('userData',root);
  const source=process.env.RIFT_BUDDY_SOURCE==='1',release=JSON.parse(await fs.readFile('release/latest.json','utf8')),base=source?path.resolve('.'):path.join(release.directory,'resources/app.asar'),data=JSON.parse(await fs.readFile(path.join(base,'data/game.json')));
- let phase='ChampSelect',gameId='101',hero='Ashe',role='BOTTOM',mode='rift',omitOwnPick=false,liveAvailable=false,liveRequests=0,holdLive=false,releaseLive=null,observer,practice=false;
+ let phase='ChampSelect',displayPhase=null,gameId='101',hero='Ashe',role='BOTTOM',mode='rift',omitOwnPick=false,liveAvailable=false,liveRequests=0,holdLive=false,releaseLive=null,observer,practice=false;
  const mapId=()=>mode==='hex'?12:11,gameMode=()=>mode==='hex'?'KIWI':practice?'PRACTICETOOL':'CLASSIC';
  if(!source){
   const spawn=cp.spawn;
@@ -31,7 +31,10 @@ async function run(){
   }
   assert.equal(options.port,23456);assert.equal(options.method||'GET','GET','A real rune write must never occur in this test');
   if(p==='/lol-summoner/v1/current-summoner')return {value:{gameName:'隔离阶段玩家',tagLine:'TEST'}};
-  if(p==='/lol-gameflow/v1/gameflow-phase')return {value:phase};
+  if(p==='/lol-gameflow/v1/gameflow-phase'){
+   if(displayPhase!==null){const value=displayPhase;displayPhase=null;return {value};}
+   return {value:phase};
+  }
   if(p==='/data-store/v1/install-dir')return {value:path.join(root,'client-fixture')};
   if(p==='/lol-gameflow/v1/session')return gameId?{value:{gameData:{gameId,mapId:mapId(),queue:{id:mode==='hex'?2400:430,gameMode:gameMode()}}}}:{status:404,value:{}};
   if(p==='/lol-lobby/v2/lobby')return {status:404,value:{}};
@@ -75,10 +78,14 @@ async function run(){
   const sidebar=code=>evaluate(side,code,'Sidebar');
   await until(()=>sidebar(`!!document.querySelector('${action}')`),'Fullscreen switch missing from the selection sidebar');
   assert.equal(await fs.readFile(fixture,'utf8'),original,'Displaying the action must not edit the game');
-  phase='GameStart';
-  await assert.rejects(js('window.buddy.gameDisplay("borderless")'),/游戏目录已变化|下一局|进局前/);
+  // Exercise the fresh-write guard without sending the background client poll
+  // a real transition and destroying the sidebar needed by the next scenario.
+  assert.equal((await status()).phase,'ChampSelect');
+  displayPhase='GameStart';
+  await assert.rejects(js('window.buddy.gameDisplay("borderless")'),/客户端状态或游戏目录已变化/);
+  assert.equal(displayPhase,null,'The display guard must perform a fresh phase read');
   assert.equal(await fs.readFile(fixture,'utf8'),original);
-  phase='ChampSelect';
+  assert.equal(side.isDestroyed(),false,'The guard fixture unexpectedly advanced the sidebar lifecycle');
   observePregame();
   console.log('TRANSITION DISPLAY delayed write');
   let releaseDisplay;
