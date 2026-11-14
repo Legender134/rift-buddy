@@ -1,6 +1,11 @@
 const {app,screen}=require('electron'),fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict'),https=require('node:https'),cp=require('node:child_process'),{EventEmitter}=require('node:events');
 const root=path.resolve(process.env.RIFT_BUDDY_USER_DATA),windows=[],delay=ms=>new Promise(r=>setTimeout(r,ms));app.on('browser-window-created',(_e,w)=>{windows.push(w);w.webContents.setBackgroundThrottling(false);});
 async function until(check,label){for(let n=0;n<100;n++){const v=await check();if(v)return v;await delay(80);}throw Error(label);}
+async function evaluate(window,code,label){
+ let timer;
+ try{return await Promise.race([window.webContents.executeJavaScript(code,true),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error(`${label} renderer did not finish: ${code}`)),8000);})]);}
+ finally{clearTimeout(timer);}
+}
 async function run(){
  app.setPath('userData',root);
  const source=process.env.RIFT_BUDDY_SOURCE==='1',release=JSON.parse(await fs.readFile('release/latest.json','utf8')),base=source?path.resolve('.'):path.join(release.directory,'resources/app.asar'),data=JSON.parse(await fs.readFile(path.join(base,'data/game.json')));
@@ -46,11 +51,11 @@ async function run(){
  const js=async code=>{
   if(main.isDestroyed()){
    const activeGuide=windows.find(w=>!w.isDestroyed()&&w.webContents.getURL().endsWith('/src/guide.html'));assert.ok(activeGuide,'A released main window must remain reopenable from the guide');
-   await activeGuide.webContents.executeJavaScript('window.guide.control("main")',true);
+   await evaluate(activeGuide,'window.guide.control("main")','Guide');
    main=await until(()=>windows.find(w=>!w.isDestroyed()&&w.webContents.getURL().endsWith('/src/index.html')),'Reopened main missing');
-   await until(()=>main.webContents.executeJavaScript('!!window.buddy&&!!document.querySelector("[data-action=navigate]")',true),'Reopened main not ready');
+   await until(()=>evaluate(main,'!!window.buddy&&!!document.querySelector("[data-action=navigate]")','Main'),'Reopened main not ready');
   }
-  return Promise.race([main.webContents.executeJavaScript(code,true),delay(8000).then(()=>{throw Error('Main renderer did not finish: '+code);})]);
+  return evaluate(main,code,'Main');
  };
  await until(()=>js('!!document.querySelector("[data-action=guide-current]")'),'UI missing');const status=async()=>{console.log('TRANSITION STATUS '+phase+' '+gameId+' '+hero);const result=await js('window.buddy.client(true)');console.log('TRANSITION OBSERVED '+phase+' '+gameId);return result;},state=()=>js('window.buddy.bootstrap().then(b=>b.state)');
  const riftGuideWindow=()=>windows.find(w=>!w.isDestroyed()&&w.webContents.getURL().endsWith('/src/guide.html'));
@@ -58,21 +63,24 @@ async function run(){
   const fixture=path.join(root,'client-fixture','Config','game.cfg'),original=await fs.readFile(fixture,'utf8');
   await until(()=>observer,'Native observer did not start');
   const clientBounds={...screen.dipToScreenRect(null,screen.getPrimaryDisplay().workArea),foreground:false,minimized:false};
-  observer.stdout.emit('data',JSON.stringify({client:clientBounds,game:null,gameProcessPresent:false})+'\n');
+  const observePregame=()=>observer.stdout.emit('data',JSON.stringify({client:clientBounds,game:null,gameProcessPresent:false})+'\n');
+  observePregame();
   await js('document.querySelector("[data-action=navigate][data-route=settings]").click()');
   // In this fixture automatic sync is off; drive the real client read and
   // render path with the existing manual connection control.
   await js('document.querySelector("[data-client-connect]").click()');
   const action='[data-action=game-display-borderless]';
   await until(()=>js(`!!document.querySelector('${action}')`),'Fullscreen switch did not appear automatically');
-  const side=await until(()=>windows.find(w=>!w.isDestroyed()&&w.webContents.getURL().includes('surface=companion')),'Selecting sidebar did not open');
-  const sidebar=code=>side.webContents.executeJavaScript(code,true);
+  const side=await until(()=>windows.find(w=>!w.isDestroyed()&&w.isVisible()&&w.webContents.getURL().includes('surface=companion')),'Selecting sidebar did not open');
+  const sidebar=code=>evaluate(side,code,'Sidebar');
   await until(()=>sidebar(`!!document.querySelector('${action}')`),'Fullscreen switch missing from the selection sidebar');
   assert.equal(await fs.readFile(fixture,'utf8'),original,'Displaying the action must not edit the game');
   phase='GameStart';
   await assert.rejects(js('window.buddy.gameDisplay("borderless")'),/游戏目录已变化|下一局|进局前/);
   assert.equal(await fs.readFile(fixture,'utf8'),original);
   phase='ChampSelect';
+  observePregame();
+  console.log('TRANSITION DISPLAY delayed write');
   let releaseDisplay;
   const rename=fs.rename;
   fs.rename=async(from,to)=>{
@@ -86,7 +94,7 @@ async function run(){
    await sidebar(`document.querySelector('${action}').click()`);
    await until(()=>releaseDisplay,'One-click switch did not reach the delayed save');
    await until(()=>js(`document.querySelector('${action}')?.disabled`),'Main window still offers switching during the sidebar request');
-   await sidebar(`window.pressedDisplayButton=document.querySelector('${action}')`);
+   await sidebar(`void (window.pressedDisplayButton=document.querySelector('${action}'))`);
    const client=await status();assert.equal(client.gameDisplayPending,true);
    side.webContents.send('client-update',{...client,message:'隔离选人刷新',receivedAt:new Date().toISOString()});
    await until(()=>sidebar('!window.pressedDisplayButton.isConnected'),'Sidebar did not repaint for the client refresh');
@@ -98,6 +106,7 @@ async function run(){
   await until(()=>js(`document.querySelector('${action}')?.disabled===false`),'Main window did not recover its switch after failure');
   await until(()=>sidebar(`document.querySelector('${action}')?.disabled===false`),'Sidebar did not recover its switch after failure');
   assert.equal(await fs.readFile(fixture,'utf8'),original);
+  console.log('TRANSITION DISPLAY trusted click');
   side.focus();
   const point=await sidebar(`(()=>{
    const el=document.querySelector('${action}'),r=el.getBoundingClientRect();
@@ -116,7 +125,7 @@ async function run(){
    side.webContents.send('client-update',{...opened,message:'隔离按住按钮刷新',receivedAt:new Date().toISOString()});
    await delay(200);
    assert.equal(await sidebar('window.pressedDisplayButton.isConnected'),true,'Client refresh removed the button under the pointer '+JSON.stringify(await sidebar('window.pressTrace')));
-  }finally{mouse('mouseUp');}
+  }finally{observePregame();mouse('mouseUp');}
   await until(async()=>await fs.readFile(fixture,'utf8')===original.replace('WindowMode=0','WindowMode=2'),'Borderless click did not update the fixture');
   await until(()=>js(`!document.querySelector('${action}')`),'Successful choice did not dismiss the notice');
   await until(()=>sidebar(`!document.querySelector('${action}')`),'Sidebar still offers switching after success');
