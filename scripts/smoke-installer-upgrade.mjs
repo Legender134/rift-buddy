@@ -53,7 +53,10 @@ let running,unrelated,locker;try{
  locker.kill();await once(locker,'exit');locker=null;
  await fs.mkdir(path.join(install,'tools'),{recursive:true});await fs.copyFile(process.execPath,path.join(install,'tools/node.exe'));unrelated=await launch(path.join(install,'tools/node.exe'));
  running=await launch(path.join(install,'开黑搭子.exe'));const upgradedPid=running.pid;
- await installRun(delta);await Promise.race([running.exitCode!==null?Promise.resolve():once(running,'exit'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Old process survived upgrade')),5000))]);
+ // Older desktop updaters launch without flags. The patch must find the registered install and finish on its own.
+ const patchTimeout=AbortSignal.timeout(60000);
+ await run(delta,[],{signal:patchTimeout});await Promise.race([running.exitCode!==null?Promise.resolve():once(running,'exit'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Old process survived upgrade')),5000))]);
+ assert.match(await run('reg.exe',['query','HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\'+registryId,'/v','DisplayVersion']),/98\.0\.1/);
  assert.equal(unrelated.exitCode,null,'An unrelated tools/node.exe must survive');
  assert.ok(!await fs.stat(path.join(install,'retired.txt')).then(()=>true,()=>false));assert.equal(await fs.readFile(userFile,'utf8'),'User-owned file must survive');
  for(const row of next.manifest.files){const bytes=await fs.readFile(path.join(install,row.name));assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),row.sha256);}

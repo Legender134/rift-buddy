@@ -302,7 +302,10 @@ export function createAppUpdateService({currentVersion,installDir='',tempDir=os.
   if(hash.digest('hex')!==record.sha256){await cleanup({partials:false});throw Error('安装包完整性复验不一致，已删除；请重新下载');}
   if(dryRun){const witness={file:record.file,sha256:record.sha256,bytes:record.bytes,at:new Date().toISOString()};await atomicJSON(storeFile+'.dry-run.json',witness);return {launched:false,dryRun:true,...witness};}
   return new Promise((resolve,reject)=>{
-   const child=spawnImpl(record.file,{detached:true,stdio:'ignore'});
+   const options={detached:true,stdio:'ignore'};
+   const child=record.kind==='incremental'
+    ?spawnImpl(record.file,['/S'],{...options,windowsHide:true})
+    :spawnImpl(record.file,options);
    child.once('error',reject);
    child.once('spawn',()=>{child.unref?.();resolve({launched:true,file:record.file});});
   });

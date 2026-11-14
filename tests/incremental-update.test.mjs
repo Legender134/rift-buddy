@@ -5,7 +5,7 @@ import path from 'node:path';
 import os from 'node:os';
 import crypto from 'node:crypto';
 import http from 'node:http';
-import {once} from 'node:events';
+import {EventEmitter,once} from 'node:events';
 import {payloadManifest,deltaPayload,installManifestText,INSTALL_MANIFEST,validateInstallManifest,appendDeltaPackage} from '../scripts/installer-payload.mjs';
 import {installedPayload} from '../services/incremental-update.mjs';
 import {createAppUpdateService} from '../services/app-update.mjs';
@@ -43,6 +43,20 @@ test('incremental download uses validated installed bytes and never downloads th
 test('a release without delta metadata uses the independently verified full installer',async t=>{
  const f=await fixture(t);f.routes.delete(deltaManifestName(release.version));
  const record=await f.service.download(release);assert.equal(record.kind,'full');assert.deepEqual(await fs.readFile(record.file),f.fullBytes);
+});
+test('a verified incremental update launches silently and the full installer keeps its wizard',async t=>{
+ for(const kind of ['incremental','full']){
+  const f=await fixture(t),calls=[];
+  if(kind==='full')f.routes.delete(deltaManifestName(release.version));
+  const service=createAppUpdateService({...f.options,dryRun:false,spawnImpl:(...args)=>{
+   calls.push(args);const child=new EventEmitter();queueMicrotask(()=>child.emit('spawn'));return child;
+  }});
+  const record=await service.download(release);
+  assert.equal(record.kind,kind);
+  assert.deepEqual(await service.install(),{launched:true,file:record.file});
+  const options={detached:true,stdio:'ignore'};
+  assert.deepEqual(calls,kind==='incremental'?[[record.file,['/S'],{...options,windowsHide:true}]]:[[record.file,options]]);
+ }
 });
 test('a corrupt delta fails without silently downloading the full installer',async t=>{
  const f=await fixture(t);f.routes.set(f.name,Buffer.from('tampered update'));
