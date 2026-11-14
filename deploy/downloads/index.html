@@ -2,163 +2,293 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#08151e">
-<meta name="description" content="开黑搭子是英雄联盟国服助手。自动跟随选人，按英雄与分路准备配置，进局用小窗看出装和海克斯。Windows x64 免费下载。">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080e18">
+<meta name="description" content="开黑搭子是英雄联盟国服助手。阵容跟着选人走，点头像备配置，进局抬眼看出装和强化。">
 <meta property="og:title" content="开黑搭子 · 少翻攻略，专注游戏">
-<meta property="og:description" content="选人有阵容，点头像备配置，进局抬眼就能看。">
-<meta property="og:image" content="https://room.riftbuddy.dpdns.org/downloads/v1.0.0/images/draft.webp">
-<title>开黑搭子 · Rift Buddy</title>
+<meta property="og:description" content="英雄联盟国服助手 · 1.0 正式版">
+<meta property="og:image" content="https://room.riftbuddy.dpdns.org/downloads/media/ashe.webp">
+<link rel="canonical" href="https://room.riftbuddy.dpdns.org/downloads/">
 <link rel="icon" href="v1.0.0/images/icon.png" type="image/png">
+<title>开黑搭子 · Rift Buddy</title>
 <style>
 :root {
   color-scheme: dark;
-  --bg: #08151e;
-  --surface: #0e202c;
-  --line: #304452;
-  --ink: #f6efde;
-  --muted: #b1c3cc;
-  --gold: #e4c88e;
-  font: 16px/1.7 "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+  --base: #080e18; --surface: #101c2b; --ink: #f5efdf; --muted: #aebfce;
+  --gold: #e8cd94; --blue: #8ccee6; --line: #2f4051;
+  --gutter: clamp(20px, 5vw, 96px);
+  font: 16px/1.65 "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); }
-a { color: var(--gold); text-underline-offset: .23em; }
-a:focus-visible, summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { margin: 0; background: var(--base); color: var(--ink); }
+a { color: inherit; text-underline-offset: .23em; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
 img { display: block; max-width: 100%; height: auto; }
 h1, h2, p, figure { margin: 0; }
-.shell { width: min(1240px, calc(100% - 80px)); margin-inline: auto; }
-.header { border-bottom: 1px solid var(--line); }
-.navigation { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.brand { display: flex; align-items: center; gap: 12px; color: var(--ink); font-weight: 700; text-decoration: none; }
-.brand img { width: 33px; }
-.brand span { line-height: 1.25; }
-.brand small { display: block; font-size: .65rem; letter-spacing: .16em; color: var(--muted); }
-.github { font-size: .9rem; color: var(--muted); }
+.wrap { width: min(1640px, calc(100% - var(--gutter) * 2)); margin-inline: auto; }
+.nav {
+  position: sticky; top: 0; z-index: 3; background: #080e18f5;
+  border-bottom: 1px solid #a7c7ee24;
+}
+.nav-inner { min-height: 65px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 750; text-decoration: none; }
+.brand img { width: 32px; }
+.brand span { display: grid; gap: 3px; line-height: 1; }
+.brand small { font: 650 .63rem/1 "Geist", "Segoe UI", sans-serif; letter-spacing: .18em; color: var(--muted); }
+.nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 43px); font-size: .88rem; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:last-child { color: var(--gold); }
+.nav-links a:hover, footer a:hover { color: var(--ink); }
 .hero {
-  overflow: hidden;
-  background: radial-gradient(ellipse at 80% 12%, #193846 0%, transparent 62%), linear-gradient(180deg, #0b1924, var(--bg));
+  position: relative; isolation: isolate; min-height: min(740px, calc(100svh - 65px));
+  display: grid; align-items: center; overflow: hidden; border-bottom: 1px solid #516d8961;
+  background: #0b1422;
 }
-.hero-inner {
-  display: grid;
-  grid-template-columns: minmax(285px, .75fr) minmax(0, 1.35fr);
-  align-items: center;
-  gap: clamp(24px, 4vw, 62px);
-  padding: clamp(53px, 7vw, 106px) 0;
+.hero-art, .hero::after { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.hero-art { object-fit: cover; object-position: center 42%; }
+.hero::after {
+  content: ""; background:
+    linear-gradient(90deg,#080e18 0%, #080e18f2 15%, #080e18d9 31%, #080e1852 58%, #080e1805 88%),
+    linear-gradient(0deg,#080e18 0%, transparent 23%, transparent 82%, #080e1880 100%);
 }
-.version { margin-bottom: 18px; color: var(--gold); font-size: .83rem; font-weight: 700; }
-h1 { font-size: clamp(42px, 5vw, 72px); line-height: 1.13; letter-spacing: -.055em; }
-h1 span { display: block; }
-.lead { margin-top: 23px; max-width: 29em; color: var(--muted); }
-.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 21px; margin-top: 28px; }
-.download {
-  display: inline-flex; min-height: 48px; align-items: center; padding: 9px 19px; gap: 10px;
-  color: #111d23; background: var(--gold); border: 1px solid var(--gold); border-radius: 6px;
-  font-weight: 750; text-decoration: none;
+.hero-inner { padding-block: clamp(62px, 9vw, 120px); }
+.version {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--gold); font-size: .85rem; font-weight: 700;
 }
-.download:hover { background: #f3dda9; }
-.download span { white-space: nowrap; }
-.mirror { font-size: .87rem; }
-.platform { margin-top: 12px; color: var(--muted); font-size: .81rem; }
-.product { display: block; border: 1px solid #526375; border-radius: 9px; overflow: hidden; box-shadow: 0 28px 65px #0008; background: var(--bg); }
-.section { padding-block: clamp(36px, 6vw, 78px); border-top: 1px solid var(--line); }
-h2 { line-height: 1.23; font-size: clamp(27px, 4vw, 46px); letter-spacing: -.04em; }
-.stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 28px 0 0; padding: 0; list-style: none; }
-.stages li { border-top: 1px solid #577082; padding-top: 14px; }
-.stages h3 { margin: 0 0 7px; font-size: 1.07rem; }
-.stages p, .section > p, .details p { color: var(--muted); }
-.mode { display: grid; align-items: center; grid-template-columns: .85fr 1fr; gap: clamp(25px, 5vw, 65px); }
-.mode p, .section > p { margin-top: 14px; }
-.overlays { display: grid; grid-template-columns: .6fr 1fr; gap: 15px; align-items: start; }
-.overlays img { width: 100%; border: 1px solid #536675; border-radius: 6px; }
-.overlays figcaption { color: var(--muted); font-size: .8rem; margin-top: 8px; }
-.details { border-bottom: 1px solid var(--line); margin-top: 24px; }
-summary { cursor: pointer; padding-block: 11px; color: var(--ink); }
-.details p { padding-bottom: 14px; }
-footer { border-top: 1px solid var(--line); padding: 24px 0 35px; color: var(--muted); font-size: .8rem; }
-.footer-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 7px; }
-@media (max-width: 880px) {
-  .shell { width: calc(100% - 42px); }
-  .hero-inner, .mode { grid-template-columns: 1fr; }
-  h1 span { display: inline; }
-  .hero-inner { gap: 30px; }
+.version::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+h1 { margin: 14px 0 7px; font-size: clamp(62px, 7.3vw, 116px); font-weight: 800; line-height: 1.06; letter-spacing: -.065em; }
+.promise { color: #e0f6ff; font-size: clamp(22px, 2.4vw, 36px); font-weight: 650; line-height: 1.3; }
+.hero-copy { max-width: 29em; margin-top: 14px; color: #c0cfdb; font-size: clamp(.93rem, 1.3vw, 1.08rem); }
+.actions { display: flex; flex-wrap: wrap; gap: 11px 20px; align-items: center; margin-top: 25px; }
+.cta {
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-height: 48px;
+  gap: 15px; padding: 10px 19px; border: 1px solid var(--gold); border-radius: 4px; font-weight: 750;
+  background: var(--gold); color: #151c22; transition: background .18s, transform .18s;
 }
-@media (max-width: 560px) {
-  .shell { width: calc(100% - 32px); }
-  .navigation { min-height: 62px; }
-  h1 span { display: block; }
-  .stages { grid-template-columns: 1fr; gap: 16px; }
-  .hero-inner { padding-block: 38px; }
+.cta:hover { background: #f6dfad; transform: translateY(-2px); }
+.text-link { color: var(--blue); font-size: .89rem; }
+.platform { color: var(--muted); margin-top: 11px; font-size: .78rem; }
+.section { padding-block: clamp(44px, 6.3vw, 92px); }
+.heading { max-width: 710px; }
+h2 { font-size: clamp(30px, 4vw, 57px); line-height: 1.18; font-weight: 770; letter-spacing: -.045em; }
+.heading p, .hex-copy > p, .download-copy { color: var(--muted); margin-top: 11px; }
+.demo {
+  margin: clamp(24px, 3vw, 43px) 0 0; display: grid; grid-template-columns: repeat(3,1fr);
+  position: relative; padding: 0; border: 1px solid var(--line); min-inline-size: 0;
+  background: var(--surface);
+}
+.sr-only, .demo input {
+  position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip-path: inset(50%);
+}
+.demo label {
+  cursor: pointer; min-height: 48px; padding: 12px; border-bottom: 1px solid var(--line);
+  text-align: center; color: var(--muted); font-weight: 650; transition: color .18s, background .18s;
+}
+.demo label + label { border-left: 1px solid var(--line); }
+.demo label:hover { background: #ffffff0a; color: var(--ink); }
+#demo-draft:checked ~ label[for="demo-draft"],
+#demo-build:checked ~ label[for="demo-build"],
+#demo-game:checked ~ label[for="demo-game"] {
+  color: var(--ink); background: #1a2b3c; box-shadow: inset 0 -2px var(--gold);
+}
+#demo-draft:focus-visible ~ label[for="demo-draft"],
+#demo-build:focus-visible ~ label[for="demo-build"],
+#demo-game:focus-visible ~ label[for="demo-game"] { outline: 2px solid var(--gold); outline-offset: -4px; }
+.demo-panel { display: none; grid-column: 1 / -1; align-items: center; gap: clamp(16px,3vw,45px); min-width: 0; padding: clamp(16px,3vw,43px); }
+#demo-draft:checked ~ #panel-draft, #demo-build:checked ~ #panel-build, #demo-game:checked ~ #panel-game {
+  display: grid; grid-template-columns: minmax(195px,.56fr) minmax(0,1.44fr);
+}
+.feature h3 { margin: 0 0 9px; font-size: clamp(20px,2.5vw,35px); line-height: 1.2; }
+.feature p { color: var(--muted); max-width: 24em; }
+.preview {
+  position: relative; display: grid; place-items: center; min-width: 0; min-height: 380px; padding: 17px;
+  background: radial-gradient(ellipse at 55% 30%, #243f56, #091320 76%);
+}
+.preview a { display: block; max-width: 100%; }
+.screen { border: 1px solid #7499b16b; border-radius: 6px; box-shadow: 0 18px 38px #0008; }
+.draft { width: min(100%, 735px); }
+.configuration { width: min(100%, 304px); }
+.game-preview {
+  display: flex; flex-wrap: wrap; align-content: center; align-items: start; justify-content: center;
+  gap: clamp(18px,4vw,55px); background: radial-gradient(ellipse at 48% 26%, #254c48, #0b161e 73%);
+}
+.game-preview figure { max-width: 100%; }
+.game-preview figcaption { margin-top: 9px; color: var(--muted); font-size: .8rem; }
+.game-economy { width: min(100%, 210px); }
+.game-gear { width: min(100%, 370px); }
+.hex {
+  position: relative; isolation: isolate; border-block: 1px solid #4e496b;
+  background: #141323; overflow: hidden;
+}
+.hex::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg,#111220f5,#151529e8 40%,#19173336 100%), url("media/ahri.webp") center 44% / cover;
+}
+.hex-inner { display: grid; grid-template-columns: minmax(215px,.66fr) minmax(0,1.34fr); gap: clamp(26px,4vw,73px); align-items: center; }
+.hex-copy > p { max-width: 26em; }
+.hex-copy dl { margin: 23px 0 0; }
+.hex-copy dl div { border-top: 1px solid #b4b0db38; padding-block: 10px; }
+.hex-copy dt { font-weight: 740; }
+.hex-copy dd { margin: 2px 0 0; color: #bcc4d7; font-size: .9rem; }
+.hex-media { display: grid; grid-template-columns: 1.07fr .93fr; align-items: center; gap: clamp(10px, 2vw, 24px); }
+.hex-media a { display: block; }
+.hex-media figcaption { margin-top: 8px; color: #d5def0; font-size: .8rem; }
+.install { border-bottom: 1px solid var(--line); background: radial-gradient(ellipse at 12% 4%, #172638, var(--base) 62%); }
+.install-inner { display: grid; grid-template-columns: minmax(256px,1fr) minmax(0,1fr); gap: clamp(24px,6vw,94px); }
+.install-list { min-width: 0; }
+.install-list a, footer a { color: var(--blue); }
+.install-list details { border-top: 1px solid var(--line); }
+.install-list details:last-child { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; padding: 12px 2px; color: var(--ink); font-weight: 650; }
+.install-list p { margin: 0 0 11px 18px; color: var(--muted); font-size: .89rem; }
+.install-list p:last-child { margin-bottom: 15px; }
+footer { padding-block: 25px 37px; color: var(--muted); font-size: .78rem; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 8px; }
+@media (min-width: 1800px) {
+  .hero-art {
+    left: auto; width: min(86%, 2050px); object-position: center 34%;
+    mask-image: linear-gradient(90deg, transparent, #000 30%);
+  }
+}
+@media (max-width: 930px) {
+  .hero { min-height: 580px; }
+  .preview { min-height: 300px; }
+  .hex-inner { grid-template-columns: minmax(0,1fr) minmax(0,1.35fr); }
+}
+@media (max-width: 700px) {
+  html { scroll-padding-top: 70px; }
+  .nav-inner { min-height: 56px; }
+  .nav-links { gap: 13px; }
+  .nav-links a:nth-child(2) { display: none; }
+  .hero { min-height: 590px; align-items: end; }
+  .hero-art { height: 73%; object-position: 68% 50%; }
+  .hero::after { background: linear-gradient(0deg,#080e18 10%, #080e18f5 31%, #080e1822 73%, #080e184d); }
+  .hero-inner { padding-block: 0 31px; }
+  h1 { font-size: clamp(53px,12.5vw,75px); }
+  .hero-copy { max-width: 27em; }
+  .demo-panel { padding: 15px; }
+  #demo-draft:checked ~ #panel-draft, #demo-build:checked ~ #panel-build, #demo-game:checked ~ #panel-game,
+  .hex-inner, .install-inner { grid-template-columns: 1fr; }
+  .feature p { max-width: none; font-size: .89rem; }
+  .hex-media { max-width: 550px; }
+  .preview { min-height: 0; padding: 13px; }
+  .game-preview { justify-content: start; }
+  .game-economy { width: 150px; }
+}
+@media (max-width: 370px) {
+  :root { --gutter: 15px; }
+  .nav-links { font-size: .78rem; }
+  .hero { min-height: 535px; }
+  .demo label { padding-inline: 4px; font-size: .87rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cta, .demo label { transition: none; }
+  .cta:hover { transform: none; }
 }
 </style>
 </head>
 <body>
-<header class="header">
-  <nav class="shell navigation" aria-label="主导航">
-    <a class="brand" href="./"><img src="v1.0.0/images/icon.png" width="33" height="33" alt=""><span>开黑搭子<small>RIFT BUDDY</small></span></a>
-    <a class="github" href="https://github.com/Legender134/rift-buddy">GitHub</a>
+<header class="nav">
+  <nav class="wrap nav-inner" aria-label="主导航">
+    <a class="brand" href="./"><img src="v1.0.0/images/icon.png" width="32" height="32" alt=""><span>开黑搭子<small>RIFT BUDDY</small></span></a>
+    <div class="nav-links"><a href="#workflow">功能演示</a><a href="#hex">海克斯大乱斗</a><a href="#download">下载</a></div>
   </nav>
 </header>
 <main>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="shell hero-inner">
-      <div>
-        <p class="version">1.0 正式版</p>
-        <h1 id="hero-title"><span>少翻攻略，</span><span>专注游戏。</span></h1>
-        <p class="lead">英雄联盟国服助手。从选阵容、备符文出装，到进局看加点和海克斯，跟着这一局走。</p>
-        <div class="actions">
-          <a class="download" href="v1.0.0/RiftBuddy-1.0.0-Setup.exe"><span>下载 Windows 版</span><span aria-hidden="true">↓</span></a>
-          <a class="mirror" href="https://gitee.com/legender134/rift-buddy/releases/v1.0.0">Gitee 镜像</a>
-        </div>
-        <p class="platform">Windows x64 · 免费使用</p>
+  <section class="hero" aria-labelledby="product">
+    <img class="hero-art" src="media/ashe.webp" fetchpriority="high" alt="" width="1215" height="717">
+    <div class="wrap hero-inner">
+      <p class="version">1.0 正式版</p>
+      <h1 id="product">开黑搭子</h1>
+      <p class="promise">少翻攻略，专注游戏。</p>
+      <p class="hero-copy">英雄联盟国服助手。阵容跟着选人走，点头像就备好配置，进局抬眼看出装和强化。</p>
+      <div class="actions">
+        <a class="cta" href="v1.0.0/RiftBuddy-1.0.0-Setup.exe">下载 Windows 版 <span aria-hidden="true">↓</span></a>
+        <a class="text-link" href="#workflow">看看怎么用 <span aria-hidden="true">↘</span></a>
       </div>
-      <a class="product" href="v1.0.0/images/draft.webp">
-        <img src="v1.0.0/images/draft.webp" alt="开黑搭子的五路阵容和候选列表，使用演示数据">
-      </a>
+      <p class="platform">Windows x64 · 免费使用</p>
     </div>
   </section>
 
-  <div class="shell">
-    <section class="section" aria-labelledby="flow">
-      <h2 id="flow">从选人到进局</h2>
-      <ol class="stages">
-        <li><h3>选人</h3><p>自动检测客户端，跟随组队与分路。阵容参考你们常玩的英雄，可和队友提议、投票。</p></li>
-        <li><h3>配置</h3><p>点头像预选英雄，按分路准备符文、召唤师技能和商店装备集。由你在客户端确认锁定。</p></li>
-        <li><h3>进局</h3><p>小窗显示出装、加点与双方装备经济。打野可查看刷野路线，鼠标悬停查看详情。</p></li>
-      </ol>
-    </section>
-    <section class="section mode" aria-labelledby="hex">
+  <section class="wrap section" id="workflow" aria-labelledby="workflow-title">
+    <div class="heading"><h2 id="workflow-title">从选人到进局</h2><p>打开助手和英雄联盟客户端，接下来的准备跟着这一局走。</p></div>
+    <fieldset class="demo">
+      <legend class="sr-only">切换功能演示</legend>
+      <input type="radio" name="demo" id="demo-draft" aria-controls="panel-draft" checked>
+      <input type="radio" name="demo" id="demo-build" aria-controls="panel-build">
+      <input type="radio" name="demo" id="demo-game" aria-controls="panel-game">
+      <label for="demo-draft">选阵容</label><label for="demo-build">备配置</label><label for="demo-game">局内小窗</label>
+      <div class="demo-panel" id="panel-draft">
+        <div class="feature"><h3>组上队，阵容就位</h3><p>自动连接客户端、同步开黑房间。结合队友、分路和常玩的英雄给候选，一起提议、投票。</p></div>
+        <div class="preview">
+          <a class="draft" href="v1.0.0/images/draft.webp"><img class="screen" src="v1.0.0/images/draft.webp" width="1400" height="889" alt="查看选人界面大图，展示队友、分路和候选阵容"></a>
+        </div>
+      </div>
+      <div class="demo-panel" id="panel-build">
+        <div class="feature"><h3>点头像，整套备好</h3><p>先预选英雄，再按分路准备符文、召唤师技能和商店装备集。由你在客户端锁定。</p></div>
+        <div class="preview">
+          <a class="configuration" href="media/rift-config.webp"><img class="screen" src="media/rift-config.webp" width="580" height="751" loading="lazy" alt="查看峡谷配置大图，装备、符文、召唤师技能和加点"></a>
+        </div>
+      </div>
+      <div class="demo-panel" id="panel-game">
+        <div class="feature"><h3>进局后，抬眼就能看</h3><p>出装、加点、刷野路线和双方装备价值留在局内。使用无边框模式即可看到小窗。</p></div>
+        <div class="preview game-preview">
+          <figure class="game-economy"><img class="screen" src="media/economy.webp" width="210" height="169" loading="lazy" alt="双方装备价值、队伍总值及差值"><figcaption>双方装备经济</figcaption></figure>
+          <figure class="game-gear"><img class="screen" src="media/rift-gear.webp" width="400" height="295" loading="lazy" alt="峡谷成装顺序和下一件装备"><figcaption>峡谷装备路线</figcaption></figure>
+        </div>
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="hex section" id="hex" aria-labelledby="hex-title">
+    <div class="wrap hex-inner">
+      <div class="hex-copy">
+        <h2 id="hex-title">海克斯大乱斗</h2>
+        <p>从共享备选池选英雄，进局按这把的强化找搭配。</p>
+        <dl>
+          <div><dt>选人</dt><dd>备选英雄、胜率参考和队友选人放在一起。</dd></div>
+          <div><dt>进局</dt><dd>查看当前英雄的强化搭配、核心出装与加点，常用路线可置顶。</dd></div>
+        </dl>
+      </div>
+      <div class="hex-media">
+        <figure><a href="media/hex-pool.webp"><img class="screen" src="media/hex-pool.webp" width="540" height="760" loading="lazy" alt="查看共享备选池大图，含英雄胜率及我方选人标记"></a><figcaption>共享备选池</figcaption></figure>
+        <figure><a href="media/hex-overlay.webp"><img class="screen" src="media/hex-overlay.webp" width="354" height="390" loading="lazy" alt="查看强化与出装小窗大图，含三套路线示例"></a><figcaption>局内强化与出装</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="install section" id="download" aria-labelledby="download-title">
+    <div class="wrap install-inner">
       <div>
-        <h2 id="hex">海克斯大乱斗</h2>
-        <p>选人时查看共享备选池和胜率参考。进局后看当前英雄的强化搭配与核心装备。</p>
+        <h2 id="download-title">下载开黑搭子 1.0</h2>
+        <p class="download-copy">首次使用请下载安装包。装好后打开助手和英雄联盟。</p>
+        <div class="actions">
+          <a class="cta" href="v1.0.0/RiftBuddy-1.0.0-Setup.exe">下载 Windows 版 <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="https://gitee.com/legender134/rift-buddy/releases/v1.0.0">Gitee 镜像</a>
+        </div>
+        <p class="platform">Windows x64 · 完整包约 143 MiB</p>
       </div>
-      <div class="overlays">
-        <figure><img loading="lazy" src="v1.0.0/images/economy.png" alt="两队英雄头像、装备总价值和差值"><figcaption>装备经济</figcaption></figure>
-        <figure><img loading="lazy" src="v1.0.0/images/hex.png" alt="海克斯强化、核心装备和加点小窗"><figcaption>强化与出装</figcaption></figure>
-      </div>
-    </section>
-    <section class="section" aria-labelledby="install">
-      <h2 id="install">安装与更新</h2>
-      <p>首次使用，运行完整安装包，再打开助手和英雄联盟客户端。若当前游戏使用全屏，可按提示切换为无边框以显示局内小窗。</p>
-      <div class="details">
+      <div class="install-list">
         <details>
-          <summary>从 0.59.79 增量更新</summary>
-          <p>在助手里点击安装更新，后台完成后会自动打开新版。也可以<a href="v1.0.0/RiftBuddy-1.0.0-From-0.59.79-Update.exe">下载增量补丁</a>。</p>
+          <summary>已有 0.59.79</summary>
+          <p>在助手里点「安装更新」，后台装完后会自动打开 1.0。</p>
+          <p><a href="v1.0.0/RiftBuddy-1.0.0-From-0.59.79-Update.exe">下载增量补丁（约 315 KiB）</a></p>
         </details>
         <details>
-          <summary>备用下载与 SHA-256</summary>
-          <p><a href="https://github.com/Legender134/rift-buddy/releases/tag/v1.0.0">GitHub Release</a> · <a href="https://gitee.com/legender134/rift-buddy/releases/v1.0.0">Gitee 镜像</a> · <a href="v1.0.0/SHA256SUMS-1.0.0.txt">校验文件</a></p>
-          <p>Gitee 手动下载时，把同一版本的全部分卷和 Merge.cmd 放到同一个文件夹，再运行 Merge.cmd 生成安装包。</p>
+          <summary>其他下载与文件校验</summary>
+          <p><a href="https://github.com/Legender134/rift-buddy/releases/tag/v1.0.0">GitHub Releases</a> · <a href="v1.0.0/SHA256SUMS-1.0.0.txt">SHA-256 校验文件</a></p>
+          <p>在 Gitee 手动下载时，将全部分卷与 Merge.cmd 放在同一文件夹，再运行 Merge.cmd 生成安装包。</p>
         </details>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </main>
-<footer>
-  <div class="shell">
-    <p>开黑搭子为独立项目，和 Riot Games、腾讯无隶属关系。游戏资料与图像的权利归原权利人。</p>
-    <div class="footer-links"><a href="https://github.com/Legender134/rift-buddy/issues">反馈问题</a><a href="https://github.com/Legender134/rift-buddy/blob/main/THIRD_PARTY_NOTICES.md">资料来源与许可</a></div>
-  </div>
+<footer class="wrap">
+  <div class="footer-links"><a href="https://github.com/Legender134/rift-buddy">GitHub</a><a href="https://github.com/Legender134/rift-buddy/issues">反馈问题</a><a href="https://github.com/Legender134/rift-buddy/blob/main/THIRD_PARTY_NOTICES.md">资料来源与许可</a></div>
+  <p>独立玩家项目。Riot Games 与腾讯未为本项目背书。英雄插画来自 <a href="https://developer.riotgames.com/docs/lol#data-dragon">Riot Data Dragon</a>。</p>
 </footer>
 </body>
 </html>
