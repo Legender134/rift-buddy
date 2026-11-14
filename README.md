@@ -6,21 +6,21 @@
 <p align="center">英雄联盟朋友开黑助手 · Windows x64 · 免费使用</p>
 
 <p align="center">
-  <a href="https://github.com/Legender134/rift-buddy/releases/download/v0.59.76/RiftBuddy-0.59.76-Setup.exe"><strong>下载 0.59.76 安装包</strong></a> ·
-  <a href="https://gitee.com/legender134/rift-buddy/releases/v0.59.76">Gitee 国内镜像</a> ·
-  <a href="https://github.com/Legender134/rift-buddy/releases/tag/v0.59.76">GitHub Releases</a> ·
-  <a href="https://github.com/Legender134/rift-buddy/releases/tag/v0.59.76">本次更新说明</a>
+  <a href="https://github.com/Legender134/rift-buddy/releases/download/v0.59.77/RiftBuddy-0.59.77-Setup.exe"><strong>下载 0.59.77 安装包</strong></a> ·
+  <a href="https://gitee.com/legender134/rift-buddy/releases/v0.59.77">Gitee 国内镜像</a> ·
+  <a href="https://github.com/Legender134/rift-buddy/releases/tag/v0.59.77">GitHub Releases</a> ·
+  <a href="https://github.com/Legender134/rift-buddy/releases/tag/v0.59.77">本次更新说明</a>
 </p>
 
 **优先推荐你们会玩的英雄。** 连接后先统计本人最近最多 500 场，优先推荐常玩的英雄。已玩英雄按场次分配默认 **85%** 偏好，未玩英雄合计 **15%**，在“历史战绩 → 推荐偏好”调节。房间成员先各自归一化，再共同探索；每个位置仍按对应成员本人的偏好分配。
 
-**0.59.75 和 0.59.74 用户可以用增量更新。** 退出助手后运行对应的补丁。首次安装、其他版本或本机文件校验不匹配时使用完整包。暂停保留进度，取消清理更新缓存。升级保留收藏、配置与配色。[从 0.59.75 升级](https://github.com/Legender134/rift-buddy/releases/download/v0.59.76/RiftBuddy-0.59.76-From-0.59.75-Update.exe) · [从 0.59.74 升级](https://github.com/Legender134/rift-buddy/releases/download/v0.59.76/RiftBuddy-0.59.76-From-0.59.74-Update.exe)
+**0.59.76 用户可用约 403 KB 的补丁升级。** 退出助手后运行补丁，升级保留收藏、配置和配色。首次安装或本机程序文件校验不匹配时可以使用完整包。[下载 0.59.76 → 0.59.77 补丁](https://github.com/Legender134/rift-buddy/releases/download/v0.59.77/RiftBuddy-0.59.77-From-0.59.76-Update.exe) · [从 0.59.75 或 0.59.74 先升到 0.59.76](https://github.com/Legender134/rift-buddy/releases/tag/v0.59.76)
 
 [Akari 战绩与实时对局](docs/match-history.md)提供本人及公开玩家查询、筛选和单局复盘，也可查看大厅、选人和游戏中的公开玩家资料。个人战绩和备注只保留在本机当前运行内存；国服真实接口与回放兼容仍需授权客户端核验。
 
 [常用英雄推荐](docs/releases/v0.59.0.md)只向房间共享本人的有界英雄次数和偏好比例，不共享逐局战绩。偏好会影响候选，不增加机制契合分，也不代表胜率或固定展示比例。排位可参考公开双方阵容、对位和[分时统计](docs/ranked-recommendations.md)，也可浏览有出处的[跨位置双人方案](docs/cross-role-combinations.md)。
 
-当前公开版本为 **0.59.76**。检测到全屏时，开局前可在主界面或选人侧栏一键切换到无边框。峡谷和海克斯的经济小窗显示双方装备总价值及我方差值，领先为绿，落后为红。海克斯配置强化在上、装备在下，金边标记核心。新装备集写入并校验后，只留当前一套开黑搭子装备集，保留玩家自建和第三方装备集。
+当前公开版本为 **0.59.77**。检测到全屏时，开局前可在主界面或选人侧栏一键切换到无边框。局内经济提示在装备刷新时保持稳定，海克斯胜率榜记住滚动位置，排位曲线提示适配窄侧栏。下载失败后可直接重试。
 
 点击头像先选英雄，再配置对应分路的 OP.GG 常用方案；配置繁忙也可切换英雄。开黑范围默认自动避开外部队友，手动调整本局保留。社区组合单独标识并保留实际契合分，不给普通算法加收录奖励；已提议的阵容与配置不会随自动换批跳动。社区专属配置在“我的配置”主动选择。基础资料与详细技能图鉴为 **16.22.1**，签名资料更新在选人和游戏期间暂存、空闲时启用。
 
@@ -127,8 +127,8 @@
 | 入口 | 使用方式 |
 | --- | --- |
 | [统一下载页与服务器备用包](https://rift-buddy-room.3-27-9-233.sslip.io/downloads/) | 直接下载安装程序，支持断点续传 |
-| [GitHub Releases](https://github.com/Legender134/rift-buddy/releases/tag/v0.59.76) | 0.59.76 安装程序、版本说明与 SHA-256 校验文件 |
-| [Gitee 国内镜像](https://gitee.com/legender134/rift-buddy/releases/v0.59.76) | 下载全部 `.part` 和同版 `Merge.cmd` 到同一目录，合并后安装 |
+| [GitHub Releases](https://github.com/Legender134/rift-buddy/releases/tag/v0.59.77) | 0.59.77 安装程序、增量补丁与 SHA-256 校验文件 |
+| [Gitee 国内镜像](https://gitee.com/legender134/rift-buddy/releases/v0.59.77) | 下载全部 `.part` 和同版 `Merge.cmd` 到同一目录，合并后安装 |
 
 程序内可在“设置 → 软件更新”检查新版，选择 GitHub 或 Gitee，下载并校验后点击“退出并安装”。Gitee 分卷由程序自动合并；手动下载时无需安装解压工具。
 
@@ -144,7 +144,7 @@
 - 契合分是机制规则参考，不是胜率；不同来源的统计口径可能不同，人工玩法按各自复核记录维护。
 - 海克斯三选一保留录入顺序，标出已核对的优先项和组合关系；未核实不代表不适配，录满实际选项后再看重随提示。
 - 不需要助手账号。个人配置和收藏保存在本机；房间共享内容可被房间成员与中继运营者看到。
-- 截图使用程序与演示阵容。真实客户端兼容、整局性能和多屏显示仍需持续实测。[本次更新说明](https://github.com/Legender134/rift-buddy/releases/tag/v0.59.76)
+- 截图使用程序与演示阵容。真实客户端兼容、整局性能和多屏显示仍需持续实测。[本次更新说明](https://github.com/Legender134/rift-buddy/releases/tag/v0.59.77)
 
 资料来源包括 Riot Data Dragon、CommunityDragon、腾讯中文资料与 OP.GG。[第三方来源与许可](THIRD_PARTY_NOTICES.md)。本项目不是 Riot Games 或腾讯的官方产品。
 
