@@ -73,7 +73,50 @@ async function run(){
   await assert.rejects(js('window.buddy.gameDisplay("borderless")'),/游戏目录已变化|下一局|进局前/);
   assert.equal(await fs.readFile(fixture,'utf8'),original);
   phase='ChampSelect';
-  await sidebar(`document.querySelector('${action}').click()`);
+  let releaseDisplay;
+  const rename=fs.rename;
+  fs.rename=async(from,to)=>{
+   if(to===fixture){
+    await new Promise(resolve=>{releaseDisplay=resolve;});
+    throw Object.assign(Error('isolated file locked'),{code:'EACCES'});
+   }
+   return rename(from,to);
+  };
+  try{
+   await sidebar(`document.querySelector('${action}').click()`);
+   await until(()=>releaseDisplay,'One-click switch did not reach the delayed save');
+   await until(()=>js(`document.querySelector('${action}')?.disabled`),'Main window still offers switching during the sidebar request');
+   await sidebar(`window.pressedDisplayButton=document.querySelector('${action}')`);
+   const client=await status();assert.equal(client.gameDisplayPending,true);
+   side.webContents.send('client-update',{...client,message:'隔离选人刷新',receivedAt:new Date().toISOString()});
+   await until(()=>sidebar('!window.pressedDisplayButton.isConnected'),'Sidebar did not repaint for the client refresh');
+   assert.equal(await sidebar('!!document.querySelector(".game-display-notice[aria-busy=true]")'),true,'Sidebar lost the pending state during a client refresh');
+   assert.equal(await sidebar(`document.querySelector('${action}')?.disabled`),true);
+   assert.equal(await fs.readFile(fixture,'utf8'),original,'The configuration changed before the delayed request was confirmed');
+  }finally{fs.rename=rename;releaseDisplay?.();}
+  await until(()=>sidebar('document.querySelector("#toast").matches(".show.error")&&document.querySelector("#toast").textContent.includes("写入权限")'),'Failed switch did not show a recoverable error');
+  await until(()=>js(`document.querySelector('${action}')?.disabled===false`),'Main window did not recover its switch after failure');
+  await until(()=>sidebar(`document.querySelector('${action}')?.disabled===false`),'Sidebar did not recover its switch after failure');
+  assert.equal(await fs.readFile(fixture,'utf8'),original);
+  side.focus();
+  const point=await sidebar(`(()=>{
+   const el=document.querySelector('${action}'),r=el.getBoundingClientRect();
+   window.pressedDisplayButton=null;window.pressTrace=[];
+   for(const type of ['pointerdown','pointercancel','pointerup','blur','click']){
+    window.addEventListener(type,event=>window.pressTrace.push([type,event.target?.dataset?.action]),true);
+   }
+   el.addEventListener('pointerdown',event=>{if(event.isTrusted)window.pressedDisplayButton=el;},{once:true});
+   return {x:Math.round(r.x+r.width/2),y:Math.round(r.y+r.height/2)};
+  })()`);
+  const mouse=type=>side.webContents.sendInputEvent({type,...point,button:'left',clickCount:1});
+  mouse('mouseDown');
+  try{
+   await until(()=>sidebar('!!window.pressedDisplayButton'),'Borderless button did not receive the native press');
+   const opened=await sidebar('window.buddy.bootstrap().then(b=>b.client)');
+   side.webContents.send('client-update',{...opened,message:'隔离按住按钮刷新',receivedAt:new Date().toISOString()});
+   await delay(200);
+   assert.equal(await sidebar('window.pressedDisplayButton.isConnected'),true,'Client refresh removed the button under the pointer '+JSON.stringify(await sidebar('window.pressTrace')));
+  }finally{mouse('mouseUp');}
   await until(async()=>await fs.readFile(fixture,'utf8')===original.replace('WindowMode=0','WindowMode=2'),'Borderless click did not update the fixture');
   await until(()=>js(`!document.querySelector('${action}')`),'Successful choice did not dismiss the notice');
   await until(()=>sidebar(`!document.querySelector('${action}')`),'Sidebar still offers switching after success');

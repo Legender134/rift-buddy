@@ -10,7 +10,8 @@ export function clientConnectionControl(client={},busy=false){
 export function clientConnectionNotice(client={},preferences={},busy=false,{compact=false}={}){
  if(client.connected){
   if(client.gameDisplay!=='fullscreen'||preferences.guideAutoShow===false)return '';
-  return `<section class="client-connection-status game-display-notice" aria-label="局内小窗提示"><div role="status"><strong>全屏会遮住局内小窗</strong></div><div class="client-connection-actions">${button('game-display-borderless','切换到无边框','','primary small')}${button('game-display-dismiss','暂不切换','','quiet small')}</div></section>`;
+  const pending=client.gameDisplayPending===true,disabled=pending?'disabled':'';
+  return `<section class="client-connection-status game-display-notice" aria-label="局内小窗提示" aria-busy="${pending}"><div role="status"><strong>全屏会遮住局内小窗</strong></div><div class="client-connection-actions">${button('game-display-borderless',pending?'正在切换…':'切换到无边框','','primary small',disabled)}${button('game-display-dismiss','暂不切换','','quiet small',disabled)}</div></section>`;
  }
  const connecting=busy||client.connecting,paused=preferences.autoSync===false;
  const title=connecting?'正在连接客户端':client.needsElevation?'连接需要 Windows 权限':'未连接英雄联盟客户端';

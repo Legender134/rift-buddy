@@ -4,9 +4,14 @@ import {holdRenderDuringPointer} from './pointer-render.mjs';
 const api=window.hexMicro,root=document.getElementById('hex-micro-root');let state=null,painted=null,context=null,hoverKey='';
 const interaction=holdRenderDuringPointer({document,root,render:()=>render(state),selector:'button[data-action]'});
 function image(kind,id,name){return `<img src="${e(state.images?.[kind+'/'+id]||'../data/images/'+kind+'/'+id+'.png')}" alt="${e(name)}">`;}
-function render(value){state=value;const nextContext=JSON.stringify([value?.context,value?.interactionContext,value?.session,value?.active,value?.kind,value?.layout,value?.expanded,value?.hero?.id,value?.routes?.map(route=>route.id)]);
- if(context!==nextContext)interaction.invalidate();else if(interaction.defer())return;context=nextContext;
- const sameSession=painted?.session===value?.session,sameLayout=painted?.layout===value?.layout;painted=value;hoverKey='';api.hover(null);document.documentElement.style.setProperty('--hex-scale',String(value?.scale||1));
+function render(value){state=value;const nextContext=JSON.stringify([value?.context,value?.interactionContext,value?.session,value?.active,value?.kind,value?.layout,value?.scale,value?.expanded,value?.hero?.id,value?.routes?.map(route=>route.id)]);
+ const sameContext=context===nextContext;
+ if(!sameContext)interaction.invalidate();else if(interaction.defer())return;context=nextContext;
+ const sameSession=painted?.session===value?.session,sameLayout=painted?.layout===value?.layout;
+ if(!(value?.kind==='economy'&&sameContext&&painted?.equipment?.available&&value.equipment?.available)){
+  hoverKey='';api.hover(null).catch(()=>{});
+ }
+ painted=value;document.documentElement.style.setProperty('--hex-scale',String(value?.scale||1));
  if(!value?.active){root.innerHTML='';return;}
  document.documentElement.dataset.layout=value.layout||'full';document.documentElement.dataset.kind=value.kind;
  const line=document.querySelector('[data-action="line"]'),collapsed=value.layout==='line';line.textContent=collapsed?'▣':'▁';line.title=value.kind==='routes'?(collapsed?'展开配置':'只显示首套配置'):(collapsed?'恢复完整小窗':'收成一行');line.setAttribute('aria-label',line.title);line.setAttribute('aria-pressed',String(collapsed));
@@ -35,12 +40,12 @@ document.addEventListener('click',event=>{const control=event.target.closest('[d
 document.addEventListener('keydown',event=>{if(event.key==='Escape')api.control('tooltip-hide').catch(()=>{});});
 api.onPointer(point=>{
  const target=point?document.elementFromPoint(point.x,point.y)?.closest('[data-micro-id],[data-micro-hint],[data-micro-pending],.hex-route-caption'):null;
- let input=null;
+ let input=null,price;
  if(target&&state?.active){
   if(state.kind==='economy'){
    const row=target.closest('.ally,.enemy'),side=row?.classList.contains('ally')?'ally':'enemy';
-   const index=[...target.parentElement.children].indexOf(target),player=state.equipment?.[side]?.players?.[index];
-   if(player)input={side,id:player.id};
+   const index=[...target.parentElement.children].indexOf(target),player=painted?.equipment?.[side]?.players?.[index];
+   if(player){input={side,id:player.id};price=player.known?player.value:null;}
   }else{
    const route=target.closest('[data-micro-route]')?.dataset.microRoute;
    if(target.classList.contains('hex-route-caption'))input={kind:'caption',route};
@@ -51,6 +56,6 @@ api.onPointer(point=>{
   const width=Math.min(r.right,viewport?.right??innerWidth,innerWidth)-x,height=Math.min(r.bottom,viewport?.bottom??innerHeight,innerHeight)-y;
   input=input&&width>=1&&height>=1?{...input,context:state.context,rect:{x,y,width,height}}:null;
  }
- const key=JSON.stringify(input);if(key!==hoverKey){hoverKey=key;api.hover(input).catch(()=>{});}
+ const key=JSON.stringify([input,price]);if(key!==hoverKey){hoverKey=key;api.hover(input).catch(()=>{});}
 });
 api.onUpdate(render);render(await api.bootstrap());

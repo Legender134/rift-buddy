@@ -23,14 +23,25 @@ module.exports=function createHexMicroWindows({root,getState,setState,getPayload
  }
  async function reset(clear=()=>{}){resetting++;placementEpoch++;for(const e of Object.values(entries)){clearTimeout(e.timer);e.timer=null;e.layout='full';e.peek.unfold();}expanded=false;hideTooltip();try{await placementWrites;await clear();}finally{resetting--;}}
  function publish(value=getPayload()){
-  for(const kind of HEX_WINDOWS){const e=entries[kind],next={...hexMicroPayload(value,kind),interactionContext:guideRenderContext(value)};
+  for(const kind of HEX_WINDOWS){const e=entries[kind],previous=e.payload,next={...hexMicroPayload(value,kind),...(kind==='routes'?{interactionContext:guideRenderContext(value)}:{})};
    if(kind==='routes'){
     if(next.session!==routeSession){routeSession=next.session;expanded=false;pinned=[];}
     pinned=pinned.filter(id=>next.routes?.some(r=>r.id===id));
     if(next.active){next.routes=orderHexCards(next.routes,pinned);next.expanded=expanded&&e.layout==='full';}
    }
-   next.layout=e.layout;const key=JSON.stringify(next),changed=e.last!==key;next.view=changed?++e.view:e.view;e.payload=next;
-   if(changed){e.last=key;e.regions=[];if(tipKind===kind)hideTooltip();if(e.win&&!e.win.isDestroyed())e.win.webContents.send('hex-micro-update',next);}
+   next.layout=e.layout;
+   const key=JSON.stringify(next),changed=e.last!==key;
+   const sameEconomy=kind==='economy'&&previous?.active&&next.active&&previous.context===next.context&&previous.layout===next.layout&&previous.scale===next.scale;
+   // Economy controls use the current layout. Price changes cannot invalidate
+   // a click in progress in the way a changed route or a new layout can.
+   next.view=changed&&!sameEconomy?++e.view:e.view;e.payload=next;
+   if(changed){
+    e.last=key;e.regions=[];
+    // The pointer renderer revalidates the hovered player on each inventory
+    // update. Keep the tooltip open when a different player buys something.
+    if(tipKind===kind&&!(sameEconomy&&previous.equipment?.available&&next.equipment?.available))hideTooltip();
+    if(e.win&&!e.win.isDestroyed())e.win.webContents.send('hex-micro-update',next);
+   }
    const show=!suspended&&active()&&enabled(kind)&&e.requested&&next.active;
    if(e.win&&!e.win.isDestroyed()){fit(kind);if(!show||e.peek.active()){if(tipKind===kind)hideTooltip();e.win.hide();}}
    e.peek.sync(show);

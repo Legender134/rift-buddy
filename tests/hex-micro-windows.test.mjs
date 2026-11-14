@@ -112,6 +112,19 @@ test('tooltip survives unchanged observer bounds; body clicks pass through and d
  assert.throws(()=>s.handlers['hex-micro-control']({sender:{},senderFrame:{}},'routes','hide'),/不允许/);s.micro.destroy();
 });
 
+test('an inventory refresh between pressing and releasing an economy control leaves the same layout actionable',async()=>{
+ const s=setup();s.micro.show();s.ready();
+ const p=s.call('economy','hex-micro-bootstrap');
+ s.value.model.equipment.ally.players[0].value=650;
+ s.micro.publish();
+ const current=s.call('economy','hex-micro-bootstrap');
+ assert.equal(current.equipment.ally.players[0].value,650);
+ assert.equal(await s.call('economy','hex-micro-control','line',{context:p.context,view:p.view}),true);
+ assert.equal(s.call('economy','hex-micro-bootstrap').layout,'line');
+ assert.equal(await s.call('economy','hex-micro-control','line',{context:p.context,view:p.view}),false,'A click from the prior layout must still be refused');
+ s.micro.destroy();
+});
+
 test('layout recovery cancels pending drag persistence before clearing offsets',async()=>{
  const s=setup();s.micro.show();s.ready();const win=s.windows[0];win.setBounds({...win.bounds,x:450,y:300});assert.equal(s.timers.size,1);
  await s.micro.reset();s.state({...s.state(),hexWindows:undefined});s.micro.fit();for(const fn of s.timers.values())await fn();
